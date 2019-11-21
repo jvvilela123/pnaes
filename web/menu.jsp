@@ -67,6 +67,9 @@ START - Mobile Menu
                 </div>
             </div>
         </div>
+                <%
+        if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+    %>
         <!--------------------
         START - Mobile Menu List
         -------------------->
@@ -252,19 +255,13 @@ START - Mobile Menu
         <!--------------------
         END - Mobile Menu List
         -------------------->
-        <div class="mobile-menu-magic">
-            <h4>
-                Admin
-            </h4>
-            <p>
-                Bootstrap 4
-            </p>
-            <div class="btn-w">
-                <a class="btn btn-white btn-rounded" href="#" target="_blank"> NowCCS</a>
-            </div>
-        </div>
+             <%
+         }
+    %>
+        
     </div>
 </div>
+           
 <!--------------------
 END - Mobile Menu
 -------------------->
