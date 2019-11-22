@@ -41,7 +41,6 @@ START - Mobile Menu
                      if(despesas.size() > 0){
                          despesa = despesas.get(0);
                      }
-                     
                     GregorianCalendar dataAtual = new GregorianCalendar();
                     if (editais.size() == 0) {
                         msg = "Nenhum edital cadastrado";
