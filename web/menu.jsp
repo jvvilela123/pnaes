@@ -32,23 +32,23 @@ START - Mobile Menu
                     Aluno aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
                     Empresa empresa = new Empresa();
                     List<Empresa> empresas = daoFactory.getEmpresaDao().perquisarPorAluno(alunoId);
-                     if(empresas.size() > 0){
-                         empresa = empresas.get(0);
-                     }
+                    if (empresas.size() > 0) {
+                        empresa = empresas.get(0);
+                    }
                     GregorianCalendar dataAtual = new GregorianCalendar();
-                    if(editais.size() == 0){
+                    if (editais.size() == 0) {
                         msg = "Nenhum edital cadastrado";
                         //Nenhum edital cadastrado
-                    }else if(editais.get(editais.size()-1).getDataFinal().before(dataAtual)){
+                    } else if (editais.get(editais.size() - 1).getDataFinal().before(dataAtual)) {
                         msg = "Edital ja foi encerrado";
-                        
-                    }else{
-                        edital = editais.get(editais.size()-1);
+
+                    } else {
+                        edital = editais.get(editais.size() - 1);
                     }
 
                 %>
                 <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">
-                    
+
             </div>
             <div class="logged-user-info-w">
                 <div class="logged-user-name">
@@ -67,9 +67,9 @@ START - Mobile Menu
                 </div>
             </div>
         </div>
-                <%
-        if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
-    %>
+        <%
+            if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+        %>
         <!--------------------
         START - Mobile Menu List
         -------------------->
@@ -127,7 +127,7 @@ START - Mobile Menu
                 <a href="apps_bank.html">
                     <div class="icon-w">
                         <div class="os-icon os-icon-package"></div>
-                        
+
                     </div>
                     <span>Análise</span></a>
                 <div class="sub-menu-w">
@@ -142,6 +142,9 @@ START - Mobile Menu
                             <li>
                                 <a href="/pnaes/documento/documento.jsp">Analise documental</a>
                             </li>
+                            <%
+                                if (session.getAttribute("nivel").equals(3)) {
+                            %>
                             <li>
                                 <a href="/pnaes/entrevista/horario.jsp">Agendar Entrevista</a>
                             </li>
@@ -151,6 +154,9 @@ START - Mobile Menu
                             <li>
                                 <a href="/pnaes/visita/cadastrar.jsp">Visita</a>
                             </li>
+                            <%
+                                }
+                            %>
 
                         </ul>
                     </div>
@@ -255,13 +261,13 @@ START - Mobile Menu
         <!--------------------
         END - Mobile Menu List
         -------------------->
-             <%
-         }
-    %>
-        
+        <%
+            }
+        %>
+
     </div>
 </div>
-           
+
 <!--------------------
 END - Mobile Menu
 -------------------->
@@ -535,7 +541,7 @@ START - Main Menu
     <%
         }
     %>
-    
+
 </div>
 <!--------------------
 END - Main Menu
