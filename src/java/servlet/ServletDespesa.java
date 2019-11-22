@@ -8,6 +8,7 @@ package servlet;
 import dao.DaoFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -79,6 +80,26 @@ public class ServletDespesa extends HttpServlet {
                         //Chamando o metodo alterar do dao e redirecionando para listar Despesa Mensal
                         daoFactory.getDespesaDao().inserirOuAlterar(despesa);
                         response.sendRedirect("listar.jsp");
+                        break;
+                    case "alterar_4_passo":
+                        //Setando dados do Despesa Mensal
+                        //despesa.setId(Integer.parseInt(request.getParameter("id")));
+                        List<Despesa> despesas = daoFactory.getDespesaDao().perquisarPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
+                        if(despesas.size() > 0){
+                         despesa = despesas.get(0);
+                        }
+                        despesa.setMoradia(Double.parseDouble(request.getParameter("moradia")));
+                        despesa.setAgua(Double.parseDouble(request.getParameter("agua")));
+                        despesa.setEnergia(Double.parseDouble(request.getParameter("energia")));
+                        despesa.setTelefone(Double.parseDouble(request.getParameter("telefone")));
+                        despesa.setFarmacia(Double.parseDouble(request.getParameter("farmacia")));
+                        despesa.setOutrasDespesas(Double.parseDouble(request.getParameter("outrasDespesas")));
+                        aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
+                        despesa.setAluno(aluno);
+
+                        //Chamando o metodo alterar do dao e redirecionando para listar Despesa Mensal
+                        daoFactory.getDespesaDao().inserirOuAlterar(despesa);
+                        response.sendRedirect("home.jsp");
                         break;
                     case "excluir":
                         //Setando dados do Despesa Mensal

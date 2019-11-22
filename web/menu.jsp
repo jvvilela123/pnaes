@@ -1,3 +1,4 @@
+<%@page import="modelo.Despesa"%>
 <%@page import="java.util.GregorianCalendar"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.Aluno"%>
@@ -31,10 +32,16 @@ START - Mobile Menu
                     Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
                     Aluno aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
                     Empresa empresa = new Empresa();
+                    Despesa despesa = new Despesa();
                     List<Empresa> empresas = daoFactory.getEmpresaDao().perquisarPorAluno(alunoId);
+                    List<Despesa> despesas = daoFactory.getDespesaDao().perquisarPorAluno(alunoId);
                      if(empresas.size() > 0){
                          empresa = empresas.get(0);
                      }
+                     if(despesas.size() > 0){
+                         despesa = despesas.get(0);
+                     }
+                     
                     GregorianCalendar dataAtual = new GregorianCalendar();
                     if(editais.size() == 0){
                         msg = "Nenhum edital cadastrado";

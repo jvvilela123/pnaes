@@ -389,7 +389,7 @@
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
                                                                 <button type="submit" class="btn btn-primary" name="cadastrar" value="Cadastrar">
-                                                                    <i class="la la-check-square-o"></i> Avançar
+                                                                    <i class="la la-check-square-o"></i> Salvar
                                                                 </button>
                                                             </div>
                                                         </div>

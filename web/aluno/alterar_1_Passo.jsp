@@ -75,7 +75,7 @@
                                                             Integer id = Integer.parseInt(request.getParameter("id"));
                                                             aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(id);
                                                         %>
-                                                    <form  class="form form-horizontal striped-rows form-bordered" method="Post" action="../ServletAluno?opcao=preencher&id=<%=aluno.getId()%>">
+                                                    <form  class="form form-horizontal striped-rows form-bordered" method="Post" action="../ServletAluno?opcao=alterar_1_passo&id=<%=aluno.getId()%>">
                                                         <div class="form-body">
                                                             <h4 class="form-section"><i class="ft-user"></i>Alteração do 1º Passo</h4>
                                                              <div class="form-group row">
@@ -143,7 +143,7 @@
                                                          <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="transporte">Qual seu meio de Transporte para chegar até o IFTO:*</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="input-group">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
                                                                             <!--<input type="radio" name="transporte" id="onibus" value="Onibus" class="custom-control-input" required>-->
                                                                             <%
@@ -213,7 +213,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="ensinoFundamental">Você cursou o Ensino Fundamental em Escola:*</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="input-group">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
                                                                            <%
                                                                                 if (aluno.getEnsinoFundamental().equals("Publico")) {
@@ -250,7 +250,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="ensinoMedio">Você cursou o Ensino Medio em Escola:*</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="input-group">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
                                                                             <%
                                                                                 if (aluno.getEnsinoMedio().equals("Publico")) {
@@ -287,7 +287,7 @@
                                                               <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="entrada">Como você ingressou no IFTO:*</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="input-group">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
                                                                            <%
                                                                                 if (aluno.getEntradaIfto().equals("Ampla concorrencia")) {
@@ -334,7 +334,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="visita">Qual o melhor horario para uma visita, se necessário:*</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="input-group">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
                                                                            <%
                                                                                 if (aluno.getPeriodoVisita().equals("Manha")) {
@@ -379,7 +379,7 @@
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
                                                                 <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                    <i class="fa fa-check-square-o"></i>Enviar
+                                                                    <i class="fa fa-check-square-o"></i>Salvar
                                                                 </button>
                                                             </div>
                                                         </div>

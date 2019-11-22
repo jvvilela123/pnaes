@@ -62,12 +62,10 @@
                             <div class="element-box-content">
                             </div>
                             <div class="element-box-content">
-                                <% if (
-                                        
-                                        empresa.getAtividade()!=null) { %>
+                                <% if (empresa.getAtividade()!=null) { %>
                                 <a href="/pnaes/empresa/alterar_2_passo.jsp"> <button  class="mr-2 mb-2 btn btn-info btn-lg" type="button">Refazer o 2º Passo&#10004;</button> </a>
                                 <%  }else{ %>   
-                                <a href="/pnaes/empresa/cadastrar.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">2 Passo</button> </a>
+                                <a href="/pnaes/empresa/cadastrar.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">2º Passo</button> </a>
                                 <% }   %> 
                             </div>
                         </div>
@@ -89,7 +87,7 @@
                                 <% if (aluno.getStatusCadastro().equals("3")) { %>
                                 <a href="/pnaes/dependente/listar.jsp"> <button  class="mr-2 mb-2 btn btn-info btn-lg" type="button">Refazer o 3º Passo&#10004;</button> </a>
                                  <%  }else{ %> 
-                                <a href="/pnaes/dependente/listar.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">3 Passo</button> </a>
+                                <a href="/pnaes/dependente/listar.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">3º Passo</button> </a>
                                 <% }   %> 
                             </div>
                             </div>
@@ -117,7 +115,11 @@
                             <div class="element-box-content">
                             </div>
                             <div class="element-box-content">
-                                <a href="/pnaes/despesa/cadastrar.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">4 Passo</button> </a>
+                                <% if (despesas.size() > 0) { %>
+                                <a href="/pnaes/despesa/alterar_4_passo.jsp"> <button  class="mr-2 mb-2 btn btn-info btn-lg" type="button">Refazer o 4º Passo&#10004;</button> </a>
+                                    <%  }else{ %> 
+                                <a href="/pnaes/despesa/cadastrar.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">4º Passo</button> </a>
+                                   <% }   %> 
                             </div>
                         </div>
                     </div>
@@ -135,7 +137,7 @@
                             <div class="element-box-content">
                             </div>
                             <div class="element-box-content">
-                                <a href="/pnaes/fichaMedica/cadastrar.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">5 Passo</button> </a>
+                                <a href="/pnaes/fichaMedica/cadastrar.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">5º Passo</button> </a>
                             </div>
                         </div>
                     </div>
@@ -151,7 +153,7 @@
                     <div class="element-box-content">
                     </div>
                     <div class="element-box-content">
-                        <a href="/pnaes/documento/upload.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">6 Passo</button> </a>
+                        <a href="/pnaes/documento/upload.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">6º Passo</button> </a>
                     </div>
                 </div>
             </div>

@@ -164,6 +164,22 @@ public class ServletAluno extends HttpServlet {
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("empresa/cadastrar.jsp");
                     break;
+                    case "alterar_1_passo":
+                    aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                    
+                    curso.setId(Integer.parseInt(request.getParameter("curso")));
+                    aluno.setCurso(curso);
+                    aluno.setPeriodo(Integer.parseInt(request.getParameter("periodo")));
+                    aluno.setMeioTransporte(request.getParameter("transporte"));
+                    aluno.setEnsinoMedio(request.getParameter("ensinoMedio"));
+                    aluno.setEnsinoFundamental(request.getParameter("ensinoFundamental"));
+                    aluno.setEntradaIfto(request.getParameter("entrada"));
+                    aluno.setPeriodoVisita(request.getParameter("visita"));
+                    aluno.setReprovou(request.getParameter("reprovou"));
+                    aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
+                    daoFactory.getAlunoDao().inserirOuAlterar(aluno);
+                    response.sendRedirect("home.jsp");
+                    break;
                 case "alterar":
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                     dtn.setTime(formato.parse(request.getParameter("dtn")));

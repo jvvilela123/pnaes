@@ -135,7 +135,7 @@ public class ServletEmpresa extends HttpServlet {
                             empresa.setAtividade("Autonomo");
                     }
                     }
-                     if (request.getParameter("faz") != null){
+                    if (request.getParameter("faz") != null){
                     empresa.setNome(null);
                     empresa.setTelefone(null);
                     empresa.setResponsavel(null);
@@ -151,9 +151,9 @@ public class ServletEmpresa extends HttpServlet {
                     //Chamando o metodo inserir do dao e redirecionando para listar aluno 
                   //daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     daoFactory.getEmpresaDao().inserirOuAlterar(empresa);
-                    if(empresa.getEndereco()==null)
+                    if(empresa.getEndereco()==null && endereco != null)
                     daoFactory.getEnderecoDao().excluir(endereco);
-                    response.sendRedirect("dependente/listar.jsp");
+                    response.sendRedirect("home.jsp");
                     break;
                 case "alterar":
                     //Setando dados do Empresa

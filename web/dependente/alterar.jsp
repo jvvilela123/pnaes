@@ -4,6 +4,7 @@
     Author     : ronan
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="util.DataFormat"%>
 <%@page import="modelo.Dependente"%>
 <%@page import="java.util.List"%>
@@ -23,8 +24,52 @@
                 });
 
             });
+            function formatar(mascara, documento) {
+                var i = documento.value.length;
+                var saida = mascara.substring(0, 1);
+                var texto = mascara.substring(i)
+                if (texto.substring(0, 1) != saida) {
+                    documento.value += texto.substring(0, 1);
+                }
+            }
+            function moeda(a, e, r, t) {
+                let n = ""
+                        , h = j = 0
+                        , u = tamanho2 = 0
+                        , l = ajd2 = ""
+                        , o = window.Event ? t.which : t.keyCode;
+                if (13 == o || 8 == o)
+                    return !0;
+                if (n = String.fromCharCode(o),
+                        -1 == "0123456789".indexOf(n))
+                    return !1;
+                for (u = a.value.length,
+                        h = 0; h < u && ("0" == a.value.charAt(h) || a.value.charAt(h) == r); h++)
+                    ;
+                for (l = ""; h < u; h++)
+                    -1 != "0123456789".indexOf(a.value.charAt(h)) && (l += a.value.charAt(h));
+                if (l += n,
+                        0 == (u = l.length) && (a.value = ""),
+                        1 == u && (a.value = "0" + r + "0" + l),
+                        2 == u && (a.value = "0" + r + l),
+                        u > 2) {
+                    for (ajd2 = "",
+                            j = 0,
+                            h = u - 3; h >= 0; h--)
+                        3 == j && (ajd2 += e,
+                                j = 0),
+                                ajd2 += l.charAt(h),
+                                j++;
+                    for (a.value = "",
+                            tamanho2 = ajd2.length,
+                            h = tamanho2 - 1; h >= 0; h--)
+                        a.value += ajd2.charAt(h);
+                    a.value += r + l.substr(u - 2, u)
+                }
+                return !1
+            }
         </script>
-
+<%@include file="../imports.jsp" %>
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -63,8 +108,11 @@
                                                     <center><h1>Aterar dados do Dependente</h1></center>
                                                         <%
                                                             DataFormat dataFormat = new DataFormat();
+                                                            SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
                                                             Integer id = Integer.parseInt(request.getParameter("id"));
                                                             Dependente dependente = daoFactory.getDependenteDao().pesquisarPorId(id);
+                                                              out.println("DATA: "+formatador.format(dependente.getDtn().getTime()));
+                                                           
                                                         %>
                                                     <form  class="form form-horizontal striped-rows form-bordered" method="Post" action="../ServletDependente?opcao=alterar&id=<%=dependente.getId()%>">
                                                         <div class="form-body">
@@ -134,8 +182,9 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="dtn">Data de Nascimento</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="dtn" id="dtn" class="form-control" value="<%=dataFormat.formatarData(dependente.getDtn())%>" maxlength="10" OnKeyPress="formatar('##/##/####', this)">
+                                                                    <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" value="<%=formatador.format(dependente.getDtn().getTime())%>" maxlength="10" OnKeyPress="formatar('##/##/####', this)">
                                                                 </div>
+                                                            
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="email">Email</label>
