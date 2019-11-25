@@ -21,17 +21,18 @@ import javax.persistence.OneToOne;
 public class FichaMedica implements Serializable{
     
     @Id @GeneratedValue
-private Integer id;
-    private String tipoDoenca;
-    private String medicamento;
-    private String medicamentoDep;
-    private String qualMedicamento;
-    private String qualMedicamentoDep;
-    private String doencaCronica;
+    private Integer id;
+    private String temDoenca;
     private String qualDoenca;
-    private String deficiencia;
+    private String temDoencaDep;
+    private String qualDoencaDep;
+    private String temMedicamento;
+    private String qualMedicamento;
+    private String temMedicamentoDep;
+    private String qualMedicamentoDep;
+    private String temDeficiencia;
     private String qualDeficiencia;
-    private String deficienciaDep;
+    private String temDeficienciaDep;
     private String qualDeficienciaDep;
    
     @OneToOne
@@ -46,60 +47,12 @@ private Integer id;
         this.id = id;
     }
 
-    public String getTipoDoenca() {
-        return tipoDoenca;
+    public String getTemDoenca() {
+        return temDoenca;
     }
 
-    public void setTipoDoenca(String tipoDoenca) {
-        this.tipoDoenca = tipoDoenca;
-    }
-
-    public String getMedicamento() {
-        return medicamento;
-    }
-
-    public void setMedicamento(String medicamento) {
-        this.medicamento = medicamento;
-    }
-
-    public String getDoencaCronica() {
-        return doencaCronica;
-    }
-
-    public void setDoencaCronica(String doencaCronica) {
-        this.doencaCronica = doencaCronica;
-    }
-
-    public String getDeficiencia() {
-        return deficiencia;
-    }
-
-    public void setDeficiencia(String deficiencia) {
-        this.deficiencia = deficiencia;
-    }
-
-    public String getDeficienciaDep() {
-        return deficienciaDep;
-    }
-
-    public void setDeficienciaDep(String deficienciaDep) {
-        this.deficienciaDep = deficienciaDep;
-    }
-
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
-    public String getQualMedicamento() {
-        return qualMedicamento;
-    }
-
-    public void setQualMedicamento(String qualMedicamento) {
-        this.qualMedicamento = qualMedicamento;
+    public void setTemDoenca(String temDoenca) {
+        this.temDoenca = temDoenca;
     }
 
     public String getQualDoenca() {
@@ -110,28 +63,44 @@ private Integer id;
         this.qualDoenca = qualDoenca;
     }
 
-    public String getQualDeficiencia() {
-        return qualDeficiencia;
+    public String getTemDoencaDep() {
+        return temDoencaDep;
     }
 
-    public void setQualDeficiencia(String qualDeficiencia) {
-        this.qualDeficiencia = qualDeficiencia;
+    public void setTemDoencaDep(String temDoencaDep) {
+        this.temDoencaDep = temDoencaDep;
     }
 
-    public String getQualDeficienciaDep() {
-        return qualDeficienciaDep;
+    public String getQualDoencaDep() {
+        return qualDoencaDep;
     }
 
-    public void setQualDeficienciaDep(String qualDeficienciaDep) {
-        this.qualDeficienciaDep = qualDeficienciaDep;
+    public void setQualDoencaDep(String qualDoencaDep) {
+        this.qualDoencaDep = qualDoencaDep;
     }
 
-    public String getMedicamentoDep() {
-        return medicamentoDep;
+    public String getTemMedicamento() {
+        return temMedicamento;
     }
 
-    public void setMedicamentoDep(String medicamentoDep) {
-        this.medicamentoDep = medicamentoDep;
+    public void setTemMedicamento(String temMedicamento) {
+        this.temMedicamento = temMedicamento;
+    }
+
+    public String getQualMedicamento() {
+        return qualMedicamento;
+    }
+
+    public void setQualMedicamento(String qualMedicamento) {
+        this.qualMedicamento = qualMedicamento;
+    }
+
+    public String getTemMedicamentoDep() {
+        return temMedicamentoDep;
+    }
+
+    public void setTemMedicamentoDep(String temMedicamentoDep) {
+        this.temMedicamentoDep = temMedicamentoDep;
     }
 
     public String getQualMedicamentoDep() {
@@ -141,5 +110,49 @@ private Integer id;
     public void setQualMedicamentoDep(String qualMedicamentoDep) {
         this.qualMedicamentoDep = qualMedicamentoDep;
     }
-     
+
+    public String getTemDeficiencia() {
+        return temDeficiencia;
+    }
+
+    public void setTemDeficiencia(String temDeficiencia) {
+        this.temDeficiencia = temDeficiencia;
+    }
+
+    public String getQualDeficiencia() {
+        return qualDeficiencia;
+    }
+
+    public void setQualDeficiencia(String qualDeficiencia) {
+        this.qualDeficiencia = qualDeficiencia;
+    }
+
+    public String getTemDeficienciaDep() {
+        return temDeficienciaDep;
+    }
+
+    public void setTemDeficienciaDep(String temDeficienciaDep) {
+        this.temDeficienciaDep = temDeficienciaDep;
+    }
+
+    public String getQualDeficienciaDep() {
+        return qualDeficienciaDep;
+    }
+
+    public void setQualDeficienciaDep(String qualDeficienciaDep) {
+        this.qualDeficienciaDep = qualDeficienciaDep;
+    }
+    
+    
+
+   
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+  
 }
