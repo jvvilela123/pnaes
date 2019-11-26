@@ -13,23 +13,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro de Ficha Medica</title>
+        <link rel="stylesheet" href="/pnaes/css/alertify.css">
+
         <%@include file="../imports.jsp" %>
         <!-- include alertify.css -->
-<link rel="stylesheet" href="/pnaes/css/alertify.css">
 
-<!-- include boostrap theme  -->
-<link rel="stylesheet" href="/panes/css/themes/bootstrap.css">
-
-<!-- include alertify script -->
-<script src="/panes/js/alertify.js"></script>
-
-<script type="text/javascript">
-//override defaults
-alertify.defaults.transition = "slide";
-alertify.defaults.theme.ok = "btn btn-primary";
-alertify.defaults.theme.cancel = "btn btn-danger";
-alertify.defaults.theme.input = "form-control";
-</script>
         <script  type="text/javascript">
             $(document).ready(function () {
                 $('#uf').change(function () {
@@ -47,7 +35,7 @@ alertify.defaults.theme.input = "form-control";
                 }
 
             }
-            
+            //Funções de Show e Hide das Div's 
             function naoTemDoenca() {
                 document.getElementById('div_doenca').style.display = 'none';
                 document.getElementById('div_outra_doenca').style.display = 'none';
@@ -62,9 +50,7 @@ alertify.defaults.theme.input = "form-control";
                 document.getElementById('doencaMental').checked = false;
                 document.getElementById('outros').checked = false;
                 document.getElementById('outrosqual').value="";
-                //$('input[name ="tipoDoenca"]').checked = false;
-               // $("input[name=tipoDoenca]").checked = false;
-             }
+              }
             function temDoencaCronica() {
                 document.getElementById('div_doenca').style.display = 'block';
                 document.getElementById('div_outra_doenca').style.display = 'none';
@@ -169,41 +155,40 @@ alertify.defaults.theme.input = "form-control";
                document.getElementById('multiplas_familia').checked = false;
             }
             
-            function verificaRadioChecadoPeloName(nameRadio){
-                var temAlgumChecado = false;
-		var elementParaCheckar = document.getElementsByName(nameRadio);
-		
-        
-                     for (var x = 0; x < elementParaCheckar.length; x++) {					
-			if(elementParaCheckar[x] !== null && elementParaCheckar[x].checked !== false){
-			     //Tem um elemento checado
-			      temAlgumChecado = true;
-			 }
-					
-		      }
-                return temAlgumChecado;
-            }
-            
             function verificaCampos(){
-                
+                prencheuTudo = true;
+                if(!alertify.errorAlert){
+                      alertify.dialog('errorAlert',function factory(){
+                        return{
+                                build:function(){
+                                    var errorHeader = '<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>Preencha corretamente os campos</h5>';
+                                    this.setHeader(errorHeader);
+                                }
+                            };
+                        },true,'alert');
+                    }
+                //Verificar os Campos Não Selecionatos     
+                if(!document.getElementById('doencaCronica1sim').checked && !document.getElementById('doencaCronica1nao').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você tem alguma doença crônica?</h6>");
+                     prencheuTudo = false;
+                }
+                    
                 if(document.getElementById('doencaCronica1sim').checked &&  !verificaRadioChecadoPeloName('qualDoenca')){
-                    alertify.alert("Selecione a sua doença crônica.", function(){
-                    alertify.message('OK');
-                     });
-                     //alert("Selecione a sua doença crônica");
-                    //document.getElementById('outrosqual').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Selecione a sua doença crônica.</h6>");
+                    prencheuTudo = false;
                 }else if( document.getElementById('outros').checked && document.getElementById('outrosqual').value === ""){
-                    alert("Preencha a sua Doença no campo Outros");
                     document.getElementById('outrosqual').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a sua Doença no campo Outros.</h6>");
                 }
                 if(document.getElementById('doencaCronicafamiliasim').checked &&  !verificaRadioChecadoPeloName('qualDoencaDep')){
-                    alert("Selecione a doença crônica da sua família");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a doença crônica da sua família.</h6>");
                 }else if( document.getElementById('outrosfamilia').checked && document.getElementById('outrosqualfamilia').value === ""){
-                    alert("Preencha a sua Doença no campo Outros");
                     document.getElementById('outrosqualfamilia').focus();
-                }
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a doença da sua família no campo Outros.</h6>");
+                 }
                 
-               // document.getElementById("formFichaMedica").submit();
+              if(prencheuTudo)  
+              document.getElementById("formFichaMedica").submit();
             }
             
         </script>

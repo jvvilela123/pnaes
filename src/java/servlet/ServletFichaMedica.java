@@ -48,19 +48,21 @@ public class ServletFichaMedica extends HttpServlet {
                          //Setando dados do Ficha Medica
                         
                     fichaMedica.setTemDoenca(request.getParameter("temDoenca"));
-                    if(request.getParameter("temDoenca").equals("Sim"))
+                    if(request.getParameter("temDoenca").equals("Sim")){
                     fichaMedica.setQualDoenca(request.getParameter("qualDoenca"));
                     
                     if(request.getParameter("qualDoenca").equals("Outros"))
                     fichaMedica.setQualDoenca(request.getParameter("qualDoencaOutro"));
+                    }
                     
                     fichaMedica.setTemDoencaDep(request.getParameter("temDoencaDep"));
                     
-                    if(request.getParameter("temDoencaDep").equals("Sim"))
+                    if(request.getParameter("temDoencaDep").equals("Sim")){
                     fichaMedica.setQualDoenca(request.getParameter("qualDoencaDep"));
                     
                     if(request.getParameter("qualDoencaDep").equals("Outros"))
                     fichaMedica.setQualDoenca(request.getParameter("qualDoencaDepOutro"));
+                    }
                     
                     fichaMedica.setTemMedicamento(request.getParameter("temMedicamento"));
                     
