@@ -154,6 +154,9 @@ START - Mobile Menu
                             <li>
                                 <a href="/pnaes/visita/cadastrar.jsp">Visita</a>
                             </li>
+                            <li>
+                                <a href="/pnaes/entrevista/resultado.jsp">Resultado final</a>
+                            </li>
                             <%
                                 }
                             %>
@@ -195,7 +198,7 @@ START - Mobile Menu
                                 <a href="/pnaes/visita/listar.jsp">Lista de Visitas</a>
                             </li>
                             <li>
-                                <a href="/pnaes/entrevista/resultado.jsp">Resultado final</a>
+                                <a href="/pnaes/resultado/resultado.jsp">Resultado final</a>
                             </li>
                         </ul>
                     </div>
@@ -226,7 +229,7 @@ START - Mobile Menu
                                 <a href="rentals_index_grid.html">Pesquisar Edital</a>
                             </li>
                             <li>
-                                <a href="misc_charts.html">Pesquisar RelaÃ§Ã£o de beneficiados</a>
+                                <a href="misc_charts.html">Pesquisar Relação de beneficiados</a>
                             </li>
                             <li>
                                 <a href="auth_login.html">Pesquisar  Relatorio de entrevista</a>
@@ -438,6 +441,9 @@ START - Main Menu
                         <li>
                             <a href="/pnaes/visita/cadastrar.jsp">Visita</a>
                         </li>
+                        <li>
+                            <a href="/pnaes/entrevista/resultado.jsp">Resultado final</a>
+                        </li>
                         <%
                             }
                         %>
@@ -478,7 +484,7 @@ START - Main Menu
                             <a href="/pnaes/visita/listar.jsp">Lista de Visitas</a>
                         </li>
                         <li>
-                            <a href="/pnaes/entrevista/resultado.jsp">Resultado final</a>
+                            <a href="/pnaes/resultado/resultado.jsp">Resultado final</a>
                         </li>
                     </ul>
                 </div>
