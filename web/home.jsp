@@ -1,3 +1,4 @@
+<%@page import="java.util.concurrent.TimeUnit"%>
 <%@page import="modelo.Inscricao"%>
 
 <%@page import="dao.DaoFactory"%>
@@ -5,9 +6,13 @@
 <html>
     <head>
         <title>Home</title>
+        
         <%@include file="imports.jsp" %>
+        
     </head>
-    <body class="menu-position-side menu-side-left full-screen">
+    
+    
+                        <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
             <!-- popup -->
             <div class="all-wrapper solid-bg-all">
@@ -16,7 +21,8 @@
                     <%@include file="menu.jsp" %>
                     <div class="content-w">
                         <%@include file="cabecalho.jsp" %>
-                        <%                            
+                             
+                        <%
                             if (msg.isEmpty() == false) {
                                 
                         %>

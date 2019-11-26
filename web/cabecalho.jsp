@@ -2,15 +2,35 @@
 <%@page import="modelo.Edital"%>
 <%@page import="dao.DaoFactory"%>
 <%@page import="java.util.List"%>
+<%
+                      Long segundos = session.getMaxInactiveInterval() - (System.currentTimeMillis() - session.getLastAccessedTime()) / 1000;
+                     /*  long minutosRestantes = TimeUnit.SECONDS.toMinutes(segundos);
+                      String tempoSessao =  String.format("%02d:%02d", TimeUnit.SECONDS.toMinutes( segundos ),segundos  % 60 );
+                       //out.print("sessão:"+minutosRestantes); // Exibe o tempo (em minutos) restante*/
+                        %>
+            <script type="text/javascript">
+
+            // Chama a função que conta a sessão
+            startCountdown(<%=segundos%>);
+
+            </script>
 <div class="top-bar color-scheme-transparent">
+    
     <!--------------------
     START - Top Menu Controls
     -------------------->
-    <div style="margin-left: 20px">
+    <div style="margin-left: 20px" >
         <center>
             <a class="mm-logo" href="/pnaes/home.jsp"><img src="/pnaes/img/logotop.png"></a>
         </center>
     </div>
+        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="alert alert-info" role="alert" id="divTempo">
+                                    
+                                </div>
+                            </div>
+        </div>   
     <!--------------------
     <div class="top-menu-controls">
         <div class="element-search autosuggest-search-activator">

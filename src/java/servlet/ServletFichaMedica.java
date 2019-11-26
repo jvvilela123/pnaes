@@ -46,17 +46,44 @@ public class ServletFichaMedica extends HttpServlet {
                 switch(opcao){
                     case "cadastrar":
                          //Setando dados do Ficha Medica
-                    fichaMedica.setTipoDoenca(request.getParameter("tipoDoenca"));
-                    fichaMedica.setMedicamento(request.getParameter("medicamento"));
-                    fichaMedica.setMedicamentoDep(request.getParameter("medicamentoDep"));
-                    fichaMedica.setQualMedicamento(request.getParameter("qualMedicamento"));
-                    fichaMedica.setQualDeficienciaDep(request.getParameter("qualMedicamentoDep"));
-                    fichaMedica.setDoencaCronica(request.getParameter("doencaCronica"));
+                        
+                    fichaMedica.setTemDoenca(request.getParameter("temDoenca"));
+                    if(request.getParameter("temDoenca").equals("Sim")){
                     fichaMedica.setQualDoenca(request.getParameter("qualDoenca"));
-                    fichaMedica.setDeficiencia(request.getParameter("deficiencia"));
+                    
+                    if(request.getParameter("qualDoenca").equals("Outros"))
+                    fichaMedica.setQualDoenca(request.getParameter("qualDoencaOutro"));
+                    }
+                    
+                    fichaMedica.setTemDoencaDep(request.getParameter("temDoencaDep"));
+                    
+                    if(request.getParameter("temDoencaDep").equals("Sim")){
+                    fichaMedica.setQualDoenca(request.getParameter("qualDoencaDep"));
+                    
+                    if(request.getParameter("qualDoencaDep").equals("Outros"))
+                    fichaMedica.setQualDoenca(request.getParameter("qualDoencaDepOutro"));
+                    }
+                    
+                    fichaMedica.setTemMedicamento(request.getParameter("temMedicamento"));
+                    
+                    if(request.getParameter("temMedicamento").equals("Sim"))
+                    fichaMedica.setQualMedicamento(request.getParameter("qualMedicamento"));
+                    
+                    fichaMedica.setTemMedicamentoDep(request.getParameter("temMedicamentoDep"));
+                    
+                    if(request.getParameter("temMedicamentoDep").equals("Sim"))
+                    fichaMedica.setQualMedicamentoDep(request.getParameter("qualMedicamentoDep"));
+                    
+                    fichaMedica.setTemDeficiencia(request.getParameter("temDeficiencia"));
+                    
+                    if(request.getParameter("temDeficiencia").equals("Sim"))
                     fichaMedica.setQualDeficiencia(request.getParameter("qualDeficiencia"));
-                    fichaMedica.setDeficienciaDep(request.getParameter("deficienciaDep"));
+                    
+                    fichaMedica.setTemDeficienciaDep(request.getParameter("temDeficienciaDep"));
+                    
+                    if(request.getParameter("temDeficienciaDep").equals("Sim"))
                     fichaMedica.setQualDeficienciaDep(request.getParameter("qualDeficienciaDep"));
+                    
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
                     fichaMedica.setAluno(aluno);
                     //Chamando o metodo inserir do dao e redirecionando para listar Ficha Medica
@@ -66,11 +93,11 @@ public class ServletFichaMedica extends HttpServlet {
                 case "alterar":
                      //Setando dados da Ficha Medica
                     fichaMedica.setId(Integer.parseInt(request.getParameter("id")));
-                    fichaMedica.setTipoDoenca(request.getParameter("tipoDoenca"));
-                    fichaMedica.setMedicamento(request.getParameter("medicamento"));
-                    fichaMedica.setDoencaCronica(request.getParameter("doencaCronica"));
-                    fichaMedica.setDeficiencia(request.getParameter("deficiencia"));
-                    fichaMedica.setDeficienciaDep(request.getParameter("deficienciaDep"));
+                    fichaMedica.setQualDoenca(request.getParameter("tipoDoenca"));
+                    fichaMedica.setTemMedicamento(request.getParameter("medicamento"));
+                    fichaMedica.setTemDoenca(request.getParameter("doencaCronica"));
+                    fichaMedica.setTemDeficiencia(request.getParameter("deficiencia"));
+                    fichaMedica.setTemDeficienciaDep(request.getParameter("deficienciaDep"));
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
                     fichaMedica.setAluno(aluno);
                      //Chamando o metodo inserir do dao e redirecionando para listar Ficha Medica

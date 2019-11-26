@@ -105,13 +105,24 @@
                                                     </table>  
                                                     <div class="form-group row">
 
+                                                       <% if (aluno.getStatusCadastro().equals("3")) { %>
+                                                        <div class="col-md-3">
+                                                            <a href="/pnaes/home.jsp">
+                                                            <button type="submit" value="Cadastrar" class="btn btn-primary">
+                                                                <i class="fa fa-check-square-o"></i> Salvar
+                                                            </button>
+                                                            </a>
+                                                        </div>
+                                                        <% } else {%>
                                                         <div class="col-md-3">
                                                             <a href="/pnaes/despesa/cadastrar.jsp?status=3">
                                                             <button type="submit" value="Cadastrar" class="btn btn-primary">
                                                                 <i class="fa fa-check-square-o"></i> Avançar
                                                             </button>
                                                             </a>
-                                                        </div>
+                                                        </div
+                                                        
+                                                        <%}%>
                                                     </div>
                                                 </div>
                                             </div>

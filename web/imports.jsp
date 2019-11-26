@@ -51,3 +51,73 @@
 <script src="/pnaes/js/html2canvas.min.js"></script>
 <script src="/pnaes/js/pdf.js"></script>
 <script src="/pnaes/js/jspdf.debug.js"></script>
+<!-- include alertify script -->
+<script src="/pnaes/js/alertify.js"></script>
+<script type="text/javascript">
+//override defaults
+alertify.defaults.transition = "slide";
+alertify.defaults.theme.ok = "btn btn-primary";
+alertify.defaults.theme.cancel = "btn btn-danger";
+alertify.defaults.theme.input = "form-control";
+
+//Função Genérica para validar se pelo menos 1 dos radios foi selecionado, parâmetro nome do campo (name), retorno Boolean
+            function verificaRadioChecadoPeloName(nameRadio){
+                var temAlgumChecado = false;
+		var elementParaCheckar = document.getElementsByName(nameRadio);
+		
+        
+                     for (var x = 0; x < elementParaCheckar.length; x++) {					
+			if(elementParaCheckar[x] !== null && elementParaCheckar[x].checked !== false){
+			     //Tem um elemento checado
+			      temAlgumChecado = true;
+			 }
+					
+		      }
+                return temAlgumChecado;
+            }
+            
+      function startCountdown(tempo){
+    
+       div = $( "#divTempo" );
+
+	// Se o tempo não for zerado
+	if((tempo - 1) >= 0){
+
+		// Pega a parte inteira dos minutos
+		var min = parseInt(tempo/60);
+		// Calcula os segundos restantes
+		var seg = tempo%60;
+
+		// Formata o número menor que dez, ex: 08, 07, ...
+		if(min < 10){
+			min = "0"+min;
+			min = min.substr(0, 2);
+		}
+		if(seg <=9){
+			seg = "0"+seg;
+		}
+
+		// Cria a variável para formatar no estilo hora/cronômetro
+		horaImprimivel = min + ':' + seg;
+		//JQuery pra setar o valor
+		 //document.getElementById('tempo').html(horaImprimivel);
+                 div.html( "<strong>Tempo Restante de sessão: "+ horaImprimivel + "</strong>");
+                // document.getElementById("divTempo").innerHTML = "<h1>" + horaImprimivel +"</h1>";
+                
+		// diminui o tempo
+		tempo--;
+                // Define que a função será executada novamente em 1000ms = 1 segundo
+		setTimeout('startCountdown('+tempo+')',1000);
+
+	// Quando o contador chegar a zero faz esta ação
+	} else {
+                //div.classList.remove('alert-info');
+                //div.classList.add('alert-danger');
+                document.getElementById('divTempo').className = 'alert alert-danger';
+                //$( "#divTempo" ).html("00:00 Sessão expirada! Clique <a href='/pnaes/index.jsp?sair=1'><strong>AQUI</strong></a>e refaça o seu login!");
+               // await sleep(2000);
+                window.open('/pnaes/index.jsp?sair=1', '_self');
+	}
+
+}      
+</script>

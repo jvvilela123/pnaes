@@ -34,7 +34,11 @@
             <div class="all-wrapper with-side-panel solid-bg-all">
                 <div class="row">
                     <div class="content-w">
-                        <%@include file="cabecalho_login.jsp" %>
+                        <%
+                if(request.getParameter("sair")!= null && !request.getParameter("sair").equals('1')){
+                session.setAttribute("sair", '1');    
+                } %>
+                       <%@include file="cabecalho_login.jsp" %>
                         <%                            session.invalidate();
                         %>
                         <div class="content-header-right col-md-6 col-12" >
