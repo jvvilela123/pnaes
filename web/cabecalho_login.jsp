@@ -9,7 +9,7 @@
     <div style="margin-left: 20px">
         <center>
             <%
-                if(!session.getAttribute("sair").equals('1')){
+                if(session.getAttribute("sair") != null && !session.getAttribute("sair").equals('1')){
             %>
             <a class="mm-logo" href="/pnaes/home.jsp"><img src="/pnaes/img/logotop.png"></a>
             <%
