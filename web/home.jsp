@@ -23,6 +23,7 @@
                         <%@include file="cabecalho.jsp" %>
                              
                         <%
+                            msg = request.getParameter("msg")==null?"":request.getParameter("msg");
                             if (msg.isEmpty() == false) {
                                 
                         %>
@@ -37,7 +38,7 @@
 
                         <%
                             }
-                            msg = request.getParameter("msg");
+                            //msg = request.getParameter("msg");
                             if (session.getAttribute("nivel").toString().equals("1")) {
                                 List<Inscricao> is = daoFactory.getInscricaoDao().perquisarAlunoPorEdital(alunoId, edital.getId());
                                 if (is.isEmpty() == false) {

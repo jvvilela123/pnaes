@@ -42,10 +42,25 @@ public class ServletFichaMedica extends HttpServlet {
             FichaMedica fichaMedica = new FichaMedica();
             Aluno aluno = new Aluno();
             String opcao = request.getParameter("opcao");
+            String msg = new String();
                 
                 switch(opcao){
                     case "cadastrar":
-                         //Setando dados do Ficha Medica
+                    /*verifica se falta selecionar alguma campo obrigatório
+                        if(request.getParameter("temDoenca") == null ||
+                           request.getParameter("temDoencaDep")== null ||
+                           request.getParameter("temMedicamento")== null ||
+                           request.getParameter("temMedicamentoDep")== null ||
+                           request.getParameter("temDeficiencia")== null ||
+                           request.getParameter("temDeficienciaDep")== null){
+                    msg = "Selecione todos os campos obrigatórios*";
+                    //response.sendRedirect("fichaMedica/cadastrar.jsp?msg="+msg);
+                    request.getRequestDispatcher("fichaMedica/cadastrar.jsp?msg="+msg).forward(request, response);
+
+                   break;
+                        }*/
+                         
+                   //Setando dados do Ficha Medica
                         
                     fichaMedica.setTemDoenca(request.getParameter("temDoenca"));
                     if(request.getParameter("temDoenca").equals("Sim")){
@@ -103,6 +118,20 @@ public class ServletFichaMedica extends HttpServlet {
                      //Chamando o metodo inserir do dao e redirecionando para listar Ficha Medica
                     daoFactory.getFichaMedicaDao().inserirOuAlterar(fichaMedica);
                     response.sendRedirect("fichaMedica/listar.jsp");
+                break;
+                case "alterar_5_passo":
+                     //Setando dados da Ficha Medica
+                    fichaMedica.setId(Integer.parseInt(request.getParameter("id")));
+                    fichaMedica.setQualDoenca(request.getParameter("tipoDoenca"));
+                    fichaMedica.setTemMedicamento(request.getParameter("medicamento"));
+                    fichaMedica.setTemDoenca(request.getParameter("doencaCronica"));
+                    fichaMedica.setTemDeficiencia(request.getParameter("deficiencia"));
+                    fichaMedica.setTemDeficienciaDep(request.getParameter("deficienciaDep"));
+                    aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
+                    fichaMedica.setAluno(aluno);
+                     //Chamando o metodo inserir do dao e redirecionando para listar Ficha Medica
+                   // daoFactory.getFichaMedicaDao().inserirOuAlterar(fichaMedica);
+                    response.sendRedirect("home.jsp");
                 break;
                  case "excluir":
                     //Setando dados do Ficha Medica

@@ -1,3 +1,4 @@
+<%@page import="modelo.FichaMedica"%>
 <%@page import="modelo.Despesa"%>
 <%@page import="java.util.GregorianCalendar"%>
 <%@page import="java.util.List"%>
@@ -33,13 +34,18 @@ START - Mobile Menu
                     Aluno aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
                     Empresa empresa = new Empresa();
                     Despesa despesa = new Despesa();
+                    FichaMedica fichaMedica = new FichaMedica();
                     List<Empresa> empresas = daoFactory.getEmpresaDao().perquisarPorAluno(alunoId);
                     List<Despesa> despesas = daoFactory.getDespesaDao().perquisarPorAluno(alunoId);
+                    List<FichaMedica> fichasMedicas = daoFactory.getFichaMedicaDao().perquisarPorAluno(alunoId);
                      if(empresas.size() > 0){
                          empresa = empresas.get(0);
                      }
                      if(despesas.size() > 0){
                          despesa = despesas.get(0);
+                     }
+                     if(fichasMedicas.size() > 0){
+                         fichaMedica = fichasMedicas.get(0);
                      }
                     GregorianCalendar dataAtual = new GregorianCalendar();
                     if (editais.size() == 0) {

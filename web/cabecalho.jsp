@@ -3,7 +3,9 @@
 <%@page import="dao.DaoFactory"%>
 <%@page import="java.util.List"%>
 <%
-                      Long segundos = session.getMaxInactiveInterval() - (System.currentTimeMillis() - session.getLastAccessedTime()) / 1000;
+   
+                   Long segundos = session.getMaxInactiveInterval() - (System.currentTimeMillis() - session.getLastAccessedTime()) / 1000;
+    //segundos = 5L;
                      /*  long minutosRestantes = TimeUnit.SECONDS.toMinutes(segundos);
                       String tempoSessao =  String.format("%02d:%02d", TimeUnit.SECONDS.toMinutes( segundos ),segundos  % 60 );
                        //out.print("sessão:"+minutosRestantes); // Exibe o tempo (em minutos) restante*/

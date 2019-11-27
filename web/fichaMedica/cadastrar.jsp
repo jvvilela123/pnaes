@@ -167,10 +167,25 @@
                             };
                         },true,'alert');
                     }
-                //Verificar os Campos Não Selecionatos     
+                //Verifica se falta selecionar alguma campo obrigatório     
                 if(!document.getElementById('doencaCronica1sim').checked && !document.getElementById('doencaCronica1nao').checked){
                     alertify.errorAlert("<h6 class='card-title'>Você tem alguma doença crônica?</h6>");
-                     prencheuTudo = false;
+                    prencheuTudo = false;
+               } else if(!document.getElementById('doencaCronicafamilianao').checked && !document.getElementById('doencaCronicafamiliasim').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Há alguem com doença cronica na família?</h6>");
+                    prencheuTudo = false;
+                }else if(!document.getElementById('naom').checked && !document.getElementById('simm').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você faz uso de medicamento controlado?</h6>");
+                    prencheuTudo = false;
+                }else if(!document.getElementById('naomd').checked && !document.getElementById('simmd').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Há alguem que faz uso de medicamento controlado na família?</h6>");
+                    prencheuTudo = false;
+                }else if(!document.getElementById('deficiencianao').checked && !document.getElementById('deficienciasim').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você tem alguma deficiência?</h6>");
+                    prencheuTudo = false;
+                }else if(!document.getElementById('simd').checked && !document.getElementById('naod').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Há pessoa(s) na família com deficiência?</h6>");
+                    prencheuTudo = false;
                 }
                     
                 if(document.getElementById('doencaCronica1sim').checked &&  !verificaRadioChecadoPeloName('qualDoenca')){
@@ -179,12 +194,15 @@
                 }else if( document.getElementById('outros').checked && document.getElementById('outrosqual').value === ""){
                     document.getElementById('outrosqual').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha a sua Doença no campo Outros.</h6>");
+                    prencheuTudo = false;
                 }
                 if(document.getElementById('doencaCronicafamiliasim').checked &&  !verificaRadioChecadoPeloName('qualDoencaDep')){
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença crônica da sua família.</h6>");
+                    prencheuTudo = false;
                 }else if( document.getElementById('outrosfamilia').checked && document.getElementById('outrosqualfamilia').value === ""){
                     document.getElementById('outrosqualfamilia').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença da sua família no campo Outros.</h6>");
+                    prencheuTudo = false;
                  }
                 
               if(prencheuTudo)  
@@ -201,6 +219,7 @@
                     <%@include file="../menu.jsp" %>
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
+                        
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -226,11 +245,27 @@
                                                     <div class="card-text">
                                                         Texto info
                                                     </div>
+                                                    <%
+                            msg = request.getParameter("msg")==null?"":request.getParameter("msg");
+                            if (msg.isEmpty() == false) {
+                                
+                        %>
+
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" role="alert">
+                                    <strong><%=msg%></strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <%
+                            }%>
                                     <form method="Post" action="../ServletFichaMedica?opcao=cadastrar&aluno_id=<%=session.getAttribute("aluno_id")%>" class="form form-horizontal" id="formFichaMedica">
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Ficha de Saúde</h4>
                                              <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="doencaCronica">Você tem alguma doença crônica?:</label>
+                                                <label class="col-md-3 label-control" for="doencaCronica">Você tem alguma doença crônica?*:</label>
                                                 <div class="col-md-3">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-3">
@@ -248,7 +283,7 @@
                                             </div>
                                             <div id="div_doenca" class="hide">
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="tipoDoenca">Qual doença crônica?:</label>
+                                                <label class="col-md-3 label-control" for="tipoDoenca">Qual doença crônica?*:</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="custom-control custom-radio">
@@ -305,7 +340,7 @@
                                             </div>
                                             </div>
                                           <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="doencaCronica">Há alguem com doença cronica na família?:</label>
+                                                <label class="col-md-3 label-control" for="doencaCronica">Há alguem com doença cronica na família?*:</label>
                                                 <div class="col-md-3">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-3">
@@ -323,7 +358,7 @@
                                             </div>
                                          <div id="div_doenca_familia" class="hide">
                                                 <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="tipoDoencafamilia">Qual doença crônica na família?:</label>
+                                                <label class="col-md-3 label-control" for="tipoDoencafamilia">Qual doença crônica na família?*:</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                        <div class="custom-control custom-radio">
@@ -381,7 +416,7 @@
                                             
 
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="medicamento">Você faz uso de medicamento controlado?</label>
+                                                <label class="col-md-3 label-control" for="medicamento">Você faz uso de medicamento controlado?*</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-2">
@@ -408,7 +443,7 @@
                                                 </div>
                                             </div>
                                         <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="medicamento">Há alguem que faz uso de medicamento controlado na família?</label>
+                                                <label class="col-md-3 label-control" for="medicamento">Há alguem que faz uso de medicamento controlado na família?*</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-2">
@@ -435,7 +470,7 @@
                                                 </div>
                                             </div>
                                              <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="deficiencia">Você tem alguma deficiência?:</label>
+                                                <label class="col-md-3 label-control" for="deficiencia">Você tem alguma deficiência?*:</label>
                                                 <div class="col-md-3">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-3">
@@ -453,7 +488,7 @@
                                             </div>
                                            <div id="div_deficiencia" class="hide">
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="deficiencia">Qual deficiência?</label>
+                                                <label class="col-md-3 label-control" for="deficiencia">Qual deficiência?*:</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="custom-control custom-radio">
@@ -481,7 +516,7 @@
                                             </div>
                                            </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="deficienciaDep">Há pessoa(s) na família com deficiência,qual?</label>
+                                                <label class="col-md-3 label-control" for="deficienciaDep">Há pessoa(s) na família com deficiência?*:</label>
                                                 <div class="col-md-3">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-3">
@@ -499,7 +534,7 @@
                                             </div>
                                               <div id="div_deficiencia_familia" class="hide">
                                               <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="qualdeficienciaDep">Qual deficiência?</label>
+                                                <label class="col-md-3 label-control" for="qualdeficienciaDep">Qual deficiência?*:</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="custom-control custom-radio">

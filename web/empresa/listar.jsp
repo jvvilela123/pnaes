@@ -75,7 +75,7 @@
                                                         </div>
                                                     </div>
                                                     <%                                                        
-                                                        List<Empresa> empresas = new ArrayList<Empresa>();                                                        
+                                                        //List<Empresa> empresas = new ArrayList<Empresa>();                                                        
                                                         empresas = daoFactory.getEmpresaDao().perquisarPorAluno(alunoId);                                                        
                                                     %>    
                                                     <table class="table table-striped table-responsive-md">

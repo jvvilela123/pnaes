@@ -137,7 +137,12 @@
                             <div class="element-box-content">
                             </div>
                             <div class="element-box-content">
+                                <% if (fichasMedicas.size() > 0) { %>
+                                <a href="/pnaes/fichaMedica/alterar_5_passo.jsp"> <button  class="mr-2 mb-2 btn btn-info btn-lg" type="button">Refazer o 5º Passo&#10004;</button> </a>
+                                    <%  }else{ %> 
                                 <a href="/pnaes/fichaMedica/cadastrar.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">5º Passo</button> </a>
+                                   <% }   %> 
+                                
                             </div>
                         </div>
                     </div>
