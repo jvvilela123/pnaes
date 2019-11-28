@@ -188,7 +188,7 @@
                     prencheuTudo = false;
                 }
                     
-                if(document.getElementById('doencaCronica1sim').checked &&  !verificaRadioChecadoPeloName('qualDoenca')){
+               else if(document.getElementById('doencaCronica1sim').checked &&  !verificaRadioChecadoPeloName('qualDoenca')){
                     alertify.errorAlert("<h6 class='card-title'>Selecione a sua doença crônica.</h6>");
                     prencheuTudo = false;
                 }else if( document.getElementById('outros').checked && document.getElementById('outrosqual').value === ""){
@@ -196,7 +196,7 @@
                     alertify.errorAlert("<h6 class='card-title'>Preencha a sua Doença no campo Outros.</h6>");
                     prencheuTudo = false;
                 }
-                if(document.getElementById('doencaCronicafamiliasim').checked &&  !verificaRadioChecadoPeloName('qualDoencaDep')){
+               else if(document.getElementById('doencaCronicafamiliasim').checked &&  !verificaRadioChecadoPeloName('qualDoencaDep')){
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença crônica da sua família.</h6>");
                     prencheuTudo = false;
                 }else if( document.getElementById('outrosfamilia').checked && document.getElementById('outrosqualfamilia').value === ""){
@@ -204,7 +204,24 @@
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença da sua família no campo Outros.</h6>");
                     prencheuTudo = false;
                  }
-                
+               else if (document.getElementById('simm').checked && document.getElementById('qualM').value === ""){
+                    document.getElementById('qualM').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha o nome do seu medicamento.</h6>");
+                    prencheuTudo = false;
+                }
+             else if (document.getElementById('simmd').checked && document.getElementById('qualMd').value === ""){
+                    document.getElementById('qualMd').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha o nome do medicamento da sua família.</h6>");
+                    prencheuTudo = false;
+               }
+              else if (document.getElementById('deficienciasim').checked && !verificaRadioChecadoPeloName('qualDeficiencia')) {
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a sua deficiência.</h6>");
+                    prencheuTudo = false;
+                }
+               else if (document.getElementById('simd').checked && !verificaRadioChecadoPeloName('qualDeficienciaDep')) {
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a deficiência da sua família.</h6>");
+                    prencheuTudo = false;
+                }
               if(prencheuTudo)  
               document.getElementById("formFichaMedica").submit();
             }
@@ -283,7 +300,7 @@
                                             </div>
                                             <div id="div_doenca" class="hide">
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="tipoDoenca">Qual doença crônica?*:</label>
+                                                <label class="col-md-3 label-control" for="tipoDoenca">Qual a sua doença crônica?*:</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="custom-control custom-radio">
@@ -488,7 +505,7 @@
                                             </div>
                                            <div id="div_deficiencia" class="hide">
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="deficiencia">Qual deficiência?*:</label>
+                                                <label class="col-md-3 label-control" for="deficiencia">Qual a sua deficiência?*:</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="custom-control custom-radio">
@@ -534,7 +551,7 @@
                                             </div>
                                               <div id="div_deficiencia_familia" class="hide">
                                               <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="qualdeficienciaDep">Qual deficiência?*:</label>
+                                                <label class="col-md-3 label-control" for="qualdeficienciaDep">Qual a deficiência na sua família?*:</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="custom-control custom-radio">

@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Ficha Medica</title>
+        <title>Alteração de Ficha Médica</title>
         <link rel="stylesheet" href="/pnaes/css/alertify.css">
 
         <%@include file="../imports.jsp" %>
@@ -71,6 +71,7 @@
             }
             function naoTemOutraDoenca() {
                 document.getElementById('div_outra_doenca').style.display = 'none';
+                document.getElementById('outrosqual').value = "";
             }
             function temDoencaFamilia() {
                 document.getElementById('div_doenca_familia').style.display = 'block';
@@ -107,6 +108,7 @@
             }
             function naoTemOutraDoencaFamilia() {
                 document.getElementById('div_outra_doenca_familia').style.display = 'none';
+                document.getElementById('outrosqualfamilia').value = "";
             }
             function temMedicamentoControlado() {
                 document.getElementById('div_medicamento').style.display = 'block';
@@ -188,20 +190,42 @@
                     prencheuTudo = false;
                 }
 
-                if (document.getElementById('doencaCronica1sim').checked && !verificaRadioChecadoPeloName('qualDoenca')) {
+              else  if (document.getElementById('doencaCronica1sim').checked && !verificaRadioChecadoPeloName('qualDoenca')) {
                     alertify.errorAlert("<h6 class='card-title'>Selecione a sua doença crônica.</h6>");
                     prencheuTudo = false;
-                } else if (document.getElementById('outros').checked && document.getElementById('outrosqual').value === "") {
+                }  if (document.getElementById('doencaCronica1sim').checked){
+                if (document.getElementById('outros').checked && document.getElementById('outrosqual').value === "") {
                     document.getElementById('outrosqual').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha a sua Doença no campo Outros.</h6>");
                     prencheuTudo = false;
                 }
-                if (document.getElementById('doencaCronicafamiliasim').checked && !verificaRadioChecadoPeloName('qualDoencaDep')) {
+                }
+              else  if (document.getElementById('doencaCronicafamiliasim').checked && !verificaRadioChecadoPeloName('qualDoencaDep')) {
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença crônica da sua família.</h6>");
                     prencheuTudo = false;
-                } else if (document.getElementById('outrosfamilia').checked && document.getElementById('outrosqualfamilia').value === "") {
+                }  if (document.getElementById('doencaCronicafamiliasim').checked){
+                    if (document.getElementById('outrosfamilia').checked && document.getElementById('outrosqualfamilia').value === "" && prencheuTudo) {
                     document.getElementById('outrosqualfamilia').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença da sua família no campo Outros.</h6>");
+                    prencheuTudo = false;
+                }
+              }
+              if (document.getElementById('simm').checked && document.getElementById('qualM').value === "" && prencheuTudo){
+                    document.getElementById('qualM').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha o nome do seu medicamento.</h6>");
+                    prencheuTudo = false;
+                }
+             else if (document.getElementById('simmd').checked && document.getElementById('qualMd').value === "" && prencheuTudo){
+                    document.getElementById('qualMd').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha o nome do medicamento da sua família.</h6>");
+                    prencheuTudo = false;
+               }
+              else if (document.getElementById('deficienciasim').checked && !verificaRadioChecadoPeloName('qualDeficiencia') && prencheuTudo) {
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a sua deficiência.</h6>");
+                    prencheuTudo = false;
+                }
+               else if (document.getElementById('simd').checked && !verificaRadioChecadoPeloName('qualDeficienciaDep') && prencheuTudo) {
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a deficiência da sua família.</h6>");
                     prencheuTudo = false;
                 }
 
@@ -260,9 +284,9 @@
 
                                                     <%
                             }%>
-                                                    <form method="Post" action="../ServletFichaMedica?opcao=alterar_5_passo&fichaMedica_id=<%=fichaMedica.getId()%>" class="form form-horizontal" id="formFichaMedica">
+                                                    <form method="Post" action="../ServletFichaMedica?opcao=alterar_5_passo&aluno_id=<%=aluno.getId()%>&fichaMedica_id=<%=fichaMedica.getId()%>" class="form form-horizontal" id="formFichaMedica">
                                                         <div class="form-body">
-                                                            <h4 class="form-section"><i class="ft-user"></i>Ficha de Saúde</h4>
+                                                            <h4 class="form-section"><i class="ft-user"></i>Alteração da Ficha de Saúde</h4>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="doencaCronica">Você tem alguma doença crônica?*:</label>
                                                                 <div class="col-md-3">
@@ -270,6 +294,8 @@
                                                                         <div class="col-md-3">
                                                                             <div class="custom-control custom-radio">
                                                                                 <%
+                                                                                    Boolean temOutraDoenca = false;
+                                                                                   
                                                                                     if (fichaMedica.getTemDoenca().equals("Nao")) {
                                                                                         out.println("<input checked type='radio' name='temDoenca' id='doencaCronica1nao' value='Nao' class='custom-control-input' onclick='naoTemDoenca();'>");
                                                                                     } else {
@@ -301,13 +327,13 @@
                                                                }
                                                             %>
                                                                  <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="tipoDoenca">Qual doença crônica?*:</label>
+                                                                    <label class="col-md-3 label-control" for="tipoDoenca">Qual a sua doença crônica?*:</label>
                                                                     <div class="col-md-9">
                                                                         <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                             <div class="custom-control custom-radio">
                                                                                 <%
-                                                                                    if(fichaMedica.getQualDoenca()!=null){
-                                                                                    if (fichaMedica.getQualDoenca().equals("Hipertencao")) {
+                                                                                    //if(fichaMedica.getQualDoenca()!=null){
+                                                                                    if (fichaMedica.getQualDoenca()!=null && fichaMedica.getQualDoenca().equals("Hipertencao")) {
                                                                                         out.println("<input checked type='radio' name='qualDoenca' id='hipertencao' value='Hipertencao' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
                                                                                     } else {
                                                                                         out.println("<input type='radio' name='qualDoenca' id='hipertencao' value='Hipertencao' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
@@ -319,7 +345,7 @@
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
                                                                                   <%
-                                                                                if (fichaMedica.getQualDoenca().equals("Diabetes")) {
+                                                                                if (fichaMedica.getQualDoenca()!=null && fichaMedica.getQualDoenca().equals("Diabetes")) {
                                                                                         out.println("<input checked type='radio' name='qualDoenca' id='diabetes' value='Diabetes' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
                                                                                     } else {
                                                                                         out.println("<input type='radio' name='qualDoenca' id='diabetes' value='Diabetes' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
@@ -331,7 +357,7 @@
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
                                                                                 <%
-                                                                                if (fichaMedica.getQualDoenca().equals("Epilepsia")) {
+                                                                                if (fichaMedica.getQualDoenca()!=null && fichaMedica.getQualDoenca().equals("Epilepsia")) {
                                                                                         out.println("<input checked type='radio' name='qualDoenca' id='epilepsia' value='Epilepsia' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
                                                                                     } else {
                                                                                         out.println("<input type='radio' name='qualDoenca' id='epilepsia' value='Epilepsia' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
@@ -342,42 +368,106 @@
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
                                                                                 <%
-                                                                                if (fichaMedica.getQualDoenca().equals("Asma")) {
+                                                                                if (fichaMedica.getQualDoenca()!=null && fichaMedica.getQualDoenca().equals("Asma")) {
                                                                                         out.println("<input checked type='radio' name='qualDoenca' id='asma' value='Asma' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
                                                                                     } else {
                                                                                         out.println("<input type='radio' name='qualDoenca' id='asma' value='Asma' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
                                                                                     }
-                                                                                }
+                                                                                
                                                                                 %>
                                                                               <label class="custom-control-label" for="asma">Asma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
-                                                                                <input type="radio" name="qualDoenca" id="hepatiteb" value="Hepatite B" class="custom-control-input" onclick="naoTemOutraDoenca();">
+                                                                                <%
+                                                                                if (fichaMedica.getQualDoenca()!=null && fichaMedica.getQualDoenca().equals("Hepatite B")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoenca' id='hepatiteb' value='Hepatite B' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoenca' id='hepatiteb' value='Hepatite B' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
+                                                                                    }
+                                                                                
+                                                                                %>
                                                                                 <label class="custom-control-label" for="hepatiteb">Hepatite B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
                                                                                 <input type="radio" name="qualDoenca" id="osteoporose" value="Osteoporose" class="custom-control-input" onclick="naoTemOutraDoenca();">
+                                                                                <%
+                                                                                if (fichaMedica.getQualDoenca()!=null && fichaMedica.getQualDoenca().equals("Osteoporose")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoenca' id='osteoporose' value='Osteoporose' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoenca' id='osteoporose' value='Osteoporose' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
+                                                                                    }
+                                                                                
+                                                                                %>
                                                                                 <label class="custom-control-label" for="osteoporose">Osteoporose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
-                                                                                <input type="radio" name="qualDoenca" id="enxaqueca" value="Enxaqueca" class="custom-control-input" onclick="naoTemOutraDoenca();">
+                                                                                <%
+                                                                                if (fichaMedica.getQualDoenca()!=null && fichaMedica.getQualDoenca().equals("Enxaqueca")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoenca' id='enxaqueca' value='Enxaqueca' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoenca' id='enxaqueca' value='Enxaqueca' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
+                                                                                    }
+                                                                                
+                                                                                %>
                                                                                 <label class="custom-control-label" for="enxaqueca">Enxaqueca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
-                                                                                <input type="radio" name="qualDoenca" id="dependenciaQuimica" value="Dependencia Quimica" class="custom-control-input" onclick="naoTemOutraDoenca();">
+                                                                                 <%
+                                                                                if (fichaMedica.getQualDoenca()!=null && fichaMedica.getQualDoenca().equals("Dependencia Quimica")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoenca' id='dependenciaQuimica' value='Dependencia Quimica' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoenca' id='dependenciaQuimica' value='Dependencia Quimica' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
+                                                                                    }
+                                                                                
+                                                                                %>
                                                                                 <label class="custom-control-label" for="dependenciaQuimica">Dependência Quimica&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
-                                                                                <input type="radio" name="qualDoenca" id="doencaMental" value="Doenca Mental" class="custom-control-input" onclick="naoTemOutraDoenca();">
+                                                                                <%
+                                                                                if (fichaMedica.getQualDoenca()!=null && fichaMedica.getQualDoenca().equals("Doenca Mental")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoenca' id='doencaMental' value='Doenca Mental' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoenca' id='doencaMental' value='Doenca Mental' class='custom-control-input' onclick='naoTemOutraDoenca();'>");
+                                                                                    }
+                                                                                
+                                                                                %>
                                                                                 <label class="custom-control-label" for="doencaMental">Doenca Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
-                                                                                <input type="radio" name="qualDoenca" id="outros" value="Outros" class="custom-control-input" onclick="temOutraDoenca();">
+                                                                                <%
+                                                                                 if (fichaMedica.getQualDoenca()!=null && !fichaMedica.getQualDoenca().equals("Doenca Mental")&&
+                                                                                    !fichaMedica.getQualDoenca().equals("Dependencia Quimica")&&
+                                                                                    !fichaMedica.getQualDoenca().equals("Enxaqueca")&&
+                                                                                    !fichaMedica.getQualDoenca().equals("Osteoporose")&&
+                                                                                    !fichaMedica.getQualDoenca().equals("Hepatite B")&&
+                                                                                    !fichaMedica.getQualDoenca().equals("Asma")&&
+                                                                                    !fichaMedica.getQualDoenca().equals("Diabetes")&&
+                                                                                    !fichaMedica.getQualDoenca().equals("Hipertencao")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoenca' id='outros' value='Outros' class='custom-control-input' onclick='temOutraDoenca();'>");
+                                                                                        temOutraDoenca = true;
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoenca' id='outros' value='Outros' class='custom-control-input' onclick='temOutraDoenca();'>");
+                                                                                    }
+                                                                               
+                                                                                %>
                                                                                 <label class="custom-control-label" for="outros">Outros</label>
                                                                             </div>
-                                                                            <div id="div_outra_doenca" class="hide">
-                                                                                <div class="position-relative has-icon-left">
-                                                                                    <input type="text" name="qualDoencaOutro" id="outrosqual" class="form-control" placeholder="Qual Doença?">
+                                                                             <%
+                                                                                if (temOutraDoenca) {
+                                                                                    out.println("<div id='div_outra_doenca' class='show' >");
+                                                                                } else {
+                                                                                    out.println("<div id='div_outra_doenca' class='hide' >");
+                                                                               }
+                                                                            %> 
+                                                                           <div class="position-relative has-icon-left">
+                                                                               <%
+                                                                                if (temOutraDoenca) {
+                                                                                    out.println("<input type='text' name='qualDoencaOutro' id='outrosqual' value='"+fichaMedica.getQualDoenca()+"' class='form-control' placeholder='Qual Doença?'>");
+                                                                                } else {
+                                                                                    out.println("<input type='text' name='qualDoencaOutro' id='outrosqual'  class='form-control' placeholder='Qual Doença?'>");
+                                                                               }
+                                                                               //  }
+                                                                            %>                                                                                    
                                                                                     <div class="form-control-position">
                                                                                         <i class="fa fa-briefcase"></i>
                                                                                     </div>
@@ -394,65 +484,178 @@
                                                                 <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                     <div class="col-md-3">
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="temDoencaDep" id="doencaCronicafamilianao" value="Nao" class="custom-control-input" onclick="naoTemDoencaFamilia();">
+                                                                            <%
+                                                                                    Boolean temOutraDoencaDep = false;
+                                                                                    
+                                                                                    if (fichaMedica.getTemDoencaDep().equals("Nao")) {
+                                                                                        out.println("<input checked type='radio' name='temDoencaDep' id='doencaCronicafamilianao' value='Nao' class='custom-control-input' onclick='naoTemDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='temDoencaDep' id='doencaCronicafamilianao' value='Nao' class='custom-control-input' onclick='naoTemDoencaFamilia();'>");
+                                                                                    }
+                                                                                %>
                                                                             <label class="custom-control-label" for="doencaCronicafamilianao">Não</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="temDoencaDep" id="doencaCronicafamiliasim" value="Sim" class="custom-control-input" onclick="temDoencaFamilia();">
+                                                                            <%
+                                                                                    if (fichaMedica.getTemDoencaDep().equals("Sim")) {
+                                                                                        out.println("<input checked type='radio' name='temDoencaDep' id='doencaCronicafamiliasim' value='Sim' class='custom-control-input' onclick='temDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='temDoencaDep' id='doencaCronicafamiliasim' value='Sim' class='custom-control-input' onclick='temDoencaFamilia();'>");
+                                                                                    }
+                                                                                %>
                                                                             <label class="custom-control-label" for="doencaCronicafamiliasim">Sim</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div id="div_doenca_familia" class="hide">
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="tipoDoencafamilia">Qual doença crônica na família?*:</label>
+                                                                            <%
+                                                                if (fichaMedica.getTemDoencaDep().equals("Sim")) {
+                                                                    out.println("<div id='div_doenca_familia' class='show'>");
+                                                                } else {
+                                                                    out.println("<div id='div_doenca_familia' class='hide'>");
+                                                               }
+                                                            %>
+                                                         <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="tipoDoencafamilia">Qual doença crônica na sua família?*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDoencaDep" id="hipertencaofamilia" value="Hipertencao" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
+                                                                            <%
+                                                                                   // if(fichaMedica.getQualDoencaDep()!=null){
+                                                                                    if (fichaMedica.getQualDoencaDep()!=null && fichaMedica.getQualDoencaDep().equals("Hipertencao")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoencaDep' id='hipertencaofamilia' value='Hipertencao' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoencaDep' id='hipertencaofamilia' value='Hipertencao' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="hipertencaofamilia">Hipertensão Arterial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDoencaDep" id="diabetesfamilia" value="Diabetes" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
+                                                                            <%
+                                                                                   if (fichaMedica.getQualDoencaDep()!=null && fichaMedica.getQualDoencaDep().equals("Diabetes")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoencaDep' id='diabetesfamilia' value='Diabetes' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoencaDep' id='diabetesfamilia' value='Diabetes' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="diabetesfamilia">Diabetes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDoencaDep" id="epilepsiafamilia" value="Epilepsia" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
-                                                                            <label class="custom-control-label" for="epilepsiafamilia">Epilepsia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                            <%
+                                                                                   if (fichaMedica.getQualDoencaDep()!=null && fichaMedica.getQualDoencaDep().equals("Epilepsia")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoencaDep' id='epilepsiafamilia' value='Epilepsia' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoencaDep' id='epilepsiafamilia' value='Epilepsia' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
+                                                                             <label class="custom-control-label" for="epilepsiafamilia">Epilepsia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDoencaDep" id="asmafamilia" value="Asma" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
+                                                                            <%
+                                                                                   if (fichaMedica.getQualDoencaDep()!=null && fichaMedica.getQualDoencaDep().equals("Asma")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoencaDep' id='asmafamilia' value='Asma' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoencaDep' id='asmafamilia' value='Asma' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="asmafamilia">Asma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDoencaDep" id="hepatitebfamilia" value="Hepatite B" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
-                                                                            <label class="custom-control-label" for="hepatitebfamilia">Hepatite B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                            <%
+                                                                                   if (fichaMedica.getQualDoencaDep()!=null && fichaMedica.getQualDoencaDep().equals("Hepatite B")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoencaDep' id='hepatitebfamilia' value='Hepatite B' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoencaDep' id='hepatitebfamilia' value='Hepatite B' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
+                                                                           <label class="custom-control-label" for="hepatitebfamilia">Hepatite B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDoencaDep" id="osteoporosefamilia" value="Osteoporose" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
+                                                                            <%
+                                                                                   if (fichaMedica.getQualDoencaDep()!=null && fichaMedica.getQualDoencaDep().equals("Osteoporose")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoencaDep' id='osteoporosefamilia' value='Osteoporose' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoencaDep' id='osteoporosefamilia' value='Osteoporose' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="osteoporosefamilia">Osteoporose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDoencaDep" id="enxaquecafamilia" value="Enxaqueca" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
+                                                                            <%
+                                                                                   if (fichaMedica.getQualDoencaDep()!=null && fichaMedica.getQualDoencaDep().equals("Enxaqueca")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoencaDep' id='enxaquecafamilia' value='Enxaqueca' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoencaDep' id='enxaquecafamilia' value='Enxaqueca' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="enxaquecafamilia">Enxaqueca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDoencaDep" id="dependenciaQuimicafamilia" value="Dependencia Quimica" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
+                                                                            <%
+                                                                                   if (fichaMedica.getQualDoencaDep()!=null && fichaMedica.getQualDoencaDep().equals("Dependencia Quimica")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoencaDep' id='dependenciaQuimicafamilia' value='Dependencia Quimica' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoencaDep' id='dependenciaQuimicafamilia' value='Dependencia Quimica' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="dependenciaQuimicafamilia">Dependência Quimica&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDoencaDep" id="doencaMentalfamilia" value="Doenca Mental" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
+                                                                            <%
+                                                                                   if (fichaMedica.getQualDoencaDep()!=null && fichaMedica.getQualDoencaDep().equals("Doenca Mental")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoencaDep' id='doencaMentalfamilia' value='Doenca Mental' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoencaDep' id='doencaMentalfamilia' value='Doenca Mental' class='custom-control-input' onclick='naoTemOutraDoencaFamilia();'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="doencaMentalfamilia">Doenca Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDoencaDep" id="outrosfamilia" value="Outros" class="custom-control-input" onclick="temOutraDoencaFamilia();">
+                                                                            <%
+                                                                                 if (fichaMedica.getQualDoencaDep()!=null && !fichaMedica.getQualDoencaDep().equals("Doenca Mental")&&
+                                                                                    !fichaMedica.getQualDoencaDep().equals("Dependencia Quimica")&&
+                                                                                    !fichaMedica.getQualDoencaDep().equals("Enxaqueca")&&
+                                                                                    !fichaMedica.getQualDoencaDep().equals("Osteoporose")&&
+                                                                                    !fichaMedica.getQualDoencaDep().equals("Hepatite B")&&
+                                                                                    !fichaMedica.getQualDoencaDep().equals("Asma")&&
+                                                                                    !fichaMedica.getQualDoencaDep().equals("Diabetes")&&
+                                                                                    !fichaMedica.getQualDoencaDep().equals("Hipertencao")) {
+                                                                                        out.println("<input checked type='radio' name='qualDoencaDep' id='outrosfamilia' value='Outros' class='custom-control-input' onclick='temOutraDoencaFamilia();'>");
+                                                                                        temOutraDoencaDep = true;
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDoencaDep' id='outrosfamilia' value='Outros' class='custom-control-input' onclick='temOutraDoencaFamilia();'>");
+                                                                                    }
+                                                                               
+                                                                                %>
                                                                             <label class="custom-control-label" for="outrosfamilia">Outros</label>
                                                                         </div>
-                                                                        <div id="div_outra_doenca_familia" class="hide">
-                                                                            <div class="position-relative has-icon-left">
-                                                                                <input type="text" name="qualDoencaDepOutro" id="outrosqualfamilia" class="form-control" placeholder="Qual Doença?">
+                                                                            <%
+                                                                                if (temOutraDoencaDep) {
+                                                                                    out.println("<div id='div_outra_doenca_familia' class='show' >");
+                                                                                } else {
+                                                                                    out.println("<div id='div_outra_doenca_familia' class='hide' >");
+                                                                               }
+                                                                            %> 
+                                                                        <div class="position-relative has-icon-left">
+                                                                            <%
+                                                                                if (temOutraDoencaDep) {
+                                                                                    out.println("<input type='text' name='qualDoencaDepOutro' id='outrosqualfamilia' value='"+fichaMedica.getQualDoencaDep()+"' class='form-control' placeholder='Qual Doença?'>");
+                                                                                } else {
+                                                                                    out.println("<input type='text' name='qualDoencaDepOutro' id='outrosqualfamilia'  class='form-control' placeholder='Qual Doença?'>");
+                                                                               }
+                                                                                // }
+                                                                            %>   
+                                                                                
                                                                                 <div class="form-control-position">
                                                                                     <i class="fa fa-briefcase"></i>
                                                                                 </div>
@@ -470,18 +673,43 @@
                                                                 <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                     <div class="col-md-2">
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="temMedicamento" id="naom" value="Nao" class="custom-control-input" onclick="naoTemMedicamento();">
+                                                                            <%
+                                                                                    if (fichaMedica.getTemMedicamento().equals("Nao")) {
+                                                                                        out.println("<input checked type='radio' name='temMedicamento' id='naom' value='Nao' class='custom-control-input' onclick='naoTemMedicamento();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='temMedicamento' id='naom' value='Nao' class='custom-control-input' onclick='naoTemMedicamento();'>");
+                                                                                    }
+                                                                                %>
                                                                             <label class="custom-control-label" for="naom">Não</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="temMedicamento" id="simm" value="Sim" class="custom-control-input" onclick="temMedicamentoControlado();">
+                                                                            <%
+                                                                                    if (fichaMedica.getTemMedicamento().equals("Sim")) {
+                                                                                        out.println("<input checked type='radio' name='temMedicamento' id='simm' value='Sim' class='custom-control-input' onclick='temMedicamentoControlado();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='temMedicamento' id='simm' value='Sim' class='custom-control-input' onclick='temMedicamentoControlado();'>");
+                                                                                    }
+                                                                                %>
                                                                             <label class="custom-control-label" for="simm">Sim</label>
                                                                         </div>
                                                                     </div>
-                                                                    <div id="div_medicamento" class="hide col-md-9">
-                                                                        <div class="col-md-9">
+                                                                            <%
+                                                                                    if (fichaMedica.getTemMedicamento().equals("Nao")) {
+                                                                                        out.println("<div id='div_medicamento' class='hide col-md-9'>");
+                                                                                    } else {
+                                                                                        out.println("<div id='div_medicamento' class='col-md-9'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
+                                                                          <div class="col-md-9">
                                                                             <div class="position-relative has-icon-left">
-                                                                                <input type="text" name="qualMedicamento" id="qualM" class="form-control" placeholder="Qual Medicamento?">
+                                                                                <%
+                                                                                if(fichaMedica.getQualMedicamento()!=null){
+                                                                                    out.println("<input type='text' name='qualMedicamento' id='qualM' value='"+fichaMedica.getQualMedicamento()+"' class='form-control' placeholder='Qual Medicamento?'>");
+                                                                                } else {
+                                                                                    out.println("<input type='text' name='qualMedicamento' id='qualM'  class='form-control' placeholder='Qual Medicamento?'>");
+                                                                               }
+                                                                             %>
                                                                                 <div class="form-control-position">
                                                                                     <i class="fa fa-briefcase"></i>
                                                                                 </div>
@@ -497,19 +725,44 @@
                                                                 <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                     <div class="col-md-2">
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="temMedicamentoDep" id="naomd" value="Nao" class="custom-control-input" onclick="naoTemMedicamentoFamilia();">
+                                                                            <%
+                                                                                    if (fichaMedica.getTemMedicamentoDep().equals("Nao")) {
+                                                                                        out.println("<input checked type='radio' name='temMedicamentoDep' id='naomd' value='Nao' class='custom-control-input' onclick='naoTemMedicamentoFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='temMedicamentoDep' id='naomd' value='Nao' class='custom-control-input' onclick='naoTemMedicamentoFamilia();'>");
+                                                                                    }
+                                                                                %>
                                                                             <label class="custom-control-label" for="naomd">Não</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="temMedicamentoDep" id="simmd" value="Sim" class="custom-control-input" onclick="temMedicamentoFamilia();">
+                                                                            <%
+                                                                                    if (fichaMedica.getTemMedicamentoDep().equals("Sim")) {
+                                                                                        out.println("<input checked type='radio' name='temMedicamentoDep' id='simmd' value='Sim' class='custom-control-input' onclick='temMedicamentoFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='temMedicamentoDep' id='simmd' value='Sim' class='custom-control-input' onclick='temMedicamentoFamilia();'>");
+                                                                                    }
+                                                                                %>
                                                                             <label class="custom-control-label" for="simmd">Sim</label>
                                                                         </div>
                                                                     </div>
-                                                                    <div id="div_medicamento_familia" class="hide col-md-9">
-                                                                        <div class="col-md-9">
+                                                                            <%
+                                                                                    if (fichaMedica.getTemMedicamentoDep().equals("Nao")) {
+                                                                                        out.println("<div id='div_medicamento_familia' class='hide col-md-9'>");
+                                                                                    } else {
+                                                                                        out.println("<div id='div_medicamento_familia' class='col-md-9'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
+                                                                         <div class="col-md-9">
                                                                             <div class="position-relative has-icon-left">
-                                                                                <input type="text" name="qualMedicamentoDep" id="qualMd" class="form-control" placeholder="Qual Medicamento na família?">
-                                                                                <div class="form-control-position">
+                                                                                <%
+                                                                                if(fichaMedica.getQualMedicamentoDep()!=null){
+                                                                                    out.println("<input type='text' name='qualMedicamentoDep' id='qualMd' value='"+fichaMedica.getQualMedicamentoDep()+"' class='form-control' placeholder='Qual Medicamento na família?'>");
+                                                                                } else {
+                                                                                    out.println("<input type='text' name='qualMedicamentoDep' id='qualMd'  class='form-control' placeholder='Qual Medicamento na família?'>");
+                                                                               }
+                                                                             %>
+                                                                               <div class="form-control-position">
                                                                                     <i class="fa fa-briefcase"></i>
                                                                                 </div>
                                                                             </div>
@@ -524,41 +777,96 @@
                                                                 <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                     <div class="col-md-3">
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="temDeficiencia" id="deficiencianao" value="Nao" class="custom-control-input" onclick="naoTemDeficiencia();">
-                                                                            <label class="custom-control-label" for="deficiencianao">Não</label>
+                                                                            <%
+                                                                                    if (fichaMedica.getTemDeficiencia().equals("Nao")) {
+                                                                                        out.println("<input checked type='radio' name='temDeficiencia' id='deficiencianao' value='Nao' class='custom-control-input' onclick='naoTemDeficiencia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='temDeficiencia' id='deficiencianao' value='Nao' class='custom-control-input' onclick='naoTemDeficiencia();'>");
+                                                                                    }
+                                                                                %>
+                                                                             <label class="custom-control-label" for="deficiencianao">Não</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="temDeficiencia" id="deficienciasim" value="Sim" class="custom-control-input" onclick="temDeficienciaa();">
-                                                                            <label class="custom-control-label" for="deficienciasim">Sim</label>
+                                                                            <%
+                                                                                    if (fichaMedica.getTemDeficiencia().equals("Sim")) {
+                                                                                        out.println("<input checked type='radio' name='temDeficiencia' id='deficienciasim' value='Sim' class='custom-control-input' onclick='temDeficienciaa();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='temDeficiencia' id='deficienciasim' value='Sim' class='custom-control-input' onclick='temDeficienciaa();'>");
+                                                                                    }
+                                                                                %>
+                                                                          <label class="custom-control-label" for="deficienciasim">Sim</label>
                                                                         </div> 
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div id="div_deficiencia" class="hide">
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="deficiencia">Qual deficiência?*:</label>
+                                                  <%
+                                                            if (fichaMedica.getTemDeficiencia().equals("Sim")) {
+                                                                out.println("<div id='div_deficiencia' class='show' >");
+                                                            } else {
+                                                                out.println("<div id='div_deficiencia' class='hide' >");
+                                                            }
+
+                                                        %>
+                                                        <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="deficiencia">Qual a sua deficiência?*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDeficiencia" id="auditiva" value="Auditiva" class="custom-control-input">
+                                                                            <%
+                                                                                   // if(fichaMedica.getQualDeficiencia()!=null){
+                                                                                    if (fichaMedica.getQualDeficiencia()!=null && fichaMedica.getQualDeficiencia().equals("Auditiva")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='auditiva' value='Auditiva' class='custom-control-input'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='auditiva' value='Auditiva' class='custom-control-input'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="auditiva">Auditiva&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDeficiencia" id="fisica" value="Fisica" class="custom-control-input">
+                                                                            <%
+                                                                                  if (fichaMedica.getQualDeficiencia()!=null && fichaMedica.getQualDeficiencia().equals("Fisica")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='fisica' value='Fisica' class='custom-control-input'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='fisica' value='Fisica' class='custom-control-input'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="fisica">Física&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDeficiencia" id="visual" value="Visual" class="custom-control-input">
+                                                                            <%
+                                                                                  if (fichaMedica.getQualDeficiencia()!=null && fichaMedica.getQualDeficiencia().equals("Visual")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='visual' value='Visual' class='custom-control-input'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='visual' value='Visual' class='custom-control-input'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="visual">Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDeficiencia" id="mental" value="Intelectual" class="custom-control-input">
+                                                                            <%
+                                                                                  if (fichaMedica.getQualDeficiencia()!=null && fichaMedica.getQualDeficiencia().equals("Intelectual")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='mental' value='Intelectual' class='custom-control-input'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='mental' value='Intelectual' class='custom-control-input'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="mental">Intelectual/Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio" >
-                                                                            <input type="radio" name="qualDeficiencia" id="multiplas" value="Multiplas" class="custom-control-input">
-                                                                            <label class="custom-control-label" for="multiplas">Deficiência Múltiplas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                            <%
+                                                                                  if (fichaMedica.getQualDeficiencia()!=null && fichaMedica.getQualDeficiencia().equals("Multiplas")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='multiplas' value='Multiplas' class='custom-control-input'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='multiplas' value='Multiplas' class='custom-control-input'>");
+                                                                                    }
+                                                                                //  }  
+                                                                                %>
+                                                                           <label class="custom-control-label" for="multiplas">Deficiência Múltiplas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -570,40 +878,95 @@
                                                                 <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                     <div class="col-md-3">
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="temDeficienciaDep" id="naod" value="Nao" class="custom-control-input" onclick="naoTemDeficienciaFamilia();">
+                                                                            <%
+                                                                                    if (fichaMedica.getTemDeficienciaDep().equals("Nao")) {
+                                                                                        out.println("<input checked type='radio' name='temDeficienciaDep' id='naod' value='Nao' class='custom-control-input' onclick='naoTemDeficienciaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='temDeficienciaDep' id='naod' value='Nao' class='custom-control-input' onclick='naoTemDeficienciaFamilia();'>");
+                                                                                    }
+                                                                                %>
                                                                             <label class="custom-control-label" for="naod">Não</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="temDeficienciaDep" id="simd" value="Sim" class="custom-control-input" onclick="temDeficienciaFamilia();">
+                                                                            <%
+                                                                                    if (fichaMedica.getTemDeficienciaDep().equals("Sim")) {
+                                                                                        out.println("<input checked type='radio' name='temDeficienciaDep' id='simd' value='Sim' class='custom-control-input' onclick='temDeficienciaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='temDeficienciaDep' id='simd' value='Sim' class='custom-control-input' onclick='temDeficienciaFamilia();'>");
+                                                                                    }
+                                                                                %>
                                                                             <label class="custom-control-label" for="simd">Sim</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div id="div_deficiencia_familia" class="hide">
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="qualdeficienciaDep">Qual deficiência?*:</label>
+                                                        <%
+                                                            if (fichaMedica.getTemDeficienciaDep().equals("Sim")) {
+                                                                out.println("<div id='div_deficiencia_familia' class='show'>");
+                                                            } else {
+                                                                out.println("<div id='div_deficiencia_familia' class='hide'>");
+                                                            }
+
+                                                        %>
+                                                       <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="qualdeficienciaDep">Qual deficiência na sua família?*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDeficienciaDep" id="auditiva_familia" value="Auditiva" class="custom-control-input">
+                                                                            <%
+                                                                                    //if(fichaMedica.getQualDeficienciaDep()!=null){
+                                                                                    if (fichaMedica.getQualDeficienciaDep()!=null && fichaMedica.getQualDeficienciaDep().equals("Auditiva")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='auditiva_familia' value='Auditiva' class='custom-control-input'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='auditiva_familia' value='Auditiva' class='custom-control-input'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="auditiva_familia">Auditiva&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDeficienciaDep" id="fisica_familia" value="Fisica" class="custom-control-input">
-                                                                            <label class="custom-control-label" for="fisica_familia">Física&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                            <%
+                                                                                  if (fichaMedica.getQualDeficienciaDep()!=null && fichaMedica.getQualDeficienciaDep().equals("Fisica")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='fisica_familia' value='Fisica' class='custom-control-input'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='fisica_familia' value='Fisica' class='custom-control-input'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
+                                                                           <label class="custom-control-label" for="fisica_familia">Física&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDeficienciaDep" id="visual_familia" value="Visual" class="custom-control-input">
+                                                                            <%
+                                                                                  if (fichaMedica.getQualDeficienciaDep()!=null && fichaMedica.getQualDeficienciaDep().equals("Visual")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='visual_familia' value='Visual' class='custom-control-input'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='visual_familia' value='Visual' class='custom-control-input'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="visual_familia">Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="qualDeficienciaDep" id="mental_familia" value="Intelectual" class="custom-control-input">
+                                                                            <%
+                                                                                  if (fichaMedica.getQualDeficienciaDep()!=null && fichaMedica.getQualDeficienciaDep().equals("Intelectual")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='mental_familia' value='Intelectual' class='custom-control-input'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='mental_familia' value='Intelectual' class='custom-control-input'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
                                                                             <label class="custom-control-label" for="mental_familia">Intelectual/Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio" >
-                                                                            <input type="radio" name="qualDeficienciaDep" id="multiplas_familia" value="Multiplas" class="custom-control-input">
+                                                                            <%
+                                                                                  if (fichaMedica.getQualDeficienciaDep()!=null && fichaMedica.getQualDeficienciaDep().equals("Multiplas")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='multiplas_familia' value='Multiplas' class='custom-control-input'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='multiplas_familia' value='Multiplas' class='custom-control-input'>");
+                                                                                    }
+                                                                                   // }
+                                                                                %>
                                                                             <label class="custom-control-label" for="multiplas_familia">Deficiência Múltiplas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                     </div>

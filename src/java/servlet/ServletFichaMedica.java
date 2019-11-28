@@ -73,10 +73,10 @@ public class ServletFichaMedica extends HttpServlet {
                     fichaMedica.setTemDoencaDep(request.getParameter("temDoencaDep"));
                     
                     if(request.getParameter("temDoencaDep").equals("Sim")){
-                    fichaMedica.setQualDoenca(request.getParameter("qualDoencaDep"));
+                    fichaMedica.setQualDoencaDep(request.getParameter("qualDoencaDep"));
                     
                     if(request.getParameter("qualDoencaDep").equals("Outros"))
-                    fichaMedica.setQualDoenca(request.getParameter("qualDoencaDepOutro"));
+                    fichaMedica.setQualDoencaDep(request.getParameter("qualDoencaDepOutro"));
                     }
                     
                     fichaMedica.setTemMedicamento(request.getParameter("temMedicamento"));
@@ -121,16 +121,48 @@ public class ServletFichaMedica extends HttpServlet {
                 break;
                 case "alterar_5_passo":
                      //Setando dados da Ficha Medica
-                    fichaMedica.setId(Integer.parseInt(request.getParameter("id")));
-                    fichaMedica.setQualDoenca(request.getParameter("tipoDoenca"));
-                    fichaMedica.setTemMedicamento(request.getParameter("medicamento"));
-                    fichaMedica.setTemDoenca(request.getParameter("doencaCronica"));
-                    fichaMedica.setTemDeficiencia(request.getParameter("deficiencia"));
-                    fichaMedica.setTemDeficienciaDep(request.getParameter("deficienciaDep"));
+                    fichaMedica.setId(Integer.parseInt(request.getParameter("fichaMedica_id")));
+                    fichaMedica.setTemDoenca(request.getParameter("temDoenca"));
+                    if(request.getParameter("temDoenca").equals("Sim")){
+                    fichaMedica.setQualDoenca(request.getParameter("qualDoenca"));
+                    
+                    if(request.getParameter("qualDoenca").equals("Outros"))
+                    fichaMedica.setQualDoenca(request.getParameter("qualDoencaOutro"));
+                    }
+                    
+                    fichaMedica.setTemDoencaDep(request.getParameter("temDoencaDep"));
+                    
+                    if(request.getParameter("temDoencaDep").equals("Sim")){
+                    fichaMedica.setQualDoencaDep(request.getParameter("qualDoencaDep"));
+                    
+                    if(request.getParameter("qualDoencaDep").equals("Outros"))
+                    fichaMedica.setQualDoencaDep(request.getParameter("qualDoencaDepOutro"));
+                    }
+                    
+                    fichaMedica.setTemMedicamento(request.getParameter("temMedicamento"));
+                    
+                    if(request.getParameter("temMedicamento").equals("Sim"))
+                    fichaMedica.setQualMedicamento(request.getParameter("qualMedicamento"));
+                    
+                    fichaMedica.setTemMedicamentoDep(request.getParameter("temMedicamentoDep"));
+                    
+                    if(request.getParameter("temMedicamentoDep").equals("Sim"))
+                    fichaMedica.setQualMedicamentoDep(request.getParameter("qualMedicamentoDep"));
+                    
+                    fichaMedica.setTemDeficiencia(request.getParameter("temDeficiencia"));
+                    
+                    if(request.getParameter("temDeficiencia").equals("Sim"))
+                    fichaMedica.setQualDeficiencia(request.getParameter("qualDeficiencia"));
+                    
+                    fichaMedica.setTemDeficienciaDep(request.getParameter("temDeficienciaDep"));
+                    
+                    if(request.getParameter("temDeficienciaDep").equals("Sim"))
+                    fichaMedica.setQualDeficienciaDep(request.getParameter("qualDeficienciaDep"));
+                    
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
                     fichaMedica.setAluno(aluno);
-                     //Chamando o metodo inserir do dao e redirecionando para listar Ficha Medica
-                   // daoFactory.getFichaMedicaDao().inserirOuAlterar(fichaMedica);
+                    //Chamando o metodo inserir do dao e redirecionando para listar Ficha Medica
+                    daoFactory.getFichaMedicaDao().inserirOuAlterar(fichaMedica);
                     response.sendRedirect("home.jsp");
                 break;
                  case "excluir":
