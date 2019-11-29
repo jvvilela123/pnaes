@@ -120,52 +120,52 @@
 
                                                     <%
                             }%>
-                                    <form action="../ServletUpload?aluno_id=<%=aluno.getId()%>&cpf=<%=session.getAttribute("cpf")%>&nedital=<%=edital.getNumero()%>" method="post" class="form form-horizontal" enctype="multipart/form-data">
+                                    <form action="../ServletUpload?aluno_id=<%=aluno.getId()%>&cpf=<%=session.getAttribute("cpf")%>&nedital=<%=edital.getNumero()%>&alterar=1" method="post" class="form form-horizontal" enctype="multipart/form-data">
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Envio de Documentos</h4>
                                             <div class="form-group row">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-3">
-                                                    <img src="" width="150" height="200">
+                                                    <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg" width="150" height="200">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="foto">* Foto</label>
+                                                <label class="col-md-3 label-control" for="foto">Alterar Foto:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="target"></label>
                                                     <input type="file" name="foto" required id="target" class="custom-file-input" onchange="uploadFile();">                                    
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="da">* Documentos do Aluno</label>
+                                                <label class="col-md-3 label-control" for="da">Alterar Documentos do Aluno:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="da"></label>
                                                     <input type="file" name="da" required id="da" class="custom-file-input">                                                  
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dp">Documentos dos Dependentes</label>
+                                                <label class="col-md-3 label-control" for="dp">Alterar Documentos dos Dependentes:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dp"></label>
                                                     <input type="file" name="dp" id="dp" class="custom-file-input">                                                  
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dr">* Documentos que Comprovam a Renda</label>
+                                                <label class="col-md-3 label-control" for="dr">Alterar Documentos que Comprovam a Renda:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dr"></label>
                                                     <input type="file" name="dr" required id="dr" class="custom-file-input">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dd">* Documentos que Comprovam as Despesas</label>
+                                                <label class="col-md-3 label-control" for="dd">Alterar Documentos que Comprovam as Despesas:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dd"></label>
                                                     <input type="file" name="dd required" id="dd" class="custom-file-input">                                                  
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="od">Outros Documentos</label>
+                                                <label class="col-md-3 label-control" for="od">Alterar Outros Documentos:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="od"></label>
                                                     <input type="file" name="od" id="od" class="custom-file-input">                                                  
@@ -185,8 +185,11 @@
                                                 </div>
                                             </div>   
                                             <div class="form-actions">
+                                               
+                                                <a href="/pnaes/home.jsp"><button  class="btn btn-primary" type="button" >Voltar</button> </a>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <button type="submit" class="btn btn-primary" name="cadastrar" value="Cadastrar">
-                                                    <i class="la la-check-square-o"></i> Enviar
+                                                    <i class="la la-check-square-o"></i> Salvar
                                                 </button>
                                             </div>
                                         </div>                                                    

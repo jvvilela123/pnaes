@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import dao.DaoFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Aluno;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
@@ -41,6 +43,15 @@ public class ServletUpload extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            if(request.getParameter("aluno_id")!=null){
+             DaoFactory daoFactory = new DaoFactory();
+            Aluno aluno = new Aluno();
+            aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
+            //aluno.setId(Integer.parseInt(request.getParameter("aluno_id")));
+            aluno.setStatusCadastro("6");
+            daoFactory.getAlunoDao().inserirOuAlterar(aluno);
+            }
 
             /*Faz o parse do request
             List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
@@ -103,8 +114,12 @@ public class ServletUpload extends HttpServlet {
                             File savedFile = new File(diretorio+"/od.pdf");
                             item.write(savedFile);
                         }
+                        if(request.getParameter("alterar")!=null && request.getParameter("alterar").equals("1")){
+                         response.sendRedirect("home.jsp");
+                        }else{
                         response.sendRedirect("inscricao/inscricao.jsp");
-                    } catch (Exception ex) {
+                        }
+                        } catch (Exception ex) {
                         //ex.printStackTrace();
                         out.println(ex);
                         
