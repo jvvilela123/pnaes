@@ -16,6 +16,7 @@
 <link href="/pnaes/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
 <link href="/pnaes/bower_components/slick-carousel/slick/slick.css" rel="stylesheet">
 <link href="/pnaes/css/main.css?version=4.4.0" rel="stylesheet">
+<link rel="stylesheet" href="/pnaes/css/alertify.css">
 <script src="/pnaes/js/jquery.js"></script>
 <script src="/pnaes/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/pnaes/bower_components/popper.js/dist/umd/popper.min.js"></script>
@@ -59,6 +60,16 @@ alertify.defaults.transition = "slide";
 alertify.defaults.theme.ok = "btn btn-primary";
 alertify.defaults.theme.cancel = "btn btn-danger";
 alertify.defaults.theme.input = "form-control";
+if (!alertify.errorAlert) {
+    alertify.dialog('errorAlert', function factory() {
+        return{
+            build: function () {
+                var errorHeader = '<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>Preencha corretamente os campos</h5>';
+                this.setHeader(errorHeader);
+            }
+        };
+    }, true, 'alert');
+}
 
 //Função Genérica para validar se pelo menos 1 dos radios foi selecionado, parâmetro nome do campo (name), retorno Boolean
             function verificaRadioChecadoPeloName(nameRadio){
@@ -77,8 +88,7 @@ alertify.defaults.theme.input = "form-control";
             }
             
       function startCountdown(tempo){
-    
-       div = $( "#divTempo" );
+   div = $( "#divTempo" );
 
 	// Se o tempo não for zerado
 	if((tempo - 1) >= 0){

@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Alteração de Ficha Médica</title>
-        <link rel="stylesheet" href="/pnaes/css/alertify.css">
+        
 
         <%@include file="../imports.jsp" %>
         <!-- include alertify.css -->
@@ -159,16 +159,6 @@
 
             function verificaCampos() {
                 prencheuTudo = true;
-                if (!alertify.errorAlert) {
-                    alertify.dialog('errorAlert', function factory() {
-                        return{
-                            build: function () {
-                                var errorHeader = '<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>Preencha corretamente os campos</h5>';
-                                this.setHeader(errorHeader);
-                            }
-                        };
-                    }, true, 'alert');
-                }
                 //Verifica se falta selecionar alguma campo obrigatório     
                 if (!document.getElementById('doencaCronica1sim').checked && !document.getElementById('doencaCronica1nao').checked) {
                     alertify.errorAlert("<h6 class='card-title'>Você tem alguma doença crônica?</h6>");

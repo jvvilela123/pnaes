@@ -8,10 +8,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro de Empresa</title>
-        <%@include file="../imports.jsp" %>
+         <%@include file="../imports.jsp" %>
         <script>
+            
             $(document).ready(function () {
-                $('#uf').change(function () {
+               $('#uf').change(function () {
                     $('#cidade').load('/pnaes/cidadeajax.jsp?estado=' + $('#uf').val());
                 });
             });
@@ -87,6 +88,24 @@
                 }
                 return !1
             }
+            
+            function verificaAtividade() {
+             prencheuTudo = true;
+             var comboNome = document.getElementById("atividade");
+             // $('#div3').is(':visible') && 
+             if ($('#div3').is(':visible') && comboNome.options[comboNome.selectedIndex].value === "Selecione a Atividade Profissional"){
+              //document.getElementById('atividade').focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Atividade Profissional</h6>");
+              prencheuTudo = false;
+              }
+          
+                //if (!empresa.getAtividade().equals("Autonomo") && empresa.getTrabalha().equals("sim"))
+                //if(!document.getElementById('doencaCronica1sim').s)
+                if (prencheuTudo)
+                    document.getElementById("formEmpresa").submit();
+                 //}
+            }
+            
         </script> 
     </head>
     <body class="menu-position-side menu-side-left full-screen">
@@ -123,10 +142,10 @@
                                                     <div class="card-text">
 
                                                     </div>
-                                                 <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEmpresa?opcao=alterar_2_passo&aluno_id=<%=session.getAttribute("aluno_id")%>">
+                                                 <form id="formEmpresa" class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEmpresa?opcao=alterar_2_passo&aluno_id=<%=session.getAttribute("aluno_id")%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="carteira">Tem Carteira de Trabalho?*</label>
+                                                                <label class="col-md-3 label-control" for="carteira">Tem Carteira de Trabalho?*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="d-inline-block custom-control custom-radio mr-1">
@@ -155,7 +174,7 @@
                                                             </div>
 
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="tab">Trabalha atualmente ?*</label>
+                                                                <label class="col-md-3 label-control" for="tab">Trabalha atualmente ?*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="d-inline-block custom-control custom-radio mr-1">
@@ -193,7 +212,7 @@
                                                                             %>
                                                           
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="autonomo">Trabalha como autônomo ?</label>
+                                                                    <label class="col-md-3 label-control" for="autonomo">Trabalha como autônomo ?*:</label>
                                                                     <div class="col-md-9">
                                                                         <div class="input-group">
                                                                             <div class="d-inline-block custom-control custom-radio mr-1">
@@ -228,7 +247,7 @@
                                                                 }
                                                               %>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="faz">Qual a sua situação ?</label>
+                                                                    <label class="col-md-3 label-control" for="faz">Qual a sua situação ?*:</label>
                                                                     <div class="col-md-9">
                                                                         <div class="input-group">
                                                                             <div class="d-inline-block custom-control custom-radio mr-1">
@@ -263,56 +282,56 @@
                                                                 }
                                                               %>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="nome">Nome da Empresa</label>
+                                                                    <label class="col-md-3 label-control" for="nome">Nome da Empresa:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" value="<%=empresa.getNome()!=null?empresa.getNome():""%>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="telefone">Telefone</label>
+                                                                    <label class="col-md-3 label-control" for="telefone">Telefone da Empresa:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="telefone" id="telefone"  class="form-control" placeholder="Telefone" value="<%=empresa.getTelefone()!=null?empresa.getTelefone():""%>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="responsavel">Responsavel</label>
+                                                                    <label class="col-md-3 label-control" for="responsavel">Responsável:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="responsavel" id="responsavel" class="form-control" placeholder="Nome do responsavel" value="<%=empresa.getResponsavel()!=null?empresa.getResponsavel():""%>">
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="logradouro">Logradouro</label>
+                                                                    <label class="col-md-3 label-control" for="logradouro">Logradouro:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="logradouro" id="logradouro" class="form-control" placeholder="Logradouro" value="<%=empresa.getEndereco()!=null?empresa.getEndereco().getLogradouro():""%>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="numero">Numero</label>
+                                                                    <label class="col-md-3 label-control" for="numero">Número:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="numero" id="numero" class="form-control" placeholder="Numero" value="<%=empresa.getEndereco()!=null?empresa.getEndereco().getNumero():""%>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="bairro">Bairro</label>
+                                                                    <label class="col-md-3 label-control" for="bairro">Bairro:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairro" value="<%=empresa.getEndereco()!=null?empresa.getEndereco().getBairro():""%>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="complemento">Complemento</label>
+                                                                    <label class="col-md-3 label-control" for="complemento">Complemento:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="complemento" id="complemento" class="form-control" placeholder="Complemento" value="<%=empresa.getEndereco()!=null?empresa.getEndereco().getComplemento():""%>">                                              
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="cep">CEP</label>
+                                                                    <label class="col-md-3 label-control" for="cep">CEP:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP" maxlength="10" OnKeyPress="formatar('##.###-###', this)" value="<%=empresa.getEndereco()!=null?empresa.getEndereco().getCep():""%>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="uf">Uf</label>
+                                                                    <label class="col-md-3 label-control" for="uf">Uf:</label>
                                                                     <div class="col-md-9">
                                                                         <select id="uf" name="uf" class="form-control">
                                                                             <option selected="" disabled="">Selecione a UF</option>
@@ -329,7 +348,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="cidade">Cidade</label>
+                                                                    <label class="col-md-3 label-control" for="cidade">Cidade:</label>
                                                                     <div class="col-md-9">
                                                                         <select id="cidade" name="cidade" class="form-control">
                                                                             <%
@@ -345,9 +364,9 @@
                                                                     </div>
                                                                 </div> 
                                                              <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="atividade">Atividade Profissional</label>
+                                                                <label class="col-md-3 label-control" for="atividade">Atividade Profissional*:</label>
                                                                 <div class="col-md-9">
-                                                                    <select id="atividade" name="atividade" class="form-control" required>
+                                                                    <select id="atividade" name="atividade" class="form-control">
                                                                         <option selected="" disabled="">Selecione a Atividade Profissional</option>
                                                                         <%
                                                                         if(empresa.getAtividade().equals("Empregado CLT"))
@@ -370,16 +389,16 @@
                                                             </div>
                                                                      
                                                             <div class="card-text">
-                                                                Informe na seção abaixo <b>APENAS</b> os seus ganhos. Não cabe informar aqui a renda que será declarada dos membros familiares, apenas se você possuir mais de uma renda.
+                                                                Informe na seção abaixo <strong>APENAS os seus ganhos.</strong>  Não cabe informar aqui a renda que será declarada dos membros familiares, apenas se você possuir mais de uma renda.
                                                             </div><br>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="renda">Sua remuneração Bruta:</label>
+                                                                <label class="col-md-3 label-control" for="renda">Sua remuneração Bruta*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="renda" id="renda"  value="<%=empresa.getRenda()!=null?empresa.getRenda():""%>" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this, '', '.', event))" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="orenda">Você possui outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc</label>
+                                                                <label class="col-md-3 label-control" for="orenda">Você possui outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="orenda" id="orenda" value="<%=empresa.getOrenda()!=null?empresa.getOrenda():""%>" class="form-control" placeholder="Outra Renda do Aluno" onKeyPress="return(moeda(this, '', '.', event))" required>
                                                                 </div>
@@ -388,7 +407,7 @@
                                                                 <button type="reset" value="Limpar"  class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                                <button type="submit" class="btn btn-primary" name="cadastrar" value="Cadastrar">
+                                                                <button type="button" class="btn btn-primary" name="cadastrar" value="Cadastrar" onclick="verificaAtividade()">
                                                                     <i class="la la-check-square-o"></i> Salvar
                                                                 </button>
                                                             </div>

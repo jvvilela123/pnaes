@@ -135,7 +135,7 @@ public class ServletEmpresa extends HttpServlet {
                             empresa.setAtividade("Autonomo");
                     }
                     }
-                    if (request.getParameter("faz") != null){
+                    if (request.getParameter("faz") != null && empresa.getTrabalha().equals("nao")){
                     empresa.setNome(null);
                     empresa.setTelefone(null);
                     empresa.setResponsavel(null);
