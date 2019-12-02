@@ -112,6 +112,7 @@ public class ServletEmpresa extends HttpServlet {
                             empresa.setTelefone(request.getParameter("telefone")!=null?request.getParameter("telefone"):null);
                             empresa.setResponsavel(request.getParameter("responsavel")!=null?request.getParameter("responsavel"):null);
                             //Setando dados do Endereço
+                            endereco = daoFactory.getEnderecoDao().pesquisarPorId(empresa.getEndereco().getId());
                             endereco.setLogradouro(request.getParameter("logradouro")!=null?request.getParameter("logradouro"):null);
                             endereco.setNumero(request.getParameter("numero")!=null?request.getParameter("numero"):null);
                             endereco.setBairro(request.getParameter("bairro")!=null?request.getParameter("bairro"):null);
@@ -119,13 +120,14 @@ public class ServletEmpresa extends HttpServlet {
                             endereco.setCep(request.getParameter("cep")!=null?request.getParameter("cep"):null);
 
                             //Setando os Objetos do Aluno
+                            
                             cidade.setId(request.getParameter("cidade")!=null?Integer.parseInt(request.getParameter("cidade")):null);
                             uf.setId(request.getParameter("uf")!=null?Integer.parseInt(request.getParameter("uf")):null);
                             cidade.setUf(uf);
                             endereco.setCidade(cidade);
                             empresa.setEndereco(endereco);
-                            endereco = daoFactory.getEnderecoDao().inserirComRetorno(endereco);
-                            empresa.setEndereco(endereco);
+                            daoFactory.getEnderecoDao().inserirOuAlterar(endereco);
+                          //  empresa.setEndereco(endereco);
                         } else{
                             empresa.setNome(null);
                             empresa.setTelefone(null);

@@ -93,10 +93,11 @@
              prencheuTudo = true;
              var comboNome = document.getElementById("atividade");
              // $('#div3').is(':visible') && 
-             if ($('#div3').is(':visible') && comboNome.options[comboNome.selectedIndex].value === "Selecione a Atividade Profissional"){
-              //document.getElementById('atividade').focus();
+             if ($('#div3').is(':visible')){
+               if(comboNome.options[comboNome.selectedIndex].value === "Selecione a Atividade Profissional"){
               alertify.errorAlert("<h6 class='card-title'>Preencha o campo Atividade Profissional</h6>");
               prencheuTudo = false;
+               }
               }
           
                 //if (!empresa.getAtividade().equals("Autonomo") && empresa.getTrabalha().equals("sim"))
