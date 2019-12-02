@@ -284,7 +284,7 @@
 
                                                     <%
                             }%>
-                                                    <form method="Post" action="../ServletFichaMedica?opcao=alterar_5_passo&aluno_id=<%=aluno.getId()%>&fichaMedica_id=<%=fichaMedica.getId()%>" class="form form-horizontal" id="formFichaMedica">
+                                                    <form method="Post" action="../ServletFichaMedica?opcao=alterar_5_passo&aluno_id=<%=aluno.getId()%>" class="form form-horizontal" id="formFichaMedica">
                                                         <div class="form-body">
                                                             <h4 class="form-section"><i class="ft-user"></i>Alteração da Ficha de Saúde</h4>
                                                             <div class="form-group row">

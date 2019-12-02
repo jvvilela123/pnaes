@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Aluno;
 import modelo.FichaMedica;
+import modelo.Pessoa;
 
 /**
  *
@@ -40,6 +41,7 @@ public class ServletFichaMedica extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             DaoFactory daoFactory = new DaoFactory();
             FichaMedica fichaMedica = new FichaMedica();
+            Pessoa pessoa = new Pessoa();
             Aluno aluno = new Aluno();
             String opcao = request.getParameter("opcao");
             String msg = new String();
@@ -98,7 +100,6 @@ public class ServletFichaMedica extends HttpServlet {
                     
                     if(request.getParameter("temDeficienciaDep").equals("Sim"))
                     fichaMedica.setQualDeficienciaDep(request.getParameter("qualDeficienciaDep"));
-                    
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
                     fichaMedica.setAluno(aluno);
                     //Chamando o metodo inserir do dao e redirecionando para listar Ficha Medica
@@ -107,21 +108,27 @@ public class ServletFichaMedica extends HttpServlet {
                 break;
                 case "alterar":
                      //Setando dados da Ficha Medica
+                    fichaMedica = (FichaMedica) daoFactory.getFichaMedicaDao().perquisarPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
                     fichaMedica.setId(Integer.parseInt(request.getParameter("id")));
                     fichaMedica.setQualDoenca(request.getParameter("tipoDoenca"));
                     fichaMedica.setTemMedicamento(request.getParameter("medicamento"));
                     fichaMedica.setTemDoenca(request.getParameter("doencaCronica"));
                     fichaMedica.setTemDeficiencia(request.getParameter("deficiencia"));
                     fichaMedica.setTemDeficienciaDep(request.getParameter("deficienciaDep"));
-                    aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
-                    fichaMedica.setAluno(aluno);
+                    //aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
+                    //fichaMedica.setAluno(aluno);
                      //Chamando o metodo inserir do dao e redirecionando para listar Ficha Medica
                     daoFactory.getFichaMedicaDao().inserirOuAlterar(fichaMedica);
                     response.sendRedirect("fichaMedica/listar.jsp");
                 break;
                 case "alterar_5_passo":
                      //Setando dados da Ficha Medica
-                    fichaMedica.setId(Integer.parseInt(request.getParameter("fichaMedica_id")));
+                   /* List<FichaMedica> fichaMedicas = daoFactory.getFichaMedicaDao().perquisarPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
+                        if(fichaMedicas.size() > 0){
+                         fichaMedica = fichaMedicas.get(0);
+                        }*/
+                   fichaMedica = (FichaMedica) daoFactory.getFichaMedicaDao().perquisarPorAluno(Integer.parseInt(request.getParameter("aluno_id"))).get(0);
+                
                     fichaMedica.setTemDoenca(request.getParameter("temDoenca"));
                     if(request.getParameter("temDoenca").equals("Sim")){
                     fichaMedica.setQualDoenca(request.getParameter("qualDoenca"));
@@ -159,8 +166,8 @@ public class ServletFichaMedica extends HttpServlet {
                     if(request.getParameter("temDeficienciaDep").equals("Sim"))
                     fichaMedica.setQualDeficienciaDep(request.getParameter("qualDeficienciaDep"));
                     
-                    aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
-                    fichaMedica.setAluno(aluno);
+                   // aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
+                    //fichaMedica.setAluno(aluno);
                     //Chamando o metodo inserir do dao e redirecionando para listar Ficha Medica
                     daoFactory.getFichaMedicaDao().inserirOuAlterar(fichaMedica);
                     response.sendRedirect("home.jsp");
