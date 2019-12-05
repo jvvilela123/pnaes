@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="modelo.Cidade"%>
 <%@page import="modelo.Uf"%>
 <%@page import="java.util.List"%>
@@ -91,14 +92,62 @@
             
             function verificaAtividade() {
              prencheuTudo = true;
-             var comboNome = document.getElementById("atividade");
+             
+              if(!verificaRadioChecadoPeloName('carteira')){
+                document.getElementById('carteirasim').focus();
+                alertify.errorAlert("<h6 class='card-title'>Preencha o campo Tem Carteira de Trabalho.</h6>");
+                prencheuTudo = false;
+                }else if(!verificaRadioChecadoPeloName('tab')){
+                document.getElementById('tabsim').focus();
+                alertify.errorAlert("<h6 class='card-title'>Preencha o campo Trabalha atualmente.</h6>");
+                prencheuTudo = false;
+             }
+             var atividade = document.getElementById("atividade");
+             var uf = document.getElementById("uf");
+             var cidade = document.getElementById("cidade");
              // $('#div3').is(':visible') && 
              if ($('#div3').is(':visible')){
-               if(comboNome.options[comboNome.selectedIndex].value === "Selecione a Atividade Profissional"){
-              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Atividade Profissional</h6>");
+               if(document.getElementById('nome').value === ""){
+              document.getElementById('nome').focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Nome da Empresa</h6>");
+              prencheuTudo = false;
+               } else if(document.getElementById('telefone').value === ""){
+              document.getElementById('telefone').focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Telefone da Empresa</h6>");
+              prencheuTudo = false;
+               } else if(document.getElementById('responsavel').value === ""){
+              document.getElementById('responsavel').focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Nome do responsável da empresa</h6>");
+              prencheuTudo = false;
+              } else if(uf.options[uf.selectedIndex].value === "Selecione o estado (UF)"){
+              uf.focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Estado (UF)</h6>");
+              prencheuTudo = false;
+               } else if(cidade.options[cidade.selectedIndex].value === "Selecione a cidade"){
+              cidade.focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Cidade</h6>");
+              prencheuTudo = false;
+              } else if(atividade.options[atividade.selectedIndex].value === "Selecione a Sua Atividade Profissional"){
+              atividade.focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Sua Atividade Profissional</h6>");
               prencheuTudo = false;
                }
               }
+             if ($('#div1').is(':visible')){
+                if(!verificaRadioChecadoPeloName('autonomo')){
+                document.getElementById('autonomosim').focus();
+                alertify.errorAlert("<h6 class='card-title'>Preencha o campo Trabalha como autônomo .</h6>");
+                prencheuTudo = false;
+                }
+            }
+            
+             if ($('#div2').is(':visible')){
+                if(!verificaRadioChecadoPeloName('faz')){
+                document.getElementById('fazsim').focus();
+                alertify.errorAlert("<h6 class='card-title'>Preencha o campo Qual a sua situação.</h6>");
+                prencheuTudo = false;
+                }
+            }
           
                 //if (!empresa.getAtividade().equals("Autonomo") && empresa.getTrabalha().equals("sim"))
                 //if(!document.getElementById('doencaCronica1sim').s)
@@ -282,29 +331,30 @@
                                                                     out.println("<div id='div3' class='hide'>");
                                                                 }
                                                               %>
+                                                              <h4 class="form-section"><i class="ft-clipboard"></i> Dados da Empresa</h4>
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="nome">Nome da Empresa:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" value="<%=empresa.getNome()!=null?empresa.getNome():""%>">
+                                                                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da Empresa" value="<%=empresa.getNome()!=null?empresa.getNome():""%>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="telefone">Telefone da Empresa:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="telefone" id="telefone"  class="form-control" placeholder="Telefone" value="<%=empresa.getTelefone()!=null?empresa.getTelefone():""%>">
+                                                                        <input type="text" name="telefone" id="telefone"  class="form-control" placeholder="Telefone da Empresa DDD 99999-9999" maxlength="14" OnKeyPress="formatar('## #####-####', this)" value="<%=empresa.getTelefone()!=null?empresa.getTelefone():""%>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="responsavel">Responsável:</label>
+                                                                    <label class="col-md-3 label-control" for="responsavel">Nome do Responsável da Empresa:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="responsavel" id="responsavel" class="form-control" placeholder="Nome do responsavel" value="<%=empresa.getResponsavel()!=null?empresa.getResponsavel():""%>">
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="logradouro">Logradouro:</label>
+                                                                    <label class="col-md-3 label-control" for="logradouro">Logradouro (Rua, Avenida...) da Empresa:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="logradouro" id="logradouro" class="form-control" placeholder="Logradouro" value="<%=empresa.getEndereco()!=null?empresa.getEndereco().getLogradouro():""%>">
+                                                                        <input type="text" name="logradouro" id="logradouro" class="form-control" placeholder="Logradouro (Rua, Avenida...)" value="<%=empresa.getEndereco()!=null?empresa.getEndereco().getLogradouro():""%>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -332,15 +382,16 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="uf">Uf:</label>
+                                                                    <label class="col-md-3 label-control" for="uf">Estado (UF)*:</label>
                                                                     <div class="col-md-9">
                                                                         <select id="uf" name="uf" class="form-control">
-                                                                            <option selected="" disabled="">Selecione a UF</option>
+                                                                            <option selected="" disabled="">Selecione o estado (UF)</option>
                                                                            
                                                                                <%
                                                                             List<Uf> ufs = daoFactory.getUfDao().listar();
                                                                             for (Uf uf : ufs) {
-                                                                                out.print("<option selected value=" + aluno.getEndereco().getCidade().getUf().getId() + ">" + aluno.getEndereco().getCidade().getUf().getNome() + "</option>");
+                                                                                if(empresa.getEndereco()!=null)
+                                                                                out.print("<option selected value=" + empresa.getEndereco().getCidade().getUf().getId() + ">" + empresa.getEndereco().getCidade().getUf().getNome() + "</option>");
                                                                                 out.print("<option value=" + uf.getId() + ">" + uf.getNome() + "</option>");
                                                                             }
                                                                         %>
@@ -353,22 +404,28 @@
                                                                     <div class="col-md-9">
                                                                         <select id="cidade" name="cidade" class="form-control">
                                                                             <%
-                                                                            List<Cidade> cidades = daoFactory.getCidadeDao().buscarCidadePorUf(aluno.getEndereco().getCidade().getUf().getId());
-                                                                            for (Cidade cidade : cidades) {
-                                                                                out.print("<option selected value=" + aluno.getEndereco().getCidade().getId() + ">" + aluno.getEndereco().getCidade().getNome() + "</option>");
+                                                                            //List<Cidade> cidades = new ArrayList<Cidade>();
+                                                                            if(empresa.getEndereco()!=null){ 
+                                                                            List<Cidade> cidades = daoFactory.getCidadeDao().buscarCidadePorUf(empresa.getEndereco().getCidade().getUf().getId());
+                                                                           
+                                                                              for (Cidade cidade : cidades) {
+                                                                                if(empresa.getEndereco()!=null)
+                                                                                out.print("<option selected value=" + empresa.getEndereco().getCidade().getId() + ">" + empresa.getEndereco().getCidade().getNome() + "</option>");
                                                                                 out.print("<option value=" + cidade.getId() + ">" + cidade.getNome() + "</option>");
                                                                             }
-                                                                          //  out.print("<option selected value=" + aluno.getEndereco().getCidade().getId() + ">" + aluno.getEndereco().getCidade().getNome() + "</option>");
-                                                                        %> 
+                                                                            } else{
+                                                                          %> 
+                                                                        <option selected="" disabled="">Selecione primeiro o estado (UF) ↑</option>
+                                                                        <% } %> 
 
                                                                         </select>
                                                                     </div>
                                                                 </div> 
                                                              <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="atividade">Atividade Profissional*:</label>
+                                                                <label class="col-md-3 label-control" for="atividade">Sua Atividade Profissional*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="atividade" name="atividade" class="form-control">
-                                                                        <option selected="" disabled="">Selecione a Atividade Profissional</option>
+                                                                        <option selected="" disabled="">Selecione a Sua Atividade Profissional</option>
                                                                         <%
                                                                         if(empresa.getAtividade().equals("Empregado CLT"))
                                                                         out.print("<option selected value='Empregado CLT'>Empregado de carteira Assinada</option>");

@@ -171,7 +171,7 @@
                     </div>
                     <div class="element-box-content">
                         <% if (aluno.getStatusCadastro().equals("6")) { %>
-                        <a href="/pnaes/documento/alterar_upload.jsp"> <button  class="mr-2 mb-2 btn btn-info btn-lg" type="button">Refazer o 5º Passo&#10004;</button> </a>
+                        <a href="/pnaes/documento/alterar_upload.jsp"> <button  class="mr-2 mb-2 btn btn-info btn-lg" type="button">Refazer o 6º Passo&#10004;</button> </a>
                          <%  }else{ %>
                          <a href="/pnaes/documento/upload.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">6º Passo</button> </a>
                           <% }   %> 

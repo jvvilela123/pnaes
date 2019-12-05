@@ -44,7 +44,7 @@ public class ServletBolsa extends HttpServlet {
                 case "cadastrar" :      
                     bolsa.setNome(request.getParameter("nome"));
                     bolsa.setValor(Double.parseDouble(request.getParameter("valor")));
-                    bolsa = daoFactory.getBolsaDao().inserirComRetorno(bolsa);
+                    bolsa = daoFactory.getBolsaDao().inserirOuAlterarComRetorno(bolsa);
                     System.out.println("idbolsa = "+bolsa.getId());
                     response.sendRedirect("bolsa/listar.jsp");
                 break;

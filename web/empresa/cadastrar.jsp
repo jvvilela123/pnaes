@@ -86,6 +86,71 @@
                 }
                 return !1
             }
+            function verificaAtividade() {
+             prencheuTudo = true;
+             
+             if(!verificaRadioChecadoPeloName('carteira')){
+                document.getElementById('carteirasim').focus();
+                alertify.errorAlert("<h6 class='card-title'>Preencha o campo Tem Carteira de Trabalho.</h6>");
+                prencheuTudo = false;
+                }else if(!verificaRadioChecadoPeloName('tab')){
+                document.getElementById('tabsim').focus();
+                alertify.errorAlert("<h6 class='card-title'>Preencha o campo Trabalha atualmente.</h6>");
+                prencheuTudo = false;
+             }
+             var uf = document.getElementById("uf");
+             var cidade = document.getElementById("cidade");
+             var atividade = document.getElementById("atividade");
+             // $('#div3').is(':visible') && 
+             if ($('#div3').is(':visible')){
+               if(document.getElementById('nome').value === ""){
+              document.getElementById('nome').focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Nome da Empresa</h6>");
+              prencheuTudo = false;
+               } else if(document.getElementById('telefone').value === ""){
+              document.getElementById('telefone').focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Telefone da Empresa</h6>");
+              prencheuTudo = false;
+               } else if(document.getElementById('responsavel').value === ""){
+              document.getElementById('responsavel').focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Nome do responsável da empresa</h6>");
+              prencheuTudo = false;
+               } else if(uf.options[uf.selectedIndex].value === "Selecione o estado (UF)"){
+              uf.focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Estado (UF)</h6>");
+              prencheuTudo = false;
+               } else if(cidade.options[cidade.selectedIndex].value === "Selecione a cidade"){
+              cidade.focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Cidade</h6>");
+              prencheuTudo = false;
+               } else if(atividade.options[atividade.selectedIndex].value === "Selecione a Sua Atividade Profissional"){
+              atividade.focus();
+              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Sua Atividade Profissional</h6>");
+              prencheuTudo = false;
+               }
+              }
+              if ($('#div1').is(':visible')){
+                if(!verificaRadioChecadoPeloName('autonomo')){
+                document.getElementById('autonomosim').focus();
+                alertify.errorAlert("<h6 class='card-title'>Preencha o campo Trabalha como autônomo .</h6>");
+                prencheuTudo = false;
+                }
+            }
+            
+             if ($('#div2').is(':visible')){
+                if(!verificaRadioChecadoPeloName('faz')){
+                document.getElementById('fazsim').focus();
+                alertify.errorAlert("<h6 class='card-title'>Preencha o campo Qual a sua situação.</h6>");
+                prencheuTudo = false;
+                }
+            }
+          
+                //if (!empresa.getAtividade().equals("Autonomo") && empresa.getTrabalha().equals("sim"))
+                //if(!document.getElementById('doencaCronica1sim').s)
+                if (prencheuTudo)
+                    document.getElementById("formEmpresa").submit();
+                 //}
+            }
         </script> 
     </head>
     <body class="menu-position-side menu-side-left full-screen">
@@ -123,7 +188,7 @@
 
                                                     </div>
 
-                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEmpresa?opcao=cadastrar&aluno_id=<%=session.getAttribute("aluno_id")%>">
+                                                    <form id="formEmpresa" class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEmpresa?opcao=cadastrar&aluno_id=<%=session.getAttribute("aluno_id")%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="carteira">Tem Carteira de Trabalho ?*:</label>
@@ -191,29 +256,30 @@
                                                                 </div>
                                                             </div>
                                                             <div id="div3" class="hide">
+                                                                 <h4 class="form-section"><i class="ft-clipboard"></i> Dados da Empresa</h4>
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="nome">Nome da Empresa:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
+                                                                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da Empresa">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="telefone">Telefone da Empresa:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="telefone" id="telefone"  class="form-control" placeholder="Telefone">
+                                                                        <input type="text" name="telefone" id="telefone"  class="form-control" placeholder="Telefone da Empresa" maxlength="14" OnKeyPress="formatar('## #####-####', this)">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="responsavel">Responsável:</label>
+                                                                    <label class="col-md-3 label-control" for="responsavel">Nome do Responsável da Empresa:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="responsavel" id="responsavel" class="form-control" placeholder="Nome do responsavel">
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="logradouro">Logradouro:</label>
+                                                                    <label class="col-md-3 label-control" for="logradouro">Logradouro (Rua, Avenida...) da Empresa:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="logradouro" id="logradouro" class="form-control" placeholder="Logradouro">
+                                                                        <input type="text" name="logradouro" id="logradouro" class="form-control" placeholder="Logradouro (Rua, Avenida...)">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -240,10 +306,10 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="uf">Uf:</label>
+                                                                    <label class="col-md-3 label-control" for="uf">Estado (UF)*:</label>
                                                                     <div class="col-md-9">
                                                                         <select id="uf" name="uf" class="form-control">
-                                                                            <option selected="" disabled="">Selecione a UF</option>
+                                                                            <option selected="" disabled="">Selecione o estado (UF)</option>
                                                                             <%
                                                                                 List<Uf> ufs = daoFactory.getUfDao().listar();
                                                                                 for (Uf uf : ufs) {
@@ -257,15 +323,16 @@
                                                                     <label class="col-md-3 label-control" for="cidade">Cidade:</label>
                                                                     <div class="col-md-9">
                                                                         <select id="cidade" name="cidade" class="form-control">
+                                                                            <option selected="" disabled="">Selecione primeiro o estado (UF) ↑</option>
 
                                                                         </select>
                                                                     </div>
                                                                 </div> 
                                                              <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="atividade">Atividade Profissional*:</label>
+                                                                <label class="col-md-3 label-control" for="atividade">Sua Atividade Profissional*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="atividade" name="atividade" class="form-control">
-                                                                        <option selected="" disabled="">Selecione a Atividade Profissional</option>
+                                                                        <option selected="" disabled="">Selecione a Sua Atividade Profissional</option>
                                                                         <!--<option value="Desempregado">Desempregado</option> -->
                                                                         <option value="Empregado CLT">Empregado de carteira Assinada</option>
                                                                         <!--<option value="Autonomo">Autonomo</option> -->
@@ -295,7 +362,7 @@
                                                                 <button type="reset" value="Limpar"  class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                                <button type="submit" class="btn btn-primary" name="cadastrar" value="Cadastrar">
+                                                                <button type="button" class="btn btn-primary" name="cadastrar" value="Cadastrar" onclick="verificaAtividade()">
                                                                     <i class="la la-check-square-o"></i> Avançar
                                                                 </button>
                                                             </div>

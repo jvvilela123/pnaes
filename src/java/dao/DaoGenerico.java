@@ -42,7 +42,7 @@ public class DaoGenerico<T> {
             em.close();
         }
     }
-    public T inserirComRetorno(T u) {
+    public T inserirOuAlterarComRetorno(T u) {
         try {
             em.getTransaction().begin();
             u = em.merge(u);
@@ -88,6 +88,16 @@ public class DaoGenerico<T> {
         try {
             String jpql = "select a from " + classe.getSimpleName() + " a where a.aluno.id = " + alunoId;
             return em.createQuery(jpql, classe).getResultList();
+
+        } catch (Exception ex) {
+            return null;
+        }
+
+    }
+    public T perquisarClassePorAluno(Integer alunoId) {
+        try {
+            String jpql = "select a from " + classe.getSimpleName() + " a where a.aluno.id = " + alunoId;
+            return (T) em.createQuery(jpql, classe).getSingleResult();
 
         } catch (Exception ex) {
             return null;

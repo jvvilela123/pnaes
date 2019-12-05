@@ -22,16 +22,7 @@
                     $('#cidade').load('/pnaes/cidadeajax.jsp?estado=' + $('#uf').val());
                 });
             });
-            function formatar(mascara, documento) {
-                var i = documento.value.length;
-                var saida = mascara.substring(0, 1);
-                var texto = mascara.substring(i);
-                if (texto.substring(0, 1) !== saida) {
-                    documento.value += texto.substring(0, 1);
-                }
-            }
-
-        </script>
+         </script>
     </head>
     <body>
         <div class="element-box">
@@ -67,13 +58,13 @@
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Dados Pessoais</h4>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="nome">Nome*</label>
+                                                <label class="col-md-3 label-control" for="nome">Nome*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="cpf">CPF*</label>
+                                                <label class="col-md-3 label-control" for="cpf">CPF*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="cpf" id="cpf" onfocus="validarCPF(cpf)" class="form-control" placeholder="CPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>                                                    
                                                 </div>
@@ -82,13 +73,13 @@
 
                                             </script>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="rg">RG*</label>
+                                                <label class="col-md-3 label-control" for="rg">RG*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="rg" id="rg"  class="form-control" placeholder="RG" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="ufe">Estado(UF) de Expedição do RG*</label>
+                                                <label class="col-md-3 label-control" for="ufe">Estado(UF) de Expedição do RG*:</label>
                                                 <div class="col-md-9">
                                                     <select id="ufe" name="ufe" class="form-control" required>
                                                         <option selected="" disabled="">Selecione o Estado(UF) de Expedição do RG</option>
@@ -103,7 +94,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="sexo">Sexo*</label>
+                                                <label class="col-md-3 label-control" for="sexo">Sexo*:</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <div class="d-inline-block custom-control custom-radio mr-1">
@@ -122,7 +113,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="estadoCivil">Estado Civil*</label>
+                                                <label class="col-md-3 label-control" for="estadoCivil">Estado Civil*:</label>
                                                 <div class="col-md-9">
                                                     <select id="estadoCivil" name="estadoCivil" class="form-control" required>
                                                         <option selected="" disabled="">Selecione o Estado Civil</option>
@@ -136,25 +127,25 @@
                                                 </div>
                                             </div>        
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento*</label>
+                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento*:</label>
                                                 <div class="col-md-9">
                                                     <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" maxlength="10" OnKeyPress="formatar('##/##/####', this)" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="email">Email*</label>
+                                                <label class="col-md-3 label-control" for="email">Email*:</label>
                                                 <div class="col-md-9">
                                                     <input type="email" name="email" id="email"  class="form-control" placeholder="Email" required>
                                                 </div>
                                             </div>                                                
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="telefone">Telefone*</label>
+                                                <label class="col-md-3 label-control" for="telefone">Telefone*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="telefone" id="telefone"  class="form-control" placeholder="DDD 99999-9999" maxlength="14" OnKeyPress="formatar('## #####-####', this)" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="autoDeclaracao">Auto Declaração Cor/Raça*</label>
+                                                <label class="col-md-3 label-control" for="autoDeclaracao">Auto Declaração Cor/Raça*:</label>
                                                 <div class="col-md-9">
                                                     <select id="atividadeProf" name="autoDeclaracao" class="form-control" required>
                                                         <option selected="" disabled=""> Selecione a sua Cor/Raça </option>
@@ -168,7 +159,7 @@
                                             </div>        
                                             
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="matricula">Matricula (a mesma do SIGA ou SUAP)*</label>
+                                                <label class="col-md-3 label-control" for="matricula">Matricula (a mesma do SIGA ou SUAP)*:</label>
                                                 <div class="col-md-9">
                                                     <div class="position-relative has-icon-left">
                                                         <input type="text" name="matricula" id="matricula" class="form-control" placeholder="Numero de Matricula" required>
@@ -181,36 +172,36 @@
                                                     
                                             <h4 class="form-section"><i class="ft-clipboard"></i> Dados do Endereço</h4>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="logradouro">Logradouro(Rua, Avenida...)*</label>
+                                                <label class="col-md-3 label-control" for="logradouro">Logradouro(Rua, Avenida...)*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="logradouro" id="logradouro" class="form-control" placeholder="Logradouro(Rua, Avenida...)" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="numero">Numero*</label>
+                                                <label class="col-md-3 label-control" for="numero">Numero*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="numero" id="numero" class="form-control" placeholder="Numero" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="bairro">Bairro*</label>
+                                                <label class="col-md-3 label-control" for="bairro">Bairro*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairro" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="complemento">Complemento</label>
+                                                <label class="col-md-3 label-control" for="complemento">Complemento:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="complemento" id="complemento" class="form-control" placeholder="Complemento">                                              </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="cep">CEP*</label>
+                                                <label class="col-md-3 label-control" for="cep">CEP*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP" maxlength="10" OnKeyPress="formatar('##.###-###', this)" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="uf">Estado (UF)*</label>
+                                                <label class="col-md-3 label-control" for="uf">Estado (UF)*:</label>
                                                 <div class="col-md-9">
                                                     <select id="uf" name="uf" class="form-control" required>
                                                         <option selected="" disabled="">Selecione o estado (UF)</option>
@@ -224,7 +215,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="cidade">Cidade*</label>
+                                                <label class="col-md-3 label-control" for="cidade">Cidade*:</label>
                                                 <div class="col-md-9">
                                                     <select id="cidade" name="cidade" class="form-control" required>
                                                         <option selected="" disabled="">Selecione primeiro o estado (UF) ↑</option>
