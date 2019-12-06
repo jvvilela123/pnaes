@@ -79,9 +79,7 @@ START - Mobile Menu
                 </div>
             </div>
         </div>
-        <%
-            if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
-        %>
+        
         <!--------------------
         START - Mobile Menu List
         -------------------->
@@ -104,6 +102,9 @@ START - Mobile Menu
                     </div>
                 </div>
             </li>
+            <%
+            if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+        %>
             <li class="selected menu">
                 <a href="/pnaes/edital/listar.jsp">
                     <div class="icon-w">
@@ -271,14 +272,14 @@ START - Mobile Menu
 
                 </div>
             </li>
-
+          <%
+            }
+        %>
         </ul>
         <!--------------------
         END - Mobile Menu List
         -------------------->
-        <%
-            }
-        %>
+        
 
     </div>
 </div>
@@ -362,9 +363,7 @@ START - Main Menu
 
 
     </div>  
-    <%
-        if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
-    %>
+    
     <ul class="main-menu">
         <li class="sub-header">
             <span>MENU</span>
@@ -386,10 +385,11 @@ START - Main Menu
 
             </div>
         </li>
+      <%
+        if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+      %>
 
-
-
-        <li class="selected menu">
+         <li class="selected menu">
             <a href="/pnaes/edital/listar.jsp">
                 <div class="icon-w">
                     <div class="os-icon os-icon-layout"></div>
@@ -554,12 +554,10 @@ START - Main Menu
 
             </div>
         </li>
-
-    </ul>
     <%
         }
     %>
-
+    </ul>
 </div>
 <!--------------------
 END - Main Menu

@@ -62,6 +62,25 @@
                 }
                 return !1
             }
+             function sReprovou() {
+                document.getElementById('div_reprovou').style.display = 'block';
+            }
+            function nReprovou() {
+                document.getElementById('div_reprovou').style.display = 'none';
+                document.getElementById('reprovou').value = "";
+            }
+            function verificaCampos(){
+                var prencheuTudo = true;
+                 if ($('#div_reprovou').is(':visible')){
+                    if(document.getElementById('simReprovou').checked && document.getElementById('reprovou').value === ""){
+                    document.getElementById('reprovou').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Qual / quais a(s) disciplinas você reprovou?</h6>");
+                    prencheuTudo = false; 
+                    } 
+                 }
+                 if (prencheuTudo)
+                    document.getElementById("formAluno").submit();
+            }
         </script>
 
     </head>
@@ -98,7 +117,7 @@
                                                         Texto info
                                                     </div>
 
-                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletAluno?opcao=preencher&id=<%=session.getAttribute("aluno_id")%>">
+                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletAluno?opcao=preencher&id=<%=session.getAttribute("aluno_id")%>" id="formAluno">
                                                         <div class="form-body">
 
                                                             <div class="form-group row">
@@ -255,12 +274,32 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="reprovou">Nome das discipplinas que reprovou no ultimo semestre</label>
-                                                                <div class="col-md-9">
-                                                                    <textarea  class="form-control" id="reprovou" cols="40" rows="4" name="reprovou"></textarea>
+                                                            <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma(s) disciplina(s) no ultimo semestre?*</label>
+                                                            <div class="col-md-9">
+                                                                <div class="input-group">
+                                                                       <div class="custom-control custom-radio">
+                                                                           <input type="radio" name="reprovousimounao" id="naoReprovou" value="Nao" class="custom-control-input" onclick="nReprovou()" required>
+                                                                           <label class="custom-control-label" for="naoReprovou">Não&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" name="reprovousimounao" id="simReprovou" value="Sim" class="custom-control-input" onclick="sReprovou()" required>
+                                                                            <label class="custom-control-label" for="simReprovou">Sim</label>
+                                                                        </div>
+                                                                   
+                                                                     <div id='div_reprovou' class='hide col-md-9'>
+                                                                          <div class="col-md-9">
+                                                                            <div class="position-relative has-icon-left">
+                                                                               <textarea  class="form-control" id="reprovou" cols="40" rows="4" name="reprovou" placeholder='Qual / Quais disciplina(s)?'></textarea>
+                                                                              <div class="form-control-position">
+                                                                                    <i class="fa fa-briefcase"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
+                                                               </div>
                                                             </div>
-                                                            <div class="form-group row">
+                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="residencia">Residência</label>
                                                                 <div class="col-md-9">
                                                                     <select id="residencia" name="residencia" class="form-control" required>

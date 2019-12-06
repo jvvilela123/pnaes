@@ -282,7 +282,7 @@
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Ficha de Saúde</h4>
                                              <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="doencaCronica">Você tem alguma doença crônica?*:</label>
+                                                <label class="col-md-3 label-control" for="doencaCronica">Você tem alguma Doença?*:</label>
                                                 <div class="col-md-3">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-3">
@@ -300,7 +300,7 @@
                                             </div>
                                             <div id="div_doenca" class="hide">
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="tipoDoenca">Qual a sua doença crônica?*:</label>
+                                                <label class="col-md-3 label-control" for="tipoDoenca">Qual a sua Doença?*:</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="custom-control custom-radio">
@@ -357,7 +357,7 @@
                                             </div>
                                             </div>
                                           <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="doencaCronica">Há alguem com doença cronica na família?*:</label>
+                                                <label class="col-md-3 label-control" for="doencaCronica">Há alguem com alguma doença na família?*:</label>
                                                 <div class="col-md-3">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-3">
@@ -375,7 +375,7 @@
                                             </div>
                                          <div id="div_doenca_familia" class="hide">
                                                 <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="tipoDoencafamilia">Qual doença crônica na família?*:</label>
+                                                <label class="col-md-3 label-control" for="tipoDoencafamilia">Qual doença na família?*:</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                        <div class="custom-control custom-radio">

@@ -105,8 +105,10 @@
                                                     </table>  
                                                     <div class="form-group row">
 
-                                                       <% if (aluno.getStatusCadastro().equals("3")) { %>
+                                                       <% if (aluno.getStatusCadastro().equals("3") || aluno.getStatusCadastro().equals("6")) { %>
                                                         <div class="col-md-3">
+                                                            <a href="/pnaes/home.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
+                                                            
                                                             <a href="/pnaes/home.jsp">
                                                             <button type="submit" value="Cadastrar" class="btn btn-primary">
                                                                 <i class="fa fa-check-square-o"></i> Salvar

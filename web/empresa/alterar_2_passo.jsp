@@ -462,9 +462,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">
+                                                                <a href="/pnaes/home.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
+                                                                
                                                                 <button type="reset" value="Limpar"  class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
+                                                                
                                                                 <button type="button" class="btn btn-primary" name="cadastrar" value="Cadastrar" onclick="verificaAtividade()">
                                                                     <i class="la la-check-square-o"></i> Salvar
                                                                 </button>

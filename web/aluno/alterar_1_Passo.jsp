@@ -32,6 +32,27 @@
                 });
 
             });
+            
+            function sReprovou() {
+                document.getElementById('div_reprovou').style.display = 'block';
+            }
+            function nReprovou() {
+                document.getElementById('div_reprovou').style.display = 'none';
+                document.getElementById('reprovou').value = "";
+            }
+            
+            function verificaCampos(){
+                var prencheuTudo = true;
+                 if ($('#div_reprovou').is(':visible')){
+                    if(document.getElementById('simReprovou').checked && document.getElementById('reprovou').value === ""){
+                    document.getElementById('reprovou').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Qual / quais a(s) disciplinas você reprovou?</h6>");
+                    prencheuTudo = false; 
+                    } 
+                 }
+                 if (prencheuTudo)
+                    document.getElementById("formAluno").submit();
+            }
         </script>
 
     </head>
@@ -75,7 +96,7 @@
                                                             Integer id = Integer.parseInt(request.getParameter("id"));
                                                             aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(id);
                                                         %>
-                                                    <form  class="form form-horizontal striped-rows form-bordered" method="Post" action="../ServletAluno?opcao=alterar_1_passo&id=<%=aluno.getId()%>">
+                                                    <form  class="form form-horizontal striped-rows form-bordered" method="Post" action="../ServletAluno?opcao=alterar_1_passo&id=<%=aluno.getId()%>" id="formAluno">
                                                         <div class="form-body">
                                                             <h4 class="form-section"><i class="ft-user"></i>Alteração do 1º Passo</h4>
                                                              <div class="form-group row">
@@ -369,16 +390,62 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="reprovou">Nome das discipplinas que reprovou no ultimo semestre</label>
-                                                                <div class="col-md-9">
-                                                                    <textarea  class="form-control" id="reprovou" cols="40" rows="4" name="reprovou" wrap="hard"><%if(aluno.getReprovou()!=null) out.print(aluno.getReprovou().toString());%></textarea>
-                                                                  </div>
-                                                            </div>
+                                                            <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma(s) disciplina(s) no ultimo semestre?*</label>
+                                                            <div class="col-md-9">
+                                                                <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
+                                                                    <div class="col-md-2">
+                                                                        <div class="custom-control custom-radio">
+                                                                            <%
+                                                                                    if (aluno.getReprovou()==null) {
+                                                                                        out.println("<input checked type='radio' name='reprovousimounao' id='naoReprovou' value='Nao' class='custom-control-input' onclick='nReprovou();' required>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='reprovousimounao' id='naoReprovou' value='Nao' class='custom-control-input' onclick='nReprovou();' required>");
+                                                                                    }
+                                                                                %>
+                                                                            <label class="custom-control-label" for="naoReprovou">Não</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <%
+                                                                                    if (aluno.getReprovou()!=null) {
+                                                                                        out.println("<input checked type='radio' name='reprovousimounao' id='simReprovou' value='Sim' class='custom-control-input' onclick='sReprovou();' required>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='reprovousimounao' id='simReprovou' value='Sim' class='custom-control-input' onclick='sReprovou();' required>");
+                                                                                    }
+                                                                                %>
+                                                                            <label class="custom-control-label" for="simReprovou">Sim</label>
+                                                                        </div>
+                                                                    </div>
+                                                                            <%
+                                                                                    if (aluno.getReprovou()==null) {
+                                                                                        out.println("<div id='div_reprovou' class='hide col-md-9'>");
+                                                                                    } else {
+                                                                                        out.println("<div id='div_reprovou' class='col-md-9'>");
+                                                                                    }
+                                                                                    
+                                                                                %>
+                                                                          <div class="col-md-9">
+                                                                            <div class="position-relative has-icon-left">
+                                                                                <%
+                                                                                if(aluno.getReprovou()!=null){%>
+                                                                                   <textarea  class="form-control" id="reprovou" cols="40" rows="4" name="reprovou" wrap="hard"><%out.print(aluno.getReprovou().toString());%></textarea>
+                                                                                <%} else { %>
+                                                                                   <textarea  class="form-control" id="reprovou" cols="40" rows="4" name="reprovou" placeholder='Qual / Quais disciplina(s)?'></textarea>
+                                                                              <% } %>
+                                                                                <div class="form-control-position">
+                                                                                    <i class="fa fa-briefcase"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             <div class="form-actions right">
-                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1">
+                                                                <a href="/pnaes/home.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
+                                                                
+                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                                <button type="submit" value="Cadastrar" class="btn btn-primary">
+                                                                
+                                                                <button type="button" value="Cadastrar" class="btn btn-primary" onclick="verificaCampos()">
                                                                     <i class="fa fa-check-square-o"></i>Salvar
                                                                 </button>
                                                             </div>

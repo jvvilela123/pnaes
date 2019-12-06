@@ -159,7 +159,7 @@ public class ServletAluno extends HttpServlet {
                     aluno.setEnsinoFundamental(request.getParameter("ensinoFundamental"));
                     aluno.setEntradaIfto(request.getParameter("entrada"));
                     aluno.setPeriodoVisita(request.getParameter("visita"));
-                    aluno.setReprovou(request.getParameter("reprovou"));
+                    aluno.setReprovou(request.getParameter("reprovou").equals("")?null:request.getParameter("reprovou"));
                     aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("empresa/cadastrar.jsp");
@@ -175,7 +175,7 @@ public class ServletAluno extends HttpServlet {
                     aluno.setEnsinoFundamental(request.getParameter("ensinoFundamental"));
                     aluno.setEntradaIfto(request.getParameter("entrada"));
                     aluno.setPeriodoVisita(request.getParameter("visita"));
-                    aluno.setReprovou(request.getParameter("reprovou"));
+                    aluno.setReprovou(request.getParameter("reprovou").equals("")?null:request.getParameter("reprovou"));
                     aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("home.jsp");

@@ -186,7 +186,7 @@
                                             </div>   
                                             <div class="form-actions">
                                                
-                                                <a href="/pnaes/home.jsp"><button  class="btn btn-primary" type="button" >Voltar</button> </a>
+                                                <a href="/pnaes/home.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <button type="submit" class="btn btn-primary" name="cadastrar" value="Cadastrar">
                                                     <i class="la la-check-square-o"></i> Salvar

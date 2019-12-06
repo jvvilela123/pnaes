@@ -278,7 +278,7 @@
                                                         <div class="form-body">
                                                             <h4 class="form-section"><i class="ft-user"></i>Alteração da Ficha de Saúde</h4>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="doencaCronica">Você tem alguma doença crônica?*:</label>
+                                                                <label class="col-md-3 label-control" for="doencaCronica">Você tem alguma doença ?*:</label>
                                                                 <div class="col-md-3">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="col-md-3">
@@ -317,7 +317,7 @@
                                                                }
                                                             %>
                                                                  <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="tipoDoenca">Qual a sua doença crônica?*:</label>
+                                                                    <label class="col-md-3 label-control" for="tipoDoenca">Qual a sua doença ?*:</label>
                                                                     <div class="col-md-9">
                                                                         <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                             <div class="custom-control custom-radio">
@@ -469,7 +469,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="doencaCronica">Há alguem com doença cronica na família?*:</label>
+                                                            <label class="col-md-3 label-control" for="doencaCronica">Há alguem com alguma doença na família?*:</label>
                                                             <div class="col-md-3">
                                                                 <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                     <div class="col-md-3">
@@ -507,7 +507,7 @@
                                                                }
                                                             %>
                                                          <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="tipoDoencafamilia">Qual doença crônica na sua família?*:</label>
+                                                                <label class="col-md-3 label-control" for="tipoDoencafamilia">Qual doença na sua família?*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
@@ -964,6 +964,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-actions">
+                                                            <a href="/pnaes/home.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
                                                             <button type="reset" value="Limpar"  class="btn btn-warning mr-1">
                                                                 <i class="ft-x"></i> Limpar
                                                             </button>
