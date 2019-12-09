@@ -8,7 +8,7 @@
     DaoFactory daoFactory = new DaoFactory();
     
     List<Curso> cursos = daoFactory.getCursoDao().buscarCursoPorCategoria(categoria_id);
-    out.println("<option value='Selecione a cidade'></option>");
+    out.println("<option selected='' disabled=''>Selecione o Curso</option>");
     for (Curso curso : cursos) {
         out.println("<option value="+curso.getId()+">"+curso.getNome()+"</option>");
         //out.println("<option value="+curso.getId()+">"+curso.getTipoPeriodo()+"</option>");

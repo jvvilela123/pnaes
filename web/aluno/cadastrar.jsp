@@ -13,7 +13,7 @@
         <script type="text/javascript" >
             $(document).ready(function () {
                 $('#cat').change(function () {
-                    $('#divcurso')[0].style.display="block";
+                    //$('#divcurso')[0].style.display="block";
                     //$('#divcurso').style.display = 'block';
                     $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val());
                 });
@@ -21,7 +21,7 @@
             });
             $(document).ready(function () {
                 $('#curso').change(function () {
-                    $('#divperiodo')[0].style.display="block";
+                   // $('#divperiodo')[0].style.display="block";
                     $('#periodo').load('/pnaes/periodoajax.jsp?curso=' + $('#curso').val());
                 });
 
@@ -70,16 +70,12 @@
                 document.getElementById('reprovou').value = "";
             }
             function verificaCampos(){
-                var prencheuTudo = true;
-                 if ($('#div_reprovou').is(':visible')){
+               if ($('#div_reprovou').is(':visible')){
                     if(document.getElementById('simReprovou').checked && document.getElementById('reprovou').value === ""){
                     document.getElementById('reprovou').focus();
                     alertify.errorAlert("<h6 class='card-title'>Qual / quais a(s) disciplinas você reprovou?</h6>");
-                    prencheuTudo = false; 
-                    } 
-                 }
-                 if (prencheuTudo)
-                    document.getElementById("formAluno").submit();
+                 } 
+              }
             }
         </script>
 
@@ -121,7 +117,7 @@
                                                         <div class="form-body">
 
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="cat">Modalidade do Curso*</label>
+                                                                <label class="col-md-3 label-control" for="cat">Modalidade do Curso*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="cat" name="cat" class="form-control" required>
                                                                         <option selected="" disabled="">Selecione Modalidade do Curso</option>
@@ -134,22 +130,23 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                                <div id="divcurso" class="hide">
+                                                               
                                                                     <div class="form-group row" >
-                                                                        <label class="col-md-3 label-control" for="curso">Curso</label>
+                                                                        <label class="col-md-3 label-control" for="curso">Curso*:</label>
                                                                         <div class="col-md-9">
                                                                             <select id="curso" name="curso" class="form-control" required>
+                                                                                <option selected="" disabled="">Selecione primeiro a Modalidade do Curso ↑</option>
                                                                             </select>
                                                                         </div>
                                                                   </div>   
-                                                                 </div>
-                                                                 <div id="divperiodo" class="hide">
+                                                                 
+                                                               
                                                                     <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="periodo">Periodo</label>
+                                                                    <label class="col-md-3 label-control" for="periodo">Periodo*:</label>
                                                                     <div class="col-md-9">
                                                                         <select id="periodo" name="periodo" class="form-control" required>
-                                                                            <!--<option selected="" disabled="">Selecione Ano/Modulo/Periodo</option>
-                                                                            <option value="1 Ano/Modulo/Periodo">1 Ano/Modulo/Periodo</option>
+                                                                           <option selected="" disabled="">Selecione primeiro o Curso ↑</option>
+                                                                            <!--<option value="1 Ano/Modulo/Periodo">1 Ano/Modulo/Periodo</option>
                                                                             <option value="2 Ano/Modulo/Periodo">2 Ano/Modulo/Periodo</option>
                                                                             <option value="3 Ano/Modulo/Periodo">3 Ano/Modulo/Periodo</option>
                                                                             <option value="4 Periodo">4 Periodo</option>
@@ -161,9 +158,9 @@
                                                                         </select>
                                                                         </div>
                                                                    </div>
-                                                            </div>
+                                                           
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="transporte">Qual seu meio de Transporte para chegar até o IFTO:</label>
+                                                                <label class="col-md-3 label-control" for="transporte">Qual seu meio de Transporte para chegar até o IFTO*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="custom-control custom-radio">
@@ -194,7 +191,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="ensinoFundamental">Você cursou o Ensino Fundamental em Escola:</label>
+                                                                <label class="col-md-3 label-control" for="ensinoFundamental">Você cursou o Ensino Fundamental em Escola*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="custom-control custom-radio">
@@ -213,7 +210,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="ensinoMedio">Você cursou o Ensino Medio em Escola:</label>
+                                                                <label class="col-md-3 label-control" for="ensinoMedio">Você cursou o Ensino Medio em Escola*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="custom-control custom-radio">
@@ -232,7 +229,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="entrada">Como você ingressou no IFTO:</label>
+                                                                <label class="col-md-3 label-control" for="entrada">Como você ingressou no IFTO*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="custom-control custom-radio">
@@ -255,7 +252,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="visita">Qual o melhor horario para uma visita, se necessário:</label>
+                                                                <label class="col-md-3 label-control" for="visita">Qual o melhor horario para uma visita, se necessário*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="custom-control custom-radio">
@@ -274,7 +271,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma(s) disciplina(s) no ultimo semestre?*</label>
+                                                            <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma(s) disciplina(s) no ultimo semestre?*:</label>
                                                             <div class="col-md-9">
                                                                 <div class="input-group">
                                                                        <div class="custom-control custom-radio">
@@ -300,9 +297,9 @@
                                                                </div>
                                                             </div>
                                                              <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="residencia">Residência</label>
+                                                                <label class="col-md-3 label-control" for="residencia">Residência*:</label>
                                                                 <div class="col-md-9">
-                                                                    <select id="residencia" name="residencia" class="form-control" required>
+                                                                    <select id="residencia" name="residencia" class="form-control"  onchange="verificaCampos()" required>
                                                                         <option selected="" disabled="">Selecione o Tipo de Dependencia da Familia</option>
                                                                         <option value="Própria">Própria</option>
                                                                         <option value="Alugada">Alugada</option>
@@ -314,7 +311,7 @@
                                                                 </div>
                                                             </div> 
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="dependenciaFamiliar">Relação de dependência familiar</label>
+                                                                <label class="col-md-3 label-control" for="dependenciaFamiliar">Relação de dependência familiar*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="estadoCivil" name="dependenciaFamiliar" class="form-control" required>
                                                                         <option selected="" disabled="">Selecione o Tipo de Dependencia da Familia</option>
@@ -335,6 +332,7 @@
                                                                 <button type="submit" value="Cadastrar" class="btn btn-primary">
                                                                     <i class="fa fa-check-square-o"></i>Avançar
                                                                 </button>
+                                                               
                                                             </div>
                                                         </div>
                                                     </form>

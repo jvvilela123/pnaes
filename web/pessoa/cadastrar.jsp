@@ -21,7 +21,64 @@
                 $('#uf').change(function () {
                     $('#cidade').load('/pnaes/cidadeajax.jsp?estado=' + $('#uf').val());
                 });
+          });
+       
+            $(function()
+      {
+      
+           //Não Permite digitar letras
+          $('#cpf').keyup(function() {
+               $(this).val(this.value.replace(/\D/g, ''));
             });
+            $('#rg').keyup(function() {
+               $(this).val(this.value.replace(/\D/g, ''));
+            });
+             
+      //Executa a requisição quando o campo username perder o foco
+    $('#cpf').blur(function()
+    {
+     var cpf = $('#cpf').val().replace(/[^0-9]/g, '').toString();
+
+        if( cpf.length == 11 )
+        {
+            var v = [];
+
+            //Calcula o primeiro dígito de verificação.
+            v[0] = 1 * cpf[0] + 2 * cpf[1] + 3 * cpf[2];
+            v[0] += 4 * cpf[3] + 5 * cpf[4] + 6 * cpf[5];
+            v[0] += 7 * cpf[6] + 8 * cpf[7] + 9 * cpf[8];
+            v[0] = v[0] % 11;
+            v[0] = v[0] % 10;
+
+            //Calcula o segundo dígito de verificação.
+            v[1] = 1 * cpf[1] + 2 * cpf[2] + 3 * cpf[3];
+            v[1] += 4 * cpf[4] + 5 * cpf[5] + 6 * cpf[6];
+            v[1] += 7 * cpf[7] + 8 * cpf[8] + 9 * v[0];
+            v[1] = v[1] % 11;
+            v[1] = v[1] % 10;
+
+            //Retorna Verdadeiro se os dígitos de verificação são os esperados.
+            if ( (v[0] != cpf[9]) || (v[1] != cpf[10]) )
+            {
+               
+                $('#cpf').val('');
+                document.getElementById('cpf').focus();
+                alertify.errorAlert("<h6 class='card-title'>CPF "+cpf+" Inválido! Digite o CPF Correto.</h6>");
+               
+            }
+        }
+        else
+        {
+            //alert('CPF inválido:' + cpf);
+
+            $('#cpf').val('');
+            //$('#cpf').focus();
+            document.getElementById('cpf').focus();
+            alertify.errorAlert("<h6 class='card-title'>Digite os 11 dígitos do CPF.</h6>");
+            
+        }
+    });
+});
          </script>
     </head>
     <body>
@@ -58,7 +115,7 @@
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Dados Pessoais</h4>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="nome">Nome*:</label>
+                                                <label class="col-md-3 label-control" for="nome">Nome Completo*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
                                                 </div>
@@ -66,14 +123,14 @@
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="cpf">CPF*:</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" name="cpf" id="cpf" onfocus="validarCPF(cpf)" class="form-control" placeholder="CPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>                                                    
+                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="11"  required>                                                    
                                                 </div>
                                             </div>
                                             <script>
 
                                             </script>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="rg">RG*:</label>
+                                                <label class="col-md-3 label-control" for="rg">Número do RG*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="rg" id="rg"  class="form-control" placeholder="RG" required>
                                                 </div>

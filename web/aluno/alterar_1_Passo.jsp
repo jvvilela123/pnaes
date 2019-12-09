@@ -35,23 +35,14 @@
             
             function sReprovou() {
                 document.getElementById('div_reprovou').style.display = 'block';
+                if(document.getElementById('simReprovou').checked && document.getElementById('reprovou').value === ""){
+                    document.getElementById('reprovou').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Qual / quais a(s) disciplinas você reprovou?</h6>");
+                }
             }
             function nReprovou() {
                 document.getElementById('div_reprovou').style.display = 'none';
                 document.getElementById('reprovou').value = "";
-            }
-            
-            function verificaCampos(){
-                var prencheuTudo = true;
-                 if ($('#div_reprovou').is(':visible')){
-                    if(document.getElementById('simReprovou').checked && document.getElementById('reprovou').value === ""){
-                    document.getElementById('reprovou').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Qual / quais a(s) disciplinas você reprovou?</h6>");
-                    prencheuTudo = false; 
-                    } 
-                 }
-                 if (prencheuTudo)
-                    document.getElementById("formAluno").submit();
             }
         </script>
 
@@ -445,7 +436,7 @@
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
                                                                 
-                                                                <button type="button" value="Cadastrar" class="btn btn-primary" onclick="verificaCampos()">
+                                                                <button type="submit" value="Cadastrar" class="btn btn-primary" >
                                                                     <i class="fa fa-check-square-o"></i>Salvar
                                                                 </button>
                                                             </div>
