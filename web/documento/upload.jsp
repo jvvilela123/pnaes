@@ -126,7 +126,7 @@
                                             <div class="form-group row">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-3">
-                                                    <img src="" width="150" height="200">
+                                                    <!--<img src="" width="150" height="200">-->
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -185,6 +185,9 @@
                                                 </div>
                                             </div>   
                                             <div class="form-actions">
+                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
+                                                                    <i class="ft-x"></i> Limpar
+                                                                </button>
                                                 <button type="submit" class="btn btn-primary" name="cadastrar" value="Cadastrar">
                                                     <i class="la la-check-square-o"></i> Enviar
                                                 </button>

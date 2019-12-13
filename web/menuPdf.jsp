@@ -435,17 +435,7 @@ START - Main Menu
     <%
         }
     %>
-    <div class="side-menu-magic">
-        <h4>
-            Admin
-        </h4>
-        <p>
-            Bootstrap 4 
-        </p>
-        <div class="btn-w">
-            <a class="btn btn-white btn-rounded" href="https://themeforest.net/item/light-admin-clean-bootstrap-dashboard-html-template/19760124?ref=Osetin" target="_blank"> Now</a>
-        </div>
-    </div>
+ 
 </div>
 <!--------------------
 END - Main Menu

@@ -20,8 +20,24 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Documentos</title>
+        <title>Análise de Documentos</title>
         <%@include file="../imports.jsp" %>
+        <script>
+            $( function() {
+            var icons = {
+                      header: "ui-icon-circle-arrow-e",
+                      activeHeader: "ui-icon-circle-arrow-s"
+                    };
+            $( "#accordion" ).accordion({
+                      collapsible: true,
+                      icons: icons, 
+                      active: false,
+                      heightStyle: "content"
+
+                    });
+                  } );
+        </script>
+        
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -76,6 +92,8 @@
                                                                         }
                                                                     }
                                                                 }
+                                                                
+                                                                
                                         </script>
                                     </div>
                                     <div class="col-md-6">
@@ -101,9 +119,14 @@
                                             Edital edital = daoFactory.getEditalDao().listar().get(0);
                                         %>
                                         <div class="col-md-3">
-                                            <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200">
+                                             <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200">
+                                           
                                         </div>
-                                        <table class="table table-striped table-responsive-md">
+                                             
+                                             <div id="accordion">
+                                                  <h3>Dados do Aluno</h3>
+                                                  <div>
+                                             <table class="table table-striped table-responsive-md">
                                             <tr>
                                                 <th>Nome:</th>
                                                 <td><%=inscricao.getAluno().getNome()%></td>
@@ -186,14 +209,11 @@
                                                 <th>Já reprovou, qual materia</th>
                                                 <td><%=inscricao.getAluno().getDisciplina()%></td>
                                             </tr>
-                                            
                                             <tr>    
                                                 <th>Bolsas Anteriores</th>
                                                 <td>
                                                     <%
-                                                        
-                                            
-                                                        
+                                                       
                                                     %>
                                                 </td>
                                             </tr>
@@ -217,7 +237,43 @@
                                                 <th>Telefone da Empresa</th>
                                                 <td><%=empresa.getTelefone()%></td>
                                             </tr>
+                                            </table>
+                                            
+                                              </div>
+                                              <h3>Dados da Saúde</h3>
+                                              <div>
+                                            <table class="table table-striped table-responsive-md">
+                                                <tr>    
+                                                <th>Você tem alguma doença crônica,qual?</th>
+                                                <td><%=fichaMedica.getQualDoenca()%></td>
+                                            </tr>
                                             <tr>    
+                                                <th>Você faz uso de medicamento controlado?</th>
+                                                <td><%=fichaMedica.getQualDoenca()%></td>
+                                            </tr>
+                                            <tr>    
+                                                <th>Você tem alguma deficiência,qual?</th>
+                                                <td><%=fichaMedica.getQualDoenca()%></td>
+                                            </tr>
+                                            <tr>    
+                                                <th>Há pessoa(s) na familia com deficiência,qual?</th>
+                                                <td><%=fichaMedica.getQualDoenca()%></td>
+                                            </tr>
+                                            </table>
+                                              </div>
+                                                  
+                                       
+                                             <h3>Dados dos Dependentes</h3>
+                                              <div>
+                                            <table class="table table-striped table-responsive-md">
+                                                
+                                            </table>
+                                              </div>
+                                           
+                                          <h3>Dados Financeiros Renda/Despesa</h3>
+                                      <div>
+                                          <table class="table table-striped table-responsive-md">
+                                               <tr>    
                                                 <th>Renda do aluno</th>
                                                 <td><%=empresa.getRenda()%></td>
                                             </tr>
@@ -241,23 +297,13 @@
                                                     %>
                                                 <td><%=total%></td>
                                             </tr>
-                                            <tr>    
-                                                <th>Você tem alguma doença crônica,qual?</th>
-                                                <td><%=fichaMedica.getDoencaCronica()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Você faz uso de medicamento controlado?</th>
-                                                <td><%=fichaMedica.getMedicamento()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Você tem alguma deficiência,qual?</th>
-                                                <td><%=fichaMedica.getDeficiencia()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Há pessoa(s) na familia com deficiência,qual?</th>
-                                                <td><%=fichaMedica.getDeficienciaDep()%></td>
-                                            </tr>
-                                        </table>
+
+                                          </table>
+                                      </div>
+                                       
+                                       
+                                    </div>
+                                        
                                         <div class="card">
                                             <div class="card-header">
                                                 <h4 class="card-title" id="striped-row-layout-icons">Documentos faltantes</h4>

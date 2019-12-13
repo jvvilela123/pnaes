@@ -18,6 +18,10 @@
 <link href="/pnaes/css/main.css?version=4.4.0" rel="stylesheet">
 <link rel="stylesheet" href="/pnaes/css/alertify.css">
 <script src="/pnaes/js/jquery.js"></script>
+
+
+ 
+ 
 <script src="/pnaes/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/pnaes/bower_components/popper.js/dist/umd/popper.min.js"></script>
 <script src="/pnaes/bower_components/moment/moment.js"></script>
@@ -52,8 +56,14 @@
 <script src="/pnaes/js/html2canvas.min.js"></script>
 <script src="/pnaes/js/pdf.js"></script>
 <script src="/pnaes/js/jspdf.debug.js"></script>
+
 <!-- include alertify script -->
 <script src="/pnaes/js/alertify.js"></script>
+
+<!-- Include JqueryUI-->
+<link rel="stylesheet" href="/pnaes/css/jquery-ui.css">
+<script src="/pnaes/js/jquery-ui.js"></script>
+
 <script type="text/javascript">
 //override defaults
 alertify.defaults.transition = "slide";

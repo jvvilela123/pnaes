@@ -4,6 +4,7 @@
     Author     : ronan
 --%>
 
+<%@page import="java.io.File"%>
 <%@page import="modelo.Edital"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.Uf"%>
@@ -91,6 +92,7 @@
                             <div class="heading-elements">
                             </div>
                          </div>
+                            
                             <div class="card-content collpase show">
                                 <div class="card-body">
                                     <%
@@ -121,7 +123,118 @@
                                                     <%
                             }%>
                                     <form action="../ServletUpload?aluno_id=<%=aluno.getId()%>&cpf=<%=session.getAttribute("cpf")%>&nedital=<%=edital.getNumero()%>&alterar=1" method="post" class="form form-horizontal" enctype="multipart/form-data">
-                                        <div class="form-body">
+                                        <!-- Modal documentosAluno -->
+                                        <div class="modal fade" id="documentosAluno" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title" id="myModalLabel">Documentos do Aluno</h4> 
+                                              </div>
+                                              <div class="modal-body">
+                                                <div style="text-align: center;">
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/da.pdf" 
+                                        style="width:500px; height:500px;" frameborder="0"></iframe>
+                                        </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                                                
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                        <!-- Modal documentosDependentes -->
+                                        <div class="modal fade" id="documentosDependentes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title" id="myModalLabel">Documentos dos Dependentes</h4> 
+                                              </div>
+                                              <div class="modal-body">
+                                                <div style="text-align: center;">
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/da.pdf" 
+                                        style="width:500px; height:500px;" frameborder="0"></iframe>
+                                        </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                                                
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                        <!-- Modal documentosRenda -->
+                                        <div class="modal fade" id="documentosRenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title" id="myModalLabel">Documentos que Comprovam a Renda</h4> 
+                                              </div>
+                                              <div class="modal-body">
+                                                <div style="text-align: center;">
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/da.pdf" 
+                                        style="width:500px; height:500px;" frameborder="0"></iframe>
+                                        </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                                                
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                        <!-- Modal documentosDespesas -->
+                                        <div class="modal fade" id="documentosDespesas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title" id="myModalLabel">Documentos que Comprovam as Despesas</h4> 
+                                              </div>
+                                              <div class="modal-body">
+                                                <div style="text-align: center;">
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/da.pdf" 
+                                        style="width:500px; height:500px;" frameborder="0"></iframe>
+                                        </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                                                
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                        <!-- Modal documentosOutros -->
+                                        <div class="modal fade" id="documentosOutros" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title" id="myModalLabel">Outros Documentos</h4> 
+                                              </div>
+                                              <div class="modal-body">
+                                                <div style="text-align: center;">
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/da.pdf" 
+                                        style="width:500px; height:500px;" frameborder="0"></iframe>
+                                        </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                                                
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                       
+                                        
+                                       <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Envio de Documentos</h4>
                                             <div class="form-group row">
                                                 <div class="col-md-4"></div>
@@ -133,39 +246,52 @@
                                                 <label class="col-md-3 label-control" for="foto">Alterar Foto:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="target"></label>
-                                                    <input type="file" name="foto" required id="target" class="custom-file-input" onchange="uploadFile();">                                    
+                                                    <input type="file" name="foto" required id="target" class="custom-file-input" onchange="uploadFile();">
+                                                    
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="da">Alterar Documentos do Aluno:</label>
-                                                <div class="col-md-9">                                                    
+                                          <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="da">Alterar Documentos do Aluno:
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosAluno">Visualizar Documentos do Aluno</button>
+                                               </label>
+                                                <div class="col-md-9">
+                                                    
                                                     <label class="col-md-6 custom-file-label" for="da"></label>
-                                                    <input type="file" name="da" required id="da" class="custom-file-input">                                                  
+                                                    <input type="file" name="da" required id="da" class="custom-file-input">
+                                                    
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dp">Alterar Documentos dos Dependentes:</label>
+                                                <label class="col-md-3 label-control" for="dp">Alterar Documentos dos Dependentes:
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosDependentes">Visualizar Documentos dos Dependentes</button>
+                                                </label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dp"></label>
                                                     <input type="file" name="dp" id="dp" class="custom-file-input">                                                  
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dr">Alterar Documentos que Comprovam a Renda:</label>
+                                                <label class="col-md-3 label-control" for="dr">Alterar Documentos que Comprovam a Renda:
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosRenda">Visualizar Documentos que Comprovam a Renda</button>
+                                                </label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dr"></label>
                                                     <input type="file" name="dr" required id="dr" class="custom-file-input">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dd">Alterar Documentos que Comprovam as Despesas:</label>
+                                                <label class="col-md-3 label-control" for="dd">Alterar Documentos que Comprovam as Despesas:
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosDespesas">Visualizar Documentos que Comprovam as Despesas</button>
+                                                </label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dd"></label>
                                                     <input type="file" name="dd required" id="dd" class="custom-file-input">                                                  
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="od">Alterar Outros Documentos:</label>
+                                                <label class="col-md-3 label-control" for="od">Alterar Outros Documentos:
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosOutros">Visualizar Outros Documentos</button>
+                                                </label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="od"></label>
                                                     <input type="file" name="od" id="od" class="custom-file-input">                                                  
