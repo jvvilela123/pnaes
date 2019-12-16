@@ -58,6 +58,13 @@
                 }
 
             }
+            
+            function verificaUrl(url) {
+                var http = new XMLHttpRequest();
+                http.open('HEAD', url, false);
+                http.send();
+                return http.status !== 404;
+            }
 
 
         </script>
@@ -96,6 +103,12 @@
                             <div class="card-content collpase show">
                                 <div class="card-body">
                                     <%
+                                       
+                                        
+                                        
+                                        /*String caminhoAtual = new File("").getAbsolutePath();
+                                        String novoArquivo = caminhoAtual + File.separator  + "arquivo.txt";
+                                         new File(novoArquivo).createNewFile();*/
                                        // DaoFactory daoFactory = new DaoFactory();
                                         int tam = daoFactory.getEditalDao().listar().size();
                                        // Edital edital = new Edital();
@@ -155,7 +168,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/da.pdf" 
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dd.pdf" 
                                         style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
@@ -177,7 +190,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/da.pdf" 
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dr.pdf" 
                                         style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
@@ -199,7 +212,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/da.pdf" 
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dp.pdf" 
                                         style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
@@ -221,7 +234,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/da.pdf" 
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/od.pdf" 
                                         style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
@@ -261,6 +274,7 @@
                                                     
                                                 </div>
                                             </div>
+                                            <%if(dependentes.size() > 0){%>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="dp">Alterar Documentos dos Dependentes:
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosDependentes">Visualizar Documentos dos Dependentes</button>
@@ -270,6 +284,7 @@
                                                     <input type="file" name="dp" id="dp" class="custom-file-input">                                                  
                                                 </div>
                                             </div>
+                                            <%}%>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="dr">Alterar Documentos que Comprovam a Renda:
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosRenda">Visualizar Documentos que Comprovam a Renda</button>

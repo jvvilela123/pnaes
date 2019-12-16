@@ -52,7 +52,7 @@
                 var saida = mascara.substring(0, 1);
                 var texto = mascara.substring(i)
 
-                if (texto.substring(0, 1) != saida) {
+                if (texto.substring(0, 1) !== saida) {
                     documento.value += texto.substring(0, 1);
                 }
 
@@ -94,6 +94,8 @@
                             <div class="card-content collpase show">
                                 <div class="card-body">
                                     <%
+                                       
+                                       
                                        // DaoFactory daoFactory = new DaoFactory();
                                         int tam = daoFactory.getEditalDao().listar().size();
                                        // Edital edital = new Edital();
@@ -130,42 +132,44 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="foto">* Foto</label>
+                                                <label class="col-md-3 label-control" for="foto">Foto*:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="target"></label>
                                                     <input type="file" name="foto" required id="target" class="custom-file-input" onchange="uploadFile();">                                    
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="da">* Documentos do Aluno</label>
+                                                <label class="col-md-3 label-control" for="da">Documentos do Aluno*:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="da"></label>
                                                     <input type="file" name="da" required id="da" class="custom-file-input">                                                  
                                                 </div>
                                             </div>
+                                            <%if(dependentes.size() > 0){%>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dp">Documentos dos Dependentes</label>
+                                                <label class="col-md-3 label-control" for="dp">Documentos dos Dependentes*:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dp"></label>
-                                                    <input type="file" name="dp" id="dp" class="custom-file-input">                                                  
+                                                    <input type="file" name="dp" id="dp" required class="custom-file-input">                                                  
                                                 </div>
                                             </div>
+                                             <%}%>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dr">* Documentos que Comprovam a Renda</label>
+                                                <label class="col-md-3 label-control" for="dr">Documentos que Comprovam a Renda*:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dr"></label>
                                                     <input type="file" name="dr" required id="dr" class="custom-file-input">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dd">* Documentos que Comprovam as Despesas</label>
+                                                <label class="col-md-3 label-control" for="dd">Documentos que Comprovam as Despesas*:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dd"></label>
-                                                    <input type="file" name="dd required" id="dd" class="custom-file-input">                                                  
+                                                    <input type="file" name="dd" required id="dd" class="custom-file-input">                                                  
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="od">Outros Documentos</label>
+                                                <label class="col-md-3 label-control" for="od">Outros Documentos:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="od"></label>
                                                     <input type="file" name="od" id="od" class="custom-file-input">                                                  

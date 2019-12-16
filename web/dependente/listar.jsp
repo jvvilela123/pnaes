@@ -65,8 +65,7 @@
                                                     </div>                                                    
                                                     <%                                                        
                                                         DataFormat dataFormat = new DataFormat();
-                                                        List<Dependente> dependentes = new ArrayList<Dependente>();
-                                                        dependentes = daoFactory.getDependenteDao().perquisarPorAluno(alunoId);
+                                                        
                                                     %>
                                                     <table class="table table-striped table-responsive-md">
                                                         <tr>

@@ -1,3 +1,4 @@
+<%@page import="modelo.Dependente"%>
 <%@page import="modelo.FichaMedica"%>
 <%@page import="modelo.Despesa"%>
 <%@page import="java.util.GregorianCalendar"%>
@@ -29,15 +30,19 @@ START - Mobile Menu
                     String msg = new String();
                     DaoFactory daoFactory = new DaoFactory();
                     Edital edital = new Edital();
-                    List<Edital> editais = daoFactory.getEditalDao().listar();
-                    Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
-                    Aluno aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
                     Empresa empresa = new Empresa();
                     Despesa despesa = new Despesa();
                     FichaMedica fichaMedica = new FichaMedica();
+                    Dependente dependente = new Dependente();
+                   
+                    List<Edital> editais = daoFactory.getEditalDao().listar();
+                    Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
+                    Aluno aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
                     List<Empresa> empresas = daoFactory.getEmpresaDao().perquisarPorAluno(alunoId);
                     List<Despesa> despesas = daoFactory.getDespesaDao().perquisarPorAluno(alunoId);
                     List<FichaMedica> fichasMedicas = daoFactory.getFichaMedicaDao().perquisarPorAluno(alunoId);
+                    List<Dependente> dependentes = daoFactory.getDependenteDao().perquisarPorAluno(alunoId);
+                   
                      if(empresas.size() > 0){
                          empresa = empresas.get(0);
                      }
@@ -47,6 +52,11 @@ START - Mobile Menu
                      if(fichasMedicas.size() > 0){
                          fichaMedica = fichasMedicas.get(0);
                      }
+                     
+                     if(dependentes.size() > 0){
+                        dependente = dependentes.get(0);
+                                         }
+                     
                     GregorianCalendar dataAtual = new GregorianCalendar();
                     if (editais.size() == 0) {
                         msg = "Nenhum edital cadastrado";
