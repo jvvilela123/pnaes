@@ -104,6 +104,9 @@ public class ServletEmpresa extends HttpServlet {
                     //Setando dados do Empresa
                     empresa.setCarteira(request.getParameter("carteira"));
                     empresa.setTrabalha(request.getParameter("tab"));
+                    //seta as rendas
+                    empresa.setRenda(Double.parseDouble(request.getParameter("renda")));
+                    empresa.setOrenda(Double.parseDouble(request.getParameter("orenda")));
                     if (request.getParameter("autonomo") != null) {
                         
                         //Se for Funcionário(Carteira ou Público)
@@ -178,9 +181,7 @@ public class ServletEmpresa extends HttpServlet {
                          daoFactory.getEnderecoDao().excluir(endereco);
                     }
                     
-                    //seta as rendas
-                    empresa.setRenda(Double.parseDouble(request.getParameter("renda")));
-                    empresa.setOrenda(Double.parseDouble(request.getParameter("orenda")));
+                    
                     
                     //seta o aluno na empresa
                     //aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));

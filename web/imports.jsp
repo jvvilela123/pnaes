@@ -20,6 +20,8 @@
 <script src="/pnaes/js/jquery.js"></script>
 
 
+
+
  
  
 <script src="/pnaes/bower_components/jquery/dist/jquery.min.js"></script>
@@ -56,6 +58,7 @@
 <script src="/pnaes/js/html2canvas.min.js"></script>
 <script src="/pnaes/js/pdf.js"></script>
 <script src="/pnaes/js/jspdf.debug.js"></script>
+<script src="/pnaes/js/popImg.js"></script>
 
 <!-- include alertify script -->
 <script src="/pnaes/js/alertify.js"></script>
@@ -65,6 +68,10 @@
 <script src="/pnaes/js/jquery-ui.js"></script>
 
 <script type="text/javascript">
+     //Zoom na Imagem do Aluno
+    $(function () {
+    $("#img_aluno").popImg();
+    });
 //override defaults
 alertify.defaults.transition = "slide";
 alertify.defaults.theme.ok = "btn btn-primary";
@@ -148,4 +155,11 @@ function formatar(mascara, documento) {
                     documento.value += texto.substring(0, 1);
                 }
             }
+            
+            function formatarMoeda(valor) {
+            var valorFormatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            return valorFormatado;
+	     //alert('O valor formatado de ' + valor + ' é ' + valorFormatado);
+            }
+            
 </script>

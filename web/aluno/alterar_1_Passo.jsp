@@ -344,7 +344,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="visita">Qual o melhor horario para uma visita, se necessário:*</label>
+                                                                <label class="col-md-3 label-control" for="visita">Qual o melhor horário para uma visita, se necessário:*</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">

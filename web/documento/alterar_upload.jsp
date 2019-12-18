@@ -252,7 +252,7 @@
                                             <div class="form-group row">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-3">
-                                                    <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg" width="150" height="200">
+                                                    <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg" width="150" height="200" id="img_aluno">
                                                 </div>
                                             </div>
                                             <div class="form-group row">

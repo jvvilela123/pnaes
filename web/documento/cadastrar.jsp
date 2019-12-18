@@ -23,21 +23,30 @@
         <title>Análise de Documentos</title>
         <%@include file="../imports.jsp" %>
         <script>
-            $( function() {
-            var icons = {
-                      header: "ui-icon-circle-arrow-e",
-                      activeHeader: "ui-icon-circle-arrow-s"
-                    };
-            $( "#accordion" ).accordion({
-                      collapsible: true,
-                      icons: icons, 
-                      active: false,
-                      heightStyle: "content"
+            $(function () {
+                var icons = {
+                    header: "ui-icon-circle-arrow-e",
+                    activeHeader: "ui-icon-circle-arrow-s"
+                };
+                $("#accordion").accordion({
+                    collapsible: true,
+                    icons: icons,
+                    active: false,
+                    heightStyle: "content"
 
-                    });
-                  } );
+                });
+
+                $("#accordion2").accordion({
+                    collapsible: true,
+                    icons: icons,
+                    active: false,
+                    heightStyle: "content"
+
+                });
+            });
+
         </script>
-        
+
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -63,6 +72,7 @@
                                     <div class="col-md-6" id="pdf">
 
                                         <script>
+                                           
                                             function abrir(ele) {
                                                 var elem = document.getElementById('dinamic_iframe');
                                                 if (elem !== null) { // remover caso exista
@@ -76,29 +86,28 @@
                                                 document.getElementById("pdf").appendChild(iframe);
                                                 return false;
                                             }
-                                            function soma(){
-                                                                    ta = document.getElementById("docf")
-                                                                    var cb = []
-                                                                    cb[0] = document.getElementById("cbdfrg")
-                                                                    cb[1] = document.getElementById("cbdfcpf")
-                                                                    cb[2] = document.getElementById("cbdfce")
-                                                                    //console.log(cb)
-                                                                    ta.value = ''
-                                                                    for(i=0; i<cb.length;i++){
-                                                                        //console.log(i+" "+cb[i])
-                                                                        if(cb[i].checked){
-                                                                            console.log(i+" "+cb[i].value)
-                                                                            ta.value = ta.value + cb[i].value+"\n"
-                                                                        }
-                                                                    }
-                                                                }
-                                                                
-                                                                
+                                            function soma() {
+                                                ta = document.getElementById("docf")
+                                                var cb = []
+                                                cb[0] = document.getElementById("cbdfrg")
+                                                cb[1] = document.getElementById("cbdfcpf")
+                                                cb[2] = document.getElementById("cbdfce")
+                                                //console.log(cb)
+                                                ta.value = ''
+                                                for (i = 0; i < cb.length; i++) {
+                                                    //console.log(i+" "+cb[i])
+                                                    if (cb[i].checked) {
+                                                        console.log(i + " " + cb[i].value)
+                                                        ta.value = ta.value + cb[i].value + "\n"
+                                                    }
+                                                }
+                                            }
+
+
                                         </script>
                                     </div>
                                     <div class="col-md-6">
-                                        <%                                            
-                                            Empresa empresa = new Empresa();
+                                        <%                                            Empresa empresa = new Empresa();
                                             DaoFactory daoFactory = new DaoFactory();
                                             DataFormat dataFormat = new DataFormat();
 
@@ -109,7 +118,7 @@
                                             List<Dependente> deps = daoFactory.getDependenteDao().perquisarPorAluno(inscricao.getAluno().getId());
                                             List<Empresa> empresas = new DaoFactory().getEmpresaDao().perquisarPorAluno(inscricao.getAluno().getId());
                                             Despesa despesa = new DaoFactory().getDespesaDao().perquisarPorAluno(inscricao.getAluno().getId()).get(0);
-                                            
+
                                             FichaMedica fichaMedica = new DaoFactory().getFichaMedicaDao().perquisarPorAluno(inscricao.getAluno().getId()).get(0);
                                             if (empresas.size() != 0) {
                                                 empresa = empresas.get(0);
@@ -119,191 +128,223 @@
                                             Edital edital = daoFactory.getEditalDao().listar().get(0);
                                         %>
                                         <div class="col-md-3">
-                                             <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200">
-                                           
-                                        </div>
-                                             
-                                             <div id="accordion">
-                                                  <h3>Dados do Aluno</h3>
-                                                  <div>
-                                             <table class="table table-striped table-responsive-md">
-                                            <tr>
-                                                <th>Nome:</th>
-                                                <td><%=inscricao.getAluno().getNome()%></td>
-                                            </tr>
-                                        
-                                        
-                                            <tr>
-                                                <th>CPF:</th>
-                                                <td><%=inscricao.getAluno().getCpf()%></td>
-                                            </tr> 
-                                            <tr>
-                                                <th>RG</th>
-                                                <td><%=inscricao.getAluno().getRg()%></td>
-                                            </tr>
-                                            
-                                            <tr>    
-                                                <th>UF de Expedição</th>
-                                                <td><%=inscricao.getAluno().getUfExpedicao().getNome()%></td>
-                                            </tr>
-                                            
-                                            <tr>    
-                                                <th>Sexo</th>
-                                                <td><%=inscricao.getAluno().getSexo()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Data Nascimento</th>
-                                                <td><%=dataFormat.formatarData(inscricao.getAluno().getDtn())%></td>
-                                            </tr>
-                                            
-                                            <tr>    
-                                                <th>Telefone</th>
-                                                <td><%=inscricao.getAluno().getTelefone()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Email</th>
-                                                <td><%=inscricao.getAluno().getEmail()%></td>
-                                            </tr>
-                                           
-                                            <tr>    
-                                                <th>Lougradouro</th>
-                                                <td><%=inscricao.getAluno().getEndereco().getLogradouro()%></td>
-                                            </tr>
-                                             
-                                            <tr>    
-                                                <th>Complemento</th>
-                                                <td><%=inscricao.getAluno().getEndereco().getComplemento()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Numero</th>
-                                                <td><%=inscricao.getAluno().getEndereco().getNumero()%></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Bairro</th>
-                                                <td><%=inscricao.getAluno().getEndereco().getBairro()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Cidade</th>
-                                                <td><%=inscricao.getAluno().getEndereco().getCidade().getNome()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Estado</th>
-                                                <td><%=inscricao.getAluno().getEndereco().getCidade().getUf().getNome()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Matricula</th>
-                                                <td><%=inscricao.getAluno().getMatricula()%></td>
-                                            </tr>
-                                            
-                                            <tr>    
-                                                <th>Curso</th>
-                                                <td><%=inscricao.getAluno().getCurso().getNome()%></td>
-                                            </tr>
-                                            
-                                            <tr>    
-                                                <th>Periodo </th>
-                                                <td><%=inscricao.getAluno().getPeriodo()%></td>
-                                            </tr>
-                                            
-                                            <tr>    
-                                                <th>Já reprovou, qual materia</th>
-                                                <td><%=inscricao.getAluno().getDisciplina()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Bolsas Anteriores</th>
-                                                <td>
-                                                    <%
-                                                       
-                                                    %>
-                                                </td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Qual ano</th>
-                                                <td></td>
-                                            </tr>
-                                            <%
-                                            System.out.println("inscricao = " + inscricao.getId());
-                                            System.out.println("aluno = " + inscricao.getAluno().getNome());
-                                        %>
-                                            <tr>    
-                                                <th>Qual meio de Transporte</th>
-                                                <td><%=inscricao.getAluno().getMeioTransporte()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Nome da empresa que trabalha</th>
-                                                <td><%=empresa.getNome()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Telefone da Empresa</th>
-                                                <td><%=empresa.getTelefone()%></td>
-                                            </tr>
-                                            </table>
-                                            
-                                              </div>
-                                              <h3>Dados da Saúde</h3>
-                                              <div>
-                                            <table class="table table-striped table-responsive-md">
-                                                <tr>    
-                                                <th>Você tem alguma doença crônica,qual?</th>
-                                                <td><%=fichaMedica.getQualDoenca()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Você faz uso de medicamento controlado?</th>
-                                                <td><%=fichaMedica.getQualDoenca()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Você tem alguma deficiência,qual?</th>
-                                                <td><%=fichaMedica.getQualDoenca()%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Há pessoa(s) na familia com deficiência,qual?</th>
-                                                <td><%=fichaMedica.getQualDoenca()%></td>
-                                            </tr>
-                                            </table>
-                                              </div>
-                                                  
-                                       
-                                             <h3>Dados dos Dependentes</h3>
-                                              <div>
-                                            <table class="table table-striped table-responsive-md">
-                                                
-                                            </table>
-                                              </div>
-                                           
-                                          <h3>Dados Financeiros Renda/Despesa</h3>
-                                      <div>
-                                          <table class="table table-striped table-responsive-md">
-                                               <tr>    
-                                                <th>Renda do aluno</th>
-                                                <td><%=empresa.getRenda()%></td>
-                                            </tr>
-                                            <tr> 
-                                                <%
-                                                    Double total1 = new Double(0);
-                                                    Double td = new Double(0);
-                                                    for (Dependente d : deps) {
-                                                        td = td + d.getRenda();
-                                                    }
-                                                    total1 = empresa.getRenda() + td + empresa.getOrenda();
-                                                %>
-                                                <th>Renda familiar</th>
-                                                <td><%=total1%></td>
-                                            </tr>
-                                            <tr>    
-                                                <th>Despesas da familia</th>
-                                                    <%
-                                                        Double total = despesa.getAgua() + despesa.getEnergia()
-                                                                + despesa.getFarmacia() + despesa.getMoradia() + despesa.getOutrasDespesas() + despesa.getTelefone();
-                                                    %>
-                                                <td><%=total%></td>
-                                            </tr>
+                                            <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" id="img_aluno">
 
-                                          </table>
-                                      </div>
-                                       
-                                       
-                                    </div>
-                                        
+                                        </div>
+                                        <div id="accordion">
+                                            <h3>Dados do Aluno</h3>
+                                            <div>
+                                                <div id="accordion2">
+                                                    <h3>Dados Pessoais (Documentos e Endereço)</h3>
+                                                    <div>
+                                                        <table class="table table-striped table-responsive-md">
+                                                            <tr>
+                                                                <th>Nome:</th>
+                                                                <td><%=inscricao.getAluno().getNome()%></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>CPF:</th>
+                                                                <td><%=inscricao.getAluno().getCpf()%></td>
+                                                            </tr> 
+                                                            <tr>
+                                                                <th>RG:</th>
+                                                                <td><%=inscricao.getAluno().getRg()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>UF de Expedição:</th>
+                                                                <td><%=inscricao.getAluno().getUfExpedicao().getNome()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Sexo:</th>
+                                                                <td><%=inscricao.getAluno().getSexo()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Data Nascimento:</th>
+                                                                <td><%=dataFormat.formatarData(inscricao.getAluno().getDtn())%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Telefone:</th>
+                                                                <td><%=inscricao.getAluno().getTelefone()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Email:</th>
+                                                                <td><%=inscricao.getAluno().getEmail()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Lougradouro:</th>
+                                                                <td><%=inscricao.getAluno().getEndereco().getLogradouro()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Complemento:</th>
+                                                                <td><%=inscricao.getAluno().getEndereco().getComplemento()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Numero:</th>
+                                                                <td><%=inscricao.getAluno().getEndereco().getNumero()%></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Bairro:</th>
+                                                                <td><%=inscricao.getAluno().getEndereco().getBairro()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Cidade:</th>
+                                                                <td><%=inscricao.getAluno().getEndereco().getCidade().getNome()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Estado:</th>
+                                                                <td><%=inscricao.getAluno().getEndereco().getCidade().getUf().getNome()%></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <h3>Informações do Estudante</h3>
+                                                    <div>
+                                                        <table class="table table-striped table-responsive-md">
+                                                            <tr>    
+                                                                <th>Número da Matrícula:</th>
+                                                                <td><%=inscricao.getAluno().getMatricula()%></td>
+                                                            </tr>
+
+                                                            <tr>    
+                                                                <th>Curso:</th>
+                                                                <td><%=inscricao.getAluno().getCurso().getCategoria().getNome()%> - <%=inscricao.getAluno().getCurso().getNome()%></td>
+                                                            </tr>
+
+                                                            <tr>    
+                                                                <th>Período:</th>
+                                                                <td><%=inscricao.getAluno().getCurso().getqPeriodo()%>º <%=inscricao.getAluno().getCurso().getTipoPeriodo()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Cursou Ensino Fundamental em Ensino:</th>
+                                                                <td><%=inscricao.getAluno().getEnsinoFundamental()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Cursou Ensino Médio em Ensino:</th>
+                                                                <td><%=inscricao.getAluno().getEnsinoMedio()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Ingressou no IFTO via:</th>
+                                                                <td><%=inscricao.getAluno().getEntradaIfto()%></td>
+                                                            </tr>
+
+                                                            <%if (inscricao.getAluno().getReprovou() != null && !inscricao.getAluno().getReprovou().equals("")) {%>
+                                                            <tr>    
+                                                                <th>Disciplina(s) que reprovou:</th>
+                                                                <td><%=inscricao.getAluno().getReprovou()%></td>
+                                                            </tr>
+                                                            <%}%>
+                                                            <tr>    
+                                                                <th>Meio de Transporte:</th>
+                                                                <td><%=inscricao.getAluno().getMeioTransporte()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Melhor horário para uma visita:</th>
+                                                                <td><%=inscricao.getAluno().getPeriodoVisita()%></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <h3>Ocupação do Estudante</h3>
+                                                    <div>
+                                                        <table class="table table-striped table-responsive-md">
+                                                            <tr>    
+                                                                <th>Nome da empresa que trabalha</th>
+                                                                <td><%=empresa.getNome()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Telefone da Empresa</th>
+                                                                <td><%=empresa.getTelefone()%></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <h3>Dados da Saúde</h3>
+                                            <div>
+                                                <table class="table table-striped table-responsive-md">
+                                                    <tr>    
+                                                        <th>Você tem alguma doença crônica,qual?</th>
+                                                        <td><%=fichaMedica.getQualDoenca()%></td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th>Você faz uso de medicamento controlado?</th>
+                                                        <td><%=fichaMedica.getQualDoenca()%></td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th>Você tem alguma deficiência,qual?</th>
+                                                        <td><%=fichaMedica.getQualDoenca()%></td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th>Há pessoa(s) na familia com deficiência,qual?</th>
+                                                        <td><%=fichaMedica.getQualDoenca()%></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+
+
+                                            <h3>Dados dos Dependentes</h3>
+                                            <div>
+                                                <table class="table table-striped table-responsive-md">
+
+                                                </table>
+                                            </div>
+
+                                            <h3>Dados Financeiros Renda/Despesa</h3>
+                                            <div>
+                                                <table class="table table-striped table-responsive-md">
+                                                    <tr>    
+                                                        <th>Renda do Aluno</th>
+                                                        <td><script>document.write(formatarMoeda(<%=empresa.getRenda()%>));</script></td>
+                                                    </tr>
+
+                                                    <tr> 
+                                                        <%
+                                                            Double total1 = new Double(0);
+                                                            Double td = new Double(0);
+                                                            Double perCapita = new Double(0);
+                                                            int i = 0;
+                                                            for (Dependente d : deps) {
+                                                                i++;
+                                                                td = td + d.getRenda();
+                                                            }
+                                                            total1 = empresa.getRenda() + td + empresa.getOrenda();
+                                                            perCapita = total1 / (i + 1);
+                                                        %>
+                                                        <th>Renda Familiar Total:</th>
+                                                        <td><script>document.write(formatarMoeda(<%=total1%>));</script></td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th>Renda per capita</th>
+                                                        <td><script>document.write(formatarMoeda(<%=perCapita%>));</script></td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th>Despesas Familiar Total:</th>
+                                                            <%
+                                                                Double total = despesa.getAgua() + despesa.getEnergia()
+                                                                        + despesa.getFarmacia() + despesa.getMoradia() + despesa.getOutrasDespesas() + despesa.getTelefone();
+                                                            %>
+                                                        <td><script>document.write(formatarMoeda(<%=total%>));</script></td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                            <h3 class="ui-state-disabled">Bolsas Anteriores</h3>
+                                            <div>
+                                                <table class="table table-striped table-responsive-md">
+                                                    <tr>    
+                                                        <th>Bolsa</th>
+                                                        <th>Edital</th>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>teste</td>
+                                                        <td>001 / 2040</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+
+
+                                        </div>
+
                                         <div class="card">
                                             <div class="card-header">
                                                 <h4 class="card-title" id="striped-row-layout-icons">Documentos faltantes</h4>
@@ -318,7 +359,7 @@
                                                     </div>
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletInscricao?opcao=alterar&i_id=<%=inscricao.getId()%>">
                                                         <div class="form-body">
-                                                            
+
                                                             <div class="form-group row">
                                                                 <div class="col-md-3">
                                                                     <div class="input-group">
@@ -340,7 +381,7 @@
                                                                     <textarea  cols="40" rows="4" name="docf" id="docf"></textarea>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                             <div class="form-group row">
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">

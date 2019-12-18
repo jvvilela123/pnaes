@@ -14,17 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sistema PNAES</title>
 
-        <script>
-            function formatar(mascara, documento) {
-                var i = documento.value.length;
-                var saida = mascara.substring(0, 1);
-                var texto = mascara.substring(i)
-                if (texto.substring(0, 1) != saida) {
-                    documento.value += texto.substring(0, 1);
-                }
-
-            }
-        </script>
+       
         <%@include file="imports.jsp" %>
     </head>
     <body class="auth-wrapper">
@@ -85,19 +75,19 @@
                                             <form method="POST" action="ServletLogin">
                                                 <div class="form-body">
                                                     <div class="form-group row">
-                                                        <label class="col-md-3 label-control" for="cpf">Usuario</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-3 label-control" for="cpf">Usuário</label>
+                                                        <div class="col-md-6">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Login" maxlength="14" required>
+                                                                <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Usuário (mesmo do SIGA)" maxlength="14" required>
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control" for="senha">Senha</label>
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-6">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required>
+                                                                <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha (mesma do SIGA)" required>
                                                                 <div class="form-control-position">
                                                                     <i class="fa fa-briefcase"></i>
                                                                 </div>
