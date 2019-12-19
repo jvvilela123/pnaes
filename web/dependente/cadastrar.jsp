@@ -98,25 +98,25 @@
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDependente?opcao=cadastrar&aluno_id=<%=session.getAttribute("aluno_id")%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="nome">Nome</label>
+                                                                <label class="col-md-3 label-control" for="nome">Nome:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="cpf">CPF</label>
+                                                                <label class="col-md-3 label-control" for="cpf">CPF:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="rg">RG</label>
+                                                                <label class="col-md-3 label-control" for="rg">RG:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="rg" id="rg"  class="form-control" placeholder="RG"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="ufe">Uf de Expedição</label>
+                                                                <label class="col-md-3 label-control" for="ufe">Uf de Expedição do RG:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="ufe" name="ufe" class="form-control"  required>
                                                                         <option selected="" disabled="">Selecione a UF de Expedição</option>
@@ -130,7 +130,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="sexo">Sexo</label>
+                                                                <label class="col-md-3 label-control" for="sexo">Sexo:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="d-inline-block custom-control custom-radio mr-1">
@@ -145,31 +145,31 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento</label>
+                                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" maxlength="10" OnKeyPress="formatar('##/##/####', this)"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="email">Email</label>
+                                                                <label class="col-md-3 label-control" for="email">E-mail:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="email" name="email" id="email"  class="form-control" placeholder="Email" required>
                                                                 </div>
                                                             </div>                                                
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="telefone">Telefone</label>
+                                                                <label class="col-md-3 label-control" for="telefone">Telefone:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="99 99999-9999" maxlength="14" OnKeyPress="formatar('## #####-####', this)"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco</label>
+                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="grauParentesco" id="grauParentesco"  class="form-control" placeholder="Grau de Parentesco"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="atividadeProf">Atividade Ocupacional</label>
+                                                                <label class="col-md-3 label-control" for="atividadeProf">Atividade Ocupacional:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="atividadeProf" name="atividadeProf" class="form-control" required>
                                                                         <option selected="" disabled="">Selecione a Atividade Profissional</option>
@@ -181,12 +181,13 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="renda">Renda</label>
+                                                                <label class="col-md-3 label-control" for="renda">Renda Mensal:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="renda" id="renda"  value="0.00" class="form-control" placeholder="Renda Mensal" onKeyPress="return(moeda(this,'','.',event))"  required>
                                                                 </div>
                                                             </div>        
                                                             <div class="form-actions right">
+                                                                <a href="/pnaes/dependente/listar.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>

@@ -3,6 +3,7 @@
     Created on : 22/03/2018, 08:11:55
     Author     : ronan
 --%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="modelo.Entrevista"%>
 <%@page import="modelo.Bolsa"%>
 <%@page import="modelo.Aluno"%>
@@ -37,6 +38,13 @@
                 });
 
                 $("#accordion2").accordion({
+                    collapsible: true,
+                    icons: icons,
+                    active: false,
+                    heightStyle: "content"
+
+                });
+                $("#accordion3").accordion({
                     collapsible: true,
                     icons: icons,
                     active: false,
@@ -132,7 +140,7 @@
 
                                         </div>
                                         <div id="accordion">
-                                            <h3>Dados do Aluno</h3>
+                                            <h3>Dados do Estudante</h3>
                                             <div>
                                                 <div id="accordion2">
                                                     <h3>Dados Pessoais (Documentos e Endereço)</h3>
@@ -174,10 +182,12 @@
                                                                 <th>Lougradouro:</th>
                                                                 <td><%=inscricao.getAluno().getEndereco().getLogradouro()%></td>
                                                             </tr>
+                                                            <%if(!inscricao.getAluno().getEndereco().getComplemento().equals("") && inscricao.getAluno().getEndereco().getComplemento()!= null){%>
                                                             <tr>    
                                                                 <th>Complemento:</th>
                                                                 <td><%=inscricao.getAluno().getEndereco().getComplemento()%></td>
                                                             </tr>
+                                                            <%}%>
                                                             <tr>    
                                                                 <th>Numero:</th>
                                                                 <td><%=inscricao.getAluno().getEndereco().getNumero()%></td>
@@ -228,7 +238,7 @@
 
                                                             <%if (inscricao.getAluno().getReprovou() != null && !inscricao.getAluno().getReprovou().equals("")) {%>
                                                             <tr>    
-                                                                <th>Disciplina(s) que reprovou:</th>
+                                                                <th>Disciplina(s) que Reprovou:</th>
                                                                 <td><%=inscricao.getAluno().getReprovou()%></td>
                                                             </tr>
                                                             <%}%>
@@ -237,7 +247,7 @@
                                                                 <td><%=inscricao.getAluno().getMeioTransporte()%></td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>Melhor horário para uma visita:</th>
+                                                                <th>Melhor Horário para uma Visita:</th>
                                                                 <td><%=inscricao.getAluno().getPeriodoVisita()%></td>
                                                             </tr>
                                                         </table>
@@ -246,53 +256,148 @@
                                                     <div>
                                                         <table class="table table-striped table-responsive-md">
                                                             <tr>    
-                                                                <th>Nome da empresa que trabalha</th>
+                                                                <th>Tem carteira de Trabalho?</th>
+                                                                <td><%=empresa.getCarteira().toUpperCase()%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Trabalha Atualmente?</th>
+                                                                <td><%=empresa.getTrabalha().toUpperCase()%></td>
+                                                            </tr>
+                                                            
+                                                            <tr>    
+                                                                <th>Situação Profissional:</th>
+                                                                <td><%=empresa.getAtividade()%></td>
+                                                            </tr>
+                                                            
+                                                            <%if(empresa.getAtividade().equals("Empregado CLT") || empresa.getAtividade().equals("Funcionanio Publico")){%>
+                                                            <tr>    
+                                                                <th>Nome da Empresa que Trabalha:</th>
                                                                 <td><%=empresa.getNome()%></td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>Telefone da Empresa</th>
+                                                                <th>Telefone da Empresa:</th>
                                                                 <td><%=empresa.getTelefone()%></td>
                                                             </tr>
+                                                            <tr>    
+                                                                <th>Nome do Responsável da Empresa:</th>
+                                                                <td><%=empresa.getResponsavel()%></td>
+                                                            </tr>
+                                                            <%}%>
                                                         </table>
                                                     </div>
-                                                </div>
-
-                                            </div>
-                                            <h3>Dados da Saúde</h3>
-                                            <div>
+                                                            <%if(fichaMedica.getTemDoenca().equals("Não") &&
+                                                                 fichaMedica.getTemDoencaDep().equals("Não") &&
+                                                                 fichaMedica.getTemMedicamento().equals("Não") &&
+                                                                 fichaMedica.getTemMedicamentoDep().equals("Não") &&
+                                                                 fichaMedica.getTemDeficiencia().equals("Não") &&
+                                                                 fichaMedica.getTemDeficienciaDep().equals("Não")){%>
+                                                        <h3 class="ui-state-disabled">Estudante e Família NÃO Possui Doenças, Deficiências e Medicamentos</h3>
+                                                        <%}else{%>
+                                                        <h3>Saúde do Estudante/Família</h3>
+                                                        <%}%>
+                                                <div>
                                                 <table class="table table-striped table-responsive-md">
+                                                    <%if(fichaMedica.getTemDoenca().equals("Sim")){%>
                                                     <tr>    
-                                                        <th>Você tem alguma doença crônica,qual?</th>
+                                                        <th>Estudante tem alguma doença crônica, qual?</th>
                                                         <td><%=fichaMedica.getQualDoenca()%></td>
                                                     </tr>
+                                                   <%}if(fichaMedica.getTemDoencaDep().equals("Sim")){%>
                                                     <tr>    
-                                                        <th>Você faz uso de medicamento controlado?</th>
+                                                        <th>Há pessoa(s) na família com alguma doença crônica, qual?</th>
                                                         <td><%=fichaMedica.getQualDoenca()%></td>
                                                     </tr>
+                                                     <%}if(fichaMedica.getTemMedicamento().equals("Sim")){%>
                                                     <tr>    
-                                                        <th>Você tem alguma deficiência,qual?</th>
-                                                        <td><%=fichaMedica.getQualDoenca()%></td>
+                                                        <th>Estudante faz uso de medicamento controlado, qual?</th>
+                                                        <td><%=fichaMedica.getQualMedicamento()%></td>
                                                     </tr>
+                                                    <%}if(fichaMedica.getTemMedicamentoDep().equals("Sim")){%>
                                                     <tr>    
-                                                        <th>Há pessoa(s) na familia com deficiência,qual?</th>
-                                                        <td><%=fichaMedica.getQualDoenca()%></td>
+                                                        <th>Há pessoa(s) na família que faz uso de medicamento controlado, qual?</th>
+                                                        <td><%=fichaMedica.getQualMedicamentoDep()%></td>
                                                     </tr>
+                                                     <%}if(fichaMedica.getTemDeficiencia().equals("Sim")){%>
+                                                    <tr>    
+                                                        <th>Estudante tem alguma deficiência, qual?</th>
+                                                        <td><%=fichaMedica.getQualDeficiencia()%></td>
+                                                    </tr>
+                                                     <%}if(fichaMedica.getTemDeficienciaDep().equals("Sim")){%>
+                                                    <tr>    
+                                                        <th>Há pessoa(s) na família com deficiência, qual?</th>
+                                                        <td><%=fichaMedica.getQualDeficienciaDep()%></td>
+                                                    </tr>
+                                                    <%}%>
+                                                    
                                                 </table>
                                             </div>
-
-
-                                            <h3>Dados dos Dependentes</h3>
-                                            <div>
-                                                <table class="table table-striped table-responsive-md">
-
-                                                </table>
+                                           </div>
+                                          </div>
+                                            <%if (deps.size() == 0) { %>    
+                                           <h3 class="ui-state-disabled">Estudante NÃO possui Dependentes</h3>
+                                           <%}else{%>
+                                           <h3>Dado(s) do(s) Dependente(s)</h3>
+                                           <%}%>
+                                           <div>
+                                               <div id="accordion3">
+                                                   <%for (Dependente d : deps) { %>
+                                                    <h3><%=d.getNome().toUpperCase()%></h3>
+                                                    <div>
+                                                    <table class="table table-striped table-responsive-md">
+                                                       <tr>    
+                                                        <th>CPF:</th>
+                                                        <td><%=d.getCpf()%></td>
+                                                       </tr>
+                                                       <tr>    
+                                                        <th>RG:</th>
+                                                        <td><%=d.getRg()%></td>
+                                                       </tr>
+                                                       <tr>    
+                                                        <th>UF de Expedição:</th>
+                                                        <td><%=d.getUfExpedicao().getNome()%></td>
+                                                       </tr>
+                                                       <tr>    
+                                                        <th>Sexo:</th>
+                                                        <td><%=d.getSexo()%></td>
+                                                       </tr>
+                                                       <tr>    
+                                                        <th>Data de Nascimento:</th>
+                                                        <%
+                                                            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+                                                        %>
+                                                        <td><%=formatador.format(d.getDtn().getTime())%></td>
+                                                       </tr>
+                                                       <tr>    
+                                                        <th>E-mail:</th>
+                                                        <td><%=d.getEmail()%></td>
+                                                       </tr>
+                                                       <tr>    
+                                                        <th>Telefone:</th>
+                                                        <td><%=d.getTelefone()%></td>
+                                                       </tr>
+                                                       <tr>    
+                                                        <th>Grau de Parentesco:</th>
+                                                        <td><%=d.getGrauParentesco()%></td>
+                                                       </tr>
+                                                       <tr>    
+                                                        <th>Atividade Ocupacional:</th>
+                                                        <td><%=d.getAtividadeProf()%></td>
+                                                       </tr>
+                                                       <tr>    
+                                                        <th>Renda Mensal:</th>
+                                                        <td><script>document.write(formatarMoeda(<%=d.getRenda()%>));</script></td>
+                                                       </tr>
+                                                  </table>
+                                                  </div>
+                                                  <%}%>
+                                               </div>
                                             </div>
-
-                                            <h3>Dados Financeiros Renda/Despesa</h3>
+                                            
+                                           <h3>Dados Financeiros Renda/Despesa</h3>
                                             <div>
                                                 <table class="table table-striped table-responsive-md">
                                                     <tr>    
-                                                        <th>Renda do Aluno</th>
+                                                        <th>Renda do Estudante</th>
                                                         <td><script>document.write(formatarMoeda(<%=empresa.getRenda()%>));</script></td>
                                                     </tr>
 
@@ -327,7 +432,7 @@
 
                                                 </table>
                                             </div>
-                                            <h3 class="ui-state-disabled">Bolsas Anteriores</h3>
+                                            <h3 class="ui-state-disabled">NÃO possui Bolsas Anteriores</h3>
                                             <div>
                                                 <table class="table table-striped table-responsive-md">
                                                     <tr>    
@@ -341,9 +446,7 @@
                                                     </tr>
                                                 </table>
                                             </div>
-
-
-                                        </div>
+                                         </div>
 
                                         <div class="card">
                                             <div class="card-header">

@@ -1,3 +1,5 @@
+<%@page import="modelo.Dependente"%>
+<%@page import="java.util.List"%>
 <%@page import="modelo.Inscricao"%>
 <%@page import="modelo.Edital"%>
 <%@page import="dao.DaoFactory"%>
@@ -225,17 +227,7 @@ START - Mobile Menu
         <!--------------------
         END - Mobile Menu List
         -------------------->
-        <div class="mobile-menu-magic">
-            <h4>
-                Admin
-            </h4>
-            <p>
-                Bootstrap 4
-            </p>
-            <div class="btn-w">
-                <a class="btn btn-white btn-rounded" href="#" target="_blank"> NowCCS</a>
-            </div>
-        </div>
+      
     </div>
 </div>
 <!--------------------
@@ -349,6 +341,7 @@ START - Main Menu
             Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
             int tam = daoFactory.getEditalDao().listar().size();
             Edital edital = new Edital();
+            List<Dependente> deps = daoFactory.getDependenteDao().perquisarPorAluno(inscricao.getAluno().getId());
             if(tam > 0){
                 edital = daoFactory.getEditalDao().listar().get(tam-1);
             }
@@ -371,6 +364,7 @@ START - Main Menu
 
             </div>
         </li>
+        <%if (deps.size() > 0) {    %>
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
@@ -386,6 +380,7 @@ START - Main Menu
                 </div>
             </div>
         </li>
+        <%}%>
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dr.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">

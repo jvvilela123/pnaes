@@ -267,7 +267,7 @@
                                                                         <div class="input-group">
                                                                             <div class="d-inline-block custom-control custom-radio mr-1">
                                                                                  <%
-                                                                                if (empresa.getAtividade().equals("Autonomo")) {
+                                                                                if (empresa.getAtividade().equals("Autônomo")) {
                                                                                     out.println("<input checked type='radio' name='autonomo' id='autonomosim' value='sim' class='custom-control-input' onclick='trabalhaautonomo();'>");
                                                                                 } else {
                                                                                     out.println("<input type='radio' name='autonomo' id='autonomosim' value='sim' class='custom-control-input' onclick='trabalhaautonomo();'>");
@@ -277,7 +277,7 @@
                                                                             </div>
                                                                             <div class="d-inline-block custom-control custom-radio">
                                                                                  <%
-                                                                                if (!empresa.getAtividade().equals("Autonomo")) {
+                                                                                if (!empresa.getAtividade().equals("Autônomo")) {
                                                                                     out.println("<input checked type='radio' name='autonomo' id='autonomonao' value='nao' class='custom-control-input' onclick='trabalhaempresa();'>");
                                                                                 } else {
                                                                                     out.println("<input type='radio' name='autonomo' id='autonomonao' value='nao' class='custom-control-input' onclick='trabalhaempresa();'>");
@@ -290,7 +290,7 @@
                                                                 </div>
                                                             </div>
                                                             <%
-                                                                if (!empresa.getAtividade().equals("Autonomo") && empresa.getTrabalha().equals("nao")) {
+                                                                if (!empresa.getAtividade().equals("Autônomo") && empresa.getTrabalha().equals("nao")) {
                                                                     out.println("<div id='div2' class='show'>");
                                                                 } else {
                                                                     out.println("<div id='div2' class='hide'>");
@@ -325,7 +325,7 @@
                                                                 </div>
                                                             </div>
                                                            <%
-                                                                if (!empresa.getAtividade().equals("Autonomo") && empresa.getTrabalha().equals("sim")) {
+                                                                if (!empresa.getAtividade().equals("Autônomo") && empresa.getTrabalha().equals("sim")) {
                                                                     out.println("<div id='div3' class='show'>");
                                                                 } else {
                                                                     out.println("<div id='div3' class='hide'>");

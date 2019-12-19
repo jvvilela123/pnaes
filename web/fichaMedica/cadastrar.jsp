@@ -287,7 +287,7 @@
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-3">
                                                             <div class="custom-control custom-radio">
-                                                                <input type="radio" name="temDoenca" id="doencaCronica1nao" value="Nao" class="custom-control-input" onclick="naoTemDoenca();">
+                                                                <input type="radio" name="temDoenca" id="doencaCronica1nao" value="Não" class="custom-control-input" onclick="naoTemDoenca();">
                                                                 <label class="custom-control-label" for="doencaCronica1nao">Não</label>
                                                             </div>
                                                             <div class="custom-control custom-radio">
@@ -362,7 +362,7 @@
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-3">
                                                             <div class="custom-control custom-radio">
-                                                                <input type="radio" name="temDoencaDep" id="doencaCronicafamilianao" value="Nao" class="custom-control-input" onclick="naoTemDoencaFamilia();">
+                                                                <input type="radio" name="temDoencaDep" id="doencaCronicafamilianao" value="Não" class="custom-control-input" onclick="naoTemDoencaFamilia();">
                                                                 <label class="custom-control-label" for="doencaCronicafamilianao">Não</label>
                                                             </div>
                                                             <div class="custom-control custom-radio">
@@ -438,7 +438,7 @@
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-2">
                                                             <div class="custom-control custom-radio">
-                                                                <input type="radio" name="temMedicamento" id="naom" value="Nao" class="custom-control-input" onclick="naoTemMedicamento();">
+                                                                <input type="radio" name="temMedicamento" id="naom" value="Não" class="custom-control-input" onclick="naoTemMedicamento();">
                                                                 <label class="custom-control-label" for="naom">Não</label>
                                                             </div>
                                                             <div class="custom-control custom-radio">
@@ -465,7 +465,7 @@
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-2">
                                                             <div class="custom-control custom-radio">
-                                                                <input type="radio" name="temMedicamentoDep" id="naomd" value="Nao" class="custom-control-input" onclick="naoTemMedicamentoFamilia();">
+                                                                <input type="radio" name="temMedicamentoDep" id="naomd" value="Não" class="custom-control-input" onclick="naoTemMedicamentoFamilia();">
                                                                 <label class="custom-control-label" for="naomd">Não</label>
                                                             </div>
                                                             <div class="custom-control custom-radio">
@@ -492,7 +492,7 @@
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-3">
                                                             <div class="custom-control custom-radio">
-                                                                <input type="radio" name="temDeficiencia" id="deficiencianao" value="Nao" class="custom-control-input" onclick="naoTemDeficiencia();">
+                                                                <input type="radio" name="temDeficiencia" id="deficiencianao" value="Não" class="custom-control-input" onclick="naoTemDeficiencia();">
                                                                 <label class="custom-control-label" for="deficiencianao">Não</label>
                                                             </div>
                                                             <div class="custom-control custom-radio">

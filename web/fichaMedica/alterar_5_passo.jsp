@@ -286,10 +286,10 @@
                                                                                 <%
                                                                                     Boolean temOutraDoenca = false;
                                                                                    
-                                                                                    if (fichaMedica.getTemDoenca().equals("Nao")) {
-                                                                                        out.println("<input checked type='radio' name='temDoenca' id='doencaCronica1nao' value='Nao' class='custom-control-input' onclick='naoTemDoenca();'>");
+                                                                                    if (fichaMedica.getTemDoenca().equals("Não")) {
+                                                                                        out.println("<input checked type='radio' name='temDoenca' id='doencaCronica1nao' value='Não' class='custom-control-input' onclick='naoTemDoenca();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='temDoenca' id='doencaCronica1nao' value='Nao' class='custom-control-input' onclick='naoTemDoenca();'>");
+                                                                                        out.println("<input type='radio' name='temDoenca' id='doencaCronica1nao' value='Não' class='custom-control-input' onclick='naoTemDoenca();'>");
                                                                                     }
                                                                                 %>
                                                                                 <label class="custom-control-label" for="doencaCronica1nao">Não</label>
@@ -477,10 +477,10 @@
                                                                             <%
                                                                                     Boolean temOutraDoencaDep = false;
                                                                                     
-                                                                                    if (fichaMedica.getTemDoencaDep().equals("Nao")) {
-                                                                                        out.println("<input checked type='radio' name='temDoencaDep' id='doencaCronicafamilianao' value='Nao' class='custom-control-input' onclick='naoTemDoencaFamilia();'>");
+                                                                                    if (fichaMedica.getTemDoencaDep().equals("Não")) {
+                                                                                        out.println("<input checked type='radio' name='temDoencaDep' id='doencaCronicafamilianao' value='Não' class='custom-control-input' onclick='naoTemDoencaFamilia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='temDoencaDep' id='doencaCronicafamilianao' value='Nao' class='custom-control-input' onclick='naoTemDoencaFamilia();'>");
+                                                                                        out.println("<input type='radio' name='temDoencaDep' id='doencaCronicafamilianao' value='Não' class='custom-control-input' onclick='naoTemDoencaFamilia();'>");
                                                                                     }
                                                                                 %>
                                                                             <label class="custom-control-label" for="doencaCronicafamilianao">Não</label>
@@ -664,10 +664,10 @@
                                                                     <div class="col-md-2">
                                                                         <div class="custom-control custom-radio">
                                                                             <%
-                                                                                    if (fichaMedica.getTemMedicamento().equals("Nao")) {
-                                                                                        out.println("<input checked type='radio' name='temMedicamento' id='naom' value='Nao' class='custom-control-input' onclick='naoTemMedicamento();'>");
+                                                                                    if (fichaMedica.getTemMedicamento().equals("Não")) {
+                                                                                        out.println("<input checked type='radio' name='temMedicamento' id='naom' value='Não' class='custom-control-input' onclick='naoTemMedicamento();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='temMedicamento' id='naom' value='Nao' class='custom-control-input' onclick='naoTemMedicamento();'>");
+                                                                                        out.println("<input type='radio' name='temMedicamento' id='naom' value='Não' class='custom-control-input' onclick='naoTemMedicamento();'>");
                                                                                     }
                                                                                 %>
                                                                             <label class="custom-control-label" for="naom">Não</label>
@@ -684,7 +684,7 @@
                                                                         </div>
                                                                     </div>
                                                                             <%
-                                                                                    if (fichaMedica.getTemMedicamento().equals("Nao")) {
+                                                                                    if (fichaMedica.getTemMedicamento().equals("Não")) {
                                                                                         out.println("<div id='div_medicamento' class='hide col-md-9'>");
                                                                                     } else {
                                                                                         out.println("<div id='div_medicamento' class='col-md-9'>");
@@ -716,10 +716,10 @@
                                                                     <div class="col-md-2">
                                                                         <div class="custom-control custom-radio">
                                                                             <%
-                                                                                    if (fichaMedica.getTemMedicamentoDep().equals("Nao")) {
-                                                                                        out.println("<input checked type='radio' name='temMedicamentoDep' id='naomd' value='Nao' class='custom-control-input' onclick='naoTemMedicamentoFamilia();'>");
+                                                                                    if (fichaMedica.getTemMedicamentoDep().equals("Não")) {
+                                                                                        out.println("<input checked type='radio' name='temMedicamentoDep' id='naomd' value='Não' class='custom-control-input' onclick='naoTemMedicamentoFamilia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='temMedicamentoDep' id='naomd' value='Nao' class='custom-control-input' onclick='naoTemMedicamentoFamilia();'>");
+                                                                                        out.println("<input type='radio' name='temMedicamentoDep' id='naomd' value='Não' class='custom-control-input' onclick='naoTemMedicamentoFamilia();'>");
                                                                                     }
                                                                                 %>
                                                                             <label class="custom-control-label" for="naomd">Não</label>
@@ -736,7 +736,7 @@
                                                                         </div>
                                                                     </div>
                                                                             <%
-                                                                                    if (fichaMedica.getTemMedicamentoDep().equals("Nao")) {
+                                                                                    if (fichaMedica.getTemMedicamentoDep().equals("Não")) {
                                                                                         out.println("<div id='div_medicamento_familia' class='hide col-md-9'>");
                                                                                     } else {
                                                                                         out.println("<div id='div_medicamento_familia' class='col-md-9'>");
@@ -768,10 +768,10 @@
                                                                     <div class="col-md-3">
                                                                         <div class="custom-control custom-radio">
                                                                             <%
-                                                                                    if (fichaMedica.getTemDeficiencia().equals("Nao")) {
-                                                                                        out.println("<input checked type='radio' name='temDeficiencia' id='deficiencianao' value='Nao' class='custom-control-input' onclick='naoTemDeficiencia();'>");
+                                                                                    if (fichaMedica.getTemDeficiencia().equals("Não")) {
+                                                                                        out.println("<input checked type='radio' name='temDeficiencia' id='deficiencianao' value='Não' class='custom-control-input' onclick='naoTemDeficiencia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='temDeficiencia' id='deficiencianao' value='Nao' class='custom-control-input' onclick='naoTemDeficiencia();'>");
+                                                                                        out.println("<input type='radio' name='temDeficiencia' id='deficiencianao' value='Não' class='custom-control-input' onclick='naoTemDeficiencia();'>");
                                                                                     }
                                                                                 %>
                                                                              <label class="custom-control-label" for="deficiencianao">Não</label>
@@ -869,10 +869,10 @@
                                                                     <div class="col-md-3">
                                                                         <div class="custom-control custom-radio">
                                                                             <%
-                                                                                    if (fichaMedica.getTemDeficienciaDep().equals("Nao")) {
-                                                                                        out.println("<input checked type='radio' name='temDeficienciaDep' id='naod' value='Nao' class='custom-control-input' onclick='naoTemDeficienciaFamilia();'>");
+                                                                                    if (fichaMedica.getTemDeficienciaDep().equals("Não")) {
+                                                                                        out.println("<input checked type='radio' name='temDeficienciaDep' id='naod' value='Não' class='custom-control-input' onclick='naoTemDeficienciaFamilia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='temDeficienciaDep' id='naod' value='Nao' class='custom-control-input' onclick='naoTemDeficienciaFamilia();'>");
+                                                                                        out.println("<input type='radio' name='temDeficienciaDep' id='naod' value='Não' class='custom-control-input' onclick='naoTemDeficienciaFamilia();'>");
                                                                                     }
                                                                                 %>
                                                                             <label class="custom-control-label" for="naod">Não</label>

@@ -79,7 +79,7 @@ public class ServletEmpresa extends HttpServlet {
                             endereco = daoFactory.getEnderecoDao().inserirOuAlterarComRetorno(endereco);
                             empresa.setEndereco(endereco);
                         } else{
-                            empresa.setAtividade("Autonomo");
+                            empresa.setAtividade("Autônomo");
                     }
                     }
                      if (request.getParameter("faz") != null)
@@ -150,7 +150,7 @@ public class ServletEmpresa extends HttpServlet {
                             endereco = empresa.getEndereco();
                             
                             empresa.setEndereco(null);
-                            empresa.setAtividade("Autonomo");
+                            empresa.setAtividade("Autônomo");
                             
                             //Altera a empresa
                             daoFactory.getEmpresaDao().inserirOuAlterar(empresa);

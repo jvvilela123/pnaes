@@ -24,14 +24,7 @@
                 });
 
             });
-            function formatar(mascara, documento) {
-                var i = documento.value.length;
-                var saida = mascara.substring(0, 1);
-                var texto = mascara.substring(i)
-                if (texto.substring(0, 1) != saida) {
-                    documento.value += texto.substring(0, 1);
-                }
-            }
+            
             function moeda(a, e, r, t) {
                 let n = ""
                         , h = j = 0
@@ -110,7 +103,7 @@
                                                             DataFormat dataFormat = new DataFormat();
                                                             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
                                                             Integer id = Integer.parseInt(request.getParameter("id"));
-                                                            Dependente dependente = daoFactory.getDependenteDao().pesquisarPorId(id);
+                                                            //Dependente dependente = daoFactory.getDependenteDao().pesquisarPorId(id);
                                                               out.println("DATA: "+formatador.format(dependente.getDtn().getTime()));
                                                            
                                                         %>
@@ -118,27 +111,27 @@
                                                         <div class="form-body">
                                                             <h4 class="form-section"><i class="ft-user"></i>Dados Pessoais</h4>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="nome">Nome</label>
+                                                                <label class="col-md-3 label-control" for="nome">Nome:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="nome" id="nome" class="form-control" value="<%=dependente.getNome()%>">
+                                                                    <input type="text" name="nome" id="nome" class="form-control" value="<%=dependente.getNome()%>" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="cpf">CPF</label>
+                                                                <label class="col-md-3 label-control" for="cpf">CPF:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="cpf" id="cpf" class="form-control" value="<%=dependente.getCpf()%>" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)">
+                                                                    <input type="text" name="cpf" id="cpf" class="form-control" value="<%=dependente.getCpf()%>" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="rg">RG</label>
+                                                                <label class="col-md-3 label-control" for="rg">RG:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="rg" id="rg"  class="form-control" value="<%=dependente.getRg()%>">
+                                                                    <input type="text" name="rg" id="rg"  class="form-control" value="<%=dependente.getRg()%>" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="ufe">Uf de Expedição</label>
+                                                                <label class="col-md-3 label-control" for="ufe">Uf de Expedição do RG:</label>
                                                                 <div class="col-md-9">
-                                                                    <select id="ufe" name="ufe" class="form-control">
+                                                                    <select id="ufe" name="ufe" class="form-control" required>
                                                                         <option selected="" disabled="">Selecione a UF de Expedição</option>
                                                                         <%
 
@@ -152,15 +145,15 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="sexo">Sexo</label>
+                                                                <label class="col-md-3 label-control" for="sexo">Sexo:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="custom-control custom-radio">                                                                           
                                                                             <%
                                                                                 if(dependente.getSexo().equals("Masculino")){
-                                                                                    out.println("<input checked type='radio' name='sexo' value='Masculino' class='custom-control-input' id='sexom'>");                                         
+                                                                                    out.println("<input checked type='radio' name='sexo' value='Masculino' class='custom-control-input' id='sexom' required>");                                         
                                                                                 }else{
-                                                                                    out.println("<input type='radio' name='sexo' value='Masculino' class='custom-control-input' id='sexom'>");
+                                                                                    out.println("<input type='radio' name='sexo' value='Masculino' class='custom-control-input' id='sexom' required>");
                                                                                 }
                                                                             %>
                                                                             <label class="custom-control-label" for="sexom">Masculino</label>
@@ -168,10 +161,10 @@
                                                                         <div class="d-inline-block custom-control custom-radio">
                                                                             <%
                                                                                 if(dependente.getSexo().equals("Feminino")){
-                                                                                    out.println("<input checked type='radio' name='sexo' value='Feminino' class='custom-control-input' id='sexof'>");                                         
+                                                                                    out.println("<input checked type='radio' name='sexo' value='Feminino' class='custom-control-input' id='sexof' required>");                                         
                                                                                 }
                                                                                 else{
-                                                                                    out.println("<input type='radio' name='sexo' value='Feminino' class='custom-control-input' id='sexof'>");
+                                                                                    out.println("<input type='radio' name='sexo' value='Feminino' class='custom-control-input' id='sexof' required>");
                                                                                 }
                                                                             %>
                                                                             <label class="custom-control-label" for="sexof">Feminino</label>
@@ -180,37 +173,64 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento</label>
+                                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" value="<%=formatador.format(dependente.getDtn().getTime())%>" maxlength="10" OnKeyPress="formatar('##/##/####', this)">
+                                                                    <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" value="<%=formatador.format(dependente.getDtn().getTime())%>" maxlength="10" OnKeyPress="formatar('##/##/####', this)" required>
                                                                 </div>
                                                             
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="email">Email</label>
+                                                                <label class="col-md-3 label-control" for="email">E-mail:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="email" id="email"  class="form-control" value="<%=dependente.getEmail()%>">
+                                                                    <input type="text" name="email" id="email"  class="form-control" value="<%=dependente.getEmail()%>" required>
                                                                 </div>
                                                             </div>                                                
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="telefone">Telefone</label>
+                                                                <label class="col-md-3 label-control" for="telefone">Telefone:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="telefone" id="telefone"  class="form-control" value="<%=dependente.getTelefone()%>">
+                                                                    <input type="text" name="telefone" id="telefone"  class="form-control" value="<%=dependente.getTelefone()%>" OnKeyPress="formatar('## #####-####', this)" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco</label>
+                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="grauParentesco" id="grauParentesco" class="form-control" value="<%=dependente.getGrauParentesco()%>">
+                                                                    <input type="text" name="grauParentesco" id="grauParentesco" class="form-control" value="<%=dependente.getGrauParentesco()%>" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="renda">Renda</label>
+                                                                <label class="col-md-3 label-control" for="atividadeProf">Atividade Ocupacional:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="renda" id="renda" class="form-control" value="<%=dependente.getRenda()%>">
+                                                                    <select id="atividadeProf" name="atividadeProf" class="form-control" required>
+                                                                        <option selected="" disabled="">Selecione a Atividade Profissional</option>
+                                                                        <%
+                                                                        if(dependente.getAtividadeProf().equals("Empregado CLT"))
+                                                                        out.print("<option selected value='Empregado CLT'>Empregado de carteira Assinada</option>");
+                                                                        else
+                                                                        out.print("<option value='Empregado CLT'>Empregado de carteira Assinada</option>");
+                                                                        if(dependente.getAtividadeProf().equals("Funcionanio Publico"))
+                                                                        out.print("<option selected value='Funcionanio Publico'>Funcionario Público</option>");
+                                                                        else
+                                                                        out.print("<option value='Funcionanio Publico'>Funcionario Público</option>");
+                                                                        if(dependente.getAtividadeProf().equals("Desempregado"))
+                                                                        out.print("<option selected value='Desempregado'>Desempregado</option>");
+                                                                        else
+                                                                        out.print("<option value='Desempregado'>Desempregado</option>");
+                                                                        if(dependente.getAtividadeProf().equals("Autonomo"))
+                                                                        out.print("<option selected value='Autonomo'>Autônomo</option>");
+                                                                        else
+                                                                        out.print("<option value='Autonomo'>Autônomo</option>");
+                                                                        %>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="renda">Renda Mensal:</label>
+                                                                <div class="col-md-9">
+                                                                    <input type="text" name="renda" id="renda" class="form-control" value="<%=dependente.getRenda()%>" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions right">
+                                                                <a href="/pnaes/dependente/listar.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>

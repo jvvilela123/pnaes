@@ -24,7 +24,7 @@ public class Aluno extends Pessoa{
     @Column(unique = true)
     private String matricula;
     private Integer nivel;
-    private String disciplina;
+    //private String disciplina;
     private String ensinoMedio;
     private String ensinoFundamental;
     private String entradaIfto;
@@ -126,14 +126,6 @@ public class Aluno extends Pessoa{
         this.nivel = nivel;
     }
 
-
-    public String getDisciplina() {
-        return disciplina;
-    }
-
-    public void setDisciplina(String disciplina) {
-        this.disciplina = disciplina;
-    }
 
     public String getEnsinoMedio() {
         return ensinoMedio;
