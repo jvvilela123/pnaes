@@ -36,10 +36,10 @@ public class InserirBolsa {
    /*
       DaoFactory daoFactory = new DaoFactory();
        Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(1);
-       List<Dependente> dependentes = daoFactory.getDependenteDao().perquisarPorAluno(2);
+       List<Dependente> dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(2);
        FichaMedica fichaMedica = daoFactory.getFichaMedicaDao().pesquisarPorId(2);
-       //Empresa empresa = new DaoFactory().getEmpresaDao().perquisarPorAluno(2).get(0);
-       Despesa orcamentoMensal = new DaoFactory().getOrcamentoMensalDao().perquisarPorAluno(2).get(0);
+       //Empresa empresa = new DaoFactory().getEmpresaDao().perquisarListaPorAluno(2).get(0);
+       Despesa orcamentoMensal = new DaoFactory().getOrcamentoMensalDao().perquisarListaPorAluno(2).get(0);
       // System.out.println("nome = "+dependente.getNome()); 
        System.out.println("tam = "+dependentes.size()); 
        System.out.println("doenca = "+fichaMedica.getDoencaCronica());

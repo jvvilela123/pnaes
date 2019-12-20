@@ -84,7 +84,7 @@ public class ServletDespesa extends HttpServlet {
                     case "alterar_4_passo":
                         //Setando dados do Despesa Mensal
                         //despesa.setId(Integer.parseInt(request.getParameter("id")));
-                        List<Despesa> despesas = daoFactory.getDespesaDao().perquisarPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
+                        List<Despesa> despesas = daoFactory.getDespesaDao().perquisarListaPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
                         if(despesas.size() > 0){
                          despesa = despesas.get(0);
                         }

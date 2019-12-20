@@ -23,7 +23,8 @@ public class Entrevista implements Serializable{
     @JoinColumn(name="inscricao_id",unique = true)
     private Inscricao inscricao;
     private String observacao;
-    private String resultado;
+    private String resultadoBolsa1;
+     private String resultadoBolsa2;
       @OneToOne
    @JoinColumn(nullable = false,name="status_id",updatable = false)
     private StatusEntrevista se;
@@ -161,12 +162,20 @@ public class Entrevista implements Serializable{
         this.observacao = observacao;
     }
 
-    public String getResultado() {
-        return resultado;
+    public String getResultadoBolsa1() {
+        return resultadoBolsa1;
     }
 
-    public void setResultado(String resultado) {
-        this.resultado = resultado;
+    public void setResultadoBolsa1(String resultadoBolsa1) {
+        this.resultadoBolsa1 = resultadoBolsa1;
+    }
+
+    public String getResultadoBolsa2() {
+        return resultadoBolsa2;
+    }
+
+    public void setResultadoBolsa2(String resultadoBolsa2) {
+        this.resultadoBolsa2 = resultadoBolsa2;
     }
 
     public StatusEntrevista getSe() {

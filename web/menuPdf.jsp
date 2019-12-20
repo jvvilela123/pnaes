@@ -1,8 +1,38 @@
+<%@page import="modelo.FichaMedica"%>
+<%@page import="modelo.Despesa"%>
+<%@page import="modelo.Entrevista"%>
+<%@page import="modelo.Bolsa"%>
+<%@page import="util.DataFormat"%>
+<%@page import="util.DataFormat"%>
+<%@page import="modelo.Empresa"%>
+<%@page import="modelo.Empresa"%>
 <%@page import="modelo.Dependente"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.Inscricao"%>
 <%@page import="modelo.Edital"%>
 <%@page import="dao.DaoFactory"%>
+<%  
+                                            Empresa empresa = new Empresa();
+                                            DaoFactory daoFactory = new DaoFactory();
+                                            DataFormat dataFormat = new DataFormat();
+
+                                            Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
+                                            List<Bolsa> bolsas = daoFactory.getBolsaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
+
+                                            
+                                            List<Dependente> dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(inscricao.getAluno().getId());
+                                            List<Empresa> empresas = new DaoFactory().getEmpresaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
+                                            
+                                            
+
+                                            FichaMedica fichaMedica = new DaoFactory().getFichaMedicaDao().perquisarListaPorAluno(inscricao.getAluno().getId()).get(0);
+                                            if (empresas.size() != 0) {
+                                                empresa = empresas.get(0);
+                                            }
+                                            Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
+
+                                            Edital edital = daoFactory.getEditalDao().listar().get(0);
+                                        %>
 <!--------------------
 START - Mobile Menu
 -------------------->
@@ -337,11 +367,11 @@ START - Main Menu
 
 
         <%
-            DaoFactory daoFactory = new DaoFactory();
-            Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
+           // DaoFactory daoFactory = new DaoFactory();
+          //  Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
             int tam = daoFactory.getEditalDao().listar().size();
-            Edital edital = new Edital();
-            List<Dependente> deps = daoFactory.getDependenteDao().perquisarPorAluno(inscricao.getAluno().getId());
+          //  Edital edital = new Edital();
+           // List<Dependente> deps = daoFactory.getDependenteDao().perquisarPorAluno(inscricao.getAluno().getId());
             if(tam > 0){
                 edital = daoFactory.getEditalDao().listar().get(tam-1);
             }
@@ -364,7 +394,7 @@ START - Main Menu
 
             </div>
         </li>
-        <%if (deps.size() > 0) {    %>
+        <%if (dependentes.size() > 0) {    %>
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">

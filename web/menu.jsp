@@ -38,10 +38,10 @@ START - Mobile Menu
                     List<Edital> editais = daoFactory.getEditalDao().listar();
                     Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
                     Aluno aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
-                    List<Empresa> empresas = daoFactory.getEmpresaDao().perquisarPorAluno(alunoId);
-                    List<Despesa> despesas = daoFactory.getDespesaDao().perquisarPorAluno(alunoId);
-                    List<FichaMedica> fichasMedicas = daoFactory.getFichaMedicaDao().perquisarPorAluno(alunoId);
-                    List<Dependente> dependentes = daoFactory.getDependenteDao().perquisarPorAluno(alunoId);
+                    List<Empresa> empresas = daoFactory.getEmpresaDao().perquisarListaPorAluno(alunoId);
+                    List<Despesa> despesas = daoFactory.getDespesaDao().perquisarListaPorAluno(alunoId);
+                    List<FichaMedica> fichasMedicas = daoFactory.getFichaMedicaDao().perquisarListaPorAluno(alunoId);
+                    List<Dependente> dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(alunoId);
                    
                      if(empresas.size() > 0){
                          empresa = empresas.get(0);

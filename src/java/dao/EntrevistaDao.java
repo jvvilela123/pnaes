@@ -47,4 +47,5 @@ public class EntrevistaDao extends DaoGenerico{
         Query query = em.createQuery(jpql, Entrevista.class);        
         return query.getResultList();
     }
+    
 }

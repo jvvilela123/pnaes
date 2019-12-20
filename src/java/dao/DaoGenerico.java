@@ -84,7 +84,7 @@ public class DaoGenerico<T> {
         return em.createQuery(jpql, classe).getResultList();
     }
 
-    public List<T> perquisarPorAluno(Integer alunoId) {
+    public List<T> perquisarListaPorAluno(Integer alunoId) {
         try {
             String jpql = "select a from " + classe.getSimpleName() + " a where a.aluno.id = " + alunoId;
             return em.createQuery(jpql, classe).getResultList();

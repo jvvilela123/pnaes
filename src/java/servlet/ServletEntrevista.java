@@ -78,7 +78,7 @@ public class ServletEntrevista extends HttpServlet {
                     entrevista.setOutraBolsa(request.getParameter("outraBolsa"));
                     entrevista.setAlmocoIfto(request.getParameter("almocoIfto"));
                     entrevista.setObservacao("");
-                    entrevista.setResultado("");
+                   // entrevista.setResultado("");
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
                     response.sendRedirect("entrevista/horario.jsp");
                     break;
@@ -106,7 +106,7 @@ public class ServletEntrevista extends HttpServlet {
                         ent.setOutraBolsa(request.getParameter("outraBolsa"));
                         ent.setAlmocoIfto(request.getParameter("almocoIfto"));
                         ent.setObservacao("");
-                        entrevista.setResultado("");
+                        //entrevista.setResultado("");
                         daoFactory.getEntrevistaDao().inserirOuAlterar(ent);
                     }
                     
@@ -127,7 +127,7 @@ public class ServletEntrevista extends HttpServlet {
                     entrevista.setOutraBolsa(request.getParameter("outraBolsa"));
                     entrevista.setAlmocoIfto(request.getParameter("almocoIfto"));
                     entrevista.setObservacao("");
-                    entrevista.setResultado("");
+                    //entrevista.setResultado("");
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
                     response.sendRedirect("entrevista/horario.jsp");
 
@@ -143,7 +143,6 @@ public class ServletEntrevista extends HttpServlet {
                 case "entrevistar":
                     entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
                     entrevista.setObservacao(request.getParameter("observacao"));
-                    entrevista.setResultado(request.getParameter("resultado"));
                     out.println("i_id = " + entrevista.getInscricao().getId() + " e_id = " + entrevista.getId());
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(entrevista.getInscricao().getId());
                     se = inscricao.getStatusEntrevista();
@@ -152,6 +151,13 @@ public class ServletEntrevista extends HttpServlet {
                     entrevista.setInscricao(inscricao);
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
                     response.sendRedirect("entrevista/entrevista.jsp");
+                    break;
+                case "finalizar":
+                    entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
+                    entrevista.setResultadoBolsa1(request.getParameter("resultadoBolsa1"));
+                    entrevista.setResultadoBolsa2(request.getParameter("resultadoBolsa2"));
+                    daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
+                    response.sendRedirect("entrevista/resultado.jsp");
                     break;
             }
         } catch (ParseException ex) {

@@ -25,8 +25,8 @@ public class AlunoDao extends DaoGenerico{
         //System.out.println("aqui = "+jpql);
         
         Query query = em.createQuery(jpql);
-        System.out.println("aqui = "+query.getResultList());
-        return (Aluno) query.getResultList().get(0);
+        System.out.println("aqui = "+ query.getSingleResult());
+        return (Aluno) query.getSingleResult();
 
     }
     

@@ -50,6 +50,15 @@ public class InscricaoDao extends DaoGenerico{
         } catch (Exception ex) {
             return null;
         }
+    }
+        
+    public Inscricao perquisarPorAlunoEEdital(Integer alunoId, Integer editalId) {
+        try {
+            String jpql = "select i from Inscricao i  where i.aluno.id = "+alunoId+" and i.edital.id = "+editalId;
+            return (Inscricao) em.createQuery(jpql, Inscricao.class);
 
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

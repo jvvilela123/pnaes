@@ -57,167 +57,20 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <%
-                                                                Entrevista entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
-                                                                Empresa empresa = new Empresa();
-
-                                                                DataFormat dataFormat = new DataFormat();
-
-                                                                List<Bolsa> bolsas = daoFactory.getBolsaDao().perquisarPorAluno(entrevista.getInscricao().getAluno().getId());
-
-                                                                List<Dependente> deps = daoFactory.getDependenteDao().perquisarPorAluno(entrevista.getInscricao().getAluno().getId());
-                                                                List<Empresa> empresas = new DaoFactory().getEmpresaDao().perquisarPorAluno(entrevista.getInscricao().getAluno().getId());
-                                                                Despesa despesa = new DaoFactory().getDespesaDao().perquisarPorAluno(entrevista.getInscricao().getAluno().getId()).get(0);
-                                                                FichaMedica fichaMedica = new DaoFactory().getFichaMedicaDao().perquisarPorAluno(entrevista.getInscricao().getAluno().getId()).get(0);
-                                                                if (empresas.size() != 0) {
-                                                                    empresa = empresas.get(0);
-                                                                }
+                                                            DataFormat dataFormat = new DataFormat();
+                                                            
+                                                            Entrevista entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
+                                                            Inscricao inscricao = entrevista.getInscricao();
+                                                            empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                                            fichaMedica = daoFactory.getFichaMedicaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                                            dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(inscricao.getAluno().getId());
+                                                            List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
+                                                            despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
                                                             %>
-                                                            <div class="col-md-3">
-                                                                <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=entrevista.getInscricao().getAluno().getCpf()%>/<%=entrevista.getInscricao().getAluno().getCpf()%>.jpg" width="150" height="200">
-                                                            </div>
-
-                                                            <table class="table table-striped table-responsive-md">
-                                                                <tr>
-                                                                    <th>Nome:</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getNome()%></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>CPF:</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getCpf()%></td>
-                                                                </tr> 
-                                                                <tr>
-                                                                    <th>RG</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getRg()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>UF de Expedição</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getUfExpedicao().getNome()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Sexo</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getSexo()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Data Nascimento</th>
-                                                                    <td><%=dataFormat.formatarData(entrevista.getInscricao().getAluno().getDtn())%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Telefone</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getTelefone()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Email</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getEmail()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Lougradouro</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getEndereco().getLogradouro()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Complemento</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getEndereco().getComplemento()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Numero</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getEndereco().getNumero()%></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Bairro</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getEndereco().getBairro()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Cidade</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getEndereco().getCidade().getNome()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Estado</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getEndereco().getCidade().getUf().getNome()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Matricula</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getMatricula()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Curso</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getCurso().getNome()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Periodo </th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getPeriodo()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Já reprovou, qual materia</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getDisciplina()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Bolsas Anteriores</th>
-                                                                        <% /*
-                                                                            for(Bolsa b: bolsas){
-                                               
-                                                                                out.println("<td>"+b.getNome()+"</td>");
-                                                                                //out.println("<td>"+b+"</td>");
-                                                                            } */
-                                                                        %>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Qual ano</th>
-                                                                    <td></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Qual meio de Transporte</th>
-                                                                    <td><%=entrevista.getInscricao().getAluno().getMeioTransporte()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Nome da empresa que trabalha</th>
-                                                                    <td><%=empresa.getNome()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Telefone da Empresa</th>
-                                                                    <td><%=empresa.getTelefone()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Renda do aluno</th>
-                                                                    <td><%=empresa.getRenda()%></td>
-                                                                </tr>
-                                                                <tr> 
-                                                                    <%
-                                                                        Double total1 = new Double(0);
-                                                                        Double td = new Double(0);
-                                                                        for (Dependente d : deps) {
-                                                                            td = td + d.getRenda();
-                                                                        }
-                                                                        total1 = empresa.getRenda() + td + empresa.getOrenda();
-                                                                    %>
-                                                                    <th>Renda familiar</th>
-                                                                    <td><%=total1%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Despesas da familia</th>
-                                                                        <%
-                                                                            Double total = despesa.getAgua() + despesa.getEnergia()
-                                                                                    + despesa.getFarmacia() + despesa.getMoradia() + despesa.getOutrasDespesas() + despesa.getTelefone();
-                                                                        %>
-                                                                    <td><%=total%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Você tem alguma doença crônica,qual?</th>
-                                                                    <td><%=fichaMedica.getDoencaCronica()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Você faz uso de medicamento controlado?</th>
-                                                                    <td><%=fichaMedica.getMedicamento()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Você tem alguma deficiência,qual?</th>
-                                                                    <td><%=fichaMedica.getDeficiencia()%></td>
-                                                                </tr>
-                                                                <tr>    
-                                                                    <th>Há pessoa(s) na familia com deficiência,qual?</th>
-                                                                    <td><%=fichaMedica.getDeficienciaDep()%></td>
-                                                                </tr>
-                                                            </table>
+                                                             <%@include file="../documento/dadosAluno.jsp" %>
                                                         </div>
                                                         <div class="col-md-6">
+                                                            
                                                             <div class="col-md-3">
                                                                 <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=entrevista.getInscricao().getAluno().getCpf()%>/<%=entrevista.getInscricao().getAluno().getCpf()%>.jpg" width="150" height="200">
                                                             </div>

@@ -108,7 +108,7 @@ public class ServletFichaMedica extends HttpServlet {
                 break;
                 case "alterar":
                      //Setando dados da Ficha Medica
-                    fichaMedica = (FichaMedica) daoFactory.getFichaMedicaDao().perquisarPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
+                    fichaMedica = (FichaMedica) daoFactory.getFichaMedicaDao().perquisarListaPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
                     fichaMedica.setId(Integer.parseInt(request.getParameter("id")));
                     fichaMedica.setQualDoenca(request.getParameter("tipoDoenca"));
                     fichaMedica.setTemMedicamento(request.getParameter("medicamento"));
@@ -123,11 +123,11 @@ public class ServletFichaMedica extends HttpServlet {
                 break;
                 case "alterar_5_passo":
                      //Setando dados da Ficha Medica
-                   /* List<FichaMedica> fichaMedicas = daoFactory.getFichaMedicaDao().perquisarPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
+                   /* List<FichaMedica> fichaMedicas = daoFactory.getFichaMedicaDao().perquisarListaPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
                         if(fichaMedicas.size() > 0){
                          fichaMedica = fichaMedicas.get(0);
                         }*/
-                   fichaMedica = (FichaMedica) daoFactory.getFichaMedicaDao().perquisarPorAluno(Integer.parseInt(request.getParameter("aluno_id"))).get(0);
+                   fichaMedica = (FichaMedica) daoFactory.getFichaMedicaDao().perquisarListaPorAluno(Integer.parseInt(request.getParameter("aluno_id"))).get(0);
                 
                     fichaMedica.setTemDoenca(request.getParameter("temDoenca"));
                     if(request.getParameter("temDoenca").equals("Sim")){
