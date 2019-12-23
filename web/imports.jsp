@@ -17,7 +17,9 @@
 <link href="/pnaes/bower_components/slick-carousel/slick/slick.css" rel="stylesheet">
 <link href="/pnaes/css/main.css?version=4.4.0" rel="stylesheet">
 <link rel="stylesheet" href="/pnaes/css/alertify.css">
+<link rel="stylesheet" href="/pnaes/css/datatables.css">
 <script src="/pnaes/js/jquery.js"></script>
+
 
 
 
@@ -66,6 +68,7 @@
 <!-- Include JqueryUI-->
 <link rel="stylesheet" href="/pnaes/css/jquery-ui.css">
 <script src="/pnaes/js/jquery-ui.js"></script>
+<script src="/pnaes/js/datatables.js"></script>
 
 <script type="text/javascript">
      //Zoom na Imagem do Aluno

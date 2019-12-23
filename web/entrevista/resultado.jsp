@@ -14,6 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro de Resultado</title>
+        <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
             function formatar(mascara, documento) {
                 var i = documento.value.length;
@@ -29,8 +30,45 @@
                     window.location = url;
                 }
             }
+            
+            $(document).ready(function() {
+                $('#tabelaResultado').DataTable( {
+                    "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    },
+                    "select": {
+                        "rows": {
+                            "_": "Selecionado %d linhas",
+                            "0": "Nenhuma linha selecionada",
+                            "1": "Selecionado 1 linha"
+                        }
+                    }
+                        
+
+                    }
+                } );
+            } );
         </script>
-        <%@include file="../imports.jsp" %>
+        
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -59,7 +97,8 @@
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../Servlet?opcao=cadastrar">
                                                         <div class="form-body">
 
-                                                            <table class="table table-striped table-responsive-md">
+                                                            <table class="table table-striped table-responsive-md" id="tabelaResultado">
+                                                                <thead>
                                                                 <tr>
                                                                     <th>Inscrição</th>
                                                                     <th>Aluno</th>
@@ -71,6 +110,7 @@
                                                                     <th>Resultado</th>
                                                                     <th>Finalizar</th>
                                                                 </tr>
+                                                               </thead>
                                                                 <%                                                                    
                                                                     List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().listar();
                                                                     
@@ -96,7 +136,7 @@
                                                                     <td><%=e.getObservacao()%></td>                                                                    
                                                                     <td><%=e.getInscricao().getBolsa1().getNome()%></td>
                                                                     <td>
-                                                                        <select id="resultado" name="resultado" class="form-control" required>
+                                                                        <select  name="resultado" class="form-control" required>
                                                                             <option selected="" disabled="">Selecione o Resultado</option>
                                                                             <option value="Classificado">Classificado</option>
                                                                             <option value="Reserva">Reserva</option>
@@ -105,17 +145,34 @@
                                                                     </td>
                                                                     <td><%=e.getInscricao().getBolsa2().getNome()%></td>
                                                                     <td>
-                                                                        <select id="resultado" name="resultado" class="form-control" required>
+                                                                        <select  name="resultado" class="form-control" required>
                                                                             <option selected="" disabled="">Selecione o Resultado</option>
                                                                             <option value="Classificado">Classificado</option>
                                                                             <option value="Reserva">Reserva</option>
                                                                             <option value="Desclassificado">Desclassificado</option>
                                                                         </select>
                                                                     </td>
+                                                                    <td>Sem código</td>
+                                                                </tr>
 
                                                                     <%
                                                                         }
                                                                     %>
+                                                                    <tfoot>
+                                                                <tr>
+                                                                    <th>Inscrição</th>
+                                                                    <th>Aluno</th>
+                                                                    <th>Per Capita</th>
+                                                                    <th>Observação</th>
+                                                                    <th>Bolsa 1</th>
+                                                                    <th>Resultado</th>
+                                                                    <th>Bolsa 2</th>
+                                                                    <th>Resultado</th>
+                                                                    <th>Finalizar</th>
+                                                                </tr>
+                                                                    </tfoot>
+                                                            </table>
+                                                              <table class="table table-striped table-responsive-md">
                                                                 <tr>
                                                                     <td><button type="reset" value="Limpar" class="btn btn-warning mr-1">
                                                                             <i class="ft-x"></i> Limpar
