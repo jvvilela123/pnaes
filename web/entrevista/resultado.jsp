@@ -3,6 +3,9 @@
     Created on : 15/02/2018, 08:15:22
     Author     : ronan
 --%>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="com.sun.org.apache.xerces.internal.impl.dv.xs.DecimalDV"%>
 <%@page import="modelo.Aluno"%>
 <%@page import="modelo.Inscricao"%>
 <%@page import="java.util.List"%>
@@ -128,11 +131,13 @@
                                                                         }
                                                                         total1 = empresa.getRenda() + td + empresa.getOrenda();
                                                                         perCapita = total1 / (i + 1);
+                                                                        DecimalFormat decimal = new DecimalFormat("0.00");
                                                                 %>
                                                                 <tr>
                                                                     <td><%=e.getInscricao().getId()%></td>
                                                                     <td><%=e.getInscricao().getAluno().getNome()%></td>
-                                                                    <td><script>document.write(formatarMoeda(<%=perCapita%>));</script></td>
+                                                                    <!--<td><script>document.write(formatarMoeda());</script></td>-->
+                                                                    <td>R$ <%=decimal.format(perCapita)%></td>  
                                                                     <td><%=e.getObservacao()%></td>                                                                    
                                                                     <td><%=e.getInscricao().getBolsa1().getNome()%></td>
                                                                     <td>

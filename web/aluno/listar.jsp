@@ -14,17 +14,47 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista de Aluno</title>
-        <script type="text/javascript" >
-            function formatar(mascara, documento) {
-                var i = documento.value.length;
-                var saida = mascara.substring(0, 1);
-                var texto = mascara.substring(i)
-                if (texto.substring(0, 1) != saida) {
-                    documento.value += texto.substring(0, 1);
-                }
-            }
-        </script>
         <%@include file="../imports.jsp" %>
+        <script type="text/javascript" >
+            
+            $(document).ready(function() {
+                $('#tabelaAlunos').DataTable( {
+                    "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    },
+                    "select": {
+                        "rows": {
+                            "_": "Selecionado %d linhas",
+                            "0": "Nenhuma linha selecionada",
+                            "1": "Selecionado 1 linha"
+                        }
+                    }
+                        
+
+                    }
+                } );
+            } );
+        </script>
+        
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -86,7 +116,8 @@
                                                             alunos = daoFactory.getAlunoDao().listar();
                                                         }
                                                     %>                     
-                                                    <table class="table table-striped table-responsive-md">
+                                                    <table class="table table-striped table-responsive-md" id="tabelaAlunos">
+                                                        <thead>
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>Nome</th>
@@ -97,6 +128,7 @@
                                                             <th>Editar</th>
                                                             <th>Vizualizar</th>
                                                         </tr>
+                                                        </thead>
                                                         <%
                                                             for (Aluno a : alunos) {
                                                         %>
@@ -113,6 +145,18 @@
                                                         <%
                                                             }
                                                         %>
+                                                        <tfoot>
+                                                            <tr>
+                                                            <th>ID</th>
+                                                            <th>Nome</th>
+                                                            <th>CPF</th>
+                                                            <th>Telefone</th>
+                                                            <th>Email</th>
+                                                            <th>Matricula</th>
+                                                            <th>Editar</th>
+                                                            <th>Vizualizar</th>
+                                                        </tr>
+                                                        </tfoot>
                                                     </table>    
                                                 </div>
                                             </div>

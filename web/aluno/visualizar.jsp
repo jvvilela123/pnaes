@@ -47,88 +47,16 @@
                                         <div class="heading-elements">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <%
+                                     <%
                                             alunoId = Integer.parseInt(request.getParameter("id"));
-                                            aluno = daoFactory.getAlunoDao().pesquisarPorId(alunoId);
+                                            aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
+                                           despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(alunoId);
+                                           Inscricao inscricao =  (Inscricao) daoFactory.getInscricaoDao().perquisarClassePorAluno(alunoId);
+                                           List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(alunoId);
+                                        
                                         %>
-                                            
-                                        <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg" width="150" height="200">
-                                    </div>
-                                    <table class="table table-striped table-responsive-md">
-                                        <tr>
-                                            <th>Nome:</th>
-                                            <td><%=aluno.getNome()%></td>
-                                        </tr>
-                                        <tr>
-                                            <th>CPF:</th>
-                                            <td><%=aluno.getCpf()%></td>
-                                        </tr> 
-                                        <tr>
-                                            <th>RG</th>
-                                            <td><%=aluno.getRg()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>UF de Expedição</th>
-                                            <td><%=aluno.getUfExpedicao().getNome()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Sexo</th>
-                                            <td><%=aluno.getSexo()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Data Nascimento</th>
-                                            <td><%=dataFormat.formatarData(aluno.getDtn())%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Telefone</th>
-                                            <td><%=aluno.getTelefone()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Email</th>
-                                            <td><%=aluno.getEmail()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Lougradouro</th>
-                                            <td><%=aluno.getEndereco().getLogradouro()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Complemento</th>
-                                            <td><%=aluno.getEndereco().getComplemento()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Numero</th>
-                                            <td><%=aluno.getEndereco().getNumero()%></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Bairro</th>
-                                            <td><%=aluno.getEndereco().getBairro()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Cidade</th>
-                                            <td><%=aluno.getEndereco().getCidade().getNome()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Estado</th>
-                                            <td><%=aluno.getEndereco().getCidade().getUf().getNome()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Matricula</th>
-                                            <td><%=aluno.getMatricula()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Curso</th>
-                                            <td><%=aluno.getCurso()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Periodo </th>
-                                            <td><%=aluno.getPeriodo()%></td>
-                                        </tr>
-                                        <tr>    
-                                            <th>Já reprovou em</th>
-                                            <td><%=aluno.getDisciplina()%></td>
-                                        </tr>
-                                    </table>
+                                       <%@include file="../documento/dadosAluno.jsp" %>
+                                    
 
                                 </div>
                             </div>
