@@ -228,6 +228,13 @@ public class ServletAluno extends HttpServlet {
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("aluno/listar.jsp");
                     break;
+                case "alterar_permissao":
+
+                    aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                    aluno.setNivel(Integer.parseInt(request.getParameter("nivel")));
+                    daoFactory.getAlunoDao().inserirOuAlterar(aluno);
+                    response.sendRedirect("usuario/listar.jsp");
+                    break;
                 case "excluir":
 
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));

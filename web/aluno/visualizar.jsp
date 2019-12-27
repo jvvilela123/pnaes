@@ -38,16 +38,9 @@
                         <%@include file="../cabecalho.jsp" %>
                         <div class="row">
                             <div class="col-md-3"></div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="card">
-
-                                    <div class="card-header">
-                                        <h4 class="card-title" id="striped-row-layout-icons">Sistema PNAES</h4>
-                                        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                                        <div class="heading-elements">
-                                        </div>
-                                    </div>
-                                     <%
+                                    <%
                                             alunoId = Integer.parseInt(request.getParameter("id"));
                                             aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
                                            despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(alunoId);
@@ -55,10 +48,19 @@
                                            List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(alunoId);
                                         
                                         %>
+
+                                    <div class="card-header">
+                                        <h4 class="card-title" id="striped-row-layout-icons">Dados do Aluno: <%=aluno.getNome()%></h4>
+                                        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                        <div class="heading-elements">
+                                        </div>
+                                    </div>
+                                         </div>
+                                     
                                        <%@include file="../documento/dadosAluno.jsp" %>
                                     
 
-                                </div>
+                               
                             </div>
 
                         </div>

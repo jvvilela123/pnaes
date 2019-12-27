@@ -1,3 +1,5 @@
+<%@page import="modelo.Curso"%>
+<%@page import="modelo.Categoria"%>
 <%@page import="modelo.Cidade"%>
 <%@page import="modelo.Aluno"%>
 <%@page import="util.DataFormat"%>
@@ -15,6 +17,18 @@
             $(document).ready(function () {
                 $('#uf').change(function () {
                     $('#cidade').load('/pnaes/cidadeajax.jsp?estado=' + $('#uf').val());
+                });
+
+            });
+            $(document).ready(function () {
+                $('#cat').change(function () {
+                $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val());
+                });
+
+            });
+            $(document).ready(function () {
+                $('#curso').change(function () {
+                    $('#periodo').load('/pnaes/periodoajax.jsp?curso=' + $('#curso').val());
                 });
 
             });
@@ -53,9 +67,9 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                        Alteração de Dados
                                                     </div>
-                                                    <center><h1>Sistema PNAES</h1></center>
+                                                    <center><h1>Alterar Dados do Aluno</h1></center>
                                                         <%                                                            
                                                             DataFormat dataFormat = new DataFormat();
                                                             Integer id = Integer.parseInt(request.getParameter("id"));
@@ -73,7 +87,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="cpf">CPF</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="cpf" id="cpf" class="form-control" value="<%=aluno.getCpf()%>" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)">
+                                                                    <input type="text" name="cpf" id="cpf" class="form-control" value="<%=aluno.getCpf()%>" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -90,16 +104,7 @@
                                                                             %>
                                                                             <label class="custom-control-label" for="nivela">Aluno</label>
                                                                         </div>
-                                                                        <div class="d-inline-block custom-control custom-radio">
-                                                                            <%
-                                                                                if (aluno.getNivel().equals(2)) {
-                                                                                    out.println("<input checked type='radio' name='nivel' value='2' class='custom-control-input' id='nivels'>");
-                                                                                } else {
-                                                                                    out.println("<input type='radio' name='nivel' value='2' class='custom-control-input' id='nivels'>");
-                                                                                }
-                                                                            %>
-                                                                            <label class="custom-control-label" for="nivels">Servidor</label>
-                                                                        </div>
+                                                                       
                                                                         <div class="d-inline-block custom-control custom-radio">
                                                                             <%
                                                                                 if (aluno.getNivel().equals(3)) {
@@ -184,14 +189,14 @@
                                                                 <label class="col-md-3 label-control" for="senha">Senha</label>
                                                                 <div class="col-md-9">
                                                                     <input type="password" name="senha" id="senha" class="form-control" value="<%//aluno.getSenha()%>" id="senha" onkeyup="javascript:verifica()"/>
-                                                                </div>-->
+                                                                </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="csenha">Confirmar Senha</label>
                                                                 <div class="col-md-9">
                                                                     <input type="password" name="csenha" id="csenha" class="form-control">
                                                                 </div>
-                                                            </div>
+                                                            </div>-->
 
                                                             <h4 class="form-section"><i class="ft-clipboard"></i> Dados do Endereço</h4>
                                                             <div class="form-group row">
@@ -267,34 +272,134 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="curso">Curso</label>
+                                                                <label class="col-md-3 label-control" for="cat">Modalidade do Curso:</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="position-relative has-icon-left">
-                                                                        <input type="text" name="curso" id="curso" class="form-control" value="<%=aluno.getCurso().getNome()%>">
-                                                                        <div class="form-control-position">
-                                                                            <i class="fa fa-briefcase"></i>
-                                                                        </div>
-                                                                    </div>
+                                                                    <select id="cat" name="cat" class="form-control" required>
+                                                                        <option selected="" disabled="">Selecione Modalidade do Curso</option>
+                                                                        <%
+                                                                          List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
+                                                                          out.print("<option selected value=" + aluno.getCurso().getCategoria().getId() + ">" + aluno.getCurso().getCategoria().getNome() + "</option>");
+                                                                            for (Categoria categoria : categorias) {
+                                                                              if(categoria.getId()!=aluno.getCurso().getCategoria().getId())
+                                                                              out.print("<option value=" + categoria.getId() + ">" + categoria.getNome() + "</option>");
+                                                                            }
+                                                                        %>
+                                                                    </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="periodo">Periodo</label>
+                                                                    <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="curso">Curso:*</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="position-relative has-icon-left">
-                                                                        <input type="text" name="periodo" id="periodo" class="form-control" value="<%=aluno.getPeriodo()%>">
-                                                                        <div class="form-control-position">
-                                                                            <i class="fa fa-briefcase"></i>
-                                                                        </div>
-                                                                    </div>
+                                                                    <select id="curso" name="curso" class="form-control" required>
+                                                                        <%
+                                                                            List<Curso> cursos = daoFactory.getCursoDao().buscarCursoPorCategoria(aluno.getCurso().getCategoria().getId());
+                                                                            out.print("<option selected value=" + aluno.getCurso().getId() + ">" + aluno.getCurso().getNome() + "</option>");
+                                                                            for (Curso curso : cursos) {
+                                                                                if(curso.getId()!=aluno.getCurso().getId()) 
+                                                                                out.print("<option value=" + curso.getId() + ">" + curso.getNome() + "</option>");
+                                                                            }
+                                                                          //  out.print("<option selected value=" + aluno.getEndereco().getCidade().getId() + ">" + aluno.getEndereco().getCidade().getNome() + "</option>");
+                                                                        %>  
+                                                                    </select>
                                                                 </div>
-                                                            </div>                                   
+                                                            </div>        
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="transporte">Qual seu meio de Transporte:</label>
+                                                                <label class="col-md-3 label-control" for="periodo">Periodo:*</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="position-relative has-icon-left">
-                                                                        <input type="text" name="transporte" id="transporte" class="form-control" value="<%=aluno.getMeioTransporte()%>">
-                                                                        <div class="form-control-position">
-                                                                            <i class="fa fa-briefcase"></i>
+                                                                    <select id="periodo" name="periodo" class="form-control" required>
+                                                                        
+                                                                        <%
+                                                                          List<Curso> cursos2 = daoFactory.getCursoDao().buscarCursoPorCategoria(aluno.getCurso().getCategoria().getId());
+                                                                          Curso curso = (Curso) daoFactory.getCursoDao().pesquisarPorId(aluno.getCurso().getId());
+                                                                           out.print("<option selected value=" + aluno.getPeriodo() + ">" + aluno.getPeriodo() + "º " + curso.getTipoPeriodo() +  "</option>");
+                                                                            for (int i = 1; i <= curso.getqPeriodo(); i++) {
+                                                                                if(i!=aluno.getPeriodo())
+                                                                                out.println("<option value=" + i + ">" + i + "º " + curso.getTipoPeriodo() + "</option>");
+                                                                                //out.println("<option value="+curso.getId()+">"+curso.getTipoPeriodo()+"</option>");
+                                                                                //curso.setTipoPeriodo(curso.getTipoPeriodo());
+                                                                            }
+                                                                            
+                                                                          //  out.print("<option selected value=" + aluno.getEndereco().getCidade().getId() + ">" + aluno.getEndereco().getCidade().getNome() + "</option>");
+                                                                        %>  
+                                                                        <!--<option value="1 Ano/Modulo/Periodo">1 Ano/Modulo/Periodo</option>
+                                                                        <option value="2 Ano/Modulo/Periodo">2 Ano/Modulo/Periodo</option>
+                                                                        <option value="3 Ano/Modulo/Periodo">3 Ano/Modulo/Periodo</option>
+                                                                        <option value="4 Periodo">4 Periodo</option>
+                                                                        <option value="5 Periodo">5 Periodo</option>
+                                                                        <option value="6 Periodo">6 Periodo</option>
+                                                                        <option value="7 Periodo">7 Periodo</option>
+                                                                        <option value="8 Periodo">8 Periodo</option>-->
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                                                               
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="transporte">Qual seu meio de Transporte para chegar até o IFTO:*</label>
+                                                                <div class="col-md-9">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
+                                                                        <div class="custom-control custom-radio">
+                                                                            <!--<input type="radio" name="transporte" id="onibus" value="Onibus" class="custom-control-input" required>-->
+                                                                            <%
+                                                                                if (aluno.getMeioTransporte().equals("Onibus")) {
+                                                                                    out.println("<input checked type='radio' name='transporte' id='onibus' value='Onibus' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='transporte' id='onibus' value='Onibus' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="onibus">Onibus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                           <%
+                                                                                if (aluno.getMeioTransporte().equals("Carro")) {
+                                                                                    out.println("<input checked type='radio' name='transporte' id='carro' value='Carro' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='transporte' id='carro' value='Carro' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="carro">Carro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <%
+                                                                                if (aluno.getMeioTransporte().equals("Moto")) {
+                                                                                    out.println("<input checked type='radio' name='transporte' id='moto' value='Moto' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='transporte' id='moto' value='Moto' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="moto">Moto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <%
+                                                                                if (aluno.getMeioTransporte().equals("Bicicleta")) {
+                                                                                    out.println("<input checked type='radio' name='transporte' id='bicicleta' value='Bicicleta' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='transporte' id='bicicleta' value='Bicicleta' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="bicicleta">Bicicleta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            
+                                                                            <%
+                                                                                if (aluno.getMeioTransporte().equals("A pé")) {
+                                                                                    out.println("<input checked type='radio' name='transporte' id='ape' value='A pé' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='transporte' id='ape' value='A pé' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="ape">A pé&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <%
+                                                                                if (aluno.getMeioTransporte().equals("Carona")) {
+                                                                                    out.println("<input checked type='radio' name='transporte' id='carona' value='Carona' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='transporte' id='carona' value='Carona' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                           
+                                                                            <label class="custom-control-label" for="carona">Carona</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>

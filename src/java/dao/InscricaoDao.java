@@ -36,7 +36,7 @@ public class InscricaoDao extends DaoGenerico{
         Query query = em.createQuery(jpql, Inscricao.class);
         return query.getResultList();
     }
-    public List<Inscricao> perquisarPorBolsaCategoria(Integer categoriaId, Integer bolsaId, Integer editalId) 
+    public List<Inscricao> perquisarPorBolsaECategoria(Integer categoriaId, Integer bolsaId, Integer editalId) 
     {
         String jpql = "select i from Inscricao i where i.aluno.curso.categoria.id = "+categoriaId+" and i.bolsa1.id = "+bolsaId+" and i.edital.id = "+editalId;        
         Query query = em.createQuery(jpql, Inscricao.class);        

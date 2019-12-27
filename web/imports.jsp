@@ -68,7 +68,14 @@
 <!-- Include JqueryUI-->
 <link rel="stylesheet" href="/pnaes/css/jquery-ui.css">
 <script src="/pnaes/js/jquery-ui.js"></script>
-<script src="/pnaes/js/datatables.js"></script>
+<script src="/pnaes/js/dataTable/datatables.js"></script>
+<script src="/pnaes/js/dataTable/dataTables.buttons.min.js"></script>
+<script src="/pnaes/js/dataTable/buttons.flash.min.js"></script>
+<script src="/pnaes/js/dataTable/jszip.min.js"></script>
+<script src="/pnaes/js/dataTable/pdfmake.min.js"></script>
+<script src="/pnaes/js/dataTable/vfs_fonts.js"></script>
+<script src="/pnaes/js/dataTable/buttons.html5.min.js"></script>
+<script src="/pnaes/js/dataTable/buttons.print.min.js"></script>
 
 <script type="text/javascript">
      //Zoom na Imagem do Aluno

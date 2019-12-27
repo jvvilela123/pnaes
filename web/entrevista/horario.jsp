@@ -123,7 +123,7 @@
                                                                         if (!bolsaId.equals("") && !categoriaId.equals("")) {
                                                                             System.out.println("bolsaId1 = "+bolsaId);
                                                                         System.out.println("categoriaId1 = "+categoriaId);
-                                                                            inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsaCategoria(Integer.parseInt(categoriaId), Integer.parseInt(bolsaId), edital.getId());
+                                                                            inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsaECategoria(Integer.parseInt(categoriaId), Integer.parseInt(bolsaId), edital.getId());
                                                                         } else if (!bolsaId.equals("") && categoriaId.equals("")) {
                                                                             System.out.println("bolsaId2 = "+bolsaId);
                                                                         System.out.println("categoriaId2 = "+categoriaId);

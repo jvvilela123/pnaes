@@ -14,12 +14,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Lista de Alunos</title>
+        <title>Lista de Usuários</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
             
             $(document).ready(function() {
-                $('#tabelaAlunos').DataTable( {
+                $('#tabelaUsuarios').DataTable( {
                     "language": {
                     "sEmptyTable": "Nenhum registro encontrado",
                     "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -53,6 +53,9 @@
 
                     },
                   dom: 'Bfrtip',
+                  pageLength: 5,
+                  responsive: true,
+                  
                     
                 buttons: [
                     {
@@ -61,7 +64,7 @@
                     orientation:"landscape",
                     className: 'btn btn-outline-primary btn-sm',
                      exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+                    columns: [ 0, 1, 2, 3, 4, 5]
                 }
                 },
                     {
@@ -70,7 +73,7 @@
                     orientation:"landscape",
                     className: 'btn btn-outline-primary btn-sm',
                     exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+                    columns: [ 0, 1, 2, 3, 4, 5 ]
                 },
                     customize: function ( doc ) {
                         // Splice the image in after the header, but before the table
@@ -87,7 +90,7 @@
                     text: 'Gerar EXCEL',
                     className: 'btn btn-outline-primary btn-sm',
                     exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+                    columns: [ 0, 1, 2, 3, 4, 5 ]
                    }
                 }
 
@@ -121,7 +124,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Lista de Alunos</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Lista de Usuários</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -129,7 +132,7 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Lista com todos os Alunos Cadastrados
+                                                        Lista com todos os Usuários Cadastrados
                                                     </div>
                                                     <div class="row">
                                                         <!--<div class="col-md-3">
@@ -156,9 +159,9 @@
                                                         } else {
                                                             alunos = daoFactory.getAlunoDao().listar();
                                                         }*/
-                                                        alunos = daoFactory.getAlunoDao().listarAlunos();
+                                                        alunos = daoFactory.getAlunoDao().listar();
                                                     %>                     
-                                                    <table class="table table-striped table-responsive-md" id="tabelaAlunos">
+                                                    <table class="table table-striped table-responsive-md" id="tabelaUsuarios">
                                                         <thead>
                                                         <tr>
                                                            
@@ -167,10 +170,9 @@
                                                             <th>Telefone</th>
                                                             <th>Email</th>
                                                             <th>Matricula</th>
-                                                            <th>Modalidade</th>
-                                                            <th>Curso</th>
-                                                            <th>Editar</th>
-                                                            <th>Vizualizar</th>
+                                                            <th>Permissão</th>
+                                                            <th>Alterar Permissão</th>
+                                                           
                                                         </tr>
                                                         </thead>
                                                         <%
@@ -183,10 +185,8 @@
                                                             <td><%=a.getTelefone()%></td>
                                                             <td><%=a.getEmail()%></td>
                                                             <td><%=a.getMatricula()%></td>
-                                                            <td><%=a.getCurso().getCategoria().getNome()%></td>
-                                                            <td><%=a.getCurso().getNome()%></td>
-                                                            <td><a href="/pnaes/aluno/alterar.jsp?id=<%=a.getId()%>"><img src="/pnaes/img/editar.png"/></a></td>
-                                                            <td><a href="/pnaes/aluno/visualizar.jsp?id=<%=a.getId()%>"><img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=a.getCpf()%>/<%=a.getCpf()%>.jpg" width="30" height="40"/></a></td>
+                                                            <td><%out.print(a.getNivel().equals(3)?"Administrador":"Aluno");%></td>
+                                                            <td><a href="/pnaes/usuario/alterar.jsp?id=<%=a.getId()%>"><img src="/pnaes/img/editar.png"/></a></td>
                                                         </tr>
                                                         <%
                                                             }
@@ -199,10 +199,9 @@
                                                             <th>Telefone</th>
                                                             <th>Email</th>
                                                             <th>Matricula</th>
-                                                            <th>Modalidade</th>
-                                                            <th>Curso</th>
-                                                            <th>Editar</th>
-                                                            <th>Vizualizar</th>
+                                                            <th>Permissão</th>
+                                                            <th>Alterar Permissão</th>
+                                                            
                                                         </tr>
                                                         </tfoot>
                                                     </table>    

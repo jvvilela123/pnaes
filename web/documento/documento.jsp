@@ -57,7 +57,7 @@
                                                                 <label class="col-md-2 label-control" for="pBolsa">Pesquisa por Bolsa</label>
                                                                 <div class="col-md-3">
                                                                     <select name="pBolsa" class="form-control">
-                                                                        <option value="">Selecione a Bolsa</option>
+                                                                        <option value="">Selecione a Bolsa ↓</option>
                                                                         <%                                                                                
                                                                             DataFormat dataFormat = new DataFormat();
                                                                             List<Bolsa> bolsas = daoFactory.getBolsaDao().listar();
@@ -69,10 +69,10 @@
                                                                 </div>
 
 
-                                                                <label class="col-md-2 label-control" for="pCat">Pesquisa por Categoria</label>
+                                                                <label class="col-md-2 label-control" for="pCat">Pesquisa por Modalidade</label>
                                                                 <div class="col-md-3">
                                                                     <select name="pCat" id="pCat" class="form-control">
-                                                                        <option value="">Selecione a Categoria</option>
+                                                                        <option value="">Selecione a Modalidade ↓</option>
                                                                         <%
                                                                             List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
                                                                             for (Categoria c : categorias) {
@@ -107,7 +107,7 @@
                                                                 if (!bolsaId.equals("") && !categoriaId.equals("")) {
                                                                     System.out.println("bolsaId1 = " + bolsaId);
                                                                     System.out.println("categoriaId1 = " + categoriaId);
-                                                                    inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsaCategoria(Integer.parseInt(categoriaId), Integer.parseInt(bolsaId), edital.getId());
+                                                                    inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsaECategoria(Integer.parseInt(categoriaId), Integer.parseInt(bolsaId), edital.getId());
                                                                 } else if (!bolsaId.equals("") && categoriaId.equals("")) {
                                                                     System.out.println("bolsaId2 = " + bolsaId);
                                                                     System.out.println("categoriaId2 = " + categoriaId);

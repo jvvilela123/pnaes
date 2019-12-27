@@ -30,5 +30,10 @@ public class AlunoDao extends DaoGenerico{
 
     }
     
+    public List<Aluno> listarAlunos() {
+        String jpql = "select a from Aluno a where a.nivel = 1";
+        return em.createQuery(jpql).getResultList();
+    }
+    
    
 }

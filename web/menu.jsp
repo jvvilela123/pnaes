@@ -267,6 +267,22 @@ START - Mobile Menu
             </li>
 
             <li class="selected menu">
+                <a href="/pnaes/usuario/listar.jsp">
+                    <div class="icon-w">
+                        <div class="os-icon  os-icon-cpu"></div>
+                    </div>
+                    <span>Usuários</span></a>
+                <div class="sub-menu-w">
+                    <div class="sub-menu-header">
+                        Usuários
+                    </div>
+                    <div class="sub-menu-icon">
+                        <i class="os-icon  os-icon-cpu"></i>
+                    </div>
+
+                </div>
+            </li>
+            <li class="selected menu">
                 <a href="#">
                     <div class="icon-w">
                         <div class="os-icon os-icon-layout"></div>
@@ -547,6 +563,22 @@ START - Main Menu
                 </div>
             </div>
         </li>
+        <li class="selected menu">
+                <a href="/pnaes/usuario/listar.jsp">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-database"></div>
+                    </div>
+                    <span>Usuários</span></a>
+                <div class="sub-menu-w">
+                    <div class="sub-menu-header">
+                        Usuários
+                    </div>
+                    <div class="sub-menu-icon">
+                        <i class="os-icon os-icon-database"></i>
+                    </div>
+
+                </div>
+            </li>
 
         <li class="selected menu">
             <a href="#">
