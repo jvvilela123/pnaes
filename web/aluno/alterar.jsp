@@ -90,34 +90,7 @@
                                                                     <input type="text" name="cpf" id="cpf" class="form-control" value="<%=aluno.getCpf()%>" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="nivel">Permissão</label>
-                                                                <div class="col-md-9">
-                                                                    <div class="input-group">
-                                                                        <div class="custom-control custom-radio">                                                                           
-                                                                            <%
-                                                                                if (aluno.getNivel().equals(1)) {
-                                                                                    out.println("<input checked type='radio' name='nivel' value='1' class='custom-control-input' id='nivela'>");
-                                                                                } else {
-                                                                                    out.println("<input type='radio' name='nivel' value='1' class='custom-control-input' id='nivela'>");
-                                                                                }
-                                                                            %>
-                                                                            <label class="custom-control-label" for="nivela">Aluno</label>
-                                                                        </div>
-                                                                       
-                                                                        <div class="d-inline-block custom-control custom-radio">
-                                                                            <%
-                                                                                if (aluno.getNivel().equals(3)) {
-                                                                                    out.println("<input checked type='radio' name='nivel' value='3' class='custom-control-input' id='nivelad'>");
-                                                                                } else {
-                                                                                    out.println("<input type='radio' name='nivel' value='3' class='custom-control-input' id='nivelad'>");
-                                                                                }
-                                                                            %>
-                                                                            <label class="custom-control-label" for="nivelad">Adminstrador</label>
-                                                                        </div>    
-                                                                    </div>
-                                                                </div>
-                                                            </div>    
+                                                              
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="rg">RG</label>
                                                                 <div class="col-md-9">

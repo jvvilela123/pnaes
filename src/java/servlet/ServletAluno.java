@@ -195,15 +195,15 @@ public class ServletAluno extends HttpServlet {
                     aluno.setDtn(dtn);
                     //aluno.setSenha(request.getParameter("senha"));
                     aluno.setMatricula(request.getParameter("matricula"));
-                    curso.setId(Integer.parseInt(request.getParameter("curso_id")));
+                    curso.setId(Integer.parseInt(request.getParameter("curso")));
                     aluno.setCurso(curso);
                     aluno.setPeriodo(Integer.parseInt(request.getParameter("periodo")));
                     aluno.setMeioTransporte(request.getParameter("transporte"));
                     aluno.setEnsinoMedio(request.getParameter("ensinoMedio"));
                     aluno.setEnsinoFundamental(request.getParameter("ensinoFundamental"));
-                    aluno.setEntradaIfto(request.getParameter("entrada"));
-                    aluno.setPeriodoVisita(request.getParameter("visita"));
-                    aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
+                    aluno.setEntradaIfto(request.getParameter("ifto"));
+                    aluno.setPeriodoVisita(request.getParameter("periodoVisita"));
+                    //aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
 
                     //Setando dados do Endereço
                     endereco.setLogradouro(request.getParameter("logradouro"));
@@ -233,7 +233,7 @@ public class ServletAluno extends HttpServlet {
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                     aluno.setNivel(Integer.parseInt(request.getParameter("nivel")));
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
-                    response.sendRedirect("usuario/listar.jsp");
+                    response.sendRedirect("usuario/listar.jsp?id_usuario="+aluno.getId());
                     break;
                 case "excluir":
 

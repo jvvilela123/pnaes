@@ -13,6 +13,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro de Aluno</title>
         <%@include file="../imports.jsp" %>
+        <script>
+            function enviarForm(){
+                usuario = document.getElementById('nome').value;
+               if(document.getElementById('nivelad').checked){
+                alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ALERTA!</h5>', '<h6>Alterar Permissão de '+usuario+' para <u>Administrador</u>?</h6>', 
+                function(){ 
+                 document.getElementById("formUsuario").submit(); }
+                , function(){ alertify.error('Permisão NÃO Foi Alterada!');});
+               }else if(document.getElementById('nivelcord').checked){
+                alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ALERTA!</h5>', '<h6>Alterar Permissão de '+usuario+' para <u>Coordenador</u>?</h6>', 
+                function(){ 
+                 document.getElementById("formUsuario").submit(); }
+                , function(){ alertify.error('Permisão NÃO Foi Alterada!');});
+            }else{
+                   document.getElementById("formUsuario").submit();
+                   
+               }
+           }
+        </script>
         
 
     </head>
@@ -55,12 +74,43 @@
                                                             Integer id = Integer.parseInt(request.getParameter("id"));
                                                             aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(id);
                                                         %>
-                                                    <form  class="form form-horizontal striped-rows form-bordered" method="Post" action="../ServletAluno?opcao=alterar_permissao&id=<%=aluno.getId()%>">
+                                                    <form  class="form form-horizontal striped-rows form-bordered" id="formUsuario" method="Post" action="../ServletAluno?opcao=alterar_permissao&id=<%=aluno.getId()%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="nivel">Permissão</label>
+                                                                <label class="col-md-3 label-control" for="usuario">Usuário:</label>
                                                                 <div class="col-md-9">
+                                                                    <input type="text" name="usuario" id="nome" class="form-control" value="<%=aluno.getNome()%>" disabled>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="nivel">Permissão:</label>
+                                                                <div class="col-md-9">
+                                                                    
+                                                                    
                                                                     <div class="input-group">
+                                                                        <div class="d-inline-block custom-control custom-radio">
+                                                                            <%
+                                                                                if (aluno.getNivel().equals(3)) {
+                                                                                    out.println("<input checked type='radio' name='nivel' value='3' class='custom-control-input' id='nivelad'>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='nivel' value='3' class='custom-control-input' id='nivelad'>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="nivelad">Adminstrador&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                            
+                                                                        <div class="custom-control custom-radio">                                                                           
+                                                                            <%
+                                                                                if (aluno.getNivel().equals(2)) {
+                                                                                    out.println("<input checked type='radio' name='nivel' value='2' class='custom-control-input' id='nivelcord'>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='nivel' value='2' class='custom-control-input' id='nivelcord'>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="nivelcord">Coordenador(a)&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                           
                                                                         <div class="custom-control custom-radio">                                                                           
                                                                             <%
                                                                                 if (aluno.getNivel().equals(1)) {
@@ -72,24 +122,15 @@
                                                                             <label class="custom-control-label" for="nivela">Aluno</label>
                                                                         </div>
                                                                        
-                                                                        <div class="d-inline-block custom-control custom-radio">
-                                                                            <%
-                                                                                if (aluno.getNivel().equals(3)) {
-                                                                                    out.println("<input checked type='radio' name='nivel' value='3' class='custom-control-input' id='nivelad'>");
-                                                                                } else {
-                                                                                    out.println("<input type='radio' name='nivel' value='3' class='custom-control-input' id='nivelad'>");
-                                                                                }
-                                                                            %>
-                                                                            <label class="custom-control-label" for="nivelad">Adminstrador</label>
-                                                                        </div>    
+                                                                           
                                                                     </div>
                                                                 </div>
                                                             </div>    
                                                                                                                                 
                                                             <div class="form-actions right">
-                                                                <a href="/pnaes/usuario/listar.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
-                                                                <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                    <i class="fa fa-check-square-o"></i>Alterar Permissão
+                                                                <a href="/pnaes/usuario/listar.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
+                                                                <button type="button" class="btn btn-primary" name="cadastrar" value="Cadastrar" onclick="enviarForm()">
+                                                               <i class="fa fa-check-square-o"></i>Alterar Permissão
                                                                 </button>
                                                             </div>
                                                         </div>

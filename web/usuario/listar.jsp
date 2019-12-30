@@ -106,8 +106,22 @@
                 }*/
             ]
                 } );
-            } );
-        </script>
+           } );
+           
+            <% if(request.getParameter("id_usuario")!=null && !request.getParameter("id_usuario").equals("")){
+                DaoFactory daoFactory2 = new DaoFactory();
+               Aluno aluno2 = (Aluno) daoFactory2.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id_usuario")));
+            %>
+           
+            //alert("teste");
+            window.onload = function(){
+    // your JS here
+
+            alertify.success("Permissão de "+"<%=aluno2.getNome()%>"+" foi Alterada com Sucesso!");
+          //  alertify.notify("Permissão do(a) Usuário(a) "+"<%=aluno2.getNome()%>"+" foi Alterada com Sucesso!", 'success', 5, function(){  console.log('dismissed'); });
+        };
+            <%}%>
+         </script>
         
     </head>
     <body class="menu-position-side menu-side-left full-screen">

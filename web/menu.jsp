@@ -266,6 +266,9 @@ START - Mobile Menu
                 </div>
             </li>
 
+            <%
+                                if (session.getAttribute("nivel").equals(3)) {
+                            %>
             <li class="selected menu">
                 <a href="/pnaes/usuario/listar.jsp">
                     <div class="icon-w">
@@ -282,6 +285,9 @@ START - Mobile Menu
 
                 </div>
             </li>
+            <%
+                             }
+                            %>
             <li class="selected menu">
                 <a href="#">
                     <div class="icon-w">
@@ -563,6 +569,9 @@ START - Main Menu
                 </div>
             </div>
         </li>
+        <%
+              if (session.getAttribute("nivel").equals(3)) {
+                            %>
         <li class="selected menu">
                 <a href="/pnaes/usuario/listar.jsp">
                     <div class="icon-w">
@@ -579,6 +588,9 @@ START - Main Menu
 
                 </div>
             </li>
+            <%
+             }
+            %>
 
         <li class="selected menu">
             <a href="#">

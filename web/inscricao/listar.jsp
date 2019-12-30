@@ -166,9 +166,13 @@
                                                                         <div class="col-md-2">
                                                                             <button type="submit" value="Cadastrar" class="btn btn-primary btn-lg">
                                                                                 <i class="fa fa-check-square-o"></i>Buscar
-                                                                            </button>
+                                                                            </button>&nbsp;
+                                                                           
                                                                         </div>
                                                                         <div class="col-md-2">
+                                                                            <a href="/pnaes/inscricao/listar.jsp"> <button type="button" value="Limpar" class="btn btn-danger">
+                                                                                <i class="fa fa-check-square-o"></i>Limpar Busca/Filtro
+                                                                            </button></a>
                                                                             <div style="margin: 25px 50px 75px 100px;">
                                                                                 <!-- <button class="btn btn-primary" onclick="generate()">
                                                                                     <i class="fa fa-check-square-o"></i>Gerar PDF
@@ -228,7 +232,7 @@
                                                     <table class="table table-striped table-responsive-md" id="tabelaInscritos">
                                                          <thead>
                                                              <tr>
-                                                                <th>Inscrição</th>
+                                                                <th>Nº da Inscrição</th>
                                                                 <th>Aluno</th>
                                                                 <th>CPF</th>
                                                                 <th>Bolsa 1ª Opção</th>
@@ -253,7 +257,7 @@
                                                             %>
                                                             <tfoot>
                                                              <tr>
-                                                                <th>Inscrição</th>
+                                                                <th>Nº da Inscrição</th>
                                                                 <th>Aluno</th>
                                                                 <th>CPF</th>
                                                                 <th>Bolsa 1ª Opção</th>
