@@ -4,7 +4,8 @@
 <meta content="Tamerlan Soziev" name="author">
 <meta content="Admin dashboard html template" name="description">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<link href="favicon.png" rel="shortcut icon">
+<link href="/pnaes/img/favicon.png" rel="shortcut icon">
+<link rel=icon href="/pnaes/img/favicon.png" sizes="16x16" type="image/png">
 <link href="apple-touch-icon.png" rel="apple-touch-icon">
 <!--<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet" type="text/css">-->
 <link href="/pnaes/css/googlecss.css?family=Rubik:300,400,500" rel="stylesheet" type="text/css">
