@@ -3,6 +3,7 @@
     Created on : 17/08/2018, 00:06:08
     Author     : euzebio
 --%>
+<%@page import="modelo.Curso"%>
 <%@page import="modelo.Categoria"%>
 <%@page import="modelo.Edital"%>
 <%@page import="modelo.Aluno"%>
@@ -17,6 +18,15 @@
         <title>Lista de Alunos</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
+            
+            $(document).ready(function () {
+                $('#cat').change(function () {
+                    //$('#divcurso')[0].style.display="block";
+                    //$('#divcurso').style.display = 'block';
+                    $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val());
+                });
+
+            });
             
             $(document).ready(function() {
                 $('#tabelaAlunos').DataTable( {
@@ -138,13 +148,53 @@
                                                         <div class="col-md-12">
                                                             <form class="form form-horizontal form-bordered" method="POST" action="listar.jsp">
                                                                 <div class="form-body">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="pCat">Pesquisa por Modalidade</label>
+                                                                        <div class="col-md-4">
+                                                                            <select name="pCategoria" id="cat" class="form-control">
+                                                                                <option selected="" disabled="">Selecione a Modalidade ↓</option>
+                                                                                <%
+                                                                                    List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
+                                                                                    for (Categoria c : categorias) {
+                                                                                        out.print("<option value=" + c.getId() + ">" + c.getNome() + "</option>");
+                                                                                    }
+                                                                                %>
+                                                                            </select>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="pesquisa">Pesquisa por Curso</label>
+                                                                        <div class="col-md-4">
+                                                                            <select name="pCurso" id="curso" class="form-control">
+                                                                               <option selected="" disabled="">Selecione primeiro a Modalidade do Curso ↑</option>
+                                                                                
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <button type="submit" value="Cadastrar" class="btn btn-primary btn-lg">
+                                                                                <i class="fa fa-check-square-o"></i>Buscar
+                                                                            </button>&nbsp;
+                                                                           
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <a href="/pnaes/aluno/listar.jsp"> <button type="button" value="Limpar" class="btn btn-danger">
+                                                                                <i class="fa fa-check-square-o"></i>Limpar Busca/Filtro
+                                                                            </button></a>
+                                                                            <div style="margin: 25px 50px 75px 100px;">
+                                                                                <!-- <button class="btn btn-primary" onclick="generate()">
+                                                                                    <i class="fa fa-check-square-o"></i>Gerar PDF
+                                                                                </button>-->
+                                                                            </div>
+                                                                        </div>    
+                                                                    </div>
                                                                    
                                                                 </div>
                                                             </form>
                                                         </div>
                                                     </div>
                                                     <%                                
-                                                        List<Aluno> alunos;
+                                                        List<Aluno> alunos = daoFactory.getAlunoDao().listarAlunos();
                                                         /*String nomeAluno;
                                                         if (request.getParameter("pesquisa") != null) {
                                                             if (request.getParameter("pesquisa") != "") {
@@ -156,7 +206,13 @@
                                                         } else {
                                                             alunos = daoFactory.getAlunoDao().listar();
                                                         }*/
-                                                        alunos = daoFactory.getAlunoDao().listarAlunos();
+                                                      
+                                                        if (request.getParameter("pCategoria")!= null && request.getParameter("pCurso")== null){
+                                                          alunos = daoFactory.getAlunoDao().listarAlunosPorCategoria(Integer.parseInt(request.getParameter("pCategoria")));
+                                                        }else
+                                                        if (request.getParameter("pCurso")!= null && request.getParameter("pCategoria")!= null){
+                                                         alunos = daoFactory.getAlunoDao().listarAlunosPorCurso(Integer.parseInt(request.getParameter("pCurso")));
+                                                        }
                                                     %>                     
                                                     <table class="table table-striped table-responsive-md" id="tabelaAlunos">
                                                         <thead>
@@ -169,7 +225,9 @@
                                                             <th>Matricula</th>
                                                             <th>Modalidade</th>
                                                             <th>Curso</th>
+                                                            <%if (session.getAttribute("nivel").equals(3)){%>
                                                             <th>Editar</th>
+                                                            <%}%>
                                                             <th>Vizualizar</th>
                                                         </tr>
                                                         </thead>
@@ -185,7 +243,9 @@
                                                             <td><%=a.getMatricula()%></td>
                                                             <td><%=a.getCurso().getCategoria().getNome()%></td>
                                                             <td><%=a.getCurso().getNome()%></td>
+                                                            <%if (session.getAttribute("nivel").equals(3)){%>
                                                             <td><a href="/pnaes/aluno/alterar.jsp?id=<%=a.getId()%>"><img src="/pnaes/img/editar.png"/></a></td>
+                                                            <%}%>
                                                             <td><a href="/pnaes/aluno/visualizar.jsp?id=<%=a.getId()%>"><img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=a.getCpf()%>/<%=a.getCpf()%>.jpg" width="30" height="40"/></a></td>
                                                         </tr>
                                                         <%
@@ -201,7 +261,9 @@
                                                             <th>Matricula</th>
                                                             <th>Modalidade</th>
                                                             <th>Curso</th>
+                                                             <%if (session.getAttribute("nivel").equals(3)){%>
                                                             <th>Editar</th>
+                                                             <%}%>
                                                             <th>Vizualizar</th>
                                                         </tr>
                                                         </tfoot>

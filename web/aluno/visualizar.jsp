@@ -43,9 +43,9 @@
                                     <%
                                             alunoId = Integer.parseInt(request.getParameter("id"));
                                             aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
-                                           despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(alunoId);
-                                           Inscricao inscricao =  (Inscricao) daoFactory.getInscricaoDao().perquisarClassePorAluno(alunoId);
-                                           List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(alunoId);
+                                          // despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(alunoId);
+                                           //Inscricao inscricao =  (Inscricao) daoFactory.getInscricaoDao().perquisarClassePorAluno(alunoId);
+                                          // List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(alunoId);
                                         
                                         %>
 
@@ -57,15 +57,18 @@
                                     </div>
                                          </div>
                                      
-                                       <%@include file="../documento/dadosAluno.jsp" %>
-                                    
+                                       <%@include file="../aluno/dadosAluno.jsp" %>
+                                    <div class="form-actions center">
+     <a href="/pnaes/aluno/listar.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
+ </div>
 
                                
                             </div>
-
+ 
                         </div>
 
                     </div>
+                                       
                 </div>
             </div>
         </div>

@@ -36,7 +36,7 @@ public class InscricaoDao extends DaoGenerico{
         Query query = em.createQuery(jpql, Inscricao.class);
         return query.getResultList();
     }
-    public List<Inscricao> perquisarPorBolsaECategoria(Integer categoriaId, Integer bolsaId, Integer editalId) 
+    public List<Inscricao> perquisarPorBolsaECategoria(Integer bolsaId, Integer categoriaId , Integer editalId) 
     {
         String jpql = "select i from Inscricao i where i.aluno.curso.categoria.id = "+categoriaId+" and i.bolsa1.id = "+bolsaId+" and i.edital.id = "+editalId;        
         Query query = em.createQuery(jpql, Inscricao.class);        
@@ -45,6 +45,26 @@ public class InscricaoDao extends DaoGenerico{
     public List<Inscricao> perquisarAlunoPorEdital(Integer alunoId, Integer editalId) {
         try {
             String jpql = "select i from Inscricao i  where i.aluno.id = "+alunoId+" and i.edital.id = "+editalId;
+            return em.createQuery(jpql, Inscricao.class).getResultList();
+
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+    
+    public List<Inscricao> perquisarPorBolsaECategoriaECurso(Integer bolsaId, Integer categoriaId , Integer cursoId, Integer editalId) {
+        try {
+            String jpql = "select i from Inscricao i where i.aluno.curso.categoria.id = "+categoriaId+" and i.aluno.curso.id = "+cursoId+" and i.bolsa1.id = "+bolsaId+" and i.edital.id = "+editalId;        
+            return em.createQuery(jpql, Inscricao.class).getResultList();
+
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+    
+    public List<Inscricao> perquisarPorCategoriaECurso(Integer categoriaId , Integer cursoId, Integer editalId) {
+        try {
+            String jpql = "select i from Inscricao i where i.aluno.curso.categoria.id = "+categoriaId+" and i.aluno.curso.id = "+cursoId+" and i.edital.id = "+editalId;        
             return em.createQuery(jpql, Inscricao.class).getResultList();
 
         } catch (Exception ex) {
@@ -61,4 +81,8 @@ public class InscricaoDao extends DaoGenerico{
             return null;
         }
     }
+    
+    
+            
+            
 }

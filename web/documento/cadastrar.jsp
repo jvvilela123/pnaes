@@ -90,7 +90,7 @@
                                             List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
                                             Despesa despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
                                         %>
-                                        <%@include file="../documento/dadosAluno.jsp" %>
+                                        <%@include file="../inscricao/dadosInscricao.jsp" %>
                                         
 
                                         <div class="card">

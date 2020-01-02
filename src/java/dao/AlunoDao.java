@@ -35,5 +35,29 @@ public class AlunoDao extends DaoGenerico{
         return em.createQuery(jpql).getResultList();
     }
     
+    /**
+     *
+     * @param cursoId
+    * @return
+     */
+    public List<Aluno> listarAlunosPorCurso(Integer cursoId) {
+        String jpql = "select a from Aluno a where a.nivel = 1 and a.curso.id = "+cursoId;
+      //  System.out.println("aqui = "+ jpql);
+        return em.createQuery(jpql).getResultList();
+    }
+    
+    /**
+     *
+     * @param categoriaId
+    * @return
+     */
+    public List<Aluno> listarAlunosPorCategoria(Integer categoriaId) {
+        String jpql = "select a from Aluno a where a.nivel = 1 and a.curso.categoria.id = "+categoriaId;
+       // System.out.println("aqui = "+ jpql);
+        return em.createQuery(jpql).getResultList();
+    }
+    
+   
+    
    
 }

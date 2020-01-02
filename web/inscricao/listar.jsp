@@ -18,6 +18,14 @@
         <title>Lista de Inscritos</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
+             $(document).ready(function () {
+                $('#cat').change(function () {
+                    //$('#divcurso')[0].style.display="block";
+                    //$('#divcurso').style.display = 'block';
+                    $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val());
+                });
+
+            });
            
             function apagar(id) {
                 if (window.confirm("Deseja realmente excluir?")) {
@@ -27,7 +35,7 @@
             }
             
             $(document).ready(function() {
-                $('#tabelaInscritos').DataTable( {
+                $('table.dataTable').DataTable( {
                     "language": {
                     "sEmptyTable": "Nenhum registro encontrado",
                     "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -137,10 +145,10 @@
                                                             <form class="form form-horizontal form-bordered" method="POST" action="listar.jsp">
                                                                 <div class="form-body">
                                                                     <div class="form-group row">
-                                                                        <label class="col-md-3 label-control" for="pesquisa">Pesquisa por Bolsa 1ª Opção</label>
+                                                                        <label class="col-md-3 label-control" for="pesquisa">Pesquisa por Bolsa 1ª Opção:</label>
                                                                         <div class="col-md-4">
                                                                             <select name="pBolsa1" class="form-control">
-                                                                                <option value="">Selecione a Bolsa ↓</option>
+                                                                                <option selected="" disabled="">Selecione a Bolsa ↓</option>
                                                                                 <%     
                                                                                     List<Bolsa> bolsas = daoFactory.getBolsaDao().listar();
                                                                                     for (Bolsa b : bolsas) {
@@ -150,17 +158,26 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group row">
-                                                                        <label class="col-md-3 label-control" for="pCat">Pesquisa por Modalidade</label>
+                                                                            <div class="form-group row">
+                                                                         <label class="col-md-3 label-control" for="pCat">Pesquisa por Modalidade:</label>
                                                                         <div class="col-md-4">
-                                                                            <select name="pCategoria" class="form-control">
-                                                                                <option value="">Selecione a Modalidade ↓</option>
+                                                                            <select name="pCategoria" id ="cat" class="form-control">
+                                                                                <option selected="" disabled="">Selecione a Modalidade ↓</option>
                                                                                 <%
                                                                                     List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
                                                                                     for (Categoria c : categorias) {
                                                                                         out.print("<option value=" + c.getId() + ">" + c.getNome() + "</option>");
                                                                                     }
                                                                                 %>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                       <label class="col-md-3 label-control" for="pesquisa">Pesquisa por Curso:</label>
+                                                                        <div class="col-md-4">
+                                                                            <select name="pCurso" id="curso" class="form-control">
+                                                                               <option selected="" disabled="">Selecione primeiro a Modalidade do Curso ↑</option>
+                                                                                
                                                                             </select>
                                                                         </div>
                                                                         <div class="col-md-2">
@@ -186,58 +203,40 @@
                                                     </div>
                                                     <%
                                                         DataFormat dataFormat = new DataFormat();
-                                                        List<Inscricao> inscricoes = new ArrayList<Inscricao>();
-                                                        Integer bolsaId;
-                                                        Integer categoriaId;
-                                                        System.out.println("aqui = "+request.getParameter("pBolsa1"));
-                                                        System.out.println("aqui = "+request.getParameter("pCategoria"));
-                                                        if ((request.getParameter("pBolsa1") != null) && (request.getParameter("pCategoria") != null)) {
-                                                            if (!request.getParameter("pBolsa1").equals("") && !request.getParameter("pCategoria").equals("")) {
-                                                                try {
-                                                                  bolsaId = Integer.parseInt(request.getParameter("pBolsa1"));
-                                                                 } catch (NumberFormatException nb) {
-                                                                    bolsaId = 0;
-                                                                }
-                                                                try {
-                                                                    categoriaId = Integer.parseInt(request.getParameter("pCategoria"));
-                                                                } catch (NumberFormatException nc) {
-                                                                    categoriaId = 0;
-                                                                }
-                                                                inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsaECategoria(categoriaId, bolsaId, edital.getId());
-                                                            } else if (request.getParameter("pBolsa1").equals("") && !request.getParameter("pCategoria").equals("")){
-                                                                try {
-                                                                  categoriaId = Integer.parseInt(request.getParameter("pCategoria"));
-                                                                 } catch (NumberFormatException nb) {
-                                                                    categoriaId = 0;
-                                                                }
-                                                                inscricoes = daoFactory.getInscricaoDao().perquisarPorCategoria(categoriaId,edital.getId());
-                                                            } else if (!request.getParameter("pBolsa1").equals("") && request.getParameter("pCategoria").equals("")){
-                                                                try {
-                                                                  bolsaId = Integer.parseInt(request.getParameter("pBolsa1"));
-                                                                 } catch (NumberFormatException nb) {
-                                                                    bolsaId = 0;
-                                                                }
-                                                                inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsa(bolsaId,edital.getId());
-                                                           } else if (request.getParameter("pBolsa1").equals("") && request.getParameter("pCategoria").equals("")){
-                                                               inscricoes = daoFactory.getInscricaoDao().perquisarPorEdital(edital.getId());
-                                                           }
-                                                        } else {
-                                                            System.out.println("aqui10");
-                                                            inscricoes = daoFactory.getInscricaoDao().perquisarPorEdital(edital.getId());
-                                                        }
-                                                    %>
+                                                        List<Inscricao> inscricoes = daoFactory.getInscricaoDao().perquisarPorEdital(edital.getId());
+                                                        
+                                                       
+                                                        if (request.getParameter("pBolsa1") != null && request.getParameter("pCategoria") == null && request.getParameter("pCurso") == null) {
+                                                            //selecionou somente a Bolsa
+                                                           inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsa(Integer.parseInt(request.getParameter("pBolsa1")),edital.getId());
+                                                         } else if (request.getParameter("pBolsa1") != null && request.getParameter("pCategoria") != null && request.getParameter("pCurso") == null) {
+                                                           //Selecionou Bolsa e Categoria
+                                                           inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsaECategoria(Integer.parseInt(request.getParameter("pBolsa1")), Integer.parseInt(request.getParameter("pCategoria")),edital.getId());
+                                                             } else if (request.getParameter("pBolsa1") != null && request.getParameter("pCategoria") != null && request.getParameter("pCurso") != null) {
+                                                                 //Selecionou Bolsa, Categoria e Curso
+                                                                 inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsaECategoriaECurso(Integer.parseInt(request.getParameter("pBolsa1")), Integer.parseInt(request.getParameter("pCategoria")), Integer.parseInt(request.getParameter("pCurso")), edital.getId());
+                                                             } else if (request.getParameter("pBolsa1") == null && request.getParameter("pCategoria") != null && request.getParameter("pCurso") == null) {
+                                                                 //Selecionou Somente a Categoria
+                                                                 inscricoes = daoFactory.getInscricaoDao().perquisarPorCategoria(Integer.parseInt(request.getParameter("pCategoria")),edital.getId());
+                                                             } else if (request.getParameter("pBolsa1") == null && request.getParameter("pCategoria") != null && request.getParameter("pCurso") != null) {
+                                                                //Selecionou Categoria e Curso
+                                                                inscricoes = daoFactory.getInscricaoDao().perquisarPorCategoriaECurso(Integer.parseInt(request.getParameter("pCategoria")),Integer.parseInt(request.getParameter("pCurso")),edital.getId());
+                                                             }
+                                                       %>
 
 
 
-                                                    <table class="table table-striped table-responsive-md" id="tabelaInscritos">
+                                                    <table class="table table-striped table-responsive-md dataTable">
                                                          <thead>
                                                              <tr>
                                                                 <th>Nº da Inscrição</th>
                                                                 <th>Aluno</th>
                                                                 <th>CPF</th>
+                                                                <th>Modalidade - Curso</th>
                                                                 <th>Bolsa 1ª Opção</th>
                                                                 <th>Bolsa 2ª Opção</th>
-                                                                <th>Data</th>                                                                    
+                                                                <th>Data da Inscrição</th>
+                                                                <th>Visualizar</th>
                                                             </tr>
                                                          </thead>
                                                             <%
@@ -247,9 +246,11 @@
                                                                 <td><%=i.getId()%></td>
                                                                 <td><%=i.getAluno().getNome()%></td>
                                                                 <td><%=i.getAluno().getCpf()%></td>
+                                                                <td><%=i.getAluno().getCurso().getCategoria().getNome()%> - <%=i.getAluno().getCurso().getNome()%></td>
                                                                 <td><%=i.getBolsa1().getNome()%></td>
                                                                 <td><%=i.getBolsa2().getNome()%></td>
                                                                 <td><%=dataFormat.formatarData(i.getDataInscricao())%></td>
+                                                                <td><a href="/pnaes/inscricao/visualizar.jsp?id=<%=i.getAluno().getId()%>"><img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=i.getAluno().getCpf()%>/<%=i.getAluno().getCpf()%>.jpg" width="30" height="40"/></a></td>
 
                                                             </tr>
                                                             <%
@@ -260,9 +261,11 @@
                                                                 <th>Nº da Inscrição</th>
                                                                 <th>Aluno</th>
                                                                 <th>CPF</th>
+                                                                <th>Modalidade - Curso</th>
                                                                 <th>Bolsa 1ª Opção</th>
                                                                 <th>Bolsa 2ª Opção</th>
-                                                                <th>Data</th>                                                                    
+                                                                <th>Data da Inscrição</th> 
+                                                                <th>Visualizar</th>
                                                             </tr>
                                                          </tfoot>
                                                     </table> 
