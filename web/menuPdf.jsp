@@ -51,7 +51,8 @@ START - Mobile Menu
     <div class="menu-and-user">
         <div class="logged-user-w">
             <div class="avatar-w">
-                <img alt="" src="/pnaes/img/avatar1.jpg">
+                <!--<img alt="" src="/pnaes/img/avatar1.jpg">-->
+                <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
             </div>
             <div class="logged-user-info-w">
                 <div class="logged-user-name">
@@ -73,6 +74,9 @@ START - Mobile Menu
         <!--------------------
         START - Mobile Menu List
         -------------------->
+        <%             
+        if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+    %>
         <ul class="main-menu">
             <li class="sub-header">
                 <span>MENU</span>
@@ -92,169 +96,105 @@ START - Mobile Menu
                     </div>
                 </div>
             </li>
-            <li class="selected menu">
-                <a href="/pnaes/edital/listar.jsp">
-                    <div class="icon-w">
-                        <div class="os-icon os-icon-layout"></div>
-                    </div>
-                    <span>Edital</span></a>
-                <div class="sub-menu-w">
-                    <div class="sub-menu-header">
-                        Edital
-                    </div>
-                    <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-layout"></i>
-                    </div>
-
+            <%
+           // DaoFactory daoFactory = new DaoFactory();
+          //  Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
+            int tam = daoFactory.getEditalDao().listar().size();
+          //  Edital edital = new Edital();
+           // List<Dependente> deps = daoFactory.getDependenteDao().perquisarPorAluno(inscricao.getAluno().getId());
+            if(tam > 0){
+                edital = daoFactory.getEditalDao().listar().get(tam-1);
+            }
+            
+            //System.out.println("/pnaes/"+edital.getNumero()+"/alunos/"+inscricao.getAluno().getCpf()+"/da.pdf");
+        %>
+        <li class="selected menu">
+            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/da.pdf" onclick="abrir(this);return false;">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-layout"></div>
                 </div>
-            </li>
-
-
-            <li class="selected menu">
-                <a href="/pnaes/bolsa/listar.jsp">
-                    <div class="icon-w">
-                        <div class="os-icon os-icon-layout"></div>
-                    </div>
-                    <span>Bolsa</span></a>
-                <div class="sub-menu-w">
-                    <div class="sub-menu-header">
-                        Bolsa
-                    </div>
-                    <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-layout"></i>
-                    </div>
-
+                <span>Documentos do Aluno</span></a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                    Documentos do Aluno
                 </div>
-            </li>
-            <li class=" has-sub-menu">
-                <a href="apps_bank.html">
-                    <div class="icon-w">
-                        <div class="os-icon os-icon-package"></div>
-                    </div>
-                    <span>Avaliar</span></a>
-                <div class="sub-menu-w">
-                    <div class="sub-menu-header">
-                        Avaliar
-                    </div>
-                    <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-package"></i>
-                    </div>
-                    <div class="sub-menu-i">
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="/pnaes/documento/documento.jsp">Analise documental</a>
-                            </li>
-                            <li>
-                                <a href="/pnaes/entrevista/horario.jsp">Marcar Entrevista</a>
-                            </li>
-                            <li>
-                                <a href="/pnaes/entrevista/entrevista.jsp">Entrevistar</a>
-                            </li>    
-                            <li>
-                                <a href="/pnaes/visita/cadastrar.jsp">Visita</a>
-                            </li>
-
-                        </ul>
-                    </div>
+                <div class="sub-menu-icon">
+                    <i class="os-icon os-icon-layout"></i>
                 </div>
-            </li>
 
-
-            <li class=" has-sub-menu">
-                <a href="#">
-                    <div class="icon-w">
-                        <div class="os-icon os-icon-file-text"></div>
-                    </div>
-                    <span>Relatorios</span></a>
-                <div class="sub-menu-w">
-                    <div class="sub-menu-header">
-                        Relatorios
-                    </div>
-                    <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-file-text"></i>
-                    </div>
-                    <div class="sub-menu-i">
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="/pnaes/aluno/listar.jsp">Lista de alunos</a>
-                            </li>
-                            <li>
-                                <a href="/pnaes/inscricao/listar.jsp">Lista de inscritos</a>
-                            </li>
-                            <li>
-                                <a href="/pnaes/documento/listar.jsp">Lista de classificação</a>
-                            </li>
-                            <li>
-                                <a href="/pnaes/entrevista/listar.jsp">Lista de Entrevista</a>
-                            </li>
-                            <li>
-                                <a href="/pnaes/visita/listar.jsp">Lista de Visitas</a>
-                            </li>
-                            <li>
-                                <a href="/pnaes/entrevista/resultado.jsp">Resultado final</a>
-                            </li>
-                        </ul>
-                    </div>
+            </div>
+        </li>
+        <%if (dependentes.size() > 0) {    %>
+        <li class="selected menu">
+            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-layout"></div>
                 </div>
-            </li>
-
-
-
-            <li class=" has-sub-menu">
-                <a href="#">
-                    <div class="icon-w">
-                        <div class="os-icon os-icon-file-text"></div>
-                    </div>
-                    <span>Pesquisa</span></a>
-                <div class="sub-menu-w">
-                    <div class="sub-menu-header">
-                        Pesquisa
-                    </div>
-                    <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-file-text"></i>
-                    </div>
-                    <div class="sub-menu-i">
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="misc_invoice.html">Pesquisar Inscritos</a>
-                            </li>
-                            <li>
-                                <a href="rentals_index_grid.html">Pesquisar Edital</a>
-                            </li>
-                            <li>
-                                <a href="misc_charts.html">Pesquisar Relação de beneficiados</a>
-                            </li>
-                            <li>
-                                <a href="auth_login.html">Pesquisar  Relatorio de entrevista</a>
-                            </li>
-                            <li>
-                                <a href="auth_register.html">Pesquisar  Relatorio de visita</a>
-                            </li>
-
-                        </ul>
-                    </div>
+                <span>Documentos dos Dependentes</span></a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                    Documentos dos Dependentes
                 </div>
-            </li>
-
-            <li class="selected menu">
-                <a href="#">
-                    <div class="icon-w">
-                        <div class="os-icon os-icon-layout"></div>
-                    </div>
-                    <span>Contato</span></a>
-                <div class="sub-menu-w">
-                    <div class="sub-menu-header">
-                        Contato
-                    </div>
-                    <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-layout"></i>
-                    </div>
-
+                <div class="sub-menu-icon">
+                    <i class="os-icon os-icon-layout"></i>
                 </div>
-            </li>
+            </div>
+        </li>
+        <%}%>
+        <li class="selected menu">
+            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dr.pdf" onclick="abrir(this);return false;">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-layout"></div>
+                </div>
+                <span>Documentos da Renda</span></a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                    Documentos da Renda
+                </div>
+                <div class="sub-menu-icon">
+                    <i class="os-icon os-icon-layout"></i>
+                </div>
+            </div>
+        </li>
+        <li class="selected menu">
+            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-layout"></div>
+                </div>
+                <span>Documentos das Despesas</span></a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                    Documentos das Despesas
+                </div>
+                <div class="sub-menu-icon">
+                    <i class="os-icon os-icon-layout"></i>
+                </div>
+            </div>
+        </li>
+        <li class="selected menu">
+            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/od.pdf" onclick="abrir(this);return false;">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-layout"></div>
+                </div>
+                <span>Outros Documentos</span></a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                    Outros Documentos
+                </div>
+                <div class="sub-menu-icon">
+                    <i class="os-icon os-icon-layout"></i>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <%
+        }
+    %>
+            
 
-        </ul>
-        <!--------------------
+
+            
+     <!--------------------
         END - Mobile Menu List
         -------------------->
       
@@ -273,7 +213,7 @@ START - Main Menu
     <div class="logged-user-w avatar-inline">
         <div class="logged-user-i">
             <div class="avatar-w">
-                <img alt="" src="/pnaes/img/avatar1.jpg">
+                <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
             </div>
             <div class="logged-user-info-w">
                 <div class="logged-user-name">
@@ -298,7 +238,7 @@ START - Main Menu
             <div class="logged-user-menu color-style-bright">
                 <div class="logged-user-avatar-info">
                     <div class="avatar-w">
-                        <img alt="avatar1" src="/pnaes/img/avatar1.jpg">
+                        <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
                     </div>
                     <div class="logged-user-info-w">
                         <div class="logged-user-name">

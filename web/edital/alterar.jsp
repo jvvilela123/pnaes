@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Aluno</title>
+        <title>Alterar Edital</title>
         <script language=JavaScript src="../jquery.js" type="text/javascript"></script>
         <script type="text/javascript" >
             function formatar(mascara, documento) {
@@ -47,7 +47,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Sistema PNAES</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Aleração de Edital</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -55,7 +55,7 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                        Preencha os dados corretamente
                                                     </div>
                                                     <%            
                                                         DataFormat dataFormat = new DataFormat();
@@ -82,6 +82,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions right">
+                                                                <a href="/pnaes/edital/listar.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>

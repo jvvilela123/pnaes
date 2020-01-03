@@ -51,7 +51,7 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                        Preencha os dados corretamente
                                                     </div>
 
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEdital?opcao=cadastrar">

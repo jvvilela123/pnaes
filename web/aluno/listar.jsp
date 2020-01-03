@@ -71,6 +71,7 @@
                     orientation:"landscape",
                     className: 'btn btn-outline-primary btn-sm',
                      exportOptions: {
+                         
                     columns: [ 0, 1, 2, 3, 4, 5, 6 ]
                 }
                 },

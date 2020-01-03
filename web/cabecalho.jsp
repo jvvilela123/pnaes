@@ -49,12 +49,12 @@
     <div class="logged-user-w">
         <div class="logged-user-i">
             <div class="avatar-w">
-                <img alt="" src="/pnaes/img/avatar1.jpg">
+                <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
             </div>
             <div class="logged-user-menu color-style-bright">
                 <div class="logged-user-avatar-info">
                     <div class="avatar-w">                        
-                        <img alt="" src="/pnaes/img/avatar1.jpg">
+                        <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
                     </div>
                     <div class="logged-user-info-w">
                         <div class="logged-user-name">

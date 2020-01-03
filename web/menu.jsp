@@ -230,41 +230,7 @@ START - Mobile Menu
 
 
 
-            <li class=" has-sub-menu">
-                <a href="#">
-                    <div class="icon-w">
-                        <div class="os-icon os-icon-file-text"></div>
-                    </div>
-                    <span>Pesquisa</span></a>
-                <div class="sub-menu-w">
-                    <div class="sub-menu-header">
-                        Pesquisa
-                    </div>
-                    <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-file-text"></i>
-                    </div>
-                    <div class="sub-menu-i">
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="misc_invoice.html">Pesquisar Inscritos</a>
-                            </li>
-                            <li>
-                                <a href="rentals_index_grid.html">Pesquisar Edital</a>
-                            </li>
-                            <li>
-                                <a href="misc_charts.html">Pesquisar Relação de beneficiados</a>
-                            </li>
-                            <li>
-                                <a href="auth_login.html">Pesquisar  Relatorio de entrevista</a>
-                            </li>
-                            <li>
-                                <a href="auth_register.html">Pesquisar  Relatorio de visita</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </li>
+            
 
             <%
                                 if (session.getAttribute("nivel").equals(3)) {
@@ -534,41 +500,7 @@ START - Main Menu
                 </div>
             </div>
         </li>
-        <li class=" has-sub-menu">
-            <a href="#">
-                <div class="icon-w">
-                    <div class="os-icon os-icon-file-text"></div>
-                </div>
-                <span>Pesquisa</span></a>
-            <div class="sub-menu-w">
-                <div class="sub-menu-header">
-                    Pesquisa
-                </div>
-                <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-file-text"></i>
-                </div>
-                <div class="sub-menu-i">
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="misc_invoice.html">Pesquisar Inscritos</a>
-                        </li>
-                        <li>
-                            <a href="rentals_index_grid.html">Pesquisar Edital</a>
-                        </li>
-                        <li>
-                            <a href="misc_charts.html">Pesquisar RelaÃ§Ã£o de beneficiados</a>
-                        </li>
-                        <li>
-                            <a href="auth_login.html">Pesquisar  Relatorio de entrevista</a>
-                        </li>
-                        <li>
-                            <a href="auth_register.html">Pesquisar  Relatorio de visita</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </li>
+        
         <%
               if (session.getAttribute("nivel").equals(3)) {
                             %>
