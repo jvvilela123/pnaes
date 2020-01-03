@@ -146,6 +146,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions right">
+                                                                <a href="/pnaes/documento/documento.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>

@@ -72,7 +72,7 @@
                                                         <div class="col-md-6">
                                                             
                                                             <div class="col-md-3">
-                                                                <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=entrevista.getInscricao().getAluno().getCpf()%>/<%=entrevista.getInscricao().getAluno().getCpf()%>.jpg" width="150" height="200">
+                                                                <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=entrevista.getInscricao().getAluno().getCpf()%>/<%=entrevista.getInscricao().getAluno().getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
                                                             </div>
                                                             <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEntrevista?opcao=entrevistar&e_id=<%=entrevista.getId()%>">
                                                                 <div class="form-body">

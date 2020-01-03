@@ -81,7 +81,7 @@
 <script type="text/javascript">
      //Zoom na Imagem do Aluno
     $(function () {
-    $("#img_aluno").popImg();
+    $("img.img_aluno").popImg();
     });
 //override defaults
 alertify.defaults.transition = "slide";

@@ -252,7 +252,7 @@
                                             <div class="form-group row">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-3">
-                                                    <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg" width="150" height="200" id="img_aluno">
+                                                    <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg" width="150" height="200" class="img_aluno">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -327,7 +327,7 @@
                                             </div>   
                                             <div class="form-actions">
                                                
-                                                <a href="/pnaes/home.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>
+                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <button type="submit" class="btn btn-primary" name="cadastrar" value="Cadastrar">
                                                     <i class="la la-check-square-o"></i> Salvar
