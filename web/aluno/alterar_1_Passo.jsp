@@ -260,7 +260,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="ensinoMedio">Você cursou o Ensino Medio em Escola:*</label>
+                                                                <label class="col-md-3 label-control" for="ensinoMedio">Você cursou ou está cursando o Ensino Medio em Escola:*</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
@@ -291,7 +291,18 @@
                                                                                     out.println("<input type='radio' name='ensinoMedio' id='ensinoMedioPp' value='Publica/Particular' class='custom-control-input' required>");
                                                                                 }
                                                                             %>
-                                                                            <label class="custom-control-label" for="ensinoMedioPp">Pública e Particular</label>
+                                                                            <label class="custom-control-label" for="ensinoMedioPp">Pública e Particular&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                            
+                                                                            <div class="custom-control custom-radio">
+                                                                                 <%
+                                                                                if (aluno.getEnsinoMedio().equals("IFTO")) {
+                                                                                    out.println("<input checked type='radio' name='ensinoMedio' id='ensinoMedioIf' value='IFTO' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='ensinoMedio' id='ensinoMedioIf' value='IFTO' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="ensinoMedioIf">Cursando o Ensino Médio no IFTO</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>

@@ -66,18 +66,22 @@
                                                 return false;
                                             }
                                             function soma() {
-                                                ta = document.getElementById("docf")
-                                                var cb = []
-                                                cb[0] = document.getElementById("cbdfrg")
-                                                cb[1] = document.getElementById("cbdfcpf")
-                                                cb[2] = document.getElementById("cbdfce")
+                                                ta = document.getElementById("docf");
+                                                var cb = [];
+                                                cb[0] = document.getElementById("docPessoaisCand");
+                                                cb[1] = document.getElementById("docPessoaisDeps");
+                                                cb[2] = document.getElementById("compAgua");
+                                                cb[3] = document.getElementById("compEnergia");
+                                                cb[4] = document.getElementById("compTelefone");
+                                                cb[5] = document.getElementById("compRendaCand");
+                                                cb[6] = document.getElementById("compRendaDep");
                                                 //console.log(cb)
-                                                ta.value = ''
+                                                ta.value = '';
                                                 for (i = 0; i < cb.length; i++) {
                                                     //console.log(i+" "+cb[i])
                                                     if (cb[i].checked) {
-                                                        console.log(i + " " + cb[i].value)
-                                                        ta.value = ta.value + cb[i].value + "\n"
+                                                        console.log(i + " " + cb[i].value);
+                                                        ta.value = ta.value + cb[i].value + "\n";
                                                     }
                                                 }
                                             }
@@ -103,30 +107,46 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                        Selecione os documentos faltantes
                                                     </div>
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletInscricao?opcao=alterar&i_id=<%=inscricao.getId()%>">
                                                         <div class="form-body">
 
                                                             <div class="form-group row">
                                                                 <div class="col-md-3">
-                                                                    <div class="input-group">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="cbdfrg" value="RG" class="custom-control-input" onclick="soma()">
-                                                                            <label class="custom-control-label" for="cbdfrg">RG</label>
+                                                                            <input type="checkbox" name="cbdf" id="docPessoaisCand" value="Documentos Pessoais do Candidato" class="custom-control-input" onclick="soma()">
+                                                                            <label class="custom-control-label" for="docPessoaisCand">Documentos Pessoais do Candidato</label>
                                                                         </div>
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="cbdfcpf" value="CPF" class="custom-control-input" onclick="soma()">
-                                                                            <label class="custom-control-label" for="cbdfcpf">CPF</label>
+                                                                            <input type="checkbox" name="cbdf" id="docPessoaisDeps" value="Documentos Pessoais do(s) Familiar(es)" class="custom-control-input" onclick="soma()">
+                                                                            <label class="custom-control-label" for="docPessoaisDeps">Documentos Pessoais do(s) Familiar(es)</label>
                                                                         </div>
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="cbdfce" value="Comprovante de endereço" class="custom-control-input" onclick="soma()">
-                                                                            <label class="custom-control-label" for="cbdfce">Comprovante de Endereço</label>
-                                                                        </div>                                                                        
+                                                                            <input type="checkbox" name="cbdf" id="compAgua" value="Comprovante de Água" class="custom-control-input" onclick="soma()">
+                                                                            <label class="custom-control-label" for="compAgua">Comprovante de Água</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox" name="cbdf" id="compEnergia" value="Comprovante de Energia" class="custom-control-input" onclick="soma()">
+                                                                            <label class="custom-control-label" for="compEnergia">Comprovante de Energia</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox" name="cbdf" id="compTelefone" value="Comprovante de Telefone" class="custom-control-input" onclick="soma()">
+                                                                            <label class="custom-control-label" for="compTelefone">Comprovante de Telefone</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox" name="cbdf" id="compRendaCand" value="Comprovante de Renda do Candidato" class="custom-control-input" onclick="soma()">
+                                                                            <label class="custom-control-label" for="compRendaCand">Comprovante de Endereço</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox" name="cbdf" id="compRendaDep" value="Comprovante de Renda do(s) Familiar(es)" class="custom-control-input" onclick="soma()">
+                                                                            <label class="custom-control-label" for="compRendaDep">Comprovante de Renda do(s) Familiar(es)</label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                    <textarea  cols="40" rows="4" name="docf" id="docf"></textarea>
+                                                                    <textarea  cols="40" rows="8" name="docf" id="docf"></textarea>
                                                                 </div>
                                                             </div>
 
@@ -138,7 +158,8 @@
                                                                             <select id="resultado" name="resultado" class="form-control" required>
                                                                                 <option selected="" disabled="">Selecione o Resultado</option>
                                                                                 <option value="Classificado">Classificado</option>
-                                                                                <option value="Classificado com falta de documentos">Classificado com falta de documentos</option>
+                                                                                <option value="Classificado com falta de documentos">Classificado com falta de Documentos</option>
+                                                                                <option value="Desclassificado por falta de Documento">Desclassificado por falta de Documento</option>
                                                                                 <option value="Eliminado">Eliminado</option>
                                                                             </select>
                                                                         </div>

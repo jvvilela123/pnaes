@@ -117,7 +117,7 @@
                                         }
                                     %>
                                     <div class="card-text">
-                                                        Texto info
+                                                        Alteração dos Documentos
                                                     </div>
                                                     <%  
                                                         msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");

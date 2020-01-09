@@ -162,7 +162,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="transporte">Qual seu meio de Transporte para chegar até o IFTO*:</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="input-group">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
                                                                             <input type="radio" name="transporte" id="onibus" value="Onibus" class="custom-control-input" required>
                                                                             <label class="custom-control-label" for="onibus">Onibus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -193,7 +193,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="ensinoFundamental">Você cursou o Ensino Fundamental em Escola*:</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="input-group">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
                                                                             <input type="radio" name="ensinoFundamental" id="ensinoFundamentalPu" value="Publico" class="custom-control-input" required>
                                                                             <label class="custom-control-label" for="ensinoFundamentalPu">Pública&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -206,13 +206,14 @@
                                                                             <input type="radio" name="ensinoFundamental" id="ensinoFundamentalPp" value="Publica/Particular" class="custom-control-input" required>
                                                                             <label class="custom-control-label" for="ensinoFundamentalPp">Pública e Particular</label>
                                                                         </div>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="ensinoMedio">Você cursou o Ensino Medio em Escola*:</label>
+                                                                <label class="col-md-3 label-control" for="ensinoMedio">Você cursou ou está cursando o Ensino Medio em Escola*:</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="input-group">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
                                                                             <input type="radio" name="ensinoMedio" id="ensinoMedioPu" value="Publico" class="custom-control-input" required>
                                                                             <label class="custom-control-label" for="ensinoMedioPu">Pública&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -223,7 +224,11 @@
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
                                                                             <input type="radio" name="ensinoMedio" id="ensinoMedioPp" value="Publica/Particular" class="custom-control-input" required>
-                                                                            <label class="custom-control-label" for="ensinoMedioPp">Pública e Particular</label>
+                                                                            <label class="custom-control-label" for="ensinoMedioPp">Pública e Particular&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" name="ensinoMedio" id="ensinoMedioIf" value="IFTO" class="custom-control-input" required>
+                                                                            <label class="custom-control-label" for="ensinoMedioIf">Cursando o Ensino Médio no IFTO</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -231,7 +236,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="entrada">Como você ingressou no IFTO*:</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="input-group">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
                                                                             <input type="radio" name="entrada" id="entrada1" value="Ampla concorrencia" class="custom-control-input" required>
                                                                             <label class="custom-control-label" for="entrada1">Vestibular por ampla concorrência&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -254,8 +259,8 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="visita">Qual o melhor horário para uma visita, se necessário*:</label>
                                                                 <div class="col-md-9">
-                                                                    <div class="input-group">
-                                                                        <div class="custom-control custom-radio">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
+                                                                        <div class="custom-control custom-radio" >
                                                                             <input type="radio" name="visita" id="visita1" value="Manha" class="custom-control-input" required>
                                                                             <label class="custom-control-label" for="visita1">Manhã&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
@@ -296,7 +301,7 @@
                                                                 </div>
                                                                </div>
                                                             </div>
-                                                             <div class="form-group row">
+                                                             <!--<div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="residencia">Residência*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="residencia" name="residencia" class="form-control"  onchange="verificaCampos()" required>
@@ -323,7 +328,7 @@
 
                                                                     </select>
                                                                 </div>
-                                                            </div>        
+                                                            </div>   -->     
 
                                                             <div class="form-actions right">
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">

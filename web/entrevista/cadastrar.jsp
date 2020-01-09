@@ -52,7 +52,7 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                        Dados do Candidato para a Entrevista
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -159,7 +159,7 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="df">Documentos Faltantes</label></td>
-                                                                            <td><textarea  class="form-control" rows="4" name="df"><%=entrevista.getInscricao().getDocumentosFaltantes()%></textarea></td>
+                                                                            <td><textarea  class="form-control" rows="8" name="df"><%=entrevista.getInscricao().getDocumentosFaltantes()%></textarea></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="vulnerabilidade">Vulnerabilidade Social</label></td>
