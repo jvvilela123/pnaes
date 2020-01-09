@@ -192,7 +192,7 @@
                    <div class="col-md-8 col-xl-10 ">
                        <div class="element-box" >
                     <h1 class="form-header text-center" >
-                       <a href="/pnaes/inscricao/inscricao.jsp"> <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button">Continuar Inscrição</button> </a>
+                       <a href="/pnaes/inscricao/inscricao.jsp"> <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button">Fazer inscrição do (s) auxílio (s)</button> </a>
                     </h1>
                 </div>
                </div>

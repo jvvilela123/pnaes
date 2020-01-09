@@ -30,6 +30,10 @@
             
             $(document).ready(function() {
                 $('#tabelaAlunos').DataTable( {
+                    styles: {
+    tableHeader: {
+        alignment: 'center'
+    }},
                     "language": {
                     "sEmptyTable": "Nenhum registro encontrado",
                     "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -73,7 +77,11 @@
                      exportOptions: {
                          
                     columns: [ 0, 1, 2, 3, 4, 5, 6 ]
-                }
+                },
+                styles: {
+    tableHeader: {
+        alignment: 'center'
+    }}
                 },
                     {
                     extend: 'pdfHtml5',

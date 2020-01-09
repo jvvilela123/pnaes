@@ -175,8 +175,9 @@
                                                                         }
                                                                     %>
                                                                 </td>
-                                                                <td>Editar</br><a href="alterar.jsp?id=<%=e.getId()%>" title="Editar"><img src="/pnaes/img/editar.png"/></a></td>
-                                                                <td>Excluir</br><a href="#" onclick="apagar(<%=e.getId()%>)" title="Excluir"><img src="/pnaes/img/excluir.png"/></a></td>
+                                                                <td><a href="alterar.jsp?id=<%=e.getId()%>" title="Editar"><button class="mr-2 mb-2 btn btn-outline-info" type="button"><i class="os-icon os-icon-file-text">Editar</button></a></td>
+                                                                <td><a href="#" onclick="apagar(<%=e.getId()%>)" title="Excluir"><button class="mr-2 mb-2 btn btn-outline-danger" type="button"><i class="os-icon os-icon-close"></i>Excluir</button></a></td>
+
                                                             </tr>
                                                             <%}%>
                                                             <tfoot>

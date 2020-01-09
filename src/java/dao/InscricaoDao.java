@@ -82,6 +82,13 @@ public class InscricaoDao extends DaoGenerico{
         }
     }
     
+    public List<Inscricao> listarClassificados() 
+    {
+        String jpql = "select i from Inscricao i  where i.resultado <> null and i.resultado not like 'Eliminado'";
+        Query query = em.createQuery(jpql, Inscricao.class);
+        return query.getResultList();
+    }
+    
     
             
             

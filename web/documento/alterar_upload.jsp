@@ -168,7 +168,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dd.pdf" 
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dp.pdf" 
                                         style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
