@@ -240,6 +240,14 @@ public class ServletAluno extends HttpServlet {
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                     daoFactory.getAlunoDao().excluir(aluno);
                     response.sendRedirect("aluno/listar.jsp");
+                  break;
+                  
+              case "continuar_Inscricao":
+                  aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                    aluno.setStatusCadastro("7");
+                    daoFactory.getAlunoDao().inserirOuAlterar(aluno);
+                    response.sendRedirect("inscricao/inscricao.jsp");
+                break;
             }
 
         } catch (ParseException ex) {

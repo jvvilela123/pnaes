@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Bolsa</title>
+        <title>Cadastro da Bolsa</title>
         <%@include file="../imports.jsp" %>
     </head>
     <body class="menu-position-side menu-side-left full-screen">
@@ -49,19 +49,21 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                        Preencha as opções de bolsas
                                                     </div>
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletInscricao?opcao=inscricao&aluno_id=<%=session.getAttribute("aluno_id")%>&edital_id=<%=edital.getId()%>">
                                                         <div class="form-body">
                               
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="bolsa1">1 opção de bolsa</label>
+                                                                <label class="col-md-3 label-control" for="bolsa1">1ª opção de bolsa*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="bolsa1" name="bolsa1" class="form-control" required>
                                                                         <option>Selecione a bolsa</option>
                                                                         <%
                                                                             List<Bolsa> bolsas = daoFactory.getBolsaDao().listar();
                                                                             for (Bolsa b : bolsas) {
+                                                                                //não aparecer a opção nenhum
+                                                                                if(b.getId()!=6)
                                                                                 out.print("<option value=" + b.getId() + ">" + b.getNome() + "</option>");
                                                                             }
                                                                         %>
@@ -69,7 +71,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="bolsa2">2 opção de bolsa</label>
+                                                                <label class="col-md-3 label-control" for="bolsa2">2ª opção de bolsa*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="bolsa2" name="bolsa2" class="form-control" required>
                                                                         <option value="">Selecione a bolsa</option>

@@ -115,11 +115,11 @@ public class ServletUpload extends HttpServlet {
                             File savedFile = new File(diretorio+"/od.pdf");
                             item.write(savedFile);
                         }
-                        if(request.getParameter("alterar")!=null && request.getParameter("alterar").equals("1")){
+                       // if(request.getParameter("alterar")!=null && request.getParameter("alterar").equals("1")){
                          response.sendRedirect("home.jsp");
-                        }else{
-                        response.sendRedirect("inscricao/inscricao.jsp");
-                        }
+                      //  }else{
+                      //  response.sendRedirect("inscricao/inscricao.jsp");
+                       // }
                         } catch (Exception ex) {
                         //ex.printStackTrace();
                         out.println(ex);
