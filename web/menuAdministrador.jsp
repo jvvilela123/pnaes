@@ -103,7 +103,7 @@
                     <div class="element-info-with-icon smaller">
                         <div class="element-box">
                             <h5 class="form-header">
-                                 INSCRIÇÕES POR CATEGORIA
+                                 INSCRIÇÕES POR MODALIDADE
                             </h5>
                             <div class="form-desc">
                             </div>
