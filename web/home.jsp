@@ -67,26 +67,7 @@
 
                         %>
 
-                        <div class="element-box">
-        <div class="element-info">
-            <div class="row align-items-center">
-                <div class="col-sm-8">
-                    <div class="element-info-with-icon">
-                        <div class="element-info-icon">
-                            <div class="os-icon os-icon-wallet-loaded"></div>
-                        </div>
-                        <div class="element-info-text">
-                            <h5 class="element-inner-header">
-                                PNAES - IFTO - TO
-                            </h5>
-                            <div class="element-inner-desc">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                          <%@include file="menuAdministrador.jsp" %>
                         <%                            }
                         %>
                     </div>
