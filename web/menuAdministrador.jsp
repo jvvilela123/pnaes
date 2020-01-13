@@ -21,11 +21,13 @@
 	                  inscricoes = daoFactory.getInscricaoDao().perquisarPorEdital(edital.getId());
                           %>
                             <h5 class="element-inner-header">
-                                PNAES - IFTO - TO /  Total de Inscritos no Edital Nº <% out.print(edital.getNumero()); %> : <% out.print(inscricoes.size()); %>
+                                PNAES - IFTO
                             </h5>
-                            
                             <div class="element-inner-desc">
-                                
+                              
+                                <div class="alert alert-warning" role="alert">
+                                    Total de Inscritos no Edital Nº <% out.print(edital.getNumero()); %>:<h4 class="alert-heading"> <% out.print(inscricoes.size()); %></h4>
+                                </div>
                             </div>
                         </div>
                     </div>
