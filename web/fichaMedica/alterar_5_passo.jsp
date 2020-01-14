@@ -257,7 +257,7 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                       Preencha corretamente todos os campos
                                                     </div>
                                                     <%                                                        msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
                                                         if (msg.isEmpty() == false) {
@@ -964,7 +964,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-actions">
-                                                            <a href="/pnaes/home.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
+                                                            <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
                                                             <button type="reset" value="Limpar"  class="btn btn-warning mr-1">
                                                                 <i class="ft-x"></i> Limpar
                                                             </button>

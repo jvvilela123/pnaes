@@ -89,18 +89,40 @@ START - Mobile Menu
                 </div>
             </div>
         </div>
+                 
+                
         
         <!--------------------
         START - Mobile Menu List
         -------------------->
         <ul class="main-menu">
             <li class="sub-header">
-                <span>MENU</span>
+                <%
+        if (session.getAttribute("nivel").equals(3)) {
+      %>
+            <span>MENU (Administração)</span>
+     <%
+       }
+      %>
+      <%
+        if (session.getAttribute("nivel").equals(2)) {
+      %>
+            <span>MENU (Coordenação)</span>
+     <%
+       }
+      %>
+      <%
+        if (session.getAttribute("nivel").equals(1)) {
+      %>
+            <span>MENU (Alunos)</span>
+     <%
+       }
+      %>
             </li>
             <li class="selected menu">
                 <a href="/pnaes/home.jsp">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-layout"></div>
+                        <div class="os-icon os-icon-home"></div>
                     </div>
                     <span>Inicio</span></a>
                 <div class="sub-menu-w">
@@ -212,7 +234,7 @@ START - Mobile Menu
                                 <a href="/pnaes/inscricao/listar.jsp">Lista de inscritos</a>
                             </li>
                             <li>
-                                <a href="/pnaes/documento/listar.jsp">Lista de classificaÃ§Ã£o</a>
+                                <a href="/pnaes/documento/listar.jsp">Lista de classificação</a>
                             </li>
                             <li>
                                 <a href="/pnaes/entrevista/listar.jsp">Lista de Entrevista</a>
@@ -238,7 +260,7 @@ START - Mobile Menu
             <li class="selected menu">
                 <a href="/pnaes/usuario/listar.jsp">
                     <div class="icon-w">
-                        <div class="os-icon  os-icon-cpu"></div>
+                        <div class="os-icon  os-icon-user"></div>
                     </div>
                     <span>Usuários</span></a>
                 <div class="sub-menu-w">
@@ -246,7 +268,7 @@ START - Mobile Menu
                         Usuários
                     </div>
                     <div class="sub-menu-icon">
-                        <i class="os-icon  os-icon-cpu"></i>
+                        <i class="os-icon  os-icon-user"></i>
                     </div>
 
                 </div>
@@ -254,25 +276,29 @@ START - Mobile Menu
             <%
                              }
                             %>
+          
+          <%
+            }
+        %>
+      
             <li class="selected menu">
-                <a href="#">
+                <a href="/pnaes/index.jsp?sair=1">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-layout"></div>
+                        <div class="os-icon os-icon-signs-11"></div>
                     </div>
-                    <span>Contato</span></a>
+                    <span>Sair</span></a>
                 <div class="sub-menu-w">
                     <div class="sub-menu-header">
-                        Contato
+                        Sair
                     </div>
                     <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-layout"></i>
+                        <i class="os-icon os-icon-signs-11"></i>
                     </div>
 
                 </div>
             </li>
-          <%
-            }
-        %>
+
+                
         </ul>
         <!--------------------
         END - Mobile Menu List
@@ -307,7 +333,7 @@ START - Main Menu
                     %>
                 </div>
                 <div class="logged-user-role">
-                    <%                        if (session.getAttribute("cpf") != null) {
+                    <%    if (session.getAttribute("cpf") != null) {
                             out.print(session.getAttribute("cpf"));
                         }
                     %>
@@ -351,26 +377,37 @@ START - Main Menu
         </div>
     </div>
 
-    <div class="element-search autosuggest-search-activator">
-        <input placeholder="Buscar..." type="text">
-    </div>
-    <h1 class="menu-page-header">
-        JSP Page
-    </h1>
-    <div class="menu-actions">
-
-
-    </div>  
+    
     
     <ul class="main-menu">
         <li class="sub-header">
-            <span>MENU</span>
+       <%
+        if (session.getAttribute("nivel").equals(3)) {
+      %>
+            <span>MENU (Administração)</span>
+     <%
+       }
+      %>
+      <%
+        if (session.getAttribute("nivel").equals(2)) {
+      %>
+            <span>MENU (Coordenação)</span>
+     <%
+       }
+      %>
+      <%
+        if (session.getAttribute("nivel").equals(1)) {
+      %>
+            <span>MENU (Alunos)</span>
+     <%
+       }
+      %>
         </li>
 
         <li class="selected menu">
             <a href="/pnaes/home.jsp">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-home"></div>
                 </div>
                 <span>Inicio</span></a>
             <div class="sub-menu-w">
@@ -408,7 +445,7 @@ START - Main Menu
         <li class="selected menu">
             <a href="/pnaes/bolsa/listar.jsp">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-book"></div>
                 </div>
                 <span>Bolsa</span></a>
             <div class="sub-menu-w">
@@ -507,42 +544,36 @@ START - Main Menu
         <li class="selected menu">
                 <a href="/pnaes/usuario/listar.jsp">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-database"></div>
+                       <div class="os-icon os-icon-user"></div>
                     </div>
                     <span>Usuários</span></a>
-                <div class="sub-menu-w">
-                    <div class="sub-menu-header">
-                        Usuários
-                    </div>
-                    <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-database"></i>
-                    </div>
-
-                </div>
+               
             </li>
             <%
              }
             %>
 
-        <li class="selected menu">
-            <a href="#">
-                <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
-                </div>
-                <span>Contato</span></a>
-            <div class="sub-menu-w">
-                <div class="sub-menu-header">
-                    Contato
-                </div>
-                <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
-                </div>
-
-            </div>
-        </li>
+    
     <%
         }
     %>
+    
+     <li class="selected menu">
+                <a href="/pnaes/index.jsp?sair=1">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-signs-11"></div>
+                    </div>
+                    <span>Sair</span></a>
+                <div class="sub-menu-w">
+                    <div class="sub-menu-header">
+                        Sair
+                    </div>
+                    <div class="sub-menu-icon">
+                        <i class="os-icon os-icon-signs-11"></i>
+                    </div>
+
+                </div>
+            </li>
     </ul>
 </div>
 <!--------------------

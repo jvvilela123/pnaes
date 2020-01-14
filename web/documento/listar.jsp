@@ -165,7 +165,7 @@
                                                                 out.println("<td>" + i.getResultado() + "</td>");
                                                               
                                                         %>
-                                                        <td><a href="alterar.jsp?id=<%=i.getId()%>" title="Editar"><button class="mr-2 mb-2 btn btn-outline-info" type="button"><i class="os-icon os-icon-file-text">Editar</button></a></td>
+                                                        <td><a href="alterar.jsp?id=<%=i.getId()%>" title="Editar"><div class="os-icon os-icon-edit"></div><span>Editar</span></a></td>
                                                         
                                                                 <%
                                                                     }

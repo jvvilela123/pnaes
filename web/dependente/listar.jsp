@@ -106,7 +106,7 @@
 
                                                        <% if (aluno.getStatusCadastro().equals("3") || aluno.getStatusCadastro().equals("6")) { %>
                                                         <div class="col-md-3">
-                                                            <a href="/pnaes/home.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
+                                                            <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
                                                             
                                                             <a href="/pnaes/home.jsp">
                                                             <button type="submit" value="Cadastrar" class="btn btn-primary">

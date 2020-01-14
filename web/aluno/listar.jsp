@@ -253,29 +253,15 @@
                                                             <td><%=a.getCurso().getCategoria().getNome()%></td>
                                                             <td><%=a.getCurso().getNome()%></td>
                                                             <%if (session.getAttribute("nivel").equals(3)){%>
-                                                            <td><a href="/pnaes/aluno/alterar.jsp?id=<%=a.getId()%>"><img src="/pnaes/img/editar.png"/></a></td>
+                                                            
+                                                            <td><a href="/pnaes/aluno/alterar.jsp?id=<%=a.getId()%>" title="Editar"><div class="os-icon os-icon-edit"></div><span>Editar</span></a></td>
                                                             <%}%>
                                                             <td><a href="/pnaes/aluno/visualizar.jsp?id=<%=a.getId()%>"><img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=a.getCpf()%>/<%=a.getCpf()%>.jpg" width="30" height="40"/></a></td>
                                                         </tr>
                                                         <%
                                                             }
                                                         %>
-                                                        <tfoot>
-                                                            <tr>
-                                                            
-                                                            <th>Nome</th>
-                                                            <th>CPF</th>
-                                                            <th>Telefone</th>
-                                                            <th>Email</th>
-                                                            <th>Matricula</th>
-                                                            <th>Modalidade</th>
-                                                            <th>Curso</th>
-                                                             <%if (session.getAttribute("nivel").equals(3)){%>
-                                                            <th>Editar</th>
-                                                             <%}%>
-                                                            <th>Vizualizar</th>
-                                                        </tr>
-                                                        </tfoot>
+                                                      
                                                     </table>    
                                                 </div>
                                             </div>

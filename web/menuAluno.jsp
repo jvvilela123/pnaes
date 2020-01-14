@@ -104,7 +104,7 @@
               <% }  %> 
             </div>
         </div>
-    </div>
+    
     <div class="element-box">
         <div class="element-info">
             <div class="row align-items-center">
@@ -206,6 +206,7 @@
                </div>
                </div>
            </div>
+                </div>
            <% }   %>
     <%
         }
