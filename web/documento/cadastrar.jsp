@@ -80,8 +80,8 @@
                                                 for (i = 0; i < cb.length; i++) {
                                                     //console.log(i+" "+cb[i])
                                                     if (cb[i].checked) {
-                                                        console.log(i + " " + cb[i].value);
-                                                        ta.value = ta.value + cb[i].value + "\n";
+                                                        console.log(i + " " + cb[i].value+",");
+                                                        ta.value = ta.value + cb[i].value+"," + "\n";
                                                     }
                                                 }
                                             }
@@ -116,31 +116,31 @@
                                                                 <div class="col-md-3">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="docPessoaisCand" value="Documentos Pessoais do Candidato" class="custom-control-input" onclick="soma()">
+                                                                            <input type="checkbox" name="cbdf" id="docPessoaisCand" value="Docs. Pessoais do Candidato" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="docPessoaisCand">Documentos Pessoais do Candidato</label>
                                                                         </div>
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="docPessoaisDeps" value="Documentos Pessoais do(s) Familiar(es)" class="custom-control-input" onclick="soma()">
+                                                                            <input type="checkbox" name="cbdf" id="docPessoaisDeps" value="Docs. Pessoais do(s) Familiar(es)" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="docPessoaisDeps">Documentos Pessoais do(s) Familiar(es)</label>
                                                                         </div>
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="compAgua" value="Comprovante de Água" class="custom-control-input" onclick="soma()">
+                                                                            <input type="checkbox" name="cbdf" id="compAgua" value="Comp. de Água" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="compAgua">Comprovante de Água</label>
                                                                         </div>
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="compEnergia" value="Comprovante de Energia" class="custom-control-input" onclick="soma()">
+                                                                            <input type="checkbox" name="cbdf" id="compEnergia" value="Comp. de Energia" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="compEnergia">Comprovante de Energia</label>
                                                                         </div>
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="compTelefone" value="Comprovante de Telefone" class="custom-control-input" onclick="soma()">
+                                                                            <input type="checkbox" name="cbdf" id="compTelefone" value="Comp. de Telefone" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="compTelefone">Comprovante de Telefone</label>
                                                                         </div>
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="compRendaCand" value="Comprovante de Renda do Candidato" class="custom-control-input" onclick="soma()">
+                                                                            <input type="checkbox" name="cbdf" id="compRendaCand" value="Comp. de Renda do Candidato" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="compRendaCand">Comprovante de Endereço</label>
                                                                         </div>
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="compRendaDep" value="Comprovante de Renda do(s) Familiar(es)" class="custom-control-input" onclick="soma()">
+                                                                            <input type="checkbox" name="cbdf" id="compRendaDep" value="Comp. de Renda do(s) Familiar(es)" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="compRendaDep">Comprovante de Renda do(s) Familiar(es)</label>
                                                                         </div>
                                                                     </div>

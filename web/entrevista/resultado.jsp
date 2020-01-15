@@ -97,7 +97,7 @@
                                                     <div class="card-text">
                                                         Texto info
                                                     </div>
-                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../Servlet?opcao=cadastrar">
+                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEntrevista?opcao=finalizar">
                                                         <div class="form-body">
 
                                                             <table class="table table-striped table-responsive-md" id="tabelaResultado">
@@ -105,7 +105,10 @@
                                                                 <tr>
                                                                     <th>Inscrição</th>
                                                                     <th>Aluno</th>
-                                                                    <th>Per Capita</th>
+                                                                    <th>Ensino Fundamental</th>
+                                                                    <th>Ensino Médio</th>
+                                                                    <th>Vulnerabilidade</th>
+                                                                    <th>Renda Per Capita</th>
                                                                     <th>Observação</th>
                                                                     <th>Bolsa 1</th>
                                                                     <th>Resultado</th>
@@ -136,6 +139,9 @@
                                                                 <tr>
                                                                     <td><%=e.getInscricao().getId()%></td>
                                                                     <td><%=e.getInscricao().getAluno().getNome()%></td>
+                                                                    <td><%=e.getInscricao().getAluno().getEnsinoFundamental()%></td>
+                                                                    <td><%=e.getInscricao().getAluno().getEnsinoMedio()%></td>
+                                                                     <td><%=e.getVulnerabilidade()%></td>
                                                                     <!--<td><script>document.write(formatarMoeda());</script></td>-->
                                                                     <td>R$ <%=decimal.format(perCapita)%></td>  
                                                                     <td><%=e.getObservacao()%></td>                                                                    
@@ -150,15 +156,17 @@
                                                                     </td>
                                                                     <td><%=e.getInscricao().getBolsa2().getNome()%></td>
                                                                     <td>
-                                                                        <select  name="resultado" class="form-control" required>
+                                                                        <select  name="resultado2" class="form-control" required>
                                                                             <option selected="" disabled="">Selecione o Resultado</option>
                                                                             <option value="Classificado">Classificado</option>
                                                                             <option value="Reserva">Reserva</option>
                                                                             <option value="Desclassificado">Desclassificado</option>
                                                                         </select>
                                                                     </td>
-                                                                    <td>Sem código</td>
-                                                                </tr>
+                                                                    <td><button type="submit" value="Cadastrar" class="btn btn-primary">
+                                                                            <i class="fa fa-check-square-o"></i>Salvar Resultado
+                                                                        </button></td>
+                                                                     </tr>
 
                                                                     <%
                                                                         }
@@ -167,6 +175,9 @@
                                                                 <tr>
                                                                     <th>Inscrição</th>
                                                                     <th>Aluno</th>
+                                                                    <th>Ensino Fundamental</th>
+                                                                    <th>Ensino Médio</th>
+                                                                    <th>Vulnerabilidade</th>
                                                                     <th>Per Capita</th>
                                                                     <th>Observação</th>
                                                                     <th>Bolsa 1</th>

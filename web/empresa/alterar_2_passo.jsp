@@ -331,15 +331,15 @@
                                                                     out.println("<div id='div3' class='hide'>");
                                                                 }
                                                               %>
-                                                              <h4 class="form-section"><i class="ft-clipboard"></i> Dados da Empresa</h4>
+                                                              <h4 class="form-section"><i class="ft-clipboard"></i> Dados do Trabalho</h4>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="nome">Nome da Empresa:</label>
+                                                                    <label class="col-md-3 label-control" for="nome">Local de Trabalho:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da Empresa" value="<%=empresa.getNome()!=null?empresa.getNome():""%>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="telefone">Telefone da Empresa:</label>
+                                                                    <label class="col-md-3 label-control" for="telefone">Telefone do Trabalho:</label>
                                                                     <div class="col-md-9">
                                                                         <input type="text" name="telefone" id="telefone"  class="form-control" placeholder="Telefone da Empresa DDD 99999-9999" maxlength="14" OnKeyPress="formatar('## #####-####', this)" value="<%=empresa.getTelefone()!=null?empresa.getTelefone():""%>">
                                                                     </div>
@@ -422,10 +422,10 @@
                                                                     </div>
                                                                 </div> 
                                                              <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="atividade">Sua Atividade Profissional*:</label>
+                                                                <label class="col-md-3 label-control" for="atividade">Sua Ocupação*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="atividade" name="atividade" class="form-control">
-                                                                        <option selected="" disabled="">Selecione a Sua Atividade Profissional</option>
+                                                                        <option selected="" disabled="">Selecione a sua Ocupação</option>
                                                                         <%
                                                                         if(empresa.getAtividade().equals("Empregado CLT"))
                                                                         out.print("<option selected value='Empregado CLT'>Empregado de carteira Assinada</option>");

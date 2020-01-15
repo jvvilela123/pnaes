@@ -67,7 +67,7 @@
 
                         %>
 
-                          <%@include file="menuAdministrador.jsp" %>
+                          <%@include file="menuAluno.jsp" %>
                         <%                            }
                         %>
                     </div>

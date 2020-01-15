@@ -106,6 +106,7 @@ public class ServletEntrevista extends HttpServlet {
                         ent.setOutraBolsa(request.getParameter("outraBolsa"));
                         ent.setAlmocoIfto(request.getParameter("almocoIfto"));
                         ent.setObservacao("");
+                       
                         //entrevista.setResultado("");
                         daoFactory.getEntrevistaDao().inserirOuAlterar(ent);
                     }
@@ -143,6 +144,7 @@ public class ServletEntrevista extends HttpServlet {
                 case "entrevistar":
                     entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
                     entrevista.setObservacao(request.getParameter("observacao"));
+                    entrevista.setVulnerabilidade(request.getParameter("vulnerabilidade"));
                     out.println("i_id = " + entrevista.getInscricao().getId() + " e_id = " + entrevista.getId());
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(entrevista.getInscricao().getId());
                     se = inscricao.getStatusEntrevista();

@@ -38,6 +38,7 @@ public class Entrevista implements Serializable{
     private String outraBolsa;
     private String almocoIfto;
     private String visitaDomiciliar;
+    private String vulnerabilidade;
 
     public String getConcorrencia() {
         return concorrencia;
@@ -184,6 +185,14 @@ public class Entrevista implements Serializable{
 
     public void setSe(StatusEntrevista se) {
         this.se = se;
+    }
+
+    public String getVulnerabilidade() {
+        return vulnerabilidade;
+    }
+
+    public void setVulnerabilidade(String vulnerabilidade) {
+        this.vulnerabilidade = vulnerabilidade;
     }
 
     
