@@ -88,7 +88,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Sistema PNAES</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Aterar dados do Membro Familiar</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -96,15 +96,15 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                        Preencha todos os campos corretamente
                                                     </div>
-                                                    <center><h1>Aterar dados do Dependente</h1></center>
+                                                   
                                                         <%
                                                             DataFormat dataFormat = new DataFormat();
                                                             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
                                                             Integer id = Integer.parseInt(request.getParameter("id"));
-                                                            //Dependente dependente = daoFactory.getDependenteDao().pesquisarPorId(id);
-                                                              out.println("DATA: "+formatador.format(dependente.getDtn().getTime()));
+                                                             dependente = daoFactory.getDependenteDao().pesquisarPorId(id);
+                                                             // out.println("DATA: "+formatador.format(dependente.getDtn().getTime()));
                                                            
                                                         %>
                                                     <form  class="form form-horizontal striped-rows form-bordered" method="Post" action="../ServletDependente?opcao=alterar&id=<%=dependente.getId()%>">
@@ -132,7 +132,7 @@
                                                                 <label class="col-md-3 label-control" for="ufe">Uf de Expedição do RG:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="ufe" name="ufe" class="form-control" required>
-                                                                        <option selected="" disabled="">Selecione a UF de Expedição</option>
+                                                                        <option selected="" disabled="" value="">Selecione a UF de Expedição</option>
                                                                         <%
 
                                                                             List<Uf> ufes = daoFactory.getUfDao().listar();
@@ -182,7 +182,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="email">E-mail:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="email" id="email"  class="form-control" value="<%=dependente.getEmail()%>" required>
+                                                                    <input type="text" name="email" id="email"  class="form-control" value="<%=dependente.getEmail()%>">
                                                                 </div>
                                                             </div>                                                
                                                             <div class="form-group row">
@@ -191,38 +191,105 @@
                                                                     <input type="text" name="telefone" id="telefone"  class="form-control" value="<%=dependente.getTelefone()%>" OnKeyPress="formatar('## #####-####', this)" required>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco:</label>
+                                                           <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="grauParentesco" id="grauParentesco" class="form-control" value="<%=dependente.getGrauParentesco()%>" required>
+                                                                   <select id="grauParentesco" name="grauParentesco" class="form-control" required>
+                                                                        <option selected="" disabled="" value="">Selecione o Grau de Parentesco</option>
+                                                                        <%
+                                                                        if(dependente.getGrauParentesco().equals("Mae"))
+                                                                        out.print("<option selected value='Mae'>Mãe</option>");
+                                                                        else
+                                                                        out.print("<option value='Mae'>Mãe</option>");
+                                                                        
+                                                                        if(dependente.getGrauParentesco().equals("Pai"))
+                                                                        out.print("<option selected value='Pai'>Pai</option>");
+                                                                        else
+                                                                        out.print("<option value='Pai'>Pai</option>");
+                                                                        
+                                                                        if(dependente.getGrauParentesco().equals("filho"))
+                                                                        out.print("<option selected value='filho'>Filho(a)</option>");
+                                                                        else
+                                                                        out.print("<option value='filho'>Filho(a)</option>");
+                                                                        
+                                                                        if(dependente.getGrauParentesco().equals("esposo"))
+                                                                        out.print("<option selected value='esposo'>Esposo(a)</option>");
+                                                                        else
+                                                                        out.print("<option value='esposo'>Esposo(a)</option>");
+                                                                        
+                                                                        if(dependente.getGrauParentesco().equals("Avo"))
+                                                                        out.print("<option selected value='Avo'>Avó ou Avô</option>");
+                                                                        else
+                                                                        out.print("<option value='Avo'>Avó ou Avô</option>");
+                                                                        
+                                                                        if(dependente.getGrauParentesco().equals("primo"))
+                                                                        out.print("<option selected value='primo'>Primo(a)</option>");
+                                                                        else
+                                                                        out.print("<option value='primo'>Primo(a)</option>");
+                                                                        
+                                                                        if(dependente.getGrauParentesco().equals("outro"))
+                                                                        out.print("<option selected value='outro'Outro</option>");
+                                                                        else
+                                                                        out.print("<option value='outro'>Outro</option>");
+                                                                        %>
+                                                                      </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="atividadeProf">Atividade Ocupacional:</label>
+                                                                
+                                                           <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="atividade">Sua Ocupação*:</label>
                                                                 <div class="col-md-9">
-                                                                    <select id="atividadeProf" name="atividadeProf" class="form-control" required>
-                                                                        <option selected="" disabled="">Selecione a Atividade Profissional</option>
+                                                                    <select id="atividade" name="atividade" class="form-control" required>
+                                                                        <option selected="" disabled="" value="">Selecione a sua Ocupação</option>
                                                                         <%
-                                                                        if(dependente.getAtividadeProf().equals("Empregado CLT"))
-                                                                        out.print("<option selected value='Empregado CLT'>Empregado de carteira Assinada</option>");
-                                                                        else
-                                                                        out.print("<option value='Empregado CLT'>Empregado de carteira Assinada</option>");
-                                                                        if(dependente.getAtividadeProf().equals("Funcionanio Publico"))
-                                                                        out.print("<option selected value='Funcionanio Publico'>Funcionario Público</option>");
-                                                                        else
-                                                                        out.print("<option value='Funcionanio Publico'>Funcionario Público</option>");
                                                                         if(dependente.getAtividadeProf().equals("Desempregado"))
                                                                         out.print("<option selected value='Desempregado'>Desempregado</option>");
                                                                         else
                                                                         out.print("<option value='Desempregado'>Desempregado</option>");
-                                                                        if(dependente.getAtividadeProf().equals("Autonomo"))
-                                                                        out.print("<option selected value='Autonomo'>Autônomo</option>");
+                                                                        
+                                                                        if(dependente.getAtividadeProf().equals("Empregado CLT"))
+                                                                        out.print("<option selected value='Empregado CLT'>Empregado de Carteira Assinada</option>");
                                                                         else
-                                                                        out.print("<option value='Autonomo'>Autônomo</option>");
+                                                                        out.print("<option value='Empregado CLT'>Empregado de Carteira Assinada</option>");
+                                                                        
+                                                                        if(dependente.getAtividadeProf().equals("Trabalho sem carteira"))
+                                                                        out.print("<option selected value='Trabalho sem carteira'>Trabalho sem Carteira Assinada</option>");
+                                                                        else
+                                                                        out.print("<option value='Trabalho sem carteira'>Trabalho sem Carteira Assinada</option>");
+                                                                        
+                                                                        if(dependente.getAtividadeProf().equals("Autonomo"))
+                                                                        out.print("<option selected value='Autonomo'>Autônomo (Formal)</option>");
+                                                                        else
+                                                                        out.print("<option value='Autonomo'>Autônomo (Formal)</option>");
+                                                                        
+                                                                        if(dependente.getAtividadeProf().equals("Autonomoi"))
+                                                                        out.print("<option selected value='Autonomoi'>Autônomo (Informal)</option>");
+                                                                        else
+                                                                        out.print("<option value='Autonomoi'>Autônomo (Informal)</option>");
+                                                                        
+                                                                        if(dependente.getAtividadeProf().equals("Funcionanio Publico"))
+                                                                        out.print("<option selected value='Funcionanio Publico'>Funcionario Público (Contratado)</option>");
+                                                                        else
+                                                                        out.print("<option value='Funcionanio Publico'>Funcionario Público (Contratado)</option>");
+                                                                        
+                                                                        if(dependente.getAtividadeProf().equals("Servidor Publico"))
+                                                                        out.print("<option selected value='Servidor Publico'>Servidor Público (Concursado)</option>");
+                                                                        else
+                                                                        out.print("<option value='Servidor Publico'>Servidor Público (Concursado)</option>");
+                                                                        
+                                                                        if(dependente.getAtividadeProf().equals("Aposentado"))
+                                                                        out.print("<option selected value='Aposentado'>Aposentado</option>");
+                                                                        else
+                                                                        out.print("<option value='Aposentado'>Aposentado</option>");
+                                                                        
+                                                                        if(dependente.getAtividadeProf().equals("Pensionista"))
+                                                                        out.print("<option selected value='Pensionista'>Pensionista</option>");
+                                                                        else
+                                                                        out.print("<option value='Pensionista'>Pensionista</option>");
                                                                         %>
                                                                     </select>
                                                                 </div>
-                                                            </div>
+                                                            </div> 
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="renda">Renda Mensal:</label>
                                                                 <div class="col-md-9">
@@ -230,12 +297,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions right">
-                                                                <a href="/pnaes/dependente/listar.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
+                                                                <a href="/pnaes/dependente/listar.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
                                                                 <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                    <i class="fa fa-check-square-o"></i>Enviar
+                                                                    <i class="fa fa-check-square-o"></i>Alterar
                                                                 </button>
                                                             </div>
                                                         </div>

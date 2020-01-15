@@ -17,27 +17,39 @@ public class Empresa implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
-    private String responsavel;
     @ManyToOne
     @JoinColumn(name="aluno_id")
     private Aluno aluno;
+    private Boolean temCarteira;
+    private String atividade;
     private String telefone;
     private String nome;
-    private String carteira;
-    private String trabalha;
-    private String atividade;
     private Double renda;
     private Double orenda;
-    @OneToOne
-    @JoinColumn(name="endereco_id")
-    private Endereco endereco;
-
-    public Endereco getEndereco() {
-        return endereco;
+   
+ 
+    public Integer getId() {
+        return id;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Boolean getTemCarteira() {
+        return temCarteira;
+    }
+
+    public void setTemCarteira(Boolean temCarteira) {
+        this.temCarteira = temCarteira;
     }
     
     
@@ -47,6 +59,21 @@ public class Empresa implements Serializable{
 
     public void setAtividade(String atividade) {
         this.atividade = atividade;
+    }
+    
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Double getRenda() {
@@ -65,61 +92,4 @@ public class Empresa implements Serializable{
         this.orenda = orenda;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    
-    
-
-    public String getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(String responsavel) {
-        this.responsavel = responsavel;
-    }
-
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public String getCarteira() {
-        return carteira;
-    }
-
-    public void setCarteira(String carteira) {
-        this.carteira = carteira;
-    }
-
-    public String getTrabalha() {
-        return trabalha;
-    }
-
-    public void setTrabalha(String trabalha) {
-        this.trabalha = trabalha;
-    }
-
-    
 }

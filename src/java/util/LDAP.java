@@ -26,11 +26,11 @@ public class LDAP {
         this.ctx.close();
     }
 
-    public boolean testaConexao() {
+    public boolean testaConexao(String user, String pass) {
 
         boolean conexaoOk = true;
         try {
-            this.conectaDiretorio("1983156", "!Fto2019");
+            this.conectaDiretorio(user, pass);
         } catch (Exception e) {
             
             System.out.println("Conect: testaConexao - ERRO: " + e);

@@ -42,6 +42,7 @@ public class ServletLogin extends HttpServlet {
             String login = request.getParameter("cpf").trim();
             String senha = request.getParameter("senha").trim();
             HttpSession sessao = request.getSession();
+            sessao.setMaxInactiveInterval(3000);
             String msg = new String();
 
             try {
@@ -75,7 +76,7 @@ public class ServletLogin extends HttpServlet {
                 
                 msg = "Faça o seu Cadastro";
                // msg = "Realize seu cadastro";
-                request.getRequestDispatcher("pessoa/cadastrar.jsp?msg=" + msg).forward(request, response);
+                request.getRequestDispatcher("pessoa/cadastrar.jsp?msg=" + msg +"&matricula="+login).forward(request, response);
                 //response.sendRedirect("pessoa/cadastrar.jsp?msg=" + msg);
             }
 

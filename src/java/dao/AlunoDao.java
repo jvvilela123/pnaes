@@ -20,6 +20,7 @@ public class AlunoDao extends DaoGenerico{
 
     public Aluno buscarAlunoPor(String login) 
     {
+        try {
         String jpql = "select c from Aluno c where c.cpf = '"+login+"' or c.matricula = '"+login+"'";
         //String jpql = "select c from Aluno c where c.cpf = '00982109121'";
         //System.out.println("aqui = "+jpql);
@@ -27,12 +28,25 @@ public class AlunoDao extends DaoGenerico{
         Query query = em.createQuery(jpql);
         System.out.println("aqui = "+ query.getSingleResult());
         return (Aluno) query.getSingleResult();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
 
     }
     
     public List<Aluno> listarAlunos() {
+        try{
         String jpql = "select a from Aluno a where a.nivel = 1";
         return em.createQuery(jpql).getResultList();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
     }
     
     /**
@@ -41,9 +55,16 @@ public class AlunoDao extends DaoGenerico{
     * @return
      */
     public List<Aluno> listarAlunosPorCurso(Integer cursoId) {
+        try{
         String jpql = "select a from Aluno a where a.nivel = 1 and a.curso.id = "+cursoId;
       //  System.out.println("aqui = "+ jpql);
         return em.createQuery(jpql).getResultList();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
     }
     
     /**
@@ -52,9 +73,16 @@ public class AlunoDao extends DaoGenerico{
     * @return
      */
     public List<Aluno> listarAlunosPorCategoria(Integer categoriaId) {
+        try{
         String jpql = "select a from Aluno a where a.nivel = 1 and a.curso.categoria.id = "+categoriaId;
        // System.out.println("aqui = "+ jpql);
         return em.createQuery(jpql).getResultList();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
     }
     
    

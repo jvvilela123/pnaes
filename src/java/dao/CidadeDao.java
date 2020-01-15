@@ -20,10 +20,17 @@ public class CidadeDao extends DaoGenerico
 
     public List<Cidade> buscarCidadePorUf(Integer idUf) 
     {
+        try{
         String jpql = "select c from Cidade c where c.uf.id = "+idUf;
         Query query = em.createQuery(jpql, Cidade.class);
         
         return query.getResultList();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
 
     }
     

@@ -85,7 +85,7 @@
                                                 <div class="card-body">
                                                     <h4 class="form-section"><i class="ft-user"></i>Dados da Despesa Mensal</h4>
                                                     <div class="card-text">
-                                                        Texto info
+                                                        Preencha todos os campos corretamente
                                                     </div>
                                                     <%
                                                         if(request.getParameter("status")!=null){
@@ -132,6 +132,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions right">
+                                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>

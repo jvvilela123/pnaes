@@ -196,7 +196,7 @@
                             function continuarInscricao(){
                 alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>','Após a confirmação não será possível alterar os dados cadastrados, deseja continuar?', function(){
                     window.location.href = "ServletAluno?id=<%=aluno.getId()%>&opcao=continuar_Inscricao";
-                }, function(){ alertify.error('Continue alterando os dados');}).set('labels', {ok:'OK', cancel:'Voltar'}); ;
+                }, function(){ alertify.error('Continue alterando os dados');}).set('labels', {ok:'Confirmo', cancel:'Voltar'}); ;
             }
                             </script>
                       <!-- <a href="/pnaes/inscricao/inscricao.jsp"> <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button">Fazer inscrição do (s) auxílio (s)</button> </a>-->

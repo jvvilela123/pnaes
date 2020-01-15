@@ -13,7 +13,7 @@
       <!--configurando C3P0 -->
       <property name="c3p0.acquire_increment" value="2"/>
       <property name="c3p0.idle_test_period" value="120"/>
-      <property name="c3p0.max_size" value="30"/>
+      <property name="c3p0.max_size" value="100"/>
       <property name="c3p0.max_statements" value="10"/>
       <property name="c3p0.min_size" value="5"/>
       <property name="c3p0.timeout" value="120"/>

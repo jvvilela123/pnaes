@@ -22,7 +22,9 @@
                     <div class="content-w">
                         <%@include file="cabecalho.jsp" %>
 
-                        <%                            msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
+                        <% 
+                            if(request.getParameter("msg") != null){
+                            msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
                             if (msg.isEmpty() == false) {
 
                         %>
@@ -37,8 +39,9 @@
 
                         <%
                             }
+                           }
                             //msg = request.getParameter("msg");
-
+                           
                             if (session.getAttribute("nivel").toString().equals("1")) {
                                 if (aluno.getStatusCadastro().equals("7")) {%>
                                     <script type="text/javascript">

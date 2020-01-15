@@ -21,10 +21,17 @@ public class CursoDao extends DaoGenerico
 
     public List<Curso> buscarCursoPorCategoria(Integer categoria_id) 
     {
+        try{
         String jpql = "select c from Curso c where c.categoria.id = "+categoria_id;
         Query query = em.createQuery(jpql, Curso.class);
         
         return query.getResultList();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
 
     }
  

@@ -97,7 +97,7 @@
                                                     <div class="buttons-w">
                                                         <button type="submit" value="Entrar" class="btn btn-primary">Entrar</button>
                                                     </div>
-                                                    Não é cadastrado <a href="/pnaes/pessoa/cadastrar.jsp">Cadastre-se</a>
+                                                    <!--Não é cadastrado <a href="/pnaes/pessoa/cadastrar.jsp">Cadastre-se</a>-->
                                                 </div>
                                             </form>
                                         </div>

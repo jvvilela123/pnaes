@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Dependente</title>
+        <title>Cadastro de Membro Familiar</title>
         <script language=JavaScript src="../jquery.js" type="text/javascript"></script>
         <script type="text/javascript" >
             $(document).ready(function () {
@@ -85,7 +85,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro de Dependente</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro de Membro Familiar</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -93,33 +93,33 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                       Preencha corretamente todos os campos
                                                     </div>
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDependente?opcao=cadastrar&aluno_id=<%=session.getAttribute("aluno_id")%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="nome">Nome:</label>
+                                                                <label class="col-md-3 label-control" for="nome">Nome*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="cpf">CPF:</label>
+                                                                <label class="col-md-3 label-control" for="cpf">CPF*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="rg">RG:</label>
+                                                                <label class="col-md-3 label-control" for="rg">RG*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="rg" id="rg"  class="form-control" placeholder="RG"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="ufe">Uf de Expedição do RG:</label>
+                                                                <label class="col-md-3 label-control" for="ufe">Uf de Expedição do RG*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="ufe" name="ufe" class="form-control"  required>
-                                                                        <option selected="" disabled="">Selecione a UF de Expedição</option>
+                                                                        <option selected="" disabled="" value="">Selecione a UF de Expedição</option>
                                                                         <%
                                                                             List<Uf> ufes = daoFactory.getUfDao().listar();
                                                                             for (Uf ufe : ufes) {
@@ -130,7 +130,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="sexo">Sexo:</label>
+                                                                <label class="col-md-3 label-control" for="sexo">Sexo*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="d-inline-block custom-control custom-radio mr-1">
@@ -145,7 +145,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento:</label>
+                                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" maxlength="10" OnKeyPress="formatar('##/##/####', this)"  required>
                                                                 </div>
@@ -153,46 +153,62 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="email">E-mail:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="email" name="email" id="email"  class="form-control" placeholder="Email" required>
+                                                                    <input type="email" name="email" id="email"  class="form-control" placeholder="Email" >
                                                                 </div>
                                                             </div>                                                
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="telefone">Telefone:</label>
+                                                                <label class="col-md-3 label-control" for="telefone">Telefone*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="99 99999-9999" maxlength="14" OnKeyPress="formatar('## #####-####', this)"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco:</label>
+                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="grauParentesco" id="grauParentesco"  class="form-control" placeholder="Grau de Parentesco"  required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="atividadeProf">Atividade Ocupacional:</label>
-                                                                <div class="col-md-9">
-                                                                    <select id="atividadeProf" name="atividadeProf" class="form-control" required>
-                                                                        <option selected="" disabled="">Selecione a Atividade Profissional</option>
-                                                                        <option value="Desempregado">Desempregado</option>
-                                                                        <option value="Empregado CLT">Empregado de carteira Assinada</option>
-                                                                        <option value="Autonomo">Autonomo</option>
-                                                                        <option value="Funcionanio Publico">Funcionario Publico</option>
+                                                                   <select id="grauParentesco" name="grauParentesco" class="form-control" required>
+                                                                        <option selected="" disabled="" value="">Selecione o Grau de Parentesco</option>
+                                                                        <option value="Mae">Mãe</option>
+                                                                        <option value="Pai">Pai</option>
+                                                                        <option value="filho">Filho(a)</option>
+                                                                        <option value="esposo">Esposo(a)</option>
+                                                                        <option value="Avo">Avó ou Avô</option>
+                                                                        <option value="primo">Primo(a)</option>
+                                                                        <option value="outro">Outro</option>
+                                                                         
                                                                     </select>
                                                                 </div>
                                                             </div>
+                                                            
+                                                          <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="atividade">Ocupação*:</label>
+                                                                <div class="col-md-9">
+                                                                    <select id="atividade" name="atividade" class="form-control" required>
+                                                                        <option selected="" disabled="" value="">Selecione a Ocupação</option>
+                                                                        <option value="Desempregado">Desempregado</option>
+                                                                        <option value="Empregado CLT">Empregado de Carteira Assinada</option>
+                                                                        <option value="Trabalho sem carteira">Trabalho sem Carteira Assinada</option>
+                                                                        <option value="Autonomo">Autônomo (Formal)</option>
+                                                                        <option value="Autonomoi">Autônomo (Informal)</option>
+                                                                        <option value="Funcionanio Publico">Funcionario Público (Contratado)</option>
+                                                                        <option value="Servidor Publico">Servidor Público (Concursado)</option>
+                                                                        <option value="Aposentado">Aposesntado</option> 
+                                                                        <option value="Pensionista">Pensionista</option> 
+                                                                    </select>
+                                                                </div>
+                                                            </div> 
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="renda">Renda Mensal:</label>
+                                                                <label class="col-md-3 label-control" for="renda">Renda Mensal*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="renda" id="renda"  value="0.00" class="form-control" placeholder="Renda Mensal" onKeyPress="return(moeda(this,'','.',event))"  required>
                                                                 </div>
                                                             </div>        
                                                             <div class="form-actions right">
-                                                                <a href="/pnaes/dependente/listar.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
-                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1">
+                                                                <a href="/pnaes/dependente/listar.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                                <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                    <i class="fa fa-check-square-o"></i> Enviar
+                                                                <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
+                                                                    <i class="fa fa-check-square-o"></i> Cadastrar
                                                                 </button>
                                                             </div>
                                                         </div>

@@ -71,17 +71,39 @@ public class DaoGenerico<T> {
     }
 
     public T pesquisarPorId(Integer id) {
+        try {
         return (T) this.em.find(classe, id);
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
+        
     }
 
     public List<T> listar() {
+        try {
         String jpql = "select a from " + classe.getSimpleName() + " a";
         return em.createQuery(jpql, classe).getResultList();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
     }
 
     public List<T> pesquisarPor(String busca, String campo) {
+        try {
         String jpql = "select a from " + classe.getSimpleName() + " a where a." + campo + " like '%" + busca + "%'";
         return em.createQuery(jpql, classe).getResultList();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
     }
 
     public List<T> perquisarListaPorAluno(Integer alunoId) {
@@ -92,6 +114,9 @@ public class DaoGenerico<T> {
         } catch (Exception ex) {
             return null;
         }
+        finally {
+            em.close();
+        }
 
     }
     public T perquisarClassePorAluno(Integer alunoId) {
@@ -101,6 +126,9 @@ public class DaoGenerico<T> {
 
         } catch (Exception ex) {
             return null;
+        }
+        finally {
+            em.close();
         }
 
     }

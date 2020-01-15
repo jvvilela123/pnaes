@@ -83,7 +83,7 @@
     </head>
     <body>
         <div class="element-box">
-            <h1 class="form-header">Cadastro</h1>
+            <h1 class="form-header">1º Cadastro no Sistema PNAES</h1>
             <div class="form-desc">
                 
             </div>
@@ -216,10 +216,10 @@
                                             </div>        
                                             
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="matricula">Matricula (a mesma do SIGA ou SUAP)*:</label>
+                                                <!--<label class="col-md-3 label-control" for="matricula">Matricula (a mesma do SIGA ou SUAP)*:</label>-->
                                                 <div class="col-md-9">
                                                     <div class="position-relative has-icon-left">
-                                                        <input type="text" name="matricula" id="matricula" class="form-control" placeholder="Numero de Matricula" required>
+                                                        <input type="hidden" name="matricula" id="matricula" class="form-control"  value="<%=request.getParameter("matricula")%>">
                                                         <div class="form-control-position">
                                                             <i class="ft-user"></i>
                                                         </div>

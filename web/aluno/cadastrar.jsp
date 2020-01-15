@@ -120,7 +120,7 @@
                                                                 <label class="col-md-3 label-control" for="cat">Modalidade do Curso*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="cat" name="cat" class="form-control" required>
-                                                                        <option selected="" disabled="">Selecione Modalidade do Curso</option>
+                                                                        <option selected="" disabled="" value="">Selecione Modalidade do Curso</option>
                                                                         <%
                                                                             List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
                                                                             for (Categoria categoria : categorias) {
@@ -135,7 +135,7 @@
                                                                         <label class="col-md-3 label-control" for="curso">Curso*:</label>
                                                                         <div class="col-md-9">
                                                                             <select id="curso" name="curso" class="form-control" required>
-                                                                                <option selected="" disabled="">Selecione primeiro a Modalidade do Curso ↑</option>
+                                                                                <option selected="" disabled="" value="">Selecione primeiro a Modalidade do Curso ↑</option>
                                                                             </select>
                                                                         </div>
                                                                   </div>   
@@ -145,7 +145,7 @@
                                                                     <label class="col-md-3 label-control" for="periodo">Periodo*:</label>
                                                                     <div class="col-md-9">
                                                                         <select id="periodo" name="periodo" class="form-control" required>
-                                                                           <option selected="" disabled="">Selecione primeiro o Curso ↑</option>
+                                                                           <option selected="" disabled="" value="">Selecione primeiro o Curso ↑</option>
                                                                             <!--<option value="1 Ano/Modulo/Periodo">1 Ano/Modulo/Periodo</option>
                                                                             <option value="2 Ano/Modulo/Periodo">2 Ano/Modulo/Periodo</option>
                                                                             <option value="3 Ano/Modulo/Periodo">3 Ano/Modulo/Periodo</option>
@@ -226,10 +226,7 @@
                                                                             <input type="radio" name="ensinoMedio" id="ensinoMedioPp" value="Publica/Particular" class="custom-control-input" required>
                                                                             <label class="custom-control-label" for="ensinoMedioPp">Pública e Particular&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
-                                                                        <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="ensinoMedio" id="ensinoMedioIf" value="IFTO" class="custom-control-input" required>
-                                                                            <label class="custom-control-label" for="ensinoMedioIf">Cursando o Ensino Médio no IFTO</label>
-                                                                        </div>
+                                                                       
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -331,6 +328,7 @@
                                                             </div>   -->     
 
                                                             <div class="form-actions right">
+                                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
