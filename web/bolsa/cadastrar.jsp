@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Bolsa</title>
+        <title>Cadastro de Auxílio</title>
         <%@include file="../imports.jsp" %>
     </head>
     <body class="menu-position-side menu-side-left full-screen">
@@ -33,7 +33,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro de Bolsa</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro de Auxílio</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -50,7 +50,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="nome">Nome</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome da bolsa" required>
+                                                                    <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do auxílio" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">

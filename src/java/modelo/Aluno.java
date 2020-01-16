@@ -31,7 +31,8 @@ public class Aluno extends Pessoa{
     private String periodoVisita;
     private String meioTransporte;
     private Integer periodo;
-    private String reprovou;
+    private Boolean reprovou;
+    private Integer reprovouQuantas;
     private String dependeciaFamiliar;
     @ManyToOne
     private Curso curso;
@@ -99,12 +100,20 @@ public class Aluno extends Pessoa{
         this.dependeciaFamiliar = dependeciaFamiliar;
     }
     
-    public String getReprovou() {
+    public Boolean getReprovou() {
         return reprovou;
     }
 
-    public void setReprovou(String reprovou) {
+    public void setReprovou(Boolean reprovou) {
         this.reprovou = reprovou;
+    }
+
+    public Integer getReprovouQuantas() {
+        return reprovouQuantas;
+    }
+
+    public void setReprovouQuantas(Integer reprovouQuantas) {
+        this.reprovouQuantas = reprovouQuantas;
     }
     
    

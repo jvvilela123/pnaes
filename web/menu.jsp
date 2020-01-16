@@ -23,10 +23,13 @@ START - Mobile Menu
             </div>
         </div>
     </div>
+    
     <div class="menu-and-user">
         <div class="logged-user-w">
             <div class="avatar-w">      
                 <%
+                    
+                     
                     String msg = new String();
                     DaoFactory daoFactory = new DaoFactory();
                     Edital edital = new Edital();
@@ -67,6 +70,7 @@ START - Mobile Menu
                     } else {
                         edital = editais.get(editais.size() - 1);
                     }
+                
 
                 %>
                 <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">
@@ -157,10 +161,10 @@ START - Mobile Menu
                     <div class="icon-w">
                         <div class="os-icon os-icon-layout"></div>
                     </div>
-                    <span>Bolsa</span></a>
+                    <span>Auxílio</span></a>
                 <div class="sub-menu-w">
                     <div class="sub-menu-header">
-                        Bolsa
+                        Auxílio
                     </div>
                     <div class="sub-menu-icon">
                         <i class="os-icon os-icon-layout"></i>
@@ -447,10 +451,10 @@ START - Main Menu
                 <div class="icon-w">
                     <div class="os-icon os-icon-book"></div>
                 </div>
-                <span>Bolsa</span></a>
+                <span>Auxílio</span></a>
             <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                    Bolsa
+                    Auxílio
                 </div>
                 <div class="sub-menu-icon">
                     <i class="os-icon os-icon-layout"></i>
@@ -576,6 +580,7 @@ START - Main Menu
             </li>
     </ul>
 </div>
+    
 <!--------------------
 END - Main Menu
 -------------------->

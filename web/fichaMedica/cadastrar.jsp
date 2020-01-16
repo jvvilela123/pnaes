@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Ficha Medica</title>
+        <title>Cadastro de Ficha de Saúde</title>
         <link rel="stylesheet" href="/pnaes/css/alertify.css">
 
         <%@include file="../imports.jsp" %>
@@ -71,6 +71,22 @@
             }
             function naoTemOutraDoenca() {
                 document.getElementById('div_outra_doenca').style.display = 'none';
+                document.getElementById('outrosqual').value="";
+            }
+            
+            function temOutraDeficiencia() {
+                document.getElementById('div_outra_deficiencia').style.display = 'block';
+            }
+            function naoTemOutraDeficiencia() {
+                document.getElementById('div_outra_deficiencia').style.display = 'none';
+                document.getElementById('outraDeficienciaQual').value="";
+            }
+             function temOutraDeficienciaFamilia() {
+                document.getElementById('div_outra_deficiencia_familia').style.display = 'block';
+            }
+            function naoTemOutraDeficienciaFamilia() {
+                document.getElementById('div_outra_deficiencia_familia').style.display = 'none';
+                document.getElementById('outraDeficienciaFamiliaQual').value="";
             }
             function temDoencaFamilia() {
                 document.getElementById('div_doenca_familia').style.display = 'block';
@@ -107,6 +123,7 @@
             }
             function naoTemOutraDoencaFamilia() {
                 document.getElementById('div_outra_doenca_familia').style.display = 'none';
+                document.getElementById('outrosqualfamilia').value="";
             }
             function temMedicamentoControlado() {
                 document.getElementById('div_medicamento').style.display = 'block';
@@ -204,6 +221,7 @@
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença da sua família no campo Outros.</h6>");
                     prencheuTudo = false;
                  }
+                 
                else if (document.getElementById('simm').checked && document.getElementById('qualM').value === ""){
                     document.getElementById('qualM').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha o nome do seu medicamento.</h6>");
@@ -222,6 +240,16 @@
                     alertify.errorAlert("<h6 class='card-title'>Preencha a deficiência da sua família.</h6>");
                     prencheuTudo = false;
                 }
+                else if( document.getElementById('outraDeficiencia').checked && document.getElementById('outraDeficienciaQual').value === ""){
+                    document.getElementById('outraDeficienciaQual').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a sua Deficiêcnia no campo Outras.</h6>");
+                    prencheuTudo = false;
+                 }
+                else if( document.getElementById('outraDeficienciaFamilia').checked && document.getElementById('outraDeficienciaFamiliaQual').value === ""){
+                    document.getElementById('outraDeficienciaFamiliaQual').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a Deficiêcnia da sua Família no campo Outras.</h6>");
+                    prencheuTudo = false;
+                 }
               if(prencheuTudo)  
               document.getElementById("formFichaMedica").submit();
             }
@@ -252,7 +280,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Sistema PNAES</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro da Ficha de Saúde</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -260,7 +288,7 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                        Preencha corretamente todos os campos
                                                     </div>
                                                     <%
                             msg = request.getParameter("msg")==null?"":request.getParameter("msg");
@@ -280,7 +308,7 @@
                             }%>
                                     <form method="Post" action="../ServletFichaMedica?opcao=cadastrar&aluno_id=<%=session.getAttribute("aluno_id")%>" class="form form-horizontal" id="formFichaMedica">
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="ft-user"></i>Ficha de Saúde</h4>
+                                      
                                              <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="doencaCronica">Você tem alguma Doença?*:</label>
                                                 <div class="col-md-3">
@@ -509,25 +537,37 @@
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" name="qualDeficiencia" id="auditiva" value="Auditiva" class="custom-control-input">
+                                                            <input type="radio" name="qualDeficiencia" id="auditiva" value="Auditiva" class="custom-control-input" onclick="naoTemOutraDeficiencia();">
                                                             <label class="custom-control-label" for="auditiva">Auditiva&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" name="qualDeficiencia" id="fisica" value="Fisica" class="custom-control-input">
+                                                            <input type="radio" name="qualDeficiencia" id="fisica" value="Fisica" class="custom-control-input" onclick="naoTemOutraDeficiencia();">
                                                             <label class="custom-control-label" for="fisica">Física&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" name="qualDeficiencia" id="visual" value="Visual" class="custom-control-input">
+                                                            <input type="radio" name="qualDeficiencia" id="visual" value="Visual" class="custom-control-input" onclick="naoTemOutraDeficiencia();">
                                                             <label class="custom-control-label" for="visual">Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" name="qualDeficiencia" id="mental" value="Intelectual" class="custom-control-input">
+                                                            <input type="radio" name="qualDeficiencia" id="mental" value="Intelectual" class="custom-control-input" onclick="naoTemOutraDeficiencia();">
                                                             <label class="custom-control-label" for="mental">Intelectual/Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio" >
-                                                            <input type="radio" name="qualDeficiencia" id="multiplas" value="Multiplas" class="custom-control-input">
+                                                            <input type="radio" name="qualDeficiencia" id="multiplas" value="Multiplas" class="custom-control-input" onclick="naoTemOutraDeficiencia();">
                                                             <label class="custom-control-label" for="multiplas">Deficiência Múltiplas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" name="qualDeficiencia" id="outraDeficiencia" value="Outras" class="custom-control-input" onclick="temOutraDeficiencia();">
+                                                            <label class="custom-control-label" for="outraDeficiencia">Outras</label>
+                                                        </div>
+                                                         <div id="div_outra_deficiencia" class="hide">
+                                                            <div class="position-relative has-icon-left">
+                                                                <input type="text" name="qualDeficienciaOutro" id="outraDeficienciaQual" class="form-control" placeholder="Qual Deficiência?">
+                                                                <div class="form-control-position">
+                                                                    <i class="fa fa-briefcase"></i>
+                                                                </div>
+                                                            </div>
+                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -555,35 +595,48 @@
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" name="qualDeficienciaDep" id="auditiva_familia" value="Auditiva" class="custom-control-input">
+                                                            <input type="radio" name="qualDeficienciaDep" id="auditiva_familia" value="Auditiva" class="custom-control-input" onclick="naoTemOutraDeficienciaFamilia();">
                                                             <label class="custom-control-label" for="auditiva_familia">Auditiva&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" name="qualDeficienciaDep" id="fisica_familia" value="Fisica" class="custom-control-input">
+                                                            <input type="radio" name="qualDeficienciaDep" id="fisica_familia" value="Fisica" class="custom-control-input" onclick="naoTemOutraDeficienciaFamilia();">
                                                             <label class="custom-control-label" for="fisica_familia">Física&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" name="qualDeficienciaDep" id="visual_familia" value="Visual" class="custom-control-input">
+                                                            <input type="radio" name="qualDeficienciaDep" id="visual_familia" value="Visual" class="custom-control-input" onclick="naoTemOutraDeficienciaFamilia();">
                                                             <label class="custom-control-label" for="visual_familia">Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" name="qualDeficienciaDep" id="mental_familia" value="Intelectual" class="custom-control-input">
+                                                            <input type="radio" name="qualDeficienciaDep" id="mental_familia" value="Intelectual" class="custom-control-input" onclick="naoTemOutraDeficienciaFamilia();">
                                                             <label class="custom-control-label" for="mental_familia">Intelectual/Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio" >
-                                                            <input type="radio" name="qualDeficienciaDep" id="multiplas_familia" value="Multiplas" class="custom-control-input">
+                                                            <input type="radio" name="qualDeficienciaDep" id="multiplas_familia" value="Multiplas" class="custom-control-input" onclick="naoTemOutraDeficienciaFamilia();">
                                                             <label class="custom-control-label" for="multiplas_familia">Deficiência Múltiplas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
+                                                         <div class="custom-control custom-radio">
+                                                            <input type="radio" name="qualDeficienciaDep" id="outraDeficienciaFamilia" value="Outras" class="custom-control-input" onclick="temOutraDeficienciaFamilia();">
+                                                            <label class="custom-control-label" for="outraDeficienciaFamilia">Outras</label>
+                                                        </div>
+                                                         <div id="div_outra_deficiencia_familia" class="hide">
+                                                            <div class="position-relative has-icon-left">
+                                                                <input type="text" name="qualDeficienciaOutroFamilia" id="outraDeficienciaFamiliaQual" class="form-control" placeholder="Qual Deficiência na Família?">
+                                                                <div class="form-control-position">
+                                                                    <i class="fa fa-briefcase"></i>
+                                                                </div>
+                                                            </div>
+                                                         </div>
                                                     </div>
                                                        </div>
                                                     </div>
                                                </div>
                                             <div class="form-actions">
-                                                <button type="reset" value="Limpar"  class="btn btn-warning mr-1">
+                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                <button type="reset" value="Limpar"  class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                     <i class="ft-x"></i> Limpar
                                                 </button>
-                                                <button type="button" class="btn btn-primary" name="cadastrar" value="Cadastrar" onclick="verificaCampos()">
-                                                    <i class="la la-check-square-o"></i> Avançar
+                                                <button type="button" class="btn btn-primary os-icon os-icon-save" name="cadastrar" value="Cadastrar" onclick="verificaCampos()">
+                                                    <i class="la la-check-square-o"></i> Cadastrar
                                                 </button>
                                             </div>
                                         </form>

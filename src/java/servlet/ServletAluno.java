@@ -159,7 +159,13 @@ public class ServletAluno extends HttpServlet {
                     aluno.setEnsinoFundamental(request.getParameter("ensinoFundamental"));
                     aluno.setEntradaIfto(request.getParameter("entrada"));
                     aluno.setPeriodoVisita(request.getParameter("visita"));
-                    aluno.setReprovou(request.getParameter("reprovou").equals("")?null:request.getParameter("reprovou"));
+                    
+                    aluno.setReprovou(request.getParameter("reprovousimounao").equals("Sim"));
+                    if(request.getParameter("reprovousimounao").equals("Sim"))
+                    aluno.setReprovouQuantas(Integer.parseInt(request.getParameter("reprovou")));
+                    else
+                    aluno.setReprovouQuantas(null);
+                    
                     aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("empresa/cadastrar.jsp");
@@ -175,7 +181,13 @@ public class ServletAluno extends HttpServlet {
                     aluno.setEnsinoFundamental(request.getParameter("ensinoFundamental"));
                     aluno.setEntradaIfto(request.getParameter("entrada"));
                     aluno.setPeriodoVisita(request.getParameter("visita"));
-                    aluno.setReprovou(request.getParameter("reprovou").equals("")?null:request.getParameter("reprovou"));
+                    
+                    aluno.setReprovou(request.getParameter("reprovousimounao").equals("Sim"));
+                    if(request.getParameter("reprovousimounao").equals("Sim"))
+                    aluno.setReprovouQuantas(Integer.parseInt(request.getParameter("reprovou")));
+                    else
+                    aluno.setReprovouQuantas(null);
+                    
                     aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("home.jsp");

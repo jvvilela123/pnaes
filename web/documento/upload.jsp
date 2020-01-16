@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Envio de Documentos</title>        
+        <title>Cadastro e Envio de Documentos</title>        
         <link href="/pnaes/css/main.css?version=4.4.0" rel="stylesheet">
        <%@include file="../imports.jsp" %>
         <script>
@@ -21,10 +21,108 @@
                 $('#uf').change(function () {
                     $('#cidade').load('../cidadeajax.jsp?estado=' + $('#uf').val());
                 });
-
+          uploadFile();
             });
             function uploadFile() {
+                var foto = document.getElementById('target');
+                var pdf = document.getElementById('da');
+                var pdf1 = document.getElementById('dp');
+                var pdf2 = document.getElementById('dr');
+                var pdf3 = document.getElementById('dd');
+                var pdf4 = document.getElementById('od');
+                var tamanhoMaximo = 5000000; //5Mb
+
+                   foto.onchange = function(e) {
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'jpg':
+                        case 'png':
+                        case 'jpeg':
+                        break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (png, jpg ou jpeg)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                    };
+                    
+                    pdf.onchange = function(e) {
+                    
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'pdf':
+                       break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (pdf)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                      };
+                    pdf1.onchange = function(e) {
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'pdf':
+                       break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (pdf)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                    };
+                    pdf2.onchange = function(e) {
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'pdf':
+                       break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (pdf)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                    };
+                    pdf3.onchange = function(e) {
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'pdf':
+                       break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (pdf)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                    };
+                    pdf4.onchange = function(e) {
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'pdf':
+                       break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (pdf)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                    };
+                /*
                 var target = document.querySelector("img");
+                
                 var file = document.querySelector("input[type=file]").files[0];
                 var reader = new FileReader();
                 reader.onloadend = function () {
@@ -38,7 +136,7 @@
                      }).fail(function(xhr, status, errorThrown){
                      alert("Error: "+xhr.responseText);
                      });
-                     fim do ajax */
+                     fim do ajax 
                 };
                 if (file) {
                     reader.readAsDataURL(file);
@@ -46,6 +144,7 @@
                 } else {
                     file.src = "";
                 }
+                 */       
             }
             function formatar(mascara, documento) {
                 var i = documento.value.length;
@@ -86,7 +185,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                            <h4 class="card-title" id="striped-row-layout-icons">Sistema PNAES</h4>
+                            <h4 class="card-title" id="striped-row-layout-icons">Cadastro e Envio dos Documentos</h4>
                             <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
                             </div>
@@ -104,7 +203,7 @@
                                         }
                                     %>
                                     <div class="card-text">
-                                                        Cadastro dos Documentos
+                                                      Preencha corretamente todos os campos *Obrigatórios
                                                     </div>
                                                     <%  
                                                         msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
@@ -122,35 +221,36 @@
 
                                                     <%
                             }%>
-                                    <form action="../ServletUpload?aluno_id=<%=aluno.getId()%>&cpf=<%=session.getAttribute("cpf")%>&nedital=<%=edital.getNumero()%>" method="post" class="form form-horizontal" enctype="multipart/form-data">
+                            <form action="../ServletUpload?aluno_id=<%=aluno.getId()%>&cpf=<%=session.getAttribute("cpf")%>&nedital=<%=edital.getNumero()%>" method="post" class="form form-horizontal" enctype="multipart/form-data" >
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="ft-user"></i>Envio de Documentos</h4>
+                                          
                                             <div class="form-group row">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-3">
                                                     <!--<img src="" width="150" height="200">-->
                                                 </div>
                                             </div>
+                                         
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="foto">Foto*:</label>
+                                                <label class="col-md-3 label-control" for="foto">Foto* (png, jpg ou jpeg):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="target"></label>
-                                                    <input type="file" name="foto" required id="target" class="custom-file-input" onchange="uploadFile();">                                    
+                                                    <input type="file" name="foto" required id="target" accept=".png,.jpg, .jpeg" class="custom-file-input " title="Foto">                                    
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="da">Documentos do Aluno*:</label>
+                                                <label class="col-md-3 label-control" for="da">Documentos do Aluno* (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="da"></label>
-                                                    <input type="file" name="da" required id="da" class="custom-file-input">                                                  
+                                                    <input type="file" name="da" required id="da" class="custom-file-input" accept=".pdf" >                                                  
                                                 </div>
                                             </div>
                                             <%if(dependentes.size() > 0){%>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dp">Documentos dos Dependentes*:</label>
+                                                <label class="col-md-3 label-control" for="dp">Documentos dos Membros Familiares*:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dp"></label>
-                                                    <input type="file" name="dp" id="dp" required class="custom-file-input">                                                  
+                                                    <input type="file" name="dp" id="dp" required class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>
                                              <%}%>
@@ -158,21 +258,21 @@
                                                 <label class="col-md-3 label-control" for="dr">Documentos que Comprovam a Renda*:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dr"></label>
-                                                    <input type="file" name="dr" required id="dr" class="custom-file-input">                                                  
+                                                    <input type="file" name="dr" required id="dr" class="custom-file-input" accept=".pdf" placeholder="Upload versão L">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="dd">Documentos que Comprovam as Despesas*:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dd"></label>
-                                                    <input type="file" name="dd" required id="dd" class="custom-file-input">                                                  
+                                                    <input type="file" name="dd" required id="dd" class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="od">Outros Documentos:</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="od"></label>
-                                                    <input type="file" name="od" id="od" class="custom-file-input">                                                  
+                                                    <input type="file" name="od" id="od" class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
@@ -189,10 +289,11 @@
                                                 </div>
                                             </div>   
                                             <div class="form-actions">
-                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
+                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                <button type="submit" class="btn btn-primary" name="cadastrar" value="Cadastrar">
+                                                <button type="submit" class="btn btn-primary os-icon os-icon-save" name="cadastrar" value="Cadastrar">
                                                     <i class="la la-check-square-o"></i> Enviar
                                                 </button>
                                             </div>

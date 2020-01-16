@@ -26,6 +26,18 @@
                 });
 
             });
+            
+            $(document).ready(function () {
+                $('#periodo').change(function () {
+                   // $('#divperiodo')[0].style.display="block";
+                    if($('#periodo').val()==='1'){
+                     document.getElementById('div_1_periodo').style.display = 'none';
+                     $("#naoReprovou").prop("checked", true);
+                    }else
+                     document.getElementById('div_1_periodo').style.display = 'block';
+                });
+
+            });
             function moeda(a, e, r, t) {
                 let n = ""
                         , h = j = 0
@@ -142,7 +154,7 @@
                                                                  
                                                                
                                                                     <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="periodo">Periodo*:</label>
+                                                                    <label class="col-md-3 label-control" for="periodo">Período*:</label>
                                                                     <div class="col-md-9">
                                                                         <select id="periodo" name="periodo" class="form-control" required>
                                                                            <option selected="" disabled="" value="">Selecione primeiro o Curso ↑</option>
@@ -164,8 +176,12 @@
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="transporte" id="onibus" value="Onibus" class="custom-control-input" required>
-                                                                            <label class="custom-control-label" for="onibus">Onibus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                            <input type="radio" name="transporte" id="onibusgratuito" value="OnibusGratuito" class="custom-control-input" required>
+                                                                            <label class="custom-control-label" for="onibusgratuito">Ônibus (Gratuito)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div> 
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" name="transporte" id="onibusPago" value="OnibusPago" class="custom-control-input" required>
+                                                                            <label class="custom-control-label" for="onibusPago">Ônibus (Pago)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
                                                                             <input type="radio" name="transporte" id="carro" value="Carro" class="custom-control-input" required>
@@ -211,7 +227,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="ensinoMedio">Você cursou ou está cursando o Ensino Medio em Escola*:</label>
+                                                                <label class="col-md-3 label-control" for="ensinoMedio">Você cursou ou está cursando o Ensino Médio em Escola*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
@@ -272,8 +288,9 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div id="div_1_periodo" class="hide">
                                                             <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma(s) disciplina(s) no ultimo semestre?*:</label>
+                                                            <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma disciplina no IFTO?*:</label>
                                                             <div class="col-md-9">
                                                                 <div class="input-group">
                                                                        <div class="custom-control custom-radio">
@@ -288,16 +305,19 @@
                                                                      <div id='div_reprovou' class='hide col-md-9'>
                                                                           <div class="col-md-9">
                                                                             <div class="position-relative has-icon-left">
-                                                                               <textarea  class="form-control" id="reprovou" cols="40" rows="4" name="reprovou" placeholder='Qual / Quais disciplina(s)?'></textarea>
-                                                                              <div class="form-control-position">
-                                                                                    <i class="fa fa-briefcase"></i>
+                                                                                  <div class="form-control-position">
+                                                                                    <i class="fa fa-briefcase">Em Quantas Disciplinas Você Reprovou?</i>
                                                                                 </div>
-                                                                            </div>
+                                                                                <input type="range" name="reprovou" id="reprovou" value="0" min="1" max="20" oninput="ageOutputId.value = reprovou.value">
+                                                                                  <output name="ageOutputName" id="ageOutputId">0</output>
+                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                </div>
                                                             </div>
+                                                            </div>
+                                                           
                                                              <!--<div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="residencia">Residência*:</label>
                                                                 <div class="col-md-9">

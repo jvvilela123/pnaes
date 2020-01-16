@@ -33,6 +33,18 @@
 
             });
             
+            $(document).ready(function () {
+                $('#periodo').change(function () {
+                   // $('#divperiodo')[0].style.display="block";
+                    if($('#periodo').val()==='1'){
+                     document.getElementById('div_1_periodo').style.display = 'none';
+                     $("#naoReprovou").prop("checked", true);
+                    }else
+                     document.getElementById('div_1_periodo').style.display = 'block';
+                });
+
+            });
+            
             function sReprovou() {
                 document.getElementById('div_reprovou').style.display = 'block';
                 if(document.getElementById('simReprovou').checked && document.getElementById('reprovou').value === ""){
@@ -123,7 +135,7 @@
                                                                 </div>
                                                             </div>        
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="periodo">Periodo:*</label>
+                                                                <label class="col-md-3 label-control" for="periodo">Período:*</label>
                                                                 <div class="col-md-9">
                                                                     <select id="periodo" name="periodo" class="form-control" required>
                                                                         
@@ -159,13 +171,24 @@
                                                                         <div class="custom-control custom-radio">
                                                                             <!--<input type="radio" name="transporte" id="onibus" value="Onibus" class="custom-control-input" required>-->
                                                                             <%
-                                                                                if (aluno.getMeioTransporte().equals("Onibus")) {
-                                                                                    out.println("<input checked type='radio' name='transporte' id='onibus' value='Onibus' class='custom-control-input' required>");
+                                                                                if (aluno.getMeioTransporte().equals("OnibusGratuito")) {
+                                                                                    out.println("<input checked type='radio' name='transporte' id='onibusgratuito' value='OnibusGratuito' class='custom-control-input' required>");
                                                                                 } else {
-                                                                                    out.println("<input type='radio' name='transporte' id='onibus' value='Onibus' class='custom-control-input' required>");
+                                                                                    out.println("<input type='radio' name='transporte' id='onibusgratuito' value='OnibusGratuito' class='custom-control-input' required>");
                                                                                 }
                                                                             %>
-                                                                            <label class="custom-control-label" for="onibus">Onibus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                            <label class="custom-control-label" for="onibusgratuito">Ônibus (Gratuito)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                         <div class="custom-control custom-radio">
+                                                                            <!--<input type="radio" name="transporte" id="onibus" value="Onibus" class="custom-control-input" required>-->
+                                                                            <%
+                                                                                if (aluno.getMeioTransporte().equals("OnibusPago")) {
+                                                                                    out.println("<input checked type='radio' name='transporte' id='onibusPago' value='OnibusPago' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='transporte' id='onibusPago' value='OnibusPago' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="onibusPago">Ônibus (Pago)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
                                                                            <%
@@ -260,7 +283,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="ensinoMedio">Você cursou ou está cursando o Ensino Medio em Escola:*</label>
+                                                                <label class="col-md-3 label-control" for="ensinoMedio">Você cursou ou está cursando o Ensino Médio em Escola:*</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
@@ -292,18 +315,8 @@
                                                                                 }
                                                                             %>
                                                                             <label class="custom-control-label" for="ensinoMedioPp">Pública e Particular&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                                                        </div>
+                                                                        </div>   
                                                                             
-                                                                            <div class="custom-control custom-radio">
-                                                                                 <%
-                                                                                if (aluno.getEnsinoMedio().equals("IFTO")) {
-                                                                                    out.println("<input checked type='radio' name='ensinoMedio' id='ensinoMedioIf' value='IFTO' class='custom-control-input' required>");
-                                                                                } else {
-                                                                                    out.println("<input type='radio' name='ensinoMedio' id='ensinoMedioIf' value='IFTO' class='custom-control-input' required>");
-                                                                                }
-                                                                            %>
-                                                                            <label class="custom-control-label" for="ensinoMedioIf">Cursando o Ensino Médio no IFTO</label>
-                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -391,14 +404,19 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                          <%if(aluno.getPeriodo()==1){%>                  
+                                                           <div id="div_1_periodo" class="hide">
+                                                           <%}else{%>
+                                                           <div id="div_1_periodo" class="hide" style="display: block;">
+                                                           <%}%>
                                                             <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma(s) disciplina(s) no ultimo semestre?*</label>
+                                                            <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma disciplina no IFTO?*:</label>
                                                             <div class="col-md-9">
                                                                 <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                     <div class="col-md-2">
                                                                         <div class="custom-control custom-radio">
                                                                             <%
-                                                                                    if (aluno.getReprovou()==null) {
+                                                                                    if (!aluno.getReprovou()) {
                                                                                         out.println("<input checked type='radio' name='reprovousimounao' id='naoReprovou' value='Nao' class='custom-control-input' onclick='nReprovou();' required>");
                                                                                     } else {
                                                                                         out.println("<input type='radio' name='reprovousimounao' id='naoReprovou' value='Nao' class='custom-control-input' onclick='nReprovou();' required>");
@@ -408,7 +426,7 @@
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
                                                                             <%
-                                                                                    if (aluno.getReprovou()!=null) {
+                                                                                    if (aluno.getReprovou()) {
                                                                                         out.println("<input checked type='radio' name='reprovousimounao' id='simReprovou' value='Sim' class='custom-control-input' onclick='sReprovou();' required>");
                                                                                     } else {
                                                                                         out.println("<input type='radio' name='reprovousimounao' id='simReprovou' value='Sim' class='custom-control-input' onclick='sReprovou();' required>");
@@ -418,7 +436,7 @@
                                                                         </div>
                                                                     </div>
                                                                             <%
-                                                                                    if (aluno.getReprovou()==null) {
+                                                                                    if (!aluno.getReprovou()) {
                                                                                         out.println("<div id='div_reprovou' class='hide col-md-9'>");
                                                                                     } else {
                                                                                         out.println("<div id='div_reprovou' class='col-md-9'>");
@@ -427,19 +445,26 @@
                                                                                 %>
                                                                           <div class="col-md-9">
                                                                             <div class="position-relative has-icon-left">
-                                                                                <%
-                                                                                if(aluno.getReprovou()!=null){%>
-                                                                                   <textarea  class="form-control" id="reprovou" cols="40" rows="4" name="reprovou" wrap="hard"><%out.print(aluno.getReprovou().toString());%></textarea>
-                                                                                <%} else { %>
-                                                                                   <textarea  class="form-control" id="reprovou" cols="40" rows="4" name="reprovou" placeholder='Qual / Quais disciplina(s)?'></textarea>
-                                                                              <% } %>
                                                                                 <div class="form-control-position">
-                                                                                    <i class="fa fa-briefcase"></i>
+                                                                                    <i class="fa fa-briefcase">Em Quantas Disciplinas Você Reprovou?</i>
                                                                                 </div>
+                                                                                <%
+                                                                                if(aluno.getReprovou()){%>
+                                                                                <input type="range" name="reprovou" id="reprovou" value="<%=aluno.getReprovouQuantas()%>" min="1" max="20" oninput="ageOutputId.value = reprovou.value">
+                                                                                  <output name="ageOutputName" id="ageOutputId"><%=aluno.getReprovouQuantas()%></output>
+                                                                                  
+                                                                                <%} else { %>
+                                                                                   <input type="range" name="reprovou" id="reprovou" value="0" min="1" max="20" oninput="ageOutputId.value = reprovou.value">
+                                                                                  <output name="ageOutputName" id="ageOutputId">0</output>
+                                                                              <% } %>
+                                                                                
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                            </div>
+                                                           </div>
                                                             <div class="form-actions right">
                                                                 <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
                                                                 

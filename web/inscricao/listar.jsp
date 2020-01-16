@@ -171,10 +171,10 @@
                                                             <form class="form form-horizontal form-bordered" method="POST" action="listar.jsp">
                                                                 <div class="form-body">
                                                                     <div class="form-group row">
-                                                                        <label class="col-md-3 label-control" for="pesquisa">Pesquisa por Bolsa 1ª Opção:</label>
+                                                                        <label class="col-md-3 label-control" for="pesquisa">Pesquisa por Auxílio 1ª Opção:</label>
                                                                         <div class="col-md-4">
                                                                             <select name="pBolsa1" class="form-control">
-                                                                                <option selected="" disabled="">Selecione a Bolsa ↓</option>
+                                                                                <option selected="" disabled="">Selecione o Auxílio ↓</option>
                                                                                 <%     
                                                                                     List<Bolsa> bolsas = daoFactory.getBolsaDao().listar();
                                                                                     for (Bolsa b : bolsas) {
@@ -259,8 +259,8 @@
                                                                 <th>Aluno</th>
                                                                 <th>CPF</th>
                                                                 <th>Modalidade - Curso</th>
-                                                                <th>Bolsa 1ª Opção</th>
-                                                                <th>Bolsa 2ª Opção</th>
+                                                                <th>Auxílio 1ª Opção</th>
+                                                                <th>Auxílio 2ª Opção</th>
                                                                 <th>Data da Inscrição</th>
                                                                 <th>Visualizar</th>
                                                             </tr>
@@ -288,8 +288,8 @@
                                                                 <th>Aluno</th>
                                                                 <th>CPF</th>
                                                                 <th>Modalidade - Curso</th>
-                                                                <th>Bolsa 1ª Opção</th>
-                                                                <th>Bolsa 2ª Opção</th>
+                                                                <th>Auxílio 1ª Opção</th>
+                                                                <th>Auxílio 2ª Opção</th>
                                                                 <th>Data da Inscrição</th> 
                                                                 <th>Visualizar</th>
                                                             </tr>

@@ -346,17 +346,17 @@
                                                 </table>
                                             </div>
                                                         <%if(entrevistas == null){%>
-                                                            <h3 class="ui-state-disabled">NÃO possui Bolsas Anteriores</h3><div></div>
+                                                            <h3 class="ui-state-disabled">NÃO possui Auxílios Anteriores</h3><div></div>
                                             <%}else{%>
-                                            <h3>Bolsas Anteriores</h3>
+                                            <h3>Auxílios Anteriores</h3>
                                             <div>
                                                 <table class="table table-striped table-responsive-md">
                                                     <tr>    
                                                         <th>Edital</th>
-                                                        <th>Bolsa 1</th>
-                                                        <th>Resultado Bolsa 1</th>
-                                                        <th>Bolsa 2</th>
-                                                        <th>Resultado Bolsa 2</th>
+                                                        <th>Auxílio 1</th>
+                                                        <th>Resultado Auxílio 1</th>
+                                                        <th>Auxílio 2</th>
+                                                        <th>Resultado Auxílio 2</th>
                                                         
                                                     </tr>
                                                     <%  

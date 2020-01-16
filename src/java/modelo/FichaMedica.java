@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
@@ -22,17 +21,17 @@ public class FichaMedica implements Serializable{
     
     @Id @GeneratedValue
     private Integer id;
-    private String temDoenca;
+    private Boolean temDoenca;
     private String qualDoenca;
-    private String temDoencaDep;
+    private Boolean temDoencaDep;
     private String qualDoencaDep;
-    private String temMedicamento;
+    private Boolean temMedicamento;
     private String qualMedicamento;
-    private String temMedicamentoDep;
+    private Boolean temMedicamentoDep;
     private String qualMedicamentoDep;
-    private String temDeficiencia;
+    private Boolean temDeficiencia;
     private String qualDeficiencia;
-    private String temDeficienciaDep;
+    private Boolean temDeficienciaDep;
     private String qualDeficienciaDep;
    
     @OneToOne
@@ -47,11 +46,11 @@ public class FichaMedica implements Serializable{
         this.id = id;
     }
 
-    public String getTemDoenca() {
+    public Boolean getTemDoenca() {
         return temDoenca;
     }
 
-    public void setTemDoenca(String temDoenca) {
+    public void setTemDoenca(Boolean temDoenca) {
         this.temDoenca = temDoenca;
     }
 
@@ -63,11 +62,11 @@ public class FichaMedica implements Serializable{
         this.qualDoenca = qualDoenca;
     }
 
-    public String getTemDoencaDep() {
+    public Boolean getTemDoencaDep() {
         return temDoencaDep;
     }
 
-    public void setTemDoencaDep(String temDoencaDep) {
+    public void setTemDoencaDep(Boolean temDoencaDep) {
         this.temDoencaDep = temDoencaDep;
     }
 
@@ -79,11 +78,11 @@ public class FichaMedica implements Serializable{
         this.qualDoencaDep = qualDoencaDep;
     }
 
-    public String getTemMedicamento() {
+    public Boolean getTemMedicamento() {
         return temMedicamento;
     }
 
-    public void setTemMedicamento(String temMedicamento) {
+    public void setTemMedicamento(Boolean temMedicamento) {
         this.temMedicamento = temMedicamento;
     }
 
@@ -95,11 +94,11 @@ public class FichaMedica implements Serializable{
         this.qualMedicamento = qualMedicamento;
     }
 
-    public String getTemMedicamentoDep() {
+    public Boolean getTemMedicamentoDep() {
         return temMedicamentoDep;
     }
 
-    public void setTemMedicamentoDep(String temMedicamentoDep) {
+    public void setTemMedicamentoDep(Boolean temMedicamentoDep) {
         this.temMedicamentoDep = temMedicamentoDep;
     }
 
@@ -111,11 +110,11 @@ public class FichaMedica implements Serializable{
         this.qualMedicamentoDep = qualMedicamentoDep;
     }
 
-    public String getTemDeficiencia() {
+    public Boolean getTemDeficiencia() {
         return temDeficiencia;
     }
 
-    public void setTemDeficiencia(String temDeficiencia) {
+    public void setTemDeficiencia(Boolean temDeficiencia) {
         this.temDeficiencia = temDeficiencia;
     }
 
@@ -127,11 +126,11 @@ public class FichaMedica implements Serializable{
         this.qualDeficiencia = qualDeficiencia;
     }
 
-    public String getTemDeficienciaDep() {
+    public Boolean getTemDeficienciaDep() {
         return temDeficienciaDep;
     }
 
-    public void setTemDeficienciaDep(String temDeficienciaDep) {
+    public void setTemDeficienciaDep(Boolean temDeficienciaDep) {
         this.temDeficienciaDep = temDeficienciaDep;
     }
 
@@ -144,9 +143,6 @@ public class FichaMedica implements Serializable{
     }
     
     
-
-   
-
     public Aluno getAluno() {
         return aluno;
     }

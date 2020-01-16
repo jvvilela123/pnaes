@@ -127,7 +127,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Lista de Bolsas</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Lista de Auxílios</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -135,12 +135,12 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Lista com todas as Bolsas cadastradas
+                                                        Lista com todas os Auxílios cadastrados
                                                     </div>
                                                     
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <a href="/pnaes/bolsa/cadastrar.jsp"><button class="mr-2 mb-2 btn btn-primary" type="button">Cadastrar NOVA Bolsa</button></a>
+                                                            <a href="/pnaes/bolsa/cadastrar.jsp"><button class="mr-2 mb-2 btn btn-primary" type="button">Cadastrar NOVO Auxílio</button></a>
                                                         </div>
                                                         
                                                         <div class="col-md-12">
@@ -154,7 +154,7 @@
                                                     <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
                                                         <thead>
                                                           
-                                                            <th>Nome da Bolsa</th>
+                                                            <th>Nome do Auxílio</th>
                                                             <th>Valor</th>
                                                             <th>Editar</th>
                                                             <th>Excluir</th>
@@ -177,7 +177,7 @@
                                                             }
                                                         %>
                                                         <tfoot>
-                                                            <th>Nome da Bolsa</th>
+                                                            <th>Nome do Auxílio</th>
                                                             <th>Valor</th>
                                                             <th>Editar</th>
                                                             <th>Excluir</th>
