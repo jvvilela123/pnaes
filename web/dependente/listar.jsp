@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Membro Familiar</title>
+        <title>Informações do Grupo Familiar</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
             function formatar(mascara, documento) {
@@ -34,6 +34,11 @@
                 , function(){ alertify.error('Exclusão Cancelada')}).set('labels', {ok:'Excluir', cancel:'Cancelar'});;
                 
                 }
+                
+            function verificaGrupo() {
+            
+               document.getElementById("formEmpresa").submit();
+            }
             
         </script>
         
@@ -52,17 +57,123 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Membros familiares</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Informações do Grupo Familiar</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
                                             </div>
+                                            <% if (aluno.getDependeciaFamiliar()!=null) { %>
+                                            <form id="formGrupo" class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletAluno?opcao=alterar_3_passo&id=<%=session.getAttribute("aluno_id")%>">
+                                                <% } else {%>
+                                             <form id="formGrupo" class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletAluno?opcao=cadastrar_3_passo&id=<%=session.getAttribute("aluno_id")%>"> 
+                                             <%}%>
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
-                                                    <div class="card-text">
-                                                        Lista de membros familiares
-                                                    </div>
-                                                    <div class="row">
+                                                    
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="moradia">Como Você Mora?*:</label>
+                                                                <div class="col-md-9">
+                                                                    <div class="input-group">
+                                                                        <div class="d-inline-block custom-control custom-radio mr-1">
+                                                                            <%
+                                                                                if (aluno.getMoradia()!=null && aluno.getMoradia().equals("sozinho")){
+                                                                                    out.println("<input checked type='radio' name='moradia' id='sozinho' value='sozinho' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='moradia' id='sozinho' value='sozinho' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="sozinho">Sozinho&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="d-inline-block custom-control custom-radio">
+                                                                            <%
+                                                                                if (aluno.getMoradia()!=null && aluno.getMoradia().equals("comFamilia")){
+                                                                                    out.println("<input checked type='radio' name='moradia' id='comFamilia' value='comFamilia' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='moradia' id='comFamilia' value='comFamilia' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="comFamilia">Com a Família&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                         <div class="d-inline-block custom-control custom-radio">
+                                                                              <%
+                                                                                if (aluno.getMoradia()!=null && aluno.getMoradia().equals("comTerceiros")){
+                                                                                    out.println("<input checked type='radio' name='moradia' id='comTerceiros' value='comTerceiros' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='moradia' id='comTerceiros' value='comTerceiros' class='custom-control-input' required>");
+                                                                                }
+                                                                              %>
+                                                                           
+                                                                            <label class="custom-control-label" for="comTerceiros">Com Terceiros (Amigos, Conhecidos, etc...)</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="dependenciaFamiliar">Como se Configura a sua Relação de Dependência Financeira?*:</label>
+                                                                <div class="col-md-6">
+                                                                    <div class="input-group" >
+                                                                        <div class="d-inline-block custom-control custom-radio">
+                                                                             <%
+                                                                                if (aluno.getDependeciaFamiliar()!=null && aluno.getDependeciaFamiliar().equals("indepTodas")){
+                                                                                    out.println("<input checked type='radio' name='dependenciaFamiliar' id='indepTodas' value='indepTodas' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='dependenciaFamiliar' id='indepTodas' value='indepTodas' class='custom-control-input' required>");
+                                                                                }
+                                                                              %>
+                                                                          
+                                                                            <label class="custom-control-label" for="indepTodas">É INDEPENDENTE financeiramente e responsável por todas as despesas domésticas &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div> 
+                                                                        <div class="d-inline-block custom-control custom-radio">
+                                                                            <%
+                                                                                if (aluno.getDependeciaFamiliar()!=null && aluno.getDependeciaFamiliar().equals("indepParte")){
+                                                                                    out.println("<input checked type='radio' name='dependenciaFamiliar' id='indepParte' value='indepParte' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='dependenciaFamiliar' id='indepParte' value='indepParte' class='custom-control-input' required>");
+                                                                                }
+                                                                              %>
+                                                                           <label class="custom-control-label" for="indepParte">É INDEPENDENTE financeiramente e responsável por parte das despesas doméstica &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="d-inline-block custom-control custom-radio">
+                                                                            <%
+                                                                                if (aluno.getDependeciaFamiliar()!=null && aluno.getDependeciaFamiliar().equals("depFamilia")){
+                                                                                    out.println("<input checked type='radio' name='dependenciaFamiliar' id='depFamilia' value='depFamilia' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='dependenciaFamiliar' id='depFamilia' value='depFamilia' class='custom-control-input' required>");
+                                                                                }
+                                                                              %>
+                                                                            <label class="custom-control-label" for="depFamilia">DEPENDENTE financeiramente da renda dos pais&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        
+                                                                        <div class="d-inline-block custom-control custom-radio">
+                                                                            <%
+                                                                                if (aluno.getDependeciaFamiliar()!=null && aluno.getDependeciaFamiliar().equals("depParentes")){
+                                                                                    out.println("<input checked type='radio' name='dependenciaFamiliar' id='depParentes' value='depParentes' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='dependenciaFamiliar' id='depParentes' value='depParentes' class='custom-control-input' required>");
+                                                                                }
+                                                                              %>
+                                                                            <label class="custom-control-label" for="depParentes">DEPENDENTE financeiramente de outros parentes&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                         <div class="d-inline-block custom-control custom-radio">
+                                                                             <%
+                                                                                if (aluno.getDependeciaFamiliar()!=null && aluno.getDependeciaFamiliar().equals("depTerceiros")){
+                                                                                    out.println("<input checked type='radio' name='dependenciaFamiliar' id='depTerceiros' value='depTerceiros' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='dependenciaFamiliar' id='depTerceiros' value='depTerceiros' class='custom-control-input' required>");
+                                                                                }
+                                                                              %>
+                                                                            <label class="custom-control-label" for="depTerceiros">DEPENDENTE financeiramente de terceiros (Amigos, Conhecidos, etc...)</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                                </br>
+
+                                                            <div class="card-text" style="border-style: dashed; border-radius: 15px;">
+                                                                <h5> Lista de membros Familiares</h5>
+                                                        DEVERÃO SER INCLUÍDOS SOMENTE os membros do grupo em que reside ou que possui relação de 
+                                                        dependência financeira.<br>
+                                                  <div class="row">
                                                         <div class="col-md-3">
                                                             <a href="/pnaes/dependente/cadastrar.jsp"><button class="mr-2 mb-2 btn btn-primary " type="button"><span class="os-icon os-icon-plus"></span>Incluir Membro Familiar</button></a>
                                                         </div>
@@ -80,7 +191,6 @@
                                                             <th>Data de Nascimento</th>
                                                             <th>Sexo</th>
                                                             <th>Telefone</th>
-                                                            <th>Email</th>
                                                             <th>Grau Parentesco</th>
                                                             <th>Aluno</th>
                                                             <th>Alterar</th>
@@ -95,7 +205,6 @@
                                                             <td><%=dataFormat.formatarData(d.getDtn())%></td>
                                                             <td><%=d.getSexo()%></td>
                                                             <td><%=d.getTelefone()%></td>
-                                                            <td><%=d.getEmail()%></td>                    
                                                             <td><%=d.getGrauParentesco()%></td>
                                                             <td><%=d.getAluno().getNome()%></td>
                                                             <td><a href="alterar.jsp?id=<%=d.getId()%>" title="Editar" class="text-info"><div class="os-icon os-icon-edit"></div><span>Editar</span></a></td>
@@ -105,29 +214,30 @@
                                                             }
                                                         %>
                                                     </table>  
+                                                      </div>
+                                               </br>
                                                     <div class="form-group row">
 
-                                                       <% if (aluno.getStatusCadastro().equals("3") || aluno.getStatusCadastro().equals("6")) { %>
+                                                       
                                                         <div class="col-md-3">
                                                             <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                            <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save" onclick="verificaGrupo();">
+                                                                <i class="fa fa-check-square-o"></i> Salvar
+                                                            </button>
+                                                         
 
                                                         </div>
-                                                        <% } else {%>
-                                                        <div class="col-md-3">
-                                                            <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
-                                                            <a href="/pnaes/despesa/cadastrar.jsp?status=3">
-                                                            <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                <i class="fa fa-check-square-o"></i> Avançar
-                                                            </button>
-                                                            </a>
-                                                        </div
                                                         
-                                                        <%}%>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
+                                          </form>
+                                        
                                         </div>
+                                      
                                     </div>
+                                                        
                                 </div>
                         </center>
                     </div>

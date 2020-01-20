@@ -169,11 +169,14 @@
                                                                         <option selected="" disabled="" value="">Selecione o Grau de Parentesco</option>
                                                                         <option value="Mae">Mãe</option>
                                                                         <option value="Pai">Pai</option>
+                                                                        <option value="madrasta">Madrasta</option>
+                                                                        <option value="padrasto">Padrastro</option>
                                                                         <option value="filho">Filho(a)</option>
                                                                         <option value="esposo">Esposo(a)</option>
-                                                                        <option value="Avo">Avó ou Avô</option>
+                                                                        <option value="avo">Avó ou Avô</option>
                                                                         <option value="primo">Primo(a)</option>
-                                                                        <option value="outro">Outro</option>
+                                                                        <option value="tio">Tio(a)</option>
+                                                                        <option value="outro">Outro(Bisavós, Padrinhos, Amigos, ect...)</option>
                                                                          
                                                                     </select>
                                                                 </div>

@@ -114,7 +114,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Sistema PNAES</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Informações do Estudante</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -122,7 +122,7 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Texto info
+                                                        Preencha corretamente todos os campos
                                                     </div>
 
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletAluno?opcao=preencher&id=<%=session.getAttribute("aluno_id")%>" id="formAluno">
@@ -269,25 +269,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="visita">Qual o melhor horário para uma visita, se necessário*:</label>
-                                                                <div class="col-md-9">
-                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
-                                                                        <div class="custom-control custom-radio" >
-                                                                            <input type="radio" name="visita" id="visita1" value="Manha" class="custom-control-input" required>
-                                                                            <label class="custom-control-label" for="visita1">Manhã&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                                                        </div>
-                                                                        <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="visita" id="visita2" value="Tarde" class="custom-control-input" required>
-                                                                            <label class="custom-control-label" for="visita2">Tarde&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                                                        </div>
-                                                                        <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="visita" id="visita3" value="Noite" class="custom-control-input" required>
-                                                                            <label class="custom-control-label" for="visita3">Noite</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            
                                                             <div id="div_1_periodo" class="hide">
                                                             <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma disciplina no IFTO?*:</label>
@@ -317,7 +299,25 @@
                                                                </div>
                                                             </div>
                                                             </div>
-                                                           
+                                                           <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="visita">Qual o melhor horário para uma visita, se necessário*:</label>
+                                                                <div class="col-md-9">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
+                                                                        <div class="custom-control custom-radio" >
+                                                                            <input type="radio" name="visita" id="visita1" value="Manha" class="custom-control-input" required>
+                                                                            <label class="custom-control-label" for="visita1">Manhã&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" name="visita" id="visita2" value="Tarde" class="custom-control-input" required>
+                                                                            <label class="custom-control-label" for="visita2">Tarde&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" name="visita" id="visita3" value="Noite" class="custom-control-input" required>
+                                                                            <label class="custom-control-label" for="visita3">Noite</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                              <!--<div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="residencia">Residência*:</label>
                                                                 <div class="col-md-9">

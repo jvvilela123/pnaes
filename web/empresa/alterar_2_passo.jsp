@@ -36,6 +36,12 @@
                     document.getElementById('telefone').value = ""
                     document.getElementById('div3').style.display = 'none'; 
                  }
+                 
+                 if(document.getElementById('atividade').value === "Desempregado"){ 
+                       document.getElementById('div4').style.display = 'none';
+                 }else{
+                       document.getElementById('div4').style.display = 'block'; 
+                 }
             }
             function moeda(a, e, r, t) {
                 let n = ""
@@ -154,8 +160,9 @@
                                                                                     out.println("<input type='radio' name='carteira' id='carteirasim' value='sim' class='custom-control-input' required>");
                                                                                 }
                                                                             %>
-                                                                            <label class="custom-control-label" for="carteirasim">Sim</label>
+                                                                            <label class="custom-control-label" for="carteirasim">Sim ou Extraviada&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
+                                                                        
                                                                         <div class="d-inline-block custom-control custom-radio">
                                                                              <%
                                                                                  
@@ -204,9 +211,9 @@
                                                                         out.print("<option value='Autonomoi'>Autônomo (Informal)</option>");
                                                                         
                                                                         if(empresa.getAtividade().equals("Funcionanio Publico"))
-                                                                        out.print("<option selected value='Funcionanio Publico'>Funcionario Público (Contratado)</option>");
+                                                                        out.print("<option selected value='Funcionanio Publico'>Funcionário Público (Contratado)</option>");
                                                                         else
-                                                                        out.print("<option value='Funcionanio Publico'>Funcionario Público (Contratado)</option>");
+                                                                        out.print("<option value='Funcionanio Publico'>Funcionário Público (Contratado)</option>");
                                                                         
                                                                         if(empresa.getAtividade().equals("Servidor Publico"))
                                                                         out.print("<option selected value='Servidor Publico'>Servidor Público (Concursado)</option>");
@@ -231,7 +238,7 @@
                                                                            
                                                            <%
                                                                 if (empresa.getAtividade().equals("Empregado CLT") ||
-                                                                    empresa.getAtividade().equals("Funcionanio Publico") || 
+                                                                    empresa.getAtividade().equals("Funcionario Publico") || 
                                                                     empresa.getAtividade().equals("Servidor Publico")) {
                                                                     out.println("<div id='div3' class='show'>");
                                                                 } else {
@@ -253,12 +260,20 @@
                                                                 </div>
                                                               </div>
                                                             <div class="card-text">
-                                                                Informe na seção abaixo <strong>APENAS os seus ganhos.</strong>  Não cabe informar aqui a renda que será declarada dos membros familiares, apenas se você possuir mais de uma renda.
+                                                                Informe abaixo <strong>APENAS os seus ganhos.</strong>  Não cabe informar aqui a renda que será declarada dos membros familiares, apenas se você possuir mais de uma renda.
                                                             </div><br>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="renda">Sua remuneração Bruta*:</label>
-                                                                <div class="col-md-9">
-                                                                    <input type="text" name="renda" id="renda"  value="<%=empresa.getRenda()!=null?empresa.getRenda():""%>" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this, '', '.', event))" required>
+                                                             <%
+                                                                if (empresa.getAtividade().equals("Desempregado")) {
+                                                                    out.println("<div id='div4' class='hide'>");
+                                                                } else {
+                                                                    out.println("<div id='div4' class='show'>");
+                                                                }
+                                                              %>
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-3 label-control" for="renda">Sua remuneração Bruta*:</label>
+                                                                    <div class="col-md-9">
+                                                                        <input type="text" name="renda" id="renda"  value="<%=empresa.getRenda()!=null?empresa.getRenda():""%>" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this, '', '.', event))" required>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">

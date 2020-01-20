@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="element-box">
-                            <h5 class="form-header">Sistema PNAES</h5>
+                            <h4 class="form-header">Sistema PNAES</h4>
                             <div class="form-desc" align="justify">
                                 O Programa Nacional de Assistência Estudantil – PNAES no Instituto Federal de Educação, Ciência e Tecnologia (IFTO) do Campus Porto Nacional 
                                 consiste no conjunto de ações voltadas ao atendimento ao estudante regularmente matriculado no curso presencial, visando o acesso, a permanência e o 
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="card-content collpase show">
                                         <div class="card-body">
-                                            <h4 class="auth-header">Entre com o Usuario e Senha do SIGA</h4>
+                                            <h5 class="auth-header">Entre com o Usuario e Senha do SIGA</h5>
                                             <%
                                                 if (request.getParameter("msg") != null) {
                                             %>

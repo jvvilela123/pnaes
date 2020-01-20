@@ -146,7 +146,7 @@
                                                                     <div class="input-group">
                                                                         <div class="d-inline-block custom-control custom-radio mr-1">
                                                                             <input type="radio" name="carteira" value="sim" class="custom-control-input" id="carteirasim" required>
-                                                                            <label class="custom-control-label" for="carteirasim">Sim</label>
+                                                                            <label class="custom-control-label" for="carteirasim">Sim ou Extraviada&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="d-inline-block custom-control custom-radio">
                                                                             <input type="radio" name="carteira" value="nao" class="custom-control-input" id="carteiranao" required>
@@ -165,7 +165,7 @@
                                                                         <option value="Trabalho sem carteira">Trabalho sem Carteira Assinada</option>
                                                                         <option value="Autonomo">Autônomo (Formal)</option>
                                                                         <option value="Autonomoi">Autônomo (Informal)</option>
-                                                                        <option value="Funcionanio Publico">Funcionario Público (Contratado)</option>
+                                                                        <option value="Funcionanio Publico">Funcionário Público (Contratado)</option>
                                                                         <option value="Servidor Publico">Servidor Público (Concursado)</option>
                                                                         <option value="Aposentado">Aposesntado</option> 
                                                                         <option value="Pensionista">Pensionista</option> 
@@ -190,7 +190,7 @@
                                                                </div>
                                                                      
                                                             <div class="card-text">
-                                                                Informe na seção abaixo <b>APENAS</b> os seus ganhos. <strong>Não</strong> cabe informar aqui a renda que será declarada dos membros familiares, apenas se você possuir mais de uma renda.
+                                                                Informe abaixo <b>APENAS</b> os seus ganhos. <strong>Não</strong> cabe informar aqui a renda que será declarada dos membros familiares, apenas se você possuir mais de uma renda.
                                                             </div><br>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="renda">Sua remuneração Bruta*:</label>

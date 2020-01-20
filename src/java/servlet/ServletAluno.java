@@ -192,6 +192,34 @@ public class ServletAluno extends HttpServlet {
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("home.jsp");
                     break;
+                  case "cadastrar_3_passo":
+                    aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                    aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
+                    aluno.setMoradia(request.getParameter("moradia"));
+                    daoFactory.getAlunoDao().inserirOuAlterar(aluno);
+                    response.sendRedirect("moradia/cadastrar.jsp");
+                    break; 
+                 case "alterar_3_passo":
+                    aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                    aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
+                    aluno.setMoradia(request.getParameter("moradia"));
+                    daoFactory.getAlunoDao().inserirOuAlterar(aluno);
+                    response.sendRedirect("home.jsp");
+                    break;
+                 case "cadastrar_4_passo":
+                    aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                    aluno.setOndeReside(request.getParameter("ondeReside"));
+                    aluno.setTipoMoradia(request.getParameter("tipoMoradia"));
+                    daoFactory.getAlunoDao().inserirOuAlterar(aluno);
+                    response.sendRedirect("fichaMedica/cadastrar.jsp");
+                    break;
+                  case "alterar_4_passo":
+                    aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                    aluno.setOndeReside(request.getParameter("ondeReside"));
+                    aluno.setTipoMoradia(request.getParameter("tipoMoradia"));
+                    daoFactory.getAlunoDao().inserirOuAlterar(aluno);
+                    response.sendRedirect("home.jsp");
+                    break;
                 case "alterar":
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                     dtn.setTime(formato.parse(request.getParameter("dtn")));

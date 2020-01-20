@@ -228,9 +228,9 @@
                                                                         out.print("<option value='primo'>Primo(a)</option>");
                                                                         
                                                                         if(dependente.getGrauParentesco().equals("outro"))
-                                                                        out.print("<option selected value='outro'Outro</option>");
+                                                                        out.print("<option selected value='outro'>Outro(Bisavós, Padrinhos, Amigos, ect...)</option>");
                                                                         else
-                                                                        out.print("<option value='outro'>Outro</option>");
+                                                                        out.print("<option value='outro'>Outro(Bisavós, Padrinhos, Amigos, ect...)</option>");
                                                                         %>
                                                                       </select>
                                                                 </div>

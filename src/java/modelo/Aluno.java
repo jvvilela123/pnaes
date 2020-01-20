@@ -24,7 +24,6 @@ public class Aluno extends Pessoa{
     @Column(unique = true)
     private String matricula;
     private Integer nivel;
-    //private String disciplina;
     private String ensinoMedio;
     private String ensinoFundamental;
     private String entradaIfto;
@@ -34,6 +33,9 @@ public class Aluno extends Pessoa{
     private Boolean reprovou;
     private Integer reprovouQuantas;
     private String dependeciaFamiliar;
+    private String moradia;
+    private String ondeReside;
+    private String tipoMoradia;
     @ManyToOne
     private Curso curso;
 
@@ -99,6 +101,32 @@ public class Aluno extends Pessoa{
     public void setDependeciaFamiliar(String dependeciaFamiliar) {
         this.dependeciaFamiliar = dependeciaFamiliar;
     }
+
+    public String getMoradia() {
+        return moradia;
+    }
+
+    public void setMoradia(String moradia) {
+        this.moradia = moradia;
+    }
+
+    public String getOndeReside() {
+        return ondeReside;
+    }
+
+    public void setOndeReside(String ondeReside) {
+        this.ondeReside = ondeReside;
+    }
+
+    public String getTipoMoradia() {
+        return tipoMoradia;
+    }
+
+    public void setTipoMoradia(String tipoMoradia) {
+        this.tipoMoradia = tipoMoradia;
+    }
+    
+    
     
     public Boolean getReprovou() {
         return reprovou;

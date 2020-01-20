@@ -83,7 +83,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Sistema PNAES</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Informações do Estudante</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -101,7 +101,7 @@
                                                         %>
                                                     <form  class="form form-horizontal striped-rows form-bordered" method="Post" action="../ServletAluno?opcao=alterar_1_passo&id=<%=aluno.getId()%>" id="formAluno">
                                                         <div class="form-body">
-                                                            <h4 class="form-section"><i class="ft-user"></i>Alteração do 1º Passo</h4>
+                                                           
                                                              <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="cat">Modalidade do Curso:*</label>
                                                                 <div class="col-md-9">
@@ -367,43 +367,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="visita">Qual o melhor horário para uma visita, se necessário:*</label>
-                                                                <div class="col-md-9">
-                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
-                                                                        <div class="custom-control custom-radio">
-                                                                           <%
-                                                                                if (aluno.getPeriodoVisita().equals("Manha")) {
-                                                                                    out.println("<input checked type='radio' name='visita' id='visita1' value='Manha' class='custom-control-input' required>");
-                                                                                } else {
-                                                                                    out.println("<input type='radio' name='visita' id='visita1' value='Manha' class='custom-control-input' required>");
-                                                                                }
-                                                                            %>
-                                                                            <label class="custom-control-label" for="visita1">Manhã&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                                                        </div>
-                                                                        <div class="custom-control custom-radio">
-                                                                            <%
-                                                                                if (aluno.getPeriodoVisita().equals("Tarde")) {
-                                                                                    out.println("<input checked type='radio' name='visita' id='visita2' value='Tarde' class='custom-control-input' required>");
-                                                                                } else {
-                                                                                    out.println("<input type='radio' name='visita' id='visita2' value='Tarde' class='custom-control-input' required>");
-                                                                                }
-                                                                            %>
-                                                                            <label class="custom-control-label" for="visita2">Tarde&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                                                        </div>
-                                                                        <div class="custom-control custom-radio">
-                                                                             <%
-                                                                                if (aluno.getPeriodoVisita().equals("Noite")) {
-                                                                                    out.println("<input checked type='radio' name='visita' id='visita3' value='Noite' class='custom-control-input' required>");
-                                                                                } else {
-                                                                                    out.println("<input type='radio' name='visita' id='visita3' value='Noite' class='custom-control-input' required>");
-                                                                                }
-                                                                            %>
-                                                                            <label class="custom-control-label" for="visita3">Noite</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            
                                                           <%if(aluno.getPeriodo()==1){%>                  
                                                            <div id="div_1_periodo" class="hide">
                                                            <%}else{%>
@@ -465,6 +429,43 @@
                                                             </div>
                                                             </div>
                                                            </div>
+                                                                              <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="visita">Qual o melhor horário para uma visita, se necessário:*</label>
+                                                                <div class="col-md-9">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
+                                                                        <div class="custom-control custom-radio">
+                                                                           <%
+                                                                                if (aluno.getPeriodoVisita().equals("Manha")) {
+                                                                                    out.println("<input checked type='radio' name='visita' id='visita1' value='Manha' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='visita' id='visita1' value='Manha' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="visita1">Manhã&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <%
+                                                                                if (aluno.getPeriodoVisita().equals("Tarde")) {
+                                                                                    out.println("<input checked type='radio' name='visita' id='visita2' value='Tarde' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='visita' id='visita2' value='Tarde' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="visita2">Tarde&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                             <%
+                                                                                if (aluno.getPeriodoVisita().equals("Noite")) {
+                                                                                    out.println("<input checked type='radio' name='visita' id='visita3' value='Noite' class='custom-control-input' required>");
+                                                                                } else {
+                                                                                    out.println("<input type='radio' name='visita' id='visita3' value='Noite' class='custom-control-input' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="visita3">Noite</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <div class="form-actions right">
                                                                 <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
                                                                 
