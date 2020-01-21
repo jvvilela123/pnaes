@@ -22,6 +22,8 @@ public class Despesa implements Serializable{
     private Double telefone;
     private Double farmacia;
     private Double outrasDespesas;
+    private String qualOutrasDespesas;
+   
     @OneToOne
     @JoinColumn(name="aluno_id", unique=true)
     private Aluno aluno;
@@ -90,6 +92,16 @@ public class Despesa implements Serializable{
     public void setOutrasDespesas(Double outrasDespesas) {
         this.outrasDespesas = outrasDespesas;
     }
+
+    public String getQualOutrasDespesas() {
+        return qualOutrasDespesas;
+    }
+
+    public void setQualOutrasDespesas(String qualOutrasDespesas) {
+        this.qualOutrasDespesas = qualOutrasDespesas;
+    }
+    
+    
 
    
 }

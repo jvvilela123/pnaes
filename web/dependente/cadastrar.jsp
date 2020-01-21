@@ -92,27 +92,27 @@
                                             </div>
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
-                                                    <div class="card-text">
+                                                    <div class="card-text" align="justify">
                                                        Preencha corretamente todos os campos
                                                     </div>
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDependente?opcao=cadastrar&aluno_id=<%=session.getAttribute("aluno_id")%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="nome">Nome*:</label>
+                                                                <label class="col-md-3 label-control" for="nome">Nome do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
+                                                                    <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Membro Familiar" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="cpf">CPF*:</label>
+                                                                <label class="col-md-3 label-control" for="cpf">CPF do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"  required>
+                                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF do Membro Familiar" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="rg">RG*:</label>
+                                                                <label class="col-md-3 label-control" for="rg">RG do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="rg" id="rg"  class="form-control" placeholder="RG"  required>
+                                                                    <input type="text" name="rg" id="rg"  class="form-control" placeholder="RG do Membro Familiar"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -130,7 +130,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="sexo">Sexo*:</label>
+                                                                <label class="col-md-3 label-control" for="sexo">Sexo do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="d-inline-block custom-control custom-radio mr-1">
@@ -145,28 +145,22 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento*:</label>
+                                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" maxlength="10" OnKeyPress="formatar('##/##/####', this)"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="email">E-mail:</label>
-                                                                <div class="col-md-9">
-                                                                    <input type="email" name="email" id="email"  class="form-control" placeholder="Email" >
-                                                                </div>
-                                                            </div>                                                
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="telefone">Telefone*:</label>
+                                                                <label class="col-md-3 label-control" for="telefone">Telefone do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="99 99999-9999" maxlength="14" OnKeyPress="formatar('## #####-####', this)"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco*:</label>
+                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                    <select id="grauParentesco" name="grauParentesco" class="form-control" required>
-                                                                        <option selected="" disabled="" value="">Selecione o Grau de Parentesco</option>
+                                                                        <option selected="" disabled="" value="">Selecione o Grau de Parentesco do Membro Familiar</option>
                                                                         <option value="Mae">Mãe</option>
                                                                         <option value="Pai">Pai</option>
                                                                         <option value="madrasta">Madrasta</option>
@@ -183,10 +177,10 @@
                                                             </div>
                                                             
                                                           <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="atividade">Ocupação*:</label>
+                                                                <label class="col-md-3 label-control" for="atividade">Ocupação do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="atividade" name="atividade" class="form-control" required>
-                                                                        <option selected="" disabled="" value="">Selecione a Ocupação</option>
+                                                                        <option selected="" disabled="" value="">Selecione a Ocupação do Membro Familiar</option>
                                                                         <option value="Desempregado">Desempregado</option>
                                                                         <option value="Empregado CLT">Empregado de Carteira Assinada</option>
                                                                         <option value="Trabalho sem carteira">Trabalho sem Carteira Assinada</option>
@@ -200,7 +194,7 @@
                                                                 </div>
                                                             </div> 
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="renda">Renda Mensal*:</label>
+                                                                <label class="col-md-3 label-control" for="renda">Renda Mensal do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="renda" id="renda"  value="0.00" class="form-control" placeholder="Renda Mensal" onKeyPress="return(moeda(this,'','.',event))"  required>
                                                                 </div>

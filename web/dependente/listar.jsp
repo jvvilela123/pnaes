@@ -205,7 +205,21 @@
                                                             <td><%=dataFormat.formatarData(d.getDtn())%></td>
                                                             <td><%=d.getSexo()%></td>
                                                             <td><%=d.getTelefone()%></td>
-                                                            <td><%=d.getGrauParentesco()%></td>
+                                                            <td><%
+                                                                if(d.getGrauParentesco().equals("Mae"))
+                                                                        out.print("Mãe");
+                                                                if(d.getGrauParentesco().equals("filho"))
+                                                                        out.print("Filho(a)");
+                                                                if(d.getGrauParentesco().equals("esposo"))
+                                                                        out.print("Esposo(a)");
+                                                                if(d.getGrauParentesco().equals("Avo"))
+                                                                        out.print("Avó ou Avô");
+                                                                if(d.getGrauParentesco().equals("primo"))
+                                                                        out.print("Primo(a)");
+                                                                if(d.getGrauParentesco().equals("outro"))
+                                                                        out.print("Outro(Bisavós, Padrinhos, Amigos, ect...)");
+                                                                %>
+                                                              </td>
                                                             <td><%=d.getAluno().getNome()%></td>
                                                             <td><a href="alterar.jsp?id=<%=d.getId()%>" title="Editar" class="text-info"><div class="os-icon os-icon-edit"></div><span>Editar</span></a></td>
                                                             <td><a href="#" onclick="apagar(<%=d.getId()%>,'<%=d.getNome()%>')" title="Excluir" class="text-danger"><div class="os-icon os-icon-x"></div><span>Excluir</span></a></td>

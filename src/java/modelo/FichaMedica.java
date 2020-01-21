@@ -33,6 +33,7 @@ public class FichaMedica implements Serializable{
     private String qualDeficiencia;
     private Boolean temDeficienciaDep;
     private String qualDeficienciaDep;
+    private Boolean temCartaoSUS;
    
     @OneToOne
     @JoinColumn(name="aluno_id", unique=true)
@@ -141,6 +142,16 @@ public class FichaMedica implements Serializable{
     public void setQualDeficienciaDep(String qualDeficienciaDep) {
         this.qualDeficienciaDep = qualDeficienciaDep;
     }
+
+    public Boolean getTemCartaoSUS() {
+        return temCartaoSUS;
+    }
+
+    public void setTemCartaoSUS(Boolean temCartaoSUS) {
+        this.temCartaoSUS = temCartaoSUS;
+    }
+    
+    
     
     
     public Aluno getAluno() {

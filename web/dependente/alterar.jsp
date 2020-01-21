@@ -95,7 +95,7 @@
                                             </div>
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
-                                                    <div class="card-text">
+                                                    <div class="card-text" align="justify">
                                                         Preencha todos os campos corretamente
                                                     </div>
                                                    
@@ -111,25 +111,25 @@
                                                         <div class="form-body">
                                                             <h4 class="form-section"><i class="ft-user"></i>Dados Pessoais</h4>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="nome">Nome:</label>
+                                                                <label class="col-md-3 label-control" for="nome">Nome do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="nome" id="nome" class="form-control" value="<%=dependente.getNome()%>" required>
+                                                                    <input type="text" name="nome" id="nome" class="form-control" value="<%=dependente.getNome()%>" placeholder="Nome do Membro Familiar" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="cpf">CPF:</label>
+                                                                <label class="col-md-3 label-control" for="cpf">CPF do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="cpf" id="cpf" class="form-control" value="<%=dependente.getCpf()%>" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>
+                                                                    <input type="text" name="cpf" id="cpf" class="form-control" value="<%=dependente.getCpf()%>" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="CPF do Membro Familiar" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="rg">RG:</label>
+                                                                <label class="col-md-3 label-control" for="rg">RG do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="rg" id="rg"  class="form-control" value="<%=dependente.getRg()%>" required>
+                                                                    <input type="text" name="rg" id="rg"  class="form-control" value="<%=dependente.getRg()%>" placeholder="RG do Membro Familiar" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="ufe">Uf de Expedição do RG:</label>
+                                                                <label class="col-md-3 label-control" for="ufe">Uf de Expedição do RG*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="ufe" name="ufe" class="form-control" required>
                                                                         <option selected="" disabled="" value="">Selecione a UF de Expedição</option>
@@ -145,7 +145,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="sexo">Sexo:</label>
+                                                                <label class="col-md-3 label-control" for="sexo">Sexo do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <div class="custom-control custom-radio">                                                                           
@@ -173,29 +173,24 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento:</label>
+                                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" value="<%=formatador.format(dependente.getDtn().getTime())%>" maxlength="10" OnKeyPress="formatar('##/##/####', this)" required>
                                                                 </div>
                                                             
                                                             </div>
+                                                                                                           
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="email">E-mail:</label>
+                                                                <label class="col-md-3 label-control" for="telefone">Telefone do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="email" id="email"  class="form-control" value="<%=dependente.getEmail()%>">
-                                                                </div>
-                                                            </div>                                                
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="telefone">Telefone:</label>
-                                                                <div class="col-md-9">
-                                                                    <input type="text" name="telefone" id="telefone"  class="form-control" value="<%=dependente.getTelefone()%>" OnKeyPress="formatar('## #####-####', this)" required>
+                                                                    <input type="text" name="telefone" id="telefone"  class="form-control" value="<%=dependente.getTelefone()%>" OnKeyPress="formatar('## #####-####', this)" placeholder="Telefone do Membro Familiar" required>
                                                                 </div>
                                                             </div>
                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco*:</label>
+                                                                <label class="col-md-3 label-control" for="grauParentesco">Grau de Parentesco do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                    <select id="grauParentesco" name="grauParentesco" class="form-control" required>
-                                                                        <option selected="" disabled="" value="">Selecione o Grau de Parentesco</option>
+                                                                        <option selected="" disabled="" value="">Selecione o Grau de Parentesco do Membro Familiar</option>
                                                                         <%
                                                                         if(dependente.getGrauParentesco().equals("Mae"))
                                                                         out.print("<option selected value='Mae'>Mãe</option>");
@@ -237,10 +232,10 @@
                                                             </div>
                                                                 
                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="atividade">Sua Ocupação*:</label>
+                                                                <label class="col-md-3 label-control" for="atividade">Sua Ocupação do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="atividade" name="atividade" class="form-control" required>
-                                                                        <option selected="" disabled="" value="">Selecione a sua Ocupação</option>
+                                                                        <option selected="" disabled="" value="">Selecione a sua Ocupação do Membro Familiar</option>
                                                                         <%
                                                                         if(dependente.getAtividadeProf().equals("Desempregado"))
                                                                         out.print("<option selected value='Desempregado'>Desempregado</option>");
@@ -291,18 +286,18 @@
                                                                 </div>
                                                             </div> 
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="renda">Renda Mensal:</label>
+                                                                <label class="col-md-3 label-control" for="renda">Renda Mensal do Membro Familiar:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="renda" id="renda" class="form-control" value="<%=dependente.getRenda()%>" required>
+                                                                    <input type="text" name="renda" id="renda" class="form-control" value="<%=dependente.getRenda()%>" placeholder="Renda Mensal do Membro Familiar" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions right">
-                                                                <a href="/pnaes/dependente/listar.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
-                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1">
+                                                                <a href="/pnaes/dependente/listar.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                                <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                    <i class="fa fa-check-square-o"></i>Alterar
+                                                                <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
+                                                                    <i class="fa fa-check-square-o"></i> Alterar
                                                                 </button>
                                                             </div>
                                                         </div>

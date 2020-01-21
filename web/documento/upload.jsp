@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro e Envio de Documentos</title>        
+        <title>Envio de Documentos</title>        
         <link href="/pnaes/css/main.css?version=4.4.0" rel="stylesheet">
        <%@include file="../imports.jsp" %>
         <script>
@@ -185,7 +185,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                            <h4 class="card-title" id="striped-row-layout-icons">Cadastro e Envio dos Documentos</h4>
+                            <h4 class="card-title" id="striped-row-layout-icons">Envio dos Documentos</h4>
                             <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
                             </div>
@@ -247,7 +247,7 @@
                                             </div>
                                             <%if(dependentes.size() > 0){%>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dp">Documentos dos Membros Familiares*:</label>
+                                                <label class="col-md-3 label-control" for="dp">Documentos dos Membros Familiares* (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dp"></label>
                                                     <input type="file" name="dp" id="dp" required class="custom-file-input" accept=".pdf">                                                  
@@ -255,21 +255,21 @@
                                             </div>
                                              <%}%>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dr">Documentos que Comprovam a Renda*:</label>
+                                                <label class="col-md-3 label-control" for="dr">Documentos que Comprovam a Renda* (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dr"></label>
                                                     <input type="file" name="dr" required id="dr" class="custom-file-input" accept=".pdf" placeholder="Upload versão L">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dd">Documentos que Comprovam as Despesas*:</label>
+                                                <label class="col-md-3 label-control" for="dd">Documentos que Comprovam as Despesas* (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dd"></label>
                                                     <input type="file" name="dd" required id="dd" class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="od">Outros Documentos:</label>
+                                                <label class="col-md-3 label-control" for="od">Outros Documentos (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="od"></label>
                                                     <input type="file" name="od" id="od" class="custom-file-input" accept=".pdf">                                                  
@@ -279,11 +279,12 @@
                                                 
                                           
                                                 <div class="col-md-9">  
-                                                    <p>
+                                                    <p align="justify">
                                                         <input type="checkbox" name="aceito" id="cbaceito" value="aceito" required>
                                                     
                                                         Declaro que as informações prestadas no formulário online são verdadeiras e de minha inteira
-                                                        responsabilidade. Declarações falsas e/ou omissões implicam no cancelamento da inscrição ou
+                                                        responsabilidade. 
+                                                        Declarações falsas e/ou omissões implicam no cancelamento da inscrição ou
                                                         perda automática do benefício concedido.
                                                     </p>                                                  
                                                 </div>

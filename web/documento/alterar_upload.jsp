@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Envio de Documentos</title>        
+        <title>Alteração dos Documentos</title>        
         <link href="/pnaes/css/main.css?version=4.4.0" rel="stylesheet">
        <%@include file="../imports.jsp" %>
         <script>
@@ -22,10 +22,109 @@
                 $('#uf').change(function () {
                     $('#cidade').load('../cidadeajax.jsp?estado=' + $('#uf').val());
                 });
+                 uploadFile();
 
             });
             function uploadFile() {
+                var foto = document.getElementById('target');
+                var pdf = document.getElementById('da');
+                var pdf1 = document.getElementById('dp');
+                var pdf2 = document.getElementById('dr');
+                var pdf3 = document.getElementById('dd');
+                var pdf4 = document.getElementById('od');
+                var tamanhoMaximo = 5000000; //5Mb
+
+                   foto.onchange = function(e) {
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'jpg':
+                        case 'png':
+                        case 'jpeg':
+                        break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (png, jpg ou jpeg)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                    };
+                    
+                    pdf.onchange = function(e) {
+                    
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'pdf':
+                       break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (pdf)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                      };
+                    pdf1.onchange = function(e) {
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'pdf':
+                       break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (pdf)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                    };
+                    pdf2.onchange = function(e) {
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'pdf':
+                       break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (pdf)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                    };
+                    pdf3.onchange = function(e) {
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'pdf':
+                       break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (pdf)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                    };
+                    pdf4.onchange = function(e) {
+                      var ext = this.value.match(/\.([^\.]+)$/)[1];
+                      switch (ext) {
+                        case 'pdf':
+                       break;
+                        default:
+                         alertify.errorAlert("<h6 class='card-title'>Selecione somente arquivo com a extenção (pdf)!</h6>");
+                          this.value = '';
+                      }
+                      if(this.files[0].size > tamanhoMaximo ) { //5MB         
+                        alertify.errorAlert("<h6 class='card-title'>Tamanho MÁXIMO de cada arquivo é de 5MB!</h6>");; //Acima do limite
+                        this.value = ""; //Limpa o campo 
+                      };
+                    };
+                /*
                 var target = document.querySelector("img");
+                
                 var file = document.querySelector("input[type=file]").files[0];
                 var reader = new FileReader();
                 reader.onloadend = function () {
@@ -39,7 +138,7 @@
                      }).fail(function(xhr, status, errorThrown){
                      alert("Error: "+xhr.responseText);
                      });
-                     fim do ajax */
+                     fim do ajax 
                 };
                 if (file) {
                     reader.readAsDataURL(file);
@@ -47,6 +146,7 @@
                 } else {
                     file.src = "";
                 }
+                 */       
             }
             function formatar(mascara, documento) {
                 var i = documento.value.length;
@@ -80,10 +180,7 @@
 
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
+                                
                             </div>
                         </div>
                         <center>
@@ -94,7 +191,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                            <h4 class="card-title" id="striped-row-layout-icons">Sistema PNAES</h4>
+                            <h4 class="card-title" id="striped-row-layout-icons">Alteração dos Documentos</h4>
                             <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
                             </div>
@@ -116,8 +213,8 @@
                                             edital = daoFactory.getEditalDao().listar().get(tam - 1);
                                         }
                                     %>
-                                    <div class="card-text">
-                                                        Alteração dos Documentos
+                                 <div class="card-text">
+                                                      Preencha corretamente todos os campos *Obrigatórios
                                                     </div>
                                                     <%  
                                                         msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
@@ -164,7 +261,7 @@
                                             <div class="modal-content">
                                               <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                <h4 class="modal-title" id="myModalLabel">Documentos dos Dependentes</h4> 
+                                                <h4 class="modal-title" id="myModalLabel">Documentos dos Membros Familiares</h4> 
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
@@ -248,7 +345,7 @@
                                        
                                         
                                        <div class="form-body">
-                                            <h4 class="form-section"><i class="ft-user"></i>Envio de Documentos</h4>
+                                          
                                             <div class="form-group row">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-3">
@@ -256,60 +353,60 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="foto">Alterar Foto:</label>
+                                                <label class="col-md-3 label-control" for="foto">Alterar Foto* (png, jpg ou jpeg)::</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="target"></label>
-                                                    <input type="file" name="foto" required id="target" class="custom-file-input" onchange="uploadFile();">
+                                                    <input type="file" name="foto" required id="target" accept=".png,.jpg, .jpeg" class="custom-file-input" title="Foto">
                                                     
                                                 </div>
                                             </div>
                                           <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="da">Alterar Documentos do Aluno:
+                                                <label class="col-md-3 label-control" for="da">Alterar Documentos do Aluno* (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosAluno">Visualizar Documentos do Aluno</button>
                                                </label>
                                                 <div class="col-md-9">
                                                     
                                                     <label class="col-md-6 custom-file-label" for="da"></label>
-                                                    <input type="file" name="da" required id="da" class="custom-file-input">
+                                                    <input type="file" name="da" required id="da" class="custom-file-input" accept=".pdf">
                                                     
                                                 </div>
                                             </div>
                                             <%if(dependentes.size() > 0){%>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dp">Alterar Documentos dos Dependentes:
-                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosDependentes">Visualizar Documentos dos Dependentes</button>
+                                                <label class="col-md-3 label-control" for="dp">Alterar Documentos dos Membros Familiares* (pdf):
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosDependentes">Visualizar Documentos dos Membros Familiares</button>
                                                 </label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dp"></label>
-                                                    <input type="file" name="dp" id="dp" class="custom-file-input">                                                  
+                                                    <input type="file" name="dp" id="dp" class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>
                                             <%}%>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dr">Alterar Documentos que Comprovam a Renda:
+                                                <label class="col-md-3 label-control" for="dr">Alterar Documentos que Comprovam a Renda* (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosRenda">Visualizar Documentos que Comprovam a Renda</button>
                                                 </label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dr"></label>
-                                                    <input type="file" name="dr" required id="dr" class="custom-file-input">                                                  
+                                                    <input type="file" name="dr" required id="dr" class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dd">Alterar Documentos que Comprovam as Despesas:
+                                                <label class="col-md-3 label-control" for="dd">Alterar Documentos que Comprovam as Despesas* (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosDespesas">Visualizar Documentos que Comprovam as Despesas</button>
                                                 </label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dd"></label>
-                                                    <input type="file" name="dd required" id="dd" class="custom-file-input">                                                  
+                                                    <input type="file" name="dd required" id="dd" class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="od">Alterar Outros Documentos:
+                                                <label class="col-md-3 label-control" for="od">Alterar Outros Documentos (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosOutros">Visualizar Outros Documentos</button>
                                                 </label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="od"></label>
-                                                    <input type="file" name="od" id="od" class="custom-file-input">                                                  
+                                                    <input type="file" name="od" id="od" class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
@@ -327,9 +424,9 @@
                                             </div>   
                                             <div class="form-actions">
                                                
-                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>
+                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" >Voltar</button></a>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <button type="submit" class="btn btn-primary" name="cadastrar" value="Cadastrar">
+                                                <button type="submit" class="btn btn-primary os-icon os-icon-save" name="cadastrar" value="Cadastrar">
                                                     <i class="la la-check-square-o"></i> Salvar
                                                 </button>
                                             </div>

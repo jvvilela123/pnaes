@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Ficha de Saúde</title>
+        <title>Cadastro de Informações da saúde do estudante e do grupo familiar</title>
         <link rel="stylesheet" href="/pnaes/css/alertify.css">
 
         <%@include file="../imports.jsp" %>
@@ -184,8 +184,11 @@
                             };
                         },true,'alert');
                     }
-                //Verifica se falta selecionar alguma campo obrigatório     
-                if(!document.getElementById('doencaCronica1sim').checked && !document.getElementById('doencaCronica1nao').checked){
+                //Verifica se falta selecionar alguma campo obrigatório
+                 if(!document.getElementById('susnao').checked && !document.getElementById('sussim').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você Possui o Cartão do SUS?</h6>");
+                    prencheuTudo = false;
+               } else if(!document.getElementById('doencaCronica1sim').checked && !document.getElementById('doencaCronica1nao').checked){
                     alertify.errorAlert("<h6 class='card-title'>Você tem alguma doença crônica?</h6>");
                     prencheuTudo = false;
                } else if(!document.getElementById('doencaCronicafamilianao').checked && !document.getElementById('doencaCronicafamiliasim').checked){
@@ -280,7 +283,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro da Ficha de Saúde</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro de Informações da saúde do estudante e do grupo familiar</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -308,6 +311,24 @@
                             }%>
                                     <form method="Post" action="../ServletFichaMedica?opcao=cadastrar&aluno_id=<%=session.getAttribute("aluno_id")%>" class="form form-horizontal" id="formFichaMedica">
                                         <div class="form-body">
+                                            
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="sus">Você possui Cartão do SUS?*:</label>
+                                                <div class="col-md-3">
+                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
+                                                        <div class="col-md-3">
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" name="sus" id="susnao" value="Não" class="custom-control-input" required>
+                                                                <label class="custom-control-label" for="susnao">Não</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" name="sus" id="sussim" value="Sim" class="custom-control-input" required>
+                                                                <label class="custom-control-label" for="sussim">Sim</label>
+                                                            </div> 
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                            </div>
                                       
                                              <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="doencaCronica">Você tem alguma Doença?*:</label>

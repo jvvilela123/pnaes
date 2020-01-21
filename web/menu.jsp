@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="modelo.Dependente"%>
 <%@page import="modelo.FichaMedica"%>
 <%@page import="modelo.Despesa"%>
@@ -29,7 +30,7 @@ START - Mobile Menu
             <div class="avatar-w">      
                 <%
                     
-                     
+                     DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
                     String msg = new String();
                     DaoFactory daoFactory = new DaoFactory();
                     Edital edital = new Edital();

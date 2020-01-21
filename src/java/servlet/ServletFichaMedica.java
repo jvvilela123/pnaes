@@ -48,7 +48,8 @@ public class ServletFichaMedica extends HttpServlet {
                 
                 switch(opcao){
                     case "cadastrar":
-                   
+                        
+                    fichaMedica.setTemCartaoSUS(request.getParameter("sus").equals("Sim"));
                     fichaMedica.setTemDoenca(request.getParameter("temDoenca").equals("Sim"));
                     if(request.getParameter("temDoenca").equals("Sim")){
                       if(request.getParameter("qualDoenca").equals("Outros"))
@@ -96,7 +97,7 @@ public class ServletFichaMedica extends HttpServlet {
                     
                     //Chamando o metodo inserir do dao e redirecionando para listar Ficha Medica
                     daoFactory.getFichaMedicaDao().inserirOuAlterar(fichaMedica);
-                    response.sendRedirect("documento/upload.jsp");
+                    response.sendRedirect("despesa/cadastrar.jsp");
                 break;
                 case "alterar":
                      //Setando dados da Ficha Medica
@@ -116,6 +117,8 @@ public class ServletFichaMedica extends HttpServlet {
                 case "alterar_5_passo":
                      
                     fichaMedica = (FichaMedica) daoFactory.getFichaMedicaDao().perquisarListaPorAluno(Integer.parseInt(request.getParameter("aluno_id"))).get(0);
+                    
+                    fichaMedica.setTemCartaoSUS(request.getParameter("sus").equals("Sim"));
                 
                     fichaMedica.setTemDoenca(request.getParameter("temDoenca").equals("Sim"));
                     if(request.getParameter("temDoenca").equals("Sim")){
@@ -138,6 +141,7 @@ public class ServletFichaMedica extends HttpServlet {
                     
                     if(request.getParameter("temMedicamento").equals("Sim"))
                     fichaMedica.setQualMedicamento(request.getParameter("qualMedicamento"));
+                    
                     
                     fichaMedica.setTemMedicamentoDep(request.getParameter("temMedicamentoDep").equals("Sim"));
                     

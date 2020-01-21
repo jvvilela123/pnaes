@@ -51,29 +51,30 @@ public class ServletDespesa extends HttpServlet {
 
                     case "cadastrar":
                         //Setando dados do Despesa Mensal
-                        despesa.setMoradia(Double.parseDouble(request.getParameter("moradia")));
-                        despesa.setAgua(Double.parseDouble(request.getParameter("agua")));
-                        despesa.setEnergia(Double.parseDouble(request.getParameter("energia")));
-                        despesa.setTelefone(Double.parseDouble(request.getParameter("telefone")));
-                        despesa.setFarmacia(Double.parseDouble(request.getParameter("farmacia")));
-                        despesa.setOutrasDespesas(Double.parseDouble(request.getParameter("outrasDespesas")));
+                        despesa.setMoradia(Double.parseDouble(request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setAgua(Double.parseDouble(request.getParameter("agua").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setEnergia(Double.parseDouble(request.getParameter("energia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setTelefone(Double.parseDouble(request.getParameter("telefone").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setFarmacia(Double.parseDouble(request.getParameter("farmacia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setOutrasDespesas(Double.parseDouble(request.getParameter("outrasDespesas").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setQualOutrasDespesas(request.getParameter("qualOutrasDespesas")!=null?request.getParameter("qualOutrasDespesas"):"");
 
                         aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
                         despesa.setAluno(aluno);
                         //Chamando o metodo inserir do dao e redirecionando para listar Orçamento
                         daoFactory.getDespesaDao().inserirOuAlterar(despesa);
-                        response.sendRedirect("fichaMedica/cadastrar.jsp");
+                        response.sendRedirect("documento/upload.jsp");
 
                         break;
                     case "alterar":
                         //Setando dados do Despesa Mensal
                         despesa.setId(Integer.parseInt(request.getParameter("id")));
-                        despesa.setMoradia(Double.parseDouble(request.getParameter("moradia")));
-                        despesa.setAgua(Double.parseDouble(request.getParameter("agua")));
-                        despesa.setEnergia(Double.parseDouble(request.getParameter("energia")));
-                        despesa.setTelefone(Double.parseDouble(request.getParameter("telefone")));
-                        despesa.setFarmacia(Double.parseDouble(request.getParameter("farmacia")));
-                        despesa.setOutrasDespesas(Double.parseDouble(request.getParameter("outras")));
+                        despesa.setMoradia(Double.parseDouble(request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setAgua(Double.parseDouble(request.getParameter("agua").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setEnergia(Double.parseDouble(request.getParameter("energia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setTelefone(Double.parseDouble(request.getParameter("telefone").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setFarmacia(Double.parseDouble(request.getParameter("farmacia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setOutrasDespesas(Double.parseDouble(request.getParameter("outras").replace("R$", "").replace(".", "").replace(",", ".")));
                         aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
                         despesa.setAluno(aluno);
 
@@ -81,19 +82,20 @@ public class ServletDespesa extends HttpServlet {
                         daoFactory.getDespesaDao().inserirOuAlterar(despesa);
                         response.sendRedirect("listar.jsp");
                         break;
-                    case "alterar_4_passo":
+                    case "alterar_6_passo":
                         //Setando dados do Despesa Mensal
                         //despesa.setId(Integer.parseInt(request.getParameter("id")));
                         List<Despesa> despesas = daoFactory.getDespesaDao().perquisarListaPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
                         if(despesas.size() > 0){
                          despesa = despesas.get(0);
                         }
-                        despesa.setMoradia(Double.parseDouble(request.getParameter("moradia")));
-                        despesa.setAgua(Double.parseDouble(request.getParameter("agua")));
-                        despesa.setEnergia(Double.parseDouble(request.getParameter("energia")));
-                        despesa.setTelefone(Double.parseDouble(request.getParameter("telefone")));
-                        despesa.setFarmacia(Double.parseDouble(request.getParameter("farmacia")));
-                        despesa.setOutrasDespesas(Double.parseDouble(request.getParameter("outrasDespesas")));
+                        despesa.setMoradia(Double.parseDouble(request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setAgua(Double.parseDouble(request.getParameter("agua").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setEnergia(Double.parseDouble(request.getParameter("energia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setTelefone(Double.parseDouble(request.getParameter("telefone").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setFarmacia(Double.parseDouble(request.getParameter("farmacia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setOutrasDespesas(Double.parseDouble(request.getParameter("outrasDespesas").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setQualOutrasDespesas(request.getParameter("qualOutrasDespesas")!=null?request.getParameter("qualOutrasDespesas"):"");
                         aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
                         despesa.setAluno(aluno);
 
@@ -112,7 +114,7 @@ public class ServletDespesa extends HttpServlet {
             } catch (NumberFormatException ne) {
                 Logger.getLogger(ServletDependente.class.getName()).log(Level.SEVERE, null, ne);
                 System.out.println("Erro na renda!");
-                out.println("<br><br><br><br><br><center><font color='red'><h1>Renda invalida!<br>A renda deve estar no formato 00.00</h1></font></center");
+                out.println("<br><br><br><br><br><center><font color='red'><h1>Renda invalida!"+request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")+"<br>A renda deve estar no formato 00.00</h1></font></center>");
                 out.println("<a href='home.jsp'>voltar</a>");
             }
 
