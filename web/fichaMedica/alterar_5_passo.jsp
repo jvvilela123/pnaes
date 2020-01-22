@@ -133,12 +133,15 @@
                 document.getElementById('multiplas').checked = false;
             }
             function naoTemDeficiencia() {
-                document.getElementById('div_deficiencia').style.display = 'none';
-                document.getElementById('auditiva').checked = false;
-                document.getElementById('fisica').checked = false;
-                document.getElementById('visual').checked = false;
-                document.getElementById('mental').checked = false;
-                document.getElementById('multiplas').checked = false;
+               document.getElementById('div_deficiencia').style.display = 'none';
+               document.getElementById('auditiva').checked = false;
+               document.getElementById('fisica').checked = false;
+               document.getElementById('visual').checked = false;
+               document.getElementById('mental').checked = false;
+               document.getElementById('multiplas').checked = false;
+               document.getElementById('outraDeficiencia').checked = false;
+               document.getElementById('div_outra_deficiencia').style.display = 'none';
+               document.getElementById('outraDeficienciaQual').value="";
             }
             function temDeficienciaFamilia() {
                 document.getElementById('div_deficiencia_familia').style.display = 'block';
@@ -149,78 +152,112 @@
                 document.getElementById('multiplas_familia').checked = false;
             }
             function naoTemDeficienciaFamilia() {
-                document.getElementById('div_deficiencia_familia').style.display = 'none';
-                document.getElementById('auditiva_familia').checked = false;
-                document.getElementById('fisica_familia').checked = false;
-                document.getElementById('visual_familia').checked = false;
-                document.getElementById('mental_familia').checked = false;
-                document.getElementById('multiplas_familia').checked = false;
+               document.getElementById('div_deficiencia_familia').style.display = 'none';
+               document.getElementById('auditiva_familia').checked = false;
+               document.getElementById('fisica_familia').checked = false;
+               document.getElementById('visual_familia').checked = false;
+               document.getElementById('mental_familia').checked = false;
+               document.getElementById('multiplas_familia').checked = false;
+               document.getElementById('outraDeficienciaFamilia').checked = false;
+               document.getElementById('div_outra_deficiencia_familia').style.display = 'none';
+               document.getElementById('outraDeficienciaFamiliaQual').value="";
+            }
+            
+            function temOutraDeficiencia() {
+                document.getElementById('div_outra_deficiencia').style.display = 'block';
+                document.getElementById('outraDeficienciaQual').value="";
+               
+            }
+            function naoTemOutraDeficiencia() {
+                document.getElementById('div_outra_deficiencia').style.display = 'none';
+                document.getElementById('outraDeficienciaQual').value="";
+            }
+             function temOutraDeficienciaFamilia() {
+                document.getElementById('div_outra_deficiencia_familia').style.display = 'block';
+                document.getElementById('outraDeficienciaFamiliaQual').value="";
+            }
+            function naoTemOutraDeficienciaFamilia() {
+                document.getElementById('div_outra_deficiencia_familia').style.display = 'none';
+                document.getElementById('outraDeficienciaFamiliaQual').value="";
             }
 
             function verificaCampos() {
                 prencheuTudo = true;
-                //Verifica se falta selecionar alguma campo obrigatório     
-                if (!document.getElementById('doencaCronica1sim').checked && !document.getElementById('doencaCronica1nao').checked) {
+                if(!alertify.errorAlert){
+                      alertify.dialog('errorAlert',function factory(){
+                        return{
+                                build:function(){
+                                    var errorHeader = '<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>Preencha corretamente os campos</h5>';
+                                    this.setHeader(errorHeader);
+                                }
+                            };
+                        },true,'alert');
+                    }
+                //Verifica se falta selecionar alguma campo obrigatório
+                 if(!document.getElementById('susnao').checked && !document.getElementById('sussim').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você Possui o Cartão do SUS?</h6>");
+                    prencheuTudo = false;
+               } else if(!document.getElementById('planonao').checked && !document.getElementById('planosim').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você Possui Plano de Saúde?</h6>");
+                    prencheuTudo = false;
+               } else if(!document.getElementById('doencaCronica1sim').checked && !document.getElementById('doencaCronica1nao').checked){
                     alertify.errorAlert("<h6 class='card-title'>Você tem alguma doença crônica?</h6>");
                     prencheuTudo = false;
-                } else if (!document.getElementById('doencaCronicafamilianao').checked && !document.getElementById('doencaCronicafamiliasim').checked) {
-                    alertify.errorAlert("<h6 class='card-title'>Há alguem com doença cronica na família?</h6>");
-                    prencheuTudo = false;
-                } else if (!document.getElementById('naom').checked && !document.getElementById('simm').checked) {
-                    alertify.errorAlert("<h6 class='card-title'>Você faz uso de medicamento controlado?</h6>");
-                    prencheuTudo = false;
-                } else if (!document.getElementById('naomd').checked && !document.getElementById('simmd').checked) {
-                    alertify.errorAlert("<h6 class='card-title'>Há alguem que faz uso de medicamento controlado na família?</h6>");
-                    prencheuTudo = false;
-                } else if (!document.getElementById('deficiencianao').checked && !document.getElementById('deficienciasim').checked) {
-                    alertify.errorAlert("<h6 class='card-title'>Você tem alguma deficiência?</h6>");
-                    prencheuTudo = false;
-                } else if (!document.getElementById('simd').checked && !document.getElementById('naod').checked) {
-                    alertify.errorAlert("<h6 class='card-title'>Há pessoa(s) na família com deficiência?</h6>");
-                    prencheuTudo = false;
-                }
-
-              else  if (document.getElementById('doencaCronica1sim').checked && !verificaRadioChecadoPeloName('qualDoenca')) {
+               } 
+               else if(document.getElementById('doencaCronica1sim').checked &&  !verificaRadioChecadoPeloName('qualDoenca')){
                     alertify.errorAlert("<h6 class='card-title'>Selecione a sua doença crônica.</h6>");
                     prencheuTudo = false;
-                }  if (document.getElementById('doencaCronica1sim').checked){
-                if (document.getElementById('outros').checked && document.getElementById('outrosqual').value === "") {
+                }else if( document.getElementById('outros').checked && document.getElementById('outrosqual').value === ""){
                     document.getElementById('outrosqual').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha a sua Doença no campo Outros.</h6>");
                     prencheuTudo = false;
-                }
-                }
-              else  if (document.getElementById('doencaCronicafamiliasim').checked && !verificaRadioChecadoPeloName('qualDoencaDep')) {
+                }else if(!document.getElementById('doencaCronicafamilianao').checked && !document.getElementById('doencaCronicafamiliasim').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Há alguem com doença cronica na família?</h6>");
+                    prencheuTudo = false;
+                }else if(document.getElementById('doencaCronicafamiliasim').checked &&  !verificaRadioChecadoPeloName('qualDoencaDep')){
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença crônica da sua família.</h6>");
                     prencheuTudo = false;
-                }  if (document.getElementById('doencaCronicafamiliasim').checked){
-                    if (document.getElementById('outrosfamilia').checked && document.getElementById('outrosqualfamilia').value === "" && prencheuTudo) {
+                }else if( document.getElementById('outrosfamilia').checked && document.getElementById('outrosqualfamilia').value === ""){
                     document.getElementById('outrosqualfamilia').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença da sua família no campo Outros.</h6>");
                     prencheuTudo = false;
-                }
-              }
-              if (document.getElementById('simm').checked && document.getElementById('qualM').value === "" && prencheuTudo){
+                 }else if(!document.getElementById('naom').checked && !document.getElementById('simm').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você faz uso de medicamento controlado?</h6>");
+                    prencheuTudo = false;
+                }else if (document.getElementById('simm').checked && document.getElementById('qualM').value === ""){
                     document.getElementById('qualM').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha o nome do seu medicamento.</h6>");
                     prencheuTudo = false;
-                }
-             else if (document.getElementById('simmd').checked && document.getElementById('qualMd').value === "" && prencheuTudo){
-                    document.getElementById('qualMd').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha o nome do medicamento da sua família.</h6>");
+                }else if(!document.getElementById('naomd').checked && !document.getElementById('simmd').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Há alguem que faz uso de medicamento controlado na família?</h6>");
                     prencheuTudo = false;
-               }
-              else if (document.getElementById('deficienciasim').checked && !verificaRadioChecadoPeloName('qualDeficiencia') && prencheuTudo) {
+                }else if (document.getElementById('simmd').checked && document.getElementById('qualMd').value === ""){
+                    document.getElementById('qualMd').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha o nome de quem faz o uso do medicamento na sua família.</h6>");
+                    prencheuTudo = false;
+                }else if(!document.getElementById('deficiencianao').checked && !document.getElementById('deficienciasim').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você tem alguma deficiência?</h6>");
+                    prencheuTudo = false;
+                }else if (document.getElementById('deficienciasim').checked && !verificaRadioChecadoPeloName('qualDeficiencia')) {
                     alertify.errorAlert("<h6 class='card-title'>Preencha a sua deficiência.</h6>");
                     prencheuTudo = false;
-                }
-               else if (document.getElementById('simd').checked && !verificaRadioChecadoPeloName('qualDeficienciaDep') && prencheuTudo) {
-                    alertify.errorAlert("<h6 class='card-title'>Preencha a deficiência da sua família.</h6>");
+                }else if( document.getElementById('outraDeficiencia').checked && document.getElementById('outraDeficienciaQual').value === ""){
+                    document.getElementById('outraDeficienciaQual').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha Qual a sua Deficiêcnia no campo Outras.</h6>");
                     prencheuTudo = false;
-                }
-
-                if (prencheuTudo)
-                    document.getElementById("formFichaMedica").submit();
+                 }else if(!document.getElementById('simd').checked && !document.getElementById('naod').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Há pessoa(s) na família com deficiência?</h6>");
+                    prencheuTudo = false;
+                }else if (document.getElementById('simd').checked && !verificaRadioChecadoPeloName('qualDeficienciaDep')) {
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a deficiência na sua família.</h6>");
+                    prencheuTudo = false;
+                }else if( document.getElementById('outraDeficienciaFamilia').checked && document.getElementById('outraDeficienciaFamiliaQual').value === ""){
+                    document.getElementById('outraDeficienciaFamiliaQual').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha Qual a Deficiêcnia na sua Família no campo Outras.</h6>");
+                    prencheuTudo = false;
+                 }
+              if(prencheuTudo)  
+              document.getElementById("formFichaMedica").submit();
             }
 
         </script>
@@ -246,7 +283,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Alteração das Informações da saúde do estudante e do grupo familiar</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Alteração das Informações da Saúde do Estudante e do Grupo Familiar</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -256,7 +293,8 @@
                                                     <div class="card-text">
                                                        Preencha corretamente todos os campos
                                                     </div>
-                                                    <%                                                        msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
+                                                    <%  
+                                                        msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
                                                         if (msg.isEmpty() == false) {
 
                                                     %>
@@ -299,6 +337,36 @@
                                                                                 %>
 
                                                                                 <label class="custom-control-label" for="sussim">Sim</label>
+                                                                            </div> 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="planoSaude">Você possui Plano de Saúde?*:</label>
+                                                                <div class="col-md-3">
+                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
+                                                                        <div class="col-md-3">
+                                                                            <div class="custom-control custom-radio">
+                                                                                <%
+                                                                                   if (!fichaMedica.getTemPlanoSaude()) {
+                                                                                        out.println("<input checked type='radio' name='planoSaude' id='planonao' value='Não' class='custom-control-input' >");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='planoSaude' id='planonao' value='Não' class='custom-control-input'>");
+                                                                                    }
+                                                                                %>
+                                                                                <label class="custom-control-label" for="planonao">Não</label>
+                                                                            </div>
+                                                                            <div class="custom-control custom-radio">
+                                                                                <%
+                                                                                    if (fichaMedica.getTemPlanoSaude()) {
+                                                                                        out.println("<input checked type='radio' name='planoSaude' id='planosim' value='Sim' class='custom-control-input' >");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='planoSaude' id='planosim' value='Sim' class='custom-control-input' >");
+                                                                                    }
+                                                                                %>
+
+                                                                                <label class="custom-control-label" for="planosim">Sim</label>
                                                                             </div> 
                                                                         </div>
                                                                     </div>
@@ -437,7 +505,7 @@
                                                                                     }
                                                                                 
                                                                                 %>
-                                                                                <label class="custom-control-label" for="dependenciaQuimica">Dependência Quimica&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                                <label class="custom-control-label" for="dependenciaQuimica">Dependência Química&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
                                                                                 <%
@@ -448,7 +516,7 @@
                                                                                     }
                                                                                 
                                                                                 %>
-                                                                                <label class="custom-control-label" for="doencaMental">Doenca Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                                <label class="custom-control-label" for="doencaMental">Doença Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                             </div>
                                                                             <div class="custom-control custom-radio">
                                                                                 <%
@@ -624,7 +692,7 @@
                                                                                     }
                                                                                     
                                                                                 %>
-                                                                            <label class="custom-control-label" for="dependenciaQuimicafamilia">Dependência Quimica&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                            <label class="custom-control-label" for="dependenciaQuimicafamilia">Dependência Química&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
                                                                             <%
@@ -635,7 +703,7 @@
                                                                                     }
                                                                                     
                                                                                 %>
-                                                                            <label class="custom-control-label" for="doencaMentalfamilia">Doenca Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                            <label class="custom-control-label" for="doencaMentalfamilia">Doença Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
                                                                             <%
@@ -737,7 +805,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="medicamento">Há alguem que faz uso de medicamento controlado na família?*</label>
+                                                            <label class="col-md-3 label-control" for="medicamento">Há alguém da família que faz uso de medicamentos controlado?*</label>
                                                             <div class="col-md-9">
                                                                 <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                     <div class="col-md-2">
@@ -770,13 +838,13 @@
                                                                                     }
                                                                                     
                                                                                 %>
-                                                                         <div class="col-md-9">
+                                                                         <div class="col-md-10">
                                                                             <div class="position-relative has-icon-left">
                                                                                 <%
-                                                                                if(fichaMedica.getQualMedicamentoDep()!=null){
-                                                                                    out.println("<input type='text' name='qualMedicamentoDep' id='qualMd' value='"+fichaMedica.getQualMedicamentoDep()+"' class='form-control' placeholder='Qual Medicamento na família?'>");
+                                                                                if(fichaMedica.getQuemMedicamentoDep()!=null){
+                                                                                    out.println("<input type='text' name='quemMedicamentoDep' id='qualMd' value='"+fichaMedica.getQuemMedicamentoDep()+"' class='form-control' placeholder='Quem na família faz uso de Medicamento?'>");
                                                                                 } else {
-                                                                                    out.println("<input type='text' name='qualMedicamentoDep' id='qualMd'  class='form-control' placeholder='Qual Medicamento na família?'>");
+                                                                                    out.println("<input type='text' name='quemMedicamentoDep' id='qualMd'  class='form-control' placeholder='Quem na família faz uso de Medicamento?'>");
                                                                                }
                                                                              %>
                                                                                <div class="form-control-position">
@@ -833,9 +901,9 @@
                                                                             <%
                                                                                    // if(fichaMedica.getQualDeficiencia()!=null){
                                                                                     if (fichaMedica.getQualDeficiencia()!=null && fichaMedica.getQualDeficiencia().equals("Auditiva")) {
-                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='auditiva' value='Auditiva' class='custom-control-input'>");
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='auditiva' value='Auditiva' class='custom-control-input' onclick='naoTemOutraDeficiencia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='auditiva' value='Auditiva' class='custom-control-input'>");
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='auditiva' value='Auditiva' class='custom-control-input' onclick='naoTemOutraDeficiencia();'>");
                                                                                     }
                                                                                     
                                                                                 %>
@@ -844,9 +912,9 @@
                                                                         <div class="custom-control custom-radio">
                                                                             <%
                                                                                   if (fichaMedica.getQualDeficiencia()!=null && fichaMedica.getQualDeficiencia().equals("Fisica")) {
-                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='fisica' value='Fisica' class='custom-control-input'>");
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='fisica' value='Fisica' class='custom-control-input' onclick='naoTemOutraDeficiencia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='fisica' value='Fisica' class='custom-control-input'>");
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='fisica' value='Fisica' class='custom-control-input' onclick='naoTemOutraDeficiencia();'>");
                                                                                     }
                                                                                     
                                                                                 %>
@@ -855,9 +923,9 @@
                                                                         <div class="custom-control custom-radio">
                                                                             <%
                                                                                   if (fichaMedica.getQualDeficiencia()!=null && fichaMedica.getQualDeficiencia().equals("Visual")) {
-                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='visual' value='Visual' class='custom-control-input'>");
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='visual' value='Visual' class='custom-control-input' onclick='naoTemOutraDeficiencia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='visual' value='Visual' class='custom-control-input'>");
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='visual' value='Visual' class='custom-control-input' onclick='naoTemOutraDeficiencia();'>");
                                                                                     }
                                                                                     
                                                                                 %>
@@ -866,9 +934,9 @@
                                                                         <div class="custom-control custom-radio">
                                                                             <%
                                                                                   if (fichaMedica.getQualDeficiencia()!=null && fichaMedica.getQualDeficiencia().equals("Intelectual")) {
-                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='mental' value='Intelectual' class='custom-control-input'>");
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='mental' value='Intelectual' class='custom-control-input' onclick='naoTemOutraDeficiencia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='mental' value='Intelectual' class='custom-control-input'>");
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='mental' value='Intelectual' class='custom-control-input' onclick='naoTemOutraDeficiencia();'>");
                                                                                     }
                                                                                     
                                                                                 %>
@@ -877,15 +945,49 @@
                                                                         <div class="custom-control custom-radio" >
                                                                             <%
                                                                                   if (fichaMedica.getQualDeficiencia()!=null && fichaMedica.getQualDeficiencia().equals("Multiplas")) {
-                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='multiplas' value='Multiplas' class='custom-control-input'>");
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='multiplas' value='Multiplas' class='custom-control-input' onclick='naoTemOutraDeficiencia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='multiplas' value='Multiplas' class='custom-control-input'>");
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='multiplas' value='Multiplas' class='custom-control-input' onclick='naoTemOutraDeficiencia();'>");
                                                                                     }
                                                                                 //  }  
                                                                                 %>
                                                                            <label class="custom-control-label" for="multiplas">Deficiência Múltiplas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
-                                                                    </div>
+                                                                          <div class="custom-control custom-radio">
+                                                                              <%
+                                                                                  if (fichaMedica.getQualDeficiencia()!=null && 
+                                                                                      !fichaMedica.getQualDeficiencia().equals("Multiplas") &&
+                                                                                      !fichaMedica.getQualDeficiencia().equals("Intelectual") &&
+                                                                                      !fichaMedica.getQualDeficiencia().equals("Visual") &&
+                                                                                      !fichaMedica.getQualDeficiencia().equals("Fisica") &&
+                                                                                      !fichaMedica.getQualDeficiencia().equals("Auditiva")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficiencia' id='outraDeficiencia' value='Outras' class='custom-control-input' onclick='temOutraDeficiencia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficiencia' id='outraDeficiencia' value='Outras' class='custom-control-input' onclick='temOutraDeficiencia();'>");
+                                                                                    }
+                                                                                //  }  
+                                                                                %>
+                                                                            <label class="custom-control-label" for="outraDeficiencia">Outras</label>
+                                                                         </div>
+                                                                            <%
+                                                                                  if (fichaMedica.getQualDeficiencia()!=null && 
+                                                                                      !fichaMedica.getQualDeficiencia().equals("Multiplas") &&
+                                                                                      !fichaMedica.getQualDeficiencia().equals("Intelectual") &&
+                                                                                      !fichaMedica.getQualDeficiencia().equals("Visual") &&
+                                                                                      !fichaMedica.getQualDeficiencia().equals("Fisica") &&
+                                                                                      !fichaMedica.getQualDeficiencia().equals("Auditiva")) { %>
+                                                         <div id="div_outra_deficiencia">
+                                                                 <% } else { %>
+                                                         <div id="div_outra_deficiencia" class="hide">
+                                                             <% }%>
+                                                            <div class="position-relative has-icon-left">
+                                                                <input type="text" name="qualDeficienciaOutro" id="outraDeficienciaQual" class="form-control" placeholder="Qual Deficiência?" value="<%=fichaMedica.getQualDeficiencia()%>">
+                                                                <div class="form-control-position">
+                                                                    <i class="fa fa-briefcase"></i>
+                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                            </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -934,9 +1036,9 @@
                                                                             <%
                                                                                     //if(fichaMedica.getQualDeficienciaDep()!=null){
                                                                                     if (fichaMedica.getQualDeficienciaDep()!=null && fichaMedica.getQualDeficienciaDep().equals("Auditiva")) {
-                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='auditiva_familia' value='Auditiva' class='custom-control-input'>");
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='auditiva_familia' value='Auditiva' class='custom-control-input' onclick='naoTemOutraDeficienciaFamilia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='auditiva_familia' value='Auditiva' class='custom-control-input'>");
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='auditiva_familia' value='Auditiva' class='custom-control-input' onclick='naoTemOutraDeficienciaFamilia();'>");
                                                                                     }
                                                                                     
                                                                                 %>
@@ -945,9 +1047,9 @@
                                                                         <div class="custom-control custom-radio">
                                                                             <%
                                                                                   if (fichaMedica.getQualDeficienciaDep()!=null && fichaMedica.getQualDeficienciaDep().equals("Fisica")) {
-                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='fisica_familia' value='Fisica' class='custom-control-input'>");
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='fisica_familia' value='Fisica' class='custom-control-input' onclick='naoTemOutraDeficienciaFamilia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='fisica_familia' value='Fisica' class='custom-control-input'>");
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='fisica_familia' value='Fisica' class='custom-control-input' onclick='naoTemOutraDeficienciaFamilia();'>");
                                                                                     }
                                                                                     
                                                                                 %>
@@ -956,9 +1058,9 @@
                                                                         <div class="custom-control custom-radio">
                                                                             <%
                                                                                   if (fichaMedica.getQualDeficienciaDep()!=null && fichaMedica.getQualDeficienciaDep().equals("Visual")) {
-                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='visual_familia' value='Visual' class='custom-control-input'>");
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='visual_familia' value='Visual' class='custom-control-input' onclick='naoTemOutraDeficienciaFamilia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='visual_familia' value='Visual' class='custom-control-input'>");
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='visual_familia' value='Visual' class='custom-control-input' onclick='naoTemOutraDeficienciaFamilia();'>");
                                                                                     }
                                                                                     
                                                                                 %>
@@ -967,9 +1069,9 @@
                                                                         <div class="custom-control custom-radio">
                                                                             <%
                                                                                   if (fichaMedica.getQualDeficienciaDep()!=null && fichaMedica.getQualDeficienciaDep().equals("Intelectual")) {
-                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='mental_familia' value='Intelectual' class='custom-control-input'>");
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='mental_familia' value='Intelectual' class='custom-control-input' onclick='naoTemOutraDeficienciaFamilia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='mental_familia' value='Intelectual' class='custom-control-input'>");
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='mental_familia' value='Intelectual' class='custom-control-input' onclick='naoTemOutraDeficienciaFamilia();'>");
                                                                                     }
                                                                                     
                                                                                 %>
@@ -978,14 +1080,48 @@
                                                                         <div class="custom-control custom-radio" >
                                                                             <%
                                                                                   if (fichaMedica.getQualDeficienciaDep()!=null && fichaMedica.getQualDeficienciaDep().equals("Multiplas")) {
-                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='multiplas_familia' value='Multiplas' class='custom-control-input'>");
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='multiplas_familia' value='Multiplas' class='custom-control-input' onclick='naoTemOutraDeficienciaFamilia();'>");
                                                                                     } else {
-                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='multiplas_familia' value='Multiplas' class='custom-control-input'>");
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='multiplas_familia' value='Multiplas' class='custom-control-input' onclick='naoTemOutraDeficienciaFamilia();'>");
                                                                                     }
                                                                                    // }
                                                                                 %>
                                                                             <label class="custom-control-label" for="multiplas_familia">Deficiência Múltiplas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
+                                                                            <div class="custom-control custom-radio">
+                                                                              <%
+                                                                                  if (fichaMedica.getQualDeficienciaDep()!=null && 
+                                                                                      !fichaMedica.getQualDeficienciaDep().equals("Multiplas") &&
+                                                                                      !fichaMedica.getQualDeficienciaDep().equals("Intelectual") &&
+                                                                                      !fichaMedica.getQualDeficienciaDep().equals("Visual") &&
+                                                                                      !fichaMedica.getQualDeficienciaDep().equals("Fisica") &&
+                                                                                      !fichaMedica.getQualDeficienciaDep().equals("Auditiva")) {
+                                                                                        out.println("<input checked type='radio' name='qualDeficienciaDep' id='outraDeficienciaFamilia' value='Outras' class='custom-control-input' onclick='temOutraDeficienciaFamilia();'>");
+                                                                                    } else {
+                                                                                        out.println("<input type='radio' name='qualDeficienciaDep' id='outraDeficienciaFamilia' value='Outras' class='custom-control-input' onclick='temOutraDeficienciaFamilia();'>");
+                                                                                    }
+                                                                                //  }  
+                                                                                %>
+                                                                            <label class="custom-control-label" for="outraDeficienciaFamilia">Outras</label>
+                                                                         </div>
+                                                                            <%
+                                                                                  if (fichaMedica.getQualDeficienciaDep()!=null && 
+                                                                                      !fichaMedica.getQualDeficienciaDep().equals("Multiplas") &&
+                                                                                      !fichaMedica.getQualDeficienciaDep().equals("Intelectual") &&
+                                                                                      !fichaMedica.getQualDeficienciaDep().equals("Visual") &&
+                                                                                      !fichaMedica.getQualDeficienciaDep().equals("Fisica") &&
+                                                                                      !fichaMedica.getQualDeficienciaDep().equals("Auditiva")) { %>
+                                                         <div id="div_outra_deficiencia_familia" >
+                                                                 <% } else { %>
+                                                         <div id="div_outra_deficiencia_familia" class="hide col-md-9">
+                                                             <% }%>
+                                                            <div class="position-relative has-icon-left">
+                                                                <input type="text" name="qualDeficienciaOutroFamilia" id="outraDeficienciaFamiliaQual" class="form-control" placeholder="Qual Deficiência na Família?" value="<%=fichaMedica.getQualDeficienciaDep()%>">
+                                                                <div class="form-control-position">
+                                                                    <i class="fa fa-briefcase"></i>
+                                                                </div>
+                                                            </div>
+                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>

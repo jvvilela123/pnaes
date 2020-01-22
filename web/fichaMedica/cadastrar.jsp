@@ -74,20 +74,7 @@
                 document.getElementById('outrosqual').value="";
             }
             
-            function temOutraDeficiencia() {
-                document.getElementById('div_outra_deficiencia').style.display = 'block';
-            }
-            function naoTemOutraDeficiencia() {
-                document.getElementById('div_outra_deficiencia').style.display = 'none';
-                document.getElementById('outraDeficienciaQual').value="";
-            }
-             function temOutraDeficienciaFamilia() {
-                document.getElementById('div_outra_deficiencia_familia').style.display = 'block';
-            }
-            function naoTemOutraDeficienciaFamilia() {
-                document.getElementById('div_outra_deficiencia_familia').style.display = 'none';
-                document.getElementById('outraDeficienciaFamiliaQual').value="";
-            }
+            
             function temDoencaFamilia() {
                 document.getElementById('div_doenca_familia').style.display = 'block';
                 document.getElementById('hipertencaofamilia').checked = false;
@@ -120,6 +107,7 @@
             }
             function temOutraDoencaFamilia() {
                 document.getElementById('div_outra_doenca_familia').style.display = 'block';
+                
             }
             function naoTemOutraDoencaFamilia() {
                 document.getElementById('div_outra_doenca_familia').style.display = 'none';
@@ -154,6 +142,9 @@
                document.getElementById('visual').checked = false;
                document.getElementById('mental').checked = false;
                document.getElementById('multiplas').checked = false;
+               document.getElementById('outraDeficiencia').checked = false;
+               document.getElementById('div_outra_deficiencia').style.display = 'none';
+               document.getElementById('outraDeficienciaQual').value="";
             }
             function temDeficienciaFamilia() {
                 document.getElementById('div_deficiencia_familia').style.display = 'block';
@@ -170,6 +161,26 @@
                document.getElementById('visual_familia').checked = false;
                document.getElementById('mental_familia').checked = false;
                document.getElementById('multiplas_familia').checked = false;
+               document.getElementById('outraDeficienciaFamilia').checked = false;
+               document.getElementById('div_outra_deficiencia_familia').style.display = 'none';
+               document.getElementById('outraDeficienciaFamiliaQual').value="";
+            }
+            
+            function temOutraDeficiencia() {
+                document.getElementById('div_outra_deficiencia').style.display = 'block';
+                document.getElementById('outraDeficienciaQual').value="";
+            }
+            function naoTemOutraDeficiencia() {
+                document.getElementById('div_outra_deficiencia').style.display = 'none';
+                document.getElementById('outraDeficienciaQual').value="";
+            }
+             function temOutraDeficienciaFamilia() {
+                document.getElementById('div_outra_deficiencia_familia').style.display = 'block';
+                document.getElementById('outraDeficienciaFamiliaQual').value="";
+            }
+            function naoTemOutraDeficienciaFamilia() {
+                document.getElementById('div_outra_deficiencia_familia').style.display = 'none';
+                document.getElementById('outraDeficienciaFamiliaQual').value="";
             }
             
             function verificaCampos(){
@@ -188,26 +199,13 @@
                  if(!document.getElementById('susnao').checked && !document.getElementById('sussim').checked){
                     alertify.errorAlert("<h6 class='card-title'>Você Possui o Cartão do SUS?</h6>");
                     prencheuTudo = false;
+               } else if(!document.getElementById('planonao').checked && !document.getElementById('planosim').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você Possui Plano de Saúde?</h6>");
+                    prencheuTudo = false;
                } else if(!document.getElementById('doencaCronica1sim').checked && !document.getElementById('doencaCronica1nao').checked){
                     alertify.errorAlert("<h6 class='card-title'>Você tem alguma doença crônica?</h6>");
                     prencheuTudo = false;
-               } else if(!document.getElementById('doencaCronicafamilianao').checked && !document.getElementById('doencaCronicafamiliasim').checked){
-                    alertify.errorAlert("<h6 class='card-title'>Há alguem com doença cronica na família?</h6>");
-                    prencheuTudo = false;
-                }else if(!document.getElementById('naom').checked && !document.getElementById('simm').checked){
-                    alertify.errorAlert("<h6 class='card-title'>Você faz uso de medicamento controlado?</h6>");
-                    prencheuTudo = false;
-                }else if(!document.getElementById('naomd').checked && !document.getElementById('simmd').checked){
-                    alertify.errorAlert("<h6 class='card-title'>Há alguem que faz uso de medicamento controlado na família?</h6>");
-                    prencheuTudo = false;
-                }else if(!document.getElementById('deficiencianao').checked && !document.getElementById('deficienciasim').checked){
-                    alertify.errorAlert("<h6 class='card-title'>Você tem alguma deficiência?</h6>");
-                    prencheuTudo = false;
-                }else if(!document.getElementById('simd').checked && !document.getElementById('naod').checked){
-                    alertify.errorAlert("<h6 class='card-title'>Há pessoa(s) na família com deficiência?</h6>");
-                    prencheuTudo = false;
-                }
-                    
+               } 
                else if(document.getElementById('doencaCronica1sim').checked &&  !verificaRadioChecadoPeloName('qualDoenca')){
                     alertify.errorAlert("<h6 class='card-title'>Selecione a sua doença crônica.</h6>");
                     prencheuTudo = false;
@@ -215,40 +213,47 @@
                     document.getElementById('outrosqual').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha a sua Doença no campo Outros.</h6>");
                     prencheuTudo = false;
-                }
-               else if(document.getElementById('doencaCronicafamiliasim').checked &&  !verificaRadioChecadoPeloName('qualDoencaDep')){
+                }else if(!document.getElementById('doencaCronicafamilianao').checked && !document.getElementById('doencaCronicafamiliasim').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Há alguem com doença cronica na família?</h6>");
+                    prencheuTudo = false;
+                }else if(document.getElementById('doencaCronicafamiliasim').checked &&  !verificaRadioChecadoPeloName('qualDoencaDep')){
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença crônica da sua família.</h6>");
                     prencheuTudo = false;
                 }else if( document.getElementById('outrosfamilia').checked && document.getElementById('outrosqualfamilia').value === ""){
                     document.getElementById('outrosqualfamilia').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha a doença da sua família no campo Outros.</h6>");
                     prencheuTudo = false;
-                 }
-                 
-               else if (document.getElementById('simm').checked && document.getElementById('qualM').value === ""){
+                 }else if(!document.getElementById('naom').checked && !document.getElementById('simm').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você faz uso de medicamento controlado?</h6>");
+                    prencheuTudo = false;
+                }else if (document.getElementById('simm').checked && document.getElementById('qualM').value === ""){
                     document.getElementById('qualM').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha o nome do seu medicamento.</h6>");
                     prencheuTudo = false;
-                }
-             else if (document.getElementById('simmd').checked && document.getElementById('qualMd').value === ""){
-                    document.getElementById('qualMd').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha o nome do medicamento da sua família.</h6>");
+                }else if(!document.getElementById('naomd').checked && !document.getElementById('simmd').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Há alguem que faz uso de medicamento controlado na família?</h6>");
                     prencheuTudo = false;
-               }
-              else if (document.getElementById('deficienciasim').checked && !verificaRadioChecadoPeloName('qualDeficiencia')) {
+                }else if (document.getElementById('simmd').checked && document.getElementById('qualMd').value === ""){
+                    document.getElementById('qualMd').focus();
+                    alertify.errorAlert("<h6 class='card-title'>Preencha o nome de quem faz o uso do medicamento na sua família.</h6>");
+                    prencheuTudo = false;
+                }else if(!document.getElementById('deficiencianao').checked && !document.getElementById('deficienciasim').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Você tem alguma deficiência?</h6>");
+                    prencheuTudo = false;
+                }else if (document.getElementById('deficienciasim').checked && !verificaRadioChecadoPeloName('qualDeficiencia')) {
                     alertify.errorAlert("<h6 class='card-title'>Preencha a sua deficiência.</h6>");
                     prencheuTudo = false;
-                }
-               else if (document.getElementById('simd').checked && !verificaRadioChecadoPeloName('qualDeficienciaDep')) {
-                    alertify.errorAlert("<h6 class='card-title'>Preencha a deficiência da sua família.</h6>");
-                    prencheuTudo = false;
-                }
-                else if( document.getElementById('outraDeficiencia').checked && document.getElementById('outraDeficienciaQual').value === ""){
+                }else if( document.getElementById('outraDeficiencia').checked && document.getElementById('outraDeficienciaQual').value === ""){
                     document.getElementById('outraDeficienciaQual').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha a sua Deficiêcnia no campo Outras.</h6>");
                     prencheuTudo = false;
-                 }
-                else if( document.getElementById('outraDeficienciaFamilia').checked && document.getElementById('outraDeficienciaFamiliaQual').value === ""){
+                 }else if(!document.getElementById('simd').checked && !document.getElementById('naod').checked){
+                    alertify.errorAlert("<h6 class='card-title'>Há pessoa(s) na família com deficiência?</h6>");
+                    prencheuTudo = false;
+                }else if (document.getElementById('simd').checked && !verificaRadioChecadoPeloName('qualDeficienciaDep')) {
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a deficiência da sua família.</h6>");
+                    prencheuTudo = false;
+                }else if( document.getElementById('outraDeficienciaFamilia').checked && document.getElementById('outraDeficienciaFamiliaQual').value === ""){
                     document.getElementById('outraDeficienciaFamiliaQual').focus();
                     alertify.errorAlert("<h6 class='card-title'>Preencha a Deficiêcnia da sua Família no campo Outras.</h6>");
                     prencheuTudo = false;
@@ -270,10 +275,7 @@
                         
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
+                            
                             </div>
                         </div>
                         <center>
@@ -283,7 +285,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro de Informações da saúde do estudante e do grupo familiar</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro de Informações da Saúde do Estudante e do Grupo Familiar</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -324,6 +326,23 @@
                                                             <div class="custom-control custom-radio">
                                                                 <input type="radio" name="sus" id="sussim" value="Sim" class="custom-control-input" required>
                                                                 <label class="custom-control-label" for="sussim">Sim</label>
+                                                            </div> 
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="planoSaude">Você possui Plano de Saúde?*:</label>
+                                                <div class="col-md-3">
+                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
+                                                        <div class="col-md-3">
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" name="planoSaude" id="planonao" value="Não" class="custom-control-input" required>
+                                                                <label class="custom-control-label" for="planonao">Não</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" name="planoSaude" id="planosim" value="Sim" class="custom-control-input" required>
+                                                                <label class="custom-control-label" for="planosim">Sim</label>
                                                             </div> 
                                                         </div>
                                                      </div>
@@ -382,11 +401,11 @@
                                                         </div>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" name="qualDoenca" id="dependenciaQuimica" value="Dependencia Quimica" class="custom-control-input" onclick="naoTemOutraDoenca();">
-                                                            <label class="custom-control-label" for="dependenciaQuimica">Dependência Quimica&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            <label class="custom-control-label" for="dependenciaQuimica">Dependência Química&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" name="qualDoenca" id="doencaMental" value="Doenca Mental" class="custom-control-input" onclick="naoTemOutraDoenca();">
-                                                            <label class="custom-control-label" for="doencaMental">Doenca Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            <label class="custom-control-label" for="doencaMental">Doença Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" name="qualDoenca" id="outros" value="Outros" class="custom-control-input" onclick="temOutraDoenca();">
@@ -457,11 +476,11 @@
                                                         </div>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" name="qualDoencaDep" id="dependenciaQuimicafamilia" value="Dependencia Quimica" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
-                                                            <label class="custom-control-label" for="dependenciaQuimicafamilia">Dependência Quimica&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            <label class="custom-control-label" for="dependenciaQuimicafamilia">Dependência Química&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" name="qualDoencaDep" id="doencaMentalfamilia" value="Doenca Mental" class="custom-control-input" onclick="naoTemOutraDoencaFamilia();">
-                                                            <label class="custom-control-label" for="doencaMentalfamilia">Doenca Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            <label class="custom-control-label" for="doencaMentalfamilia">Doença Mental&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" name="qualDoencaDep" id="outrosfamilia" value="Outros" class="custom-control-input" onclick="temOutraDoencaFamilia();">
@@ -509,7 +528,7 @@
                                                 </div>
                                             </div>
                                         <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="medicamento">Há alguem que faz uso de medicamento controlado na família?*</label>
+                                                <label class="col-md-3 label-control" for="medicamento">Há alguém da família que faz uso de medicamentos controlado?*</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                         <div class="col-md-2">
@@ -523,9 +542,9 @@
                                                             </div>
                                                        </div>
                                                         <div id="div_medicamento_familia" class="hide col-md-9">
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-10">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="qualMedicamentoDep" id="qualMd" class="form-control" placeholder="Qual Medicamento na família?">
+                                                                <input type="text" name="quemMedicamentoDep" id="qualMd" class="form-control" placeholder="Quem na família faz uso de Medicamento?">
                                                                 <div class="form-control-position">
                                                                     <i class="fa fa-briefcase"></i>
                                                                 </div>
@@ -639,7 +658,7 @@
                                                             <input type="radio" name="qualDeficienciaDep" id="outraDeficienciaFamilia" value="Outras" class="custom-control-input" onclick="temOutraDeficienciaFamilia();">
                                                             <label class="custom-control-label" for="outraDeficienciaFamilia">Outras</label>
                                                         </div>
-                                                         <div id="div_outra_deficiencia_familia" class="hide">
+                                                         <div id="div_outra_deficiencia_familia" class="hide col-md-9">
                                                             <div class="position-relative has-icon-left">
                                                                 <input type="text" name="qualDeficienciaOutroFamilia" id="outraDeficienciaFamiliaQual" class="form-control" placeholder="Qual Deficiência na Família?">
                                                                 <div class="form-control-position">

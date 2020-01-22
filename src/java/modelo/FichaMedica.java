@@ -28,12 +28,13 @@ public class FichaMedica implements Serializable{
     private Boolean temMedicamento;
     private String qualMedicamento;
     private Boolean temMedicamentoDep;
-    private String qualMedicamentoDep;
+    private String quemMedicamentoDep;
     private Boolean temDeficiencia;
     private String qualDeficiencia;
     private Boolean temDeficienciaDep;
     private String qualDeficienciaDep;
     private Boolean temCartaoSUS;
+    private Boolean temPlanoSaude;
    
     @OneToOne
     @JoinColumn(name="aluno_id", unique=true)
@@ -103,12 +104,12 @@ public class FichaMedica implements Serializable{
         this.temMedicamentoDep = temMedicamentoDep;
     }
 
-    public String getQualMedicamentoDep() {
-        return qualMedicamentoDep;
+    public String getQuemMedicamentoDep() {
+        return quemMedicamentoDep;
     }
 
-    public void setQualMedicamentoDep(String qualMedicamentoDep) {
-        this.qualMedicamentoDep = qualMedicamentoDep;
+    public void setQuemMedicamentoDep(String quemMedicamentoDep) {
+        this.quemMedicamentoDep = quemMedicamentoDep;
     }
 
     public Boolean getTemDeficiencia() {
@@ -150,6 +151,15 @@ public class FichaMedica implements Serializable{
     public void setTemCartaoSUS(Boolean temCartaoSUS) {
         this.temCartaoSUS = temCartaoSUS;
     }
+
+    public Boolean getTemPlanoSaude() {
+        return temPlanoSaude;
+    }
+
+    public void setTemPlanoSaude(Boolean temPlanoSaude) {
+        this.temPlanoSaude = temPlanoSaude;
+    }
+    
     
     
     
