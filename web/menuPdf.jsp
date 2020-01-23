@@ -79,20 +79,20 @@ START - Mobile Menu
     %>
         <ul class="main-menu">
             <li class="sub-header">
-                <span>MENU</span>
+                <span>MENU (Análise dos Documentos)</span>
             </li>
             <li class="selected menu">
                 <a href="/pnaes/home.jsp">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-layout"></div>
+                        <div class="os-icon os-icon-home"></div>
                     </div>
-                    <span>Inicio</span></a>
+                    <span>Início</span></a>
                 <div class="sub-menu-w">
                     <div class="sub-menu-header">
-                        Inicio
+                        Início
                     </div>
                     <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-layout"></i>
+                        <i class="os-icon os-icon-home"></i>
                     </div>
                 </div>
             </li>
@@ -111,7 +111,7 @@ START - Mobile Menu
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/da.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Documentos do Aluno</span></a>
             <div class="sub-menu-w">
@@ -119,7 +119,7 @@ START - Mobile Menu
                     Documentos do Aluno
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-file-text"></i>
                 </div>
 
             </div>
@@ -128,7 +128,7 @@ START - Mobile Menu
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Documentos dos Dependentes</span></a>
             <div class="sub-menu-w">
@@ -136,7 +136,7 @@ START - Mobile Menu
                     Documentos dos Dependentes
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-file-text"></i>
                 </div>
             </div>
         </li>
@@ -144,7 +144,7 @@ START - Mobile Menu
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dr.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Documentos da Renda</span></a>
             <div class="sub-menu-w">
@@ -152,14 +152,14 @@ START - Mobile Menu
                     Documentos da Renda
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-file-text"></i>
                 </div>
             </div>
         </li>
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Documentos das Despesas</span></a>
             <div class="sub-menu-w">
@@ -167,14 +167,14 @@ START - Mobile Menu
                     Documentos das Despesas
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-file-text"></i>
                 </div>
             </div>
         </li>
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/od.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Outros Documentos</span></a>
             <div class="sub-menu-w">
@@ -182,7 +182,7 @@ START - Mobile Menu
                     Outros Documentos
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-file-text"></i>
                 </div>
             </div>
         </li>
@@ -270,36 +270,27 @@ START - Main Menu
         </div>
     </div>
 
-    <div class="element-search autosuggest-search-activator">
-        <input placeholder="Buscar..." type="text">
-    </div>
-    <h1 class="menu-page-header">
-        JSP Page
-    </h1>
-    <div class="menu-actions">
-
-
-    </div>  
+     
     <%             
         if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
     %>
     <ul class="main-menu">
         <li class="sub-header">
-            <span>MENU</span>
+            <span>MENU (Análise dos Documentos)</span>
         </li>
 
         <li class="selected menu">
             <a href="/pnaes/home.jsp">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-home"></div>
                 </div>
-                <span>Inicio</span></a>
+                <span>Início</span></a>
             <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                    Inicio
+                    Início
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-home"></i>
                 </div>
 
             </div>
@@ -321,7 +312,7 @@ START - Main Menu
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/da.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Documentos do Aluno</span></a>
             <div class="sub-menu-w">
@@ -329,7 +320,7 @@ START - Main Menu
                     Documentos do Aluno
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-file-text"></i>
                 </div>
 
             </div>
@@ -338,7 +329,7 @@ START - Main Menu
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Documentos dos Dependentes</span></a>
             <div class="sub-menu-w">
@@ -346,7 +337,7 @@ START - Main Menu
                     Documentos dos Dependentes
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-file-text"></i>
                 </div>
             </div>
         </li>
@@ -354,7 +345,7 @@ START - Main Menu
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dr.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Documentos da Renda</span></a>
             <div class="sub-menu-w">
@@ -362,14 +353,14 @@ START - Main Menu
                     Documentos da Renda
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-file-text"></i>
                 </div>
             </div>
         </li>
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Documentos das Despesas</span></a>
             <div class="sub-menu-w">
@@ -377,14 +368,14 @@ START - Main Menu
                     Documentos das Despesas
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-file-text"></i>
                 </div>
             </div>
         </li>
         <li class="selected menu">
             <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/od.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-layout"></div>
+                    <div class="os-icon os-icon-file-text"></div>
                 </div>
                 <span>Outros Documentos</span></a>
             <div class="sub-menu-w">
@@ -392,7 +383,7 @@ START - Main Menu
                     Outros Documentos
                 </div>
                 <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-layout"></i>
+                    <i class="os-icon os-icon-file-text"></i>
                 </div>
             </div>
         </li>

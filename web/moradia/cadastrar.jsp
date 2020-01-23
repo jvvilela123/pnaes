@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Moradia</title>        
+        <title>Daddos da Moradia</title>        
         <script type="text/javascript" >
             
         </script>
@@ -85,9 +85,9 @@
                                                             </div>
                                                              <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="tipoMoradia">Em que Tipo de Moradia?*:</label>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-9">
                                                                     <div class="input-group" >
-                                                                        <div class="d-inline-block custom-control custom-radio">
+                                                                        <div class="custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("propriaQuitada")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='propriaQuitada' value='propriaQuitada' class='custom-control-input' required>");
@@ -95,9 +95,11 @@
                                                                                     out.println("<input type='radio' name='tipoMoradia' id='propriaQuitada' value='propriaQuitada' class='custom-control-input' required>");
                                                                                 }
                                                                               %>
-                                                                          <label class="custom-control-label" for="propriaQuitada">Própria da Família (Quitada) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                                          <label class="custom-control-label " for="propriaQuitada">Própria da Família (Quitada) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
-                                                                          <div class="d-inline-block custom-control custom-radio">
+                                                                    </div>
+                                                                          <div class="input-group" >
+                                                                          <div class="custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("propriaFinan")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='propriaFinan' value='propriaFinan' class='custom-control-input' required>");
@@ -107,7 +109,9 @@
                                                                               %>
                                                                           <label class="custom-control-label" for="propriaFinan">Própria da Família (Financiada) &nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
-                                                                          <div class="d-inline-block custom-control custom-radio">
+                                                                          </div>
+                                                                          <div class="input-group" >
+                                                                          <div class=" custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("propriaParc")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='propriaParc' value='propriaParc' class='custom-control-input' required>");
@@ -115,9 +119,11 @@
                                                                                     out.println("<input type='radio' name='tipoMoradia' id='propriaParc' value='propriaParc' class='custom-control-input' required>");
                                                                                 }
                                                                               %>
-                                                                          <label class="custom-control-label" for="propriaParc">Própria da Família, adquirida por meio de projeto social de habitação com pagamento de parcelas &nbsp;&nbsp;</label>
+                                                                          <label class="custom-control-label " for="propriaParc">Própria da Família, adquirida por meio de projeto social de habitação com pagamento de parcelas &nbsp;&nbsp;</label>
                                                                         </div>
-                                                                          <div class="d-inline-block custom-control custom-radio">
+                                                                          </div>
+                                                                           <div class="input-group" >
+                                                                          <div class="custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("propriaSocialQuitada")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='propriaSocialQuitada' value='propriaSocialQuitada' class='custom-control-input' required>");
@@ -127,7 +133,9 @@
                                                                               %>
                                                                           <label class="custom-control-label" for="propriaSocialQuitada">Própria da Família, adquirida por meio de projeto social de habitação quitado &nbsp;&nbsp;</label>
                                                                         </div>
-                                                                         <div class="d-inline-block custom-control custom-radio">
+                                                                           </div>
+                                                                           <div class="input-group" >
+                                                                         <div class="custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("heranca")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='heranca' value='heranca' class='custom-control-input' required>");
@@ -137,7 +145,9 @@
                                                                               %>
                                                                           <label class="custom-control-label" for="heranca">Herança &nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
-                                                                          <div class="d-inline-block custom-control custom-radio">
+                                                                           </div>
+                                                                           <div class="input-group" >
+                                                                          <div class="custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("cedida")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='cedida' value='cedida' class='custom-control-input' required>");
@@ -147,7 +157,9 @@
                                                                               %>
                                                                           <label class="custom-control-label" for="cedida">Cedida (Gratuita) &nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
-                                                                          <div class="d-inline-block custom-control custom-radio">
+                                                                           </div>
+                                                                           <div class="input-group" >
+                                                                          <div class="custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("alugada")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='alugada' value='alugada' class='custom-control-input' required>");
@@ -157,7 +169,9 @@
                                                                               %>
                                                                           <label class="custom-control-label" for="alugada">Alugada &nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
-                                                                         <div class="d-inline-block custom-control custom-radio">
+                                                                           </div>
+                                                                           <div class="input-group" >
+                                                                         <div class="custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("terceirosSem")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='terceirosSem' value='terceirosSem' class='custom-control-input' required>");
@@ -167,7 +181,9 @@
                                                                               %>
                                                                           <label class="custom-control-label" for="terceirosSem">Casa de Terceiros (Sem Contribuição) &nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
-                                                                          <div class="d-inline-block custom-control custom-radio">
+                                                                           </div>
+                                                                           <div class="input-group" >
+                                                                          <div class="custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("terceirosCom")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='terceirosCom' value='terceirosCom' class='custom-control-input' required>");
@@ -177,7 +193,9 @@
                                                                               %>
                                                                           <label class="custom-control-label" for="terceirosCom">Casa de Terceiros (Com Contribuição) &nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
-                                                                        <div class="d-inline-block custom-control custom-radio">
+                                                                           </div>
+                                                                           <div class="input-group" >
+                                                                        <div class="custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("casaEstudante")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='casaEstudante' value='casaEstudante' class='custom-control-input' required>");
@@ -187,7 +205,9 @@
                                                                               %>
                                                                           <label class="custom-control-label" for="casaEstudante">Casa de Estudante &nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
-                                                                          <div class="d-inline-block custom-control custom-radio">
+                                                                           </div>
+                                                                           <div class="input-group" >
+                                                                          <div class="custom-control custom-radio">
                                                                              <%
                                                                                 if (aluno.getTipoMoradia()!=null && aluno.getTipoMoradia().equals("ocupacao")){
                                                                                     out.println("<input checked type='radio' name='tipoMoradia' id='ocupacao' value='ocupacao' class='custom-control-input' required>");

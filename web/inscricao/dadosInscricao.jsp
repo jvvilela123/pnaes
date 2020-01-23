@@ -149,10 +149,10 @@
                                                                 <td><%=inscricao.getAluno().getEntradaIfto()%></td>
                                                             </tr>
 
-                                                            <%if (inscricao.getAluno().getReprovou() != null && !inscricao.getAluno().getReprovou().equals("")) {%>
+                                                            <%if (inscricao.getAluno().getReprovou() != null && inscricao.getAluno().getReprovou()) {%>
                                                             <tr>    
-                                                                <th>Disciplina(s) que Reprovou:</th>
-                                                                <td><%=inscricao.getAluno().getReprovou()%></td>
+                                                                <th>Quantidade de Disciplina(s) que Reprovou:</th>
+                                                                <td><%=inscricao.getAluno().getReprovouQuantas()%> Disciplina(s)</td>
                                                             </tr>
                                                             <%}%>
                                                             <tr>    
@@ -170,11 +170,10 @@
                                                         <table class="table table-striped table-responsive-md">
                                                             <tr>    
                                                                 <th>Tem carteira de Trabalho?</th>
-                                                                <td><%=empresa.getCarteira().toUpperCase()%></td>
-                                                            </tr>
-                                                            <tr>    
-                                                                <th>Trabalha Atualmente?</th>
-                                                                <td><%=empresa.getTrabalha().toUpperCase()%></td>
+                                                                <td><%if(empresa.getTemCarteira())
+                                                                    out.print("SIM");
+                                                                    else
+                                                                    out.print("NÃO");%></td>
                                                             </tr>
                                                             
                                                             <tr>    
@@ -182,7 +181,7 @@
                                                                 <td><%=empresa.getAtividade()%></td>
                                                             </tr>
                                                             
-                                                            <%if(empresa.getAtividade().equals("Empregado CLT") || empresa.getAtividade().equals("Funcionanio Publico")){%>
+                                                            <%if(empresa.getAtividade().equals("Empregado CLT") || empresa.getAtividade().equals("Funcionanio Publico") || empresa.getAtividade().equals("Servidor Publico")){%>
                                                             <tr>    
                                                                 <th>Nome da Empresa que Trabalha:</th>
                                                                 <td><%=empresa.getNome()%></td>
@@ -191,51 +190,48 @@
                                                                 <th>Telefone da Empresa:</th>
                                                                 <td><%=empresa.getTelefone()%></td>
                                                             </tr>
-                                                            <tr>    
-                                                                <th>Nome do Responsável da Empresa:</th>
-                                                                <td><%=empresa.getResponsavel()%></td>
-                                                            </tr>
+                                                            
                                                             <%}%>
                                                         </table>
                                                     </div>
-                                                            <%if(fichaMedica.getTemDoenca().equals("Não") &&
-                                                                 fichaMedica.getTemDoencaDep().equals("Não") &&
-                                                                 fichaMedica.getTemMedicamento().equals("Não") &&
-                                                                 fichaMedica.getTemMedicamentoDep().equals("Não") &&
-                                                                 fichaMedica.getTemDeficiencia().equals("Não") &&
-                                                                 fichaMedica.getTemDeficienciaDep().equals("Não")){%>
+                                                            <%if(!fichaMedica.getTemDoenca() &&
+                                                                 !fichaMedica.getTemDoencaDep() &&
+                                                                 !fichaMedica.getTemMedicamento() &&
+                                                                 !fichaMedica.getTemMedicamentoDep() &&
+                                                                 !fichaMedica.getTemDeficiencia() &&
+                                                                 !fichaMedica.getTemDeficienciaDep()){%>
                                                         <h3 class="ui-state-disabled">Estudante e Família NÃO Possui Doenças, Deficiências e Medicamentos</h3>
                                                         <%}else{%>
                                                         <h3>Saúde do Estudante/Família</h3>
                                                         <%}%>
                                                 <div>
                                                 <table class="table table-striped table-responsive-md">
-                                                    <%if(fichaMedica.getTemDoenca().equals("Sim")){%>
+                                                    <%if(fichaMedica.getTemDoenca()){%>
                                                     <tr>    
                                                         <th>Estudante tem alguma doença crônica, qual?</th>
                                                         <td><%=fichaMedica.getQualDoenca()%></td>
                                                     </tr>
-                                                   <%}if(fichaMedica.getTemDoencaDep().equals("Sim")){%>
+                                                   <%}if(fichaMedica.getTemDoencaDep()){%>
                                                     <tr>    
                                                         <th>Há pessoa(s) na família com alguma doença crônica, qual?</th>
                                                         <td><%=fichaMedica.getQualDoenca()%></td>
                                                     </tr>
-                                                     <%}if(fichaMedica.getTemMedicamento().equals("Sim")){%>
+                                                     <%}if(fichaMedica.getTemMedicamento()){%>
                                                     <tr>    
                                                         <th>Estudante faz uso de medicamento controlado, qual?</th>
                                                         <td><%=fichaMedica.getQualMedicamento()%></td>
                                                     </tr>
-                                                    <%}if(fichaMedica.getTemMedicamentoDep().equals("Sim")){%>
+                                                    <%}if(fichaMedica.getTemMedicamentoDep()){%>
                                                     <tr>    
-                                                        <th>Há pessoa(s) na família que faz uso de medicamento controlado, qual?</th>
-                                                        <td><%=fichaMedica.getQualMedicamentoDep()%></td>
+                                                        <th>Há pessoa(s) na família que faz uso de medicamento controlado, Quem?</th>
+                                                        <td><%=fichaMedica.getQuemMedicamentoDep()%></td>
                                                     </tr>
-                                                     <%}if(fichaMedica.getTemDeficiencia().equals("Sim")){%>
+                                                     <%}if(fichaMedica.getTemDeficiencia()){%>
                                                     <tr>    
                                                         <th>Estudante tem alguma deficiência, qual?</th>
                                                         <td><%=fichaMedica.getQualDeficiencia()%></td>
                                                     </tr>
-                                                     <%}if(fichaMedica.getTemDeficienciaDep().equals("Sim")){%>
+                                                     <%}if(fichaMedica.getTemDeficienciaDep()){%>
                                                     <tr>    
                                                         <th>Há pessoa(s) na família com deficiência, qual?</th>
                                                         <td><%=fichaMedica.getQualDeficienciaDep()%></td>
@@ -335,7 +331,7 @@
                                                         <td><script>document.write(formatarMoeda(<%=perCapita%>));</script></td>
                                                     </tr>
                                                     <tr>    
-                                                        <th>Despesas Familiar Total:</th>
+                                                        <th>Despesa Familiar Total:</th>
                                                             <%
                                                                 Double total = despesa.getAgua() + despesa.getEnergia()
                                                                         + despesa.getFarmacia() + despesa.getMoradia() + despesa.getOutrasDespesas() + despesa.getTelefone();

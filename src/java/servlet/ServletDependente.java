@@ -69,7 +69,7 @@ public class ServletDependente extends HttpServlet {
                         dependente.setGrauParentesco(request.getParameter("grauParentesco"));
                         dependente.setTipoDeficiente(request.getParameter("tipoDeficiencia"));
                         dependente.setAtividadeProf(request.getParameter("atividade"));
-                        dependente.setRenda(Double.parseDouble(request.getParameter("renda")));
+                        dependente.setRenda(Double.parseDouble(request.getParameter("renda").replace("R$", "").replace(".", "").replace(",", ".")));
                         aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
                         dependente.setEndereco(aluno.getEndereco());
                         dependente.setAluno(aluno);
@@ -94,7 +94,7 @@ public class ServletDependente extends HttpServlet {
                         //dependente.setRenda(Double.parseDouble(request.getParameter("renda")));
                         //dependente.setTipoDeficiente(request.getParameter("tipoDeficiencia"));
                         dependente.setAtividadeProf(request.getParameter("atividade"));
-                        dependente.setRenda(Double.parseDouble(request.getParameter("renda")));
+                        dependente.setRenda(Double.parseDouble(request.getParameter("renda").replace("R$", "").replace(".", "").replace(",", ".")));
                         //Chamando o metodo alterar do dao e redirecionando para listar Dependente
                         daoFactory.getDependenteDao().inserirOuAlterar(dependente);
                         response.sendRedirect("dependente/listar.jsp");

@@ -166,7 +166,7 @@ public class ServletAluno extends HttpServlet {
                     else
                     aluno.setReprovouQuantas(null);
                     
-                    aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
+                    
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("empresa/cadastrar.jsp");
                     break;
@@ -188,7 +188,7 @@ public class ServletAluno extends HttpServlet {
                     else
                     aluno.setReprovouQuantas(null);
                     
-                    aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
+                    
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("home.jsp");
                     break;

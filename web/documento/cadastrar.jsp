@@ -38,10 +38,6 @@
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
 
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
                             </div>
                         </div>
                         <center>
@@ -93,6 +89,7 @@
                                         <% 
                                             List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
                                             Despesa despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                            empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
                                         %>
                                         <%@include file="../inscricao/dadosInscricao.jsp" %>
                                         
@@ -156,7 +153,7 @@
                                                                         <label class="col-md-3 label-control" for="resultado">Resultado</label>
                                                                         <div class="col-md-9">
                                                                             <select id="resultado" name="resultado" class="form-control" required>
-                                                                                <option selected="" disabled="">Selecione o Resultado</option>
+                                                                                <option selected='' disabled='' value=''>Selecione o Resultado</option>
                                                                                 <option value="Classificado">Classificado</option>
                                                                                 <option value="Classificado com falta de documentos">Classificado com falta de Documentos</option>
                                                                                 <option value="Desclassificado por falta de Documento">Desclassificado por falta de Documento</option>
@@ -167,12 +164,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions right">
-                                                                <a href="/pnaes/documento/documento.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
-                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1">
+                                                                <a href="/pnaes/documento/documento.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                                <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                    <i class="fa fa-check-square-o"></i>Enviar
+                                                                <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
+                                                                    <i class="fa fa-check-square-o"></i> Enviar
                                                                 </button>
                                                             </div>
                                                         </div>

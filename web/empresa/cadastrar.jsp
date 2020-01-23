@@ -33,44 +33,14 @@
                     document.getElementById('telefone').value = ""
                     document.getElementById('div3').style.display = 'none'; 
                  }
+                 if(document.getElementById('atividade').value === "Desempregado"){ 
+                       document.getElementById('div4').style.display = 'none';
+                 }else{
+                       document.getElementById('div4').style.display = 'block'; 
+                 }
             }
             
-            function moeda(a, e, r, t) {
-                let n = ""
-                        , h = j = 0
-                        , u = tamanho2 = 0
-                        , l = ajd2 = ""
-                        , o = window.Event ? t.which : t.keyCode;
-                if (13 == o || 8 == o)
-                    return !0;
-                if (n = String.fromCharCode(o),
-                        -1 == "0123456789".indexOf(n))
-                    return !1;
-                for (u = a.value.length,
-                        h = 0; h < u && ("0" == a.value.charAt(h) || a.value.charAt(h) == r); h++)
-                    ;
-                for (l = ""; h < u; h++)
-                    -1 != "0123456789".indexOf(a.value.charAt(h)) && (l += a.value.charAt(h));
-                if (l += n,
-                        0 == (u = l.length) && (a.value = ""),
-                        1 == u && (a.value = "0" + r + "0" + l),
-                        2 == u && (a.value = "0" + r + l),
-                        u > 2) {
-                    for (ajd2 = "",
-                            j = 0,
-                            h = u - 3; h >= 0; h--)
-                        3 == j && (ajd2 += e,
-                                j = 0),
-                                ajd2 += l.charAt(h),
-                                j++;
-                    for (a.value = "",
-                            tamanho2 = ajd2.length,
-                            h = tamanho2 - 1; h >= 0; h--)
-                        a.value += ajd2.charAt(h);
-                    a.value += r + l.substr(u - 2, u)
-                }
-                return !1
-            }
+            
             function verificaAtividade() {
              prencheuTudo = true;
              
@@ -192,16 +162,18 @@
                                                             <div class="card-text">
                                                                 Informe abaixo <b>APENAS</b> os seus ganhos. <strong>Não</strong> cabe informar aqui a renda que será declarada dos membros familiares, apenas se você possuir mais de uma renda.
                                                             </div><br>
+                                                            <div id='div4' class='hide'>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="renda">Sua remuneração Bruta*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="renda" id="renda"  value="0.00" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this, '', '.', event))" required>
+                                                                    <input type="text" name="renda" id="renda"  value="R$ 0.00" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this,'.',',',event))" required>
                                                                 </div>
+                                                            </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="orenda">Você possui outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="orenda" id="orenda" value="0.00" class="form-control" placeholder="Outra Renda do Aluno" onKeyPress="return(moeda(this, '', '.', event))" required>
+                                                                    <input type="text" name="orenda" id="orenda" value="R$ 0.00" class="form-control" placeholder="Outra Renda do Aluno" onKeyPress="return(moeda(this,'.',',',event))" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">

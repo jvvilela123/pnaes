@@ -7,7 +7,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro de Membro Familiar</title>
-        <script language=JavaScript src="../jquery.js" type="text/javascript"></script>
+     
+         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
             $(document).ready(function () {
                 $('#uf').change(function () {
@@ -22,44 +23,9 @@
                     documento.value += texto.substring(0, 1);
                 }
             }
-            function moeda(a, e, r, t) {
-                let n = ""
-                        , h = j = 0
-                        , u = tamanho2 = 0
-                        , l = ajd2 = ""
-                        , o = window.Event ? t.which : t.keyCode;
-                if (13 == o || 8 == o)
-                    return !0;
-                if (n = String.fromCharCode(o),
-                        -1 == "0123456789".indexOf(n))
-                    return !1;
-                for (u = a.value.length,
-                        h = 0; h < u && ("0" == a.value.charAt(h) || a.value.charAt(h) == r); h++)
-                    ;
-                for (l = ""; h < u; h++)
-                    -1 != "0123456789".indexOf(a.value.charAt(h)) && (l += a.value.charAt(h));
-                if (l += n,
-                        0 == (u = l.length) && (a.value = ""),
-                        1 == u && (a.value = "0" + r + "0" + l),
-                        2 == u && (a.value = "0" + r + l),
-                        u > 2) {
-                    for (ajd2 = "",
-                            j = 0,
-                            h = u - 3; h >= 0; h--)
-                        3 == j && (ajd2 += e,
-                                j = 0),
-                                ajd2 += l.charAt(h),
-                                j++;
-                    for (a.value = "",
-                            tamanho2 = ajd2.length,
-                            h = tamanho2 - 1; h >= 0; h--)
-                        a.value += ajd2.charAt(h);
-                    a.value += r + l.substr(u - 2, u)
-                }
-                return !1
-            }
+            
         </script>
-        <%@include file="../imports.jsp" %>
+       
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -71,7 +37,17 @@
                         <%@include file="../cabecalho.jsp" %>
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-
+                                 <%
+                                       
+                                        if(request.getParameter("moradia")!=null){
+                                        Aluno aluno2 = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
+                                        
+                                        aluno2.setMoradia(request.getParameter("moradia"));
+                                        aluno2.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
+                                        
+                                        daoFactory.getAlunoDao().inserirOuAlterar(aluno2);
+                                        }
+                                    %>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                     <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
                                     <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
@@ -196,7 +172,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="renda">Renda Total Mensal do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="renda" id="renda"  value="0.00" class="form-control" placeholder="Renda Mensal" onKeyPress="return(moeda(this,'','.',event))"  required>
+                                                                    <input type="text" name="renda" id="renda"  value="R$ 0.00" class="form-control" placeholder="Renda Total Mensal do Membro Familiar" onKeyPress="return(moeda(this,'.',',',event))"  required>
                                                                 </div>
                                                             </div>        
                                                             <div class="form-actions right">

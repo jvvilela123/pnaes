@@ -118,6 +118,22 @@ if (!alertify.errorAlert) {
                 return temAlgumChecado;
             }
             
+            //Função Genérica para retornar o Value do radio selecionado, parâmetro nome do campo (name), retorno Value
+             function retornaValueRadioChecadoPeloName(nameRadio){
+                var valueChecado;
+		var elementParaCheckar = document.getElementsByName(nameRadio);
+		
+        
+                     for (var x = 0; x < elementParaCheckar.length; x++) {					
+			if(elementParaCheckar[x] !== null && elementParaCheckar[x].checked !== false){
+			     //Tem um elemento checado
+			      valueChecado = elementParaCheckar[x].value;
+			 }
+					
+		      }
+                return valueChecado;
+            }
+            
       function startCountdown(tempo){
    div = $( "#divTempo" );
 

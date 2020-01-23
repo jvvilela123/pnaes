@@ -272,14 +272,14 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="renda">Sua remuneração Bruta*:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="renda" id="renda"  value="<%=empresa.getRenda()!=null?empresa.getRenda():""%>" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this, '', '.', event))" required>
+                                                                        <input type="text" name="renda" id="renda"  value="<%=empresa.getRenda()!=null?"R$ "+decimal.format(empresa.getRenda()):""%>" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this,'.',',',event))" required>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="orenda">Você possui outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="orenda" id="orenda" value="<%=empresa.getOrenda()!=null?empresa.getOrenda():""%>" class="form-control" placeholder="Outra Renda do Aluno" onKeyPress="return(moeda(this, '', '.', event))" required>
+                                                                    <input type="text" name="orenda" id="orenda" value="<%=empresa.getOrenda()!=null?"R$ "+decimal.format(empresa.getOrenda()):""%>" class="form-control" placeholder="Outra Renda do Aluno" onKeyPress="return(moeda(this,'.',',',event))" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">

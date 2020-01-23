@@ -56,8 +56,9 @@ public class ServletEmpresa extends HttpServlet {
                     empresa.setAtividade(request.getParameter("atividade")!=null?request.getParameter("atividade"):null);
                     empresa.setNome(request.getParameter("nome")!=null?request.getParameter("nome"):null);
                     empresa.setTelefone(request.getParameter("telefone")!=null?request.getParameter("telefone"):null);
-                    empresa.setRenda(Double.parseDouble(request.getParameter("renda")));
-                    empresa.setOrenda(Double.parseDouble(request.getParameter("orenda")));
+                    
+                    empresa.setRenda(Double.parseDouble(request.getParameter("renda").replace("R$", "").replace(".", "").replace(",", ".")));
+                    empresa.setOrenda(Double.parseDouble(request.getParameter("orenda").replace("R$", "").replace(".", "").replace(",", ".")));
                     
                    // seta aluno na empresa
                     empresa.setAluno(aluno);
@@ -75,8 +76,8 @@ public class ServletEmpresa extends HttpServlet {
                     empresa.setAtividade(request.getParameter("atividade")!=null?request.getParameter("atividade"):null);
                     empresa.setNome(request.getParameter("nome")!=null?request.getParameter("nome"):null);
                     empresa.setTelefone(request.getParameter("telefone")!=null?request.getParameter("telefone"):null);
-                    empresa.setRenda(Double.parseDouble(request.getParameter("renda")));
-                    empresa.setOrenda(Double.parseDouble(request.getParameter("orenda")));
+                    empresa.setRenda(Double.parseDouble(request.getParameter("renda").replace("R$", "").replace(".", "").replace(",", ".")));
+                    empresa.setOrenda(Double.parseDouble(request.getParameter("orenda").replace("R$", "").replace(".", "").replace(",", ".")));
                     
                    // seta aluno na empresa
                     empresa.setAluno(aluno);
