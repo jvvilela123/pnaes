@@ -177,11 +177,11 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">
-                                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
-                                                                <button type="reset" value="Limpar"  class="btn btn-warning mr-1">
+                                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                                <button type="reset" value="Limpar"  class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                                <button type="button" class="btn btn-primary" name="cadastrar" value="Cadastrar" onclick="verificaAtividade()">
+                                                                <button type="button" class="btn btn-primary os-icon os-icon-save" name="cadastrar" value="Cadastrar" onclick="verificaAtividade()">
                                                                     <i class="la la-check-square-o"></i> Avançar
                                                                 </button>
                                                             </div>

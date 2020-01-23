@@ -16,6 +16,30 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro da Inscrição</title>
         <%@include file="../imports.jsp" %>
+        <script>
+            function inscrever() {
+                if(document.getElementById('bolsa1').value === ""){
+                document.getElementById('bolsa1').focus();
+                alertify.errorAlert("<h6 class='card-title'>Selecione a 1ª opção de Auxílio</h6>");
+               }else if(document.getElementById('bolsa2').value === ""){
+                document.getElementById('bolsa2').focus();
+                alertify.errorAlert("<h6 class='card-title'>Selecione a 2ª opção de Auxílio</h6>");
+               } else if(document.getElementById('justificativa').value === ""){
+                document.getElementById('justificativa').focus();
+                alertify.errorAlert("<h6 class='card-title'>Justifique por que você necessita dos auxílios</h6>");
+               }else{
+                
+                alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>', 'Após a confirmação não será possível alterar os dados cadastrados, deseja continuar?</h5>', 
+                function(){ 
+                    //var url = "../ServletDependente?opcao=excluir&id=" + id;
+                   //window.location = url; 
+                   document.getElementById("formInscricao").submit();
+                }
+                , function(){ alertify.error('Inscrição Não Efetuada');}).set('labels', {ok:'Confirmar Inscrição', cancel:'Cancelar'});;
+                
+        }
+    }
+        </script>
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -28,10 +52,6 @@
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
 
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
                             </div>
                         </div>
                         <center>
@@ -51,14 +71,14 @@
                                                     <div class="card-text">
                                                         Preencha as opções de Auxílios
                                                     </div>
-                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletInscricao?opcao=inscricao&aluno_id=<%=session.getAttribute("aluno_id")%>&edital_id=<%=edital.getId()%>">
+                                                    <form class="form form-horizontal striped-rows form-bordered" id="formInscricao" method="POST" action="../ServletInscricao?opcao=inscricao&aluno_id=<%=session.getAttribute("aluno_id")%>&edital_id=<%=edital.getId()%>">
                                                         <div class="form-body">
                               
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="bolsa1">1ª opção de Auxílio*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="bolsa1" name="bolsa1" class="form-control" required>
-                                                                        <option>Selecione o Auxílio</option>
+                                                                        <option value="">Selecione a 1ª Opção de Auxílio</option>
                                                                         <%
                                                                             List<Bolsa> bolsas = daoFactory.getBolsaDao().listar();
                                                                             for (Bolsa b : bolsas) {
@@ -74,7 +94,7 @@
                                                                 <label class="col-md-3 label-control" for="bolsa2">2ª opção de Auxílio*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="bolsa2" name="bolsa2" class="form-control" required>
-                                                                        <option value="">Selecione o Auxílio</option>
+                                                                        <option value="">Selecione a 2ª opção de Auxílio</option>
                                                                         <%
                                                                             for (Bolsa b : bolsas) {
                                                                                 out.print("<option value=" + b.getId() + ">" + b.getNome() + "</option>");
@@ -84,17 +104,17 @@
                                                                 </div>
                                                             </div>
                                                                     <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="nome">Justifique por que você necessita dos auxílios</label>
+                                                                    <label class="col-md-3 label-control" for="nome">Justifique por que você necessita dos auxílios*:</label>
                                                                     <div class="col-md-9">
-                                                                        <textarea  class="form-control" rows="4" name="observacao"></textarea>
+                                                                        <textarea  class="form-control" rows="4" name="observacao" required id="justificativa" placeholder="Escreva aqui a sua Justificativa"></textarea>
                                                                     </div>
                                                                 </div>
                                                             <div class="form-actions right">
-                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1">
+                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                                <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                    <i class="fa fa-check-square-o"></i> Enviar
+                                                                <button type="button" value="Cadastrar" class="btn btn-primary os-icon os-icon-save" onclick="inscrever()">
+                                                                    <i class="fa fa-check-square-o"></i> Efetuar Inscrição
                                                                 </button>
                                                             </div>
 

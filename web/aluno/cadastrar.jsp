@@ -312,12 +312,12 @@
                                                             </div>   -->     
 
                                                             <div class="form-actions right">
-                                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
-                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1">
+                                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                                <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                    <i class="fa fa-check-square-o"></i>Avançar
+                                                                <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
+                                                                    <i class="fa fa-check-square-o"></i> Avançar
                                                                 </button>
                                                                
                                                             </div>

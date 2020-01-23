@@ -32,7 +32,7 @@
 
                         <div class="row align-items-center">
                             <div class="col-md-12">
-                                <div class="alert alert-danger" role="alert">
+                                <div class="alert alert-warning" role="alert">
                                     <strong><%=msg%></strong>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                 <%}
                             List<Inscricao> is = daoFactory.getInscricaoDao().perquisarAlunoPorEdital(alunoId, edital.getId());
                             if (is.isEmpty() == false) {
-                                msg = "Candidato já Inscrito";
+                              //  msg = "Candidato já Inscrito";
 
                         %>
                         <div class="row align-items-center">

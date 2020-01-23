@@ -23,8 +23,7 @@
                 });
           });
        
-            $(function()
-      {
+            $(function(){
       
            //Não Permite digitar letras
           $('#cpf').keyup(function() {
@@ -33,14 +32,15 @@
             $('#rg').keyup(function() {
                $(this).val(this.value.replace(/\D/g, ''));
             });
+        });
+        
+        
              
       //Executa a requisição quando o campo username perder o foco
-    $('#cpf').blur(function()
-    {
+    function verificaCPF(){
      var cpf = $('#cpf').val().replace(/[^0-9]/g, '').toString();
-
-        if( cpf.length == 11 )
-        {
+        if( cpf.length === 11 )
+          {
             var v = [];
 
             //Calcula o primeiro dígito de verificação.
@@ -58,27 +58,31 @@
             v[1] = v[1] % 10;
 
             //Retorna Verdadeiro se os dígitos de verificação são os esperados.
-            if ( (v[0] != cpf[9]) || (v[1] != cpf[10]) )
+            if ( (v[0] !== cpf[9]) || (v[1] !== cpf[10]) )
             {
-               
-                $('#cpf').val('');
-                document.getElementById('cpf').focus();
-                alertify.errorAlert("<h6 class='card-title'>CPF "+cpf+" Inválido! Digite o CPF Correto.</h6>");
-               
-            }
-        }
-        else
-        {
+              $('#cpf').val('');
+              document.getElementById('cpf').focus();
+                alertify.errorAlert("<h6 class='card-title'>CPF "+cpf+" Inválido! Digite o CPF Corretamente sem . e -.</h6>");
+                return false;
+             }
+        }else{
             //alert('CPF inválido:' + cpf);
-
             $('#cpf').val('');
-            //$('#cpf').focus();
-            document.getElementById('cpf').focus();
-            alertify.errorAlert("<h6 class='card-title'>Digite os 11 dígitos do CPF.</h6>");
-            
-        }
-    });
-});
+          document.getElementById('cpf').focus();
+            alertify.errorAlert("<h6 class='card-title'>Digite os 11 dígitos do CPF Corretamente sem . e -.</h6>");
+            //document.getElementById('cpf').focus();
+            return false;
+          }
+          return true;
+    };
+    
+    function verificaCampos(){
+        if(verificaCPF())
+            document.getElementById("formPessoa").submit();
+          
+    };
+    
+
          </script>
     </head>
     <body>
@@ -111,7 +115,7 @@
                                     <%
                                         }
                                     %>
-                                    <form method="Post" action="/pnaes/ServletAluno?opcao=cadastrar" class="form form-horizontal">
+                                    <form method="Post" id="formPessoa" action="/pnaes/ServletAluno?opcao=cadastrar" class="form form-horizontal">
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Dados Pessoais</h4>
                                             <div class="form-group row">
@@ -121,9 +125,9 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="cpf">CPF*:</label>
+                                                <label class="col-md-3 label-control" for="cpf">CPF(Somente Números)*:</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="11"  required>                                                    
+                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="11"   required>                                                    
                                                 </div>
                                             </div>
                                             <script>
@@ -139,7 +143,7 @@
                                                 <label class="col-md-3 label-control" for="ufe">Estado(UF) de Expedição do RG*:</label>
                                                 <div class="col-md-9">
                                                     <select id="ufe" name="ufe" class="form-control" required>
-                                                        <option selected="" disabled="">Selecione o Estado(UF) de Expedição do RG</option>
+                                                        <option selected="" disabled="" value="">Selecione o Estado(UF) de Expedição do RG</option>
                                                         <%
                                                             DaoFactory daoFactory = new DaoFactory();
                                                             List<Uf> ufes = daoFactory.getUfDao().listar();
@@ -173,7 +177,7 @@
                                                 <label class="col-md-3 label-control" for="estadoCivil">Estado Civil*:</label>
                                                 <div class="col-md-9">
                                                     <select id="estadoCivil" name="estadoCivil" class="form-control" required>
-                                                        <option selected="" disabled="">Selecione o Estado Civil</option>
+                                                        <option selected="" disabled="" value="">Selecione o Estado Civil</option>
                                                         <option value="Solteiro">Solteiro(a)</option>
                                                         <option value="Casado">Casado(a)</option>
                                                         <option value="Separado">Separado(a)</option>
@@ -205,7 +209,7 @@
                                                 <label class="col-md-3 label-control" for="autoDeclaracao">Auto Declaração Cor/Raça*:</label>
                                                 <div class="col-md-9">
                                                     <select id="atividadeProf" name="autoDeclaracao" class="form-control" required>
-                                                        <option selected="" disabled=""> Selecione a sua Cor/Raça </option>
+                                                        <option selected="" disabled="" value=""> Selecione a sua Cor/Raça </option>
                                                         <option value="Branco">Branco</option>
                                                         <option value="Pardo">Pardo</option>
                                                         <option value="Preto">Preto</option>
@@ -261,7 +265,7 @@
                                                 <label class="col-md-3 label-control" for="uf">Estado (UF)*:</label>
                                                 <div class="col-md-9">
                                                     <select id="uf" name="uf" class="form-control" required>
-                                                        <option selected="" disabled="">Selecione o estado (UF)</option>
+                                                        <option selected="" disabled="" value="">Selecione o estado (UF)</option>
                                                         <%
                                                             List<Uf> ufs = daoFactory.getUfDao().listar();
                                                             for (Uf uf : ufs) {
@@ -275,7 +279,7 @@
                                                 <label class="col-md-3 label-control" for="cidade">Cidade*:</label>
                                                 <div class="col-md-9">
                                                     <select id="cidade" name="cidade" class="form-control" required>
-                                                        <option selected="" disabled="">Selecione primeiro o estado (UF) ↑</option>
+                                                        <option selected="" disabled="" value="">Selecione primeiro o estado (UF) ↑</option>
 
                                                     </select>
                                                 </div>
@@ -283,10 +287,10 @@
 
                                         </div>
                                         <div class="form-actions">
-                                            <button type="reset" value="Limpar"  class="btn btn-warning mr-1">
+                                            <button type="reset" value="Limpar"  class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                 <i class="ft-x"></i> Limpar
                                             </button>
-                                            <button type="submit" class="btn btn-primary" name="cadastrar" value="Cadastrar">
+                                            <button type="button" class="btn btn-primary os-icon os-icon-save"  onclick="verificaCampos();" name="cadastrar" value="Cadastrar">
                                                 <i class="la la-check-square-o"></i> Enviar
                                             </button>
                                         </div>                                                    
