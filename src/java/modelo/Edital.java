@@ -7,9 +7,12 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,6 +27,11 @@ public class Edital implements Serializable {
     private String numero;
     private GregorianCalendar dataInicial;
     private GregorianCalendar dataFinal;
+    @OneToMany(
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<Bolsa> bolsas;
 
     public Integer getId() {
         return id;
@@ -56,5 +64,14 @@ public class Edital implements Serializable {
     public void setDataFinal(GregorianCalendar dataFinal) {
         this.dataFinal = dataFinal;
     }
+
+    public List<Bolsa> getBolsas() {
+        return bolsas;
+    }
+
+    public void setBolsas(List<Bolsa> bolsas) {
+        this.bolsas = bolsas;
+    }
+    
 
 }

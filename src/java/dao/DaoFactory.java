@@ -12,9 +12,7 @@ import modelo.*;
  */
 public class DaoFactory {
     
-    public DaoGenerico<Resultado> getResultadoDao(){
-        return new DaoGenerico<Resultado>(Resultado.class);
-    }
+    
     public DaoGenerico<Bolsa> getBolsaDao(){
         return new DaoGenerico<Bolsa>(Bolsa.class);
     }
@@ -57,9 +55,7 @@ public class DaoFactory {
       public DaoGenerico<Edital>getEditalDao(){
         return new DaoGenerico<Edital>(Edital.class);
     }
-      public DaoGenerico<StatusEntrevista>getStatusEntrevistaDao(){
-        return new DaoGenerico<StatusEntrevista>(StatusEntrevista.class);
-    }
+    
     public CursoDao getCursoDao() {
         return new CursoDao();
     }    

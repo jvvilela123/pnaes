@@ -108,7 +108,7 @@ public class ServletAluno extends HttpServlet {
                    // aluno.setAtividadeProf(request.getParameter("atividadeProf"));
                    // aluno.setCarteira(request.getParameter("carteira"));
                     aluno.setNivel(1);
-                    aluno.setStatusCadastro("0");
+                    aluno.setStatusCadastro(0);
                     
                     //Setando dados do Endereço
                     endereco.setLogradouro(request.getParameter("logradouro"));
@@ -284,7 +284,7 @@ public class ServletAluno extends HttpServlet {
                   
               case "continuar_Inscricao":
                   aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
-                    aluno.setStatusCadastro("7");
+                    aluno.setStatusCadastro(7);
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("inscricao/inscricao.jsp");
                 break;

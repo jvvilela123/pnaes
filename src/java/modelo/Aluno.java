@@ -1,7 +1,5 @@
 package modelo;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import javax.persistence.*;
 
 /**
@@ -11,18 +9,9 @@ import javax.persistence.*;
 @Entity
 @PrimaryKeyJoinColumn(name="pessoa_id")
 public class Aluno extends Pessoa{
-    @Column(unique = true)
-    private String cpf;
-    private String rg;
-    @ManyToOne
-    @JoinColumn(name="ufExpedicao_id")
-    private Uf ufExpedicao;
-    private String sexo;
+    
     private String estadoCivil;
-    private GregorianCalendar dtn;
-    private String statusCadastro;
-    //private String carteira;
-    @Column(unique = true)
+    private Integer statusCadastro;
     private String matricula;
     private Integer nivel;
     private String ensinoMedio;
@@ -40,38 +29,6 @@ public class Aluno extends Pessoa{
     @ManyToOne
     private Curso curso;
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
-
-    public Uf getUfExpedicao() {
-        return ufExpedicao;
-    }
-
-    public void setUfExpedicao(Uf ufExpedicao) {
-        this.ufExpedicao = ufExpedicao;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-    
     public String getEstadoCivil() {
         return estadoCivil;
     }
@@ -80,19 +37,11 @@ public class Aluno extends Pessoa{
         this.estadoCivil = estadoCivil;
     }
 
-    public GregorianCalendar getDtn() {
-        return dtn;
-    }
-
-    public void setDtn(GregorianCalendar dtn) {
-        this.dtn = dtn;
-    }
-
-     public String getStatusCadastro() {
+     public Integer getStatusCadastro() {
         return statusCadastro;
     }
 
-    public void setStatusCadastro(String statusCadastro) {
+    public void setStatusCadastro(Integer statusCadastro) {
         this.statusCadastro = statusCadastro;
     }
     public String getDependeciaFamiliar() {
@@ -126,9 +75,7 @@ public class Aluno extends Pessoa{
     public void setTipoMoradia(String tipoMoradia) {
         this.tipoMoradia = tipoMoradia;
     }
-    
-    
-    
+ 
     public Boolean getReprovou() {
         return reprovou;
     }
@@ -144,9 +91,7 @@ public class Aluno extends Pessoa{
     public void setReprovouQuantas(Integer reprovouQuantas) {
         this.reprovouQuantas = reprovouQuantas;
     }
-    
-   
-    
+
     public String getMatricula() {
         return matricula;
     }
@@ -155,7 +100,6 @@ public class Aluno extends Pessoa{
         this.matricula = matricula;
     }
 
-   
     public Integer getNivel() {
         return nivel;
     }
@@ -163,7 +107,6 @@ public class Aluno extends Pessoa{
     public void setNivel(Integer nivel) {
         this.nivel = nivel;
     }
-
 
     public String getEnsinoMedio() {
         return ensinoMedio;
@@ -181,8 +124,6 @@ public class Aluno extends Pessoa{
         this.ensinoFundamental = ensinoFundamental;
     }
 
-    
-
     public String getPeriodoVisita() {
         return periodoVisita;
     }
@@ -199,8 +140,6 @@ public class Aluno extends Pessoa{
         this.meioTransporte = meioTransporte;
     }
 
-   
-
     public String getEntradaIfto() {
         return entradaIfto;
     }
@@ -216,7 +155,8 @@ public class Aluno extends Pessoa{
     public void setCurso(Curso curso) {
         this.curso = curso;
     }
- public Integer getPeriodo() {
+    
+    public Integer getPeriodo() {
         return periodo;
     }
 
@@ -224,16 +164,7 @@ public class Aluno extends Pessoa{
         this.periodo = periodo;
     }
   
-    public Integer getIdade() {
-		GregorianCalendar hj=new GregorianCalendar();
-		GregorianCalendar nascimento=new GregorianCalendar();
-		if(getDtn()!=null){
-			nascimento.setTime(getDtn().getTime());
-		}		
-		int anohj=hj.get(Calendar.YEAR);
-		int anoNascimento=nascimento.get(Calendar.YEAR);
-		return new Integer(anohj-anoNascimento);
-	}
+    
 
     
     

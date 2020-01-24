@@ -50,7 +50,7 @@ public class ServletUpload extends HttpServlet {
             Aluno aluno = new Aluno();
             aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
             //aluno.setId(Integer.parseInt(request.getParameter("aluno_id")));
-            aluno.setStatusCadastro("6");
+            aluno.setStatusCadastro(6);
             daoFactory.getAlunoDao().inserirOuAlterar(aluno);
             }
 

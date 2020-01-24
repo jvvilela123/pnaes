@@ -19,7 +19,7 @@ import modelo.Aluno;
 import modelo.Bolsa;
 import modelo.Edital;
 import modelo.Inscricao;
-import modelo.StatusEntrevista;
+
 
 /**
  *
@@ -48,7 +48,7 @@ public class ServletInscricao extends HttpServlet {
             GregorianCalendar dataInscricao = new GregorianCalendar();
             DaoFactory daoFactory = new DaoFactory();
             Edital edital = new Edital();
-            StatusEntrevista se = new StatusEntrevista();
+          
             String opcao = request.getParameter("opcao");
             String df = new String();
             Inscricao inscricao = new Inscricao();
@@ -63,7 +63,7 @@ public class ServletInscricao extends HttpServlet {
                     bolsa2.setId(Integer.parseInt(request.getParameter("bolsa2")));
                     //alterar o status Cadastro Aluno 
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
-                    aluno.setStatusCadastro("8");
+                    aluno.setStatusCadastro(8);
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     //aluno.setId(Integer.parseInt(request.getParameter("aluno_id")));
                     edital.setId(Integer.parseInt(request.getParameter("edital_id")));
@@ -72,10 +72,9 @@ public class ServletInscricao extends HttpServlet {
                     inscricao.setAluno(aluno);
                     inscricao.setDataInscricao(dataInscricao);
                     inscricao.setMotivoBolsa(request.getParameter("motivoBolsa"));
-                    inscricao.setObservacao(request.getParameter("observacao"));
-                    se.setInscricao(inscricao);
-                    se.setStatus("Pendente");
-                    inscricao.setStatusEntrevista(se);
+                    inscricao.setJustificativa(request.getParameter("justificativa"));
+                    
+                    inscricao.setStatus("Pendente");
                     inscricao.setEdital(edital);
                     li = daoFactory.getInscricaoDao().perquisarAlunoPorEdital(inscricao.getAluno().getId(), inscricao.getEdital().getId());
                     if (li.isEmpty()) {
@@ -91,7 +90,7 @@ public class ServletInscricao extends HttpServlet {
                 break;
                 case "alterar":
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
-                    inscricao.setObservacao(request.getParameter("observacao"));
+                    inscricao.setJustificativa(request.getParameter("justificativa"));
                     inscricao.setDocumentosFaltantes(request.getParameter("docf"));
                     inscricao.setResultado(request.getParameter("resultado"));
 

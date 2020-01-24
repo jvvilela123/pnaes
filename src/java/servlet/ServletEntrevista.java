@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Entrevista;
 import modelo.Inscricao;
-import modelo.StatusEntrevista;
+
 
 /**
  *
@@ -48,7 +48,7 @@ public class ServletEntrevista extends HttpServlet {
             DaoFactory daoFactory = new DaoFactory();
             Inscricao inscricao;
             Entrevista entrevista = new Entrevista();
-            StatusEntrevista se;
+            
             GregorianCalendar dataEntrevista = new GregorianCalendar();
             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd hh:mm");
             String opcao = request.getParameter("opcao");
@@ -57,11 +57,7 @@ public class ServletEntrevista extends HttpServlet {
                 case "cadastrar":
                     //Setando dados do Entrevista
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
-                    se = inscricao.getStatusEntrevista();
-                    System.out.println("meu_status = " + se.getStatus());
-                    se.setStatus("Agendado");
-                    System.out.println("meu_status2 = " + se.getStatus());
-                    entrevista.setSe(se);
+                    inscricao.setStatus("Agendado");
                     entrevista.setInscricao(inscricao);
 
                     out.println("dataEntrevista = " + request.getParameter("dataEntrevista") + " " + request.getParameter("horario"));
@@ -89,10 +85,9 @@ public class ServletEntrevista extends HttpServlet {
                     for (i = 0; i < k; i++) {
                         Entrevista ent = new Entrevista();
                         inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id"+i)));
-                        se = inscricao.getStatusEntrevista();
-                        se.setStatus("Agendado");
-                        ent.setSe(se);
+                        inscricao.setStatus("Agendado");
                         ent.setInscricao(inscricao);
+                       
                         dataEntrevista.setTime(formatador.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario"+i)));
                         ent.setDataEntrevista(dataEntrevista);
                         ent.setLocal(request.getParameter("local"));
@@ -147,10 +142,9 @@ public class ServletEntrevista extends HttpServlet {
                     entrevista.setVulnerabilidade(request.getParameter("vulnerabilidade"));
                     out.println("i_id = " + entrevista.getInscricao().getId() + " e_id = " + entrevista.getId());
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(entrevista.getInscricao().getId());
-                    se = inscricao.getStatusEntrevista();
-                    se.setStatus("Finalizado");
-                    entrevista.setSe(se);
+                    inscricao.setStatus("Finalizado");
                     entrevista.setInscricao(inscricao);
+                    
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
                     response.sendRedirect("entrevista/entrevista.jsp");
                     break;

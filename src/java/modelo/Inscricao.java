@@ -35,16 +35,15 @@ public class Inscricao implements Serializable{
     @JoinColumn(name="bolsa2_id")
     private Bolsa bolsa2;
     private String graduacao;
-    private String observacao;
+    private String justificativa;
     private String resultado;
+    private String status;
     private String quantas;
     private String documentosFaltantes;
     private String motivoBolsa;
     @ManyToOne
     @JoinColumn(name="edital_id",nullable = false)
     private Edital edital;
-    @OneToOne(mappedBy = "inscricao", cascade = CascadeType.ALL)   
-    private StatusEntrevista statusEntrevista;
    
     public Integer getId() {
         return id;
@@ -66,12 +65,12 @@ public class Inscricao implements Serializable{
         return dataInscricao;
     }
 
-    public String getObservacao() {
-        return observacao;
+    public String getJustificativa() {
+        return justificativa;
     }
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
+    public void setJustificativa(String justificativa) {
+        this.justificativa = justificativa;
     }
 
     public String getResultado() {
@@ -134,14 +133,7 @@ public class Inscricao implements Serializable{
     public void setGraduacao(String graduacao) {
         this.graduacao = graduacao;
     }
-
-    public StatusEntrevista getStatusEntrevista() {
-        return statusEntrevista;
-    }
-
-    public void setStatusEntrevista(StatusEntrevista statusEntrevista) {
-        this.statusEntrevista = statusEntrevista;
-    }  
+  
     public String getQuantas() {
         return quantas;
     }
@@ -149,4 +141,14 @@ public class Inscricao implements Serializable{
     public void setQuantas(String quantas) {
         this.quantas = quantas;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    
 }

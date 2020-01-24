@@ -6,7 +6,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Edital</title>        
+        <title>Cadastro de Edital</title>
+        <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
             function formatar(mascara, documento) {
                 var i = documento.value.length;
@@ -16,8 +17,81 @@
                     documento.value += texto.substring(0, 1);
                 }
             }
+            $.extend( true, $.fn.dataTable.defaults, {
+    "searching": false,
+    "ordering": false,
+     "paging": false,
+     "info":     false
+} );
+            $(document).ready(function() {
+                $('#tabelaAuxilios').DataTable( {
+                    styles: {
+                    tableHeader: {
+                        alignment: 'center'
+                    }},
+                    "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    },
+                    "select": {
+                        "rows": {
+                            "_": "Selecionado %d linhas",
+                            "0": "Nenhuma linha selecionada",
+                            "1": "Selecionado 1 linha"
+                        }
+                    }
+                      }
+               
+                } );
+            } );
+            
+          
+
+                function inserirAuxilio() {
+                   var tabela = $('#tabelaAuxilios').DataTable();
+                   var nome = document.getElementById('nomeAuxilio').value;
+                    var valor = document.getElementById('valorAuxilio').value;
+                    if(nome==='')
+                        alert("preencha nome");
+                   else if(valor==='')
+                        alert("preencha valor");
+                   if(nome!==''&&valor!==''){
+                    tabela.row.add( [
+                     nome,
+                     valor,
+                   "<a href='#' onclick='removerAuxilio(this)' title='Excluir' class='text-danger'><div class='os-icon os-icon-x'></div><span>Excluir</span></a>"
+                    ] ).draw(false);
+                    }
+                    document.getElementById('nomeAuxilio').value = '';
+                    document.getElementById('valorAuxilio').value = '';
+                }
+                
+                function removerAuxilio(id) {
+                    //alert("teste");
+                     var tabela = $('#tabelaAuxilios').DataTable();
+                    tabela.rows($(id).parents('tr')).remove().draw();
+                 }
+      
         </script>
-        <%@include file="../imports.jsp" %>
+        
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -30,10 +104,6 @@
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
 
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
                             </div>
                         </div>
                         <center>
@@ -57,23 +127,52 @@
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEdital?opcao=cadastrar">
                                                         <div class="form-body">
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="numero">Numero do edital</label>
+                                                                <label class="col-md-3 label-control" for="numero">Numero do edital:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="numero" id="numero" class="form-control" placeholder="Numero do Edital">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="dataInicial">Data de Abertura</label>
+                                                                <label class="col-md-3 label-control" for="dataInicial">Data de Abertura:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="date" name="dataInicial" id="dataInicial" class="form-control" placeholder="dd/MM/yyyy" required maxlength="10" OnKeyPress="formatar('##/##/####', this)">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="dataFinal">Data de Encerramento</label>
+                                                                <label class="col-md-3 label-control" for="dataFinal">Data de Encerramento:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="date" name="dataFinal" id="dataFinal" class="form-control" placeholder="dd/MM/yyyy" required maxlength="10" OnKeyPress="formatar('##/##/####', this)">
                                                                 </div>
                                                             </div>
+                                                            
+                                                            <br>
+                                                        
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="nomeAuxilio">Nome do Auxílio:</label>
+                                                                <div class="col-md-9">
+                                                                    <input type="text" name="nomeAuxilio" id="nomeAuxilio" class="form-control" placeholder="Auxílio Transporte" required >
+                                                                </div>
+                                                                <label class="col-md-3 label-control" for="valorAuxilio">Valor do Auxílio:</label>
+                                                                <div class="col-md-9">
+                                                                    <input type="text" name="valorAuxilio" id="valorAuxilio" class="form-control" placeholder="R$ 0.00" required>
+                                                                </div>
+                                                                <input type='button' onclick='inserirAuxilio()' value='Inserir Auxílio' />
+                                                                    
+                                                                    
+                                                            </div>
+                                                            <div class="card-text">
+                                                                Lista de Auxílios
+                                                             </div>
+                                                               <table class="table table-striped table-responsive-md" id="tabelaAuxilios">
+                                                                    <thead>
+                                                                    <tr>
+                                                                       <th>Nome do Auxílio</th>
+                                                                        <th>Valor do Auxílio</th>
+                                                                        <th>Remover</th>
+                                                                   </tr>
+                                                                    </thead>
+                                                                </table>    
+                                                            
 
                                                             <div class="form-actions right">
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">

@@ -24,10 +24,7 @@ public class Entrevista implements Serializable{
     private Inscricao inscricao;
     private String observacao;
     private String resultadoBolsa1;
-     private String resultadoBolsa2;
-      @OneToOne
-   @JoinColumn(nullable = false,name="status_id",updatable = false)
-    private StatusEntrevista se;
+    private String resultadoBolsa2;
     private String concorrencia;
     private String dimensaoSocial;
     private String dimensaoEconomica;
@@ -177,14 +174,6 @@ public class Entrevista implements Serializable{
 
     public void setResultadoBolsa2(String resultadoBolsa2) {
         this.resultadoBolsa2 = resultadoBolsa2;
-    }
-
-    public StatusEntrevista getSe() {
-        return se;
-    }
-
-    public void setSe(StatusEntrevista se) {
-        this.se = se;
     }
 
     public String getVulnerabilidade() {

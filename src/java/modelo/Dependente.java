@@ -18,16 +18,9 @@ public class Dependente extends Pessoa{
     @ManyToOne
     @JoinColumn(name="aluno_id")
     private Aluno aluno;
-    @Column(unique = true, nullable = true)
-    private String cpf;
-    private String rg;
-    @ManyToOne
-    @JoinColumn(name="ufExpedicao_id")
-    private Uf ufExpedicao;
-    private String sexo;
-    private GregorianCalendar dtn;
+    
     private String grauParentesco;
-    @Column(precision=2)
+   
     private String tipoDeficiente;
     private String atividadeProf;
     private Double renda;
@@ -49,48 +42,6 @@ public class Dependente extends Pessoa{
     public void setGrauParentesco(String grauParentesco) {
         this.grauParentesco = grauParentesco;
     }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
-
-    public Uf getUfExpedicao() {
-        return ufExpedicao;
-    }
-
-    public void setUfExpedicao(Uf ufExpedicao) {
-        this.ufExpedicao = ufExpedicao;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public GregorianCalendar getDtn() {
-        return dtn;
-    }
-
-    public void setDtn(GregorianCalendar dtn) {
-        this.dtn = dtn;
-    }
-
-   
 
     public String getTipoDeficiente() {
         return tipoDeficiente;
