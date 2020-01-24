@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.persistence.*;
 
@@ -223,6 +224,16 @@ public class Aluno extends Pessoa{
         this.periodo = periodo;
     }
   
+    public Integer getIdade() {
+		GregorianCalendar hj=new GregorianCalendar();
+		GregorianCalendar nascimento=new GregorianCalendar();
+		if(getDtn()!=null){
+			nascimento.setTime(getDtn().getTime());
+		}		
+		int anohj=hj.get(Calendar.YEAR);
+		int anoNascimento=nascimento.get(Calendar.YEAR);
+		return new Integer(anohj-anoNascimento);
+	}
 
     
     

@@ -81,7 +81,7 @@ public class ServletAluno extends HttpServlet {
                     }catch (Exception ex) {
 				request.setAttribute("message", "Upload de arquivo falhou devido a "+ ex);
                     }
-                    response.sendRedirect("pessoa/cadastrar.jsp");
+                    response.sendRedirect("home.jsp");
                     
                 break;
                 case "cadastrar":
@@ -92,7 +92,7 @@ public class ServletAluno extends HttpServlet {
                         dtn.setTime(formato.parse(request.getParameter("dtn")));
                     }catch(ParseException e){
                         msg = "Data de Nascimento Invalida"; 
-                        request.getRequestDispatcher("pessoa/cadastrar.jsp?msg="+msg).forward(request, response);
+                        request.getRequestDispatcher("pessoa/cadastrar.jsp?msg="+msg+"&login="+request.getParameter("login")).forward(request, response);
                     }
                     aluno.setNome(request.getParameter("nome"));
                     cpf = request.getParameter("cpf").replace(".", "");
@@ -144,7 +144,7 @@ public class ServletAluno extends HttpServlet {
                             msg = "Email já cadastrado";
                         }
                          
-                        request.getRequestDispatcher("pessoa/cadastrar.jsp?msg="+msg).forward(request, response);
+                        request.getRequestDispatcher("pessoa/cadastrar.jsp?msg="+msg+"&login="+request.getParameter("login")).forward(request, response);
                     }
                     
                     break;

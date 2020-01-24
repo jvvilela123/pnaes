@@ -73,7 +73,7 @@
                     extend: 'pdf',
                     text: 'Gerar PDF',
                     orientation:"landscape",
-                    className: 'btn btn-outline-primary btn-sm',
+                    className: 'btn btn-outline-primary btn-sm os-icon os-icon-file-text',
                      exportOptions: {
                          
                     columns: [ 0, 1, 2, 3, 4, 5, 6 ]
@@ -87,7 +87,7 @@
                     extend: 'pdfHtml5',
                     text: 'Gerar PDF Com Logo',
                     orientation:"landscape",
-                    className: 'btn btn-outline-primary btn-sm',
+                    className: 'btn btn-outline-primary btn-sm os-icon os-icon-file-text',
                     exportOptions: {
                     columns: [ 0, 1, 2, 3, 4, 5, 6 ]
                 },
@@ -224,11 +224,12 @@
                                                         }
                                                     %>                     
                                                     <table class="table table-striped table-responsive-md" id="tabelaAlunos">
-                                                        <thead>
+                                                        <thead align="center">
                                                         <tr>
                                                            
                                                             <th>Nome</th>
                                                             <th>CPF</th>
+                                                            <th>Idade</th>
                                                             <th>Telefone</th>
                                                             <th>Email</th>
                                                             <th>Matricula</th>
@@ -243,10 +244,11 @@
                                                         <%
                                                             for (Aluno a : alunos) {
                                                         %>
-                                                        <tr>
+                                                        <tr align="center">
                                                           
                                                             <td><%=a.getNome()%></td>
                                                             <td><%=a.getCpf()%></td>
+                                                            <td><%=a.getIdade()%></td>
                                                             <td><%=a.getTelefone()%></td>
                                                             <td><%=a.getEmail()%></td>
                                                             <td><%=a.getMatricula()%></td>

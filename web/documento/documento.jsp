@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Avaiar Aluno</title>
+        <title>Lista de Alunos para a Análise de Documentos</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
             function formatar(mascara, documento) {
@@ -70,10 +70,10 @@
                     extend: 'pdf',
                     text: 'Gerar PDF',
                     orientation:"landscape",
-                    className: 'btn btn-outline-primary btn-sm',
+                    className: 'btn btn-outline-primary btn-sm os-icon os-icon-file-text',
                      exportOptions: {
                          
-                    columns: [ 0, 1, 2]
+                    columns: [ 0, 1, 2, 3, 4]
                 },
                 styles: {
     tableHeader: {
@@ -84,9 +84,9 @@
                     extend: 'pdfHtml5',
                     text: 'Gerar PDF Com Logo',
                     orientation:"landscape",
-                    className: 'btn btn-outline-primary btn-sm',
+                    className: 'btn btn-outline-primary btn-sm os-icon os-icon-file-text',
                     exportOptions: {
-                    columns: [ 0, 1, 2 ]
+                    columns: [ 0, 1, 2, 3, 4 ]
                 },
                     customize: function ( doc ) {
                         // Splice the image in after the header, but before the table
@@ -103,7 +103,7 @@
                     text: 'Gerar EXCEL',
                     className: 'btn btn-outline-primary btn-sm',
                     exportOptions: {
-                    columns: [ 0, 1, 2 ]
+                    columns: [ 0, 1, 2, 3, 4 ]
                    }
                 }
 
@@ -149,12 +149,13 @@
                                                     </div><br>
                                                    
                                                     <table class="table table-striped table-responsive-md" id="tabelaAlunosDocumentos">
-                                                        <thead>
-                                                        <tr>
+                                                        <thead align="center">
+                                                            <tr>
                                                             <th>Inscrição</th>
                                                             <th>Aluno</th>
                                                             <th>Modalidade de Curso</th>
                                                             <th>Curso</th>
+                                                            <th>Auxílio 1ª Opção</th>
                                                             <th>Conferir Documentos</th>
                                                         </tr>
                                                       </thead>
@@ -164,11 +165,12 @@
                                                             for (Inscricao i : inscricoes) {
                                                                 
                                                                 if (i.getResultado() == null) {
-                                                                    out.println("<tr>");
+                                                                    out.println("<tr align='center'>");
                                                                     out.println("<td>" + i.getId() + "</td>");
                                                                     out.println("<td>" + i.getAluno().getNome() + "</td>");
                                                                     out.println("<td>" + i.getAluno().getCurso().getCategoria().getNome() + "</td>");
                                                                     out.println("<td>" + i.getAluno().getCurso().getNome() + "</td>");
+                                                                    out.println("<td>" + i.getBolsa1().getNome() + "</td>");
                                                                     out.println("<td><a href='cadastrar.jsp?i_id=" + i.getId() + "'><button  class='btn btn-warning os-icon os-icon-eye' type='button' > Conferir Documentos</button></a></td>");
                                                                     out.println("</tr>");
                                                                 }

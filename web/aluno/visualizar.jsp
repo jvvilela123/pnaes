@@ -55,11 +55,12 @@
                                         <div class="heading-elements">
                                         </div>
                                     </div>
-                                         </div>
+                                         </div><br>
                                      
                                        <%@include file="../aluno/dadosAluno.jsp" %>
+                                       <br>
                                     <div class="form-actions center">
-     <a href="/pnaes/aluno/listar.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
+     <a href="/pnaes/aluno/listar.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
  </div>
 
                                

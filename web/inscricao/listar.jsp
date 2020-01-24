@@ -253,7 +253,7 @@
 
 
                                                     <table class="table table-striped table-responsive-md dataTable">
-                                                         <thead>
+                                                         <thead align="center">
                                                              <tr>
                                                                 <th>Nº da Inscrição</th>
                                                                 <th>Aluno</th>
@@ -268,7 +268,7 @@
                                                             <%
                                                                 for (Inscricao i : inscricoes) {
                                                             %>
-                                                            <tr>
+                                                            <tr align="center">
                                                                 <td><%=i.getId()%></td>
                                                                 <td><%=i.getAluno().getNome()%></td>
                                                                 <td><%=i.getAluno().getCpf()%></td>
@@ -282,7 +282,7 @@
                                                             <%
                                                                 }
                                                             %>
-                                                            <tfoot>
+                                                            <tfoot align="center">
                                                              <tr>
                                                                 <th>Nº da Inscrição</th>
                                                                 <th>Aluno</th>

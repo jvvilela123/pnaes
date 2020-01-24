@@ -52,6 +52,7 @@
                                             <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
 
                                         </div>
+                                            <br>
                                         <div id="accordion">
                                             <h3>Dados do Estudante</h3>
                                             <div>
@@ -82,6 +83,10 @@
                                                             <tr>    
                                                                 <th>Data Nascimento:</th>
                                                                 <td><%=dataFormat.formatarData(inscricao.getAluno().getDtn())%></td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Idade:</th>
+                                                                <td><%=inscricao.getAluno().getIdade()%></td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Telefone:</th>

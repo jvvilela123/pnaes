@@ -34,54 +34,6 @@
             });
         });
         
-        
-             
-      //Executa a requisição quando o campo username perder o foco
-    function verificaCPF(){
-     var cpf = $('#cpf').val().replace(/[^0-9]/g, '').toString();
-        if( cpf.length === 11 )
-          {
-            var v = [];
-
-            //Calcula o primeiro dígito de verificação.
-            v[0] = 1 * cpf[0] + 2 * cpf[1] + 3 * cpf[2];
-            v[0] += 4 * cpf[3] + 5 * cpf[4] + 6 * cpf[5];
-            v[0] += 7 * cpf[6] + 8 * cpf[7] + 9 * cpf[8];
-            v[0] = v[0] % 11;
-            v[0] = v[0] % 10;
-
-            //Calcula o segundo dígito de verificação.
-            v[1] = 1 * cpf[1] + 2 * cpf[2] + 3 * cpf[3];
-            v[1] += 4 * cpf[4] + 5 * cpf[5] + 6 * cpf[6];
-            v[1] += 7 * cpf[7] + 8 * cpf[8] + 9 * v[0];
-            v[1] = v[1] % 11;
-            v[1] = v[1] % 10;
-
-            //Retorna Verdadeiro se os dígitos de verificação são os esperados.
-            if ( (v[0] !== cpf[9]) || (v[1] !== cpf[10]) )
-            {
-              $('#cpf').val('');
-              document.getElementById('cpf').focus();
-                alertify.errorAlert("<h6 class='card-title'>CPF "+cpf+" Inválido! Digite o CPF Corretamente sem . e -.</h6>");
-                return false;
-             }
-        }else{
-            //alert('CPF inválido:' + cpf);
-            $('#cpf').val('');
-          document.getElementById('cpf').focus();
-            alertify.errorAlert("<h6 class='card-title'>Digite os 11 dígitos do CPF Corretamente sem . e -.</h6>");
-            //document.getElementById('cpf').focus();
-            return false;
-          }
-          return true;
-    };
-    
-    function verificaCampos(){
-        if(verificaCPF())
-            document.getElementById("formPessoa").submit();
-          
-    };
-    
 
          </script>
     </head>
@@ -116,6 +68,7 @@
                                         }
                                     %>
                                     <form method="Post" id="formPessoa" action="/pnaes/ServletAluno?opcao=cadastrar" class="form form-horizontal">
+                                        <input type="hidden" name="login"  id="login" class="form-control"  value="<%=request.getParameter("login")%>">
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Dados Pessoais</h4>
                                             <div class="form-group row">
@@ -124,15 +77,22 @@
                                                     <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            <%if(request.getParameter("login").length()==11){%>
+                                           <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="cpf">CPF(Somente Números)*:</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="11"   required>                                                    
+                                                    <input type="hidden" name="cpf" id="cpf" class="form-control"   value="<%=request.getParameter("login")%>">
+                                                    <input type="text" disabled name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="11"  required value="<%=request.getParameter("login")%>">                                                    
                                                 </div>
                                             </div>
-                                            <script>
-
-                                            </script>
+                                           <%}else{%>
+                                           <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="cpf">CPF(Somente Números)*:</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="11"  required >                                                    
+                                                </div>
+                                            </div>
+                                            <%}%>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="rg">Número do RG*:</label>
                                                 <div class="col-md-9">
@@ -202,7 +162,7 @@
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="telefone">Telefone*:</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" name="telefone" id="telefone"  class="form-control" placeholder="DDD 99999-9999" maxlength="14" OnKeyPress="formatar('## #####-####', this)" required>
+                                                    <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="DD 99999-9999" maxlength="15" OnKeyPress="formatar('## #####-####', this)" pattern="[0-9]{2} [0-9]{4,6}-[0-9]{3,4}$" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -218,18 +178,27 @@
                                                     </select>
                                                 </div>
                                             </div>        
-                                            
-                                            <div class="form-group row">
-                                                <!--<label class="col-md-3 label-control" for="matricula">Matricula (a mesma do SIGA ou SUAP)*:</label>-->
+                                             <%if(request.getParameter("login").length()<11){%>
+                                           <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="matricula">Matricula (a mesma do SUAP)*:</label>
                                                 <div class="col-md-9">
                                                     <div class="position-relative has-icon-left">
-                                                        <input type="hidden" name="matricula" id="matricula" class="form-control"  value="<%=request.getParameter("matricula")%>">
-                                                        <div class="form-control-position">
-                                                            <i class="ft-user"></i>
-                                                        </div>
+                                                        <input type="hidden" name="matricula"  id="matricula" class="form-control"  value="<%=request.getParameter("login")%>">
+                                                        <input type="text" name="matricula" disabled id="matricula" class="form-control"  value="<%=request.getParameter("login")%>">
                                                     </div>
                                                 </div>
                                             </div>
+                                           <%}else{%>
+                                           <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="matricula">Matricula (a mesma do SIGA)*:</label>
+                                                <div class="col-md-9">
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="text" name="matricula"  id="matricula" class="form-control"  required  placeholder="Matricula (a mesma do SIGA)">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <%}%>
+                                            
                                                     
                                             <h4 class="form-section"><i class="ft-clipboard"></i> Dados do Endereço</h4>
                                             <div class="form-group row">
@@ -290,7 +259,7 @@
                                             <button type="reset" value="Limpar"  class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                 <i class="ft-x"></i> Limpar
                                             </button>
-                                            <button type="button" class="btn btn-primary os-icon os-icon-save"  onclick="verificaCampos();" name="cadastrar" value="Cadastrar">
+                                            <button type="submit" class="btn btn-primary os-icon os-icon-save"  name="cadastrar" value="Cadastrar">
                                                 <i class="la la-check-square-o"></i> Enviar
                                             </button>
                                         </div>                                                    

@@ -76,7 +76,7 @@ public class ServletLogin extends HttpServlet {
                 
                 msg = "Faça o seu Cadastro";
                // msg = "Realize seu cadastro";
-                request.getRequestDispatcher("pessoa/cadastrar.jsp?msg=" + msg +"&matricula="+login).forward(request, response);
+                request.getRequestDispatcher("pessoa/cadastrar.jsp?msg=" + msg +"&login="+login).forward(request, response);
                 //response.sendRedirect("pessoa/cadastrar.jsp?msg=" + msg);
             }
 
