@@ -5596,16 +5596,16 @@ INSERT INTO `Cidade` (`id`, `nome`, `uf_id`) VALUES
 (5564, 'Xambioá', 27);
 
 INSERT INTO Categoria (id, nome) VALUES
-(1, 'Ensino Medio Integrado'),
+(1, 'Ensino Médio Integrado'),
 (2, 'Ensino Técnico Subsequente'),
 (3, 'Ensino Superior'),
 (4, 'Proeja');
-INSERT INTO Curso (id, nome, qPeriodo, turno, categoria_id) VALUES
-(1, 'Administração', 3, 'Diurno', 1),
-(2, 'Informatica para Internet', 3, 'Diurno', 1),
-(3, 'Informática', 3, 'Vespertino', 2),
-(4, 'Licenciatura em Computação', 8, 'Noturno', 3),
-(5, 'Tecnologia em Logistica ', 6, 'Noturno', 3),
-(6, 'Meio Ambiente', 3, 'Diurno', 1),
-(7, 'Vendas', 3 , 'Noturno', 2),
-(8, 'Assistente Administrativo', 3, 'Noturno', 4);
+INSERT INTO Curso (id, nome, qPeriodo, tipoPeriodo, turno, categoria_id) VALUES
+(1, 'Administração', 3, 'Ano', 'Diurno', 1),
+(2, 'Informatica para Internet', 3, 'Ano', 'Diurno', 1),
+(3, 'Informática', 3, 'Ano', 'Vespertino', 2),
+(4, 'Licenciatura em Computação', 8, 'Período', 'Noturno', 3),
+(5, 'Tecnologia em Logistica ', 6, 'Período', 'Noturno', 3),
+(6, 'Meio Ambiente', 3, 'Ano', 'Diurno', 1),
+(7, 'Vendas', 3 , 'Módulo', 'Noturno', 2),
+(8, 'Assistente Administrativo', 4, 'Módulo', 'Noturno', 4);
