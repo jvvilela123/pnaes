@@ -227,5 +227,6 @@ function formatar(mascara, documento) {
             }
             return !1
         }
+        
             
 </script>

@@ -2,6 +2,7 @@
 package modelo;
 
 import java.io.Serializable;
+import static java.lang.Math.floor;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.persistence.*;
@@ -108,7 +109,7 @@ public class Pessoa implements Serializable {
         this.endereco = endereco;
     }
     
-    public Integer getIdade() {
+   /* public String getIdade() {
 		GregorianCalendar hj=new GregorianCalendar();
 		GregorianCalendar nascimento=new GregorianCalendar();
 		if(getDtn()!=null){
@@ -116,8 +117,42 @@ public class Pessoa implements Serializable {
 		}		
 		int anohj=hj.get(Calendar.YEAR);
 		int anoNascimento=nascimento.get(Calendar.YEAR);
-		return (anohj-anoNascimento);
-	}
+                int meshj=hj.get(Calendar.MONTH);
+		int mesNascimento=nascimento.get(Calendar.MONTH);
+                if(anohj-anoNascimento>0)
+                return (anohj-anoNascimento + " Anos");
+                else if(anohj-anoNascimento==1)
+                return (anohj-anoNascimento + " Ano");
+                else
+                return (meshj-mesNascimento+ " Meses");
+                
+	}*/
+    
+                public String getIdade()
+            {
+                GregorianCalendar hj=new GregorianCalendar();
+                
+               /*int idade = hj.get(Calendar.YEAR) - getDtn().get(Calendar.YEAR) ;
+                
+               if(hj.get(Calendar.MONTH) < getDtn().get(Calendar.MONTH) || getDtn().get(Calendar.DAY_OF_MONTH) < getDtn().get(Calendar.DAY_OF_MONTH))
+                 idade--;
+               long idade2 = hj.getTimeInMillis() - getDtn().getTimeInMillis();
+                //idade = (int) floor(((((idade2) / 60) / 60) / 24) / 365.25);
+                //idade = (int) ((idade2) / (1000*60*60*24) / 30) / 12;
+                // long diff = hj.getTime().getTime() - getDtn().getTime().getTime();*/
+                int idade = (int) ((hj.getTime().getTime() - getDtn().getTime().getTime())/(1000*60*60*24*365.25));
+                 int idadeMeses = (int) ((hj.getTime().getTime() - getDtn().getTime().getTime()) / (1000*60*60*24)) / 30;
+               
+                 if (idade < 1){
+                     if(idadeMeses>1)
+                     return idadeMeses + " Meses";
+                     else
+                      return idadeMeses + " Mês";
+                 }else if(idade == 1){ 
+                 return idade + " Ano";
+                 }else
+                  return idade + " Anos";
+            }
   
     
 }

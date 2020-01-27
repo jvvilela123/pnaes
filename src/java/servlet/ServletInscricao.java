@@ -61,6 +61,7 @@ public class ServletInscricao extends HttpServlet {
 
                     bolsa1.setId(Integer.parseInt(request.getParameter("bolsa1")));
                     bolsa2.setId(Integer.parseInt(request.getParameter("bolsa2")));
+                    
                     //alterar o status Cadastro Aluno 
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
                     aluno.setStatusCadastro(8);

@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -29,7 +30,8 @@ public class Edital implements Serializable {
     private GregorianCalendar dataFinal;
     @OneToMany(
         cascade = CascadeType.ALL,
-        orphanRemoval = true
+        orphanRemoval = true,
+        fetch = FetchType.EAGER 
     )
     private List<Bolsa> bolsas;
 
@@ -66,6 +68,7 @@ public class Edital implements Serializable {
     }
 
     public List<Bolsa> getBolsas() {
+        
         return bolsas;
     }
 

@@ -171,10 +171,7 @@
 
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
+                                
                             </div>
                         </div>
                         <center>

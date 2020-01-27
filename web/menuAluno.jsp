@@ -194,7 +194,7 @@
                     <div class="element-box-content">
                     </div>
                     <div class="element-box-content">
-                        <% if (aluno.getStatusCadastro().equals("6") || aluno.getStatusCadastro().equals("8")) { %>
+                        <% if (aluno.getStatusCadastro() == 6 || aluno.getStatusCadastro() == 8) { %>
                         <a href="/pnaes/documento/alterar_upload.jsp"> <button  class="mr-2 mb-2 btn btn-info btn-lg" type="button">Alterar o 7º Passo&#10004;</button> </a>
                          <%  }else{ %>
                          <a href="/pnaes/documento/upload.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">7º Passo</button> </a>
@@ -206,7 +206,7 @@
             
         </div>
     </div>
-           <% if (aluno.getStatusCadastro().equals("6")) { %>
+           <% if (aluno.getStatusCadastro() == 6) { %>
            <div class="element-box">
         <div class="element-info">
             <div class="row align-items-center ">

@@ -80,9 +80,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="cpf">CPF do Membro Familiar*:</label>
+                                                                <label class="col-md-3 label-control" for="cpf">CPF do Membro Familiar:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF do Membro Familiar" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"  required>
+                                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF do Membro Familiar" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">

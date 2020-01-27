@@ -39,6 +39,13 @@
                 
         }
     }
+      $(document).ready(function () {
+                $('#bolsa1').change(function () {
+                   // $('#divperiodo')[0].style.display="block";
+                    $('#bolsa2').load('/pnaes/bolsasajax.jsp?bolsa=' + $('#bolsa1').val());
+                });
+
+            });
         </script>
     </head>
     <body class="menu-position-side menu-side-left full-screen">
@@ -80,7 +87,7 @@
                                                                     <select id="bolsa1" name="bolsa1" class="form-control" required>
                                                                         <option value="">Selecione a 1ª Opção de Auxílio</option>
                                                                         <%
-                                                                            List<Bolsa> bolsas = daoFactory.getBolsaDao().listar();
+                                                                            List<Bolsa> bolsas = edital.getBolsas();
                                                                             for (Bolsa b : bolsas) {
                                                                                 //não aparecer a opção nenhum
                                                                                 if(b.getId()!=6)
@@ -94,12 +101,7 @@
                                                                 <label class="col-md-3 label-control" for="bolsa2">2ª opção de Auxílio*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="bolsa2" name="bolsa2" class="form-control" required>
-                                                                        <option value="">Selecione a 2ª opção de Auxílio</option>
-                                                                        <%
-                                                                            for (Bolsa b : bolsas) {
-                                                                                out.print("<option value=" + b.getId() + ">" + b.getNome() + "</option>");
-                                                                            }
-                                                                        %>
+                                                                       <option selected="" disabled="" value="">Selecione a 1ª Opção de Auxílio ↑</option>
                                                                     </select>
                                                                 </div>
                                                             </div>

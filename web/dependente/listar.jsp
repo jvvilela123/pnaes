@@ -248,9 +248,8 @@
                                                     <table class="table table-striped table-responsive-md">
                                                         <tr>
                                                             <th>Nome</th>
-                                                            <th>CPF</th>
-                                                            <th>RG</th>
                                                             <th>Data de Nascimento</th>
+                                                            <th>Idade</th>
                                                             <th>Sexo</th>
                                                             <th>Telefone</th>
                                                             <th>Grau Parentesco</th>
@@ -262,9 +261,8 @@
                                                         %>
                                                         <tr>
                                                             <td><%=d.getNome()%></td>
-                                                            <td><%=d.getCpf()%></td>
-                                                            <td><%=d.getRg()%></td>
                                                             <td><%=dataFormat.formatarData(d.getDtn())%></td>
+                                                            <td><%=d.getIdade()%></td>
                                                             <td><%=d.getSexo()%></td>
                                                             <td><%=d.getTelefone()%></td>
                                                             <td><%
