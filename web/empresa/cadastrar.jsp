@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Empresa</title>
+        <title>Cadastro da Ocupação</title>
         <%@include file="../imports.jsp" %>
         <script>
             $(document).ready(function () {
@@ -17,8 +17,8 @@
             function formatar(mascara, documento) {
                 var i = documento.value.length;
                 var saida = mascara.substring(0, 1);
-                var texto = mascara.substring(i)
-                if (texto.substring(0, 1) != saida) {
+                var texto = mascara.substring(i);
+                if (texto.substring(0, 1) !== saida) {
                     documento.value += texto.substring(0, 1);
                 }
             }
@@ -28,15 +28,23 @@
                     document.getElementById('atividade').value === "Funcionanio Publico" || 
                     document.getElementById('atividade').value === "Servidor Publico"){ 
                        document.getElementById('div3').style.display = 'block';
+                       $("#nome").prop('required',true);
+                       $("#telefone").prop('required',true);
                  }else{
-                    document.getElementById('nome').value = ""
-                    document.getElementById('telefone').value = ""
+                    document.getElementById('nome').value = "";
+                    document.getElementById('telefone').value = "";
+                    document.getElementById('renda').value = "";
+                    $("#nome").prop('required',false);
+                    $("#telefone").prop('required',false);
                     document.getElementById('div3').style.display = 'none'; 
                  }
                  if(document.getElementById('atividade').value === "Desempregado"){ 
                        document.getElementById('div4').style.display = 'none';
+                       document.getElementById('renda').value = "";
+                       $("#renda").prop('required',false);
                  }else{
-                       document.getElementById('div4').style.display = 'block'; 
+                       document.getElementById('div4').style.display = 'block';
+                       $("#renda").prop('required',true);
                  }
             }
             
@@ -55,21 +63,10 @@
                alertify.errorAlert("<h6 class='card-title'>Selecione uma opção no campo Sua Ocupação.</h6>");
                prencheuTudo = false;
                 }
-            if ($('#div3').is(':visible')){
-              if(document.getElementById('nome').value === ""){
-              document.getElementById('nome').focus();
-              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Nome do Local de Trabalho</h6>");
-              prencheuTudo = false;
-               } else if(document.getElementById('telefone').value === ""){
-              document.getElementById('telefone').focus();
-              alertify.errorAlert("<h6 class='card-title'>Preencha o campo Telefone do Local de Trabalho</h6>");
-              prencheuTudo = false;
-               } 
-              }
-           
-        if (prencheuTudo)
-           document.getElementById("formEmpresa").submit();
-                 //}
+            
+               if (prencheuTudo)
+                document.getElementById("formEmpresa").submit();
+      
             }
         </script> 
     </head>
@@ -84,10 +81,6 @@
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
 
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
                             </div>
                         </div>
                         <center>
@@ -148,7 +141,7 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="nome">Nome do Local de Trabalho:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Local de Trabalho">
+                                                                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Local de Trabalho" oninvalid="setCustomValidity('Por favor, preencha o Nome do Local de Trabalho')">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -166,14 +159,14 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="renda">Sua remuneração Bruta*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="renda" id="renda"  value="R$ 0.00" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this,'.',',',event))" required>
+                                                                    <input type="text" name="renda" id="renda"  value="" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="orenda">Você possui outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc*:</label>
+                                                                <label class="col-md-3 label-control" for="orenda">Você possui outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="orenda" id="orenda" value="R$ 0.00" class="form-control" placeholder="Outra Renda do Aluno" onKeyPress="return(moeda(this,'.',',',event))" required>
+                                                                    <input type="text" name="orenda" id="orenda" value="" class="form-control" placeholder="Outra Renda do Aluno" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">
@@ -181,7 +174,7 @@
                                                                 <button type="reset" value="Limpar"  class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
-                                                                <button type="button" class="btn btn-primary os-icon os-icon-save" name="cadastrar" value="Cadastrar" onclick="verificaAtividade()">
+                                                                <button type="submit" class="btn btn-primary os-icon os-icon-save" name="cadastrar" value="Cadastrar">
                                                                     <i class="la la-check-square-o"></i> Avançar
                                                                 </button>
                                                             </div>

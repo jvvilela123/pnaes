@@ -39,8 +39,8 @@ public class ServletLogin extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             DaoFactory daoFactory = new DaoFactory();
-            String login = request.getParameter("cpf").trim();
-            String senha = request.getParameter("senha").trim();
+            String login = request.getParameter("login").trim();
+            String senha = request.getParameter("senha")!=null?request.getParameter("senha").trim():"";
             HttpSession sessao = request.getSession();
             sessao.setMaxInactiveInterval(3000);
             String msg = new String();
@@ -48,7 +48,7 @@ public class ServletLogin extends HttpServlet {
             try {
                 LDAP ldap = new LDAP();
                 boolean autentica = ldap.auntenticaUsuario(login, senha);
-                if (autentica == true) {
+                if (autentica == true || request.getParameter("primeiroCadastro") != null) {
                     Aluno aluno = (Aluno) daoFactory.getAlunoDao().buscarAlunoPor(login);
                     
                         sessao.setAttribute("cpf", aluno.getCpf());

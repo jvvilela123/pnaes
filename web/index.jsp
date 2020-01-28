@@ -73,10 +73,10 @@
                                             <form method="POST" action="ServletLogin">
                                                 <div class="form-body">
                                                     <div class="form-group row">
-                                                        <label class="col-md-3 label-control" for="cpf">Usuário</label>
+                                                        <label class="col-md-3 label-control" for="login">Usuário</label>
                                                         <div class="col-md-6">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Usuário (mesmo do SIGA)" maxlength="14" required>
+                                                                <input type="text" name="login" id="login" class="form-control" placeholder="Usuário (mesmo do SIGA)" maxlength="14" required>
                                                             </div>
                                                         </div>
 

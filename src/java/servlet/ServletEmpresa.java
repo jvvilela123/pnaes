@@ -57,9 +57,16 @@ public class ServletEmpresa extends HttpServlet {
                     empresa.setNome(request.getParameter("nome")!=null?request.getParameter("nome"):null);
                     empresa.setTelefone(request.getParameter("telefone")!=null?request.getParameter("telefone"):null);
                     
+                    if(request.getParameter("renda")!=null && !request.getParameter("renda").equals(""))
                     empresa.setRenda(Double.parseDouble(request.getParameter("renda").replace("R$", "").replace(".", "").replace(",", ".")));
-                    empresa.setOrenda(Double.parseDouble(request.getParameter("orenda").replace("R$", "").replace(".", "").replace(",", ".")));
+                    else
+                    empresa.setRenda(0.00);
                     
+                    if(request.getParameter("orenda")!=null && !request.getParameter("orenda").equals(""))
+                    empresa.setOrenda(Double.parseDouble(request.getParameter("orenda").replace("R$", "").replace(".", "").replace(",", ".")));
+                    else
+                    empresa.setOrenda(0.00);
+                     
                    // seta aluno na empresa
                     empresa.setAluno(aluno);
                     
@@ -76,8 +83,16 @@ public class ServletEmpresa extends HttpServlet {
                     empresa.setAtividade(request.getParameter("atividade")!=null?request.getParameter("atividade"):null);
                     empresa.setNome(request.getParameter("nome")!=null?request.getParameter("nome"):null);
                     empresa.setTelefone(request.getParameter("telefone")!=null?request.getParameter("telefone"):null);
+                    
+                    if(request.getParameter("renda")!=null && !request.getParameter("renda").equals(""))
                     empresa.setRenda(Double.parseDouble(request.getParameter("renda").replace("R$", "").replace(".", "").replace(",", ".")));
+                    else
+                    empresa.setRenda(0.00);
+                    
+                    if(request.getParameter("orenda")!=null && !request.getParameter("orenda").equals(""))
                     empresa.setOrenda(Double.parseDouble(request.getParameter("orenda").replace("R$", "").replace(".", "").replace(",", ".")));
+                    else
+                    empresa.setOrenda(0.00);
                     
                    // seta aluno na empresa
                     empresa.setAluno(aluno);

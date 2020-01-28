@@ -41,19 +41,14 @@
             
              function sReprovou() {
                 document.getElementById('div_reprovou').style.display = 'block';
+                $("#reprovou").prop('required',true);
             }
             function nReprovou() {
                 document.getElementById('div_reprovou').style.display = 'none';
                 document.getElementById('reprovou').value = "";
+                 $("#reprovou").prop('required',false);
             }
-            function verificaCampos(){
-               if ($('#div_reprovou').is(':visible')){
-                    if(document.getElementById('simReprovou').checked && document.getElementById('reprovou').value === ""){
-                    document.getElementById('reprovou').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Qual / quais a(s) disciplinas você reprovou?</h6>");
-                 } 
-              }
-            }
+            
         </script>
 
     </head>
@@ -252,10 +247,11 @@
                                                                           <div class="col-md-9">
                                                                             <div class="position-relative has-icon-left">
                                                                                   <div class="form-control-position">
-                                                                                    <i class="fa fa-briefcase">Em Quantas Disciplinas Você Reprovou?</i>
+                                                                                    <i class="fa fa-briefcase">Em Quantas Disciplinas Você Reprovou?(Entre 1 e 20)</i>
                                                                                 </div>
-                                                                                <input type="range" name="reprovou" id="reprovou" value="0" min="1" max="20" oninput="ageOutputId.value = reprovou.value">
-                                                                                  <output name="ageOutputName" id="ageOutputId">0</output>
+                                                                               <input type="number" name="reprovou" id="reprovou" value="0" min="1" max="20">
+                                                                                <!--<input type="range" name="reprovou" id="reprovou" value="0" min="1" max="20" oninput="ageOutputId.value = reprovou.value">
+                                                                                  <output name="ageOutputName" id="ageOutputId">0</output>-->
                                                                              </div>
                                                                         </div>
                                                                     </div>
@@ -281,35 +277,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                             <!--<div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="residencia">Residência*:</label>
-                                                                <div class="col-md-9">
-                                                                    <select id="residencia" name="residencia" class="form-control"  onchange="verificaCampos()" required>
-                                                                        <option selected="" disabled="">Selecione o Tipo de Dependencia da Familia</option>
-                                                                        <option value="Própria">Própria</option>
-                                                                        <option value="Alugada">Alugada</option>
-                                                                        <option value="Financiada">Financiada</option>
-                                                                        <option value="Cedida">Cedida</option>
-                                                                        <option value="Casa do Estudante">Casa do Estudante</option>   
-                                                                        <option value="Outro">Outro</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div> 
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="dependenciaFamiliar">Relação de dependência familiar*:</label>
-                                                                <div class="col-md-9">
-                                                                    <select id="estadoCivil" name="dependenciaFamiliar" class="form-control" required>
-                                                                        <option selected="" disabled="">Selecione o Tipo de Dependencia da Familia</option>
-                                                                        <option value="Moro com Familiares">Moro com Familiares</option>
-                                                                        <option value="Moro Sozinho e independente">Moro Sozinho(a) e Independente</option>
-                                                                        <option value="Moro Sozinho mas dependo de familiares">Moro Sozinho(a) mas Dependo de Familiares</option>
-                                                                        <option value="Moro com Amigos e independente">Moro com Amigos(as) e Independente</option>
-                                                                        <option value="Moro com Amigos mas dependo de Familiares">Moro com Amigos(as) mas Dependo de Familiares</option> 
-
-                                                                    </select>
-                                                                </div>
-                                                            </div>   -->     
+                                                            </div>     
 
                                                             <div class="form-actions right">
                                                                 <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;

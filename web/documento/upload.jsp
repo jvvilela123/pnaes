@@ -266,7 +266,7 @@
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="od">Outros Documentos (pdf):</label>
+                                                <label class="col-md-3 label-control" for="od">Outros Documentos (Ex: Água, Energia, Telefone, Contrato de Aluguel, Atestado Médico, etc.) (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="od"></label>
                                                     <input type="file" name="od" id="od" class="custom-file-input" accept=".pdf">                                                  

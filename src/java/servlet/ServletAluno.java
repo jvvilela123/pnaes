@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Aluno;
 import modelo.Cidade;
 import modelo.Curso;
+import modelo.Dependente;
 import modelo.Endereco;
 import modelo.Uf;
 import org.apache.commons.fileupload.FileItem;
@@ -59,6 +60,7 @@ public class ServletAluno extends HttpServlet {
             Cidade cidade = new Cidade();
             Uf uf = new Uf();
             Uf ufe = new Uf();
+            Dependente dependente = new Dependente();
             Curso curso = new Curso(); 
             String opcao = request.getParameter("opcao");
             String msg = new String();
@@ -94,6 +96,7 @@ public class ServletAluno extends HttpServlet {
                         msg = "Data de Nascimento Invalida"; 
                         request.getRequestDispatcher("pessoa/cadastrar.jsp?msg="+msg+"&login="+request.getParameter("login")).forward(request, response);
                     }
+                    try{
                     aluno.setNome(request.getParameter("nome"));
                     cpf = request.getParameter("cpf").replace(".", "");
                     aluno.setCpf(cpf.replace("-", ""));
@@ -126,27 +129,29 @@ public class ServletAluno extends HttpServlet {
                     endereco.setCidade(cidade);
                     
                     aluno.setUfExpedicao(ufe);
-                    //aluno.setEndereco(endereco);
                     
-                    try{
-                    //Chamando o metodo inserir do dao e redirecionando para listar aluno
-                    daoFactory.getEnderecoDao().inserirOuAlterar(endereco);
-                    List<Endereco> enderecos = daoFactory.getEnderecoDao().listar();
-                    int tam = enderecos.size();
-                    aluno.setEndereco(enderecos.get(tam-1));
-                        daoFactory.getAlunoDao().inserirOuAlterar(aluno);
-                        response.sendRedirect("index.jsp");
+                    //Seta Endereço no Banco
+                    endereco = daoFactory.getEnderecoDao().inserirOuAlterarComRetorno(endereco);
+                    
+                    //Seta Enderço na classe Aluno
+                    aluno.setEndereco(endereco);
+                    daoFactory.getAlunoDao().inserirOuAlterar(aluno);
+                    //response.sendRedirect("index.jsp");
                     }catch(ExceptionInInitializerError ce){
                         if (ce.getException().toString().contains("cpf")){
                             msg = "CPF já cadastrado";
                         }
                         else if(ce.getException().toString().contains("email")){
                             msg = "Email já cadastrado";
+                        } else{
+                            msg = "Erro ao Inserir o Cadastro";
                         }
                          
                         request.getRequestDispatcher("pessoa/cadastrar.jsp?msg="+msg+"&login="+request.getParameter("login")).forward(request, response);
                     }
-                    
+                    response.sendRedirect("/pnaes/ServletLogin?primeiroCadastro=true&login="+request.getParameter("login"));
+                    //request.getRequestDispatcher("/pnaes/ServletLogin?primeiroCadastro=true&login="+request.getParameter("login")).forward(request, response);
+                   
                     break;
                 case "preencher":
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
@@ -204,6 +209,15 @@ public class ServletAluno extends HttpServlet {
                     aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
                     aluno.setMoradia(request.getParameter("moradia"));
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
+                    if(aluno.getMoradia().equals("sozinho") && aluno.getDependeciaFamiliar().equals("indepTodas")){
+                        //Excluir os Dependentes
+                        List<Dependente> dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(aluno.getId());
+                        if(!dependentes.isEmpty()){
+                            for(Dependente d : dependentes) {
+                             daoFactory.getDependenteDao().excluir(d);
+                            }
+                        }
+                    }
                     response.sendRedirect("home.jsp");
                     break;
                  case "cadastrar_4_passo":

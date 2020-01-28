@@ -47,14 +47,12 @@
             
             function sReprovou() {
                 document.getElementById('div_reprovou').style.display = 'block';
-                if(document.getElementById('simReprovou').checked && document.getElementById('reprovou').value === ""){
-                    document.getElementById('reprovou').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Qual / quais a(s) disciplinas você reprovou?</h6>");
-                }
+                $("#reprovou").prop('required',true);
             }
             function nReprovou() {
                 document.getElementById('div_reprovou').style.display = 'none';
                 document.getElementById('reprovou').value = "";
+                $("#reprovou").prop('required',false);
             }
         </script>
 
@@ -410,16 +408,15 @@
                                                                           <div class="col-md-9">
                                                                             <div class="position-relative has-icon-left">
                                                                                 <div class="form-control-position">
-                                                                                    <i class="fa fa-briefcase">Em Quantas Disciplinas Você Reprovou?</i>
+                                                                                    <i class="fa fa-briefcase">Em Quantas Disciplinas Você Reprovou?(Entre 1 e 20)</i>
                                                                                 </div>
                                                                                 <%
                                                                                 if(aluno.getReprovou()){%>
-                                                                                <input type="range" name="reprovou" id="reprovou" value="<%=aluno.getReprovouQuantas()%>" min="1" max="20" oninput="ageOutputId.value = reprovou.value">
-                                                                                  <output name="ageOutputName" id="ageOutputId"><%=aluno.getReprovouQuantas()%></output>
-                                                                                  
+                                                                                <input type="number" name="reprovou" id="reprovou" value="<%=aluno.getReprovouQuantas()%>" min="1" max="20" required>
+                                                                                 
                                                                                 <%} else { %>
-                                                                                   <input type="range" name="reprovou" id="reprovou" value="0" min="1" max="20" oninput="ageOutputId.value = reprovou.value">
-                                                                                  <output name="ageOutputName" id="ageOutputId">0</output>
+                                                                                   <input type="number" name="reprovou" id="reprovou" value="0" min="1" max="20">
+                                                                                 
                                                                               <% } %>
                                                                                 
                                                                             </div>
@@ -467,13 +464,13 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions right">
-                                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger" type="button" >Voltar</button></a>&nbsp;
+                                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" >Voltar</button></a>&nbsp;
                                                                 
-                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
+                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>
                                                                 
-                                                                <button type="submit" value="Cadastrar" class="btn btn-primary" >
+                                                                <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save" >
                                                                     <i class="fa fa-check-square-o"></i>Salvar
                                                                 </button>
                                                             </div>

@@ -20,8 +20,8 @@
             function formatar(mascara, documento) {
                 var i = documento.value.length;
                 var saida = mascara.substring(0, 1);
-                var texto = mascara.substring(i)
-                if (texto.substring(0, 1) != saida) {
+                var texto = mascara.substring(i);
+                if (texto.substring(0, 1) !== saida) {
                     documento.value += texto.substring(0, 1);
                 }
             }
@@ -35,24 +35,13 @@
                 
                 }
             function eIndependente() {
-                    //if(!verificaRadioChecadoPeloName("moradia")){
-                    //    alertify.errorAlert("<h6 class='card-title'>Selecione Primeiro Como você Mora.</h6>");
-                   // } else 
                 if(document.getElementById('sozinho').checked && document.getElementById('indepTodas').checked)
-                   
-                document.getElementById('tem_membro').style.display = 'none';
-               
+                 document.getElementById('tem_membro').style.display = 'none';
             }
             function naoIndependente() {
-                //if(!verificaRadioChecadoPeloName("moradia")){
-                    //    alertify.errorAlert("<h6 class='card-title'>Selecione Primeiro Como você Mora.</h6>");
-                   // } else
-                  //if( verificaRadioChecadoPeloName("moradia") && !document.getElementById('sozinho').checked) 
-                  document.getElementById('tem_membro').style.display = 'block';
+                document.getElementById('tem_membro').style.display = 'block';
              }
-            function verificaGrupo() {
-              document.getElementById("formEmpresa").submit();
-            }
+            
             
             
             
@@ -90,6 +79,25 @@
                                   window.location = url; 
                                   }
                                }
+                               
+                               function verificaGrupo() {
+                                   tudoCerto = true;
+                                   if(!verificaRadioChecadoPeloName("moradia")){
+                                       tudoCerto = false;
+                                       alertify.errorAlert("<h6 class='card-title'>Selecione o campo Como você Mora.</h6>");
+                                   }else if(!verificaRadioChecadoPeloName("dependenciaFamiliar")){
+                                       tudoCerto = false;
+                                       alertify.errorAlert("<h6 class='card-title'>Selecione o campo Como se Configura a sua Relação de Dependência Financeira.</h6>");
+                                   }else if($('#tem_membro').is(':visible')){
+                                <% if(dependentes.size()==0){ %>
+                                   tudoCerto = false;
+                                   alertify.errorAlert("<h6 class='card-title'>Inclua os Membros Familiares!</h6>");
+                                   <% } %>
+                                    }
+                                if(tudoCerto){
+                                document.getElementById("formGrupo").submit();
+                                }
+                                 }
                             </script>
                             <div style="width: 80%">
                                 <br>
@@ -237,7 +245,7 @@
                                                         dependência financeira.<br>
                                                   <div class="row">
                                                         <div class="col-md-3">
-                                                            <button class="mr-2 mb-2 btn btn-primary " type="button" onclick="preencheERedireciona();"><span class="os-icon os-icon-plus"></span>Incluir Membro Familiar</button>
+                                                           <button class="mr-2 mb-2 btn btn-primary " type="button" onclick="preencheERedireciona();"><span class="os-icon os-icon-plus"></span>Incluir Membro Familiar</button>
                                                         </div>
                                                         
                                                     </div>                                                    
@@ -296,7 +304,7 @@
                                                        
                                                         <div class="col-md-3">
                                                             <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
-                                                            <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save" onclick="verificaGrupo();">
+                                                            <button type="button" value="Cadastrar" class="btn btn-primary os-icon os-icon-save" onclick="verificaGrupo();">
                                                                 <i class="fa fa-check-square-o"></i> Salvar
                                                             </button>
                                                          

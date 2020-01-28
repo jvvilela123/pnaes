@@ -401,7 +401,7 @@
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="od">Alterar Outros Documentos (pdf):
+                                                <label class="col-md-3 label-control" for="od">Alterar Outros Documentos (Ex: Água, Energia, Telefone, Contrato de Aluguel, Atestado Médico, etc.) (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosOutros">Visualizar Outros Documentos</button>
                                                 </label>
                                                 <div class="col-md-9">                                                    
@@ -424,7 +424,7 @@
                                             </div>   
                                             <div class="form-actions">
                                                
-                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" >Voltar</button></a>
+                                                <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <button type="submit" class="btn btn-primary os-icon os-icon-save" name="cadastrar" value="Cadastrar">
                                                     <i class="la la-check-square-o"></i> Salvar
