@@ -74,6 +74,7 @@ public class ServletUpload extends HttpServlet {
             ServletFileUpload upload = new ServletFileUpload(factory);
             List items = null;
             try {
+                
                 items = upload.parseRequest(request);
             } catch (FileUploadException e) {
                 e.printStackTrace();
@@ -94,29 +95,31 @@ public class ServletUpload extends HttpServlet {
                         //File dire = new File(getServletContext().getRealPath("/")+nedital+"/alunos");
                         File diretorio = new File(getServletContext().getRealPath("/")+nedital+"/alunos/"+cpf);
                         
-                        diretorio.mkdirs();                   
-                        if(item.getFieldName().equals("foto")){
-                            File savedFile = new File(diretorio+"/"+cpf+".jpg");
-                            item.write(savedFile);
-                        }else if(item.getFieldName().equals("da")){
-                            File savedFile = new File(diretorio+"/da.pdf");
-                            item.write(savedFile);                        
-                        }else if(item.getFieldName().equals("dd")){
-                            File savedFile = new File(diretorio+"/dd.pdf");
-                            item.write(savedFile);
-                        }
-                        else if(item.getFieldName().equals("dr")){
-                            File savedFile = new File(diretorio+"/dr.pdf");
-                            item.write(savedFile);
-                        }else if(item.getFieldName().equals("dp")){
-                            File savedFile = new File(diretorio+"/dp.pdf");
-                            item.write(savedFile);
-                        }else if(item.getFieldName().equals("od")){
-                            File savedFile = new File(diretorio+"/od.pdf");
-                            item.write(savedFile);
+                        diretorio.mkdirs();
+                        if(!item.isInMemory()){
+                            if(item.getFieldName().equals("foto")){
+                                File savedFile = new File(diretorio+"/"+cpf+".jpg");
+                                item.write(savedFile);
+                            }else if(item.getFieldName().equals("da")){
+                                File savedFile = new File(diretorio+"/da.pdf");
+                                item.write(savedFile);                        
+                            }else if(item.getFieldName().equals("dd")){
+                                File savedFile = new File(diretorio+"/dd.pdf");
+                                item.write(savedFile);
+                            }
+                            else if(item.getFieldName().equals("dr")){
+                                File savedFile = new File(diretorio+"/dr.pdf");
+                                item.write(savedFile);
+                            }else if(item.getFieldName().equals("dp")){
+                                File savedFile = new File(diretorio+"/dp.pdf");
+                                item.write(savedFile);
+                            }else if(item.getFieldName().equals("od")){
+                                File savedFile = new File(diretorio+"/od.pdf");
+                                item.write(savedFile);
+                            }
                         }
                        // if(request.getParameter("alterar")!=null && request.getParameter("alterar").equals("1")){
-                         response.sendRedirect("home.jsp");
+                       //  response.sendRedirect("home.jsp");
                       //  }else{
                       //  response.sendRedirect("inscricao/inscricao.jsp");
                        // }
@@ -127,6 +130,7 @@ public class ServletUpload extends HttpServlet {
                     }
                 }
             }
+             response.sendRedirect("home.jsp");
         } catch (Exception ex) {
             request.setAttribute("message", "Upload de arquivo falhou devido a " + ex);
         }

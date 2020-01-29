@@ -265,8 +265,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dp.pdf" 
-                                        style="width:500px; height:500px;" frameborder="0"></iframe>
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dp.pdf" style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
                                               <div class="modal-footer">
@@ -309,7 +308,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dp.pdf" 
+                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dd.pdf" 
                                         style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
@@ -356,7 +355,7 @@
                                                 <label class="col-md-3 label-control" for="foto">Alterar Foto* (png, jpg ou jpeg)::</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="target"></label>
-                                                    <input type="file" name="foto" required id="target" accept=".png,.jpg, .jpeg" class="custom-file-input" title="Foto">
+                                                    <input type="file" name="foto"  id="target" accept=".png,.jpg, .jpeg" class="custom-file-input" title="Foto">
                                                     
                                                 </div>
                                             </div>
@@ -367,7 +366,7 @@
                                                 <div class="col-md-9">
                                                     
                                                     <label class="col-md-6 custom-file-label" for="da"></label>
-                                                    <input type="file" name="da" required id="da" class="custom-file-input" accept=".pdf">
+                                                    <input type="file" name="da"  id="da" class="custom-file-input" accept=".pdf">
                                                     
                                                 </div>
                                             </div>
@@ -388,7 +387,7 @@
                                                 </label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dr"></label>
-                                                    <input type="file" name="dr" required id="dr" class="custom-file-input" accept=".pdf">                                                  
+                                                    <input type="file" name="dr" id="dr" class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
@@ -397,7 +396,7 @@
                                                 </label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dd"></label>
-                                                    <input type="file" name="dd required" id="dd" class="custom-file-input" accept=".pdf">                                                  
+                                                    <input type="file" name="dd" id="dd" class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>  
                                             <div class="form-group row">

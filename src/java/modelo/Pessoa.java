@@ -141,7 +141,8 @@ public class Pessoa implements Serializable {
                 //idade = (int) ((idade2) / (1000*60*60*24) / 30) / 12;
                 // long diff = hj.getTime().getTime() - getDtn().getTime().getTime();*/
                 int idade = (int) ((hj.getTime().getTime() - getDtn().getTime().getTime())/(1000*60*60*24*365.25));
-                 int idadeMeses = (int) ((hj.getTime().getTime() - getDtn().getTime().getTime()) / (1000*60*60*24)) / 30;
+                //int idadeMeses = idade * 12;
+                int idadeMeses = (int) ((hj.getTime().getTime() - getDtn().getTime().getTime()) / (1000*60*60*24)) / 30;
                
                  if (idade < 1){
                      if(idadeMeses>1)

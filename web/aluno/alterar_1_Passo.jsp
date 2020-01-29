@@ -33,7 +33,7 @@
 
             });
             
-            $(document).ready(function () {
+          /*  $(document).ready(function () {
                 $('#periodo').change(function () {
                    // $('#divperiodo')[0].style.display="block";
                     if($('#periodo').val()==='1'){
@@ -43,11 +43,12 @@
                      document.getElementById('div_1_periodo').style.display = 'block';
                 });
 
-            });
+            });*/
             
             function sReprovou() {
                 document.getElementById('div_reprovou').style.display = 'block';
                 $("#reprovou").prop('required',true);
+                document.getElementById('reprovou').value = "0";
             }
             function nReprovou() {
                 document.getElementById('div_reprovou').style.display = 'none';
@@ -366,11 +367,11 @@
                                                                 </div>
                                                             </div>
                                                             
-                                                          <%if(aluno.getPeriodo()==1){%>                  
-                                                           <div id="div_1_periodo" class="hide">
-                                                           <%}else{%>
+                                                          <%//if(aluno.getPeriodo()==1){%>                  
+                                                           <!--<div id="div_1_periodo" class="hide">-->
+                                                           <%//}else{%>
                                                            <div id="div_1_periodo" class="hide" style="display: block;">
-                                                           <%}%>
+                                                           <%//}%>
                                                             <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma disciplina no IFTO?*:</label>
                                                             <div class="col-md-9">

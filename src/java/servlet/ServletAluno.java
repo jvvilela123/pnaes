@@ -165,12 +165,16 @@ public class ServletAluno extends HttpServlet {
                     aluno.setEntradaIfto(request.getParameter("entrada"));
                     aluno.setPeriodoVisita(request.getParameter("visita"));
                     
+                    if(request.getParameter("reprovousimounao")!=null){
                     aluno.setReprovou(request.getParameter("reprovousimounao").equals("Sim"));
                     if(request.getParameter("reprovousimounao").equals("Sim"))
                     aluno.setReprovouQuantas(Integer.parseInt(request.getParameter("reprovou")));
                     else
                     aluno.setReprovouQuantas(null);
-                    
+                    }else{
+                        aluno.setReprovou(false);
+                        aluno.setReprovouQuantas(null);
+                    }
                     
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("empresa/cadastrar.jsp");
@@ -187,11 +191,16 @@ public class ServletAluno extends HttpServlet {
                     aluno.setEntradaIfto(request.getParameter("entrada"));
                     aluno.setPeriodoVisita(request.getParameter("visita"));
                     
+                    if(request.getParameter("reprovousimounao")!=null){
                     aluno.setReprovou(request.getParameter("reprovousimounao").equals("Sim"));
                     if(request.getParameter("reprovousimounao").equals("Sim"))
                     aluno.setReprovouQuantas(Integer.parseInt(request.getParameter("reprovou")));
                     else
                     aluno.setReprovouQuantas(null);
+                    }else{
+                        aluno.setReprovou(false);
+                        aluno.setReprovouQuantas(null);
+                    }
                     
                     
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);

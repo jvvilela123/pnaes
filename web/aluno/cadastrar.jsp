@@ -27,7 +27,7 @@
 
             });
             
-            $(document).ready(function () {
+           /* $(document).ready(function () {
                 $('#periodo').change(function () {
                    // $('#divperiodo')[0].style.display="block";
                     if($('#periodo').val()==='1'){
@@ -37,10 +37,11 @@
                      document.getElementById('div_1_periodo').style.display = 'block';
                 });
 
-            });
+            });*/
             
              function sReprovou() {
                 document.getElementById('div_reprovou').style.display = 'block';
+                document.getElementById('reprovou').value = "0";
                 $("#reprovou").prop('required',true);
             }
             function nReprovou() {
@@ -229,17 +230,17 @@
                                                                 </div>
                                                             </div>
                                                             
-                                                            <div id="div_1_periodo" class="hide">
+                                                            <div id="div_1_periodo" class="">
                                                             <div class="form-group row">
                                                             <label class="col-md-3 label-control" for="reprovousimounao">Você reprovou em alguma disciplina no IFTO?*:</label>
                                                             <div class="col-md-9">
                                                                 <div class="input-group">
                                                                        <div class="custom-control custom-radio">
-                                                                           <input type="radio" name="reprovousimounao" id="naoReprovou" value="Nao" class="custom-control-input" onclick="nReprovou()" required>
+                                                                           <input type="radio" name="reprovousimounao" id="naoReprovou" value="Nao" class="custom-control-input" onclick="nReprovou()" >
                                                                            <label class="custom-control-label" for="naoReprovou">Não&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" name="reprovousimounao" id="simReprovou" value="Sim" class="custom-control-input" onclick="sReprovou()" required>
+                                                                            <input type="radio" name="reprovousimounao" id="simReprovou" value="Sim" class="custom-control-input" onclick="sReprovou()" >
                                                                             <label class="custom-control-label" for="simReprovou">Sim</label>
                                                                         </div>
                                                                    
@@ -249,7 +250,7 @@
                                                                                   <div class="form-control-position">
                                                                                     <i class="fa fa-briefcase">Em Quantas Disciplinas Você Reprovou?(Entre 1 e 20)</i>
                                                                                 </div>
-                                                                               <input type="number" name="reprovou" id="reprovou" value="0" min="1" max="20">
+                                                                               <input type="number" name="reprovou" id="reprovou" value="1" min="1" max="20">
                                                                                 <!--<input type="range" name="reprovou" id="reprovou" value="0" min="1" max="20" oninput="ageOutputId.value = reprovou.value">
                                                                                   <output name="ageOutputName" id="ageOutputId">0</output>-->
                                                                              </div>
