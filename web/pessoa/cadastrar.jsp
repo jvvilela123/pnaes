@@ -168,7 +168,7 @@
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="autoDeclaracao">Auto Declaração Cor/Raça*:</label>
                                                 <div class="col-md-9">
-                                                    <select id="atividadeProf" name="autoDeclaracao" class="form-control" required>
+                                                    <select id="autoDeclaracao" name="autoDeclaracao" class="form-control" required>
                                                         <option selected="" disabled="" value=""> Selecione a sua Cor/Raça </option>
                                                         <option value="Branco">Branco</option>
                                                         <option value="Pardo">Pardo</option>
@@ -208,7 +208,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="numero">Numero*:</label>
+                                                <label class="col-md-3 label-control" for="numero">Número*:</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="numero" id="numero" class="form-control" placeholder="Numero" required>
                                                 </div>

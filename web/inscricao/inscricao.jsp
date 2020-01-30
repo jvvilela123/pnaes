@@ -89,8 +89,6 @@
                                                                         <%
                                                                             List<Bolsa> bolsas = edital.getBolsas();
                                                                             for (Bolsa b : bolsas) {
-                                                                                //não aparecer a opção nenhum
-                                                                                if(b.getId()!=6)
                                                                                 out.print("<option value=" + b.getId() + ">" + b.getNome() + "</option>");
                                                                             }
                                                                         %>

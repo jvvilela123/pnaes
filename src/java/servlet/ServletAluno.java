@@ -102,6 +102,7 @@ public class ServletAluno extends HttpServlet {
                     aluno.setCpf(cpf.replace("-", ""));
                     
                     aluno.setSexo(request.getParameter("sexo"));
+                    aluno.setAutoDeclaracao(request.getParameter("autoDeclaracao"));
                     aluno.setRg(request.getParameter("rg"));
                     aluno.setEmail(request.getParameter("email"));
                     aluno.setTelefone(request.getParameter("telefone"));
@@ -243,53 +244,41 @@ public class ServletAluno extends HttpServlet {
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     response.sendRedirect("home.jsp");
                     break;
-                case "alterar":
+                case "alterar_dados_pessoais":
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                    
+                    //Setando dados do Aluno
                     dtn.setTime(formato.parse(request.getParameter("dtn")));
+                    aluno.setDtn(dtn);
                     aluno.setNome(request.getParameter("nome"));
-                    cpf = request.getParameter("cpf").replace(".", "");
-                    aluno.setCpf(cpf.replace("-", ""));
+                    aluno.setCpf(request.getParameter("cpf"));
                     aluno.setSexo(request.getParameter("sexo"));
+                    aluno.setAutoDeclaracao(request.getParameter("autoDeclaracao"));
                     aluno.setRg(request.getParameter("rg"));
                     aluno.setEmail(request.getParameter("email"));
                     aluno.setTelefone(request.getParameter("telefone"));
-                   // aluno.setAtividadeProf(request.getParameter("atividadeProf"));
-                    //aluno.setCarteira(request.getParameter("carteira"));
-                    aluno.setDtn(dtn);
-                    //aluno.setSenha(request.getParameter("senha"));
-                    aluno.setMatricula(request.getParameter("matricula"));
-                    curso.setId(Integer.parseInt(request.getParameter("curso")));
-                    aluno.setCurso(curso);
-                    aluno.setPeriodo(Integer.parseInt(request.getParameter("periodo")));
-                    aluno.setMeioTransporte(request.getParameter("transporte"));
-                    aluno.setEnsinoMedio(request.getParameter("ensinoMedio"));
-                    aluno.setEnsinoFundamental(request.getParameter("ensinoFundamental"));
-                    aluno.setEntradaIfto(request.getParameter("ifto"));
-                    aluno.setPeriodoVisita(request.getParameter("periodoVisita"));
-                    //aluno.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
-
+                    ufe.setId(Integer.parseInt(request.getParameter("ufe")));
+                    aluno.setUfExpedicao(ufe);
+                    
                     //Setando dados do Endereço
+                    endereco = aluno.getEndereco();
                     endereco.setLogradouro(request.getParameter("logradouro"));
                     endereco.setNumero(request.getParameter("numero"));
                     endereco.setBairro(request.getParameter("bairro"));
-                    endereco.setComplemento(request.getParameter("complemento"));
+                    endereco.setComplemento(request.getParameter("complemento")!=null?request.getParameter("complemento"):aluno.getEndereco().getComplemento());
                     endereco.setCep(request.getParameter("cep"));
-
-                    //Setando os Objetos do Aluno
-                    cidade.setId(Integer.parseInt(request.getParameter("cidade")));
-                    uf.setId(Integer.parseInt(request.getParameter("uf")));
-                    ufe.setId(Integer.parseInt(request.getParameter("ufe")));
-                    cidade.setUf(uf);
-                    endereco.setCidade(cidade);
-                    endereco.setId(1);
-                    //endereco.setId(aluno.getEndereco().getId());
-                    //out.println("id = " + aluno.getEndereco().getId());
-                    //out.println("bairro = " + aluno.getEndereco().getBairro());
                     
-                    aluno.setUfExpedicao(ufe);
+                    //uf.setId(Integer.parseInt(request.getParameter("uf")));
+                    //cidade.setUf(uf);
+                    cidade.setId(Integer.parseInt(request.getParameter("cidade")));
+                    
+                    
+                    endereco.setCidade(cidade);
+                    
+                    endereco = daoFactory.getEnderecoDao().inserirOuAlterarComRetorno(endereco);
                     aluno.setEndereco(endereco);
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
-                    response.sendRedirect("aluno/listar.jsp");
+                    response.sendRedirect("documento/cadastrar.jsp?i_id="+request.getParameter("i_id"));
                     break;
                 case "alterar_permissao":
 

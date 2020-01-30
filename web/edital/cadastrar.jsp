@@ -1,3 +1,5 @@
+<%@page import="modelo.Bolsa"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.Uf"%>
 <%@page import="dao.DaoFactory"%>
@@ -8,6 +10,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro de Edital</title>
         <%@include file="../imports.jsp" %>
+                  <%
+                        List<Bolsa> bolsas = new ArrayList<Bolsa>();
+                        
+                    %>
         <script type="text/javascript" >
             function formatar(mascara, documento) {
                 var i = documento.value.length;
@@ -82,12 +88,27 @@
                     }
                     document.getElementById('nomeAuxilio').value = '';
                     document.getElementById('valorAuxilio').value = '';
+                    <%
+                        Bolsa bolsa = new Bolsa();
+                        bolsa.setNome(""+%>nome<%"");
+                        //bolsa.setValor(Double.parseDouble(request.getParameter("valorAuxilio")));
+                        System.out.println("Bolsa: "+bolsa.getNome());
+                        bolsas.add(bolsa);
+                        
+                    %>
                 }
                 
                 function removerAuxilio(id) {
                     //alert("teste");
                      var tabela = $('#tabelaAuxilios').DataTable();
+                     alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>', 'Deseja realmente excluir o Auxílio <h5 class="card-title">'+tabela.rows($(id).parents('tr')).data[1]+'?</h5>', 
+                function(){
                     tabela.rows($(id).parents('tr')).remove().draw();
+                   // var url = "../ServletDependente?opcao=excluir&id=" + id;
+                    //window.location = url; 
+                }
+                , function(){ alertify.error('Exclusão Cancelada');}).set('labels', {ok:'Excluir', cancel:'Cancelar'});
+                    
                  }
       
         </script>

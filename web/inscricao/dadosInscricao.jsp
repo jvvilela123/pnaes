@@ -3,6 +3,8 @@
     Created on : 20/12/2019, 12:03:58
     Author     : João Vitor
 --%>
+<%@page import="modelo.Cidade"%>
+<%@page import="modelo.Uf"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="modelo.Edital"%>
 <%@page import="modelo.FichaMedica"%>
@@ -17,8 +19,9 @@
 <%@page import="modelo.Empresa"%>
 
 
+
 <script>
-            $(function () {
+    $(function () {
                 var icons = {
                     header: "ui-icon-circle-arrow-e",
                     activeHeader: "ui-icon-circle-arrow-s"
@@ -46,8 +49,41 @@
 
                 });
             });
+            
+            $(function(){
+                //Não Permite digitar letras
+                  $('#cpf').keyup(function() {
+                       $(this).val(this.value.replace(/\D/g, ''));
+                    });
+                    $('#rg').keyup(function() {
+                       $(this).val(this.value.replace(/\D/g, ''));
+                    });
+                });
+            
+            function edicaoDadosPessoais() {
+                 $('.visualizacaoDadosPessoais').hide();
+                 $('.edicaoDadosPessoais').show();
+                
+            }
+            function cancelaEdicaoDadosPessoais() {
+                 $('.visualizacaoDadosPessoais').show();
+                 $('.edicaoDadosPessoais').hide();
+                
+            }
+            
+            $(document).ready(function () {
+                $('#uf').change(function () {
+                    $('#cidade').load('../cidadeajax.jsp?estado=' + $('#uf').val());
+                });
+
+            });
+            
 
         </script>
+        <%
+             SimpleDateFormat formatador2 = new SimpleDateFormat("yyyy-MM-dd");
+             
+        %>
                                         <div class="col-md-3">
                                             <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
 
@@ -59,70 +95,217 @@
                                                 <div id="accordion2">
                                                     <h3>Dados Pessoais (Documentos e Endereço)</h3>
                                                     <div>
+                                                      
+                                                        <form method="Post" action="../ServletAluno?opcao=alterar_dados_pessoais&id=<%=inscricao.getAluno().getId()%>&i_id=<%=inscricao.getId()%>"> 
                                                         <table class="table table-striped table-responsive-md">
                                                             <tr>
                                                                 <th>Nome:</th>
-                                                                <td><%=inscricao.getAluno().getNome()%></td>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getNome()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                 <input type="text" name="nome" id="nome"  value="<%=inscricao.getAluno().getNome()%>" class="form-control" placeholder="Nome" required>
+                                                                <td>
                                                             </tr>
                                                             <tr>
                                                                 <th>CPF:</th>
-                                                                <td><%=inscricao.getAluno().getCpf()%></td>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getCpf()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                 <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="11" value="<%=inscricao.getAluno().getCpf()%>" required >
+                                                                <td>
                                                             </tr> 
                                                             <tr>
                                                                 <th>RG:</th>
-                                                                <td><%=inscricao.getAluno().getRg()%></td>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getRg()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                  <input type="text" name="rg" id="rg"  class="form-control" placeholder="RG" value="<%=inscricao.getAluno().getRg()%>" required>
+                                                                <td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>UF de Expedição:</th>
-                                                                <td><%=inscricao.getAluno().getUfExpedicao().getNome()%></td>
+                                                                <th>Uf de Expedção do RG:</th>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getUfExpedicao().getNome()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;"> 
+                                                                    <select id="ufe" name="ufe" class="form-control" required>
+                                                                       <option selected="" disabled="" value="">Selecione o Estado(UF) de Expedição do RG</option>
+                                                                        <%
+
+                                                                            List<Uf> ufes = daoFactory.getUfDao().listar();
+                                                                            out.print("<option selected value=" + inscricao.getAluno().getUfExpedicao().getId()+ ">" + inscricao.getAluno().getUfExpedicao().getNome() + "</option>");
+                                                                            for (Uf ufe : ufes) {
+                                                                                out.print("<option value=" + ufe.getId() + ">" + ufe.getNome() + "</option>");
+                                                                            }
+                                                                        %>
+                                                                   </select>
+                                                               </td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Sexo:</th>
-                                                                <td><%=inscricao.getAluno().getSexo()%></td>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getSexo()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                    <div class="col-md-9">
+                                                                    <div class="input-group">
+                                                                        <div class="custom-control custom-radio">                                                                           
+                                                                            <%
+                                                                                if(inscricao.getAluno().getSexo().equals("Masculino")){
+                                                                                    out.println("<input checked type='radio' name='sexo' value='Masculino' class='custom-control-input' id='sexom' required>");                                         
+                                                                                }else{
+                                                                                    out.println("<input type='radio' name='sexo' value='Masculino' class='custom-control-input' id='sexom' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="sexom">Masculino&nbsp;&nbsp;</label>
+                                                                        </div>
+                                                                        <div class="d-inline-block custom-control custom-radio">
+                                                                            <%
+                                                                                if(inscricao.getAluno().getSexo().equals("Feminino")){
+                                                                                    out.println("<input checked type='radio' name='sexo' value='Feminino' class='custom-control-input' id='sexof' required>");                                         
+                                                                                }else{
+                                                                                    out.println("<input type='radio' name='sexo' value='Feminino' class='custom-control-input' id='sexof' required>");
+                                                                                }
+                                                                            %>
+                                                                            <label class="custom-control-label" for="sexof">Feminino</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                </td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>Data Nascimento:</th>
-                                                                <td><%=dataFormat.formatarData(inscricao.getAluno().getDtn())%></td>
+                                                                <th>Data de Nascimento:</th>
+                                                                <td class="visualizacaoDadosPessoais"><%=dataFormat.formatarData(inscricao.getAluno().getDtn())%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                   <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" value="<%=formatador2.format(inscricao.getAluno().getDtn().getTime())%>" maxlength="10" OnKeyPress="formatar('##/##/####', this)" required>
+                                                                </td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Idade:</th>
                                                                 <td><%=inscricao.getAluno().getIdade()%></td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>Telefone:</th>
-                                                                <td><%=inscricao.getAluno().getTelefone()%></td>
+                                                                <th>Auto Declaração Cor/Raça:</th>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getAutoDeclaracao()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                    <select id="autoDeclaracao" name="autoDeclaracao" class="form-control" required>
+                                                                        <option selected="" disabled="" value="">Selecione a sua Cor/Raça</option>
+                                                                        <%
+                                                                        if(inscricao.getAluno().getAutoDeclaracao().equals("Branco"))
+                                                                        out.print("<option selected value='Branco'>Branco</option>");
+                                                                        else
+                                                                        out.print("<option value='Branco'>Branco</option>");
+                                                                        
+                                                                        if(inscricao.getAluno().getAutoDeclaracao().equals("Pardo"))
+                                                                        out.print("<option selected value='Pardo'>Pardo</option>");
+                                                                        else
+                                                                        out.print("<option value='Pardo'>Pardo</option>");
+                                                                        
+                                                                        if(inscricao.getAluno().getAutoDeclaracao().equals("Preto"))
+                                                                        out.print("<option selected value='Preto'>Preto</option>");
+                                                                        else
+                                                                        out.print("<option value='Preto'>Preto</option>");
+                                                                        
+                                                                        if(inscricao.getAluno().getAutoDeclaracao().equals("Indígena"))
+                                                                        out.print("<option selected value='Indígena'>Indígena</option>");
+                                                                        else
+                                                                        out.print("<option value='Indígena'>Indígena</option>");
+                                                                        
+                                                                        if(inscricao.getAluno().getAutoDeclaracao().equals("Outra"))
+                                                                        out.print("<option selected value='Outra'>Outra</option>");
+                                                                        else
+                                                                        out.print("<option value='Outra'>Outra</option>");
+                                                                        %>
+                                                                    </select>
+                                                                </td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>Email:</th>
-                                                                <td><%=inscricao.getAluno().getEmail()%></td>
+                                                                <th>Telefone:</th>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getTelefone()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                    <input type="text" name="telefone" id="telefone"  class="form-control" value="<%=inscricao.getAluno().getTelefone()%>" OnKeyPress="formatar('## #####-####', this)" placeholder="Telefone" required>
+                                                                </td>
+                                                            </tr>
+                                                            
+                                                            <tr>    
+                                                                <th>E-mail:</th>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEmail()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                  <input type="text" name="email" id="email"  class="form-control" placeholder="E-mail" value="<%=inscricao.getAluno().getEmail()%>" required>
+                                                                <td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Lougradouro:</th>
-                                                                <td><%=inscricao.getAluno().getEndereco().getLogradouro()%></td>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getLogradouro()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                  <input type="text" name="logradouro" id="logradouro"  class="form-control" placeholder="Logradouro" value="<%=inscricao.getAluno().getEndereco().getLogradouro()%>" required>
+                                                                <td>
                                                             </tr>
                                                             <%if(!inscricao.getAluno().getEndereco().getComplemento().equals("") && inscricao.getAluno().getEndereco().getComplemento()!= null){%>
                                                             <tr>    
                                                                 <th>Complemento:</th>
-                                                                <td><%=inscricao.getAluno().getEndereco().getComplemento()%></td>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getComplemento()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                  <input type="text" name="complemento" id="complemento"  class="form-control" placeholder="Complemento" value="<%=inscricao.getAluno().getEndereco().getComplemento()%>" required>
+                                                                <td>
                                                             </tr>
                                                             <%}%>
                                                             <tr>    
-                                                                <th>Numero:</th>
-                                                                <td><%=inscricao.getAluno().getEndereco().getNumero()%></td>
+                                                                <th>Número:</th>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getNumero()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                  <input type="text" name="numero" id="numero"  class="form-control" placeholder="Número" value="<%=inscricao.getAluno().getEndereco().getNumero()%>" required>
+                                                                <td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Bairro:</th>
-                                                                <td><%=inscricao.getAluno().getEndereco().getBairro()%></td>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getBairro()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                  <input type="text" name="bairro" id="bairro"  class="form-control" placeholder="Bairro" value="<%=inscricao.getAluno().getEndereco().getBairro()%>" required>
+                                                                <td>
                                                             </tr>
-                                                            <tr>    
-                                                                <th>Cidade:</th>
-                                                                <td><%=inscricao.getAluno().getEndereco().getCidade().getNome()%></td>
+                                                             <tr>
+                                                                <th>CEP:</th>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getCep()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                  <input type="text" name="cep" id="cep"  class="form-control" placeholder="CEP" value="<%=inscricao.getAluno().getEndereco().getCep()%>" required>
+                                                                <td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Estado:</th>
-                                                                <td><%=inscricao.getAluno().getEndereco().getCidade().getUf().getNome()%></td>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getCidade().getUf().getNome()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;"> 
+                                                                    <select id="uf" name="uf" class="form-control" required>
+                                                                       <option selected="" disabled="" value="">Selecione o Estado(UF)</option>
+                                                                        <%
+                                                                            out.print("<option selected value=" + inscricao.getAluno().getEndereco().getCidade().getUf().getId()+ ">" + inscricao.getAluno().getEndereco().getCidade().getUf().getNome() + "</option>");
+                                                                            for (Uf ufe : ufes) {
+                                                                                out.print("<option value=" + ufe.getId() + ">" + ufe.getNome() + "</option>");
+                                                                            }
+                                                                        %>
+                                                                   </select>
+                                                               </td>
                                                             </tr>
+                                                            <tr>    
+                                                                <th>Cidade:</th>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getCidade().getNome()%></td>
+                                                                <td class="edicaoDadosPessoais" style="display: none;"> 
+                                                                    <select id="cidade" name="cidade" class="form-control" required>
+                                                                       <option selected="" disabled="" value="">Selecione primeiro o estado (UF) ?</option>
+                                                                        <%
+                                                                             List<Cidade> cidades = daoFactory.getCidadeDao().buscarCidadePorUf(inscricao.getAluno().getEndereco().getCidade().getUf().getId());
+                                                                             out.print("<option selected value=" + inscricao.getAluno().getEndereco().getCidade().getId()+ ">" + inscricao.getAluno().getEndereco().getCidade().getNome() + "</option>");
+                                                                            for (Cidade cidade : cidades) {
+                                                                                out.print("<option value=" + cidade.getId() + ">" + cidade.getNome() + "</option>");
+                                                                            }
+                                                                        %>
+                                                                   </select>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th colspan="2" style="text-align:center;" class="visualizacaoDadosPessoais"><button type="button" class="btn btn-warning os-icon os-icon-edit" onclick="edicaoDadosPessoais();"> Clique para Editar</th>
+                                                                <th colspan="2" style="text-align:center; display: none;" class="edicaoDadosPessoais">
+                                                                    <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="cancelaEdicaoDadosPessoais();"> Cancelar Edição</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    <button type="submit" class="btn btn-success os-icon os-icon-save" onclick="salvarDadosPessoais();"> Salvar</button>
+                                                                </th>
+                                                                
+                                                              </tr>
                                                         </table>
+                                                        </form>
+                                                           
                                                     </div>
                                                     <h3>Informações do Estudante</h3>
                                                     <div>
@@ -139,7 +322,7 @@
 
                                                             <tr>    
                                                                 <th>Período:</th>
-                                                                <td><%=inscricao.getAluno().getCurso().getqPeriodo()%>º <%=inscricao.getAluno().getCurso().getTipoPeriodo()%></td>
+                                                                <td><%=inscricao.getAluno().getCurso().getqPeriodo()%>Âº <%=inscricao.getAluno().getCurso().getTipoPeriodo()%></td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Cursou Ensino Fundamental em Ensino:</th>
@@ -205,7 +388,7 @@
                                                                  !fichaMedica.getTemMedicamentoDep() &&
                                                                  !fichaMedica.getTemDeficiencia() &&
                                                                  !fichaMedica.getTemDeficienciaDep()){%>
-                                                        <h3 class="ui-state-disabled">Estudante e Família NÃO Possui Doenças, Deficiências e Medicamentos</h3>
+                                                        <h3 class="ui-state-disabled">Estudante e Família NÂO Possui Doenças, Deficiências e Medicamentos</h3>
                                                         <%}else{%>
                                                         <h3>Saúde do Estudante/Família</h3>
                                                         <%}%>

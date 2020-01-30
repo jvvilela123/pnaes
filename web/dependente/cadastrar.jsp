@@ -24,6 +24,17 @@
                 }
             }
             
+            $(function(){
+      
+           //Não Permite digitar letras
+          $('#cpf').keyup(function() {
+               $(this).val(this.value.replace(/\D/g, ''));
+            });
+            $('#rg').keyup(function() {
+               $(this).val(this.value.replace(/\D/g, ''));
+            });
+        });
+            
         </script>
        
     </head>
@@ -82,7 +93,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="cpf">CPF do Membro Familiar:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF do Membro Familiar" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)">
+                                                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF do Membro Familiar" maxlength="11">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">

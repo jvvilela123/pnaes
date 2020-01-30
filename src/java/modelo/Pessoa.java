@@ -22,6 +22,7 @@ public class Pessoa implements Serializable {
     private String cpf;
     private String sexo;
     private String rg;
+    private String autoDeclaracao;
     
     @ManyToOne
     @JoinColumn(name="ufExpedicao_id")
@@ -108,6 +109,15 @@ public class Pessoa implements Serializable {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
+    public String getAutoDeclaracao() {
+        return autoDeclaracao;
+    }
+
+    public void setAutoDeclaracao(String autoDeclaracao) {
+        this.autoDeclaracao = autoDeclaracao;
+    }
+    
     
    /* public String getIdade() {
 		GregorianCalendar hj=new GregorianCalendar();

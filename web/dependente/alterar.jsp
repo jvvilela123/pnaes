@@ -24,7 +24,16 @@
                 });
 
             });
-            
+            $(function(){
+      
+           //Não Permite digitar letras
+          $('#cpf').keyup(function() {
+               $(this).val(this.value.replace(/\D/g, ''));
+            });
+            $('#rg').keyup(function() {
+               $(this).val(this.value.replace(/\D/g, ''));
+            });
+        });
             
         </script>
 <%@include file="../imports.jsp" %>
@@ -91,7 +100,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="cpf">CPF do Membro Familiar:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="cpf" id="cpf" class="form-control" value="<%=dependente.getCpf()%>" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="CPF do Membro Familiar">
+                                                                    <input type="text" name="cpf" id="cpf" class="form-control" value="<%=dependente.getCpf()%>" maxlength="11"  placeholder="CPF do Membro Familiar">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">

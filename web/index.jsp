@@ -16,6 +16,14 @@
 
        
         <%@include file="imports.jsp" %>
+        <script>
+            $(function(){
+                //Não Permite digitar letras
+                  $('#login').keyup(function() {
+                       $(this).val(this.value.replace(/\D/g, ''));
+                    });
+                });
+        </script>
     </head>
     <body class="auth-wrapper">
     <center>
@@ -76,7 +84,7 @@
                                                         <label class="col-md-3 label-control" for="login">Usuário</label>
                                                         <div class="col-md-6">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="login" id="login" class="form-control" placeholder="Usuário (mesmo do SIGA)" maxlength="14" required>
+                                                                <input type="text" name="login" id="login" class="form-control" placeholder="Usuário (mesmo do SIGA)" maxlength="11" required>
                                                             </div>
                                                         </div>
 
