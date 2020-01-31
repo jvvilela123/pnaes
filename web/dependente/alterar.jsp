@@ -213,10 +213,10 @@
                                                             </div>
                                                                 
                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="atividade">Sua Ocupação do Membro Familiar*:</label>
+                                                                <label class="col-md-3 label-control" for="atividade">Ocupação do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="atividade" name="atividade" class="form-control" required>
-                                                                        <option selected="" disabled="" value="">Selecione a sua Ocupação do Membro Familiar</option>
+                                                                        <option selected="" disabled="" value="">Selecione a Ocupação do Membro Familiar</option>
                                                                         <%
                                                                         if(dependente.getAtividadeProf().equals("Desempregado"))
                                                                         out.print("<option selected value='Desempregado'>Desempregado</option>");
@@ -267,7 +267,7 @@
                                                                 </div>
                                                             </div> 
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="renda">Renda Total Mensal do Membro Familiar:</label>
+                                                                <label class="col-md-3 label-control" for="renda">Renda Total Mensal do Membro Familiar (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="renda" id="renda" class="form-control" value="<%=dependente.getRenda()!=null?"R$ "+decimal.format(dependente.getRenda()):""%>" placeholder="Renda Total Mensal do Membro Familiar" required onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>

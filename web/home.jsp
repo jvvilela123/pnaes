@@ -24,7 +24,7 @@
                         <%@include file="cabecalho.jsp" %>
 
                         <% 
-                            List<Inscricao> is = daoFactory.getInscricaoDao().perquisarAlunoPorEdital(alunoId, edital.getId());
+                            List<Inscricao> is = daoFactory.getInscricaoDao().perquisarListaPorAluno(alunoId);
                             if(request.getParameter("msg") != null){
                             msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
                             if (msg.isEmpty() == false && is.isEmpty()) {

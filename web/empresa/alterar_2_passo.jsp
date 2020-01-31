@@ -17,6 +17,9 @@
                     $('#cidade').load('/pnaes/cidadeajax.jsp?estado=' + $('#uf').val());
                 });
             });
+            
+           
+                
             function formatar(mascara, documento) {
                 var i = documento.value.length;
                 var saida = mascara.substring(0, 1);
@@ -235,9 +238,9 @@
                                                                 }
                                                               %>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="renda">Sua remuneração Bruta*:</label>
+                                                                    <label class="col-md-3 label-control" for="renda">Valor da Sua remuneração Bruta (R$ 0,00)*:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="renda" id="renda"  value="<%=empresa.getRenda()!=null&&empresa.getRenda()>0?"R$ "+decimal.format(empresa.getRenda()):""%>" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this,'.',',',event))" 
+                                                                        <input type="text" name="renda" id="renda"  value="<%=empresa.getRenda()!=null&&empresa.getRenda()>0?"R$ "+decimal.format(empresa.getRenda()):""%>" class="form-control" placeholder="Valor da Sua Remuneração Bruta" onKeyPress="return(moeda(this,'.',',',event))" 
                                                                                <%
                                                                             if(empresa.getRenda()!=null&&empresa.getRenda()>0)
                                                                               out.print("required");%>>
@@ -245,9 +248,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="orenda">Você possui outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc:</label>
+                                                                <label class="col-md-3 label-control" for="orenda">Valor da outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc (R$ 0,00):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="orenda" id="orenda" value="<%=empresa.getOrenda()!=null&&empresa.getOrenda()>0?"R$ "+decimal.format(empresa.getOrenda()):""%>" class="form-control" placeholder="Outra Renda do Aluno" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="orenda" id="orenda" value="<%=empresa.getOrenda()!=null&&empresa.getOrenda()>0?"R$ "+decimal.format(empresa.getOrenda()):""%>" class="form-control" placeholder="Valor da Outra Renda do Aluno" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">

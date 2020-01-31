@@ -52,8 +52,8 @@ public class DaoFactory {
     public DaoGenerico<FichaMedica> getFichaMedicaDao(){
         return new DaoGenerico<FichaMedica>(FichaMedica.class);
     }
-      public DaoGenerico<Edital>getEditalDao(){
-        return new DaoGenerico<Edital>(Edital.class);
+      public EditalDao getEditalDao(){
+        return new EditalDao();
     }
     
     public CursoDao getCursoDao() {

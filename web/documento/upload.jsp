@@ -193,11 +193,11 @@
                                        
                                        
                                        // DaoFactory daoFactory = new DaoFactory();
-                                        int tam = daoFactory.getEditalDao().listar().size();
+                                       // int tam = daoFactory.getEditalDao().listar().size();
                                        // Edital edital = new Edital();
-                                        if (tam > 0) {
-                                            edital = daoFactory.getEditalDao().listar().get(tam - 1);
-                                        }
+                                       // if (tam > 0) {
+                                        //    edital = daoFactory.getEditalDao().listar().get(tam - 1);
+                                     //   }
                                     %>
                                     <div class="card-text">
                                                       Preencha corretamente todos os campos *Obrigatórios

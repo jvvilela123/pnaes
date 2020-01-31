@@ -33,15 +33,20 @@ START - Mobile Menu
                      DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
                     String msg = new String();
                     DaoFactory daoFactory = new DaoFactory();
-                    Edital edital = new Edital();
+                    Edital edital = null;
                     Empresa empresa = new Empresa();
                     Despesa despesa = new Despesa();
                     FichaMedica fichaMedica = new FichaMedica();
                     Dependente dependente = new Dependente();
                    
-                    List<Edital> editais = daoFactory.getEditalDao().listar();
+                   
                     Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
                     Aluno aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
+                    List<Edital> editais = null;
+                    
+                    if(aluno.getCurso()!=null)
+                    editais = daoFactory.getEditalDao().buscarEditalPorCampus(aluno.getCurso().getCampus().getId());
+                    
                     List<Empresa> empresas = daoFactory.getEmpresaDao().perquisarListaPorAluno(alunoId);
                     List<Despesa> despesas = daoFactory.getDespesaDao().perquisarListaPorAluno(alunoId);
                     List<FichaMedica> fichasMedicas = daoFactory.getFichaMedicaDao().perquisarListaPorAluno(alunoId);
@@ -62,11 +67,11 @@ START - Mobile Menu
                                          }
                      
                     GregorianCalendar dataAtual = new GregorianCalendar();
-                    if (editais.size() == 0) {
-                        msg = "Nenhum edital cadastrado";
+                    if (editais == null || editais.size() == 0) {
+                       // msg = "Não existe editais cadastrado";
                         //Nenhum edital cadastrado
                     } else if (editais.get(editais.size() - 1).getDataFinal().before(dataAtual)) {
-                        msg = "Edital ja foi encerrado";
+                        //msg = "Edital ja foi encerrado";
 
                     } else {
                         edital = editais.get(editais.size() - 1);
@@ -74,7 +79,7 @@ START - Mobile Menu
                 
 
                 %>
-                <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">
+                <img alt="" src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">
 
             </div>
             <div class="logged-user-info-w">
@@ -326,7 +331,7 @@ START - Main Menu
     <div class="logged-user-w avatar-inline">
         <div class="logged-user-i">
             <div class="avatar-w">
-                <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">
+                <img alt="" src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">
             </div>
             <div class="logged-user-info-w">
                 <div class="logged-user-name">
@@ -350,7 +355,7 @@ START - Main Menu
             <div class="logged-user-menu color-style-bright">
                 <div class="logged-user-avatar-info">
                     <div class="avatar-w">
-                        <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">
+                        <img alt="" src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">
                     </div>
                     <div class="logged-user-info-w">
                         <div class="logged-user-name">

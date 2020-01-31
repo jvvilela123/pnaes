@@ -183,7 +183,7 @@
                 </div>
             </div>
               <% }   %>
-              <% if (despesas.size() > 0) { %>
+              <% if (despesas.size() > 0 && edital != null) { %>
             <div class="col-md-6 col-xl-3">
                 <div class="element-box">
                     <h5 class="form-header">
@@ -202,11 +202,27 @@
                     </div>
                 </div>
             </div>
+            <% }else{   %>
+            <div class="col-md-6 col-xl-3">
+                <div class="element-box">
+                    <h5 class="form-header">
+                        Não Existe Edital para se Inscrever
+                    </h5>
+                    <div class="form-desc">
+                    </div>
+                    <div class="element-box-content">
+                    </div>
+                    <div class="element-box-content">
+                        <!-- <a href="www.ifto.edu.br"> <button  class="mr-2 mb-2 btn btn-warningbtn-lg" type="button"> Lista de Editais Lançados</button> </a>-->
+                    </div>
+                </div>
+            </div>
             <% }   %> 
             
         </div>
     </div>
-           <% if (aluno.getStatusCadastro() == 6) { %>
+           <% if (aluno.getStatusCadastro() == 6 && edital != null) { 
+            %>
            <div class="element-box">
         <div class="element-info">
             <div class="row align-items-center ">
@@ -218,13 +234,13 @@
                     <h1 class="form-header text-center" >
                         <script>
                             function continuarInscricao(){
-                alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>','Após a confirmação não será possível alterar os dados cadastrados, deseja continuar?', function(){
+                    alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>','Após a confirmação não será possível alterar os dados cadastrados, deseja continuar?', function(){
                     window.location.href = "ServletAluno?id=<%=aluno.getId()%>&opcao=continuar_Inscricao";
                 }, function(){ alertify.error('Continue alterando os dados');}).set('labels', {ok:'Confirmo', cancel:'Voltar'}); ;
             }
                             </script>
                       <!-- <a href="/pnaes/inscricao/inscricao.jsp"> <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button">Fazer inscrição do (s) auxílio (s)</button> </a>-->
-                      <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button" onclick="continuarInscricao()">Fazer Pedido do (s) Auxílio (s)</button>
+                      <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button" onclick="continuarInscricao()">Fazer Pedido do (s) Auxílio (s) para o Edital Nº<%=edital.getNumero()%></button>
                     </h1>
                 </div>
                </div>

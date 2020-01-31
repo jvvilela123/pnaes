@@ -157,16 +157,16 @@
                                                             </div><br>
                                                             <div id='div4' class='hide'>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="renda">Sua remuneração Bruta*:</label>
+                                                                <label class="col-md-3 label-control" for="renda">Valor da Sua remuneração Bruta (R$ 0,00)*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="renda" id="renda"  value="" class="form-control" placeholder="Remuneração Bruta" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="renda" id="renda"  value="" class="form-control" placeholder="Valor da Sua Remuneração Bruta" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="orenda">Você possui outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc:</label>
+                                                                <label class="col-md-3 label-control" for="orenda">Valor da outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc (R$ 0,00):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="orenda" id="orenda" value="" class="form-control" placeholder="Outra Renda do Aluno" onkeyup="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="orenda" id="orenda" value="" class="form-control" placeholder="Valor da Outra Renda do Aluno" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">

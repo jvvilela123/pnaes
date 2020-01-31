@@ -13,6 +13,14 @@
 
         <script type="text/javascript" >
             $(document).ready(function () {
+                $('#campus').change(function () {
+                    //$('#divcurso')[0].style.display="block";
+                    //$('#divcurso').style.display = 'block';
+                    $('#cat').load('/pnaes/categoriaajax.jsp?campus='+$('#campus').val());
+                });
+
+            });
+            $(document).ready(function () {
                 $('#cat').change(function () {
                     //$('#divcurso')[0].style.display="block";
                     //$('#divcurso').style.display = 'block';
@@ -104,13 +112,8 @@
                                                                 <label class="col-md-3 label-control" for="cat">Modalidade do Curso*:</label>
                                                                 <div class="col-md-9">
                                                                     <select id="cat" name="cat" class="form-control" required>
-                                                                        <option selected="" disabled="" value="">Selecione Modalidade do Curso</option>
-                                                                        <%
-                                                                            List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
-                                                                            for (Categoria categoria : categorias) {
-                                                                                out.print("<option value=" + categoria.getId() + ">" + categoria.getNome() + "</option>");
-                                                                            }
-                                                                        %>
+                                                                        <option selected="" disabled="" value="">Selecione primeiro o Campus ↑</option>
+                                                                        
                                                                     </select>
                                                                 </div>
                                                             </div>

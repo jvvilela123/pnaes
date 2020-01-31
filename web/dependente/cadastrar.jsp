@@ -181,7 +181,7 @@
                                                                 </div>
                                                             </div> 
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="renda">Renda Total Mensal do Membro Familiar*:</label>
+                                                                <label class="col-md-3 label-control" for="renda">Renda Total Mensal do Membro Familiar (R$ 0,00)*:</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="renda" id="renda"  value="R$ 0.00" class="form-control" placeholder="Renda Total Mensal do Membro Familiar" onKeyPress="return(moeda(this,'.',',',event))"  required>
                                                                 </div>

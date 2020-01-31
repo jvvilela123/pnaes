@@ -676,7 +676,7 @@
                                                     <i class="ft-x"></i> Limpar
                                                 </button>
                                                 <button type="button" class="btn btn-primary os-icon os-icon-save" name="cadastrar" value="Cadastrar" onclick="verificaCampos()">
-                                                    <i class="la la-check-square-o"></i> Cadastrar
+                                                    <i class="la la-check-square-o"></i> Avançar
                                                 </button>
                                             </div>
                                         </form>

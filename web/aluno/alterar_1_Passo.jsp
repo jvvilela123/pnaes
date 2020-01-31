@@ -15,6 +15,16 @@
         <title>Refazer 1º Passo</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
+            
+             $(document).ready(function () {
+                $('#campus').change(function () {
+                    //$('#divcurso')[0].style.display="block";
+                    //$('#divcurso').style.display = 'block';
+                    $('#cat').load('/pnaes/categoriaajax.jsp?campus='+$('#campus').val());
+                });
+
+            });
+            
            $(document).ready(function () {
                 $('#uf').change(function () {
                     $('#cidade').load('/pnaes/cidadeajax.jsp?estado=' + $('#uf').val());
@@ -119,13 +129,17 @@
                                                                 <label class="col-md-3 label-control" for="cat">Modalidade do Curso:*</label>
                                                                 <div class="col-md-9">
                                                                     <select id="cat" name="cat" class="form-control" required>
-                                                                        <option selected="" disabled="">Selecione Modalidade do Curso</option>
+                                                                        <option selected="" disabled="">Selecione a Modalidade do Curso</option>
                                                                         <%
-                                                                          List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
+                                                                            int categoria_id = 0;
+                                                                          List<Curso> categorias = daoFactory.getCursoDao().buscarCursoPorCampus(aluno.getCurso().getCampus().getId());
                                                                           out.print("<option selected value=" + aluno.getCurso().getCategoria().getId() + ">" + aluno.getCurso().getCategoria().getNome() + "</option>");
-                                                                            for (Categoria categoria : categorias) {
-                                                                              if(categoria.getId()!=aluno.getCurso().getCategoria().getId())
-                                                                              out.print("<option value=" + categoria.getId() + ">" + categoria.getNome() + "</option>");
+                                                                            for (Curso c : categorias) {
+                                                                              if(c.getCategoria().getId()!=aluno.getCurso().getCategoria().getId() && categoria_id < c.getCategoria().getId()){
+                                                                              out.print("<option value=" + c.getCategoria().getId() + ">" + c.getCategoria().getNome() + "</option>");
+                                                                              categoria_id = c.getCategoria().getId();
+                                                                              }
+                                                                              
                                                                             }
                                                                         %>
                                                                     </select>
