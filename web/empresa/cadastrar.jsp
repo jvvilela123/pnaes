@@ -166,7 +166,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="orenda">Você possui outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="orenda" id="orenda" value="" class="form-control" placeholder="Outra Renda do Aluno" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="orenda" id="orenda" value="" class="form-control" placeholder="Outra Renda do Aluno" onkeyup="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">
