@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -34,6 +35,8 @@ public class Edital implements Serializable {
         fetch = FetchType.EAGER 
     )
     private List<Bolsa> bolsas;
+    @ManyToOne
+    private Campus campus;
 
     public Integer getId() {
         return id;
@@ -74,6 +77,14 @@ public class Edital implements Serializable {
 
     public void setBolsas(List<Bolsa> bolsas) {
         this.bolsas = bolsas;
+    }
+
+    public Campus getCampus() {
+        return campus;
+    }
+
+    public void setCampus(Campus campus) {
+        this.campus = campus;
     }
     
 

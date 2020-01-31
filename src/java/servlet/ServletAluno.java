@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Aluno;
+import modelo.Campus;
 import modelo.Cidade;
 import modelo.Curso;
 import modelo.Dependente;
@@ -60,8 +61,8 @@ public class ServletAluno extends HttpServlet {
             Cidade cidade = new Cidade();
             Uf uf = new Uf();
             Uf ufe = new Uf();
-            Dependente dependente = new Dependente();
             Curso curso = new Curso(); 
+            Campus campus = new Campus(); 
             String opcao = request.getParameter("opcao");
             String msg = new String();
             String cpf = new String();
@@ -157,6 +158,8 @@ public class ServletAluno extends HttpServlet {
                 case "preencher":
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                     
+                    campus.setId(Integer.parseInt(request.getParameter("campus")));
+                    curso.setCampus(campus);
                     curso.setId(Integer.parseInt(request.getParameter("curso")));
                     aluno.setCurso(curso);
                     aluno.setPeriodo(Integer.parseInt(request.getParameter("periodo")));
@@ -183,6 +186,8 @@ public class ServletAluno extends HttpServlet {
                     case "alterar_1_passo":
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                     
+                    campus.setId(Integer.parseInt(request.getParameter("campus")));
+                    curso.setCampus(campus);
                     curso.setId(Integer.parseInt(request.getParameter("curso")));
                     aluno.setCurso(curso);
                     aluno.setPeriodo(Integer.parseInt(request.getParameter("periodo")));

@@ -19,10 +19,10 @@ public class CursoDao extends DaoGenerico
         super(Curso.class);
     }
 
-    public List<Curso> buscarCursoPorCategoria(Integer categoria_id) 
+    public List<Curso> buscarCursoPorCategoria(Integer categoria_id, Integer campus_id) 
     {
         try{
-        String jpql = "select c from Curso c where c.categoria.id = "+categoria_id;
+        String jpql = "select c from Curso c where c.categoria.id = "+categoria_id+" and c.campus.id = "+campus_id;
         Query query = em.createQuery(jpql, Curso.class);
         
         return query.getResultList();

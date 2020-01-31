@@ -1,3 +1,4 @@
+<%@page import="modelo.Campus"%>
 <%@page import="modelo.Bolsa"%>
 <%@page import="modelo.Categoria"%>
 <%@page import="java.util.List"%>
@@ -15,7 +16,7 @@
                 $('#cat').change(function () {
                     //$('#divcurso')[0].style.display="block";
                     //$('#divcurso').style.display = 'block';
-                    $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val());
+                    $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val()+'&campus='+$('#campus').val());
                 });
 
             });
@@ -62,10 +63,7 @@
                         <%@include file="../cabecalho.jsp" %>
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
+                                
                             </div>
                         </div>
                         <center>
@@ -88,6 +86,20 @@
 
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletAluno?opcao=preencher&id=<%=session.getAttribute("aluno_id")%>" id="formAluno">
                                                         <div class="form-body">
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="campus">Campus*:</label>
+                                                                <div class="col-md-9">
+                                                                    <select id="campus" name="campus" class="form-control" required>
+                                                                        <option selected="" disabled="" value="">Selecione o Campus:</option>
+                                                                        <%
+                                                                            List<Campus> campus = daoFactory.getCampusDao().listar();
+                                                                            for (Campus c : campus) {
+                                                                                out.print("<option value=" + c.getId() + ">" + c.getNome() + "</option>");
+                                                                            }
+                                                                        %>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="cat">Modalidade do Curso*:</label>
                                                                 <div class="col-md-9">

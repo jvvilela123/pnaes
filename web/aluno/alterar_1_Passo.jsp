@@ -1,3 +1,4 @@
+<%@page import="modelo.Campus"%>
 <%@page import="modelo.Curso"%>
 <%@page import="modelo.Categoria"%>
 <%@page import="modelo.Cidade"%>
@@ -22,7 +23,7 @@
             });
             $(document).ready(function () {
                 $('#cat').change(function () {
-                $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val());
+                $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val()+'&campus='+$('#campus').val());
                 });
 
             });
@@ -69,10 +70,6 @@
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
 
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
                             </div>
                         </div>
                         <center>
@@ -100,6 +97,23 @@
                                                         %>
                                                     <form  class="form form-horizontal striped-rows form-bordered" method="Post" action="../ServletAluno?opcao=alterar_1_passo&id=<%=aluno.getId()%>" id="formAluno">
                                                         <div class="form-body">
+                                                            
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="campus">Campus*:</label>
+                                                                <div class="col-md-9">
+                                                                    <select id="campus" name="campus" class="form-control" required>
+                                                                        <option selected="" disabled="">Selecione o Campus</option>
+                                                                        <%
+                                                                          List<Campus> campus = daoFactory.getCampusDao().listar();
+                                                                          out.print("<option selected value=" + aluno.getCurso().getCampus().getId() + ">" + aluno.getCurso().getCampus().getNome() + "</option>");
+                                                                            for (Campus c : campus) {
+                                                                              if(c.getId()!=aluno.getCurso().getCampus().getId())
+                                                                              out.print("<option value=" + c.getId() + ">" + c.getNome() + "</option>");
+                                                                            }
+                                                                        %>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                            
                                                              <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="cat">Modalidade do Curso:*</label>
@@ -122,7 +136,7 @@
                                                                 <div class="col-md-9">
                                                                     <select id="curso" name="curso" class="form-control" required>
                                                                         <%
-                                                                            List<Curso> cursos = daoFactory.getCursoDao().buscarCursoPorCategoria(aluno.getCurso().getCategoria().getId());
+                                                                            List<Curso> cursos = daoFactory.getCursoDao().buscarCursoPorCategoria(aluno.getCurso().getCategoria().getId(),aluno.getCurso().getCampus().getId());
                                                                             out.print("<option selected value=" + aluno.getCurso().getId() + ">" + aluno.getCurso().getNome() + "</option>");
                                                                             for (Curso curso : cursos) {
                                                                                 if(curso.getId()!=aluno.getCurso().getId()) 
@@ -139,7 +153,7 @@
                                                                     <select id="periodo" name="periodo" class="form-control" required>
                                                                         
                                                                         <%
-                                                                          List<Curso> cursos2 = daoFactory.getCursoDao().buscarCursoPorCategoria(aluno.getCurso().getCategoria().getId());
+                                                                          //List<Curso> cursos2 = daoFactory.getCursoDao().buscarCursoPorCategoria(aluno.getCurso().getCategoria().getId());
                                                                           Curso curso = (Curso) daoFactory.getCursoDao().pesquisarPorId(aluno.getCurso().getId());
                                                                            out.print("<option selected value=" + aluno.getPeriodo() + ">" + aluno.getPeriodo() + "º " + curso.getTipoPeriodo() +  "</option>");
                                                                             for (int i = 1; i <= curso.getqPeriodo(); i++) {
@@ -416,9 +430,8 @@
                                                                                 <input type="number" name="reprovou" id="reprovou" value="<%=aluno.getReprovouQuantas()%>" min="1" max="20" required>
                                                                                  
                                                                                 <%} else { %>
-                                                                                   <input type="number" name="reprovou" id="reprovou" value="0" min="1" max="20">
-                                                                                 
-                                                                              <% } %>
+                                                                                   <input type="number" name="reprovou" id="reprovou" value="1" min="1" max="20">
+                                                                                 <% } %>
                                                                                 
                                                                             </div>
                                                                         </div>
@@ -472,7 +485,7 @@
                                                                 </button>
                                                                 
                                                                 <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save" >
-                                                                    <i class="fa fa-check-square-o"></i>Salvar
+                                                                    <i class="fa fa-check-square-o"></i> Salvar
                                                                 </button>
                                                             </div>
                                                         </div>

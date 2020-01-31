@@ -62,4 +62,8 @@ public class DaoFactory {
     public DaoGenerico<Categoria>getCategoriaDao(){
         return new DaoGenerico<Categoria>(Categoria.class);
     }  
+    
+    public DaoGenerico<Campus>getCampusDao(){
+        return new DaoGenerico<Campus>(Campus.class);
+    }  
 }

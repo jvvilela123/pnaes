@@ -22,6 +22,8 @@ public class Curso implements Serializable{
     private String nome;
     @ManyToOne
     private Categoria categoria;
+    @ManyToOne
+    private Campus campus;
     private String turno;
     private Integer qPeriodo;
     private String tipoPeriodo;
@@ -73,6 +75,14 @@ public class Curso implements Serializable{
 
     public void setTipoPeriodo(String tipoPeriodo) {
         this.tipoPeriodo = tipoPeriodo;
+    }
+
+    public Campus getCampus() {
+        return campus;
+    }
+
+    public void setCampus(Campus campus) {
+        this.campus = campus;
     }
 
    
