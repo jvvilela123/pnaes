@@ -31,7 +31,7 @@
                                             }
                                             Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
 
-                                            Edital edital = daoFactory.getEditalDao().listar().get(0);
+                                           Edital edital = (Edital) daoFactory.getEditalDao().pesquisarPorId(inscricao.getEdital().getId());
                                         %>
 <!--------------------
 START - Mobile Menu
@@ -52,7 +52,7 @@ START - Mobile Menu
         <div class="logged-user-w">
             <div class="avatar-w">
                 <!--<img alt="" src="/pnaes/img/avatar1.jpg">-->
-                <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
+                <img alt="" src="/pnaes/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
             </div>
             <div class="logged-user-info-w">
                 <div class="logged-user-name">
@@ -96,20 +96,9 @@ START - Mobile Menu
                     </div>
                 </div>
             </li>
-            <%
-           // DaoFactory daoFactory = new DaoFactory();
-          //  Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
-            int tam = daoFactory.getEditalDao().listar().size();
-          //  Edital edital = new Edital();
-           // List<Dependente> deps = daoFactory.getDependenteDao().perquisarPorAluno(inscricao.getAluno().getId());
-            if(tam > 0){
-                edital = daoFactory.getEditalDao().listar().get(tam-1);
-            }
             
-            //System.out.println("/pnaes/"+edital.getNumero()+"/alunos/"+inscricao.getAluno().getCpf()+"/da.pdf");
-        %>
         <li class="selected menu">
-            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/da.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/da.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -126,7 +115,7 @@ START - Mobile Menu
         </li>
         <%if (dependentes.size() > 0) {    %>
         <li class="selected menu">
-            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -142,7 +131,7 @@ START - Mobile Menu
         </li>
         <%}%>
         <li class="selected menu">
-            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dr.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dr.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -157,7 +146,7 @@ START - Mobile Menu
             </div>
         </li>
         <li class="selected menu">
-            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -172,7 +161,7 @@ START - Mobile Menu
             </div>
         </li>
         <li class="selected menu">
-            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/od.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/od.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -297,20 +286,9 @@ START - Main Menu
         </li>
 
 
-        <%
-           // DaoFactory daoFactory = new DaoFactory();
-          //  Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
-            int tam = daoFactory.getEditalDao().listar().size();
-          //  Edital edital = new Edital();
-           // List<Dependente> deps = daoFactory.getDependenteDao().perquisarPorAluno(inscricao.getAluno().getId());
-            if(tam > 0){
-                edital = daoFactory.getEditalDao().listar().get(tam-1);
-            }
-            
-            //System.out.println("/pnaes/"+edital.getNumero()+"/alunos/"+inscricao.getAluno().getCpf()+"/da.pdf");
-        %>
+       
         <li class="selected menu">
-            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/da.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/da.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -327,7 +305,7 @@ START - Main Menu
         </li>
         <%if (dependentes.size() > 0) {    %>
         <li class="selected menu">
-            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -343,7 +321,7 @@ START - Main Menu
         </li>
         <%}%>
         <li class="selected menu">
-            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dr.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dr.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -358,7 +336,7 @@ START - Main Menu
             </div>
         </li>
         <li class="selected menu">
-            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/dd.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -373,7 +351,7 @@ START - Main Menu
             </div>
         </li>
         <li class="selected menu">
-            <a href="../<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/od.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/od.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
