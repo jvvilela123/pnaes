@@ -46,6 +46,9 @@ START - Mobile Menu
                     
                     if(aluno.getCurso()!=null)
                     editais = daoFactory.getEditalDao().buscarEditalPorCampus(aluno.getCurso().getCampus().getId());
+                    else
+                    editais = daoFactory.getEditalDao().buscarEditalPorCampus(1);
+                    
                     
                     List<Empresa> empresas = daoFactory.getEmpresaDao().perquisarListaPorAluno(alunoId);
                     List<Despesa> despesas = daoFactory.getDespesaDao().perquisarListaPorAluno(alunoId);
@@ -67,15 +70,9 @@ START - Mobile Menu
                                          }
                      
                     GregorianCalendar dataAtual = new GregorianCalendar();
-                    if (editais == null || editais.size() == 0) {
-                       // msg = "Não existe editais cadastrado";
-                        //Nenhum edital cadastrado
-                    } else if (editais.get(editais.size() - 1).getDataFinal().before(dataAtual)) {
-                       //msg = "Edital já foi encerrado";
-
-                    } else {
-                        editalEncerrado = false;
-                    }
+                  if (editais.get(editais.size() - 1).getDataFinal().before(dataAtual)) {
+                      editalEncerrado = false;
+                  }
                 edital = editais.get(editais.size() - 1);
 
                 %>

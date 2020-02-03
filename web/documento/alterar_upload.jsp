@@ -207,11 +207,11 @@
                                         String novoArquivo = caminhoAtual + File.separator  + "arquivo.txt";
                                          new File(novoArquivo).createNewFile();*/
                                        // DaoFactory daoFactory = new DaoFactory();
-                                        int tam = daoFactory.getEditalDao().listar().size();
+                                      //  int tam = daoFactory.getEditalDao().listar().size();
                                        // Edital edital = new Edital();
-                                        if (tam > 0) {
-                                            edital = daoFactory.getEditalDao().listar().get(tam - 1);
-                                        }
+                                       // if (tam > 0) {
+                                       //     edital = daoFactory.getEditalDao().listar().get(tam - 1);
+                                      //  }
                                     %>
                                  <div class="card-text">
                                                       Preencha corretamente todos os campos *Obrigatórios
@@ -243,8 +243,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/da.pdf" 
-                                        style="width:500px; height:500px;" frameborder="0"></iframe>
+                                        <iframe src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=edital.getNumero()%>/da.pdf" style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
                                               <div class="modal-footer">
@@ -265,7 +264,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dp.pdf" style="width:500px; height:500px;" frameborder="0"></iframe>
+                                        <iframe src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=edital.getNumero()%>/dp.pdf" style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
                                               <div class="modal-footer">
@@ -286,7 +285,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dr.pdf" 
+                                        <iframe src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=edital.getNumero()%>/dr.pdf" 
                                         style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
@@ -308,7 +307,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/dd.pdf" 
+                                        <iframe src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=edital.getNumero()%>/dd.pdf" 
                                         style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
@@ -330,7 +329,7 @@
                                               </div>
                                               <div class="modal-body">
                                                 <div style="text-align: center;">
-                                        <iframe src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/od.pdf" 
+                                        <iframe src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=edital.getNumero()%>/od.pdf" 
                                         style="width:500px; height:500px;" frameborder="0"></iframe>
                                         </div>
                                               </div>
@@ -348,7 +347,7 @@
                                             <div class="form-group row">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-3">
-                                                    <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg" width="150" height="200" class="img_aluno">
+                                                    <img src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg" width="150" height="200" class="img_aluno">
                                                 </div>
                                             </div>
                                             <div class="form-group row">

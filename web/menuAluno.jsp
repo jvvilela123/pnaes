@@ -202,7 +202,7 @@
                     </div>
                 </div>
             </div>
-            <% }else{   %>
+            <% }else if(editalEncerrado && aluno.getCurso()!=null){   %>
             <div class="col-md-6 col-xl-3">
                 <div class="element-box">
                     <h5 class="form-header">
