@@ -39,13 +39,7 @@
                 
         }
     }
-      $(document).ready(function () {
-                $('#bolsa1').change(function () {
-                   // $('#divperiodo')[0].style.display="block";
-                    $('#bolsa2').load('/pnaes/bolsasajax.jsp?bolsa=' + $('#bolsa1').val());
-                });
-
-            });
+      
         </script>
     </head>
     <body class="menu-position-side menu-side-left full-screen">
@@ -58,7 +52,15 @@
                         <%@include file="../cabecalho.jsp" %>
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
+                          <script>
+                                   $(document).ready(function () {
+                                $('#bolsa1').change(function () {
+                                   // $('#divperiodo')[0].style.display="block";
+                                    $('#bolsa2').load('/pnaes/bolsasajax.jsp?bolsa=' + $('#bolsa1').val()+'&edital=<%=edital.getId()%>');
+                                });
 
+                            });
+                        </script>
                             </div>
                         </div>
                         <center>

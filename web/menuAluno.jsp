@@ -183,7 +183,7 @@
                 </div>
             </div>
               <% }   %>
-              <% if (despesas.size() > 0 && edital != null) { %>
+              <% if (despesas.size() > 0 && !editalEncerrado) { %>
             <div class="col-md-6 col-xl-3">
                 <div class="element-box">
                     <h5 class="form-header">
@@ -194,7 +194,7 @@
                     <div class="element-box-content">
                     </div>
                     <div class="element-box-content">
-                        <% if (aluno.getStatusCadastro() == 6 || aluno.getStatusCadastro() == 8) { %>
+                        <% if (aluno.getStatusCadastro() == 6 || aluno.getStatusCadastro() == 8 || aluno.getStatusCadastro() == 7) { %>
                         <a href="/pnaes/documento/alterar_upload.jsp"> <button  class="mr-2 mb-2 btn btn-info btn-lg" type="button">Alterar o 7º Passo&#10004;</button> </a>
                          <%  }else{ %>
                          <a href="/pnaes/documento/upload.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">7º Passo</button> </a>
@@ -206,7 +206,7 @@
             <div class="col-md-6 col-xl-3">
                 <div class="element-box">
                     <h5 class="form-header">
-                        Não Existe Edital para se Inscrever
+                        Todos os Editais Foram Encerrados
                     </h5>
                     <div class="form-desc">
                     </div>
@@ -221,7 +221,7 @@
             
         </div>
     </div>
-           <% if (aluno.getStatusCadastro() == 6 && edital != null) { 
+           <% if (aluno.getStatusCadastro() == 6 && !editalEncerrado) { 
             %>
            <div class="element-box">
         <div class="element-info">

@@ -29,8 +29,8 @@ START - Mobile Menu
         <div class="logged-user-w">
             <div class="avatar-w">      
                 <%
-                    
-                     DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
+                    Boolean editalEncerrado = true;
+                    DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
                     String msg = new String();
                     DaoFactory daoFactory = new DaoFactory();
                     Edital edital = null;
@@ -71,12 +71,12 @@ START - Mobile Menu
                        // msg = "Não existe editais cadastrado";
                         //Nenhum edital cadastrado
                     } else if (editais.get(editais.size() - 1).getDataFinal().before(dataAtual)) {
-                        //msg = "Edital ja foi encerrado";
+                       //msg = "Edital já foi encerrado";
 
                     } else {
-                        edital = editais.get(editais.size() - 1);
+                        editalEncerrado = false;
                     }
-                
+                edital = editais.get(editais.size() - 1);
 
                 %>
                 <img alt="" src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">
