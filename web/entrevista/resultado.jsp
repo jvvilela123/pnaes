@@ -134,7 +134,7 @@
                                                                         }
                                                                         total1 = empresa.getRenda() + td + empresa.getOrenda();
                                                                         perCapita = total1 / (i + 1);
-                                                                        DecimalFormat decimal = new DecimalFormat("0.00");
+                                                                        //DecimalFormat decimal = new DecimalFormat("0.00");
                                                                 %>
                                                                 <tr>
                                                                     <td><%=e.getInscricao().getId()%></td>

@@ -93,6 +93,7 @@ public class ServletInscricao extends HttpServlet {
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
                     inscricao.setJustificativa(request.getParameter("justificativa"));
                     inscricao.setDocumentosFaltantes(request.getParameter("docf"));
+                    inscricao.setStatus("Analizado");
                     inscricao.setResultado(request.getParameter("resultado"));
 
                     daoFactory.getInscricaoDao().inserirOuAlterar(inscricao);

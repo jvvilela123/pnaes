@@ -86,7 +86,7 @@
                                                             }
                                                         }                                                            
                                                             for (Entrevista en : entrevistas) {
-                                                                if (en.getSe().getStatus().equals("Agendado")) {
+                                                                if (en.getInscricao().getStatus().equals("Agendado")) {
                                                                     out.println("<tr>");
                                                                     out.println("<td>" + en.getInscricao().getId() + "</td>");
                                                                     out.println("<td>" + en.getInscricao().getAluno().getNome() + "</td>");

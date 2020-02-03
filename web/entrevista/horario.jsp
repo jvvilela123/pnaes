@@ -139,7 +139,7 @@
                                                                     int k =0;
                                                                     for (Inscricao i : inscricoes) {
                                                                         System.out.println("i = " + i.getId());
-                                                                        if (i.getStatusEntrevista().getStatus().equals("Pendente")) {
+                                                                        if (i.getStatus().equals("Analizado")) {
                                                                             
                                                                             
                                                                 %>
