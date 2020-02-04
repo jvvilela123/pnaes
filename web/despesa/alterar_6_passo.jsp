@@ -65,7 +65,7 @@
                                                     </div><br>
                                                     <%
                                                         if(request.getParameter("status")!=null){
-                                                        aluno.setStatusCadastro(request.getParameter("status"));
+                                                        aluno.setStatusCadastro(Integer.parseInt(request.getParameter("status")));
                                                         daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                                                         }
                                                         
