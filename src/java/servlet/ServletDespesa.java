@@ -46,6 +46,7 @@ public class ServletDespesa extends HttpServlet {
             Despesa despesa = new Despesa();
             Aluno aluno = new Aluno();
             String opcao = request.getParameter("opcao");
+            
             try {
                 switch (opcao) {
 
@@ -63,6 +64,10 @@ public class ServletDespesa extends HttpServlet {
                         despesa.setAluno(aluno);
                         //Chamando o metodo inserir do dao e redirecionando para listar Orçamento
                         daoFactory.getDespesaDao().inserirOuAlterar(despesa);
+                        
+                        if(request.getParameter("editalEncerrado").equals("1"))
+                        response.sendRedirect("home.jsp");
+                        else
                         response.sendRedirect("documento/upload.jsp");
 
                         break;

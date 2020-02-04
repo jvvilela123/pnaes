@@ -29,7 +29,7 @@ START - Mobile Menu
         <div class="logged-user-w">
             <div class="avatar-w">      
                 <%
-                    Boolean editalEncerrado = true;
+                    Boolean editalEncerrado = false;
                     DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
                     String msg = new String();
                     DaoFactory daoFactory = new DaoFactory();
@@ -71,7 +71,7 @@ START - Mobile Menu
                      
                     GregorianCalendar dataAtual = new GregorianCalendar();
                   if (editais.get(editais.size() - 1).getDataFinal().before(dataAtual)) {
-                      editalEncerrado = false;
+                      editalEncerrado = true;
                   }
                 edital = editais.get(editais.size() - 1);
 

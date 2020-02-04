@@ -67,7 +67,7 @@
                                                         daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                                                         }
                                                     %>
-                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDespesa?opcao=cadastrar&aluno_id=<%=alunoId%>">
+                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDespesa?opcao=cadastrar&aluno_id=<%=alunoId%>&editalEncerrado=<%=editalEncerrado?"1":"0"%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="moradia">Moradia(Aluguel, Parcela de Financiamento, etc..):</label>
