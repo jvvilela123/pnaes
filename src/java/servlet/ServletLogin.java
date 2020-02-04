@@ -58,7 +58,7 @@ public class ServletLogin extends HttpServlet {
                         response.sendRedirect("home.jsp");
                     
                 }else{
-                    if(login.equals("admin") && senha.equals("admin")){
+                    if(login.equals("123456") && senha.equals("admin")){
                         Aluno aluno = (Aluno) daoFactory.getAlunoDao().buscarAlunoPor(login);
                     
                         sessao.setAttribute("cpf", aluno.getCpf());
