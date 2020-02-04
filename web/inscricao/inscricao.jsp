@@ -29,7 +29,7 @@
                 alertify.errorAlert("<h6 class='card-title'>Justifique por que você necessita dos auxílios</h6>");
                }else{
                 
-                alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>', 'Após a confirmação não será possível alterar os dados cadastrados, deseja continuar?</h5>', 
+                alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>', 'Após a confirmação não será possível alterar as opções de Auxílio, deseja continuar?</h5>', 
                 function(){ 
                     //var url = "../ServletDependente?opcao=excluir&id=" + id;
                    //window.location = url; 
