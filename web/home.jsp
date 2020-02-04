@@ -53,7 +53,7 @@
                                 <%}
                             
                             if (is.isEmpty() == false && !is.get(0).getStatus().equals("Finalizado")) {
-                                msg = "Candidato já Inscrito";
+                                msg = "Sua Inscrição foi Confirmada!";
                                 
 
                         %>
