@@ -63,14 +63,7 @@
                                                     <div class="card-text" align="justify">
                                                        Se você não possui algumas das despesas abaixo, deixe o item em branco (R$ 0,00). Mas atenção, não deixe de informar a sua realidade, pois a NÃO declaração poderá comprometer a análise socioeconômica.
                                                     </div><br>
-                                                    <%
-                                                        if(request.getParameter("status")!=null){
-                                                        aluno.setStatusCadastro(Integer.parseInt(request.getParameter("status")));
-                                                        daoFactory.getAlunoDao().inserirOuAlterar(aluno);
-                                                        }
-                                                        
-                                                       
-                                                    %>
+                                                    
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDespesa?opcao=alterar_6_passo&aluno_id=<%=session.getAttribute("aluno_id")%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
