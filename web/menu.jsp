@@ -29,6 +29,8 @@ START - Mobile Menu
         <div class="logged-user-w">
             <div class="avatar-w">      
                 <%
+                    
+                    
                     Boolean editalEncerrado = false;
                     DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
                     String msg = new String();
@@ -38,9 +40,16 @@ START - Mobile Menu
                     Despesa despesa = new Despesa();
                     FichaMedica fichaMedica = new FichaMedica();
                     Dependente dependente = new Dependente();
-                   
-                   
-                    Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
+                    Integer alunoId = 0;
+                    if(session.getAttribute("aluno_id")!=null)
+                    alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
+                    else{
+                        %>
+                        <script>
+                            window.open('/pnaes/index.jsp?sair=1', '_self');
+                        </script>
+                     <%
+                    }
                     Aluno aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
                     List<Edital> editais = null;
                     
