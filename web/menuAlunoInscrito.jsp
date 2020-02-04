@@ -1,4 +1,3 @@
-<%@page import="java.util.Calendar"%>
 <%@page import="util.DataFormat"%>
 <%@page import="modelo.Categoria"%>
 <%@page import="modelo.Inscricao"%>
@@ -160,7 +159,7 @@
                                                                 <td class="nomeAluno"><%=i.getAluno().getNome()%></td>
                                                                 <td><%=i.getAluno().getCpf()%></td>
                                                                 <td><%=i.getAluno().getCurso().getNome()%></td>
-                                                                <td><%=i.getEdital().getNumero()%> / <%=i.getEdital().getDataInicial().get(Calendar.YEAR)%></td>
+                                                                <td><%=i.getEdital().getNumeroEAno()%></td>
                                                                 <td><%=i.getBolsa1().getNome()%></td>
                                                                 <td><%=i.getBolsa2().getNome()%></td>
                                                                 <td><%=dataFormat.formatarData(i.getDataInscricao())%></td>

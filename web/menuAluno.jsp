@@ -240,7 +240,7 @@
             }
                             </script>
                       <!-- <a href="/pnaes/inscricao/inscricao.jsp"> <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button">Fazer inscrição do (s) auxílio (s)</button> </a>-->
-                      <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button" onclick="continuarInscricao()">Fazer Pedido do (s) Auxílio (s) para o Edital Nº<%=edital.getNumero()%></button>
+                      <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button" onclick="continuarInscricao()">Fazer Pedido do (s) Auxílio (s) para o Edital Nº <%=edital.getNumeroEAno()%></button>
                     </h1>
                 </div>
                </div>
