@@ -11,6 +11,10 @@
         <title>Alteração de Despesa Mensal</title>  
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
+            $(function(){
+                $("#outrasDespesas").removeAttr("required");
+                $("#qualOutrasDespesas").removeAttr("required");
+                });
             function formatar(mascara, documento) {
                 var i = documento.value.length;
                 var saida = mascara.substring(0, 1);
@@ -45,12 +49,17 @@
                     <%@include file="../menu.jsp" %>
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
-                        <div class="content-header-right col-md-6 col-12" >
-                            <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-
-                               
-                            </div>
-                        </div>
+                       <%
+                                                if (request.getParameter("msg") != null) {
+                                            %>
+                                            <center>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong><%=request.getParameter("msg")%></strong>
+                                                </div>
+                                            </center>
+                                            <%
+                                                }
+                                            %>
                         <center>
                             <div style="width: 80%">
                                 <br>
@@ -67,31 +76,31 @@
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDespesa?opcao=alterar_6_passo&aluno_id=<%=session.getAttribute("aluno_id")%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="moradia">Moradia (Aluguel, Parcela de Financiamento, etc..)::</label>
+                                                                <label class="col-md-3 label-control" for="moradia">Moradia (Aluguel, Parcela de Financiamento, etc..) (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="moradia" id="moradia" value="<%=despesa.getMoradia()!=null?"R$ "+decimal.format(despesa.getMoradia()):""%>" class="form-control" placeholder="valor gasto com Moradia" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="agua">Agua:</label>
+                                                                <label class="col-md-3 label-control" for="agua">Àgua (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="agua" id="agua" value="<%=despesa.getAgua()!=null?"R$ "+decimal.format(despesa.getAgua()):""%>" class="form-control" placeholder="valor gasto com Agua" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="energia">Energia:</label>
+                                                                <label class="col-md-3 label-control" for="energia">Energia (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="energia" value="<%=despesa.getEnergia()!=null?"R$ "+decimal.format(despesa.getEnergia()):""%>" id="energia" class="form-control" placeholder="valor gasto com Energia" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="telefone">Telefone:</label>
+                                                                <label class="col-md-3 label-control" for="telefone">Telefone (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="telefone"  value="<%=despesa.getTelefone()!=null?"R$ "+decimal.format(despesa.getTelefone()):""%>" id="telefone" class="form-control" placeholder="valor gasto com Telefone" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="farmacia">Farmacia:</label>
+                                                                <label class="col-md-3 label-control" for="farmacia">Farmácia (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="farmacia" id="farmacia" value="<%=despesa.getFarmacia()!=null?"R$ "+decimal.format(despesa.getFarmacia()):""%>" class="form-control" placeholder="valor gasto com Farmacia" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
@@ -133,7 +142,7 @@
                                                       Se possuir mais de uma despesa, informe o valor total e em seguida especifique quais são as despesas
                                                                 </div><br>
                                                                 <div class="form-group row"> 
-                                                                <label class="col-md-3 label-control" for="outrasDespesas">Valor Total das Outras Despesas*:</label>
+                                                                <label class="col-md-3 label-control" for="outrasDespesas">Valor Total das Outras Despesas* (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="outrasDespesas" value="<%=despesa.getOutrasDespesas()!=null?"R$ "+decimal.format(despesa.getOutrasDespesas()):""%>" id="outrasDespesas" class="form-control" placeholder="Valor Gasto com Outras Despesas" onKeyPress="return(moeda(this,'.',',',event))" required>
                                                                 </div>

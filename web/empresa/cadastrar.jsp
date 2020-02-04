@@ -78,11 +78,17 @@
                     <%@include file="../menu.jsp" %>
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
-                        <div class="content-header-right col-md-6 col-12" >
-                            <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-
-                            </div>
-                        </div>
+                        <%
+                                                if (request.getParameter("msg") != null) {
+                                            %>
+                                            <center>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong><%=request.getParameter("msg")%></strong>
+                                                </div>
+                                            </center>
+                                            <%
+                                                }
+                                            %>
                         <center>
                             <div style="width: 80%">
                                 <br>

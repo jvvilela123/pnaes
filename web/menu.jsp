@@ -9,6 +9,7 @@
 <%@page import="modelo.Edital"%>
 <%@page import="modelo.Inscricao"%>
 <%@page import="dao.DaoFactory"%>
+<%@page errorPage="/pnaes/index.jsp?sair=1" %>
 <!--------------------
 START - Mobile Menu
 -------------------->
@@ -29,6 +30,13 @@ START - Mobile Menu
         <div class="logged-user-w">
             <div class="avatar-w">      
                 <%
+                    if(session.getAttribute("aluno_id")==null){
+                        %>
+                        <script>
+                            window.open('/pnaes/index.jsp?sair=1', '_self');
+                        </script>
+                     <%}
+                 
                     
                     
                     Boolean editalEncerrado = false;
@@ -41,15 +49,10 @@ START - Mobile Menu
                     FichaMedica fichaMedica = new FichaMedica();
                     Dependente dependente = new Dependente();
                     Integer alunoId = 0;
-                    if(session.getAttribute("aluno_id")!=null)
+                    
+                    
+                    
                     alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
-                    else{
-                        %>
-                        <script>
-                            window.open('/pnaes/index.jsp?sair=1', '_self');
-                        </script>
-                     <%
-                    }
                     Aluno aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
                     List<Edital> editais = null;
                     
