@@ -260,7 +260,7 @@
                                                 <i class="ft-x"></i> Limpar
                                             </button>
                                             <button type="submit" class="btn btn-primary os-icon os-icon-save"  name="cadastrar" value="Cadastrar">
-                                                <i class="la la-check-square-o"></i> Enviar
+                                                <i class="la la-check-square-o"></i> Avançar
                                             </button>
                                         </div>                                                    
                                     </form>
