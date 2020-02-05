@@ -48,12 +48,14 @@ public class ServletBolsa extends HttpServlet {
                     bolsa.setEdital(edital);
                     bolsa.setNome(request.getParameter("nome"));
                     bolsa.setValor(Double.parseDouble(request.getParameter("valor")));
-                    bolsa = daoFactory.getBolsaDao().inserirOuAlterarComRetorno(bolsa);
+                    daoFactory.getBolsaDao().inserirOuAlterar(bolsa);
                   
                     response.sendRedirect("bolsa/listar.jsp");
                 break;
                 case "alterar":
-                    bolsa.setId(Integer.parseInt(request.getParameter("id")));
+                    bolsa = (Bolsa) daoFactory.getBolsaDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));                    
+                    edital.setId(Integer.parseInt(request.getParameter("edital")));
+                    bolsa.setEdital(edital);
                     bolsa.setNome(request.getParameter("nome"));
                     bolsa.setValor(Double.parseDouble(request.getParameter("valor")));
                     daoFactory.getBolsaDao().inserirOuAlterar(bolsa);

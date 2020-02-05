@@ -89,7 +89,7 @@
                                                                     <select id="bolsa1" name="bolsa1" class="form-control" required>
                                                                         <option value="">Selecione a 1ª Opção de Auxílio</option>
                                                                         <%
-                                                                            List<Bolsa> bolsas = edital.getBolsas();
+                                                                            List<Bolsa> bolsas = daoFactory.getBolsaDao().buscarBolsaPorEdital(edital.getId());
                                                                             for (Bolsa b : bolsas) {
                                                                                 out.print("<option value=" + b.getId() + ">" + b.getNome() + "</option>");
                                                                             }

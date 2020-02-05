@@ -24,7 +24,7 @@ public class InserirAdmin {
         Aluno aluno = new Aluno();
         DaoFactory daoFactory = new DaoFactory();
         aluno.setNome("Admin");
-        aluno.setCpf("admin");
+        aluno.setCpf("123456");
         aluno.setNivel(3);
         aluno.setStatusCadastro(0);
         daoFactory.getAlunoDao().inserirOuAlterar(aluno);

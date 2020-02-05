@@ -44,10 +44,26 @@
                                                         Texto info
                                                     </div>
                                                     <%    
-                                                        Bolsa bolsa = daoFactory.getBolsaDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                                                        Bolsa bolsa = (Bolsa) daoFactory.getBolsaDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                                                     %>
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletBolsa?opcao=alterar&id=<%=bolsa.getId()%>">
                                                         <div class="form-body">
+                                                             <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="edital">Edital:</label>
+                                                                <div class="col-md-9">
+                                                                    <select id="edital" name="edital" class="form-control" required>
+                                                                        <option selected="" disabled="">Selecione o Edital</option>
+                                                                        <%
+                                                                          List<Edital> editals = daoFactory.getEditalDao().buscarEditalPorCampus(edital.getCampus().getId());
+                                                                          out.print("<option selected value=" + bolsa.getEdital().getId() + ">" + bolsa.getEdital().getNumeroEAno() + "</option>");
+                                                                            for (Edital c : editals) {
+                                                                              if(c.getId()!=aluno.getCurso().getCampus().getId())
+                                                                              out.print("<option value=" + c.getId() + ">" + c.getNumeroEAno() + "</option>");
+                                                                            }
+                                                                        %>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
 
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="nome">Nome</label>

@@ -12,9 +12,8 @@ import modelo.*;
  */
 public class DaoFactory {
     
-    
-    public DaoGenerico<Bolsa> getBolsaDao(){
-        return new DaoGenerico<Bolsa>(Bolsa.class);
+    public BolsaDao getBolsaDao(){
+        return new BolsaDao();
     }
     public DaoGenerico<Endereco> getEnderecoDao(){
         return new DaoGenerico<Endereco>(Endereco.class);

@@ -9,7 +9,7 @@
 <%@page import="modelo.Edital"%>
 <%@page import="modelo.Inscricao"%>
 <%@page import="dao.DaoFactory"%>
-<%@page errorPage="/pnaes/index.jsp?sair=1" %>
+<%//@page errorPage="/pnaes/index.jsp?sair=1" %>
 <!--------------------
 START - Mobile Menu
 -------------------->
