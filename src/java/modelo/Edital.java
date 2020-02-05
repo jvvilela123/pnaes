@@ -29,12 +29,6 @@ public class Edital implements Serializable {
     private String numero;
     private GregorianCalendar dataInicial;
     private GregorianCalendar dataFinal;
-    @OneToMany(
-        cascade = CascadeType.ALL,
-        orphanRemoval = true,
-        fetch = FetchType.EAGER 
-    )
-    private List<Bolsa> bolsas;
     @ManyToOne
     private Campus campus;
 
@@ -69,16 +63,6 @@ public class Edital implements Serializable {
     public void setDataFinal(GregorianCalendar dataFinal) {
         this.dataFinal = dataFinal;
     }
-
-    public List<Bolsa> getBolsas() {
-        
-        return bolsas;
-    }
-
-    public void setBolsas(List<Bolsa> bolsas) {
-        this.bolsas = bolsas;
-    }
-
     public Campus getCampus() {
         return campus;
     }

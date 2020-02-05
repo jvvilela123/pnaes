@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Campus;
 import modelo.Edital;
 
 /**
@@ -46,6 +47,7 @@ public class ServletEdital extends HttpServlet {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             DaoFactory daoFactory = new DaoFactory();
             Edital edital = new Edital();
+            Campus campus = new Campus();
             
             String opcao = request.getParameter("opcao");
             String msg;
@@ -53,6 +55,8 @@ public class ServletEdital extends HttpServlet {
             switch(opcao) {
                 case "cadastrar" :
                     edital.setNumero(request.getParameter("numero"));
+                    campus.setId(Integer.parseInt(request.getParameter("campus_id")));
+                    edital.setCampus(campus);
                     dataInicial.setTime(formato.parse(request.getParameter("dataInicial")));                    
                     edital.setDataInicial(dataInicial);
                     dataFinal.setTime(formato.parse(request.getParameter("dataFinal")));

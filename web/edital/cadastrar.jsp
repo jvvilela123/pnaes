@@ -86,18 +86,11 @@
                    "<a href='#' onclick='removerAuxilio(this)' title='Excluir' class='text-danger'><div class='os-icon os-icon-x'></div><span>Excluir</span></a>"
                     ] ).draw(false);
                     }
+                    
                     document.getElementById('nomeAuxilio').value = '';
                     document.getElementById('valorAuxilio').value = '';
-                    <%
-                        Bolsa bolsa = new Bolsa();
-                        bolsa.setNome(""+%>nome<%"");
-                        //bolsa.setValor(Double.parseDouble(request.getParameter("valorAuxilio")));
-                        System.out.println("Bolsa: "+bolsa.getNome());
-                        bolsas.add(bolsa);
-                        
-                    %>
+                    
                 }
-                
                 function removerAuxilio(id) {
                     //alert("teste");
                      var tabela = $('#tabelaAuxilios').DataTable();
@@ -145,7 +138,7 @@
                                                         Preencha os dados corretamente
                                                     </div>
 
-                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEdital?opcao=cadastrar">
+                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEdital?opcao=cadastrar&campus_id=<%=aluno.getCurso().getCampus().getId()%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="numero">Numero do edital:</label>
@@ -165,36 +158,7 @@
                                                                     <input type="date" name="dataFinal" id="dataFinal" class="form-control" placeholder="dd/MM/yyyy" required maxlength="10" OnKeyPress="formatar('##/##/####', this)">
                                                                 </div>
                                                             </div>
-                                                            
-                                                            <br>
-                                                        
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="nomeAuxilio">Nome do Auxílio:</label>
-                                                                <div class="col-md-9">
-                                                                    <input type="text" name="nomeAuxilio" id="nomeAuxilio" class="form-control" placeholder="Auxílio Transporte" required >
-                                                                </div>
-                                                                <label class="col-md-3 label-control" for="valorAuxilio">Valor do Auxílio:</label>
-                                                                <div class="col-md-9">
-                                                                    <input type="text" name="valorAuxilio" id="valorAuxilio" class="form-control" placeholder="R$ 0.00" required>
-                                                                </div>
-                                                                <input type='button' onclick='inserirAuxilio()' value='Inserir Auxílio' />
-                                                                    
-                                                                    
-                                                            </div>
-                                                            <div class="card-text">
-                                                                Lista de Auxílios
-                                                             </div>
-                                                               <table class="table table-striped table-responsive-md" id="tabelaAuxilios">
-                                                                    <thead>
-                                                                    <tr>
-                                                                       <th>Nome do Auxílio</th>
-                                                                        <th>Valor do Auxílio</th>
-                                                                        <th>Remover</th>
-                                                                   </tr>
-                                                                    </thead>
-                                                                </table>    
-                                                            
-
+                                                           
                                                             <div class="form-actions right">
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1">
                                                                     <i class="ft-x"></i> Limpar

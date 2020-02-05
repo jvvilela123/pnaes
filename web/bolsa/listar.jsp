@@ -153,7 +153,7 @@
                                                     %>    
                                                     <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
                                                         <thead>
-                                                          
+                                                            <th>Edital</th>
                                                             <th>Nome do Auxílio</th>
                                                             <th>Valor</th>
                                                             <th>Editar</th>
@@ -161,11 +161,12 @@
                                                             
                                                     </thead>
                                                         <%
-                                                            DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
+                                                            //DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
                                                             for (Bolsa b : bolsas) {
                                                                 if (b.getId() != 0) {
                                                         %>
                                                         <tr>
+                                                            <td><%=b.getEdital().getNumero()%></td>
                                                             <td><%=b.getNome()%></td>
                                                             <td >R$ <%=decimal.format(b.getValor())%></td>
                                                             <td> <a href="alterar.jsp?id=<%=b.getId()%>" title="Editar"><button class="mr-2 mb-2 btn btn-outline-info" type="button"><i class="os-icon os-icon-file-text">Editar</button></a></td>

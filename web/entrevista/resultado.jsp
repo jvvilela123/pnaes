@@ -163,41 +163,17 @@
                                                                             <option value="Desclassificado">Desclassificado</option>
                                                                         </select>
                                                                     </td>
-                                                                    <td><button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                            <i class="fa fa-check-square-o"></i>Salvar Resultado
-                                                                        </button></td>
-                                                                     </tr>
+                                                                    <td>
+                                                                            <a href="ServletEntrevista?e_id=<%=e.getId()%>"><button class='btn btn-primary os-icon os-icon-save' type='button' > Salvar</button></a>
+                                                                    </td>
+                                                                </tr>
 
                                                                     <%
                                                                         }
                                                                     %>
-                                                                    <tfoot>
-                                                                <tr>
-                                                                    <th>Inscrição</th>
-                                                                    <th>Aluno</th>
-                                                                    <th>Ensino Fundamental</th>
-                                                                    <th>Ensino Médio</th>
-                                                                    <th>Vulnerabilidade</th>
-                                                                    <th>Per Capita</th>
-                                                                    <th>Observação</th>
-                                                                    <th>Bolsa 1</th>
-                                                                    <th>Resultado</th>
-                                                                    <th>Bolsa 2</th>
-                                                                    <th>Resultado</th>
-                                                                    <th>Finalizar</th>
-                                                                </tr>
-                                                                    </tfoot>
+                                                                    
                                                             </table>
-                                                              <table class="table table-striped table-responsive-md">
-                                                                <tr>
-                                                                    <td><button type="reset" value="Limpar" class="btn btn-warning mr-1">
-                                                                            <i class="ft-x"></i> Limpar
-                                                                        </button>
-                                                                        <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                            <i class="fa fa-check-square-o"></i>Enviar
-                                                                        </button></td>
-                                                                </tr>
-                                                            </table>
+                                                              
                                                         </div>
                                                     </form>
                                                 </div>

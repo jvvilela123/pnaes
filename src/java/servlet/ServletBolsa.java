@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Bolsa;
+import modelo.Edital;
 
 /**
  *
@@ -38,14 +39,17 @@ public class ServletBolsa extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
                 DaoFactory daoFactory = new DaoFactory();
                 Bolsa bolsa = new Bolsa();
+                Edital edital = new Edital();
                 String opcao = request.getParameter("opcao");
                 
             switch(opcao) {
                 case "cadastrar" :      
+                    edital.setId(Integer.parseInt(request.getParameter("edital")));
+                    bolsa.setEdital(edital);
                     bolsa.setNome(request.getParameter("nome"));
                     bolsa.setValor(Double.parseDouble(request.getParameter("valor")));
                     bolsa = daoFactory.getBolsaDao().inserirOuAlterarComRetorno(bolsa);
-                    System.out.println("idbolsa = "+bolsa.getId());
+                  
                     response.sendRedirect("bolsa/listar.jsp");
                 break;
                 case "alterar":

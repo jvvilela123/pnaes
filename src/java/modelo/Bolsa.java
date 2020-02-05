@@ -20,12 +20,13 @@ public class Bolsa implements Serializable{
     private String nome;
     @Column(precision=2)
     private Double valor;
-   
+    @ManyToOne
+    private Edital edital;
 
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
@@ -44,6 +45,14 @@ public class Bolsa implements Serializable{
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public Edital getEdital() {
+        return edital;
+    }
+
+    public void setEdital(Edital edital) {
+        this.edital = edital;
     }
     
 }

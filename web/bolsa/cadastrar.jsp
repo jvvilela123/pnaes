@@ -46,6 +46,23 @@
 
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletBolsa?opcao=cadastrar">
                                                         <div class="form-body">
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="edital">Edital</label>
+                                                                <div class="col-md-9">
+                                                                    <select id="campus" name="edital" class="form-control" required>
+                                                                        <option selected="" disabled="" value="">Selecione o Edital:</option>
+                                                                        <%
+                                                                            
+                                                                            List<Edital> editals = daoFactory.getEditalDao().buscarEditalPorCampus(aluno.getCurso().getCampus().getId());
+                                                                            for (Edital e : editals) {
+                                                                                if(e.getDataFinal().after(dataAtual)){
+                                                                                    out.print("<option value=" + e.getId() + ">" + e.getNumero() + "</option>");
+                                                                                }
+                                                                            }
+                                                                        %>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
 
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="nome">Nome</label>
