@@ -262,7 +262,7 @@
                                                 <label class="col-md-3 label-control" for="dd">Documentos que Comprovam as Despesas* (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dd"></label>
-                                                    <input type="file" name="dd" required id="dd" class="custom-file-input" accept=".pdf">                                                  
+                                                    <input type="file" name="dd" id="dd" class="custom-file-input" accept=".pdf">                                                  
                                                 </div>
                                             </div>  
                                             <div class="form-group row">

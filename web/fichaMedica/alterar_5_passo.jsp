@@ -209,7 +209,7 @@
                     prencheuTudo = false;
                 }else if( document.getElementById('outros').checked && document.getElementById('outrosqual').value === ""){
                     document.getElementById('outrosqual').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha a sua Doença no campo Outros.</h6>");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a(s) sua(s) Doença(s) no campo Outros.</h6>");
                     prencheuTudo = false;
                 }else if(!document.getElementById('doencaCronicafamilianao').checked && !document.getElementById('doencaCronicafamiliasim').checked){
                     alertify.errorAlert("<h6 class='card-title'>Há alguem com doença cronica na família?</h6>");
@@ -219,14 +219,14 @@
                     prencheuTudo = false;
                 }else if( document.getElementById('outrosfamilia').checked && document.getElementById('outrosqualfamilia').value === ""){
                     document.getElementById('outrosqualfamilia').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha a doença da sua família no campo Outros.</h6>");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a(s) doença(s) da sua família no campo Outros.</h6>");
                     prencheuTudo = false;
                  }else if(!document.getElementById('naom').checked && !document.getElementById('simm').checked){
                     alertify.errorAlert("<h6 class='card-title'>Você faz uso de medicamento controlado?</h6>");
                     prencheuTudo = false;
                 }else if (document.getElementById('simm').checked && document.getElementById('qualM').value === ""){
                     document.getElementById('qualM').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha o nome do seu medicamento.</h6>");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha o(s) nome(s) do(s) seu(s) medicamento(s).</h6>");
                     prencheuTudo = false;
                 }else if(!document.getElementById('naomd').checked && !document.getElementById('simmd').checked){
                     alertify.errorAlert("<h6 class='card-title'>Há alguem que faz uso de medicamento controlado na família?</h6>");
@@ -243,7 +243,7 @@
                     prencheuTudo = false;
                 }else if( document.getElementById('outraDeficiencia').checked && document.getElementById('outraDeficienciaQual').value === ""){
                     document.getElementById('outraDeficienciaQual').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha Qual a sua Deficiêcnia no campo Outras.</h6>");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha Qual(is) a(s) sua(s) Deficiêcnia(s) no campo Outras.</h6>");
                     prencheuTudo = false;
                  }else if(!document.getElementById('simd').checked && !document.getElementById('naod').checked){
                     alertify.errorAlert("<h6 class='card-title'>Há pessoa(s) na família com deficiência?</h6>");
@@ -253,7 +253,7 @@
                     prencheuTudo = false;
                 }else if( document.getElementById('outraDeficienciaFamilia').checked && document.getElementById('outraDeficienciaFamiliaQual').value === ""){
                     document.getElementById('outraDeficienciaFamiliaQual').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha Qual a Deficiêcnia na sua Família no campo Outras.</h6>");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha Qual(is) a(s) Deficiêcnia(s) na sua Família no campo Outras.</h6>");
                     prencheuTudo = false;
                  }
               if(prencheuTudo)  
@@ -539,17 +539,17 @@
                                                                             </div>
                                                                              <%
                                                                                 if (temOutraDoenca) {
-                                                                                    out.println("<div id='div_outra_doenca' class='show' >");
+                                                                                    out.println("<div id='div_outra_doenca' class='show col-md-9' >");
                                                                                 } else {
-                                                                                    out.println("<div id='div_outra_doenca' class='hide' >");
+                                                                                    out.println("<div id='div_outra_doenca' class='hide col-md-9' >");
                                                                                }
                                                                             %> 
                                                                            <div class="position-relative has-icon-left">
                                                                                <%
                                                                                 if (temOutraDoenca) {
-                                                                                    out.println("<input type='text' name='qualDoencaOutro' id='outrosqual' value='"+fichaMedica.getQualDoenca()+"' class='form-control' placeholder='Qual Doença?'>");
+                                                                                    out.println("<input type='text' name='qualDoencaOutro' id='outrosqual' value='"+fichaMedica.getQualDoenca()+"' class='form-control' placeholder='Qual(is) Doença(s)?'>");
                                                                                 } else {
-                                                                                    out.println("<input type='text' name='qualDoencaOutro' id='outrosqual'  class='form-control' placeholder='Qual Doença?'>");
+                                                                                    out.println("<input type='text' name='qualDoencaOutro' id='outrosqual'  class='form-control' placeholder='Qual(is) Doença(s)?'>");
                                                                                }
                                                                                //  }
                                                                             %>                                                                                    
@@ -726,17 +726,17 @@
                                                                         </div>
                                                                             <%
                                                                                 if (temOutraDoencaDep) {
-                                                                                    out.println("<div id='div_outra_doenca_familia' class='show' >");
+                                                                                    out.println("<div id='div_outra_doenca_familia' class='show col-md-9' >");
                                                                                 } else {
-                                                                                    out.println("<div id='div_outra_doenca_familia' class='hide' >");
+                                                                                    out.println("<div id='div_outra_doenca_familia' class='hide col-md-9' >");
                                                                                }
                                                                             %> 
                                                                         <div class="position-relative has-icon-left">
                                                                             <%
                                                                                 if (temOutraDoencaDep) {
-                                                                                    out.println("<input type='text' name='qualDoencaDepOutro' id='outrosqualfamilia' value='"+fichaMedica.getQualDoencaDep()+"' class='form-control' placeholder='Qual Doença?'>");
+                                                                                    out.println("<input type='text' name='qualDoencaDepOutro' id='outrosqualfamilia' value='"+fichaMedica.getQualDoencaDep()+"' class='form-control' placeholder='Qual(is) Doença(s)?'>");
                                                                                 } else {
-                                                                                    out.println("<input type='text' name='qualDoencaDepOutro' id='outrosqualfamilia'  class='form-control' placeholder='Qual Doença?'>");
+                                                                                    out.println("<input type='text' name='qualDoencaDepOutro' id='outrosqualfamilia'  class='form-control' placeholder='Qual(is) Doença(s)?'>");
                                                                                }
                                                                                 // }
                                                                             %>   
@@ -790,9 +790,9 @@
                                                                             <div class="position-relative has-icon-left">
                                                                                 <%
                                                                                 if(fichaMedica.getQualMedicamento()!=null){
-                                                                                    out.println("<input type='text' name='qualMedicamento' id='qualM' value='"+fichaMedica.getQualMedicamento()+"' class='form-control' placeholder='Qual Medicamento?'>");
+                                                                                    out.println("<input type='text' name='qualMedicamento' id='qualM' value='"+fichaMedica.getQualMedicamento()+"' class='form-control' placeholder='Qual(is) Medicamento(s)?'>");
                                                                                 } else {
-                                                                                    out.println("<input type='text' name='qualMedicamento' id='qualM'  class='form-control' placeholder='Qual Medicamento?'>");
+                                                                                    out.println("<input type='text' name='qualMedicamento' id='qualM'  class='form-control' placeholder='Qual(is) Medicamento(s)?'>");
                                                                                }
                                                                              %>
                                                                                 <div class="form-control-position">
@@ -978,10 +978,10 @@
                                                                                       !fichaMedica.getQualDeficiencia().equals("Auditiva")) { %>
                                                          <div id="div_outra_deficiencia">
                                                                  <% } else { %>
-                                                         <div id="div_outra_deficiencia" class="hide">
+                                                         <div id="div_outra_deficiencia" class="hide col-md-9">
                                                              <% }%>
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="qualDeficienciaOutro" id="outraDeficienciaQual" class="form-control" placeholder="Qual Deficiência?" value="<%=fichaMedica.getQualDeficiencia()%>">
+                                                                <input type="text" name="qualDeficienciaOutro" id="outraDeficienciaQual" class="form-control" placeholder="Qual(is) Deficiência(s)?" value="<%=fichaMedica.getQualDeficiencia()%>">
                                                                 <div class="form-control-position">
                                                                     <i class="fa fa-briefcase"></i>
                                                                 </div>
@@ -1116,7 +1116,7 @@
                                                          <div id="div_outra_deficiencia_familia" class="hide col-md-9">
                                                              <% }%>
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="qualDeficienciaOutroFamilia" id="outraDeficienciaFamiliaQual" class="form-control" placeholder="Qual Deficiência na Família?" value="<%=fichaMedica.getQualDeficienciaDep()%>">
+                                                                <input type="text" name="qualDeficienciaOutroFamilia" id="outraDeficienciaFamiliaQual" class="form-control" placeholder="Qual(is) Deficiência(s) na Família?" value="<%=fichaMedica.getQualDeficienciaDep()%>">
                                                                 <div class="form-control-position">
                                                                     <i class="fa fa-briefcase"></i>
                                                                 </div>

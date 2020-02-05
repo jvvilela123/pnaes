@@ -52,7 +52,7 @@
                         <div class="element-box">
                             <h4 class="form-header">Sistema PNAES</h4>
                             <div class="form-desc" align="justify">
-                                O Programa Nacional de Assistência Estudantil – PNAES no Instituto Federal de Educação, Ciência e Tecnologia (IFTO) do Campus Porto Nacional 
+                                O Programa Nacional de Assistência Estudantil – PNAES no Instituto Federal de Educação, Ciência e Tecnologia (IFTO) 
                                 consiste no conjunto de ações voltadas ao atendimento ao estudante regularmente matriculado no curso presencial, visando o acesso, a permanência e o 
                                 êxito na perspectiva de inclusão social, produção de conhecimento, melhoria do desempenho escolar e qualidade de vida. Destina-se, prioritariamente,
                                 aos estudantes oriundos de escola pública, em situação de vulnerabilidade social e econômica, com renda per capita de até um salário mínimo e meio, 

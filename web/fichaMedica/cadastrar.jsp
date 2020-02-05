@@ -211,7 +211,7 @@
                     prencheuTudo = false;
                 }else if( document.getElementById('outros').checked && document.getElementById('outrosqual').value === ""){
                     document.getElementById('outrosqual').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha a sua Doença no campo Outros.</h6>");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a sua(s) Doença(s) no campo Outros.</h6>");
                     prencheuTudo = false;
                 }else if(!document.getElementById('doencaCronicafamilianao').checked && !document.getElementById('doencaCronicafamiliasim').checked){
                     alertify.errorAlert("<h6 class='card-title'>Há alguem com doença cronica na família?</h6>");
@@ -221,14 +221,14 @@
                     prencheuTudo = false;
                 }else if( document.getElementById('outrosfamilia').checked && document.getElementById('outrosqualfamilia').value === ""){
                     document.getElementById('outrosqualfamilia').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha a doença da sua família no campo Outros.</h6>");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a(s) doença(s) da sua família no campo Outros.</h6>");
                     prencheuTudo = false;
                  }else if(!document.getElementById('naom').checked && !document.getElementById('simm').checked){
                     alertify.errorAlert("<h6 class='card-title'>Você faz uso de medicamento controlado?</h6>");
                     prencheuTudo = false;
                 }else if (document.getElementById('simm').checked && document.getElementById('qualM').value === ""){
                     document.getElementById('qualM').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha o nome do seu medicamento.</h6>");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha o(s) nome(s) do(s) seu(s) medicamento(s).</h6>");
                     prencheuTudo = false;
                 }else if(!document.getElementById('naomd').checked && !document.getElementById('simmd').checked){
                     alertify.errorAlert("<h6 class='card-title'>Há alguem que faz uso de medicamento controlado na família?</h6>");
@@ -245,7 +245,7 @@
                     prencheuTudo = false;
                 }else if( document.getElementById('outraDeficiencia').checked && document.getElementById('outraDeficienciaQual').value === ""){
                     document.getElementById('outraDeficienciaQual').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha a sua Deficiêcnia no campo Outras.</h6>");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a(s) sua(s) Deficiêcnia(s) no campo Outras.</h6>");
                     prencheuTudo = false;
                  }else if(!document.getElementById('simd').checked && !document.getElementById('naod').checked){
                     alertify.errorAlert("<h6 class='card-title'>Há pessoa(s) na família com deficiência?</h6>");
@@ -255,7 +255,7 @@
                     prencheuTudo = false;
                 }else if( document.getElementById('outraDeficienciaFamilia').checked && document.getElementById('outraDeficienciaFamiliaQual').value === ""){
                     document.getElementById('outraDeficienciaFamiliaQual').focus();
-                    alertify.errorAlert("<h6 class='card-title'>Preencha a Deficiêcnia da sua Família no campo Outras.</h6>");
+                    alertify.errorAlert("<h6 class='card-title'>Preencha a(s) Deficiêcnia(s) da sua Família no campo Outras.</h6>");
                     prencheuTudo = false;
                  }
               if(prencheuTudo)  
@@ -411,9 +411,9 @@
                                                             <input type="radio" name="qualDoenca" id="outros" value="Outros" class="custom-control-input" onclick="temOutraDoenca();">
                                                             <label class="custom-control-label" for="outros">Outros</label>
                                                         </div>
-                                                        <div id="div_outra_doenca" class="hide">
+                                                        <div id="div_outra_doenca" class="hide col-md-9">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="qualDoencaOutro" id="outrosqual" class="form-control" placeholder="Qual Doença?">
+                                                                <input type="text" name="qualDoencaOutro" id="outrosqual" class="form-control" placeholder="Qual(is) Doença(s)?">
                                                                 <div class="form-control-position">
                                                                     <i class="fa fa-briefcase"></i>
                                                                 </div>
@@ -486,9 +486,9 @@
                                                             <input type="radio" name="qualDoencaDep" id="outrosfamilia" value="Outros" class="custom-control-input" onclick="temOutraDoencaFamilia();">
                                                             <label class="custom-control-label" for="outrosfamilia">Outros</label>
                                                         </div>
-                                                         <div id="div_outra_doenca_familia" class="hide">
+                                                         <div id="div_outra_doenca_familia" class="hide col-md-9">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="qualDoencaDepOutro" id="outrosqualfamilia" class="form-control" placeholder="Qual Doença?">
+                                                                <input type="text" name="qualDoencaDepOutro" id="outrosqualfamilia" class="form-control" placeholder="Qual(is) Doença(s)?">
                                                                 <div class="form-control-position">
                                                                     <i class="fa fa-briefcase"></i>
                                                                 </div>
@@ -517,7 +517,7 @@
                                                         <div id="div_medicamento" class="hide col-md-9">
                                                         <div class="col-md-9">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="qualMedicamento" id="qualM" class="form-control" placeholder="Qual Medicamento?">
+                                                                <input type="text" name="qualMedicamento" id="qualM" class="form-control" placeholder="Qual(is) Medicamento(s)?">
                                                                 <div class="form-control-position">
                                                                     <i class="fa fa-briefcase"></i>
                                                                 </div>
@@ -600,9 +600,9 @@
                                                             <input type="radio" name="qualDeficiencia" id="outraDeficiencia" value="Outras" class="custom-control-input" onclick="temOutraDeficiencia();">
                                                             <label class="custom-control-label" for="outraDeficiencia">Outras</label>
                                                         </div>
-                                                         <div id="div_outra_deficiencia" class="hide">
+                                                         <div id="div_outra_deficiencia" class="hide col-md-9">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="qualDeficienciaOutro" id="outraDeficienciaQual" class="form-control" placeholder="Qual Deficiência?">
+                                                                <input type="text" name="qualDeficienciaOutro" id="outraDeficienciaQual" class="form-control" placeholder="Qual(is) Deficiência(s)?">
                                                                 <div class="form-control-position">
                                                                     <i class="fa fa-briefcase"></i>
                                                                 </div>
@@ -660,7 +660,7 @@
                                                         </div>
                                                          <div id="div_outra_deficiencia_familia" class="hide col-md-9">
                                                             <div class="position-relative has-icon-left">
-                                                                <input type="text" name="qualDeficienciaOutroFamilia" id="outraDeficienciaFamiliaQual" class="form-control" placeholder="Qual Deficiência na Família?">
+                                                                <input type="text" name="qualDeficienciaOutroFamilia" id="outraDeficienciaFamiliaQual" class="form-control" placeholder="Qua(is) Deficiência(s) na Família?">
                                                                 <div class="form-control-position">
                                                                     <i class="fa fa-briefcase"></i>
                                                                 </div>

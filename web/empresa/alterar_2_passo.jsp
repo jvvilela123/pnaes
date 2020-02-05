@@ -30,7 +30,8 @@
             }
             
             function mostraCampos() {
-                 if(document.getElementById('atividade').value === "Empregado CLT" || 
+                 if(document.getElementById('atividade').value === "Estagiario" ||
+                    document.getElementById('atividade').value === "Empregado CLT" || 
                     document.getElementById('atividade').value === "Funcionanio Publico" || 
                     document.getElementById('atividade').value === "Servidor Publico"){ 
                        document.getElementById('div3').style.display = 'block';
@@ -185,6 +186,11 @@
                                                                         out.print("<option selected value='Servidor Publico'>Servidor Público (Concursado)</option>");
                                                                         else
                                                                         out.print("<option value='Servidor Publico'>Servidor Público (Concursado)</option>");
+                                                                        
+                                                                        if(empresa.getAtividade().equals("Estagiario"))
+                                                                        out.print("<option selected value='Estagiario'>Estagiário</option>");
+                                                                        else
+                                                                        out.print("<option value='Estagiario'>Estagiário</option>");
                                                                         
                                                                         if(empresa.getAtividade().equals("Aposentado"))
                                                                         out.print("<option selected value='Aposentado'>Aposentado</option>");

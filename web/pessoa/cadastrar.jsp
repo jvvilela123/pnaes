@@ -148,19 +148,19 @@
                                                 </div>
                                             </div>        
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento*:</label>
+                                                <label class="col-md-3 label-control" for="dtn">Data de Nascimento* (dd/MM/yyyy):</label>
                                                 <div class="col-md-9">
                                                     <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" maxlength="10" OnKeyPress="formatar('##/##/####', this)" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="email">Email*:</label>
+                                                <label class="col-md-3 label-control" for="email">E-mail*:</label>
                                                 <div class="col-md-9">
                                                     <input type="email" name="email" id="email"  class="form-control" placeholder="Email" required>
                                                 </div>
                                             </div>                                                
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="telefone">Telefone*:</label>
+                                                <label class="col-md-3 label-control" for="telefone">Telefone* (DD 99999-9999):</label>
                                                 <div class="col-md-9">
                                                     <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="DD 99999-9999" maxlength="15" OnKeyPress="formatar('## #####-####', this)" pattern="[0-9]{2} [0-9]{4,6}-[0-9]{3,4}$" required>
                                                 </div>

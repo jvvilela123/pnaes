@@ -24,7 +24,8 @@
             }
             
              function mostraCampos() {
-                 if(document.getElementById('atividade').value === "Empregado CLT" || 
+                 if(document.getElementById('atividade').value === "Estagiario" ||
+                    document.getElementById('atividade').value === "Empregado CLT" || 
                     document.getElementById('atividade').value === "Funcionanio Publico" || 
                     document.getElementById('atividade').value === "Servidor Publico"){ 
                        document.getElementById('div3').style.display = 'block';
@@ -136,6 +137,7 @@
                                                                         <option value="Autonomoi">Autônomo (Informal)</option>
                                                                         <option value="Funcionanio Publico">Funcionário Público (Contratado)</option>
                                                                         <option value="Servidor Publico">Servidor Público (Concursado)</option>
+                                                                        <option value="Estagiario">Estagiário</option>
                                                                         <option value="Aposentado">Aposesntado</option> 
                                                                         <option value="Pensionista">Pensionista</option> 
                                                                     </select>

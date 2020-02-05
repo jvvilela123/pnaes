@@ -58,7 +58,7 @@
            
             {
             extend: 'pdfHtml5',
-            text: ' Imprimir Comprovante de Inscrição',
+            text: ' Imprimir/Salvar Comprovante de Inscrição',
             title: 'Comprovante de Inscrição de '+nomeAluno,
             orientation: 'landscape',
             sFileName: 'teste',
