@@ -59,8 +59,12 @@ public class ServletDependente extends HttpServlet {
                         dependente.setNome(request.getParameter("nome"));
                         dependente.setCpf(request.getParameter("cpf"));
                         dependente.setRg(request.getParameter("rg"));
+                        
+                        if(request.getParameter("ufe")!= null){
                         ufe.setId(Integer.parseInt(request.getParameter("ufe")));
                         dependente.setUfExpedicao(ufe);
+                        }
+                        
                         dtn.setTime(formatador.parse(request.getParameter("dtn")));
                         dependente.setDtn(dtn);
                         dependente.setSexo(request.getParameter("sexo"));
@@ -84,8 +88,12 @@ public class ServletDependente extends HttpServlet {
                         dependente.setCpf(request.getParameter("cpf"));
                         dependente.setRg(request.getParameter("rg"));
                         dependente.setSexo(request.getParameter("sexo"));
+                        
+                        if(request.getParameter("ufe")!= null){
                         ufe.setId(Integer.parseInt(request.getParameter("ufe")));
                         dependente.setUfExpedicao(ufe);
+                        }
+                        
                         dtn.setTime(formatador.parse(request.getParameter("dtn")));
                         dependente.setDtn(dtn);
                         dependente.setTelefone(request.getParameter("telefone"));

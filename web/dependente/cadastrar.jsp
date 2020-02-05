@@ -59,10 +59,7 @@
                                         daoFactory.getAlunoDao().inserirOuAlterar(aluno2);
                                         }
                                     %>
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
+                                
                             </div>
                         </div>
                         <center>
@@ -73,15 +70,17 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h4 class="card-title" id="striped-row-layout-icons">Cadastro de Membro Familiar</h4>
+                                                <div class="card-text" >
+                                                       Preencha corretamente todos os campos
+                                                    </div>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
+                                                
                                             </div>
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
-                                                    <div class="card-text" align="justify">
-                                                       Preencha corretamente todos os campos
-                                                    </div>
+                                                    
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDependente?opcao=cadastrar&aluno_id=<%=session.getAttribute("aluno_id")%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
@@ -99,13 +98,13 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="rg">RG do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="rg" id="rg"  class="form-control" placeholder="RG do Membro Familiar"  required>
+                                                                    <input type="text" name="rg" id="rg"  class="form-control" placeholder="RG do Membro Familiar">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="ufe">Uf de Expedição do RG*:</label>
                                                                 <div class="col-md-9">
-                                                                    <select id="ufe" name="ufe" class="form-control"  required>
+                                                                    <select id="ufe" name="ufe" class="form-control">
                                                                         <option selected="" disabled="" value="">Selecione a UF de Expedição</option>
                                                                         <%
                                                                             List<Uf> ufes = daoFactory.getUfDao().listar();
@@ -138,9 +137,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="telefone">Telefone do Membro Familiar*:</label>
+                                                                <label class="col-md-3 label-control" for="telefone">Telefone do Membro Familiar* (DD 99999-9999):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="99 99999-9999" maxlength="14" OnKeyPress="formatar('## #####-####', this)"  required>
+                                                                    <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="99 999999999" pattern="[0-9]{2} [0-9]{4,6}[0-9]{3,4}$" maxlength="12" OnKeyPress="formatar('## #########', this)"  required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -148,8 +147,8 @@
                                                                 <div class="col-md-9">
                                                                    <select id="grauParentesco" name="grauParentesco" class="form-control" required>
                                                                         <option selected="" disabled="" value="">Selecione o Grau de Parentesco do Membro Familiar</option>
-                                                                        <option value="Mae">Mãe</option>
-                                                                        <option value="Pai">Pai</option>
+                                                                        <option value="mae">Mãe</option>
+                                                                        <option value="pai">Pai</option>
                                                                         <option value="madrasta">Madrasta</option>
                                                                         <option value="padrasto">Padrastro</option>
                                                                         <option value="filho">Filho(a)</option>

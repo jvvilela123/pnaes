@@ -27,6 +27,7 @@ public class Pessoa implements Serializable {
     @ManyToOne
     @JoinColumn(name="ufExpedicao_id")
     private Uf ufExpedicao;
+    
     private GregorianCalendar dtn;
     
     @OneToOne

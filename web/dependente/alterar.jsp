@@ -15,7 +15,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Aluno</title>
+        <title>Alteração de Membro Familiar</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
             $(document).ready(function () {
@@ -76,7 +76,7 @@
                                             </div>
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
-                                                    <div class="card-text" align="justify">
+                                                    <div class="card-text">
                                                         Preencha todos os campos corretamente
                                                     </div>
                                                    
@@ -90,7 +90,7 @@
                                                         %>
                                                     <form  class="form form-horizontal striped-rows form-bordered" method="Post" action="../ServletDependente?opcao=alterar&id=<%=dependente.getId()%>">
                                                         <div class="form-body">
-                                                            <h4 class="form-section"><i class="ft-user"></i>Dados Pessoais</h4>
+                                                       
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="nome">Nome do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
@@ -106,19 +106,21 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="rg">RG do Membro Familiar*:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="rg" id="rg"  class="form-control" value="<%=dependente.getRg()%>" placeholder="RG do Membro Familiar" required>
+                                                                    <input type="text" name="rg" id="rg"  class="form-control" value="<%=dependente.getRg()%>" placeholder="RG do Membro Familiar">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="ufe">Uf de Expedição do RG*:</label>
                                                                 <div class="col-md-9">
-                                                                    <select id="ufe" name="ufe" class="form-control" required>
+                                                                    <select id="ufe" name="ufe" class="form-control">
                                                                         <option selected="" disabled="" value="">Selecione a UF de Expedição</option>
                                                                         <%
 
                                                                             List<Uf> ufes = daoFactory.getUfDao().listar();
                                                                             for (Uf ufe : ufes) {
+                                                                                if(dependente.getUfExpedicao()!=null)
                                                                                 out.print("<option selected value=" + dependente.getUfExpedicao().getId()+ ">" + dependente.getUfExpedicao().getNome() + "</option>");
+                                                                                
                                                                                 out.print("<option value=" + ufe.getId() + ">" + ufe.getNome() + "</option>");
                                                                             }
                                                                         %>
@@ -162,9 +164,9 @@
                                                             </div>
                                                                                                            
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="telefone">Telefone do Membro Familiar*:</label>
+                                                                <label class="col-md-3 label-control" for="telefone">Telefone do Membro Familiar* (DD 99999-9999):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="telefone" id="telefone"  class="form-control" value="<%=dependente.getTelefone()%>" OnKeyPress="formatar('## #####-####', this)" placeholder="Telefone do Membro Familiar" required>
+                                                                    <input type="tel" name="telefone" id="telefone"  class="form-control" value="<%=dependente.getTelefone()%>"  maxlength="12" OnKeyPress="formatar('## #########', this)" pattern="[0-9]{2} [0-9]{4,6}[0-9]{3,4}$" placeholder="Telefone do Membro Familiar" required>
                                                                 </div>
                                                             </div>
                                                            <div class="form-group row">
@@ -173,15 +175,15 @@
                                                                    <select id="grauParentesco" name="grauParentesco" class="form-control" required>
                                                                         <option selected="" disabled="" value="">Selecione o Grau de Parentesco do Membro Familiar</option>
                                                                         <%
-                                                                        if(dependente.getGrauParentesco().equals("Mae"))
-                                                                        out.print("<option selected value='Mae'>Mãe</option>");
+                                                                        if(dependente.getGrauParentesco().equals("mae"))
+                                                                        out.print("<option selected value='mae'>Mãe</option>");
                                                                         else
-                                                                        out.print("<option value='Mae'>Mãe</option>");
+                                                                        out.print("<option value='mae'>Mãe</option>");
                                                                         
-                                                                        if(dependente.getGrauParentesco().equals("Pai"))
-                                                                        out.print("<option selected value='Pai'>Pai</option>");
+                                                                        if(dependente.getGrauParentesco().equals("pai"))
+                                                                        out.print("<option selected value='pai'>Pai</option>");
                                                                         else
-                                                                        out.print("<option value='Pai'>Pai</option>");
+                                                                        out.print("<option value='pai'>Pai</option>");
                                                                         
                                                                         if(dependente.getGrauParentesco().equals("filho"))
                                                                         out.print("<option selected value='filho'>Filho(a)</option>");
@@ -193,10 +195,10 @@
                                                                         else
                                                                         out.print("<option value='esposo'>Esposo(a)</option>");
                                                                         
-                                                                        if(dependente.getGrauParentesco().equals("Avo"))
-                                                                        out.print("<option selected value='Avo'>Avó ou Avô</option>");
+                                                                        if(dependente.getGrauParentesco().equals("avo"))
+                                                                        out.print("<option selected value='avo'>Avó ou Avô</option>");
                                                                         else
-                                                                        out.print("<option value='Avo'>Avó ou Avô</option>");
+                                                                        out.print("<option value='avo'>Avó ou Avô</option>");
                                                                         
                                                                         if(dependente.getGrauParentesco().equals("primo"))
                                                                         out.print("<option selected value='primo'>Primo(a)</option>");

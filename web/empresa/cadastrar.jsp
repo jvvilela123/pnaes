@@ -149,13 +149,13 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="nome">Nome do Local de Trabalho:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Local de Trabalho" oninvalid="setCustomValidity('Por favor, preencha o Nome do Local de Trabalho')">
+                                                                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Local de Trabalho" >
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="telefone">Telefone do Local de Trabalho:</label>
+                                                                    <label class="col-md-3 label-control" for="telefone">Telefone do Local de Trabalho (DD 99999-9999):</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="telefone" id="telefone"  class="form-control" placeholder="Telefone do Local de Trabalho DDD 99999-9999" maxlength="14" OnKeyPress="formatar('## #####-####', this)">
+                                                                        <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="Telefone do Local de Trabalho DDD 999999999" maxlength="12" OnKeyPress="formatar('## #########', this)" pattern="[0-9]{2} [0-9]{4,6}[0-9]{3,4}$">
                                                                     </div>
                                                                 </div>
                                                                </div>

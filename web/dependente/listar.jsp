@@ -274,18 +274,28 @@
                                                             <td><%=d.getSexo()%></td>
                                                             <td><%=d.getTelefone()%></td>
                                                             <td><%
-                                                                if(d.getGrauParentesco().equals("Mae"))
+                                                                if(d.getGrauParentesco().equals("mae"))
                                                                         out.print("Mãe");
-                                                                if(d.getGrauParentesco().equals("filho"))
+                                                                else if(d.getGrauParentesco().equals("pai"))
+                                                                        out.print("Pai");
+                                                                else if(d.getGrauParentesco().equals("madrasta"))
+                                                                        out.print("Madrasta");
+                                                                else if(d.getGrauParentesco().equals("padastro"))
+                                                                        out.print("Padastro");
+                                                                else if(d.getGrauParentesco().equals("filho"))
                                                                         out.print("Filho(a)");
-                                                                if(d.getGrauParentesco().equals("esposo"))
+                                                                else if(d.getGrauParentesco().equals("esposo"))
                                                                         out.print("Esposo(a)");
-                                                                if(d.getGrauParentesco().equals("Avo"))
+                                                                else if(d.getGrauParentesco().equals("avo"))
                                                                         out.print("Avó ou Avô");
-                                                                if(d.getGrauParentesco().equals("primo"))
+                                                                else if(d.getGrauParentesco().equals("primo"))
                                                                         out.print("Primo(a)");
-                                                                if(d.getGrauParentesco().equals("outro"))
+                                                                else if(d.getGrauParentesco().equals("tio"))
+                                                                        out.print("Tio(a)");
+                                                                else if(d.getGrauParentesco().equals("outro"))
                                                                         out.print("Outro(Bisavós, Padrinhos, Amigos, ect...)");
+                                                                else
+                                                                out.print(d.getGrauParentesco());
                                                                 %>
                                                               </td>
                                                            
