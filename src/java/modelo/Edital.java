@@ -6,6 +6,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -69,6 +70,12 @@ public class Edital implements Serializable {
 
     public void setCampus(Campus campus) {
         this.campus = campus;
+    }
+    
+    public String getNumeroEAno() {
+        String ano = String.valueOf(getDataInicial().get(Calendar.YEAR));
+        
+        return numero+"/"+ano;
     }
     
 

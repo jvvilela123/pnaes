@@ -29,7 +29,7 @@
                 alertify.errorAlert("<h6 class='card-title'>Justifique por que você necessita dos auxílios</h6>");
                }else{
                 
-                alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>', 'Após a confirmação não será possível alterar os dados cadastrados, deseja continuar?</h5>', 
+                alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>', 'Após a confirmação não será possível alterar as opções de Auxílio, deseja continuar?</h5>', 
                 function(){ 
                     //var url = "../ServletDependente?opcao=excluir&id=" + id;
                    //window.location = url; 
@@ -39,13 +39,7 @@
                 
         }
     }
-      $(document).ready(function () {
-                $('#bolsa1').change(function () {
-                   // $('#divperiodo')[0].style.display="block";
-                    $('#bolsa2').load('/pnaes/bolsasajax.jsp?bolsa=' + $('#bolsa1').val());
-                });
-
-            });
+      
         </script>
     </head>
     <body class="menu-position-side menu-side-left full-screen">
@@ -58,7 +52,15 @@
                         <%@include file="../cabecalho.jsp" %>
                         <div class="content-header-right col-md-6 col-12" >
                             <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
+                          <script>
+                                   $(document).ready(function () {
+                                $('#bolsa1').change(function () {
+                                   // $('#divperiodo')[0].style.display="block";
+                                    $('#bolsa2').load('/pnaes/bolsasajax.jsp?bolsa=' + $('#bolsa1').val()+'&edital=<%=edital.getId()%>');
+                                });
 
+                            });
+                        </script>
                             </div>
                         </div>
                         <center>

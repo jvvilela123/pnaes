@@ -43,12 +43,17 @@
                     <%@include file="../menu.jsp" %>
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
-                        <div class="content-header-right col-md-6 col-12" >
-                            <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-
-                              
-                            </div>
-                        </div>
+                        <%
+                                                if (request.getParameter("msg") != null) {
+                                            %>
+                                            <center>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong><%=request.getParameter("msg")%></strong>
+                                                </div>
+                                            </center>
+                                            <%
+                                                }
+                                            %>
                         <center>
                             <div style="width: 80%">
                                 <br>
@@ -67,34 +72,34 @@
                                                         daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                                                         }
                                                     %>
-                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDespesa?opcao=cadastrar&aluno_id=<%=alunoId%>">
+                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDespesa?opcao=cadastrar&aluno_id=<%=alunoId%>&editalEncerrado=<%=editalEncerrado?"1":"0"%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="moradia">Moradia(Aluguel, Parcela de Financiamento, etc..):</label>
+                                                                <label class="col-md-3 label-control" for="moradia">Moradia(Aluguel, Parcela de Financiamento, etc..) (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="moradia" id="moradia" value="R$ 0.00" class="form-control" placeholder="valor gasto com Moradia" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="agua">Agua:</label>
+                                                                <label class="col-md-3 label-control" for="agua">Àgua (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="agua" id="agua" value="R$ 0.00" class="form-control" placeholder="valor gasto com Agua" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="energia">Energia:</label>
+                                                                <label class="col-md-3 label-control" for="energia">Energia (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="energia" value="R$ 0.00" id="energia" class="form-control" placeholder="valor gasto com Energia" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="telefone">Telefone:</label>
+                                                                <label class="col-md-3 label-control" for="telefone">Telefone (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="telefone"  value="R$ 0.00" id="telefone" class="form-control" placeholder="valor gasto com Telefone" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="farmacia">Farmacia:</label>
+                                                                <label class="col-md-3 label-control" for="farmacia">Farmácia (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="farmacia" id="farmacia" value="R$ 0.00" class="form-control" placeholder="valor gasto com Farmacia" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
@@ -121,7 +126,7 @@
                                                       Se possuir mais de uma despesa, informe o valor total e em seguida especifique quais são as despesas
                                                                 </div><br>
                                                                 <div class="form-group row"> 
-                                                                <label class="col-md-3 label-control" for="outrasDespesas">Valor Total das Outras Despesas*:</label>
+                                                                <label class="col-md-3 label-control" for="outrasDespesas">Valor Total das Outras Despesas* (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="outrasDespesas" value="R$ 0.00" id="outrasDespesas" class="form-control" placeholder="Valor Gasto com Outras Despesas" onKeyPress="return(moeda(this,'.',',',event))" required>
                                                                 </div>

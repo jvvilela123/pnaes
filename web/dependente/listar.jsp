@@ -304,6 +304,11 @@
                                                        
                                                         <div class="col-md-3">
                                                             <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                        
+                                                         
+
+                                                        </div>
+                                                        <div class="col-md-3">
                                                             <button type="button" value="Cadastrar" class="btn btn-primary os-icon os-icon-save" onclick="verificaGrupo();">
                                                                 <i class="fa fa-check-square-o"></i> Salvar
                                                             </button>

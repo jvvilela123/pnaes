@@ -24,7 +24,7 @@
                         <%@include file="cabecalho.jsp" %>
 
                         <% 
-                            List<Inscricao> is = daoFactory.getInscricaoDao().perquisarListaPorAluno(alunoId);
+                            List<Inscricao> is = daoFactory.getInscricaoDao().perquisarAlunoPorEdital(alunoId,edital.getId());
                             if(request.getParameter("msg") != null){
                             msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
                             if (msg.isEmpty() == false && is.isEmpty()) {
@@ -45,15 +45,16 @@
                             //msg = request.getParameter("msg");
                            
                             if (session.getAttribute("nivel").toString().equals("1")) {
-                                if (aluno.getStatusCadastro() == 7) {%>
+                                if (aluno.getStatusCadastro() == 7 && !editalEncerrado) {%>
                                     <script type="text/javascript">
                                        window.location.href = "inscricao/inscricao.jsp";
                                      </script>
 
                                 <%}
                             
-                            if (is.isEmpty() == false) {
-                                msg = "Candidato já Inscrito";
+                            if (is.isEmpty() == false && !is.get(0).getStatus().equals("Finalizado")) {
+                                msg = "Sua Inscrição foi Confirmada!";
+                                
 
                         %>
                         <div class="row align-items-center">
@@ -63,6 +64,7 @@
                                 </div>
                             </div>
                         </div>
+                          <%@include file="menuAlunoInscrito.jsp" %>       
                         <%
                         } else {
                         %>

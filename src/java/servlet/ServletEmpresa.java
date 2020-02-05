@@ -48,8 +48,9 @@ public class ServletEmpresa extends HttpServlet {
             Empresa empresa = new Empresa();
             String opcao = request.getParameter("opcao");
            
-        
+        try {
             switch (opcao) {
+                
                 case "cadastrar":
                     //Setando dados do Empresa
                     empresa.setTemCarteira(request.getParameter("carteira").equals("sim"));
@@ -123,6 +124,20 @@ public class ServletEmpresa extends HttpServlet {
                     //Chamando o metodo excluir do dao e redirecionando para listar aluno  
                     daoFactory.getEmpresaDao().excluir(empresa);
                     response.sendRedirect("empresa/listar.jsp");
+            }
+            } catch (NumberFormatException ne) {
+                String msg = "Preencha corretamente todos os campos! Formato: (R$ 0,00)";
+                
+                if(opcao.equals("cadastrar"))
+                   response.sendRedirect("empresa/cadastrar.jsp?msg=" + msg);
+                // request.getRequestDispatcher("despesa/cadastrar.jsp?msg=" + msg).forward(request, response);
+                else  if(opcao.equals("alterar_2_passo"))
+                    response.sendRedirect("empresa/alterar_2_passo.jsp?msg=" + msg);
+                 // request.getRequestDispatcher("despesa/alterar_6_passo.jsp?msg=" + msg).forward(request, response);
+                
+                //System.out.println("Erro na renda!");
+               // out.println("<br><br><br><br><br><center><font color='red'><h1>Renda invalida!"+request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")+"<br>A renda deve estar no formato 00.00</h1></font></center>");
+               // out.println("<a href='home.jsp'>voltar</a>");
             }
         }
     }

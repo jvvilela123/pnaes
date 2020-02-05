@@ -93,28 +93,30 @@ public class ServletUpload extends HttpServlet {
                         out.println("nomeCampo = "+item.getFieldName());
                         //File dir = new File(getServletContext().getRealPath("/")+nedital);
                         //File dire = new File(getServletContext().getRealPath("/")+nedital+"/alunos");
-                        File diretorio = new File(getServletContext().getRealPath("/")+nedital+"/alunos/"+cpf);
+                        File diretorioFoto = new File(getServletContext().getRealPath("/")+"alunos/"+cpf);
+                        File diretorioPdf = new File(getServletContext().getRealPath("/")+"alunos/"+cpf+"/"+nedital);
                         
-                        diretorio.mkdirs();
+                        diretorioFoto.mkdirs();
+                        diretorioPdf.mkdirs();
                         if(!item.isInMemory()){
                             if(item.getFieldName().equals("foto")){
-                                File savedFile = new File(diretorio+"/"+cpf+".jpg");
+                                File savedFile = new File(diretorioFoto+"/"+cpf+".jpg");
                                 item.write(savedFile);
                             }else if(item.getFieldName().equals("da")){
-                                File savedFile = new File(diretorio+"/da.pdf");
+                                File savedFile = new File(diretorioPdf+"/da.pdf");
                                 item.write(savedFile);                        
                             }else if(item.getFieldName().equals("dd")){
-                                File savedFile = new File(diretorio+"/dd.pdf");
+                                File savedFile = new File(diretorioPdf+"/dd.pdf");
                                 item.write(savedFile);
                             }
                             else if(item.getFieldName().equals("dr")){
-                                File savedFile = new File(diretorio+"/dr.pdf");
+                                File savedFile = new File(diretorioPdf+"/dr.pdf");
                                 item.write(savedFile);
                             }else if(item.getFieldName().equals("dp")){
-                                File savedFile = new File(diretorio+"/dp.pdf");
+                                File savedFile = new File(diretorioPdf+"/dp.pdf");
                                 item.write(savedFile);
                             }else if(item.getFieldName().equals("od")){
-                                File savedFile = new File(diretorio+"/od.pdf");
+                                File savedFile = new File(diretorioPdf+"/od.pdf");
                                 item.write(savedFile);
                             }
                         }

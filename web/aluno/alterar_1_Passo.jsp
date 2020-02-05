@@ -135,7 +135,7 @@
                                                                           List<Curso> categorias = daoFactory.getCursoDao().buscarCursoPorCampus(aluno.getCurso().getCampus().getId());
                                                                           out.print("<option selected value=" + aluno.getCurso().getCategoria().getId() + ">" + aluno.getCurso().getCategoria().getNome() + "</option>");
                                                                             for (Curso c : categorias) {
-                                                                              if(c.getCategoria().getId()!=aluno.getCurso().getCategoria().getId() && categoria_id < c.getCategoria().getId()){
+                                                                              if(c.getCategoria().getId()!=aluno.getCurso().getCategoria().getId()){
                                                                               out.print("<option value=" + c.getCategoria().getId() + ">" + c.getCategoria().getNome() + "</option>");
                                                                               categoria_id = c.getCategoria().getId();
                                                                               }
@@ -154,7 +154,7 @@
                                                                             out.print("<option selected value=" + aluno.getCurso().getId() + ">" + aluno.getCurso().getNome() + "</option>");
                                                                             for (Curso curso : cursos) {
                                                                                 if(curso.getId()!=aluno.getCurso().getId()) 
-                                                                                out.print("<option value=" + curso.getId() + ">" + curso.getNome() + "</option>");
+                                                                                out.print("<option value=" + curso.getId() + ">" + curso.getNome() +"</option>");
                                                                             }
                                                                           //  out.print("<option selected value=" + aluno.getEndereco().getCidade().getId() + ">" + aluno.getEndereco().getCidade().getNome() + "</option>");
                                                                         %>  

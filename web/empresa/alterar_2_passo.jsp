@@ -84,11 +84,17 @@
                     <%@include file="../menu.jsp" %>
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
-                        <div class="content-header-right col-md-6 col-12" >
-                            <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-
-                            </div>
-                        </div>
+                        <%
+                                                if (request.getParameter("msg") != null) {
+                                            %>
+                                            <center>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong><%=request.getParameter("msg")%></strong>
+                                                </div>
+                                            </center>
+                                            <%
+                                                }
+                                            %>
                         <center>
                             <div style="width: 80%">
                                 <br>
@@ -240,7 +246,7 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="renda">Valor da Sua remuneração Bruta (R$ 0,00)*:</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="renda" id="renda"  value="<%=empresa.getRenda()!=null&&empresa.getRenda()>0?"R$ "+decimal.format(empresa.getRenda()):""%>" class="form-control" placeholder="Valor da Sua Remuneração Bruta" onKeyPress="return(moeda(this,'.',',',event))" 
+                                                                        <input type="text" name="renda" id="renda"  value="<%=empresa.getRenda()!=null&&empresa.getRenda()>0?"R$ "+decimal.format(empresa.getRenda()):""%>" class="form-control" placeholder="Valor da Sua Remuneração Bruta (R$ 0,00)" onKeyPress="return(moeda(this,'.',',',event))" 
                                                                                <%
                                                                             if(empresa.getRenda()!=null&&empresa.getRenda()>0)
                                                                               out.print("required");%>>
@@ -250,7 +256,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="orenda">Valor da outra renda Ex: Aluguel, Pensão Alimentícia, Bolsa Família, etc (R$ 0,00):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="orenda" id="orenda" value="<%=empresa.getOrenda()!=null&&empresa.getOrenda()>0?"R$ "+decimal.format(empresa.getOrenda()):""%>" class="form-control" placeholder="Valor da Outra Renda do Aluno" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="orenda" id="orenda" value="<%=empresa.getOrenda()!=null&&empresa.getOrenda()>0?"R$ "+decimal.format(empresa.getOrenda()):""%>" class="form-control" placeholder="Valor da Outra Renda do Aluno (R$ 0,00)" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">

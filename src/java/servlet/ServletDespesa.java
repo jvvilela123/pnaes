@@ -46,6 +46,7 @@ public class ServletDespesa extends HttpServlet {
             Despesa despesa = new Despesa();
             Aluno aluno = new Aluno();
             String opcao = request.getParameter("opcao");
+            
             try {
                 switch (opcao) {
 
@@ -63,6 +64,10 @@ public class ServletDespesa extends HttpServlet {
                         despesa.setAluno(aluno);
                         //Chamando o metodo inserir do dao e redirecionando para listar Orçamento
                         daoFactory.getDespesaDao().inserirOuAlterar(despesa);
+                        
+                        if(request.getParameter("editalEncerrado").equals("1"))
+                        response.sendRedirect("home.jsp");
+                        else
                         response.sendRedirect("documento/upload.jsp");
 
                         break;
@@ -112,10 +117,20 @@ public class ServletDespesa extends HttpServlet {
 
                 }
             } catch (NumberFormatException ne) {
+                String msg = "Preencha corretamente todos os campos! Formato: (R$ 0,00)";
+                
                 Logger.getLogger(ServletDependente.class.getName()).log(Level.SEVERE, null, ne);
-                System.out.println("Erro na renda!");
-                out.println("<br><br><br><br><br><center><font color='red'><h1>Renda invalida!"+request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")+"<br>A renda deve estar no formato 00.00</h1></font></center>");
-                out.println("<a href='home.jsp'>voltar</a>");
+                
+                if(opcao.equals("cadastrar"))
+                   response.sendRedirect("despesa/cadastrar.jsp?msg=" + msg);
+                // request.getRequestDispatcher("despesa/cadastrar.jsp?msg=" + msg).forward(request, response);
+                else  if(opcao.equals("alterar_6_passo"))
+                    response.sendRedirect("despesa/alterar_6_passo.jsp?msg=" + msg);
+                 // request.getRequestDispatcher("despesa/alterar_6_passo.jsp?msg=" + msg).forward(request, response);
+                
+                //System.out.println("Erro na renda!");
+               // out.println("<br><br><br><br><br><center><font color='red'><h1>Renda invalida!"+request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")+"<br>A renda deve estar no formato 00.00</h1></font></center>");
+               // out.println("<a href='home.jsp'>voltar</a>");
             }
 
         }

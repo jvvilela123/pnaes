@@ -9,6 +9,7 @@
 <%@page import="modelo.Edital"%>
 <%@page import="modelo.Inscricao"%>
 <%@page import="dao.DaoFactory"%>
+<%@page errorPage="/pnaes/index.jsp?sair=1" %>
 <!--------------------
 START - Mobile Menu
 -------------------->
@@ -29,8 +30,17 @@ START - Mobile Menu
         <div class="logged-user-w">
             <div class="avatar-w">      
                 <%
+                    if(session.getAttribute("aluno_id")==null){
+                        %>
+                        <script>
+                            window.open('/pnaes/index.jsp?sair=1', '_self');
+                        </script>
+                     <%}
+                 
                     
-                     DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
+                    
+                    Boolean editalEncerrado = false;
+                    DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
                     String msg = new String();
                     DaoFactory daoFactory = new DaoFactory();
                     Edital edital = null;
@@ -38,14 +48,19 @@ START - Mobile Menu
                     Despesa despesa = new Despesa();
                     FichaMedica fichaMedica = new FichaMedica();
                     Dependente dependente = new Dependente();
-                   
-                   
-                    Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
+                    Integer alunoId = 0;
+                    
+                    
+                    
+                    alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
                     Aluno aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
                     List<Edital> editais = null;
                     
                     if(aluno.getCurso()!=null)
                     editais = daoFactory.getEditalDao().buscarEditalPorCampus(aluno.getCurso().getCampus().getId());
+                    else
+                    editais = daoFactory.getEditalDao().buscarEditalPorCampus(1);
+                    
                     
                     List<Empresa> empresas = daoFactory.getEmpresaDao().perquisarListaPorAluno(alunoId);
                     List<Despesa> despesas = daoFactory.getDespesaDao().perquisarListaPorAluno(alunoId);
@@ -67,16 +82,10 @@ START - Mobile Menu
                                          }
                      
                     GregorianCalendar dataAtual = new GregorianCalendar();
-                    if (editais == null || editais.size() == 0) {
-                       // msg = "Não existe editais cadastrado";
-                        //Nenhum edital cadastrado
-                    } else if (editais.get(editais.size() - 1).getDataFinal().before(dataAtual)) {
-                        //msg = "Edital ja foi encerrado";
-
-                    } else {
-                        edital = editais.get(editais.size() - 1);
-                    }
-                
+                  if (editais.get(editais.size() - 1).getDataFinal().before(dataAtual)) {
+                      editalEncerrado = true;
+                  }
+                edital = editais.get(editais.size() - 1);
 
                 %>
                 <img alt="" src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">

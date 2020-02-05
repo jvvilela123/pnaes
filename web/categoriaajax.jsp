@@ -11,12 +11,14 @@
     List<Curso> cursos = daoFactory.getCursoDao().buscarCursoPorCampus(campus_id);
     out.println("<option selected='' disabled='' value=''>Selecione a Modalidade do Curso</option>");
     for (Curso curso : cursos) {
-        if(categoria_id < curso.getCategoria().getId())
+        if(categoria_id != curso.getCategoria().getId())
         out.println("<option value="+curso.getCategoria().getId()+">"+curso.getCategoria().getNome()+"</option>");
+        
         categoria_id = curso.getCategoria().getId();
         //out.println("<option value="+curso.getId()+">"+curso.getTipoPeriodo()+"</option>");
         //curso.setTipoPeriodo(curso.getTipoPeriodo());
     }
+
       
     
 %>
