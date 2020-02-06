@@ -17,6 +17,8 @@ public class Despesa implements Serializable{
     @Id @GeneratedValue
     private Integer id;
     private Double moradia;
+    private Double alimentacao;
+    private Double transporte;
     private Double agua;
     private Double energia;
     private Double telefone;
@@ -66,6 +68,22 @@ public class Despesa implements Serializable{
 
     public void setTelefone(Double telefone) {
         this.telefone = telefone;
+    }
+
+    public Double getAlimentacao() {
+        return alimentacao;
+    }
+
+    public void setAlimentacao(Double alimentacao) {
+        this.alimentacao = alimentacao;
+    }
+
+    public Double getTransporte() {
+        return transporte;
+    }
+
+    public void setTransporte(Double transporte) {
+        this.transporte = transporte;
     }
 
    
