@@ -17,6 +17,8 @@
                     //$('#divcurso')[0].style.display="block";
                     //$('#divcurso').style.display = 'block';
                     $('#cat').load('/pnaes/categoriaajax.jsp?campus='+$('#campus').val());
+                    $('#curso').html('<option selected="" disabled="" value="">Selecione primeiro a Modalidade do Curso ↑</option>');
+                    $('#periodo').html('<option selected="" disabled="" value="">Selecione primeiro o Curso ↑</option>');
                 });
 
             });
@@ -25,6 +27,7 @@
                     //$('#divcurso')[0].style.display="block";
                     //$('#divcurso').style.display = 'block';
                     $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val()+'&campus='+$('#campus').val());
+                    $('#periodo').html('<option selected="" disabled="" value="">Selecione primeiro o Curso ↑</option>');
                 });
 
             });

@@ -17,6 +17,7 @@
         <title>Cadastro</title>
         <%@include file="../imports.jsp" %>
         <script>
+          
             $(document).ready(function () {
                 $('#uf').change(function () {
                     $('#cidade').load('/pnaes/cidadeajax.jsp?estado=' + $('#uf').val());
@@ -160,7 +161,7 @@
                                                 </div>
                                             </div>                                                
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="telefone">Telefone* (DD 99999-9999):</label>
+                                                <label class="col-md-3 label-control" for="telefone">Telefone* (DD 999999999):</label>
                                                 <div class="col-md-9">
                                                     <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="DD 999999999" maxlength="15" OnKeyPress="formatar('## #########', this)" pattern="[0-9]{2} [0-9]{4,6}[0-9]{3,4}$" required>
                                                 </div>

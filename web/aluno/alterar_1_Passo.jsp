@@ -34,6 +34,7 @@
             $(document).ready(function () {
                 $('#cat').change(function () {
                 $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val()+'&campus='+$('#campus').val());
+                $('#periodo').html('<option selected="" disabled="" value="">Selecione primeiro o Curso ↑</option>');
                 });
 
             });
@@ -111,7 +112,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="campus">Campus*:</label>
                                                                 <div class="col-md-9">
-                                                                    <select id="campus" name="campus" class="form-control" required>
+                                                                    <select id="campus" name="campus" class="form-control" required disabled>
                                                                         <option selected="" disabled="">Selecione o Campus</option>
                                                                         <%
                                                                           List<Campus> campus = daoFactory.getCampusDao().listar();
@@ -131,14 +132,16 @@
                                                                     <select id="cat" name="cat" class="form-control" required>
                                                                         <option selected="" disabled="">Selecione a Modalidade do Curso</option>
                                                                         <%
-                                                                            int categoria_id = 0;
-                                                                          List<Curso> categorias = daoFactory.getCursoDao().buscarCursoPorCampus(aluno.getCurso().getCampus().getId());
+                                                                          //  int categoria_id = -1;
+                                                                        //  List<Curso> categorias = daoFactory.getCursoDao().buscarCursoPorCampus(aluno.getCurso().getCampus().getId());
+                                                                          List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
                                                                           out.print("<option selected value=" + aluno.getCurso().getCategoria().getId() + ">" + aluno.getCurso().getCategoria().getNome() + "</option>");
-                                                                            for (Curso c : categorias) {
-                                                                              if(c.getCategoria().getId()!=aluno.getCurso().getCategoria().getId()){
-                                                                              out.print("<option value=" + c.getCategoria().getId() + ">" + c.getCategoria().getNome() + "</option>");
-                                                                              categoria_id = c.getCategoria().getId();
-                                                                              }
+                                                                            for (Categoria c : categorias) {
+                                                                             // if(c.getCategoria().getId()!=aluno.getCurso().getCategoria().getId() || categoria_id!=c.getCategoria().getId())
+                                                                              out.print("<option value=" + c.getId() + ">" + c.getNome() + "</option>");
+                                                                              
+                                                                             // categoria_id = c.getCategoria().getId();
+                                                                              
                                                                               
                                                                             }
                                                                         %>

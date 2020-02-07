@@ -1,7 +1,7 @@
 <%-- 
     Document   : dadosInscricao
     Created on : 20/12/2019, 12:03:58
-    Author     : João Vitor
+    Author     : JoÃ£o Vitor
 --%>
 <%@page import="modelo.Cidade"%>
 <%@page import="modelo.Uf"%>
@@ -51,7 +51,7 @@
             });
             
             $(function(){
-                //Não Permite digitar letras
+                //NÃ£o Permite digitar letras
                   $('#cpf').keyup(function() {
                        $(this).val(this.value.replace(/\D/g, ''));
                     });
@@ -82,10 +82,9 @@
         </script>
         <%
              SimpleDateFormat formatador2 = new SimpleDateFormat("yyyy-MM-dd");
-             
         %>
                                         <div class="col-md-3">
-                                            <img src="/pnaes/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
+                                            <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
 
                                         </div>
                                             <br>
@@ -93,10 +92,10 @@
                                             <h3>Dados do Estudante</h3>
                                             <div>
                                                 <div id="accordion2">
-                                                    <h3>Dados Pessoais (Documentos e Endereço)</h3>
+                                                    <h3>Dados Pessoais (Documentos e EndereÃ§o)</h3>
                                                     <div>
                                                       
-                                                        <form method="Post" action="../ServletAluno?opcao=alterar_dados_pessoais&id=<%=inscricao.getAluno().getId()%>&i_id=<%=inscricao.getId()%>"> 
+                                                        <form method="Post" action="../ServletAluno?opcao=alterar_dados_pessoais&id=<%=inscricao.getAluno().getId()%>"> 
                                                         <table class="table table-striped table-responsive-md">
                                                             <tr>
                                                                 <th>Nome:</th>
@@ -120,16 +119,16 @@
                                                                 <td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>Uf de Expedção do RG:</th>
+                                                                <th>Uf de ExpediÃ§Ã£o do RG:</th>
                                                                 <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getUfExpedicao().getNome()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;"> 
                                                                     <select id="ufe" name="ufe" class="form-control" required>
-                                                                       <option selected="" disabled="" value="">Selecione o Estado(UF) de Expedição do RG</option>
+                                                                       <option selected="" disabled="" value="">Selecione o Estado(UF) de ExpediÃ§Ã£o do RG</option>
                                                                         <%
 
                                                                             List<Uf> ufes = daoFactory.getUfDao().listar();
-                                                                            out.print("<option selected value=" + inscricao.getAluno().getUfExpedicao().getId()+ ">" + inscricao.getAluno().getUfExpedicao().getNome() + "</option>");
                                                                             for (Uf ufe : ufes) {
+                                                                                out.print("<option selected value=" + inscricao.getAluno().getUfExpedicao().getId()+ ">" + inscricao.getAluno().getUfExpedicao().getNome() + "</option>");
                                                                                 out.print("<option value=" + ufe.getId() + ">" + ufe.getNome() + "</option>");
                                                                             }
                                                                         %>
@@ -167,7 +166,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>Data de Nascimento:</th>
+                                                                <th>Data Nascimento:</th>
                                                                 <td class="visualizacaoDadosPessoais"><%=dataFormat.formatarData(inscricao.getAluno().getDtn())%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
                                                                    <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" value="<%=formatador2.format(inscricao.getAluno().getDtn().getTime())%>" maxlength="10" OnKeyPress="formatar('##/##/####', this)" required>
@@ -178,37 +177,16 @@
                                                                 <td><%=inscricao.getAluno().getIdade()%></td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>Auto Declaração Cor/Raça:</th>
-                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getAutoDeclaracao()%></td>
+                                                                <th>Auto DeclaraÃ§Ã£o Cor/RaÃ§a:</th>
+                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getTelefone()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
                                                                     <select id="autoDeclaracao" name="autoDeclaracao" class="form-control" required>
-                                                                        <option selected="" disabled="" value="">Selecione a sua Cor/Raça</option>
-                                                                        <%
-                                                                        if(inscricao.getAluno().getAutoDeclaracao().equals("Branco"))
-                                                                        out.print("<option selected value='Branco'>Branco</option>");
-                                                                        else
-                                                                        out.print("<option value='Branco'>Branco</option>");
-                                                                        
-                                                                        if(inscricao.getAluno().getAutoDeclaracao().equals("Pardo"))
-                                                                        out.print("<option selected value='Pardo'>Pardo</option>");
-                                                                        else
-                                                                        out.print("<option value='Pardo'>Pardo</option>");
-                                                                        
-                                                                        if(inscricao.getAluno().getAutoDeclaracao().equals("Preto"))
-                                                                        out.print("<option selected value='Preto'>Preto</option>");
-                                                                        else
-                                                                        out.print("<option value='Preto'>Preto</option>");
-                                                                        
-                                                                        if(inscricao.getAluno().getAutoDeclaracao().equals("Indígena"))
-                                                                        out.print("<option selected value='Indígena'>Indígena</option>");
-                                                                        else
-                                                                        out.print("<option value='Indígena'>Indígena</option>");
-                                                                        
-                                                                        if(inscricao.getAluno().getAutoDeclaracao().equals("Outra"))
-                                                                        out.print("<option selected value='Outra'>Outra</option>");
-                                                                        else
-                                                                        out.print("<option value='Outra'>Outra</option>");
-                                                                        %>
+                                                                        <option selected="" disabled="" value=""> Selecione a sua Cor/RaÃ§a </option>
+                                                                        <option value="Branco">Branco</option>
+                                                                        <option value="Pardo">Pardo</option>
+                                                                        <option value="Preto">Preto</option>
+                                                                        <option value="IndÃ­gena">IndÃ­gena</option>
+                                                                        <option value="Outra">Outra</option>   
                                                                     </select>
                                                                 </td>
                                                             </tr>
@@ -244,10 +222,10 @@
                                                             </tr>
                                                             <%}%>
                                                             <tr>    
-                                                                <th>Número:</th>
+                                                                <th>NÃºmero:</th>
                                                                 <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getNumero()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
-                                                                  <input type="text" name="numero" id="numero"  class="form-control" placeholder="Número" value="<%=inscricao.getAluno().getEndereco().getNumero()%>" required>
+                                                                  <input type="text" name="numero" id="numero"  class="form-control" placeholder="NÃºmero" value="<%=inscricao.getAluno().getEndereco().getNumero()%>" required>
                                                                 <td>
                                                             </tr>
                                                             <tr>
@@ -271,8 +249,8 @@
                                                                     <select id="uf" name="uf" class="form-control" required>
                                                                        <option selected="" disabled="" value="">Selecione o Estado(UF)</option>
                                                                         <%
-                                                                            out.print("<option selected value=" + inscricao.getAluno().getEndereco().getCidade().getUf().getId()+ ">" + inscricao.getAluno().getEndereco().getCidade().getUf().getNome() + "</option>");
                                                                             for (Uf ufe : ufes) {
+                                                                                out.print("<option selected value=" + inscricao.getAluno().getEndereco().getCidade().getUf().getId()+ ">" + inscricao.getAluno().getEndereco().getCidade().getUf().getNome() + "</option>");
                                                                                 out.print("<option value=" + ufe.getId() + ">" + ufe.getNome() + "</option>");
                                                                             }
                                                                         %>
@@ -287,8 +265,8 @@
                                                                        <option selected="" disabled="" value="">Selecione primeiro o estado (UF) ?</option>
                                                                         <%
                                                                              List<Cidade> cidades = daoFactory.getCidadeDao().buscarCidadePorUf(inscricao.getAluno().getEndereco().getCidade().getUf().getId());
-                                                                             out.print("<option selected value=" + inscricao.getAluno().getEndereco().getCidade().getId()+ ">" + inscricao.getAluno().getEndereco().getCidade().getNome() + "</option>");
                                                                             for (Cidade cidade : cidades) {
+                                                                                out.print("<option selected value=" + inscricao.getAluno().getEndereco().getCidade().getId()+ ">" + inscricao.getAluno().getEndereco().getCidade().getNome() + "</option>");
                                                                                 out.print("<option value=" + cidade.getId() + ">" + cidade.getNome() + "</option>");
                                                                             }
                                                                         %>
@@ -298,7 +276,7 @@
                                                             <tr>
                                                                 <th colspan="2" style="text-align:center;" class="visualizacaoDadosPessoais"><button type="button" class="btn btn-warning os-icon os-icon-edit" onclick="edicaoDadosPessoais();"> Clique para Editar</th>
                                                                 <th colspan="2" style="text-align:center; display: none;" class="edicaoDadosPessoais">
-                                                                    <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="cancelaEdicaoDadosPessoais();"> Cancelar Edição</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="cancelaEdicaoDadosPessoais();"> Cancelar EdiÃ§Ã£o</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                     <button type="submit" class="btn btn-success os-icon os-icon-save" onclick="salvarDadosPessoais();"> Salvar</button>
                                                                 </th>
                                                                 
@@ -307,11 +285,11 @@
                                                         </form>
                                                            
                                                     </div>
-                                                    <h3>Informações do Estudante</h3>
+                                                    <h3>InformaÃ§Ãµes do Estudante</h3>
                                                     <div>
                                                         <table class="table table-striped table-responsive-md">
                                                             <tr>    
-                                                                <th>Número da Matrícula:</th>
+                                                                <th>NÃºmero da MatrÃ­cula:</th>
                                                                 <td><%=inscricao.getAluno().getMatricula()%></td>
                                                             </tr>
 
@@ -321,7 +299,7 @@
                                                             </tr>
 
                                                             <tr>    
-                                                                <th>Período:</th>
+                                                                <th>PerÃ­odo:</th>
                                                                 <td><%=inscricao.getAluno().getCurso().getqPeriodo()%>Âº <%=inscricao.getAluno().getCurso().getTipoPeriodo()%></td>
                                                             </tr>
                                                             <tr>    
@@ -329,7 +307,7 @@
                                                                 <td><%=inscricao.getAluno().getEnsinoFundamental()%></td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>Cursou Ensino Médio em Ensino:</th>
+                                                                <th>Cursou Ensino MÃ©dio em Ensino:</th>
                                                                 <td><%=inscricao.getAluno().getEnsinoMedio()%></td>
                                                             </tr>
                                                             <tr>    
@@ -348,12 +326,12 @@
                                                                 <td><%=inscricao.getAluno().getMeioTransporte()%></td>
                                                             </tr>
                                                             <tr>    
-                                                                <th>Melhor Horário para uma Visita:</th>
+                                                                <th>Melhor HorÃ¡rio para uma Visita:</th>
                                                                 <td><%=inscricao.getAluno().getPeriodoVisita()%></td>
                                                             </tr>
                                                         </table>
                                                     </div>
-                                                    <h3>Ocupação do Estudante</h3>
+                                                    <h3>OcupaÃ§Ã£o do Estudante</h3>
                                                     <div>
                                                         <table class="table table-striped table-responsive-md">
                                                             <tr>    
@@ -361,11 +339,11 @@
                                                                 <td><%if(empresa.getTemCarteira())
                                                                     out.print("SIM");
                                                                     else
-                                                                    out.print("NÃO");%></td>
+                                                                    out.print("NÃƒO");%></td>
                                                             </tr>
                                                             
                                                             <tr>    
-                                                                <th>Situação Profissional:</th>
+                                                                <th>SituaÃ§Ã£o Profissional:</th>
                                                                 <td><%=empresa.getAtividade()%></td>
                                                             </tr>
                                                             
@@ -388,20 +366,20 @@
                                                                  !fichaMedica.getTemMedicamentoDep() &&
                                                                  !fichaMedica.getTemDeficiencia() &&
                                                                  !fichaMedica.getTemDeficienciaDep()){%>
-                                                        <h3 class="ui-state-disabled">Estudante e Família NÂO Possui Doenças, Deficiências e Medicamentos</h3>
+                                                        <h3 class="ui-state-disabled">Estudante e FamÃ­lia NÃƒO Possui DoenÃ§as, DeficiÃªncias e Medicamentos</h3>
                                                         <%}else{%>
-                                                        <h3>Saúde do Estudante/Família</h3>
+                                                        <h3>SaÃºde do Estudante/FamÃ­lia</h3>
                                                         <%}%>
                                                 <div>
                                                 <table class="table table-striped table-responsive-md">
                                                     <%if(fichaMedica.getTemDoenca()){%>
                                                     <tr>    
-                                                        <th>Estudante tem alguma doença crônica, qual?</th>
+                                                        <th>Estudante tem alguma doenÃ§a crÃ´nica, qual?</th>
                                                         <td><%=fichaMedica.getQualDoenca()%></td>
                                                     </tr>
                                                    <%}if(fichaMedica.getTemDoencaDep()){%>
                                                     <tr>    
-                                                        <th>Há pessoa(s) na família com alguma doença crônica, qual?</th>
+                                                        <th>HÃ¡ pessoa(s) na famÃ­lia com alguma doenÃ§a crÃ´nica, qual?</th>
                                                         <td><%=fichaMedica.getQualDoenca()%></td>
                                                     </tr>
                                                      <%}if(fichaMedica.getTemMedicamento()){%>
@@ -411,17 +389,17 @@
                                                     </tr>
                                                     <%}if(fichaMedica.getTemMedicamentoDep()){%>
                                                     <tr>    
-                                                        <th>Há pessoa(s) na família que faz uso de medicamento controlado, Quem?</th>
+                                                        <th>HÃ¡ pessoa(s) na famÃ­lia que faz uso de medicamento controlado, Quem?</th>
                                                         <td><%=fichaMedica.getQuemMedicamentoDep()%></td>
                                                     </tr>
                                                      <%}if(fichaMedica.getTemDeficiencia()){%>
                                                     <tr>    
-                                                        <th>Estudante tem alguma deficiência, qual?</th>
+                                                        <th>Estudante tem alguma deficiÃªncia, qual?</th>
                                                         <td><%=fichaMedica.getQualDeficiencia()%></td>
                                                     </tr>
                                                      <%}if(fichaMedica.getTemDeficienciaDep()){%>
                                                     <tr>    
-                                                        <th>Há pessoa(s) na família com deficiência, qual?</th>
+                                                        <th>HÃ¡ pessoa(s) na famÃ­lia com deficiÃªncia, qual?</th>
                                                         <td><%=fichaMedica.getQualDeficienciaDep()%></td>
                                                     </tr>
                                                     <%}%>
@@ -431,7 +409,7 @@
                                            </div>
                                           </div>
                                             <%if (dependentes.size() == 0) { %>    
-                                           <h3 class="ui-state-disabled">Estudante NÃO possui Dependentes</h3>
+                                           <h3 class="ui-state-disabled">Estudante NÃƒO possui Dependentes</h3>
                                            <%}else{%>
                                            <h3>Dado(s) do(s) Dependente(s)</h3>
                                            <%}%>
@@ -450,7 +428,7 @@
                                                         <td><%=d.getRg()%></td>
                                                        </tr>
                                                        <tr>    
-                                                        <th>UF de Expedição:</th>
+                                                        <th>UF de ExpediÃ§Ã£o:</th>
                                                         <td><%=d.getUfExpedicao().getNome()%></td>
                                                        </tr>
                                                        <tr>    
@@ -530,17 +508,17 @@
                                                 </table>
                                             </div>
                                                         <%if(entrevistas == null){%>
-                                                            <h3 class="ui-state-disabled">NÃO possui Auxílios Anteriores</h3><div></div>
+                                                            <h3 class="ui-state-disabled">NÃƒO possui AuxÃ­lios Anteriores</h3><div></div>
                                             <%}else{%>
-                                            <h3>Auxílios Anteriores</h3>
+                                            <h3>AuxÃ­lios Anteriores</h3>
                                             <div>
                                                 <table class="table table-striped table-responsive-md">
                                                     <tr>    
                                                         <th>Edital</th>
-                                                        <th>Auxílio 1</th>
-                                                        <th>Resultado Auxílio 1</th>
-                                                        <th>Auxílio 2</th>
-                                                        <th>Resultado Auxílio 2</th>
+                                                        <th>AuxÃ­lio 1</th>
+                                                        <th>Resultado AuxÃ­lio 1</th>
+                                                        <th>AuxÃ­lio 2</th>
+                                                        <th>Resultado AuxÃ­lio 2</th>
                                                         
                                                     </tr>
                                                     <%  

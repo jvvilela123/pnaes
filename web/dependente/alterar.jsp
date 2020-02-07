@@ -160,7 +160,6 @@
                                                                 <div class="col-md-9">
                                                                     <input type="date" name="dtn" id="dtn" class="form-control" placeholder="dd/MM/yyyy" value="<%=formatador.format(dependente.getDtn().getTime())%>" maxlength="10" OnKeyPress="formatar('##/##/####', this)" required>
                                                                 </div>
-                                                            
                                                             </div>
                                                                                                            
                                                             <div class="form-group row">
