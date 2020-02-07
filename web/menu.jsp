@@ -255,11 +255,17 @@ START - Mobile Menu
                     <div class="sub-menu-i">
                         <ul class="sub-menu">
                              <%
-                                if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+                                if (session.getAttribute("nivel").equals(3)) {
                             %>
                             <li>
                                 <a href="/pnaes/aluno/listar.jsp">Lista de alunos</a>
                             </li>
+                            <%
+                                }
+                            %>
+                            <%
+                                if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+                            %>
                            
                             <li>
                                 <a href="/pnaes/inscricao/listar.jsp">Lista de inscritos</a>
@@ -562,11 +568,17 @@ START - Main Menu
                 <div class="sub-menu-i">
                     <ul class="sub-menu">
                         <%
-                                if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+                                if (session.getAttribute("nivel").equals(3)) {
                             %>
                         <li>
                             <a href="/pnaes/aluno/listar.jsp">Lista de alunos</a>
                         </li>
+                         <%
+             }
+            %>
+                        <%
+                                if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+                            %>
                         <li>
                             <a href="/pnaes/inscricao/listar.jsp">Lista de inscritos</a>
                         </li>

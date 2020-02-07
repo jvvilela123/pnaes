@@ -164,7 +164,7 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                       Lista com todos os incritos no Edital corrente 
+                                                       Lista com todos os incritos do Edital <%=edital.getNumeroEAno()%>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">

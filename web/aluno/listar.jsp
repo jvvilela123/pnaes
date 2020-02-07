@@ -259,7 +259,7 @@
                                                             
                                                             <td><a href="/pnaes/aluno/alterar.jsp?id=<%=a.getId()%>" title="Editar" class="text-info"><div class="os-icon os-icon-edit"></div><span>Editar</span></a></td>
                                                             <%}%>
-                                                            <td><a href="/pnaes/aluno/visualizar.jsp?id=<%=a.getId()%>"><img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=a.getCpf()%>/<%=a.getCpf()%>.jpg" width="30" height="40"/></a></td>
+                                                            <td><a href="/pnaes/aluno/visualizar.jsp?id=<%=a.getId()%>"><img src="/pnaes/alunos/<%=a.getCpf()%>/<%=a.getCpf()%>.jpg" width="30" height="40"/></a></td>
                                                         </tr>
                                                         <%
                                                             } 
