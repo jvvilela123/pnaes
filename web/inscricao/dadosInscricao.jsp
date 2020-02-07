@@ -322,7 +322,7 @@
 
                                                             <tr>    
                                                                 <th>Período:</th>
-                                                                <td><%=inscricao.getAluno().getCurso().getqPeriodo()%>Âº <%=inscricao.getAluno().getCurso().getTipoPeriodo()%></td>
+                                                                <td><%=inscricao.getAluno().getCurso().getqPeriodo()%>º <%=inscricao.getAluno().getCurso().getTipoPeriodo()%></td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Cursou Ensino Fundamental em Ensino:</th>
@@ -402,7 +402,7 @@
                                                    <%}if(fichaMedica.getTemDoencaDep()){%>
                                                     <tr>    
                                                         <th>Há pessoa(s) na família com alguma doença crônica, qual?</th>
-                                                        <td><%=fichaMedica.getQualDoenca()%></td>
+                                                        <td><%=fichaMedica.getQualDoencaDep()%></td>
                                                     </tr>
                                                      <%}if(fichaMedica.getTemMedicamento()){%>
                                                     <tr>    
@@ -441,18 +441,24 @@
                                                     <h3><%=d.getNome().toUpperCase()%></h3>
                                                     <div>
                                                     <table class="table table-striped table-responsive-md">
+                                                        <%if(d.getCpf()!=null){%>
                                                        <tr>    
                                                         <th>CPF:</th>
                                                         <td><%=d.getCpf()%></td>
                                                        </tr>
+                                                        <%}%>
+                                                       <%if(d.getRg()!=null){%>
                                                        <tr>    
                                                         <th>RG:</th>
                                                         <td><%=d.getRg()%></td>
                                                        </tr>
+                                                       <%}%>
+                                                        <%if(d.getUfExpedicao()!=null){%>
                                                        <tr>    
                                                         <th>UF de Expedição:</th>
                                                         <td><%=d.getUfExpedicao().getNome()%></td>
                                                        </tr>
+                                                       <%}%>
                                                        <tr>    
                                                         <th>Sexo:</th>
                                                         <td><%=d.getSexo()%></td>
@@ -464,10 +470,12 @@
                                                         %>
                                                         <td><%=formatador.format(d.getDtn().getTime())%></td>
                                                        </tr>
+                                                       <%if(d.getEmail()!=null){%>
                                                        <tr>    
                                                         <th>E-mail:</th>
                                                         <td><%=d.getEmail()%></td>
                                                        </tr>
+                                                       <%}%>
                                                        <tr>    
                                                         <th>Telefone:</th>
                                                         <td><%=d.getTelefone()%></td>
