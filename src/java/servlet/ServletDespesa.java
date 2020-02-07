@@ -53,6 +53,8 @@ public class ServletDespesa extends HttpServlet {
                     case "cadastrar":
                         //Setando dados do Despesa Mensal
                         despesa.setMoradia(Double.parseDouble(request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setAlimentacao(Double.parseDouble(request.getParameter("alimentacao").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setTransporte(Double.parseDouble(request.getParameter("transporte").replace("R$", "").replace(".", "").replace(",", ".")));
                         despesa.setAgua(Double.parseDouble(request.getParameter("agua").replace("R$", "").replace(".", "").replace(",", ".")));
                         despesa.setEnergia(Double.parseDouble(request.getParameter("energia").replace("R$", "").replace(".", "").replace(",", ".")));
                         despesa.setTelefone(Double.parseDouble(request.getParameter("telefone").replace("R$", "").replace(".", "").replace(",", ".")));
@@ -75,6 +77,8 @@ public class ServletDespesa extends HttpServlet {
                         //Setando dados do Despesa Mensal
                         despesa.setId(Integer.parseInt(request.getParameter("id")));
                         despesa.setMoradia(Double.parseDouble(request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setAlimentacao(Double.parseDouble(request.getParameter("alimentacao").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setTransporte(Double.parseDouble(request.getParameter("transporte").replace("R$", "").replace(".", "").replace(",", ".")));                        
                         despesa.setAgua(Double.parseDouble(request.getParameter("agua").replace("R$", "").replace(".", "").replace(",", ".")));
                         despesa.setEnergia(Double.parseDouble(request.getParameter("energia").replace("R$", "").replace(".", "").replace(",", ".")));
                         despesa.setTelefone(Double.parseDouble(request.getParameter("telefone").replace("R$", "").replace(".", "").replace(",", ".")));
@@ -95,6 +99,8 @@ public class ServletDespesa extends HttpServlet {
                          despesa = despesas.get(0);
                         }
                         despesa.setMoradia(Double.parseDouble(request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setAlimentacao(Double.parseDouble(request.getParameter("alimentacao").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setTransporte(Double.parseDouble(request.getParameter("transporte").replace("R$", "").replace(".", "").replace(",", ".")));                        
                         despesa.setAgua(Double.parseDouble(request.getParameter("agua").replace("R$", "").replace(".", "").replace(",", ".")));
                         despesa.setEnergia(Double.parseDouble(request.getParameter("energia").replace("R$", "").replace(".", "").replace(",", ".")));
                         despesa.setTelefone(Double.parseDouble(request.getParameter("telefone").replace("R$", "").replace(".", "").replace(",", ".")));

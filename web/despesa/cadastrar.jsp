@@ -81,6 +81,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="alimentacao">Alimentação (R$ 0,00):</label>
+                                                                <div class="col-md-9">
+                                                                    <input type="text" name="alimentacao" id="alimentacao" value="R$ 0.00" class="form-control" placeholder="valor gasto com Alimentação" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="agua">Àgua (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="agua" id="agua" value="R$ 0.00" class="form-control" placeholder="valor gasto com Agua" onKeyPress="return(moeda(this,'.',',',event))">
@@ -96,6 +102,12 @@
                                                                 <label class="col-md-3 label-control" for="telefone">Telefone (R$ 0,00):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="text" name="telefone"  value="R$ 0.00" id="telefone" class="form-control" placeholder="valor gasto com Telefone" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="transporte">Transporte (R$ 0,00):</label>
+                                                                <div class="col-md-9">
+                                                                    <input type="text" name="transporte" id="transporte" value="R$ 0.00" class="form-control" placeholder="valor gasto com Transporte" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
