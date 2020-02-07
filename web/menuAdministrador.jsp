@@ -55,12 +55,12 @@
 				datasets: [{
 					data: [
 						<%
-                                   List<Bolsa> bolsas = daoFactory.getBolsaDao().listar();
+                                   List<Bolsa> bolsas = daoFactory.getBolsaDao().buscarBolsaPorEdital(edital.getId());
                                    
                                    for (Bolsa b : bolsas) {
                                        inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsa(b.getId(),edital.getId());
                                         //não aparecer a opção nenhum
-                                        if(b.getId()!=6)
+                                       // if(b.getId()!=6)
                                         out.print(inscricoes.size() + ",");
                                     }
                                                 %>
@@ -79,7 +79,7 @@
                                     
                                     for (Bolsa b : bolsas) {
                                         //não aparecer a opção nenhum
-                                        if(b.getId()!=6)
+                                       // if(b.getId()!=6)
                                         out.print("\'"+b.getNome() + "\',");
                                     }
                                %>
