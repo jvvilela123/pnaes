@@ -243,6 +243,7 @@
                                                         </thead>
                                                         <%
                                                             for (Aluno a : alunos) {
+                                                                if(a.getCurso()!=null){
                                                         %>
                                                         <tr align="center">
                                                           
@@ -261,7 +262,8 @@
                                                             <td><a href="/pnaes/aluno/visualizar.jsp?id=<%=a.getId()%>"><img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=a.getCpf()%>/<%=a.getCpf()%>.jpg" width="30" height="40"/></a></td>
                                                         </tr>
                                                         <%
-                                                            }
+                                                            } 
+                                                          }
                                                         %>
                                                       
                                                     </table>    

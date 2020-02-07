@@ -156,6 +156,9 @@ START - Mobile Menu
             <%
             if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
         %>
+         <%
+                                if (session.getAttribute("nivel").equals(3)) {
+                            %>
             <li class="selected menu">
                 <a href="/pnaes/edital/listar.jsp">
                     <div class="icon-w">
@@ -187,6 +190,7 @@ START - Mobile Menu
 
                 </div>
             </li>
+             
             <li class=" has-sub-menu">
                 <a href="apps_bank.html">
                     <div class="icon-w">
@@ -203,12 +207,13 @@ START - Mobile Menu
                     </div>
                     <div class="sub-menu-i">
                         <ul class="sub-menu">
-                            <li>
-                                <a href="/pnaes/documento/documento.jsp">Analise documental</a>
-                            </li>
                             <%
                                 if (session.getAttribute("nivel").equals(3)) {
                             %>
+                            <li>
+                                <a href="/pnaes/documento/documento.jsp">Analise documental</a>
+                            </li>
+                            
                             <li>
                                 <a href="/pnaes/entrevista/horario.jsp">Agendar Entrevista</a>
                             </li>
@@ -229,6 +234,9 @@ START - Mobile Menu
                     </div>
                 </div>
             </li>
+            <%
+                                }
+                            %>
 
 
             <li class=" has-sub-menu">
@@ -246,12 +254,22 @@ START - Mobile Menu
                     </div>
                     <div class="sub-menu-i">
                         <ul class="sub-menu">
+                             <%
+                                if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+                            %>
                             <li>
                                 <a href="/pnaes/aluno/listar.jsp">Lista de alunos</a>
                             </li>
+                           
                             <li>
                                 <a href="/pnaes/inscricao/listar.jsp">Lista de inscritos</a>
                             </li>
+                             <%
+                                }
+                            %>
+                            <%
+                                if (session.getAttribute("nivel").equals(3)) {
+                            %>
                             <li>
                                 <a href="/pnaes/documento/listar.jsp">Lista de classificação</a>
                             </li>
@@ -264,6 +282,9 @@ START - Mobile Menu
                             <li>
                                 <a href="/pnaes/resultado/resultado.jsp">Resultado final</a>
                             </li>
+                             <%
+                                }
+                            %>
                         </ul>
                     </div>
                 </div>
@@ -442,6 +463,9 @@ START - Main Menu
       <%
         if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
       %>
+       <%
+           if (session.getAttribute("nivel").equals(3)) {
+        %>
 
          <li class="selected menu">
             <a href="/pnaes/edital/listar.jsp">
@@ -477,6 +501,7 @@ START - Main Menu
 
             </div>
         </li>
+        
         <li class=" has-sub-menu">
             <a href="apps_bank.html">
                 <div class="icon-w">
@@ -517,7 +542,9 @@ START - Main Menu
                 </div>
             </div>
         </li>
-
+ <%
+                            }
+                        %>
 
         <li class=" has-sub-menu">
             <a href="#">
@@ -534,12 +561,21 @@ START - Main Menu
                 </div>
                 <div class="sub-menu-i">
                     <ul class="sub-menu">
+                        <%
+                                if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
+                            %>
                         <li>
                             <a href="/pnaes/aluno/listar.jsp">Lista de alunos</a>
                         </li>
                         <li>
                             <a href="/pnaes/inscricao/listar.jsp">Lista de inscritos</a>
                         </li>
+                        <%
+             }
+            %>
+             <%
+                                if (session.getAttribute("nivel").equals(3)) {
+                            %>
                         <li>
                             <a href="/pnaes/documento/listar.jsp">Lista de classificação</a>
                         </li>
@@ -552,6 +588,9 @@ START - Main Menu
                         <li>
                             <a href="/pnaes/resultado/resultado.jsp">Resultado final</a>
                         </li>
+                        <%
+             }
+            %>
                     </ul>
                 </div>
             </div>

@@ -276,7 +276,7 @@
                                                                 <td><%=i.getBolsa1().getNome()%></td>
                                                                 <td><%=i.getBolsa2().getNome()%></td>
                                                                 <td><%=dataFormat.formatarData(i.getDataInscricao())%></td>
-                                                                <td><a href="/pnaes/inscricao/visualizar.jsp?id=<%=i.getAluno().getId()%>"><img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=i.getAluno().getCpf()%>/<%=i.getAluno().getCpf()%>.jpg" width="30" height="40"/></a></td>
+                                                                <td><a href="/pnaes/inscricao/visualizar.jsp?id=<%=i.getAluno().getId()%>"><img src="/pnaes/alunos/<%=i.getAluno().getCpf()%>/<%=i.getAluno().getCpf()%>.jpg" width="30" height="40"/></a></td>
 
                                                             </tr>
                                                             <%
