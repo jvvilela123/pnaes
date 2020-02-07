@@ -62,8 +62,8 @@
                                      
                                        <%@include file="../inscricao/dadosInscricao.jsp" %>
                                     <div class="form-actions center">
-     <a href="/pnaes/inscricao/listar.jsp"><button  class="btn btn-primary" type="button" >Voltar</button></a>&nbsp;
- </div>
+                                         <a href="/pnaes/inscricao/listar.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                      </div>
 
                                
                             </div>
