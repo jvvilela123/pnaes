@@ -18,14 +18,7 @@
         <title>Lista de Inscritos</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
-             $(document).ready(function () {
-                $('#cat').change(function () {
-                    //$('#divcurso')[0].style.display="block";
-                    //$('#divcurso').style.display = 'block';
-                    $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val());
-                });
-
-            });
+            
            
             function apagar(id) {
                 if (window.confirm("Deseja realmente excluir?")) {
@@ -148,7 +141,17 @@
                     <%@include file="../menu.jsp" %>
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
+                            <script>
+                                 $(document).ready(function () {
+                $('#cat').change(function () {
+                    //$('#divcurso')[0].style.display="block";
+                    //$('#divcurso').style.display = 'block';
+                    $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val()+'&campus=<%=aluno.getCurso().getCampus().getId()%>');
+                  //  $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val());
+                });
 
+            });
+                                </script>
                         <center>
                             <div style="width: 90%">
                                 <br>
