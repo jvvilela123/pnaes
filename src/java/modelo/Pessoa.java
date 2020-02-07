@@ -19,7 +19,10 @@ public class Pessoa implements Serializable {
     private String nome;
     private String telefone;
     private String email;
+    
+    @Column(unique = true)
     private String cpf;
+    
     private String sexo;
     private String rg;
     private String autoDeclaracao;

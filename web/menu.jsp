@@ -126,7 +126,7 @@ START - Mobile Menu
       <%
         if (session.getAttribute("nivel").equals(2)) {
       %>
-            <span>MENU (Coordenação)</span>
+            <span>MENU (Comissão)</span>
      <%
        }
       %>
@@ -437,7 +437,7 @@ START - Main Menu
       <%
         if (session.getAttribute("nivel").equals(2)) {
       %>
-            <span>MENU (Coordenação)</span>
+            <span>MENU (Comissão)</span>
      <%
        }
       %>

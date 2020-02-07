@@ -45,14 +45,7 @@ public class ServletUpload extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            if(request.getParameter("aluno_id")!=null){
-             DaoFactory daoFactory = new DaoFactory();
-            Aluno aluno = new Aluno();
-            aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
-            //aluno.setId(Integer.parseInt(request.getParameter("aluno_id")));
-            aluno.setStatusCadastro(6);
-            daoFactory.getAlunoDao().inserirOuAlterar(aluno);
-            }
+            
 
             /*Faz o parse do request
             List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
@@ -128,9 +121,18 @@ public class ServletUpload extends HttpServlet {
                         } catch (Exception ex) {
                         //ex.printStackTrace();
                         out.println(ex);
+                        response.sendRedirect("home.jsp?msg=Falha ao Enviar os Arquivos, por vafor tente nomamente");
                         
                     }
                 }
+            }
+            if(request.getParameter("aluno_id")!=null){
+             DaoFactory daoFactory = new DaoFactory();
+            Aluno aluno = new Aluno();
+            aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
+            //aluno.setId(Integer.parseInt(request.getParameter("aluno_id")));
+            aluno.setStatusCadastro(6);
+            daoFactory.getAlunoDao().inserirOuAlterar(aluno);
             }
              response.sendRedirect("home.jsp");
         } catch (Exception ex) {

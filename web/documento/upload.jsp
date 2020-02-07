@@ -232,14 +232,14 @@
                                                 <label class="col-md-3 label-control" for="foto">Foto* (png, jpg ou jpeg):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="target"></label>
-                                                    <input type="file" name="foto" required id="target" accept=".png,.jpg, .jpeg" class="custom-file-input " title="Foto">                                    
+                                                    <input type="file" name="foto" required id="target" accept=".png,.jpg, .jpeg, .JPG, .PNG, .JPEG"  class="custom-file-input " title="Foto">                                    
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="da">Documentos do Aluno* (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="da"></label>
-                                                    <input type="file" name="da" required id="da" class="custom-file-input" accept=".pdf" >                                                  
+                                                    <input type="file" name="da" required id="da" class="custom-file-input" accept=".pdf, .PDF" >                                                  
                                                 </div>
                                             </div>
                                             <%if(dependentes.size() > 0){%>
@@ -247,7 +247,7 @@
                                                 <label class="col-md-3 label-control" for="dp">Documentos dos Membros Familiares* (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dp"></label>
-                                                    <input type="file" name="dp" id="dp" required class="custom-file-input" accept=".pdf">                                                  
+                                                    <input type="file" name="dp" id="dp" required class="custom-file-input" accept=".pdf, .PDF">                                                  
                                                 </div>
                                             </div>
                                              <%}%>
@@ -255,21 +255,21 @@
                                                 <label class="col-md-3 label-control" for="dr">Documentos que Comprovam a Renda* (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dr"></label>
-                                                    <input type="file" name="dr" required id="dr" class="custom-file-input" accept=".pdf" placeholder="Upload versão L">                                                  
+                                                    <input type="file" name="dr" required id="dr" class="custom-file-input" accept=".pdf, .PDF" placeholder="Upload versão L">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="dd">Documentos que Comprovam as Despesas* (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dd"></label>
-                                                    <input type="file" name="dd" id="dd" class="custom-file-input" accept=".pdf">                                                  
+                                                    <input type="file" name="dd" id="dd" class="custom-file-input" accept=".pdf, .PDF">                                                  
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="od">Outros Documentos (Ex: Água, Energia, Telefone, Contrato de Aluguel, Atestado Médico, etc.) (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="od"></label>
-                                                    <input type="file" name="od" id="od" class="custom-file-input" accept=".pdf">                                                  
+                                                    <input type="file" name="od" id="od" class="custom-file-input" accept=".pdf, .PDF">                                                  
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
@@ -288,9 +288,7 @@
                                             </div>   
                                             <div class="form-actions">
                                                 <a href="/pnaes/home.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
-                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1 os-icon os-icon-hash">
-                                                                    <i class="ft-x"></i> Limpar
-                                                                </button>
+                                                 
                                                 <button type="submit" class="btn btn-primary os-icon os-icon-save" name="cadastrar" value="Cadastrar">
                                                     <i class="la la-check-square-o"></i> Enviar
                                                 </button>

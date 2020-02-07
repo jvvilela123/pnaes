@@ -46,7 +46,7 @@ public class LDAP {
         try {
             this.conectaDiretorio(user, pass);
             this.ctx.close();
-        } catch (NamingException e) {
+        } catch (Exception e) {
             conexaoOk = false;
         }
         return conexaoOk;
