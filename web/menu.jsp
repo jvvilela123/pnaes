@@ -1,3 +1,5 @@
+<%@page import="java.util.TimeZone"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="modelo.Dependente"%>
 <%@page import="modelo.FichaMedica"%>
@@ -80,9 +82,14 @@ START - Mobile Menu
                      if(dependentes.size() > 0){
                         dependente = dependentes.get(0);
                                          }
-                     
+                   SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                  GregorianCalendar cal = (GregorianCalendar) GregorianCalendar.getInstance(); 
+                  TimeZone tz = TimeZone.getTimeZone("America/Araguaina");
+		  TimeZone.setDefault(tz);
+                  
+                  cal.setTimeZone(tz);
                     GregorianCalendar dataAtual = new GregorianCalendar();
-                  if (editais.get(editais.size() - 1).getDataFinal().before(dataAtual)) {
+                  if (editais.get(editais.size() - 1).getDataFinal().getTime().before(dataAtual.getTime())) {
                       editalEncerrado = true;
                   }
                 edital = editais.get(editais.size() - 1);
@@ -96,6 +103,7 @@ START - Mobile Menu
                     <%
                         if (session.getAttribute("nome") != null) {
                             out.print(session.getAttribute("nome"));
+                            
                         }
                     %>
                 </div>

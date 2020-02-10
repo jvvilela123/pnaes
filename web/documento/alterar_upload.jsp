@@ -214,7 +214,7 @@
                                       //  }
                                     %>
                                  <div class="card-text">
-                                                      Preencha corretamente todos os campos *Obrigatórios
+                                                      
                                                     </div>
                                                     <%  
                                                         msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
@@ -351,7 +351,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="foto">Alterar Foto* (png, jpg ou jpeg)::</label>
+                                                <label class="col-md-3 label-control" for="foto">Alterar Foto* (png, jpg ou jpeg):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="target"></label>
                                                     <input type="file" name="foto"  id="target" accept=".png,.jpg, .jpeg, .JPG, .PNG, .JPEG" class="custom-file-input" title="Foto">
@@ -359,7 +359,7 @@
                                                 </div>
                                             </div>
                                           <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="da">Alterar Documentos do Aluno* (pdf):
+                                                <label class="col-md-3 label-control" for="da">Alterar Documentos do Aluno (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosAluno">Visualizar Documentos do Aluno</button>
                                                </label>
                                                 <div class="col-md-9">
@@ -371,7 +371,7 @@
                                             </div>
                                             <%if(dependentes.size() > 0){%>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dp">Alterar Documentos dos Membros Familiares* (pdf):
+                                                <label class="col-md-3 label-control" for="dp">Alterar Documentos dos Membros Familiares (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosDependentes">Visualizar Documentos dos Membros Familiares</button>
                                                 </label>
                                                 <div class="col-md-9">                                                    
@@ -381,7 +381,7 @@
                                             </div>
                                             <%}%>
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dr">Alterar Documentos que Comprovam a Renda* (pdf):
+                                                <label class="col-md-3 label-control" for="dr">Alterar Documentos que Comprovam a Renda (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosRenda">Visualizar Documentos que Comprovam a Renda</button>
                                                 </label>
                                                 <div class="col-md-9">                                                    
@@ -390,7 +390,7 @@
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dd">Alterar Documentos que Comprovam as Despesas* (pdf):
+                                                <label class="col-md-3 label-control" for="dd">Alterar Documentos que Comprovam as Despesas (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosDespesas">Visualizar Documentos que Comprovam as Despesas</button>
                                                 </label>
                                                 <div class="col-md-9">                                                    

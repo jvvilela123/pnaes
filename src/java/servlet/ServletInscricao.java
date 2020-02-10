@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.TimeZone;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +46,12 @@ public class ServletInscricao extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             List<Inscricao> li;
+            
+            GregorianCalendar cal = (GregorianCalendar) GregorianCalendar.getInstance(); 
+            TimeZone tz = TimeZone.getTimeZone("America/Araguaina");
+            TimeZone.setDefault(tz);
+            cal.setTimeZone(tz);
+            
             GregorianCalendar dataInscricao = new GregorianCalendar();
             DaoFactory daoFactory = new DaoFactory();
             Edital edital = new Edital();

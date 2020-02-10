@@ -143,6 +143,7 @@ public class ServletEntrevista extends HttpServlet {
                     out.println("i_id = " + entrevista.getInscricao().getId() + " e_id = " + entrevista.getId());
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(entrevista.getInscricao().getId());
                     inscricao.setStatus("Finalizado");
+                    
                     entrevista.setInscricao(inscricao);
                     
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);

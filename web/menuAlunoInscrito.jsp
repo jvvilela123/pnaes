@@ -60,6 +60,7 @@
             extend: 'pdfHtml5',
             text: ' Imprimir/Salvar Comprovante de Inscrição',
             title: 'Comprovante de Inscrição de '+nomeAluno,
+            messageTop: 'Comprovante Gerado no dia: <%=date.format(dataAtual.getTime())%>',
             orientation: 'landscape',
             sFileName: 'teste',
             className: 'btn btn-primary btn-lg btn-block os-icon os-icon-file-text',

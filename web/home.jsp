@@ -24,6 +24,7 @@
                         <%@include file="cabecalho.jsp" %>
 
                         <% 
+                            //out.print(date.format(dataAtual.getTime()));
                             List<Inscricao> is = daoFactory.getInscricaoDao().perquisarAlunoPorEdital(alunoId,edital.getId());
                             if(request.getParameter("msg") != null){
                             msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
