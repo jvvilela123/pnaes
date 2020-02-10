@@ -148,7 +148,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="telefone">Telefone do Membro Familiar* (DD 99999-9999):</label>
+                                                                <label class="col-md-3 label-control" for="telefone">Telefone do Membro Familiar* (DD 999999999):</label>
                                                                 <div class="col-md-9">
                                                                     <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="99 999999999" pattern="[0-9]{2} [0-9]{4,6}[0-9]{3,4}$" maxlength="12" OnKeyPress="formatar('## #########', this)"  required>
                                                                 </div>
