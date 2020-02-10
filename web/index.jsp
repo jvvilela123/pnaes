@@ -23,6 +23,38 @@
                        $(this).val(this.value.replace(/\D/g, ''));
                     });
                 });
+                // Check javascript has loaded
+$(document).ready(function(){
+ 
+  // Click event of the showPassword button
+  $('#showPassword').on('click', function(){
+     
+    // Get the password field
+    var passwordField = $('#senha');
+ 
+    // Get the current type of the password field will be password or text
+    var passwordFieldType = passwordField.attr('type');
+ 
+    // Check to see if the type is a password field
+    if(passwordFieldType === 'password')
+    {
+        // Change the password field to text
+        passwordField.attr('type', 'text');
+ 
+        // Change the Text on the show password button to Hide
+        $(this).removeClass("os-icon-eye").addClass("os-icon-eye-off");
+        $("#showPassword span").text(" Ocultar Senha");
+    } else {
+        // If the password field type is not a password field then set it to password
+        passwordField.attr('type', 'password');
+ 
+        // Change the value of the show password button to Show
+        $("#showPassword span").text(" Mostrar Senha");
+        $(this).removeClass("os-icon-eye-off").addClass("os-icon-eye");
+        
+    }
+  });
+});
         </script>
     </head>
     <body class="auth-wrapper">
@@ -91,9 +123,13 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-3">
+                                                            <button type="button" id="showPassword" title="teste" class="btn btn-warning btn-sm os-icon os-icon os-icon-eye" /><span> Mostrar Senha</span></button>
+                                                            
+                                                        </div>
                                                     </div>
                                                     <div class="buttons-w">
-                                                        <button type="submit" value="Entrar" class="btn btn-primary">Entrar</button>
+                                                        <button type="submit" value="Entrar" class="btn btn-primary btn-lg os-icon os-icon-log-in"> Entrar</button>
                                                     </div>
                                                     <!--Não é cadastrado <a href="/pnaes/pessoa/cadastrar.jsp">Cadastre-se</a>-->
                                                 </div>

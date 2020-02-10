@@ -80,6 +80,9 @@ public class ServletLogin extends HttpServlet {
                 //response.sendRedirect("pessoa/cadastrar.jsp?msg=" + msg);
             }
 
+        } catch (Exception e) {
+           // msg = "Usuário ou senha incorretos (USE O USUÁRIO E SENHA DO SIGA)";
+            request.getRequestDispatcher("index.jsp?msg=Usuário ou senha incorretos (USE O USUÁRIO E SENHA DO SIGA)").forward(request, response);
         }
 
     }    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
