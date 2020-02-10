@@ -58,7 +58,7 @@
                                         
                                         daoFactory.getAlunoDao().inserirOuAlterar(aluno2);
                                         }
-                                        msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
+                                       
                                     %>
                                 
                             </div>
