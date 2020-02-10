@@ -55,9 +55,10 @@ public class ServletDependente extends HttpServlet {
                 switch (opcao) {
 
                     case "cadastrar":
+                        try{
                         //Setando dados do Dependente
                         dependente.setNome(request.getParameter("nome"));
-                        dependente.setCpf(request.getParameter("cpf"));
+                        dependente.setCpf(request.getParameter("cpf").equals("")?null:request.getParameter("cpf"));
                         dependente.setRg(request.getParameter("rg"));
                         
                         if(request.getParameter("ufe")!= null){
@@ -79,13 +80,19 @@ public class ServletDependente extends HttpServlet {
                         dependente.setAluno(aluno);
                         //Chamando o metodo inserir do dao e redirecionando para listar Dependente
                         daoFactory.getDependenteDao().inserirOuAlterar(dependente);
-                        response.sendRedirect("dependente/listar.jsp");
+                        response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi incluido com sucesso!");
+                        
+                        }catch(IllegalStateException | ExceptionInInitializerError ce){
+                            response.sendRedirect("dependente/cadastrar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo vazio.");
+                        }
+                        
                     break;
                     case "alterar":
+                        try{
                         //Setando dados do Dependente
                         dependente = (Dependente) daoFactory.getDependenteDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                         dependente.setNome(request.getParameter("nome"));
-                        dependente.setCpf(request.getParameter("cpf"));
+                        dependente.setCpf(request.getParameter("cpf").equals("")?null:request.getParameter("cpf"));
                         dependente.setRg(request.getParameter("rg"));
                         dependente.setSexo(request.getParameter("sexo"));
                         
@@ -105,14 +112,20 @@ public class ServletDependente extends HttpServlet {
                         dependente.setRenda(Double.parseDouble(request.getParameter("renda").replace("R$", "").replace(".", "").replace(",", ".")));
                         //Chamando o metodo alterar do dao e redirecionando para listar Dependente
                         daoFactory.getDependenteDao().inserirOuAlterar(dependente);
-                        response.sendRedirect("dependente/listar.jsp");
+                        response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi alterado com sucesso!");
+                        
+                        }catch(IllegalStateException |ExceptionInInitializerError ce){
+                            response.sendRedirect("dependente/alterar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo vazio.&id="+request.getParameter("id"));
+                        }
+                        
                     break;
                     case "excluir":
                         //Setando dados do Dependente
-                        dependente.setId(Integer.parseInt(request.getParameter("id")));
+                        dependente = (Dependente) daoFactory.getDependenteDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                       // dependente.setId(Integer.parseInt(request.getParameter("id")));
                         //Chamando o metodo excluir do dao e redirecionando para listar Dependente
                         daoFactory.getDependenteDao().excluir(dependente);
-                        response.sendRedirect("dependente/listar.jsp");
+                        response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi Excluido com sucesso!");
                     break;
 
                 }
@@ -121,6 +134,7 @@ public class ServletDependente extends HttpServlet {
                 
               
             }
+            
 
         }
 

@@ -55,7 +55,17 @@
                     <%@include file="../menu.jsp" %>
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
+                       
                         <center>
+                             <% if(request.getParameter("msg") != null){ %>
+                         <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="alert alert-success" role="alert">
+                                    <strong><%=request.getParameter("msg")%></strong>
+                                </div>
+                            </div>
+                        </div>
+                                 <% }%>
                             
                             <script>
                                 function preencheERedireciona() {

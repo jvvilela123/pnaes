@@ -58,11 +58,22 @@
                                         aluno2.setDependeciaFamiliar(request.getParameter("dependenciaFamiliar"));
                                         
                                         daoFactory.getAlunoDao().inserirOuAlterar(aluno2);
+                                       
                                         }
                                     %>
                             </div>
                         </div>
+                           
                         <center>
+                             <% if(request.getParameter("msg") != null){ %>
+                         <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" role="alert">
+                                    <strong><%=request.getParameter("msg")%></strong>
+                                </div>
+                            </div>
+                        </div>
+                                 <% }%>
                             <div style="width: 80%">
                                 <br>
                                 <div class="row">

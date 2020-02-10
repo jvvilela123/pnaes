@@ -186,8 +186,8 @@ public class ServletAluno extends HttpServlet {
                     case "alterar_1_passo":
                     aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                     
-                    campus.setId(Integer.parseInt(request.getParameter("campus")));
-                    curso.setCampus(campus);
+                   // campus.setId(Integer.parseInt(request.getParameter("campus")));
+                   // curso.setCampus(campus);
                     curso.setId(Integer.parseInt(request.getParameter("curso")));
                     aluno.setCurso(curso);
                     aluno.setPeriodo(Integer.parseInt(request.getParameter("periodo")));
