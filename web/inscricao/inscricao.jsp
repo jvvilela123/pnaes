@@ -16,8 +16,33 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro da Inscrição</title>
         <%@include file="../imports.jsp" %>
-        <script>
-            function inscrever() {
+        
+    </head>
+    <body class="menu-position-side menu-side-left full-screen">
+        <div class="all-wrapper with-side-panel solid-bg-all">
+
+            <div class="all-wrapper solid-bg-all">
+                <div class="layout-w">
+                    <%@include file="../menu.jsp" %>
+                    <div class="content-w">
+                        <%@include file="../cabecalho.jsp" %>
+                        <div class="content-header-right col-md-6 col-12" >
+                            <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
+                          <script>
+                                   $(document).ready(function () {
+                                $('#bolsa1').change(function () {
+                                   // $('#divperiodo')[0].style.display="block";
+                                    $('#bolsa2').load('/pnaes/bolsasajax.jsp?bolsa=' + $('#bolsa1').val()+'&edital=<%=edital.getId()%>');
+                                });
+
+                            });
+                            
+                            function inscrever() {
+                            <%if(edital.getCampus().getId()==1){%>
+                                    if(document.getElementById('almocoIfto').value === ""){
+                document.getElementById('almocoIfto').focus();
+                alertify.errorAlert("<h6 class='card-title'>Selecione a opção almoça no IFTO</h6>");}else
+                                    <%}%>
                 if(document.getElementById('bolsa1').value === ""){
                 document.getElementById('bolsa1').focus();
                 alertify.errorAlert("<h6 class='card-title'>Selecione a 1ª opção de Auxílio</h6>");
@@ -39,28 +64,8 @@
                 
         }
     }
-      
-        </script>
-    </head>
-    <body class="menu-position-side menu-side-left full-screen">
-        <div class="all-wrapper with-side-panel solid-bg-all">
-
-            <div class="all-wrapper solid-bg-all">
-                <div class="layout-w">
-                    <%@include file="../menu.jsp" %>
-                    <div class="content-w">
-                        <%@include file="../cabecalho.jsp" %>
-                        <div class="content-header-right col-md-6 col-12" >
-                            <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                          <script>
-                                   $(document).ready(function () {
-                                $('#bolsa1').change(function () {
-                                   // $('#divperiodo')[0].style.display="block";
-                                    $('#bolsa2').load('/pnaes/bolsasajax.jsp?bolsa=' + $('#bolsa1').val()+'&edital=<%=edital.getId()%>');
-                                });
-
-                            });
                         </script>
+                     
                             </div>
                         </div>
                         <center>
@@ -82,7 +87,23 @@
                                                     </div>
                                                     <form class="form form-horizontal striped-rows form-bordered" id="formInscricao" method="POST" action="../ServletInscricao?opcao=inscricao&aluno_id=<%=session.getAttribute("aluno_id")%>&edital_id=<%=edital.getId()%>">
                                                         <div class="form-body">
-                              
+                                                            <%if(edital.getCampus().getId()==1){%>
+                                                            <div class="form-group row">
+                                                                <label class="col-md-3 label-control" for="almoco">Almoça no IFTO?*:</label>
+                                                                <div class="col-md-9">
+                                                                    <select id="almocoIfto" name="almocoIfto" class="form-control" required>
+                                                                        <option selected="" disabled="" value="">Selecione uma das opções</option>
+                                                                                    <option value="Todos dias"> Todos Dias</option>
+                                                                                    <option value="Quatro vez por semana">Quatro Vezes por Semana</option>
+                                                                                    <option value="Tres vez por semana">Três Vezes por Semana</option>
+                                                                                    <option value="Duas vez por semana">Duas Vezes por Semana</option>
+                                                                                    <option value="Uma vez por semana">Uma Vezes por Semana</option>
+                                                                                    <option value="Prefere almocar em casa">Prefere Almoçar em Casa</option>
+                                                                 </select>
+                                                                </div>
+                                                            </div>
+                                                             <%}%>
+                                                            
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="bolsa1">1ª opção de Auxílio*:</label>
                                                                 <div class="col-md-9">

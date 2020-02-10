@@ -41,6 +41,7 @@ public class Inscricao implements Serializable{
     private String quantas;
     private String documentosFaltantes;
     private String motivoBolsa;
+    private String almocaIfto;
     @ManyToOne
     @JoinColumn(name="edital_id",nullable = false)
     private Edital edital;
@@ -149,6 +150,16 @@ public class Inscricao implements Serializable{
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getAlmocaIfto() {
+        return almocaIfto;
+    }
+
+    public void setAlmocaIfto(String almocaIfto) {
+        this.almocaIfto = almocaIfto;
+    }
+    
+    
     
     
 }
