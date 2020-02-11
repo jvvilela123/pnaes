@@ -52,6 +52,7 @@ public class ServletEmpresa extends HttpServlet {
             switch (opcao) {
                 
                 case "cadastrar":
+                    
                     //Setando dados do Empresa
                     empresa.setTemCarteira(request.getParameter("carteira").equals("sim"));
                     empresa.setAtividade(request.getParameter("atividade")!=null?request.getParameter("atividade"):null);
@@ -75,6 +76,7 @@ public class ServletEmpresa extends HttpServlet {
                     
                     //redireciona para o próximo passo
                     response.sendRedirect("dependente/listar.jsp");
+                   
                     break;
                 case "alterar_2_passo":
                     
@@ -138,6 +140,10 @@ public class ServletEmpresa extends HttpServlet {
                 //System.out.println("Erro na renda!");
                // out.println("<br><br><br><br><br><center><font color='red'><h1>Renda invalida!"+request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")+"<br>A renda deve estar no formato 00.00</h1></font></center>");
                // out.println("<a href='home.jsp'>voltar</a>");
+            }   catch (ExceptionInInitializerError e) {
+                 String msg = "Ocupação já cadastrada";
+                 request.getRequestDispatcher("home.jsp?msg="+msg).forward(request, response);
+               // response.sendRedirect("home.jsp?msg=" + msg);
             }
         }
     }

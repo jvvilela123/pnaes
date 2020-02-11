@@ -80,10 +80,12 @@ public class ServletDependente extends HttpServlet {
                         dependente.setAluno(aluno);
                         //Chamando o metodo inserir do dao e redirecionando para listar Dependente
                         daoFactory.getDependenteDao().inserirOuAlterar(dependente);
-                        response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi incluido com sucesso!");
+                        
+                        request.getRequestDispatcher("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi incluído com sucesso!").forward(request, response);
+                       // response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi incluido com sucesso!");
                         
                         }catch(IllegalStateException | ExceptionInInitializerError ce){
-                            response.sendRedirect("dependente/cadastrar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo vazio.");
+                            response.sendRedirect("dependente/cadastrar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo CPF vazio.");
                         }
                         
                     break;
@@ -115,7 +117,7 @@ public class ServletDependente extends HttpServlet {
                         response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi alterado com sucesso!");
                         
                         }catch(IllegalStateException |ExceptionInInitializerError ce){
-                            response.sendRedirect("dependente/alterar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo vazio.&id="+request.getParameter("id"));
+                            response.sendRedirect("dependente/alterar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo CPF vazio.&id="+request.getParameter("id"));
                         }
                         
                     break;
@@ -125,14 +127,13 @@ public class ServletDependente extends HttpServlet {
                        // dependente.setId(Integer.parseInt(request.getParameter("id")));
                         //Chamando o metodo excluir do dao e redirecionando para listar Dependente
                         daoFactory.getDependenteDao().excluir(dependente);
-                        response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi Excluido com sucesso!");
+                        request.getRequestDispatcher("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi Excluído com sucesso!").forward(request, response);
+                        //response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi Excluido com sucesso!");
                     break;
 
                 }
             } catch (IOException | NumberFormatException | ParseException ex) {
                 Logger.getLogger(ServletDependente.class.getName()).log(Level.SEVERE, null, ex);
-                
-              
             }
             
 

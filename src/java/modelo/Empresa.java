@@ -17,8 +17,10 @@ public class Empresa implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
+    
+  
     @ManyToOne
-    @JoinColumn(name="aluno_id")
+    @JoinColumn(name="aluno_id", unique = true)
     private Aluno aluno;
     private Boolean temCarteira;
     private String atividade;
