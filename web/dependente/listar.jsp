@@ -66,6 +66,15 @@
                             </div>
                         </div>
                                  <% }%>
+                                 <% if(request.getParameter("msg2") != null){ %>
+                         <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" role="alert">
+                                    <strong><%=request.getParameter("msg2")%></strong>
+                                </div>
+                            </div>
+                        </div>
+                                 <% }%>
                             
                             <script>
                                 function preencheERedireciona() {

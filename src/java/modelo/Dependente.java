@@ -19,6 +19,9 @@ public class Dependente extends Pessoa{
     @JoinColumn(name="aluno_id")
     private Aluno aluno;
     
+    @Column(unique = true)
+    private String cpfd;
+    
     private String grauParentesco;
    
     private String tipoDeficiente;
@@ -65,6 +68,14 @@ public class Dependente extends Pessoa{
 
     public void setRenda(Double renda) {
         this.renda = renda;
+    }
+
+    public String getCpfd() {
+        return cpfd;
+    }
+
+    public void setCpfd(String cpfd) {
+        this.cpfd = cpfd;
     }
     
     

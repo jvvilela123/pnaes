@@ -58,7 +58,7 @@ public class ServletDependente extends HttpServlet {
                         try{
                         //Setando dados do Dependente
                         dependente.setNome(request.getParameter("nome"));
-                        dependente.setCpf(request.getParameter("cpf").equals("")?null:request.getParameter("cpf"));
+                        dependente.setCpfd(request.getParameter("cpf").equals("")?null:request.getParameter("cpf"));
                         dependente.setRg(request.getParameter("rg"));
                         
                         if(request.getParameter("ufe")!= null){
@@ -85,7 +85,8 @@ public class ServletDependente extends HttpServlet {
                        // response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi incluido com sucesso!");
                         
                         }catch(IllegalStateException | ExceptionInInitializerError ce){
-                            response.sendRedirect("dependente/cadastrar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo CPF vazio.");
+                            request.getRequestDispatcher("dependente/listar.jsp?msg2=Membro Familiar já cadastrado.").forward(request, response);
+                            //response.sendRedirect("dependente/cadastrar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo CPF vazio.");
                         }
                         
                     break;
@@ -94,7 +95,7 @@ public class ServletDependente extends HttpServlet {
                         //Setando dados do Dependente
                         dependente = (Dependente) daoFactory.getDependenteDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                         dependente.setNome(request.getParameter("nome"));
-                        dependente.setCpf(request.getParameter("cpf").equals("")?null:request.getParameter("cpf"));
+                        dependente.setCpfd(request.getParameter("cpf").equals("")?null:request.getParameter("cpf"));
                         dependente.setRg(request.getParameter("rg"));
                         dependente.setSexo(request.getParameter("sexo"));
                         
@@ -117,7 +118,8 @@ public class ServletDependente extends HttpServlet {
                         response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi alterado com sucesso!");
                         
                         }catch(IllegalStateException |ExceptionInInitializerError ce){
-                            response.sendRedirect("dependente/alterar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo CPF vazio.&id="+request.getParameter("id"));
+                          //  response.sendRedirect("dependente/alterar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo CPF vazio.&id="+request.getParameter("id"));
+                          request.getRequestDispatcher("dependente/listar.jsp?msg2=Membro Familiar já cadastrado.").forward(request, response);
                         }
                         
                     break;

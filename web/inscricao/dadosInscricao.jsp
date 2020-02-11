@@ -441,10 +441,10 @@
                                                     <h3><%=d.getNome().toUpperCase()%></h3>
                                                     <div>
                                                     <table class="table table-striped table-responsive-md">
-                                                        <%if(d.getCpf()!=null){%>
+                                                        <%if(d.getCpfd()!=null){%>
                                                        <tr>    
                                                         <th>CPF:</th>
-                                                        <td><%=d.getCpf()%></td>
+                                                        <td><%=d.getCpfd()%></td>
                                                        </tr>
                                                         <%}%>
                                                        <%if(d.getRg()!=null){%>
