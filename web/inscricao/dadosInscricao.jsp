@@ -431,9 +431,9 @@
                                            </div>
                                           </div>
                                             <%if (dependentes.size() == 0) { %>    
-                                           <h3 class="ui-state-disabled">Estudante NÃO possui Dependentes</h3>
+                                           <h3 class="ui-state-disabled">Estudante NÃO possui Membro Familiar cadastrado</h3>
                                            <%}else{%>
-                                           <h3>Dado(s) do(s) Dependente(s)</h3>
+                                           <h3>Dado(s) do(s) <%=dependentes.size()>1?dependentes.size():""%> Membro(s) Familiar(es)</h3>
                                            <%}%>
                                            <div>
                                                <div id="accordion3">
@@ -503,7 +503,11 @@
                                                 <table class="table table-striped table-responsive-md">
                                                     <tr>    
                                                         <th>Renda do Estudante</th>
-                                                        <td><script>document.write(formatarMoeda(<%=empresa.getRenda()%>));</script></td>
+                                                        <%
+                                                            Double rendaTotal = new Double(0);
+                                                            rendaTotal = empresa.getRenda() + empresa.getOrenda();
+                                                        %>
+                                                        <td><script>document.write(formatarMoeda(<%=rendaTotal%>));</script></td>
                                                     </tr>
 
                                                     <tr> 
