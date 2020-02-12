@@ -138,7 +138,7 @@
                                                                         <option value="Funcionanio Publico">Funcionário Público (Contratado)</option>
                                                                         <option value="Servidor Publico">Servidor Público (Concursado)</option>
                                                                         <option value="Estagiario">Estagiário</option>
-                                                                        <option value="Aposentado">Aposesntado</option> 
+                                                                        <option value="Aposentado">Aposentado</option> 
                                                                         <option value="Pensionista">Pensionista</option> 
                                                                     </select>
                                                                 </div>

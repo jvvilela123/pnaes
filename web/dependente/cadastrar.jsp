@@ -185,7 +185,7 @@
                                                                         <option value="Autonomoi">Autônomo (Informal)</option>
                                                                         <option value="Funcionanio Publico">Funcionario Público (Contratado)</option>
                                                                         <option value="Servidor Publico">Servidor Público (Concursado)</option>
-                                                                        <option value="Aposentado">Aposesntado</option> 
+                                                                        <option value="Aposentado">Aposentado</option> 
                                                                         <option value="Pensionista">Pensionista</option> 
                                                                     </select>
                                                                 </div>
