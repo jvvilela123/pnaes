@@ -21,12 +21,12 @@
 	                  inscricoes = daoFactory.getInscricaoDao().perquisarPorEdital(edital.getId());
                           %>
                             <h5 class="element-inner-header">
-                                PNAES - IFTO
+                                PNAES - IFTO - <i>Campus </i> <%=edital.getCampus().getNome()%>
                             </h5>
                             <div class="element-inner-desc">
                               
                                 <div class="alert alert-warning" role="alert">
-                                    Total de Inscritos no Edital Nº <% out.print(edital.getNumeroEAno()); %>:<h4 class="alert-heading"> <% out.print(inscricoes.size()); %></h4>
+                                    Total de Inscritos no Edital Nº <%=edital.getNumeroEAno()%>:<h4 class="alert-heading"> <% out.print(inscricoes.size()); %></h4>
                                 </div>
                             </div>
                         </div>

@@ -256,7 +256,7 @@ public class ServletAluno extends HttpServlet {
                     dtn.setTime(formato.parse(request.getParameter("dtn")));
                     aluno.setDtn(dtn);
                     aluno.setNome(request.getParameter("nome"));
-                    aluno.setCpf(request.getParameter("cpf"));
+                    //aluno.setCpf(request.getParameter("cpf"));
                     aluno.setSexo(request.getParameter("sexo"));
                     aluno.setAutoDeclaracao(request.getParameter("autoDeclaracao"));
                     aluno.setRg(request.getParameter("rg"));

@@ -276,7 +276,7 @@ START - Mobile Menu
                             %>
                            
                             <li>
-                                <a href="/pnaes/inscricao/listar.jsp">Lista de inscritos</a>
+                                <a href="/pnaes/inscricao/listar.jsp">Lista de Inscritos</a>
                             </li>
                              <%
                                 }
@@ -588,7 +588,7 @@ START - Main Menu
                                 if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
                             %>
                         <li>
-                            <a href="/pnaes/inscricao/listar.jsp">Lista de inscritos</a>
+                            <a href="/pnaes/inscricao/listar.jsp">Lista de Inscritos</a>
                         </li>
                         <%
              }

@@ -103,21 +103,21 @@
                                                                 <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getNome()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
                                                                  <input type="text" name="nome" id="nome"  value="<%=inscricao.getAluno().getNome()%>" class="form-control" placeholder="Nome" required>
-                                                                <td>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>CPF:</th>
-                                                                <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getCpf()%></td>
-                                                                <td class="edicaoDadosPessoais" style="display: none;">
+                                                                <td><%=inscricao.getAluno().getCpf()%></td>
+                                                                <!--<td class="edicaoDadosPessoais" style="display: none;">
                                                                  <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" maxlength="11" value="<%=inscricao.getAluno().getCpf()%>" required >
-                                                                <td>
+                                                                <td>-->
                                                             </tr> 
                                                             <tr>
                                                                 <th>RG:</th>
                                                                 <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getRg()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
                                                                   <input type="text" name="rg" id="rg"  class="form-control" placeholder="RG" value="<%=inscricao.getAluno().getRg()%>" required>
-                                                                <td>
+                                                                </td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Uf de Expedção do RG:</th>
@@ -225,14 +225,14 @@
                                                                 <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEmail()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
                                                                   <input type="text" name="email" id="email"  class="form-control" placeholder="E-mail" value="<%=inscricao.getAluno().getEmail()%>" required>
-                                                                <td>
+                                                                </td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Lougradouro:</th>
                                                                 <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getLogradouro()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
                                                                   <input type="text" name="logradouro" id="logradouro"  class="form-control" placeholder="Logradouro" value="<%=inscricao.getAluno().getEndereco().getLogradouro()%>" required>
-                                                                <td>
+                                                                </td>
                                                             </tr>
                                                             <%if(!inscricao.getAluno().getEndereco().getComplemento().equals("") && inscricao.getAluno().getEndereco().getComplemento()!= null){%>
                                                             <tr>    
@@ -240,7 +240,7 @@
                                                                 <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getComplemento()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
                                                                   <input type="text" name="complemento" id="complemento"  class="form-control" placeholder="Complemento" value="<%=inscricao.getAluno().getEndereco().getComplemento()%>" required>
-                                                                <td>
+                                                                </td>
                                                             </tr>
                                                             <%}%>
                                                             <tr>    
@@ -248,21 +248,21 @@
                                                                 <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getNumero()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
                                                                   <input type="text" name="numero" id="numero"  class="form-control" placeholder="Número" value="<%=inscricao.getAluno().getEndereco().getNumero()%>" required>
-                                                                <td>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Bairro:</th>
                                                                 <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getBairro()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
                                                                   <input type="text" name="bairro" id="bairro"  class="form-control" placeholder="Bairro" value="<%=inscricao.getAluno().getEndereco().getBairro()%>" required>
-                                                                <td>
+                                                                </td>
                                                             </tr>
                                                              <tr>
                                                                 <th>CEP:</th>
                                                                 <td class="visualizacaoDadosPessoais"><%=inscricao.getAluno().getEndereco().getCep()%></td>
                                                                 <td class="edicaoDadosPessoais" style="display: none;">
                                                                   <input type="text" name="cep" id="cep"  class="form-control" placeholder="CEP" value="<%=inscricao.getAluno().getEndereco().getCep()%>" required>
-                                                                <td>
+                                                                </td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Estado:</th>
@@ -295,14 +295,15 @@
                                                                    </select>
                                                                </td>
                                                             </tr>
+                                                            <%if(request.getParameter("editar")!=null){%>
                                                             <tr>
                                                                 <th colspan="2" style="text-align:center;" class="visualizacaoDadosPessoais"><button type="button" class="btn btn-warning os-icon os-icon-edit" onclick="edicaoDadosPessoais();"> Clique para Editar</th>
                                                                 <th colspan="2" style="text-align:center; display: none;" class="edicaoDadosPessoais">
                                                                     <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="cancelaEdicaoDadosPessoais();"> Cancelar Edição</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                     <button type="submit" class="btn btn-success os-icon os-icon-save" onclick="salvarDadosPessoais();"> Salvar</button>
                                                                 </th>
-                                                                
-                                                              </tr>
+                                                            </tr>
+                                                            <%}%>
                                                         </table>
                                                         </form>
                                                            
@@ -369,7 +370,7 @@
                                                                 <td><%=empresa.getAtividade()%></td>
                                                             </tr>
                                                             
-                                                            <%if(empresa.getAtividade().equals("Empregado CLT") || empresa.getAtividade().equals("Funcionanio Publico") || empresa.getAtividade().equals("Servidor Publico")){%>
+                                                            <%if(empresa.getAtividade().equals("Empregado CLT") || empresa.getAtividade().equals("Funcionanio Publico") || empresa.getAtividade().equals("Servidor Publico") || empresa.getAtividade().equals("Estagiario")){%>
                                                             <tr>    
                                                                 <th>Nome da Empresa que Trabalha:</th>
                                                                 <td><%=empresa.getNome()%></td>
