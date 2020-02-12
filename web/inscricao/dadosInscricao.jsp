@@ -432,9 +432,11 @@
                                           </div>
                                             <%if (dependentes.size() == 0) { %>    
                                            <h3 class="ui-state-disabled">Estudante NÃO possui Membro Familiar cadastrado</h3>
+                                           <%}else if(dependentes.size() == 1){%>
+                                           <h3>Dado do Membro Familiar</h3>
                                            <%}else{%>
-                                           <h3>Dado(s) do(s) <%=dependentes.size()>1?dependentes.size():""%> Membro(s) Familiar(es)</h3>
-                                           <%}%>
+                                           <h3>Dados dos <%=dependentes.size()>1?dependentes.size():""%> Membros Familiares</h3>
+                                             <%}%>
                                            <div>
                                                <div id="accordion3">
                                                    <%for (Dependente d : dependentes) { %>
