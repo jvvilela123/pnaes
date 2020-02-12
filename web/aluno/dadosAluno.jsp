@@ -49,7 +49,8 @@
 
         </script>
                                         <div class="col-md-3">
-                                            <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
+                                           
+                                            <img src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
 
                                         </div>
                                             <br>
