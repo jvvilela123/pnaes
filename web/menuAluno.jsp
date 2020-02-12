@@ -21,7 +21,11 @@
                         </div>
                         <div class="element-info-text">
                             <h5 class="element-inner-header">
-                                PNAES - IFTO - TO
+                                <% if (aluno.getCurso()!=null) { %>
+                                PNAES - IFTO - <i>Campus </i> <%=aluno.getCurso().getCampus().getNome()%>
+                                <% }else{ %> 
+                                 PNAES - IFTO
+                                <% } %> 
                             </h5>
                             <div class="element-inner-desc">
                                 
@@ -240,7 +244,7 @@
             }
                             </script>
                       <!-- <a href="/pnaes/inscricao/inscricao.jsp"> <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button">Fazer inscrição do (s) auxílio (s)</button> </a>-->
-                      <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button" onclick="continuarInscricao()">Fazer Pedido do (s) Auxílio (s) para o Edital Nº <%=edital.getNumeroEAno()%></button>
+                      <button  class="mr-2 mb-3 btn btn-primary btn-lg btn-block" type="button" onclick="continuarInscricao()">Fazer Pedido do (s) Auxílio (s) para o Edital Nº <%=edital.getNumeroEAno()%> - <i>Campus </i> <%=edital.getCampus().getNome()%></button>
                     </h1>
                 </div>
                </div>

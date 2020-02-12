@@ -118,7 +118,7 @@
                         <div class="element-info-text">
                              
                             <h5 class="element-inner-header">
-                                PNAES - IFTO
+                                PNAES - IFTO - <i>Campus </i> <%=edital.getCampus().getNome()%>
                           
                             </h5>
                             <div class="element-inner-desc">
@@ -145,7 +145,7 @@
                                                                 <th>Nome</th>
                                                                 <th>CPF</th>
                                                                 <th>Curso</th>
-                                                                <th>Edital</th>
+                                                                <th>Edital - <i>Campus </i></th>
                                                                 <th>Auxílio 1ª Opção</th>
                                                                 <th>Auxílio 2ª Opção</th>
                                                                 <th>Data da Inscrição</th>
@@ -160,7 +160,7 @@
                                                                 <td class="nomeAluno"><%=i.getAluno().getNome()%></td>
                                                                 <td><%=i.getAluno().getCpf()%></td>
                                                                 <td><%=i.getAluno().getCurso().getNome()%></td>
-                                                                <td><%=i.getEdital().getNumeroEAno()%></td>
+                                                                <td><%=i.getEdital().getNumeroEAno()%> - <i>Campus </i> <%=i.getEdital().getCampus().getNome()%></td>
                                                                 <td><%=i.getBolsa1().getNome()%></td>
                                                                 <td><%=i.getBolsa2().getNome()%></td>
                                                                 <td><%=dataFormat.formatarData(i.getDataInscricao())%></td>

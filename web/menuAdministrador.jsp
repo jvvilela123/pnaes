@@ -71,8 +71,9 @@
 						window.chartColors.yellow,
 						window.chartColors.green,
 						window.chartColors.blue,
-                                                window.chartColors.darkblue,
-                                                window.chartColors.purple
+                                                window.chartColors.gray,
+                                                window.chartColors.purple,
+                                                [238,130,238]
 					],
 					label: 'Dataset 1'
 				}],
