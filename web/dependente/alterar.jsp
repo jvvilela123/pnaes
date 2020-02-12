@@ -111,7 +111,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="cpf">CPF do Membro Familiar:</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="cpf" id="cpf" class="form-control" value="<%=dependente.getCpfd()%>" maxlength="11"  placeholder="CPF do Membro Familiar">
+                                                                    <input type="text" name="cpf" id="cpf" class="form-control" value="<%=dependente.getCpfd()!=null?dependente.getCpfd():""%>" maxlength="11"  placeholder="CPF do Membro Familiar">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
