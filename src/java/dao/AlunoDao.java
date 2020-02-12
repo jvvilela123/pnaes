@@ -48,6 +48,23 @@ public class AlunoDao extends DaoGenerico{
             em.close();
         }
     }
+    /**
+     *
+     * @param campusId
+    * @return
+     */
+    public List<Aluno> listarAlunosPorCampus(Integer campusId) {
+        try{
+        String jpql = "select a from Aluno a where a.nivel = 1 and a.curso.campus.id = "+campusId;
+      //  System.out.println("aqui = "+ jpql);
+        return em.createQuery(jpql).getResultList();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
+    }
     
     /**
      *

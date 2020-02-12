@@ -262,19 +262,15 @@ START - Mobile Menu
                     </div>
                     <div class="sub-menu-i">
                         <ul class="sub-menu">
-                             <%
-                                if (session.getAttribute("nivel").equals(3)) {
-                            %>
-                            <li>
-                                <a href="/pnaes/aluno/listar.jsp">Lista de alunos</a>
-                            </li>
-                            <%
-                                }
-                            %>
+                             
+                            
+                            
                             <%
                                 if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
                             %>
-                           
+                           <li>
+                                <a href="/pnaes/aluno/listar.jsp">Lista de Alunos</a>
+                            </li>
                             <li>
                                 <a href="/pnaes/inscricao/listar.jsp">Lista de Inscritos</a>
                             </li>
@@ -575,18 +571,15 @@ START - Main Menu
                 </div>
                 <div class="sub-menu-i">
                     <ul class="sub-menu">
-                        <%
-                                if (session.getAttribute("nivel").equals(3)) {
-                            %>
-                        <li>
-                            <a href="/pnaes/aluno/listar.jsp">Lista de alunos</a>
-                        </li>
-                         <%
-             }
-            %>
+                      
+                       
+             
                         <%
                                 if (session.getAttribute("nivel").equals(2) || session.getAttribute("nivel").equals(3)) {
                             %>
+                         <li>
+                            <a href="/pnaes/aluno/listar.jsp">Lista de Alunos</a>
+                        </li>
                         <li>
                             <a href="/pnaes/inscricao/listar.jsp">Lista de Inscritos</a>
                         </li>

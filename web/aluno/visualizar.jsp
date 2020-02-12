@@ -16,7 +16,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro de Aluno</title>
+        <title>Visualizar Dados do Aluno</title>
         <script type="text/javascript" >
             function formatar(mascara, documento) {
                 var i = documento.value.length;

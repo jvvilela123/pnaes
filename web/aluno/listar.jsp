@@ -18,15 +18,7 @@
         <title>Lista de Alunos</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
-            
-            $(document).ready(function () {
-                $('#cat').change(function () {
-                    //$('#divcurso')[0].style.display="block";
-                    //$('#divcurso').style.display = 'block';
-                    $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val());
-                });
-
-            });
+           
             
             $(document).ready(function() {
                 $('#tabelaAlunos').DataTable( {
@@ -133,6 +125,17 @@
                     <%@include file="../menu.jsp" %>
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
+                        <script type="text/javascript" >
+            
+            $(document).ready(function () {
+                $('#cat').change(function () {
+                    //$('#divcurso')[0].style.display="block";
+                    //$('#divcurso').style.display = 'block';
+                    $('#curso').load('/pnaes/cursoajax.jsp?categoria=' + $('#cat').val()+'&campus=<%=aluno.getCurso().getCampus().getId()%>');
+                });
+
+            });
+                                </script>
                         <center>
                             <div style="width: 80%">
                                 <br>
@@ -203,7 +206,7 @@
                                                         </div>
                                                     </div>
                                                     <%                                
-                                                        List<Aluno> alunos = daoFactory.getAlunoDao().listarAlunos();
+                                                        List<Aluno> alunos = daoFactory.getAlunoDao().listarAlunosPorCampus(aluno.getCurso().getCampus().getId());
                                                         /*String nomeAluno;
                                                         if (request.getParameter("pesquisa") != null) {
                                                             if (request.getParameter("pesquisa") != "") {
