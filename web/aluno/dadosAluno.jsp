@@ -153,10 +153,10 @@
                                                                 <td><%=aluno.getEntradaIfto()%></td>
                                                             </tr>
 
-                                                            <%if (aluno.getReprovou() != null && !aluno.getReprovou().equals("")) {%>
+                                                            <%if (aluno.getReprovou()) {%>
                                                             <tr>    
                                                                 <th>Disciplina(s) que Reprovou:</th>
-                                                                <td><%=aluno.getReprovou()%></td>
+                                                                <td><%=aluno.getReprovouQuantas()%></td>
                                                             </tr>
                                                             <%}%>
                                                             <tr>    
