@@ -69,7 +69,7 @@ public class ServletUpload extends HttpServlet {
             try {
                 
                 items = upload.parseRequest(request);
-            } catch (FileUploadException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             Iterator itr = items.iterator();
