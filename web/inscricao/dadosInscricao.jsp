@@ -498,6 +498,7 @@
                                                   </table>
                                                   </div>
                                                   <%}%>
+                                               
                                                </div>
                                             </div>
                                             
@@ -520,9 +521,7 @@
                                                         %>
                                                         <td><script>document.write(formatarMoeda(<%=rendaTotal%>));</script></td>
                                                     </tr>
-
-                                                    <tr> 
-                                                        <%
+                                                    <%
                                                             Double total1 = new Double(0);
                                                             Double td = new Double(0);
                                                             Double perCapita = new Double(0);
@@ -533,12 +532,25 @@
                                                             }
                                                             total1 = empresa.getRenda() + td + empresa.getOrenda();
                                                             perCapita = total1 / (i + 1);
+                                                            
+                                                        if(dependentes.size() > 0) {
                                                         %>
+                                                     
+                                                    <tr>
+                                                        <%if(dependentes.size() > 1){%>
+                                                        <th>Renda Total dos <%=i%> Membros Familiares:</th>
+                                                        <%}else if(dependentes.size() == 1){%>
+                                                        <th>Renda do Membro Familiar:</th>
+                                                        <%}%>
+                                                        <td><script>document.write(formatarMoeda(<%=td%>));</script></td>
+                                                    </tr>
+                                                    <%}%>
+                                                    <tr> 
                                                         <th>Renda Familiar Total:</th>
                                                         <td><script>document.write(formatarMoeda(<%=total1%>));</script></td>
                                                     </tr>
                                                     <tr>    
-                                                        <th>Renda per capita</th>
+                                                        <th>Renda per capita (<script>document.write(formatarMoeda(<%=total1%>));</script> / <%=(i + 1)%>) = </th>
                                                         <td><script>document.write(formatarMoeda(<%=perCapita%>));</script></td>
                                                     </tr>
                                                     <tr>    
