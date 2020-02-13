@@ -505,7 +505,15 @@
                                             <div>
                                                 <table class="table table-striped table-responsive-md">
                                                     <tr>    
-                                                        <th>Renda do Estudante</th>
+                                                        <th>Remuneração Bruta do Estudante</th>
+                                                        <td><script>document.write(formatarMoeda(<%=empresa.getRenda()%>));</script></td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th>Outra Renda do Estudante</th>
+                                                        <td><script>document.write(formatarMoeda(<%=empresa.getOrenda()%>));</script></td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th>Renda Total do Estudante(Remuneração Bruta + Outra)</th>
                                                         <%
                                                             Double rendaTotal = new Double(0);
                                                             rendaTotal = empresa.getRenda() + empresa.getOrenda();
