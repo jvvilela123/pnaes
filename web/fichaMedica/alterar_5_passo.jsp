@@ -271,11 +271,6 @@
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
 
-                        <div class="content-header-right col-md-6 col-12" >
-                            <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                               
-                            </div>
-                        </div>
                         <center>
                             <div style="width: 80%">
                                 <br>
@@ -283,7 +278,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Alteração das Informações da Saúde do Estudante e do Grupo Familiar</h4>
+                                                <h3 class="card-title" id="striped-row-layout-icons">Alteração das Informações da Saúde do Estudante e do Grupo Familiar</h3>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -292,7 +287,9 @@
                                                 <div class="card-body">
                                                     <div class="card-text">
                                                        Preencha corretamente todos os campos
+                                                       
                                                     </div>
+                                                   
                                                     <%  
                                                         msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
                                                         if (msg.isEmpty() == false) {
@@ -412,7 +409,11 @@
                                                                }
                                                             %>
                                                                  <div class="form-group row">
-                                                                    <label class="col-md-3 label-control" for="tipoDoenca">Qual a sua doença ?*:</label>
+                                                                      
+                                                                    <label class="col-md-3 label-control" for="tipoDoenca">Qual a sua doença ?*: <h6 class="card-title" id="striped-row-layout-icons">(Atenção! Caso possui mais de uma doença, marque outras e informe quais são as doenças.) </h6></label>
+                                                                    
+                                                          
+                                                  
                                                                     <div class="col-md-9">
                                                                         <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                             <div class="custom-control custom-radio">
@@ -535,7 +536,7 @@
                                                                                     }
                                                                                
                                                                                 %>
-                                                                                <label class="custom-control-label" for="outros">Outros</label>
+                                                                                <label class="custom-control-label" for="outros">Outras</label>
                                                                             </div>
                                                                              <%
                                                                                 if (temOutraDoenca) {
@@ -602,7 +603,7 @@
                                                                }
                                                             %>
                                                          <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="tipoDoencafamilia">Qual doença na sua família?*:</label>
+                                                                <label class="col-md-3 label-control" for="tipoDoencafamilia">Qual doença na sua família?*: <h6 class="card-title" id="striped-row-layout-icons">(Atenção! Caso possui mais de uma doença, marque outras e informe quais são as doenças.) </h6></label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
@@ -722,7 +723,7 @@
                                                                                     }
                                                                                
                                                                                 %>
-                                                                            <label class="custom-control-label" for="outrosfamilia">Outros</label>
+                                                                            <label class="custom-control-label" for="outrosfamilia">Outras</label>
                                                                         </div>
                                                                             <%
                                                                                 if (temOutraDoencaDep) {
@@ -894,7 +895,7 @@
 
                                                         %>
                                                         <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="deficiencia">Qual a sua deficiência?*:</label>
+                                                                <label class="col-md-3 label-control" for="deficiencia">Qual a sua deficiência?*: <h6 class="card-title" id="striped-row-layout-icons">(Atenção! Caso possui mais de uma deficiência, marque outras e informe quais são as deficiências.) </h6></label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
@@ -992,7 +993,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-md-3 label-control" for="deficienciaDep">Há pessoa(s) na família com deficiência?*:</label>
+                                                            <label class="col-md-3 label-control" for="deficienciaDep">Há pessoa(s) na família com deficiência?*: </label>
                                                             <div class="col-md-3">
                                                                 <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                     <div class="col-md-3">
@@ -1029,7 +1030,7 @@
 
                                                         %>
                                                        <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="qualdeficienciaDep">Qual deficiência na sua família?*:</label>
+                                                                <label class="col-md-3 label-control" for="qualdeficienciaDep">Qual deficiência na sua família?*: <h6 class="card-title" id="striped-row-layout-icons">(Atenção! Caso possui mais de uma deficiência, marque outras e informe quais são as deficiências.) </h6></label>
                                                                 <div class="col-md-9">
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-radio">
