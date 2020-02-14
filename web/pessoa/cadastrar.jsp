@@ -161,9 +161,10 @@
                                                 </div>
                                             </div>                                                
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="telefone">Telefone* (DD 999999999):</label>
+                                                <label class="col-md-3 label-control" for="telefone">Telefone* (DD999999999):</label>
                                                 <div class="col-md-9">
-                                                    <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="DD 999999999" maxlength="15"  pattern="[0-9]{2} [0-9]{4,6}[0-9]{3,4}$" required>
+                                                   <!-- <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="DD 999999999" maxlength="15"  pattern="[0-9]{2} [0-9]{4,6}[0-9]{3,4}$" required>-->
+                                                   <input type="tel" name="telefone" id="telefone"  class="form-control" placeholder="DD999999999" maxlength="11"  pattern="[0-9]{10,11}$" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
