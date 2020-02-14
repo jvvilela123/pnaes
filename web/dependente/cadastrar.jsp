@@ -80,7 +80,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro de Membro Familiar</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Cadastro de Membro Familiar <%=request.getParameter("nomeAluno")!=null?" do Aluno "+request.getParameter("nomeAluno"):""%></h4>
                                                 <div class="card-text" >
                                                        Preencha corretamente todos os campos
                                                     </div>
@@ -91,8 +91,11 @@
                                             </div>
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
-                                                    
+                                                    <% if(request.getParameter("idAluno")==null){%>
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDependente?opcao=cadastrar&aluno_id=<%=session.getAttribute("aluno_id")%>">
+                                                    <%}else{%>
+                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDependente?opcao=cadastrar_analise&aluno_id=<%=request.getParameter("idAluno")%>&i_id=<%=request.getParameter("i_id")%>">
+                                                        <%}%>
                                                         <div class="form-body">
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="nome">Nome do Membro Familiar*:</label>
@@ -197,7 +200,11 @@
                                                                 </div>
                                                             </div>        
                                                             <div class="form-actions right">
+                                                                  <% if(request.getParameter("idAluno")==null){%>
                                                                 <a href="/pnaes/dependente/listar.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                                <%}else{%>
+                                                                <a href="/pnaes/documento/cadastrar.jsp?i_id=<%=request.getParameter("i_id")%>&editar=1"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                                <%}%>
                                                                 <button type="reset" value="Limpar" class="btn btn-warning mr-1 os-icon os-icon-hash">
                                                                     <i class="ft-x"></i> Limpar
                                                                 </button>

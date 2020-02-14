@@ -202,7 +202,7 @@ START - Main Menu
     <div class="logged-user-w avatar-inline">
         <div class="logged-user-i">
             <div class="avatar-w">
-                <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
+                <img alt="" src="/pnaes/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
             </div>
             <div class="logged-user-info-w">
                 <div class="logged-user-name">
@@ -227,7 +227,7 @@ START - Main Menu
             <div class="logged-user-menu color-style-bright">
                 <div class="logged-user-avatar-info">
                     <div class="avatar-w">
-                        <img alt="" src="/pnaes/<%=edital.getNumero()%>/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
+                        <img alt="" src="/pnaes/alunos/<%=session.getAttribute("cpf")%>/<%=session.getAttribute("cpf")%>.jpg">
                     </div>
                     <div class="logged-user-info-w">
                         <div class="logged-user-name">

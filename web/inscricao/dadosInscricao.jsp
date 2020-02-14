@@ -70,6 +70,18 @@
                  $('.edicaoDadosPessoais').hide();
                 
             }
+          
+            function excluirDependente(id,nome,id_inscricao) {
+                alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>', 'Deseja realmente excluir o membro familiar <h5 class="card-title">'+nome+'?</h5>', 
+                function(){ 
+                    var url = "/pnaes/ServletDependente?opcao=excluir&id=" + id+"&i_id="+id_inscricao;
+                    window.location = url; 
+                }
+                , function(){ alertify.error('Exclusão Cancelada');}).set('labels', {ok:'Excluir', cancel:'Cancelar'});;
+                
+                }
+            
+            
             
             $(document).ready(function () {
                 $('#uf').change(function () {
@@ -430,6 +442,8 @@
                                                 </table>
                                             </div>
                                            </div>
+                                              
+                                                     
                                           </div>
                                             <%if (dependentes.size() == 0) { %>    
                                            <h3 class="ui-state-disabled">Estudante NÃO possui Membro Familiar cadastrado</h3>
@@ -438,8 +452,13 @@
                                            <%}else{%>
                                            <h3>Dados dos <%=dependentes.size()>1?dependentes.size():""%> Membros Familiares</h3>
                                              <%}%>
+                                             
                                            <div>
+                                               <%if(request.getParameter("editar")!=null){%>
+                                               <button type="button" class="btn btn-primary btn-sm os-icon os-icon-plus" onclick='window.location.href="/pnaes/dependente/cadastrar.jsp?idAluno=<%=inscricao.getAluno().getId()%>&nomeAluno=<%=inscricao.getAluno().getNome()%>&i_id=<%=inscricao.getId()%>"'>Incluir Membro Familiar</button>
+                                               <%}%>
                                                <div id="accordion3">
+                                                   
                                                    <%for (Dependente d : dependentes) { %>
                                                     <h3><%=d.getNome().toUpperCase()%></h3>
                                                     <div>
@@ -495,7 +514,19 @@
                                                         <th>Renda Mensal:</th>
                                                         <td><script>document.write(formatarMoeda(<%=d.getRenda()%>));</script></td>
                                                        </tr>
-                                                  </table>
+                                                       <%if(request.getParameter("editar")!=null){%>
+                                                            <tr>
+                                                                <th colspan="2" style="text-align:center;" class="visualizacaoDependente">
+                                                                    <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="excluirDependente('<%=d.getId()%>','<%=d.getNome().toUpperCase()%>','<%=inscricao.getId()%>');"> Excluir Membro Familiar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    <button type="button" class="btn btn-warning os-icon os-icon-edit" onclick="edicaoDependente();"> Clique para Editar</button>
+                                                                    </th>
+                                                                <th colspan="2" style="text-align:center; display: none;" class="edicaoDependente">
+                                                                    <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="cancelaEdicaoDependente();"> Cancelar Edição</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    <button type="submit" class="btn btn-success os-icon os-icon-save" onclick="salvarDependente();"> Salvar</button>
+                                                                </th>
+                                                            </tr>
+                                                            <%}%>
+                                                    </table>
                                                   </div>
                                                   <%}%>
                                                

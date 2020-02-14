@@ -51,7 +51,7 @@ public class ServletDependente extends HttpServlet {
             GregorianCalendar dtn = new GregorianCalendar();
             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
             String opcao = request.getParameter("opcao");
-            try {
+            try { String idIncricao = request.getParameter("i_id");
                 switch (opcao) {
 
                     case "cadastrar":
@@ -86,6 +86,43 @@ public class ServletDependente extends HttpServlet {
                         
                         }catch(IllegalStateException | ExceptionInInitializerError ce){
                             request.getRequestDispatcher("dependente/listar.jsp?msg2=Membro Familiar já cadastrado.").forward(request, response);
+                            //response.sendRedirect("dependente/cadastrar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo CPF vazio.");
+                        }
+                        
+                    break;
+                    case "cadastrar_analise":
+                        try{
+                        //Setando dados do Dependente
+                        dependente.setNome(request.getParameter("nome"));
+                        dependente.setCpfd(request.getParameter("cpf").equals("")?null:request.getParameter("cpf"));
+                        dependente.setRg(request.getParameter("rg"));
+                        
+                        if(request.getParameter("ufe")!= null){
+                        ufe.setId(Integer.parseInt(request.getParameter("ufe")));
+                        dependente.setUfExpedicao(ufe);
+                        }
+                        
+                        dtn.setTime(formatador.parse(request.getParameter("dtn")));
+                        dependente.setDtn(dtn);
+                        dependente.setSexo(request.getParameter("sexo"));
+                        dependente.setTelefone(request.getParameter("telefone"));
+                        dependente.setEmail(request.getParameter("email"));
+                        dependente.setGrauParentesco(request.getParameter("grauParentesco"));
+                        dependente.setTipoDeficiente(request.getParameter("tipoDeficiencia"));
+                        dependente.setAtividadeProf(request.getParameter("atividade"));
+                        dependente.setRenda(Double.parseDouble(request.getParameter("renda").replace("R$", "").replace(".", "").replace(",", ".")));
+                        aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
+                        dependente.setEndereco(aluno.getEndereco());
+                        dependente.setAluno(aluno);
+                        //Chamando o metodo inserir do dao e redirecionando para listar Dependente
+                        daoFactory.getDependenteDao().inserirOuAlterar(dependente);
+                       
+                        request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Membro Familiar "+dependente.getNome()+" foi incluído com sucesso!").forward(request, response);
+                       // response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi incluido com sucesso!");
+                        
+                        }catch(IllegalStateException | ExceptionInInitializerError ce){
+                            // StringidIncricao = request.getParameter("i_id");
+                            request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg2=Membro Familiar já cadastrado.").forward(request, response);
                             //response.sendRedirect("dependente/cadastrar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo CPF vazio.");
                         }
                         
@@ -129,7 +166,10 @@ public class ServletDependente extends HttpServlet {
                        // dependente.setId(Integer.parseInt(request.getParameter("id")));
                         //Chamando o metodo excluir do dao e redirecionando para listar Dependente
                         daoFactory.getDependenteDao().excluir(dependente);
+                        if(idIncricao==null)
                         request.getRequestDispatcher("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi Excluído com sucesso!").forward(request, response);
+                        else
+                       request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Membro Familiar "+dependente.getNome()+" foi Excluído com sucesso!").forward(request, response);
                         //response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi Excluido com sucesso!");
                     break;
 

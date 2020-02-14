@@ -41,6 +41,24 @@
                             </div>
                         </div>
                         <center>
+                            <% if(request.getParameter("msg") != null){ %>
+                         <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="alert alert-success" role="alert">
+                                    <strong><%=request.getParameter("msg")%></strong>
+                                </div>
+                            </div>
+                        </div>
+                                 <% }%>
+                                 <% if(request.getParameter("msg2") != null){ %>
+                         <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" role="alert">
+                                    <strong><%=request.getParameter("msg2")%></strong>
+                                </div>
+                            </div>
+                        </div>
+                                 <% }%>
                             <div style="width: 95%">
                                 <br>
                                 <div class="row">
