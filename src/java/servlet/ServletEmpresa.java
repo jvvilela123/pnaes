@@ -104,7 +104,38 @@ public class ServletEmpresa extends HttpServlet {
                     daoFactory.getEmpresaDao().inserirOuAlterar(empresa);
                      
                     //redireciona para a pagina inicial
-                    response.sendRedirect("home.jsp");
+                   response.sendRedirect("home.jsp");
+                    break;
+                    case "alterar_dados_ocupacao":
+                    
+                    empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(Integer.parseInt(request.getParameter("aluno_id")));
+                     //Setando dados do Empresa
+                    empresa.setTemCarteira(request.getParameter("carteira").equals("sim"));
+                    empresa.setAtividade(request.getParameter("atividade")!=null?request.getParameter("atividade"):null);
+                    empresa.setNome(request.getParameter("nome")!=null?request.getParameter("nome"):null);
+                    empresa.setTelefone(request.getParameter("telefone")!=null?request.getParameter("telefone"):null);
+                    
+                    if(request.getParameter("renda")!=null && !request.getParameter("renda").equals(""))
+                    empresa.setRenda(Double.parseDouble(request.getParameter("renda").replace("R$", "").replace(".", "").replace(",", ".")));
+                    else
+                    empresa.setRenda(0.00);
+                    
+                    if(request.getParameter("orenda")!=null && !request.getParameter("orenda").equals(""))
+                    empresa.setOrenda(Double.parseDouble(request.getParameter("orenda").replace("R$", "").replace(".", "").replace(",", ".")));
+                    else
+                    empresa.setOrenda(0.00);
+                    
+                   // seta aluno na empresa
+                    empresa.setAluno(aluno);
+                   
+                    //Altera a empresa
+                    daoFactory.getEmpresaDao().inserirOuAlterar(empresa);
+                     
+                    //redireciona para a pagina inicial
+                   // response.sendRedirect("home.jsp");
+                     String idIncricao = request.getParameter("i_id");
+                    request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Ocupação do Estudante foi alterada com sucesso!").forward(request, response);
+                    //response.sendRedirect("documento/cadastrar.jsp?i_id="+request.getParameter("i_id")+"&editar=1");
                     break;
                 case "alterar":
                     //Setando dados do Empresa

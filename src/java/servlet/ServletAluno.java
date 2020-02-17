@@ -283,7 +283,10 @@ public class ServletAluno extends HttpServlet {
                     endereco = daoFactory.getEnderecoDao().inserirOuAlterarComRetorno(endereco);
                     aluno.setEndereco(endereco);
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
-                    response.sendRedirect("documento/cadastrar.jsp?i_id="+request.getParameter("i_id"));
+                    String idIncricao = request.getParameter("i_id");
+                   request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Dados Pessoais foram alterados com sucesso!").forward(request, response);
+                       
+                   // response.sendRedirect("documento/cadastrar.jsp?i_id="+request.getParameter("i_id")+"&editar=1");
                     break;
                 case "alterar_permissao":
 

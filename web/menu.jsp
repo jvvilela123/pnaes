@@ -200,7 +200,7 @@ START - Mobile Menu
             </li>
              
             <li class=" has-sub-menu">
-                <a href="apps_bank.html">
+                <a href="#">
                     <div class="icon-w">
                         <div class="os-icon os-icon-package"></div>
 
@@ -513,7 +513,7 @@ START - Main Menu
         </li>
         
         <li class=" has-sub-menu">
-            <a href="apps_bank.html">
+            <a href="#">
                 <div class="icon-w">
                     <div class="os-icon os-icon-package"></div>
                 </div>

@@ -56,12 +56,12 @@
 					data: [
 						<%
                                    List<Bolsa> bolsas = daoFactory.getBolsaDao().buscarBolsaPorEdital(edital.getId());
-                                   
+                                    List<Inscricao> inscricoes_por_bolsa = null;
                                    for (Bolsa b : bolsas) {
-                                       inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsa(b.getId(),edital.getId());
+                                       inscricoes_por_bolsa = daoFactory.getInscricaoDao().perquisarPorBolsa(b.getId(),edital.getId());
                                         //não aparecer a opção nenhum
                                        // if(b.getId()!=6)
-                                        out.print(inscricoes.size() + ",");
+                                     out.print(inscricoes_por_bolsa.size()  + ",");
                                     }
                                                 %>
 					],
@@ -81,9 +81,10 @@
                                     <%
                                     
                                     for (Bolsa b : bolsas) {
+                                         inscricoes_por_bolsa = daoFactory.getInscricaoDao().perquisarPorBolsa(b.getId(),edital.getId());
                                         //não aparecer a opção nenhum
                                        // if(b.getId()!=6)
-                                        out.print("\'"+b.getNome() + "\',");
+                                        out.print("\'"+b.getNome() +" - "+ inscricoes_por_bolsa.size()+ " ( " + inscricoes_por_bolsa.size()*100 / inscricoes.size() + "%" + " ) \',");
                                     }
                                %>
 					
@@ -123,12 +124,13 @@
 					data: [
 						<%
                                    List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
-                                   
+                                   List<Inscricao> inscricoes_por_categoria = null;
+                                    
                                    for (Categoria c : categorias) {
-                                       inscricoes = daoFactory.getInscricaoDao().perquisarPorCategoria(c.getId(),edital.getId());
-                                        //não aparecer a opção nenhum
-                                      //  if(b.getId()!=6)
-                                        out.print(inscricoes.size() + ",");
+                                       
+                                       inscricoes_por_categoria = daoFactory.getInscricaoDao().perquisarPorCategoria(c.getId(),edital.getId());
+                                     
+                                        out.print(inscricoes_por_categoria.size() + ",");
                                     }
                                                 %>
 					],
@@ -145,9 +147,10 @@
                                     <%
                                     
                                     for (Categoria c : categorias) {
-                                        //não aparecer a opção nenhum
-                                       // if(c.getId()!=6)
-                                        out.print("\'"+c.getNome() + "\',");
+                                        
+                                        inscricoes_por_categoria = daoFactory.getInscricaoDao().perquisarPorCategoria(c.getId(),edital.getId());
+                                        
+                                        out.print("\'"+c.getNome() +" - "+ inscricoes_por_categoria.size()+ " ( " + inscricoes_por_categoria.size()*100 / inscricoes.size() + "%" + " ) \',");
                                     }
                                %>
 					

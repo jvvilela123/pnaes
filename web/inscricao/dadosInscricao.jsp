@@ -70,6 +70,20 @@
                  $('.edicaoDadosPessoais').hide();
                 
             }
+            
+            function edicaoDadosOcupacao() {
+                 $('.visualizacaoDadosOcupacao').hide();
+                 $('.edicaoDadosOcupacao').show();
+                
+            }
+            function cancelaEdicaoDadosOcupacao(id_inscricao) {
+               //  $('.visualizacaoDadosOcupacao').show();
+                // $('.edicaoDadosOcupacao').hide();
+                 //var url_atual = window.location.href;
+                  var url = "/pnaes/documento/cadastrar.jsp?i_id="+id_inscricao+"&editar=1";
+                 window.location = url; 
+                
+            }
           
             function excluirDependente(id,nome,id_inscricao) {
                 alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>', 'Deseja realmente excluir o membro familiar <h5 class="card-title">'+nome+'?</h5>', 
@@ -80,6 +94,32 @@
                 , function(){ alertify.error('Exclusão Cancelada');}).set('labels', {ok:'Excluir', cancel:'Cancelar'});;
                 
                 }
+                
+                function mostraCampos() {
+                 if(document.getElementById('atividade').value === "Estagiario" ||
+                    document.getElementById('atividade').value === "Empregado CLT" || 
+                    document.getElementById('atividade').value === "Funcionanio Publico" || 
+                    document.getElementById('atividade').value === "Servidor Publico"){ 
+                    $('.DadosOcupacaoEmpregado').show();
+                    $("#nome_empresa").prop('required',true);
+                       $("#telefone_empresa").prop('required',true);
+                 }else{
+                    document.getElementById('nome_empresa').value = "";
+                    document.getElementById('telefone_empresa').value = "";
+                    document.getElementById('renda').value = "";
+                    $("#nome_empresa").prop('required',false);
+                    $("#telefone_empresa").prop('required',false);
+                    $('.DadosOcupacaoEmpregado').hide();
+                 }
+                 if(document.getElementById('atividade').value === "Desempregado"){ 
+                      // document.getElementById('div4').style.display = 'none';
+                       document.getElementById('renda').value = "";
+                       $("#renda").prop('required',false);
+                 }else{
+                       //document.getElementById('div4').style.display = 'block';
+                       $("#renda").prop('required',true);
+                 }
+            }
             
             
             
@@ -367,33 +407,156 @@
                                                         </table>
                                                     </div>
                                                     <h3>Ocupação do Estudante</h3>
-                                                    <div>
+                                                    <div id="acordion_ocupacao">
+                                                        <form method="Post" action="../ServletEmpresa?opcao=alterar_dados_ocupacao&aluno_id=<%=inscricao.getAluno().getId()%>&i_id=<%=inscricao.getId()%>">
                                                         <table class="table table-striped table-responsive-md">
                                                             <tr>    
                                                                 <th>Tem carteira de Trabalho?</th>
-                                                                <td><%if(empresa.getTemCarteira())
+                                                                <td class="visualizacaoDadosOcupacao"><%if(empresa.getTemCarteira())
                                                                     out.print("SIM");
                                                                     else
                                                                     out.print("NÃO");%></td>
+                                                                <td class="edicaoDadosOcupacao" style="display: none;">
+                                                                    <select id="carteira" name="carteira" class="form-control" required >
+                                                                        <option selected="" disabled="" value="">Selecione uma das Opçoes</option>
+                                                                    <%
+                                                                        if (empresa.getTemCarteira())
+                                                                        out.print("<option selected value='sim'>SIM</option>"
+                                                                                + "<option value='nao'>NÃO</option>");
+                                                                        else
+                                                                        out.print("<option selected value='nao'>NÃO</option>"
+                                                                                + "<option value='sim'>SIM</option>");%>
+                                                                </td>
                                                             </tr>
                                                             
                                                             <tr>    
                                                                 <th>Situação Profissional:</th>
-                                                                <td><%=empresa.getAtividade()%></td>
+                                                                <td class="visualizacaoDadosOcupacao"><%=empresa.getAtividade()%></td>
+                                                                <td class="edicaoDadosOcupacao" style="display: none;">
+                                                                     <select id="atividade" name="atividade" class="form-control" required onchange="mostraCampos();" >
+                                                                        <option selected="" disabled="" value="">Selecione a Ocupação</option>
+                                                                        <%
+                                                                        if(empresa.getAtividade().equals("Desempregado"))
+                                                                        out.print("<option selected value='Desempregado'>Desempregado</option>");
+                                                                        else
+                                                                        out.print("<option value='Desempregado'>Desempregado</option>");
+                                                                        
+                                                                        if(empresa.getAtividade().equals("Empregado CLT"))
+                                                                        out.print("<option selected value='Empregado CLT'>Empregado de Carteira Assinada</option>");
+                                                                        else
+                                                                        out.print("<option value='Empregado CLT'>Empregado de Carteira Assinada</option>");
+                                                                        
+                                                                        if(empresa.getAtividade().equals("Trabalho sem carteira"))
+                                                                        out.print("<option selected value='Trabalho sem carteira'>Trabalho sem Carteira Assinada</option>");
+                                                                        else
+                                                                        out.print("<option value='Trabalho sem carteira'>Trabalho sem Carteira Assinada</option>");
+                                                                        
+                                                                        if(empresa.getAtividade().equals("Autonomo"))
+                                                                        out.print("<option selected value='Autonomo'>Autônomo (Formal)</option>");
+                                                                        else
+                                                                        out.print("<option value='Autonomo'>Autônomo (Formal)</option>");
+                                                                        
+                                                                        if(empresa.getAtividade().equals("Autonomoi"))
+                                                                        out.print("<option selected value='Autonomoi'>Autônomo (Informal)</option>");
+                                                                        else
+                                                                        out.print("<option value='Autonomoi'>Autônomo (Informal)</option>");
+                                                                        
+                                                                        if(empresa.getAtividade().equals("Funcionanio Publico"))
+                                                                        out.print("<option selected value='Funcionanio Publico'>Funcionário Público (Contratado)</option>");
+                                                                        else
+                                                                        out.print("<option value='Funcionanio Publico'>Funcionário Público (Contratado)</option>");
+                                                                        
+                                                                        if(empresa.getAtividade().equals("Servidor Publico"))
+                                                                        out.print("<option selected value='Servidor Publico'>Servidor Público (Concursado)</option>");
+                                                                        else
+                                                                        out.print("<option value='Servidor Publico'>Servidor Público (Concursado)</option>");
+                                                                        
+                                                                        if(empresa.getAtividade().equals("Estagiario"))
+                                                                        out.print("<option selected value='Estagiario'>Estagiário</option>");
+                                                                        else
+                                                                        out.print("<option value='Estagiario'>Estagiário</option>");
+                                                                        
+                                                                        if(empresa.getAtividade().equals("Aposentado"))
+                                                                        out.print("<option selected value='Aposentado'>Aposentado</option>");
+                                                                        else
+                                                                        out.print("<option value='Aposentado'>Aposentado</option>");
+                                                                        
+                                                                        if(empresa.getAtividade().equals("Pensionista"))
+                                                                        out.print("<option selected value='Pensionista'>Pensionista</option>");
+                                                                        else
+                                                                        out.print("<option value='Pensionista'>Pensionista</option>");
+                                                                        %>
+                                                                    </select>
+                                                                </td>
                                                             </tr>
                                                             
-                                                            <%if(empresa.getAtividade().equals("Empregado CLT") || empresa.getAtividade().equals("Funcionanio Publico") || empresa.getAtividade().equals("Servidor Publico") || empresa.getAtividade().equals("Estagiario")){%>
-                                                            <tr>    
+                                                            <%if(empresa.getAtividade().equals("Empregado CLT") || 
+                                                                    empresa.getAtividade().equals("Funcionanio Publico") || 
+                                                                    empresa.getAtividade().equals("Servidor Publico") || 
+                                                                   empresa.getAtividade().equals("Estagiario")){%>
+                                                           <tr class="DadosOcupacaoEmpregado">
+                                                               <% } else {%>
+                                                            <tr class="DadosOcupacaoEmpregado" style="display: none;"> 
+                                                            <%}%>
                                                                 <th>Nome da Empresa que Trabalha:</th>
-                                                                <td><%=empresa.getNome()%></td>
+                                                                <td class="visualizacaoDadosOcupacao"><%=empresa.getNome()%></td>
+                                                                <td class="edicaoDadosOcupacao" style="display: none;">
+                                                            <input type="text" name="nome" id="nome_empresa" class="form-control" placeholder="Nome do Local de Trabalho" value="<%=empresa.getNome()!=null?empresa.getNome():""%>" 
+                                                                    <%
+                                                                            if(empresa.getNome()!=null && !empresa.getNome().equals(""))
+                                                                                out.print("required");%>>
+                                                            </td>
                                                             </tr>
-                                                            <tr>    
+                                                            <%if(empresa.getAtividade().equals("Empregado CLT") || 
+                                                                    empresa.getAtividade().equals("Funcionanio Publico") || 
+                                                                    empresa.getAtividade().equals("Servidor Publico") || 
+                                                                   empresa.getAtividade().equals("Estagiario")){%>
+                                                             <tr class="DadosOcupacaoEmpregado">
+                                                               <% } else {%>
+                                                            <tr class="DadosOcupacaoEmpregado" style="display: none;"> 
+                                                            <%}%>   
                                                                 <th>Telefone da Empresa:</th>
-                                                                <td><%=empresa.getTelefone()%></td>
+                                                                <td class="visualizacaoDadosOcupacao"><%=empresa.getTelefone()%></td>
+                                                                <td class="edicaoDadosOcupacao" style="display: none;">
+                                                                    <input type="text" name="telefone" id="telefone_empresa"  class="form-control" pattern="[0-9]{2} [0-9]{4,6}[0-9]{3,4}$"  placeholder="Telefone do Local de Trabalho DD 999999999" maxlength="12" OnKeyPress="formatar('## #########', this)" value="<%=empresa.getTelefone()!=null?empresa.getTelefone():""%>"
+                                                                           <%
+                                                                            if(empresa.getTelefone()!=null && !empresa.getTelefone().equals(""))
+                                                                                out.print("required");%>>
+                                                                </td>
+                                                            </tr>
+                                                            <%
+                                                                if (!empresa.getAtividade().equals("Desempregado")) {%>
+                                                                <tr class="DadosOcupacaoEmpregado">    
+                                                              <%}else{%>
+                                                              <tr class="DadosOcupacaoEmpregado" style="display: none;">
+                                                              <%}%>
+                                                                <th>Remuneração Bruta:</th>
+                                                                <td class="visualizacaoDadosOcupacao"><%=empresa.getRenda()!=null?"R$ "+decimal.format(empresa.getRenda()):""%></td>
+                                                                <td class="edicaoDadosOcupacao" style="display: none;">
+                                                                    <input type="text" name="renda" id="renda"  class="form-control" value="<%="R$ "+decimal.format(empresa.getRenda())%>" required placeholder="Valor da Remuneração Bruta do Aluno (R$ 0,00)" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                </td>
                                                             </tr>
                                                             
+                                                            <tr>    
+                                                                <th>Outra Renda:</th>
+                                                                <td class="visualizacaoDadosOcupacao"><%=empresa.getOrenda()!=null?"R$ "+decimal.format(empresa.getOrenda()):""%></td>
+                                                                <td class="edicaoDadosOcupacao" style="display: none;">
+                                                                    <input type="text" name="orenda" id="orenda"  class="form-control" value="<%="R$ "+decimal.format(empresa.getOrenda())%>" required placeholder="Valor da Outra Renda do Aluno (R$ 0,00)" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                </td>
+                                                            </tr>
+                                                            
+                                                                
+                                                             <%if(request.getParameter("editar")!=null){%>
+                                                            <tr>
+                                                                <th colspan="2" style="text-align:center;" class="visualizacaoDadosOcupacao"><button type="button" class="btn btn-warning os-icon os-icon-edit" onclick="edicaoDadosOcupacao();"> Clique para Editar</th>
+                                                                <th colspan="2" style="text-align:center; display: none;" class="edicaoDadosOcupacao">
+                                                                    <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="cancelaEdicaoDadosOcupacao(<%=inscricao.getId()%>);"> Cancelar Edição</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    <button type="submit" class="btn btn-success os-icon os-icon-save" onclick="salvarDadosOcupacao();"> Salvar</button>
+                                                                </th>
+                                                            </tr>
                                                             <%}%>
                                                         </table>
+                                                        </form>
                                                     </div>
                                                             <%if(!fichaMedica.getTemDoenca() &&
                                                                  !fichaMedica.getTemDoencaDep() &&
@@ -518,12 +681,12 @@
                                                             <tr>
                                                                 <th colspan="2" style="text-align:center;" class="visualizacaoDependente">
                                                                     <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="excluirDependente('<%=d.getId()%>','<%=d.getNome().toUpperCase()%>','<%=inscricao.getId()%>');"> Excluir Membro Familiar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    <button type="button" class="btn btn-warning os-icon os-icon-edit" onclick="edicaoDependente();"> Clique para Editar</button>
+                                                                 <!--   <button type="button" class="btn btn-warning os-icon os-icon-edit" onclick="edicaoDependente();"> Clique para Editar</button>-->
                                                                     </th>
-                                                                <th colspan="2" style="text-align:center; display: none;" class="edicaoDependente">
+                                                               <!-- <th colspan="2" style="text-align:center; display: none;" class="edicaoDependente">
                                                                     <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="cancelaEdicaoDependente();"> Cancelar Edição</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                     <button type="submit" class="btn btn-success os-icon os-icon-save" onclick="salvarDependente();"> Salvar</button>
-                                                                </th>
+                                                                </th>-->
                                                             </tr>
                                                             <%}%>
                                                     </table>
@@ -533,7 +696,7 @@
                                                </div>
                                             </div>
                                             
-                                           <h3>Dados Financeiros Renda/Despesa</h3>
+                                           <h3>Demonstrativos Financeiros Renda/Despesa</h3>
                                             <div>
                                                 <table class="table table-striped table-responsive-md">
                                                     <tr>    

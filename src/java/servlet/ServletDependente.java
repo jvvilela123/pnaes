@@ -51,7 +51,8 @@ public class ServletDependente extends HttpServlet {
             GregorianCalendar dtn = new GregorianCalendar();
             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
             String opcao = request.getParameter("opcao");
-            try { String idIncricao = request.getParameter("i_id");
+            try { 
+                String idIncricao = request.getParameter("i_id");
                 switch (opcao) {
 
                     case "cadastrar":

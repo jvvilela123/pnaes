@@ -231,7 +231,7 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="telefone">Telefone do Local de Trabalho (DD 99999-9999):</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="text" name="telefone" id="telefone"  class="form-control" pattern="[0-9]{2} [0-9]{4,6}[0-9]{3,4}$" placeholder="Telefone do Local de Trabalho DDD 999999999" maxlength="12" OnKeyPress="formatar('## #########', this)" value="<%=empresa.getTelefone()!=null?empresa.getTelefone():""%>"
+                                                                        <input type="text" name="telefone" id="telefone"  class="form-control" pattern="[0-9]{2} [0-9]{4,6}[0-9]{3,4}$" placeholder="Telefone do Local de Trabalho DD 999999999" maxlength="12" OnKeyPress="formatar('## #########', this)" value="<%=empresa.getTelefone()!=null?empresa.getTelefone():""%>"
                                                                                <%
                                                                             if(empresa.getTelefone()!=null && !empresa.getTelefone().equals(""))
                                                                                 out.print("required");%>

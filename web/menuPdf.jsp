@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="modelo.FichaMedica"%>
 <%@page import="modelo.Despesa"%>
 <%@page import="modelo.Entrevista"%>
@@ -32,6 +33,7 @@
                                             Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
 
                                            Edital edital = (Edital) daoFactory.getEditalDao().pesquisarPorId(inscricao.getEdital().getId());
+                                            DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
                                         %>
 <!--------------------
 START - Mobile Menu
