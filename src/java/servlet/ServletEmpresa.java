@@ -134,8 +134,8 @@ public class ServletEmpresa extends HttpServlet {
                     //redireciona para a pagina inicial
                    // response.sendRedirect("home.jsp");
                      String idIncricao = request.getParameter("i_id");
-                    request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Ocupação do Estudante foi alterada com sucesso!").forward(request, response);
-                    //response.sendRedirect("documento/cadastrar.jsp?i_id="+request.getParameter("i_id")+"&editar=1");
+                    //request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Ocupação do Estudante foi alterada com sucesso!").forward(request, response);
+                    response.sendRedirect("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Renda do Estudante foi alterada com sucesso!");
                     break;
                 case "alterar":
                     //Setando dados do Empresa

@@ -46,6 +46,7 @@ public class ServletDespesa extends HttpServlet {
             Despesa despesa = new Despesa();
             Aluno aluno = new Aluno();
             String opcao = request.getParameter("opcao");
+             List<Despesa> despesas = null;
             
             try {
                 switch (opcao) {
@@ -94,7 +95,7 @@ public class ServletDespesa extends HttpServlet {
                     case "alterar_6_passo":
                         //Setando dados do Despesa Mensal
                         //despesa.setId(Integer.parseInt(request.getParameter("id")));
-                        List<Despesa> despesas = daoFactory.getDespesaDao().perquisarListaPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
+                        despesas = daoFactory.getDespesaDao().perquisarListaPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
                         if(despesas.size() > 0){
                          despesa = despesas.get(0);
                         }
@@ -113,6 +114,32 @@ public class ServletDespesa extends HttpServlet {
                         //Chamando o metodo alterar do dao e redirecionando para listar Despesa Mensal
                         daoFactory.getDespesaDao().inserirOuAlterar(despesa);
                         response.sendRedirect("home.jsp");
+                        break;
+                        case "alterar_dados_despesa":
+                        //Setando dados do Despesa Mensal
+                        //despesa.setId(Integer.parseInt(request.getParameter("id")));
+                        despesas = daoFactory.getDespesaDao().perquisarListaPorAluno(Integer.parseInt(request.getParameter("aluno_id")));
+                        if(despesas.size() > 0){
+                         despesa = despesas.get(0);
+                        }
+                        despesa.setMoradia(Double.parseDouble(request.getParameter("moradia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setAlimentacao(Double.parseDouble(request.getParameter("alimentacao").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setTransporte(Double.parseDouble(request.getParameter("transporte").replace("R$", "").replace(".", "").replace(",", ".")));                        
+                        despesa.setAgua(Double.parseDouble(request.getParameter("agua").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setEnergia(Double.parseDouble(request.getParameter("energia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setTelefone(Double.parseDouble(request.getParameter("telefone").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setFarmacia(Double.parseDouble(request.getParameter("farmacia").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setOutrasDespesas(Double.parseDouble(request.getParameter("outrasDespesas").replace("R$", "").replace(".", "").replace(",", ".")));
+                        despesa.setQualOutrasDespesas(request.getParameter("qualOutrasDespesas")!=null?request.getParameter("qualOutrasDespesas"):"");
+                        aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(Integer.parseInt(request.getParameter("aluno_id")));
+                        despesa.setAluno(aluno);
+
+                        //Chamando o metodo alterar do dao e redirecionando para listar Despesa Mensal
+                        daoFactory.getDespesaDao().inserirOuAlterar(despesa);
+                        //response.sendRedirect("home.jsp");
+                        String idIncricao = request.getParameter("i_id");
+                        response.sendRedirect("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Despesa do Estudante foi alterada com sucesso!");
+                       // request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Despesa do Estudante foi alterada com sucesso!").forward(request, response);
                         break;
                     case "excluir":
                         //Setando dados do Despesa Mensal

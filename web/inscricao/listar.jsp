@@ -179,7 +179,7 @@
                                                                             <select name="pBolsa1" class="form-control">
                                                                                 <option selected="" disabled="">Selecione o Auxílio ↓</option>
                                                                                 <%     
-                                                                                    List<Bolsa> bolsas = daoFactory.getBolsaDao().listar();
+                                                                                    List<Bolsa> bolsas = daoFactory.getBolsaDao().buscarBolsaPorEdital(edital.getId());
                                                                                     for (Bolsa b : bolsas) {
                                                                                         out.print("<option value=" + b.getId() + ">" + b.getNome() + "</option>");
                                                                                     }

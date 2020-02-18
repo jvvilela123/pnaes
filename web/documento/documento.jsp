@@ -14,7 +14,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%if(request.getParameter("analisados")!=null){%>
+        <title>Lista de Alunos com a Análise de Documentos Concluída</title>
+         <%}else{%>
         <title>Lista de Alunos para a Análise de Documentos</title>
+        <%}%>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
             function formatar(mascara, documento) {
@@ -137,7 +141,11 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
+                                                <%if(request.getParameter("analisados")!=null){%>
+                                                 <h4 class="card-title" id="striped-row-layout-icons">Documentos Analisados</h4>
+                                                      <%}else{%>
                                                 <h4 class="card-title" id="striped-row-layout-icons">Análise de Documentos</h4>
+                                                <%}%>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -145,7 +153,11 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
+                                                        <%if(request.getParameter("analisados")!=null){%>
+                                                         Lista de Alunos com a Análise de Documentos Concluída
+                                                      <%}else{%>
                                                         Lista de Alunos para a Análise de Documentos
+                                                        <%}%>
                                                     </div><br>
                                                    
                                                     <table class="table table-striped table-responsive-md" id="tabelaAlunosDocumentos">
@@ -164,7 +176,7 @@
 
                                                             for (Inscricao i : inscricoes) {
                                                                 
-                                                                if (i.getResultado() == null) {
+                                                                if (i.getResultado() == null && request.getParameter("analisados")==null) {
                                                                     out.println("<tr align='center'>");
                                                                     out.println("<td>" + i.getId() + "</td>");
                                                                     out.println("<td>" + i.getAluno().getNome() + "</td>");
@@ -172,6 +184,16 @@
                                                                     out.println("<td>" + i.getAluno().getCurso().getNome() + "</td>");
                                                                     out.println("<td>" + i.getBolsa1().getNome() + "</td>");
                                                                     out.println("<td><a href='cadastrar.jsp?i_id=" + i.getId() + "&editar=1'><button  class='btn btn-warning os-icon os-icon-eye' type='button' > Conferir Documentos</button></a></td>");
+                                                                    out.println("</tr>");
+                                                                }else if (i.getResultado() != null  && request.getParameter("analisados")!=null){
+                                                                    //Mostrar somente Inscrições já analisadas 
+                                                                    out.println("<tr align='center'>");
+                                                                    out.println("<td>" + i.getId() + "</td>");
+                                                                    out.println("<td>" + i.getAluno().getNome() + "</td>");
+                                                                    out.println("<td>" + i.getAluno().getCurso().getCategoria().getNome() + "</td>");
+                                                                    out.println("<td>" + i.getAluno().getCurso().getNome() + "</td>");
+                                                                    out.println("<td>" + i.getBolsa1().getNome() + "</td>");
+                                                                    out.println("<td><a href='cadastrar.jsp?i_id=" + i.getId() + "&editar=1'><button  class='btn btn-warning os-icon os-icon-eye' type='button' > Editar Conferência dos Documentos</button></a></td>");
                                                                     out.println("</tr>");
                                                                 }
                                                             }

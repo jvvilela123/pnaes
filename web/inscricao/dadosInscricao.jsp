@@ -84,6 +84,20 @@
                  window.location = url; 
                 
             }
+            
+            function edicaoDadosDespesa() {
+                 $('.visualizacaoDadosDespesa').hide();
+                 $('.edicaoDadosDespesa').show();
+                
+            }
+            function cancelaEdicaoDadosDespesa(id_inscricao) {
+               //  $('.visualizacaoDadosOcupacao').show();
+                // $('.edicaoDadosOcupacao').hide();
+                 //var url_atual = window.location.href;
+                  var url = "/pnaes/documento/cadastrar.jsp?i_id="+id_inscricao+"&editar=1";
+                 window.location = url; 
+                
+            }
           
             function excluirDependente(id,nome,id_inscricao) {
                 alertify.confirm('<h5 class="card-title"><img src="/pnaes/img/error-24px.svg"/>ATENÇÃO!</h5>', 'Deseja realmente excluir o membro familiar <h5 class="card-title">'+nome+'?</h5>', 
@@ -121,7 +135,19 @@
                  }
             }
             
-            
+            function temOutra() {
+                if(document.getElementById('temOutrasDespesas').value === "sim"){
+                    $('.DadosDespesaOutra').show();
+                    $("#outrasDespesas").prop('required',true);
+                    $("#qualOutrasDespesas").prop('required',true);
+                    document.getElementById('outrasDespesas').value ='';
+                }else{
+                    $('.DadosDespesaOutra').hide();
+                    document.getElementById('outrasDespesas').value ='R$ 0,00';
+                    $("#outrasDespesas").removeAttr("required");
+                    $("#qualOutrasDespesas").removeAttr("required");
+                    }
+                }
             
             $(document).ready(function () {
                 $('#uf').change(function () {
@@ -406,7 +432,7 @@
                                                             </tr>
                                                         </table>
                                                     </div>
-                                                    <h3>Ocupação do Estudante</h3>
+                                                    <h3>Ocupação/Renda do Estudante</h3>
                                                     <div id="acordion_ocupacao">
                                                         <form method="Post" action="../ServletEmpresa?opcao=alterar_dados_ocupacao&aluno_id=<%=inscricao.getAluno().getId()%>&i_id=<%=inscricao.getId()%>">
                                                         <table class="table table-striped table-responsive-md">
@@ -558,6 +584,119 @@
                                                         </table>
                                                         </form>
                                                     </div>
+                                                        <h3>Despesa do Estudante</h3>
+                                                    <div>
+                                                        <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDespesa?opcao=alterar_dados_despesa&aluno_id=<%=inscricao.getAluno().getId()%>&i_id=<%=inscricao.getId()%>">
+                                                        <table class="table table-striped table-responsive-md">
+                                                            <tr>    
+                                                                <th>Moradia (Aluguel, Parcela de Financiamento, etc..):</th>
+                                                                <td class="visualizacaoDadosDespesa"><%="R$ "+decimal.format(despesa.getMoradia())%></td>
+                                                                <td class="edicaoDadosDespesa" style="display: none;">
+                                                                    <input type="text" name="moradia" id="moradia"  class="form-control" value="<%="R$ "+decimal.format(despesa.getMoradia())%>" required placeholder="Valor da despensa com Moradia do Aluno (R$ 0,00)" onKeyPress="return(moeda(this,'.',',',event))" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Alimentação:</th>
+                                                                <td class="visualizacaoDadosDespesa"><%="R$ "+decimal.format(despesa.getAlimentacao())%></td>
+                                                                <td class="edicaoDadosDespesa" style="display: none;">
+                                                                    <input type="text" name="alimentacao" id="alimentacao" value="<%=despesa.getAlimentacao()!=null?"R$ "+decimal.format(despesa.getAlimentacao()):""%>" class="form-control" placeholder="Valor Gasto com Alimentação" onKeyPress="return(moeda(this,'.',',',event))" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Àgua:</th>
+                                                                <td class="visualizacaoDadosDespesa"><%="R$ "+decimal.format(despesa.getAgua())%></td>
+                                                                <td class="edicaoDadosDespesa" style="display: none;">
+                                                                    <input type="text" name="agua" id="agua" value="<%=despesa.getAgua()!=null?"R$ "+decimal.format(despesa.getAgua()):""%>" class="form-control" placeholder="Valor Gasto com Àgua" onKeyPress="return(moeda(this,'.',',',event))" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Energia:</th>
+                                                                <td class="visualizacaoDadosDespesa"><%="R$ "+decimal.format(despesa.getEnergia())%></td>
+                                                                <td class="edicaoDadosDespesa" style="display: none;">
+                                                                    <input type="text" name="energia" value="<%=despesa.getEnergia()!=null?"R$ "+decimal.format(despesa.getEnergia()):""%>" id="energia" class="form-control" placeholder="Valor Gasto com Energia" onKeyPress="return(moeda(this,'.',',',event))" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Telefone:</th>
+                                                                <td class="visualizacaoDadosDespesa"><%="R$ "+decimal.format(despesa.getTelefone())%></td>
+                                                                <td class="edicaoDadosDespesa" style="display: none;">
+                                                                    <input type="text" name="telefone"  value="<%=despesa.getTelefone()!=null?"R$ "+decimal.format(despesa.getTelefone()):""%>" id="telefone" class="form-control" placeholder="valor gasto com Telefone" onKeyPress="return(moeda(this,'.',',',event))" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Transporte:</th>
+                                                                <td class="visualizacaoDadosDespesa"><%="R$ "+decimal.format(despesa.getTransporte())%></td>
+                                                                <td class="edicaoDadosDespesa" style="display: none;">
+                                                                    <input type="text" name="transporte" id="transporte" value="<%=despesa.getTransporte()!=null?"R$ "+decimal.format(despesa.getTransporte()):""%>" class="form-control" placeholder="valor gasto com Transporte" onKeyPress="return(moeda(this,'.',',',event))" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Farmácia:</th>
+                                                                <td class="visualizacaoDadosDespesa"><%="R$ "+decimal.format(despesa.getFarmacia())%></td>
+                                                                <td class="edicaoDadosDespesa" style="display: none;">
+                                                                    <input type="text" name="farmacia" id="farmacia" value="<%=despesa.getFarmacia()!=null?"R$ "+decimal.format(despesa.getFarmacia()):""%>" class="form-control" placeholder="valor gasto com Farmacia" onKeyPress="return(moeda(this,'.',',',event))" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>    
+                                                                <th>Tem Outras Despesas?:</th>
+                                                                <td class="visualizacaoDadosDespesa"><%if(despesa.getOutrasDespesas()>0)
+                                                                    out.print("SIM");
+                                                                    else
+                                                                    out.print("NÃO");%></td>
+                                                                <td class="edicaoDadosDespesa" style="display: none;">
+                                                                     <select id="temOutrasDespesas" name="temOutrasDespesas" class="form-control" required onchange="temOutra();">
+                                                                        <option selected="" disabled="" value="">Selecione uma das Opçoes</option>
+                                                                    <%
+                                                                        if (despesa.getOutrasDespesas()>0)
+                                                                        out.print("<option selected value='sim'>SIM</option>"
+                                                                                + "<option value='nao'>NÃO</option>");
+                                                                        else
+                                                                        out.print("<option selected value='nao'>NÃO</option>"
+                                                                                + "<option value='sim'>SIM</option>");%>
+                                                                </td>
+                                                            </tr>
+                                                            <% if(despesa.getOutrasDespesas()!=null && despesa.getOutrasDespesas()<=0){%>
+                                                            <tr class="DadosDespesaOutra" style="display: none;"> 
+                                                                <%}else{%>
+                                                           <tr class="DadosDespesaOutra">  
+                                                                <%}%>
+                                                               
+                                                                <th>Valor Total das Outras Despesas:</th>
+                                                                <td class="visualizacaoDadosDespesa"><%="R$ "+decimal.format(despesa.getOutrasDespesas())%></td>
+                                                                <td class="edicaoDadosDespesa" style="display: none;">
+                                                                 <input type="text" name="outrasDespesas" value="<%=despesa.getOutrasDespesas()!=null?"R$ "+decimal.format(despesa.getOutrasDespesas()):""%>" id="outrasDespesas" class="form-control" placeholder="Valor Gasto com Outras Despesas" onKeyPress="return(moeda(this,'.',',',event))"
+                                                                        <%
+                                                                            if(despesa.getOutrasDespesas() > 0)
+                                                                                out.print("required");%>>
+                                                                </td>
+                                                            </tr>
+                                                            <% if(despesa.getOutrasDespesas()!=null && despesa.getOutrasDespesas()<=0){%>
+                                                            <tr class="DadosDespesaOutra" style="display: none;"> 
+                                                                <%}else{%>
+                                                           <tr class="DadosDespesaOutra">  
+                                                                <%}%>
+                                                               
+                                                                <th class="visualizacaoDadosDespesa">Especificação das Outras Despesas:</th>
+                                                                <th class="edicaoDadosDespesa" style="display: none;">Especifique Quais são as Outras Despesas:</th>
+                                                                <td class="visualizacaoDadosDespesa"><textarea name="qualOutrasDespesas2" rows="4" cols="50" placeholder="Especifique Quais são as Outras Despesas" id="qualOutrasDespesas2" disabled><%=despesa.getQualOutrasDespesas()!=null||despesa.getQualOutrasDespesas().equals("")?despesa.getQualOutrasDespesas():""%></textarea></td>
+                                                                <td class="edicaoDadosDespesa" style="display: none;">
+                                                                   <textarea name="qualOutrasDespesas" rows="4" cols="50" placeholder="Especifique Quais são as Outras Despesas" id="qualOutrasDespesas"<%
+                                                                            if(despesa.getOutrasDespesas() > 0)
+                                                                                out.print("required");%>><%=despesa.getQualOutrasDespesas()!=null||despesa.getQualOutrasDespesas().equals("")?despesa.getQualOutrasDespesas():""%></textarea>
+                                                                </td>
+                                                            </tr>
+                                                             <%if(request.getParameter("editar")!=null){%>
+                                                            <tr>
+                                                                <th colspan="2" style="text-align:center;" class="visualizacaoDadosDespesa"><button type="button" class="btn btn-warning os-icon os-icon-edit" onclick="edicaoDadosDespesa();"> Clique para Editar</th>
+                                                                <th colspan="2" style="text-align:center; display: none;" class="edicaoDadosDespesa">
+                                                                    <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="cancelaEdicaoDadosDespesa(<%=inscricao.getId()%>);"> Cancelar Edição</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    <button type="submit" class="btn btn-success os-icon os-icon-save" onclick="salvarDadosDespesa();"> Salvar</button>
+                                                                </th>
+                                                            </tr>
+                                                            <%}%>
+                                                        </table>
+                                                        </form>
+                                                    </div>
                                                             <%if(!fichaMedica.getTemDoenca() &&
                                                                  !fichaMedica.getTemDoencaDep() &&
                                                                  !fichaMedica.getTemMedicamento() &&
@@ -698,7 +837,7 @@
                                             
                                            <h3>Demonstrativos Financeiros Renda/Despesa</h3>
                                             <div>
-                                                <table class="table table-striped table-responsive-md">
+                                                <table class="table table-striped table-responsive-md table-success h6">
                                                     <tr>    
                                                         <th>Remuneração Bruta do Estudante</th>
                                                         <td><script>document.write(formatarMoeda(<%=empresa.getRenda()%>));</script></td>
@@ -747,7 +886,9 @@
                                                         <th>Renda per capita (<script>document.write(formatarMoeda(<%=total1%>));</script> / <%=(i + 1)%>) = </th>
                                                         <td><script>document.write(formatarMoeda(<%=perCapita%>));</script></td>
                                                     </tr>
-                                                    <tr>    
+                                                <!--</table>
+                                                 <table class="table table-striped table-responsive-md table-danger">-->
+                                                <tr class="table-danger">    
                                                         <th>Despesa Familiar Total:</th>
                                                             <%
                                                                 Double total = despesa.getAgua() + despesa.getEnergia()

@@ -84,37 +84,37 @@
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="alimentacao">Alimentação (R$ 0,00):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="alimentacao" id="alimentacao" value="<%=despesa.getAlimentacao()!=null?"R$ "+decimal.format(despesa.getAlimentacao()):""%>" class="form-control" placeholder="valor gasto com Alimentação" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="alimentacao" id="alimentacao" value="<%=despesa.getAlimentacao()!=null?"R$ "+decimal.format(despesa.getAlimentacao()):""%>" class="form-control" placeholder="Valor Gasto com Alimentação" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>    
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="agua">Àgua (R$ 0,00):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="agua" id="agua" value="<%=despesa.getAgua()!=null?"R$ "+decimal.format(despesa.getAgua()):""%>" class="form-control" placeholder="valor gasto com Agua" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="agua" id="agua" value="<%=despesa.getAgua()!=null?"R$ "+decimal.format(despesa.getAgua()):""%>" class="form-control" placeholder="Valor Gasto com Agua" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="energia">Energia (R$ 0,00):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="energia" value="<%=despesa.getEnergia()!=null?"R$ "+decimal.format(despesa.getEnergia()):""%>" id="energia" class="form-control" placeholder="valor gasto com Energia" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="energia" value="<%=despesa.getEnergia()!=null?"R$ "+decimal.format(despesa.getEnergia()):""%>" id="energia" class="form-control" placeholder="Valor Gasto com Energia" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="telefone">Telefone (R$ 0,00):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="telefone"  value="<%=despesa.getTelefone()!=null?"R$ "+decimal.format(despesa.getTelefone()):""%>" id="telefone" class="form-control" placeholder="valor gasto com Telefone" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="telefone"  value="<%=despesa.getTelefone()!=null?"R$ "+decimal.format(despesa.getTelefone()):""%>" id="telefone" class="form-control" placeholder="Valor Gasto com Telefone" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="transporte">Transporte (R$ 0,00):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="transporte" id="transporte" value="<%=despesa.getTransporte()!=null?"R$ "+decimal.format(despesa.getTransporte()):""%>" class="form-control" placeholder="valor gasto com Transporte" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="transporte" id="transporte" value="<%=despesa.getTransporte()!=null?"R$ "+decimal.format(despesa.getTransporte()):""%>" class="form-control" placeholder="Valor Gasto com Transporte" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>    
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="farmacia">Farmácia (R$ 0,00):</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" name="farmacia" id="farmacia" value="<%=despesa.getFarmacia()!=null?"R$ "+decimal.format(despesa.getFarmacia()):""%>" class="form-control" placeholder="valor gasto com Farmacia" onKeyPress="return(moeda(this,'.',',',event))">
+                                                                    <input type="text" name="farmacia" id="farmacia" value="<%=despesa.getFarmacia()!=null?"R$ "+decimal.format(despesa.getFarmacia()):""%>" class="form-control" placeholder="Valor Gasto com Farmácia" onKeyPress="return(moeda(this,'.',',',event))">
                                                                 </div>
                                                             </div>
                                                                 <div class="form-group row">
