@@ -390,7 +390,7 @@
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dd">Alterar Documentos que Comprovam as Despesas (pdf):
+                                                <label class="col-md-3 label-control" for="dd">Alterar Documentos que Comprovam as Despesas (Ex: água, energia, telefone, aluguel etc.) (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosDespesas">Visualizar Documentos que Comprovam as Despesas</button>
                                                 </label>
                                                 <div class="col-md-9">                                                    
@@ -399,7 +399,7 @@
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="od">Alterar Outros Documentos (Ex: Água, Energia, Telefone, Contrato de Aluguel, Atestado Médico, etc.) (pdf):
+                                                <label class="col-md-3 label-control" for="od">Alterar Outros Documentos (Ex: Atestado Médico, Receita, Financiamentos etc.) (pdf):
                                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#documentosOutros">Visualizar Outros Documentos</button>
                                                 </label>
                                                 <div class="col-md-9">                                                    

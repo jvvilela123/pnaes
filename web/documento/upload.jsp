@@ -259,14 +259,14 @@
                                                 </div>
                                             </div>   
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="dd">Documentos que Comprovam as Despesas (pdf):</label>
+                                                <label class="col-md-3 label-control" for="dd">Documentos que Comprovam as Despesas  (Ex: água, energia, telefone, aluguel etc.) (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="dd"></label>
                                                     <input type="file" name="dd" id="dd" class="custom-file-input" accept=".pdf, .PDF">                                                  
                                                 </div>
                                             </div>  
                                             <div class="form-group row">
-                                                <label class="col-md-3 label-control" for="od">Outros Documentos (Ex: Água, Energia, Telefone, Contrato de Aluguel, Atestado Médico, etc.) (pdf):</label>
+                                                <label class="col-md-3 label-control" for="od">Outros Documentos (Ex: Atestado Médico, Receita, Financiamentos etc.) (pdf):</label>
                                                 <div class="col-md-9">                                                    
                                                     <label class="col-md-6 custom-file-label" for="od"></label>
                                                     <input type="file" name="od" id="od" class="custom-file-input" accept=".pdf, .PDF">                                                  
