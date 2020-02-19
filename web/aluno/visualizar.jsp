@@ -43,9 +43,12 @@
                                     <%
                                             alunoId = Integer.parseInt(request.getParameter("id"));
                                             aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(alunoId);
-                                          // despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(alunoId);
+                                           despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(alunoId);
                                            //Inscricao inscricao =  (Inscricao) daoFactory.getInscricaoDao().perquisarClassePorAluno(alunoId);
                                           // List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(alunoId);
+                                          empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(alunoId);
+                                           fichaMedica = daoFactory.getFichaMedicaDao().perquisarClassePorAluno(alunoId);
+                                           dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(alunoId);
                                         
                                         %>
 
