@@ -15,23 +15,7 @@
 <!--------------------
 START - Mobile Menu
 -------------------->
-<div class="menu-mobile menu-activated-on-click color-scheme-dark">
-    <div class="mm-logo-buttons-w">
-        <a class="mm-logo" href="/pnaes/home.jsp"><img src="/pnaes/img/logo123.png"><span>PORTO NACIONAL - TO</span></a>
-        <div class="mm-buttons">
-            <div class="content-panel-open">
-                <div class="os-icon os-icon-grid-circles"></div>
-            </div>
-            <div class="mobile-menu-trigger">
-                <div class="os-icon os-icon-hamburger-menu-1"></div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="menu-and-user">
-        <div class="logged-user-w">
-            <div class="avatar-w">      
-                <%
+<%
                     if(session.getAttribute("aluno_id")==null){
                         %>
                         <script>
@@ -95,6 +79,27 @@ START - Mobile Menu
                 edital = editais.get(editais.size() - 1);
 
                 %>
+<div class="menu-mobile menu-activated-on-click color-scheme-dark">
+    <div class="mm-logo-buttons-w">
+        <a class="mm-logo" href="/pnaes/home.jsp"><img src="/pnaes/img/logo123.png"><span><% if (aluno.getCurso()!=null) { %>
+                                PNAES - IFTO - <i>Campus </i> <%=aluno.getCurso().getCampus().getNome()%>
+                                <% }else{ %> 
+                                 PNAES - IFTO
+                                <% } %></span></a>
+        <div class="mm-buttons">
+            <div class="content-panel-open">
+                <div class="os-icon os-icon-grid-circles"></div>
+            </div>
+            <div class="mobile-menu-trigger">
+                <div class="os-icon os-icon-hamburger-menu-1"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="menu-and-user">
+        <div class="logged-user-w">
+            <div class="avatar-w">      
+                
                 <img alt="" src="/pnaes/alunos/<%=aluno.getCpf()%>/<%=aluno.getCpf()%>.jpg">
 
             </div>
@@ -221,6 +226,9 @@ START - Mobile Menu
                             <li>
                                 <a href="/pnaes/documento/documento.jsp">Analise documental</a>
                             </li>
+                            <li>
+                            <a href="/pnaes/documento/documento.jsp?analisados=1">Documentos Analisados</a>
+                        </li>
                             
                             <li>
                                 <a href="/pnaes/entrevista/horario.jsp">Agendar Entrevista</a>
@@ -528,8 +536,12 @@ START - Main Menu
                 <div class="sub-menu-i">
                     <ul class="sub-menu">
                         <li>
-                            <a href="/pnaes/documento/documento.jsp">Analise documental</a>
+                            <a href="/pnaes/documento/documento.jsp">Analise Documental</a>
                         </li>
+                        <li>
+                            <a href="/pnaes/documento/documento.jsp?analisados=1">Documentos Analisados</a>
+                        </li>
+                        
                         <%
                             if (session.getAttribute("nivel").equals(3)) {
                         %>

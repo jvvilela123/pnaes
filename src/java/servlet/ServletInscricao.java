@@ -99,13 +99,26 @@ public class ServletInscricao extends HttpServlet {
                 break;
                 case "alterar":
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
-                    inscricao.setJustificativa(request.getParameter("justificativa"));
+                   // inscricao.setJustificativa(request.getParameter("justificativa"));
                     inscricao.setDocumentosFaltantes(request.getParameter("docf"));
                     inscricao.setStatus("Analizado");
-                    inscricao.setResultado(request.getParameter("resultado"));
+                    inscricao.setResultadoAnaliseDocumental(request.getParameter("resultadoAnalise"));
+                    inscricao.setObservacaoAnaliseDocumental(request.getParameter("observacaoAnaliseDocumental"));
+                    inscricao.setUsuarioAlterou(request.getParameter("usuario"));
 
                     daoFactory.getInscricaoDao().inserirOuAlterar(inscricao);
                     response.sendRedirect("documento/documento.jsp");
+                    case "alterar_analise":
+                    inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
+                   // inscricao.setJustificativa(request.getParameter("justificativa"));
+                    inscricao.setDocumentosFaltantes(request.getParameter("docf"));
+                    inscricao.setStatus("Analizado");
+                    inscricao.setResultadoAnaliseDocumental(request.getParameter("resultadoAnalise"));
+                    inscricao.setObservacaoAnaliseDocumental(request.getParameter("observacaoAnaliseDocumental"));
+                    inscricao.setUsuarioAlterou(request.getParameter("usuario"));
+
+                    daoFactory.getInscricaoDao().inserirOuAlterar(inscricao);
+                    response.sendRedirect("documento/documento.jsp?analisados=1");
                 break;
             }
         }

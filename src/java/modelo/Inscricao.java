@@ -37,11 +37,14 @@ public class Inscricao implements Serializable{
     private String graduacao;
     private String justificativa;
     private String resultado;
+    private String resultadoAnaliseDocumental;
+    private String observacaoAnaliseDocumental;
     private String status;
     private String quantas;
     private String documentosFaltantes;
     private String motivoBolsa;
     private String almocaIfto;
+    private String usuarioAlterou;
     @ManyToOne
     @JoinColumn(name="edital_id",nullable = false)
     private Edital edital;
@@ -157,6 +160,30 @@ public class Inscricao implements Serializable{
 
     public void setAlmocaIfto(String almocaIfto) {
         this.almocaIfto = almocaIfto;
+    }
+
+    public String getResultadoAnaliseDocumental() {
+        return resultadoAnaliseDocumental;
+    }
+
+    public void setResultadoAnaliseDocumental(String resultadoAnaliseDocumental) {
+        this.resultadoAnaliseDocumental = resultadoAnaliseDocumental;
+    }
+
+    public String getObservacaoAnaliseDocumental() {
+        return observacaoAnaliseDocumental;
+    }
+
+    public void setObservacaoAnaliseDocumental(String observacaoAnaliseDocumental) {
+        this.observacaoAnaliseDocumental = observacaoAnaliseDocumental;
+    }
+
+    public String getUsuarioAlterou() {
+        return usuarioAlterou;
+    }
+
+    public void setUsuarioAlterou(String usuarioAlterou) {
+        this.usuarioAlterou = usuarioAlterou;
     }
     
     

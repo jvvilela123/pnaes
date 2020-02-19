@@ -123,13 +123,17 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Selecione os documentos faltantes
+                                                       
                                                     </div>
+                                                    <% if(request.getParameter("analisado") != null){ %>
+                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletInscricao?opcao=alterar_analise&i_id=<%=inscricao.getId()%>">
+                                                    <% }else{ %>
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletInscricao?opcao=alterar&i_id=<%=inscricao.getId()%>">
+                                                        <% } %>
                                                         <div class="form-body">
 
                                                             <div class="form-group row">
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-3">Selecione os Documentos Faltantes:
                                                                     <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
                                                                         <div class="custom-control custom-checkbox">
                                                                             <input type="checkbox" name="cbdf" id="docPessoaisCand" value="Docs. Pessoais do Candidato" class="custom-control-input" onclick="soma()">
@@ -162,34 +166,74 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                    <textarea  cols="40" rows="8" name="docf" id="docf"></textarea>
+                                                                    <textarea  cols="40" rows="8" name="docf" id="docf"><%if(request.getParameter("analisado") != null && inscricao.getDocumentosFaltantes()!=null){out.print(inscricao.getDocumentosFaltantes());}%></textarea>
                                                                 </div>
                                                             </div>
+                                                            <div class="card-header">
+                                                <h4 class="card-title" id="striped-row-layout-icons">Observações:</h4>
+                                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                                <div class="heading-elements">
+                                                </div>
+                                                 <textarea  cols="40" rows="8" name="observacaoAnaliseDocumental" id="observacaoAnaliseDocumental"><%if(request.getParameter("analisado") != null && inscricao.getObservacaoAnaliseDocumental()!=null){out.print(inscricao.getObservacaoAnaliseDocumental());}%></textarea>
+                                            </div>
+                                                            
 
                                                             <div class="form-group row">
                                                                 <div class="col-md-9">
                                                                     <div class="input-group">
                                                                         <label class="col-md-3 label-control" for="resultado">Resultado</label>
                                                                         <div class="col-md-9">
-                                                                            <select id="resultado" name="resultado" class="form-control" required>
+                                                                            <select id="resultadoAnalise" name="resultadoAnalise" class="form-control" required>
                                                                                 <option selected='' disabled='' value=''>Selecione o Resultado</option>
+                                                                                <%
+                                                                               if(request.getParameter("analisado") != null && inscricao.getResultadoAnaliseDocumental()!=null){
+                                                                                    if(inscricao.getResultadoAnaliseDocumental().equals("Classificado"))
+                                                                                    out.print("<option selected value='Classificado'>Classificado</option>");
+                                                                                    else
+                                                                                    out.print("<option value='Classificado'>Classificado</option>");
+
+                                                                                    if(inscricao.getResultadoAnaliseDocumental().equals("Classificado com falta de documentos"))
+                                                                                    out.print("<option selected value='Classificado com falta de documentos'>Classificado com falta de Documentos</option>");
+                                                                                    else
+                                                                                    out.print("<option value='Classificado com falta de documentos'>Classificado com falta de Documentos</option>");
+                                                                                    
+                                                                                    if(inscricao.getResultadoAnaliseDocumental().equals("Desclassificado por falta de Documento"))
+                                                                                    out.print("<option selected value='Desclassificado por falta de Documento'>Desclassificado por falta de Documento</option>");
+                                                                                    else
+                                                                                    out.print("<option value='Desclassificado por falta de Documento'>Desclassificado por falta de Documento</option>");
+                                                                                    
+                                                                                    if(inscricao.getResultadoAnaliseDocumental().equals("Eliminado"))
+                                                                                    out.print("<option selected value='Eliminado'>Eliminado</option>");
+                                                                                    else
+                                                                                    out.print("<option value='Eliminado'>Eliminado</option>");
+                                                                                    }else{%>
                                                                                 <option value="Classificado">Classificado</option>
                                                                                 <option value="Classificado com falta de documentos">Classificado com falta de Documentos</option>
                                                                                 <option value="Desclassificado por falta de Documento">Desclassificado por falta de Documento</option>
                                                                                 <option value="Eliminado">Eliminado</option>
+                                                                                <%}%>
                                                                             </select>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <input type="hidden" name="usuario" value="<%=session.getAttribute("nome")%>">
                                                             <div class="form-actions right">
+                                                                <%if(request.getParameter("analisado") != null){%>
+                                                                <a href="/pnaes/documento/documento.jsp?analisados=1"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                                <%}else{%>
                                                                 <a href="/pnaes/documento/documento.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
-                                                                <button type="reset" value="Limpar" class="btn btn-warning mr-1 os-icon os-icon-hash">
-                                                                    <i class="ft-x"></i> Limpar
+                                                                <%}%>
+                                                              
+                                                                <%if(request.getParameter("analisado") != null){%>
+                                                                <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
+                                                                    <i class="fa fa-check-square-o"></i> Alterar Análise Documental
                                                                 </button>
+                                                                <%}else{%>
                                                                 <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
                                                                     <i class="fa fa-check-square-o"></i> Enviar
                                                                 </button>
+                                                                 <%}%>
                                                             </div>
                                                         </div>
                                                     </form>

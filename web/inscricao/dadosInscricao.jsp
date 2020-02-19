@@ -748,7 +748,7 @@
                                                      
                                           </div>
                                             <%if (dependentes.size() == 0) { %>    
-                                           <h3 class="ui-state-disabled">Estudante NÃO possui Membro Familiar cadastrado</h3>
+                                           <h3>Estudante NÃO possui Membro Familiar cadastrado</h3>
                                            <%}else if(dependentes.size() == 1){%>
                                            <h3>Dados do Membro Familiar</h3>
                                            <%}else{%>

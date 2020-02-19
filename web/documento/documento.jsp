@@ -168,7 +168,10 @@
                                                             <th>Modalidade de Curso</th>
                                                             <th>Curso</th>
                                                             <th>Auxílio 1ª Opção</th>
-                                                            <th>Conferir Documentos</th>
+                                                            <%if(request.getParameter("analisados")!=null){%>
+                                                          <th>Resultado da Análise Documental</th>
+                                                            <%}%>
+                                                           <th>Conferir Documentos</th>
                                                         </tr>
                                                       </thead>
                                                         <%
@@ -176,7 +179,7 @@
 
                                                             for (Inscricao i : inscricoes) {
                                                                 
-                                                                if (i.getResultado() == null && request.getParameter("analisados")==null) {
+                                                                if (i.getResultadoAnaliseDocumental() == null && request.getParameter("analisados")==null) {
                                                                     out.println("<tr align='center'>");
                                                                     out.println("<td>" + i.getId() + "</td>");
                                                                     out.println("<td>" + i.getAluno().getNome() + "</td>");
@@ -185,7 +188,7 @@
                                                                     out.println("<td>" + i.getBolsa1().getNome() + "</td>");
                                                                     out.println("<td><a href='cadastrar.jsp?i_id=" + i.getId() + "&editar=1'><button  class='btn btn-warning os-icon os-icon-eye' type='button' > Conferir Documentos</button></a></td>");
                                                                     out.println("</tr>");
-                                                                }else if (i.getResultado() != null  && request.getParameter("analisados")!=null){
+                                                                }else if (i.getResultadoAnaliseDocumental() != null  && request.getParameter("analisados")!=null){
                                                                     //Mostrar somente Inscrições já analisadas 
                                                                     out.println("<tr align='center'>");
                                                                     out.println("<td>" + i.getId() + "</td>");
@@ -193,7 +196,8 @@
                                                                     out.println("<td>" + i.getAluno().getCurso().getCategoria().getNome() + "</td>");
                                                                     out.println("<td>" + i.getAluno().getCurso().getNome() + "</td>");
                                                                     out.println("<td>" + i.getBolsa1().getNome() + "</td>");
-                                                                    out.println("<td><a href='cadastrar.jsp?i_id=" + i.getId() + "&editar=1'><button  class='btn btn-warning os-icon os-icon-eye' type='button' > Editar Conferência dos Documentos</button></a></td>");
+                                                                     out.println("<td>" + i.getResultadoAnaliseDocumental() + "</td>");
+                                                                    out.println("<td><a href='cadastrar.jsp?i_id=" + i.getId() + "&editar=1&analisado=1'><button  class='btn btn-warning os-icon os-icon-eye' type='button' > Editar Conferência dos Documentos</button></a></td>");
                                                                     out.println("</tr>");
                                                                 }
                                                             }

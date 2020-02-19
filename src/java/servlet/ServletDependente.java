@@ -118,12 +118,14 @@ public class ServletDependente extends HttpServlet {
                         //Chamando o metodo inserir do dao e redirecionando para listar Dependente
                         daoFactory.getDependenteDao().inserirOuAlterar(dependente);
                        
-                        request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Membro Familiar "+dependente.getNome()+" foi incluído com sucesso!").forward(request, response);
+                        response.sendRedirect("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Membro Familiar "+dependente.getNome()+" foi cadastrado com sucesso!");
+                        //request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg=Membro Familiar "+dependente.getNome()+" foi incluído com sucesso!").forward(request, response);
                        // response.sendRedirect("dependente/listar.jsp?msg=Membro Familiar "+dependente.getNome()+" foi incluido com sucesso!");
                         
                         }catch(IllegalStateException | ExceptionInInitializerError ce){
                             // StringidIncricao = request.getParameter("i_id");
-                            request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg2=Membro Familiar já cadastrado.").forward(request, response);
+                            response.sendRedirect("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg2=CPF do Membro Familiar Duplicado.");
+                            //request.getRequestDispatcher("documento/cadastrar.jsp?i_id="+idIncricao+"&editar=1&msg2=Membro Familiar já cadastrado.").forward(request, response);
                             //response.sendRedirect("dependente/cadastrar.jsp?msg=CPF Existente, por favor preencha corretamente ou deixe o campo CPF vazio.");
                         }
                         
