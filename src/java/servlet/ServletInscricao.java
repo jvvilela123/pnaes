@@ -108,7 +108,8 @@ public class ServletInscricao extends HttpServlet {
 
                     daoFactory.getInscricaoDao().inserirOuAlterar(inscricao);
                     response.sendRedirect("documento/documento.jsp");
-                    case "alterar_analise":
+                break;
+               case "alterar_analise":
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
                    // inscricao.setJustificativa(request.getParameter("justificativa"));
                     inscricao.setDocumentosFaltantes(request.getParameter("docf"));

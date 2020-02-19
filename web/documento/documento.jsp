@@ -76,8 +76,11 @@
                     orientation:"landscape",
                     className: 'btn btn-outline-primary btn-sm os-icon os-icon-file-text',
                      exportOptions: {
-                         
+                    <%if(request.getParameter("analisados")!=null){%>
+                    columns: [ 0, 1, 2, 3, 4, 5, 6]
+                    <%}else{%>
                     columns: [ 0, 1, 2, 3, 4]
+                    <%}%>
                 },
                 styles: {
     tableHeader: {
@@ -90,7 +93,11 @@
                     orientation:"landscape",
                     className: 'btn btn-outline-primary btn-sm os-icon os-icon-file-text',
                     exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4 ]
+                     <%if(request.getParameter("analisados")!=null){%>
+                    columns: [ 0, 1, 2, 3, 4, 5, 6]
+                    <%}else{%>
+                    columns: [ 0, 1, 2, 3, 4]
+                    <%}%>
                 },
                     customize: function ( doc ) {
                         // Splice the image in after the header, but before the table
@@ -107,7 +114,11 @@
                     text: 'Gerar EXCEL',
                     className: 'btn btn-outline-primary btn-sm',
                     exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4 ]
+                     <%if(request.getParameter("analisados")!=null){%>
+                    columns: [ 0, 1, 2, 3, 4, 5, 6]
+                    <%}else{%>
+                    columns: [ 0, 1, 2, 3, 4]
+                    <%}%>
                    }
                 }
 
@@ -170,6 +181,7 @@
                                                             <th>Auxílio 1ª Opção</th>
                                                             <%if(request.getParameter("analisados")!=null){%>
                                                           <th>Resultado da Análise Documental</th>
+                                                          <th>Análise Feita Por</th>
                                                             <%}%>
                                                            <th>Conferir Documentos</th>
                                                         </tr>
@@ -196,7 +208,8 @@
                                                                     out.println("<td>" + i.getAluno().getCurso().getCategoria().getNome() + "</td>");
                                                                     out.println("<td>" + i.getAluno().getCurso().getNome() + "</td>");
                                                                     out.println("<td>" + i.getBolsa1().getNome() + "</td>");
-                                                                     out.println("<td>" + i.getResultadoAnaliseDocumental() + "</td>");
+                                                                    out.println("<td>" + i.getResultadoAnaliseDocumental() + "</td>");
+                                                                    out.println("<td>" + i.getUsuarioAlterou() + "</td>"); 
                                                                     out.println("<td><a href='cadastrar.jsp?i_id=" + i.getId() + "&editar=1&analisado=1'><button  class='btn btn-warning os-icon os-icon-eye' type='button' > Editar Conferência dos Documentos</button></a></td>");
                                                                     out.println("</tr>");
                                                                 }
