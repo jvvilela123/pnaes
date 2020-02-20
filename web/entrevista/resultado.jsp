@@ -33,45 +33,45 @@
                     window.location = url;
                 }
             }
-            
-            $(document).ready(function() {
-                $('#tabelaResultado').DataTable( {
+
+            $(document).ready(function () {
+                $('#tabelaResultado').DataTable({
                     "language": {
-                    "sEmptyTable": "Nenhum registro encontrado",
-                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
-                    "sInfoPostFix": "",
-                    "sInfoThousands": ".",
-                    "sLengthMenu": "_MENU_ resultados por página",
-                    "sLoadingRecords": "Carregando...",
-                    "sProcessing": "Processando...",
-                    "sZeroRecords": "Nenhum registro encontrado",
-                    "sSearch": "Pesquisar",
-                    "oPaginate": {
-                        "sNext": "Próximo",
-                        "sPrevious": "Anterior",
-                        "sFirst": "Primeiro",
-                        "sLast": "Último"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Ordenar colunas de forma ascendente",
-                        "sSortDescending": ": Ordenar colunas de forma descendente"
-                    },
-                    "select": {
-                        "rows": {
-                            "_": "Selecionado %d linhas",
-                            "0": "Nenhuma linha selecionada",
-                            "1": "Selecionado 1 linha"
+                        "sEmptyTable": "Nenhum registro encontrado",
+                        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                        "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sInfoThousands": ".",
+                        "sLengthMenu": "_MENU_ resultados por página",
+                        "sLoadingRecords": "Carregando...",
+                        "sProcessing": "Processando...",
+                        "sZeroRecords": "Nenhum registro encontrado",
+                        "sSearch": "Pesquisar",
+                        "oPaginate": {
+                            "sNext": "Próximo",
+                            "sPrevious": "Anterior",
+                            "sFirst": "Primeiro",
+                            "sLast": "Último"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Ordenar colunas de forma ascendente",
+                            "sSortDescending": ": Ordenar colunas de forma descendente"
+                        },
+                        "select": {
+                            "rows": {
+                                "_": "Selecionado %d linhas",
+                                "0": "Nenhuma linha selecionada",
+                                "1": "Selecionado 1 linha"
+                            }
                         }
-                    }
-                        
+
 
                     }
-                } );
-            } );
+                });
+            });
         </script>
-        
+
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -102,52 +102,54 @@
 
                                                             <table class="table table-striped table-responsive-md" id="tabelaResultado">
                                                                 <thead>
-                                                                <tr>
-                                                                    <th>Inscrição</th>
-                                                                    <th>Aluno</th>
-                                                                    <th>Ensino Fundamental</th>
-                                                                    <th>Ensino Médio</th>
-                                                                    <th>Vulnerabilidade</th>
-                                                                    <th>Renda Per Capita</th>
-                                                                    <th>Observação</th>
-                                                                    <th>Bolsa 1</th>
-                                                                    <th>Resultado</th>
-                                                                    <th>Bolsa 2</th>
-                                                                    <th>Resultado</th>
-                                                                    <th>Finalizar</th>
-                                                                </tr>
-                                                               </thead>
-                                                                <%                                                                    
-                                                                    List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().listar();
-                                                                    
+                                                                    <tr>
+                                                                        <th>Inscrição</th>
+                                                                        <th>Aluno</th>
+                                                                        <th>Ensino Fundamental</th>
+                                                                        <th>Ensino Médio</th>
+                                                                        <th>Vulnerabilidade</th>
+                                                                        <th>Renda Per Capita</th>
+                                                                        <th>Observação</th>
+                                                                        <th>Bolsa 1</th>
+                                                                        <th>Resultado</th>
+                                                                        <th>Bolsa 2</th>
+                                                                        <th>Resultado</th>
+                                                                        <th>Finalizar</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <%                                                                    List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().listar();
+
                                                                     Double total1 = new Double(0);
                                                                     Double td = new Double(0);
                                                                     Double perCapita = new Double(0);
                                                                     int i = 0;
 
                                                                     for (Entrevista e : entrevistas) {
-                                                                        dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(e.getInscricao().getAluno().getId());
-                                                                        empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(e.getInscricao().getAluno().getId());
-                                                                        for (Dependente d : dependentes) {
-                                                                            i++;
-                                                                            td = td + d.getRenda();
+                                                                        System.out.println("resultado = "+e.getResultadoBolsa1());
+                                                                        if (e.getResultadoBolsa1() == null) {
+                                                                            dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(e.getInscricao().getAluno().getId());
+                                                                            empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(e.getInscricao().getAluno().getId());
+                                                                            for (Dependente d : dependentes) {
+                                                                                i++;
+                                                                                td = td + d.getRenda();
+                                                                            }
                                                                         }
                                                                         total1 = empresa.getRenda() + td + empresa.getOrenda();
                                                                         perCapita = total1 / (i + 1);
                                                                         //DecimalFormat decimal = new DecimalFormat("0.00");
-                                                                %>
+%>
                                                                 <tr>
                                                                     <td><%=e.getInscricao().getId()%></td>
                                                                     <td><%=e.getInscricao().getAluno().getNome()%></td>
                                                                     <td><%=e.getInscricao().getAluno().getEnsinoFundamental()%></td>
                                                                     <td><%=e.getInscricao().getAluno().getEnsinoMedio()%></td>
-                                                                     <td><%=e.getVulnerabilidade()%></td>
+                                                                    <td><%=e.getVulnerabilidade()%></td>
                                                                     <!--<td><script>document.write(formatarMoeda());</script></td>-->
                                                                     <td>R$ <%=decimal.format(perCapita)%></td>  
                                                                     <td><%=e.getObservacao()%></td>                                                                    
                                                                     <td><%=e.getInscricao().getBolsa1().getNome()%></td>
                                                                     <td>
-                                                                        <select  name="resultado" class="form-control" required>
+                                                                        <select  name="resultado1" class="form-control" required>
                                                                             <option selected="" disabled="">Selecione o Resultado</option>
                                                                             <option value="Classificado">Classificado</option>
                                                                             <option value="Reserva">Reserva</option>
@@ -164,16 +166,16 @@
                                                                         </select>
                                                                     </td>
                                                                     <td>
-                                                                            <a href="ServletEntrevista?e_id=<%=e.getId()%>"><button class='btn btn-primary os-icon os-icon-save' type='button' > Salvar</button></a>
+                                                                        <a href="../ServletEntrevista?opcao=finalizar&e_id=<%=e.getId()%>"><button class='btn btn-primary os-icon os-icon-save' type='button' > Salvar</button></a>
                                                                     </td>
                                                                 </tr>
 
-                                                                    <%
-                                                                        }
-                                                                    %>
-                                                                    
+                                                                <%
+                                                                    }
+                                                                %>
+
                                                             </table>
-                                                              
+
                                                         </div>
                                                     </form>
                                                 </div>

@@ -163,7 +163,7 @@
                                                                <div class="form-group row"> 
                                                                 <label class="col-md-3 label-control" for="qualOutrasDespesas">Especifique Quais são as Outras Despesas:</label>
                                                                 <div class="col-md-3">
-                                                                    <textarea name="qualOutrasDespesas" rows="4" cols="50" placeholder="Especifique Quais são as Outras Despesas" id="qualOutrasDespesas" required><%=despesa.getQualOutrasDespesas()!=null||despesa.getQualOutrasDespesas().equals("")?despesa.getQualOutrasDespesas():""%></textarea>
+                                                                    <textarea name="qualOutrasDespesas" rows="4" maxlength="255" cols="50" placeholder="Especifique Quais são as Outras Despesas" id="qualOutrasDespesas" required><%=despesa.getQualOutrasDespesas()!=null||despesa.getQualOutrasDespesas().equals("")?despesa.getQualOutrasDespesas():""%></textarea>
                                                                     
                                                                 </div>
                                                             </div>

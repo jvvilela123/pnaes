@@ -125,7 +125,7 @@
                                                                          <label class="custom-control-label" for="nao">Não&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                         <div class="d-inline-block custom-control custom-radio">
-                                                                          <input type='radio' name='temOutrasDespesas' value='Sim' class='custom-control-input' id='sim' required onclick='temOutraDespesa();'>
+                                                                            <input type='radio' name='temOutrasDespesas' value='Sim' class='custom-control-input' id='sim' required onclick='temOutraDespesa();'>
                                                                             <label class="custom-control-label" for="sim">Sim</label>
                                                                         </div>
                                                                     </div>
@@ -147,8 +147,7 @@
                                                                <div class="form-group row"> 
                                                                 <label class="col-md-3 label-control" for="qualOutrasDespesas">Especifique Quais são as Outras Despesas*:</label>
                                                                 <div class="col-md-3">
-                                                                    <textarea name="qualOutrasDespesas" rows="4" cols="50" placeholder="Especifique Quais são as Outras Despesas" id="qualOutrasDespesas" required></textarea>
-                                                                    
+                                                                    <textarea name="qualOutrasDespesas" rows="4" cols="50" maxlength="255" placeholder="Especifique Quais são as Outras Despesas" id="qualOutrasDespesas" required></textarea>                                                                    
                                                                 </div>
                                                             </div>
                                                            </div>
