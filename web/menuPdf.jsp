@@ -1,3 +1,8 @@
+<%@page import="java.util.TimeZone"%>
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="modelo.FichaMedica"%>
 <%@page import="modelo.Despesa"%>
@@ -16,6 +21,13 @@
                                             Empresa empresa = new Empresa();
                                             DaoFactory daoFactory = new DaoFactory();
                                             DataFormat dataFormat = new DataFormat();
+                                            SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                  GregorianCalendar cal = (GregorianCalendar) GregorianCalendar.getInstance(); 
+                  TimeZone tz = TimeZone.getTimeZone("America/Araguaina");
+		  TimeZone.setDefault(tz);
+                  
+                  cal.setTimeZone(tz);
+                    GregorianCalendar dataAtual = new GregorianCalendar();
 
                                             Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
                                             List<Bolsa> bolsas = daoFactory.getBolsaDao().perquisarListaPorAluno(inscricao.getAluno().getId());

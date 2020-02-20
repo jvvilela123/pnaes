@@ -217,7 +217,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <input type="hidden" name="usuario" value="<%=session.getAttribute("nome")%>">
+                                                            <input type="hidden" name="usuario" value="<%=session.getAttribute("nome")%> em: <%=date.format(dataAtual.getTime())%>">
                                                             <div class="form-actions right">
                                                                 <%if(request.getParameter("analisado") != null){%>
                                                                 <a href="/pnaes/documento/documento.jsp?analisados=1"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
