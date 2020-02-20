@@ -71,7 +71,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+                    columns: [ 0, 1, 2, 3, 4, 5 ]
                 }
         },
             {
@@ -81,7 +81,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                      className:"cell-border",     
-                    columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+                    columns: [ 0, 1, 2, 3, 4, 5 ]
                 },
             customize: function ( doc ) {
                 
@@ -111,7 +111,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                         
-                    columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+                    columns: [ 0, 1, 2, 3, 4, 5 ]
                 }
         }
         
@@ -260,7 +260,7 @@
                                                              <tr>
                                                                 <th>Nº da Inscrição</th>
                                                                 <th>Aluno</th>
-                                                                <th>CPF</th>
+                                                            
                                                                 <th>Modalidade - Curso</th>
                                                                 <th>Auxílio 1ª Opção</th>
                                                                 <th>Auxílio 2ª Opção</th>
@@ -273,8 +273,8 @@
                                                             %>
                                                             <tr align="center">
                                                                 <td><%=i.getId()%></td>
-                                                                <td><%=i.getAluno().getNome()%></td>
-                                                                <td><%=i.getAluno().getCpf()%></td>
+                                                                <td><%=i.getAluno().getNome().toUpperCase()%></td>
+                                                               
                                                                 <td><%=i.getAluno().getCurso().getCategoria().getNome()%> - <%=i.getAluno().getCurso().getNome()%></td>
                                                                 <td><%=i.getBolsa1().getNome()%></td>
                                                                 <td><%=i.getBolsa2().getNome()%></td>
@@ -289,7 +289,7 @@
                                                              <tr>
                                                                 <th>Nº da Inscrição</th>
                                                                 <th>Aluno</th>
-                                                                <th>CPF</th>
+                                                              
                                                                 <th>Modalidade - Curso</th>
                                                                 <th>Auxílio 1ª Opção</th>
                                                                 <th>Auxílio 2ª Opção</th>
