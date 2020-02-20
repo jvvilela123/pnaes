@@ -140,6 +140,16 @@ public class ServletEntrevista extends HttpServlet {
                     entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
                     entrevista.setObservacao(request.getParameter("observacao"));
                     entrevista.setVulnerabilidade(request.getParameter("vulnerabilidade"));
+                    entrevista.setConcorrencia(request.getParameter("concorrencia"));
+                    entrevista.setDimensaoSocial(request.getParameter("dimensaoSocial"));
+                    entrevista.setDimensaoAmbiental(request.getParameter("dimensaoAmbiental"));
+                    entrevista.setDimensaoEconomica(request.getParameter("dimensaoEconomica"));
+                    entrevista.setDimensaoCultural(request.getParameter("dimensaoCultuaral"));
+                    entrevista.setParticipaProjetos(request.getParameter("participaProjetos"));
+                    entrevista.setBolsaPermanente(request.getParameter("bolsaPermanente"));
+                    entrevista.setOutraBolsa(request.getParameter("outraBolsa"));
+                    entrevista.setAlmocoIfto(request.getParameter("almocoIfto"));
+                    entrevista.setObservacao(request.getParameter("observacao"));
                     out.println("i_id = " + entrevista.getInscricao().getId() + " e_id = " + entrevista.getId());
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(entrevista.getInscricao().getId());
                     inscricao.setStatus("Finalizado");
@@ -151,8 +161,9 @@ public class ServletEntrevista extends HttpServlet {
                     break;
                 case "finalizar":
                     entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
-                    entrevista.setResultadoBolsa1(request.getParameter("resultadoBolsa1"));
-                    entrevista.setResultadoBolsa2(request.getParameter("resultadoBolsa2"));
+                    entrevista.setResultadoBolsa1(request.getParameter("resultado1"));
+                    System.out.println("aki = "+entrevista.getResultadoBolsa1());
+                    entrevista.setResultadoBolsa2(request.getParameter("resultado2"));
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
                     response.sendRedirect("entrevista/resultado.jsp");
                     break;
