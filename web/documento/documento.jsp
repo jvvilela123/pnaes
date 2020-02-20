@@ -194,7 +194,7 @@
                                                                 if (i.getResultadoAnaliseDocumental() == null && request.getParameter("analisados")==null) {
                                                                     out.println("<tr align='center'>");
                                                                     out.println("<td>" + i.getId() + "</td>");
-                                                                    out.println("<td>" + i.getAluno().getNome() + "</td>");
+                                                                    out.println("<td>" + i.getAluno().getNome().toUpperCase()+ "</td>");
                                                                     out.println("<td>" + i.getAluno().getCurso().getCategoria().getNome() + "</td>");
                                                                     out.println("<td>" + i.getAluno().getCurso().getNome() + "</td>");
                                                                     out.println("<td>" + i.getBolsa1().getNome() + "</td>");
@@ -204,7 +204,7 @@
                                                                     //Mostrar somente Inscrições já analisadas 
                                                                     out.println("<tr align='center'>");
                                                                     out.println("<td>" + i.getId() + "</td>");
-                                                                    out.println("<td>" + i.getAluno().getNome() + "</td>");
+                                                                    out.println("<td>" + i.getAluno().getNome().toUpperCase() + "</td>");
                                                                     out.println("<td>" + i.getAluno().getCurso().getCategoria().getNome() + "</td>");
                                                                     out.println("<td>" + i.getAluno().getCurso().getNome() + "</td>");
                                                                     out.println("<td>" + i.getBolsa1().getNome() + "</td>");
