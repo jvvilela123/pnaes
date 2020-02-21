@@ -920,6 +920,31 @@
 
                                                 </table>
                                             </div>
+                                                    <h3>Dados da Inscrição</h3>
+                                            <div>
+                                                <table class="table table-striped table-responsive-md table-info h6">
+                                                     <%if(inscricao.getEdital().getCampus().getId()==1){%>
+                                                    <tr>    
+                                                        <th>Almoça no IFTO?:</th>
+                                                        <td><%=inscricao.getAlmocaIfto()%></td>
+                                                    </tr>
+                                                     <%}%>
+                                                    <tr>    
+                                                        <th>1ª Opção de Bolsa:</th>
+                                                        <td><%=inscricao.getBolsa1().getNome()%></td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th>2ª Opção de Bolsa:</th>
+                                                        <td><%=inscricao.getBolsa2().getNome()%></td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th>Justificativa do Estudante:</th>
+                                                        
+                                                        <td><textarea class="form-control" rows="4" name="justificativa"  id="justificativa" disabled><%=inscricao.getJustificativa()%></textarea></td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                            </div>
                                                         <%if(entrevistas == null){%>
                                                             <h3 class="ui-state-disabled">NÃO possui Auxílios Anteriores</h3><div></div>
                                             <%}else{%>

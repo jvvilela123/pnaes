@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="java.util.TimeZone"%>
 <%@page import="java.util.GregorianCalendar"%>
 <%@page import="java.util.GregorianCalendar"%>
@@ -46,6 +47,12 @@
 
                                            Edital edital = (Edital) daoFactory.getEditalDao().pesquisarPorId(inscricao.getEdital().getId());
                                             DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
+                                            
+                                          File DocumentosRenda = new File("../alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dr.pdf");
+                                          File DocumentosDespesas = new File("../alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dr.pdf");
+                                          File DocumentosOutros = new File("../alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dr.pdf");  
+
+                                            
                                         %>
 <!--------------------
 START - Mobile Menu
@@ -110,8 +117,9 @@ START - Mobile Menu
                     </div>
                 </div>
             </li>
-            
+           
         <li class="selected menu">
+            
             <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/da.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
@@ -134,6 +142,8 @@ START - Mobile Menu
             </div>
         </li>
         <%}%>
+        
+         <%if(DocumentosRenda.exists()){%>
         <li class="selected menu">
             <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dr.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
@@ -144,6 +154,8 @@ START - Mobile Menu
                
             </div>
         </li>
+       <% } %>
+       <%if(DocumentosDespesas.exists()){%>
         <li class="selected menu">
             <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
@@ -154,6 +166,8 @@ START - Mobile Menu
                
             </div>
         </li>
+         <% } %>
+         <%if(DocumentosOutros.exists()){%>
         <li class="selected menu">
             <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/od.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
@@ -163,6 +177,7 @@ START - Mobile Menu
             <div class="sub-menu-w">
                
         </li>
+        <% } %>
     </ul>
     <%
         }
@@ -308,6 +323,7 @@ START - Main Menu
             </div>
         </li>
         <%}%>
+        <%if(DocumentosRenda.exists()){%>
         <li class="selected menu">
             <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dr.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
@@ -323,6 +339,8 @@ START - Main Menu
                 </div>
             </div>
         </li>
+        <%}%>
+        <%if(DocumentosDespesas.exists()){%>
         <li class="selected menu">
             <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dd.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
@@ -338,6 +356,8 @@ START - Main Menu
                 </div>
             </div>
         </li>
+        <%}%>
+        <%if(DocumentosOutros.exists()){%>
         <li class="selected menu">
             <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/od.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
@@ -353,6 +373,7 @@ START - Main Menu
                 </div>
             </div>
         </li>
+        <%}%>
     </ul>
     <%
         }
