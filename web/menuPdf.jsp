@@ -48,9 +48,10 @@
                                            Edital edital = (Edital) daoFactory.getEditalDao().pesquisarPorId(inscricao.getEdital().getId());
                                             DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
                                             
-                                          File DocumentosRenda = new File("../alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dr.pdf");
-                                          File DocumentosDespesas = new File("../alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dr.pdf");
-                                          File DocumentosOutros = new File("../alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dr.pdf");  
+                                          File DocumentosRenda = new File(getServletContext().getRealPath("/")+"alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dr.pdf");
+                                          File DocumentosDespesas = new File(getServletContext().getRealPath("/")+"alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dd.pdf");
+                                          File DocumentosOutros = new File(getServletContext().getRealPath("/")+"alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/od.pdf");
+                                           
 
                                             
                                         %>
@@ -339,6 +340,22 @@ START - Main Menu
                 </div>
             </div>
         </li>
+        <%}else{%>
+        <li class="selected menu ">
+            <a href="#"  class="bg-danger text-white" title="Arquivo não enviado pelo estudante">
+                <div class="icon-w ">
+                    <div class="os-icon os-icon-file-text text-white"></div>
+                </div>
+                <span>Documentos da Renda <br> (Não Enviado)</span></a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                    Documentos da Renda
+                </div>
+                <div class="sub-menu-icon">
+                    <i class="os-icon os-icon-file-text"></i>
+                </div>
+            </div>
+        </li>
         <%}%>
         <%if(DocumentosDespesas.exists()){%>
         <li class="selected menu">
@@ -356,12 +373,28 @@ START - Main Menu
                 </div>
             </div>
         </li>
+        <%}else{%>
+        <li class="selected menu">
+            <a href="#"  class="bg-danger text-white" title="Arquivo não enviado pelo estudante">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-file-text text-white"></div>
+                </div>
+                <span>Documentos das Despesas <br> (Não Enviado)</span></a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                    Documentos das Despesas
+                </div>
+                <div class="sub-menu-icon">
+                    <i class="os-icon os-icon-file-text"></i>
+                </div>
+            </div>
+        </li>
         <%}%>
         <%if(DocumentosOutros.exists()){%>
         <li class="selected menu">
             <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/od.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-file-text"></div>
+                    <div class="os-icon os-icon-file-text "></div>
                 </div>
                 <span>Outros Documentos</span></a>
             <div class="sub-menu-w">
@@ -373,7 +406,37 @@ START - Main Menu
                 </div>
             </div>
         </li>
+        <%}else{%>
+        <li class="selected menu">
+            <a href="#" class="bg-danger text-white" title="Arquivo não enviado pelo estudante">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-file-text text-white"></div>
+                </div>
+                <span>Outros Documentos <br>(Não Enviado)</span></a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                    Outros Documentos
+                </div>
+                <div class="sub-menu-icon">
+                    <i class="os-icon os-icon-file-text"></i>
+                </div>
+            </div>
+        </li>
         <%}%>
+        <li class="selected menu">
+            <%if(request.getParameter("analisado") != null){%>
+            <a href="/pnaes/documento/documento.jsp?analisados=1">
+            <%}else{%>
+            <a href="/pnaes/documento/documento.jsp">
+               <%}%>
+                <div class="icon-w">
+                    <div class="os-icon os-icon-delete"></div>
+                </div>
+                <span>Voltar</span></a>
+            <div class="sub-menu-w">
+             
+            </div>
+        </li>
     </ul>
     <%
         }
