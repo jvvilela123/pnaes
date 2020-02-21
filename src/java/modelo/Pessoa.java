@@ -2,9 +2,9 @@
 package modelo;
 
 import java.io.Serializable;
-import static java.lang.Math.floor;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.persistence.*;
 
 /**
@@ -46,7 +46,7 @@ public class Pessoa implements Serializable {
     }
 
     public String getNome() {
-        return nome;
+        return getNomeSemAcento(nome);
     }
 
     public void setNome(String nome) {
@@ -168,6 +168,30 @@ public class Pessoa implements Serializable {
                  }else
                   return idade + " Anos";
             }
+               
+                
+                public  String getNomeSemAcento( String nomeSemAcento){
+                      
+                      String caracEspecial = "ÁÉÍÓÚáéíóúÂÊÎÔÛâêîôûÃÕÇçÃãÕõÀÈÌÒÙàèìòùÄËÏÖÜäëïöü";
+                      String caracNormal   = "AEIOUaeiouAEIOUaeiouAOCcAaOoAEIOUaeiouAEIOUaeiou";
+                      Pattern pattern = Pattern.compile("[" + caracEspecial + "]");
+                     
+                      Matcher matcher = pattern.matcher(nomeSemAcento);
+                      int p, aux;
+                      char oldChar, newChar;
+                      while(matcher.find()){
+                       p = matcher.start();
+                       oldChar = nomeSemAcento.charAt(p);
+                       aux = caracEspecial.indexOf(oldChar);
+                       if(aux < 0){
+                           continue;
+                       }
+                       newChar = caracNormal.charAt(aux);
+                       nomeSemAcento = nomeSemAcento.replace(oldChar, newChar);
+                      }
+                      return nomeSemAcento.toUpperCase();
+                     }
+                
   
     
 }

@@ -273,7 +273,7 @@
                                                             %>
                                                             <tr align="center">
                                                                 <td><%=i.getId()%></td>
-                                                                <td><%=i.getAluno().getNome().toUpperCase()%></td>
+                                                                <td><%=i.getAluno().getNome()%></td>
                                                                
                                                                 <td><%=i.getAluno().getCurso().getCategoria().getNome()%> - <%=i.getAluno().getCurso().getNome()%></td>
                                                                 <td><%=i.getBolsa1().getNome()%></td>

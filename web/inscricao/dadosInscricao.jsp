@@ -762,7 +762,7 @@
                                                <div id="accordion3">
                                                    
                                                    <%for (Dependente d : dependentes) { %>
-                                                    <h3><%=d.getNome().toUpperCase()%></h3>
+                                                    <h3><%=d.getNome()%></h3>
                                                     <div>
                                                     <table class="table table-striped table-responsive-md">
                                                         <%if(d.getCpfd()!=null){%>
@@ -771,7 +771,7 @@
                                                         <td><%=d.getCpfd()%></td>
                                                        </tr>
                                                         <%}%>
-                                                       <%if(d.getRg()!=null){%>
+                                                       <%if(d.getRg()!=null && d.getRg().trim()!=""){%>
                                                        <tr>    
                                                         <th>RG:</th>
                                                         <td><%=d.getRg()%></td>
@@ -806,7 +806,28 @@
                                                        </tr>
                                                        <tr>    
                                                         <th>Grau de Parentesco:</th>
-                                                        <td><%=d.getGrauParentesco()%></td>
+                                                        <td><%if(d.getGrauParentesco().equals("mae"))
+                                                                        out.print("Mãe");
+                                                                else if(d.getGrauParentesco().equals("pai"))
+                                                                        out.print("Pai");
+                                                                else if(d.getGrauParentesco().equals("madrasta"))
+                                                                        out.print("Madrasta");
+                                                                else if(d.getGrauParentesco().equals("padastro"))
+                                                                        out.print("Padastro");
+                                                                else if(d.getGrauParentesco().equals("filho"))
+                                                                        out.print("Filho(a)");
+                                                                else if(d.getGrauParentesco().equals("esposo"))
+                                                                        out.print("Esposo(a)");
+                                                                else if(d.getGrauParentesco().equals("avo"))
+                                                                        out.print("Avó ou Avô");
+                                                                else if(d.getGrauParentesco().equals("primo"))
+                                                                        out.print("Primo(a)");
+                                                                else if(d.getGrauParentesco().equals("tio"))
+                                                                        out.print("Tio(a)");
+                                                                else if(d.getGrauParentesco().equals("outro"))
+                                                                        out.print("Outro(Bisavós, Padrinhos, Amigos, ect...)");
+                                                                else
+                                                                out.print(d.getGrauParentesco());%></td>
                                                        </tr>
                                                        <tr>    
                                                         <th>Atividade Ocupacional:</th>

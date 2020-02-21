@@ -118,12 +118,7 @@ START - Mobile Menu
                 </div>
                 <span>Documentos do Aluno</span></a>
             <div class="sub-menu-w">
-                <div class="sub-menu-header">
-                    Documentos do Aluno
-                </div>
-                <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-file-text"></i>
-                </div>
+                
 
             </div>
         </li>
@@ -133,14 +128,9 @@ START - Mobile Menu
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
-                <span>Documentos dos Dependentes</span></a>
+                <span>Documentos dos Membros Familiares</span></a>
             <div class="sub-menu-w">
-                <div class="sub-menu-header">
-                    Documentos dos Dependentes
-                </div>
-                <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-file-text"></i>
-                </div>
+                
             </div>
         </li>
         <%}%>
@@ -151,12 +141,7 @@ START - Mobile Menu
                 </div>
                 <span>Documentos da Renda</span></a>
             <div class="sub-menu-w">
-                <div class="sub-menu-header">
-                    Documentos da Renda
-                </div>
-                <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-file-text"></i>
-                </div>
+               
             </div>
         </li>
         <li class="selected menu">
@@ -166,12 +151,7 @@ START - Mobile Menu
                 </div>
                 <span>Documentos das Despesas</span></a>
             <div class="sub-menu-w">
-                <div class="sub-menu-header">
-                    Documentos das Despesas
-                </div>
-                <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-file-text"></i>
-                </div>
+               
             </div>
         </li>
         <li class="selected menu">
@@ -181,13 +161,7 @@ START - Mobile Menu
                 </div>
                 <span>Outros Documentos</span></a>
             <div class="sub-menu-w">
-                <div class="sub-menu-header">
-                    Outros Documentos
-                </div>
-                <div class="sub-menu-icon">
-                    <i class="os-icon os-icon-file-text"></i>
-                </div>
-            </div>
+               
         </li>
     </ul>
     <%
@@ -323,10 +297,10 @@ START - Main Menu
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
-                <span>Documentos dos Dependentes</span></a>
+                <span>Documentos dos Membros Familiares</span></a>
             <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                    Documentos dos Dependentes
+                    Documentos dos Membros Familiares
                 </div>
                 <div class="sub-menu-icon">
                     <i class="os-icon os-icon-file-text"></i>

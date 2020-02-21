@@ -250,7 +250,7 @@
                                                         %>
                                                         <tr align="center">
                                                           
-                                                            <td><%=a.getNome().toUpperCase()%></td>
+                                                            <td><%=a.getNome()%></td>
                                                             <td><%=a.getCpf()%></td>
                                                             <td><%=a.getIdade()%></td>
                                                             <td><%=a.getTelefone()%></td>
