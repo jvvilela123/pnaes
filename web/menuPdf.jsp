@@ -47,14 +47,12 @@
 
                                            Edital edital = (Edital) daoFactory.getEditalDao().pesquisarPorId(inscricao.getEdital().getId());
                                             DecimalFormat decimal = new DecimalFormat("###,###,###,##0.00");
-                                            
+                                          
+                                          File DocumentosMembros = new File(getServletContext().getRealPath("/")+"alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dp.pdf");  
                                           File DocumentosRenda = new File(getServletContext().getRealPath("/")+"alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dr.pdf");
                                           File DocumentosDespesas = new File(getServletContext().getRealPath("/")+"alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/dd.pdf");
                                           File DocumentosOutros = new File(getServletContext().getRealPath("/")+"alunos/"+inscricao.getAluno().getCpf()+"/"+edital.getNumero()+"/od.pdf");
-                                           
-
-                                            
-                                        %>
+                                           %>
 <!--------------------
 START - Mobile Menu
 -------------------->
@@ -131,9 +129,10 @@ START - Mobile Menu
 
             </div>
         </li>
-        <%if (dependentes.size() > 0) {    %>
+        <%if (dependentes.size() > 0 && DocumentosMembros.exists()) {    %>
+       
         <li class="selected menu">
-            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dd.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dp.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -308,8 +307,9 @@ START - Main Menu
             </div>
         </li>
         <%if (dependentes.size() > 0) {    %>
+        <%if(DocumentosMembros.exists()){%>
         <li class="selected menu">
-            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dd.pdf" onclick="abrir(this);return false;">
+            <a href="../alunos/<%=inscricao.getAluno().getCpf()%>/<%=edital.getNumero()%>/dp.pdf" onclick="abrir(this);return false;">
                 <div class="icon-w">
                     <div class="os-icon os-icon-file-text"></div>
                 </div>
@@ -323,6 +323,23 @@ START - Main Menu
                 </div>
             </div>
         </li>
+        <%}else{%>
+        <li class="selected menu">
+            <a href="#" class="bg-danger text-white" title="Arquivo não enviado pelo estudante">
+                <div class="icon-w">
+                    <div class="os-icon os-icon-file-text text-white"></div>
+                </div>
+                <span>Documentos dos Membros Familiares <br> (Não Enviado)</span></a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">
+                    Documentos dos Membros Familiares
+                </div>
+                <div class="sub-menu-icon">
+                    <i class="os-icon os-icon-file-text"></i>
+                </div>
+            </div>
+        </li>
+        <%}%>
         <%}%>
         <%if(DocumentosRenda.exists()){%>
         <li class="selected menu">
