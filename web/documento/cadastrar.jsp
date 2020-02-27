@@ -134,7 +134,7 @@
                                                         <div class="form-body">
 
                                                             <div class="form-group row">
-                                                                <div class="col-md-3">Selecione os Documentos Faltantes:
+                                                                <div class="col-md-3"><h6>Selecione os Documentos Faltantes:</h6>
                                                                     <div class="input-group" >
                                                                         <div class="custom-control custom-checkbox" style="border-width: medium; border-style: solid; border-color: #F8CFCF;">
                                                                             <input type="checkbox" name="cbdf" id="docPessoaisCand" value="Docs. Pessoais do Candidato" class="custom-control-input" onclick="soma()">
