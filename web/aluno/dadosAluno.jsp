@@ -653,8 +653,8 @@
                                                 <tr class="table-danger">    
                                                         <th>Despesa Familiar Total:</th>
                                                             <%
-                                                                Double total = despesa.getAgua() + despesa.getEnergia()
-                                                                        + despesa.getFarmacia() + despesa.getMoradia() + despesa.getOutrasDespesas() + despesa.getTelefone();
+                                                                Double total = despesa.getMoradia() + despesa.getAlimentacao() + despesa.getAgua() + despesa.getEnergia()
+                                                                        + despesa.getTelefone() + despesa.getTransporte() + despesa.getFarmacia() + despesa.getOutrasDespesas();
                                                             %>
                                                         <td><script>document.write(formatarMoeda(<%=total%>));</script></td>
                                                     </tr>

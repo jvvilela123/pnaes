@@ -22,6 +22,8 @@
 
 <script>
     $(function () {
+        
+      
                 var icons = {
                     header: "ui-icon-circle-arrow-e",
                     activeHeader: "ui-icon-circle-arrow-s"
@@ -153,9 +155,9 @@
                 $('#uf').change(function () {
                     $('#cidade').load('../cidadeajax.jsp?estado=' + $('#uf').val());
                 });
-
-            });
             
+    });
+             
 
         </script>
         <%
@@ -912,8 +914,8 @@
                                                 <tr class="table-danger">    
                                                         <th>Despesa Familiar Total:</th>
                                                             <%
-                                                                Double total = despesa.getAgua() + despesa.getEnergia()
-                                                                        + despesa.getFarmacia() + despesa.getMoradia() + despesa.getOutrasDespesas() + despesa.getTelefone();
+                                                                Double total = despesa.getMoradia() + despesa.getAlimentacao() + despesa.getAgua() + despesa.getEnergia()
+                                                                        + despesa.getTelefone() + despesa.getTransporte() + despesa.getFarmacia() + despesa.getOutrasDespesas();
                                                             %>
                                                         <td><script>document.write(formatarMoeda(<%=total%>));</script></td>
                                                     </tr>
@@ -940,7 +942,7 @@
                                                     <tr>    
                                                         <th>Justificativa do Estudante:</th>
                                                         
-                                                        <td><textarea class="form-control" rows="4" name="justificativa"  id="justificativa" disabled><%=inscricao.getJustificativa()%></textarea></td>
+                                                        <td><textarea class="form-control"  rows="10" name="justificativa"  id="justificativa" disabled ><%=inscricao.getJustificativa()%></textarea></td>
                                                     </tr>
                                                     
                                                 </table>

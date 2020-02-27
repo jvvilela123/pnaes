@@ -115,7 +115,7 @@
 
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Documentos faltantes</h4>
+                                                <h6 class="card-title" id="striped-row-layout-icons">Documentos faltantes</h6>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -170,7 +170,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Observações:</h4>
+                                                <h6 class="card-title" id="striped-row-layout-icons">Observações:</h6>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -179,16 +179,16 @@
                                                             
 
                                                             <div class="form-group row">
-                                                                <div class="col-md-9">
+                                                                <div class="col-md-12">
                                                                     <div class="input-group">
-                                                                        <label class="col-md-3 label-control" for="resultado">Resultado</label>
-                                                                        <div class="col-md-9">
+                                                                        <label class="col-md-12 label-control h4" for="resultado">Resultado da Análise Documental:</label>
+                                                                        <div class="col-md-12">
                                                                             <select id="resultadoAnalise" name="resultadoAnalise" class="form-control" required>
-                                                                                <option selected='' disabled='' value=''>Selecione o Resultado</option>
+                                                                                <option selected='' disabled='' value='' class="h6">Selecione o Resultado da Análise Documental</option>
                                                                                 <%
                                                                                if(request.getParameter("analisado") != null && inscricao.getResultadoAnaliseDocumental()!=null){
                                                                                     if(inscricao.getResultadoAnaliseDocumental().equals("Classificado"))
-                                                                                    out.print("<option selected value='Classificado'>Classificado</option>");
+                                                                                    out.print("<option selected value='Classificado' >Classificado</option>");
                                                                                     else
                                                                                     out.print("<option value='Classificado'>Classificado</option>");
 
@@ -220,20 +220,21 @@
                                                             <input type="hidden" name="usuario" value="<%=session.getAttribute("nome")%> em: <%=date.format(dataAtual.getTime())%>">
                                                             <div class="form-actions right">
                                                                 <%if(request.getParameter("analisado") != null){%>
-                                                                <a href="/pnaes/documento/documento.jsp?analisados=1"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                                <a href="/pnaes/documento/documento.jsp?analisados=1"><button  class="btn btn-lg btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
                                                                 <%}else{%>
-                                                                <a href="/pnaes/documento/documento.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
+                                                                <a href="/pnaes/documento/documento.jsp"><button  class="btn btn-lg btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;
                                                                 <%}%>
                                                               
                                                                 <%if(request.getParameter("analisado") != null){%>
-                                                                <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
+                                                                <button type="submit" value="Cadastrar" class="btn btn-lg btn-primary os-icon os-icon-save">
                                                                     <i class="fa fa-check-square-o"></i> Alterar Análise Documental
                                                                 </button>
                                                                 <%}else{%>
-                                                                <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
+                                                                <button type="submit" value="Cadastrar" class="btn btn-lg btn-primary os-icon os-icon-save">
                                                                     <i class="fa fa-check-square-o"></i> Enviar
                                                                 </button>
                                                                  <%}%>
+                                                                 <div class="form-group row"><br></div>
                                                             </div>
                                                         </div>
                                                     </form>
