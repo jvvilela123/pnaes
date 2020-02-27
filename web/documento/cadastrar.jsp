@@ -90,6 +90,7 @@
                                                 cb[4] = document.getElementById("compTelefone");
                                                 cb[5] = document.getElementById("compRendaCand");
                                                 cb[6] = document.getElementById("compRendaDep");
+                                                cb[7] = document.getElementById("compEnd");
                                                 //console.log(cb)
                                                 ta.value = '';
                                                 for (i = 0; i < cb.length; i++) {
@@ -134,32 +135,36 @@
 
                                                             <div class="form-group row">
                                                                 <div class="col-md-3">Selecione os Documentos Faltantes:
-                                                                    <div class="input-group" style="border-width: medium; border-style: solid; border-color: #DEE2E6;">
-                                                                        <div class="custom-control custom-checkbox">
+                                                                    <div class="input-group" >
+                                                                        <div class="custom-control custom-checkbox" style="border-width: medium; border-style: solid; border-color: #F8CFCF;">
                                                                             <input type="checkbox" name="cbdf" id="docPessoaisCand" value="Docs. Pessoais do Candidato" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="docPessoaisCand">Documentos Pessoais do Candidato</label>
                                                                         </div>
-                                                                        <div class="custom-control custom-checkbox">
+                                                                        <div class="custom-control custom-checkbox" style="border-width: medium; border-style: solid; border-color: #F8CFCF;">
                                                                             <input type="checkbox" name="cbdf" id="docPessoaisDeps" value="Docs. Pessoais do(s) Familiar(es)" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="docPessoaisDeps">Documentos Pessoais do(s) Familiar(es)</label>
                                                                         </div>
-                                                                        <div class="custom-control custom-checkbox">
+                                                                        <div class="custom-control custom-checkbox" style="border-width: medium; border-style: solid; border-color: #F8CFCF;">
                                                                             <input type="checkbox" name="cbdf" id="compAgua" value="Comp. de Água" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="compAgua">Comprovante de Água</label>
                                                                         </div>
-                                                                        <div class="custom-control custom-checkbox">
+                                                                        <div class="custom-control custom-checkbox" style="border-width: medium; border-style: solid; border-color: #F8CFCF;">
                                                                             <input type="checkbox" name="cbdf" id="compEnergia" value="Comp. de Energia" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="compEnergia">Comprovante de Energia</label>
                                                                         </div>
-                                                                        <div class="custom-control custom-checkbox">
+                                                                        <div class="custom-control custom-checkbox" style="border-width: medium; border-style: solid; border-color: #F8CFCF;">
                                                                             <input type="checkbox" name="cbdf" id="compTelefone" value="Comp. de Telefone" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="compTelefone">Comprovante de Telefone</label>
                                                                         </div>
-                                                                        <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" name="cbdf" id="compRendaCand" value="Comp. de Renda do Candidato" class="custom-control-input" onclick="soma()">
-                                                                            <label class="custom-control-label" for="compRendaCand">Comprovante de Endereço</label>
+                                                                        <div class="custom-control custom-checkbox" style="border-width: medium; border-style: solid; border-color: #F8CFCF;">
+                                                                            <input type="checkbox" name="cbdf" id="compEnd" value="Comp. de Endereço" class="custom-control-input" onclick="soma()">
+                                                                            <label class="custom-control-label" for="compEnd">Comprovante de Endereço</label>
                                                                         </div>
-                                                                        <div class="custom-control custom-checkbox">
+                                                                        <div class="custom-control custom-checkbox" style="border-width: medium; border-style: solid; border-color: #F8CFCF;">
+                                                                            <input type="checkbox" name="cbdf" id="compRendaCand" value="Comp. de Renda do Estudante" class="custom-control-input" onclick="soma()">
+                                                                            <label class="custom-control-label" for="compRendaCand">Comprovante de Renda do Estudante</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-checkbox" style="border-width: medium; border-style: solid; border-color: #F8CFCF;">
                                                                             <input type="checkbox" name="cbdf" id="compRendaDep" value="Comp. de Renda do(s) Familiar(es)" class="custom-control-input" onclick="soma()">
                                                                             <label class="custom-control-label" for="compRendaDep">Comprovante de Renda do(s) Familiar(es)</label>
                                                                         </div>
