@@ -84,7 +84,7 @@
                                          inscricoes_por_bolsa = daoFactory.getInscricaoDao().perquisarPorBolsa(b.getId(),edital.getId());
                                         //não aparecer a opção nenhum
                                        // if(b.getId()!=6)
-                                        out.print("\'"+b.getNome() +" - "+ inscricoes_por_bolsa.size()+ " ( " + inscricoes_por_bolsa.size()*100 / inscricoes.size() + "%" + " ) \',");
+                                        out.print("\'"+b.getNome() +" - "+ inscricoes_por_bolsa.size()+ " ( " + decimal.format(inscricoes_por_bolsa.size()*100.0 / inscricoes.size()) + "%" + " ) \',");
                                     }
                                %>
 					
@@ -150,7 +150,7 @@
                                         
                                         inscricoes_por_categoria = daoFactory.getInscricaoDao().perquisarPorCategoria(c.getId(),edital.getId());
                                         
-                                        out.print("\'"+c.getNome() +" - "+ inscricoes_por_categoria.size()+ " ( " + inscricoes_por_categoria.size()*100 / inscricoes.size() + "%" + " ) \',");
+                                        out.print("\'"+c.getNome() +" - "+ inscricoes_por_categoria.size()+ " ( " + decimal.format(inscricoes_por_categoria.size()*100.0 / inscricoes.size()) + "%" + " ) \',");
                                     }
                                %>
 					
