@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Bolsa;
 import modelo.Entrevista;
 import modelo.Inscricao;
 
@@ -51,6 +52,8 @@ public class ServletEntrevista extends HttpServlet {
             
             GregorianCalendar dataEntrevista = new GregorianCalendar();
             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            
             String opcao = request.getParameter("opcao");
 
             switch (opcao) {
@@ -62,7 +65,7 @@ public class ServletEntrevista extends HttpServlet {
 
                     out.println("dataEntrevista = " + request.getParameter("dataEntrevista") + " " + request.getParameter("horario"));
                     dataEntrevista.setTime(formatador.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
-                    entrevista.setDataEntrevista(dataEntrevista);
+                    entrevista.setDataAgendadaEntrevista(dataEntrevista);
                     entrevista.setLocal(request.getParameter("local"));
                     entrevista.setConcorrencia("");
                     entrevista.setDimensaoSocial("");
@@ -78,18 +81,22 @@ public class ServletEntrevista extends HttpServlet {
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
                     response.sendRedirect("entrevista/horario.jsp");
                     break;
+                
                 case "cadastrarTudo":
                     //Setando dados do Entrevista
-                    int i,
-                    k = Integer.parseInt(request.getParameter("k"));
-                    for (i = 0; i < k; i++) {
+                   // int i,
+                   // k = Integer.parseInt(request.getParameter("k"));
+                   // for (i = 0; i < k; i++) {
                         Entrevista ent = new Entrevista();
-                        inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id"+i)));
+                        inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
                         inscricao.setStatus("Agendado");
                         ent.setInscricao(inscricao);
-                       
-                        dataEntrevista.setTime(formatador.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario"+i)));
-                        ent.setDataEntrevista(dataEntrevista);
+                        if(request.getParameter("horario")==null || request.getParameter("horario").equals(""))
+                          response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local")+"&msg=Preencha o campo horario corretamente Ex: 08:00");
+                        else{
+                        dataEntrevista.setTime(formatador.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
+                        
+                        ent.setDataAgendadaEntrevista(dataEntrevista);
                         ent.setLocal(request.getParameter("local"));
                         ent.setConcorrencia("");
                         ent.setDimensaoSocial("");
@@ -104,14 +111,17 @@ public class ServletEntrevista extends HttpServlet {
                        
                         //entrevista.setResultado("");
                         daoFactory.getEntrevistaDao().inserirOuAlterar(ent);
-                    }
+                        
+                        response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local"));
+                        }
+                 //   }
                     
-                    response.sendRedirect("entrevista/horario.jsp");
+                    
                     break;
                 case "alterar":
                     //Setando dados do Aluno
                     dataEntrevista.setTime(formatador.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
-                    entrevista.setDataEntrevista(dataEntrevista);
+                    entrevista.setDataAgendadaEntrevista(dataEntrevista);
                     entrevista.setLocal(request.getParameter("local"));
                     entrevista.setConcorrencia("");
                     entrevista.setDimensaoSocial("");
@@ -141,15 +151,15 @@ public class ServletEntrevista extends HttpServlet {
                     entrevista.setObservacao(request.getParameter("observacao"));
                     entrevista.setVulnerabilidade(request.getParameter("vulnerabilidade"));
                     entrevista.setConcorrencia(request.getParameter("concorrencia"));
-                    entrevista.setDimensaoSocial(request.getParameter("dimensaoSocial"));
-                    entrevista.setDimensaoAmbiental(request.getParameter("dimensaoAmbiental"));
-                    entrevista.setDimensaoEconomica(request.getParameter("dimensaoEconomica"));
-                    entrevista.setDimensaoCultural(request.getParameter("dimensaoCultuaral"));
+                    entrevista.setCaracterizacao(request.getParameter("caracterizacao"));
                     entrevista.setParticipaProjetos(request.getParameter("participaProjetos"));
                     entrevista.setBolsaPermanente(request.getParameter("bolsaPermanente"));
                     entrevista.setOutraBolsa(request.getParameter("outraBolsa"));
                     entrevista.setAlmocoIfto(request.getParameter("almocoIfto"));
                     entrevista.setObservacao(request.getParameter("observacao"));
+                    dataEntrevista.setTime(date.parse(request.getParameter("dataEntrevista")));
+                    entrevista.setDataEntrevista(dataEntrevista);
+                    entrevista.setEntrevistador(request.getParameter("entrevistador"));
                     out.println("i_id = " + entrevista.getInscricao().getId() + " e_id = " + entrevista.getId());
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(entrevista.getInscricao().getId());
                     inscricao.setStatus("Finalizado");
@@ -161,12 +171,37 @@ public class ServletEntrevista extends HttpServlet {
                     break;
                 case "finalizar":
                     entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
+                    
+                    
+                    inscricao = entrevista.getInscricao();
+                    
+                    Bolsa bolsa1 = new Bolsa();
+                    bolsa1.setId(Integer.parseInt(request.getParameter("bolsa1")));
+                    inscricao.setBolsa1(bolsa1);
+                    
+                    Bolsa bolsa2 = new Bolsa();
+                    bolsa2.setId(Integer.parseInt(request.getParameter("bolsa2")));
+                    inscricao.setBolsa2(bolsa2);
+                    
+                    daoFactory.getInscricaoDao().inserirOuAlterar(inscricao);
+                    
                     entrevista.setResultadoBolsa1(request.getParameter("resultado1"));
-                    System.out.println("aki = "+entrevista.getResultadoBolsa1());
+              
                     entrevista.setResultadoBolsa2(request.getParameter("resultado2"));
+                    
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
-                    response.sendRedirect("entrevista/resultado.jsp");
+                    response.sendRedirect("resultado/resultado.jsp");
                     break;
+                    
+                case "dispensar":
+                    inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
+                    inscricao.setStatus("Finalizado");
+                    daoFactory.getInscricaoDao().inserirOuAlterar(inscricao);
+                    ent = new Entrevista();
+                    ent.setInscricao(inscricao);
+                     daoFactory.getEntrevistaDao().inserirOuAlterar(ent);
+                    response.sendRedirect("entrevista/horario.jsp");
+                 break;
             }
         } catch (ParseException ex) {
             Logger.getLogger(ServletEntrevista.class.getName()).log(Level.SEVERE, null, ex);

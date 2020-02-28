@@ -18,6 +18,7 @@ public class Entrevista implements Serializable{
     @Id @GeneratedValue
     private Integer id;
     private GregorianCalendar dataEntrevista;
+    private GregorianCalendar dataAgendadaEntrevista;
     private String local;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="inscricao_id",unique = true)
@@ -36,6 +37,8 @@ public class Entrevista implements Serializable{
     private String almocoIfto;
     private String visitaDomiciliar;
     private String vulnerabilidade;
+    private String caracterizacao;
+    private String entrevistador;
 
     public String getConcorrencia() {
         return concorrencia;
@@ -144,6 +147,15 @@ public class Entrevista implements Serializable{
         this.dataEntrevista = dataEntrevista;
     }
 
+    public GregorianCalendar getDataAgendadaEntrevista() {
+        return dataAgendadaEntrevista;
+    }
+
+    public void setDataAgendadaEntrevista(GregorianCalendar dataAgendadaEntrevista) {
+        this.dataAgendadaEntrevista = dataAgendadaEntrevista;
+    }
+    
+
     public String getLocal() {
         return local;
     }
@@ -183,6 +195,23 @@ public class Entrevista implements Serializable{
     public void setVulnerabilidade(String vulnerabilidade) {
         this.vulnerabilidade = vulnerabilidade;
     }
+
+    public String getCaracterizacao() {
+        return caracterizacao;
+    }
+
+    public void setCaracterizacao(String caracterizacao) {
+        this.caracterizacao = caracterizacao;
+    }
+
+    public String getEntrevistador() {
+        return entrevistador;
+    }
+
+    public void setEntrevistador(String entrevistador) {
+        this.entrevistador = entrevistador;
+    }
+    
 
     
     

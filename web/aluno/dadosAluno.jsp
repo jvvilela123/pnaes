@@ -437,6 +437,48 @@
                                                         </table>
                                                         </form>
                                                     </div>
+                                                        <h3>Moradia do Estudante</h3>
+                                                        <div>
+                                                            <table class="table table-striped table-responsive-md">
+                                                                <tr>    
+                                                        <th>Onde Reside:</th>
+                                                        <td>
+                                                         <% if(aluno.getOndeReside().equals("rural"))
+                                                                out.print("Zona Rural (Indígena, Quilombola, Assentamento)");
+                                                        else if(aluno.getOndeReside().equals("rural2"))
+                                                                out.print("Zona Rural (Fazenda, Chácara, Sítio )");
+                                                        else if(aluno.getOndeReside().equals("urbana"))
+                                                                out.print("Zona Urbana");%></td>
+                                                              </tr>
+                                                              <tr>    
+                                                        <th>Tipo de Moradia:</th>
+                                                        <td>
+                                                         <% if(aluno.getTipoMoradia().equals("propriaQuitada"))
+                                                                out.print("Própria da Família (Quitada)");
+                                                        else if(aluno.getTipoMoradia().equals("propriaFinan"))
+                                                                out.print("Própria da Família (Financiada)");
+                                                        else if(aluno.getTipoMoradia().equals("propriaParc"))
+                                                                out.print("Própria da Família, adquirida por meio de projeto social de habitação com pagamento de parcelas");
+                                                        else if(aluno.getTipoMoradia().equals("propriaSocialQuitada"))
+                                                                out.print("Própria da Família, adquirida por meio de projeto social de habitação quitado");
+                                                        else if(aluno.getTipoMoradia().equals("heranca"))
+                                                                out.print("Herança");
+                                                        else if(aluno.getTipoMoradia().equals("cedida"))
+                                                                out.print("Cedida (Gratuita)");
+                                                        else if(aluno.getTipoMoradia().equals("alugada"))
+                                                                out.print("Alugada");
+                                                        else if(aluno.getTipoMoradia().equals("terceirosSem"))
+                                                                out.print("Casa de Terceiros (Sem Contribuição)");
+                                                        else if(aluno.getTipoMoradia().equals("terceirosCom"))
+                                                                out.print("Casa de Terceiros (Com Contribuição)");
+                                                        else if(aluno.getTipoMoradia().equals("casaEstudante"))
+                                                                out.print("Casa de Estudante");
+                                                        else if(aluno.getTipoMoradia().equals("ocupacao"))
+                                                                out.print("Ocupação");%></td>
+                                                              </tr>
+                                                            </table>
+                                                            
+                                                        </div>
                                                             <%if(!fichaMedica.getTemDoenca() &&
                                                                  !fichaMedica.getTemDoencaDep() &&
                                                                  !fichaMedica.getTemMedicamento() &&

@@ -210,7 +210,7 @@ START - Mobile Menu
                 </div>
             </li>
             
-            <% if (session.getAttribute("nivel").equals(3)) { %>
+            <% if (session.getAttribute("nivel").equals(3) || session.getAttribute("nivel").equals(2)) { %>
             <li class=" has-sub-menu">
                 <a href="#">
                     <div class="icon-w">
@@ -226,13 +226,31 @@ START - Mobile Menu
                                 <a href="/pnaes/entrevista/horario.jsp">Agendar Entrevista</a>
                             </li>
                             <li>
-                                <a href="/pnaes/entrevista/entrevista.jsp">Entrevista</a>
-                            </li>    
+                                <a href="/pnaes/entrevista/entrevista.jsp">Entrevistar</a>
+                            </li>
+                            <% if (session.getAttribute("nivel").equals(3)){%>
                             <li>
                                 <a href="/pnaes/visita/cadastrar.jsp">Visita</a>
                             </li>
+                          <% }%>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class=" has-sub-menu">
+                <a href="#">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-package"></div>
+
+                    </div>
+                    <span>Resultado</span></a>
+                <div class="sub-menu-w">
+                   
+                    <div class="sub-menu-i">
+                        <ul class="sub-menu">
+                           
                             <li>
-                                <a href="/pnaes/entrevista/resultado.jsp">Resultado final</a>
+                                <a href="/pnaes/resultado/resultado.jsp">Resultado Final</a>
                             </li>
                            
 
@@ -240,7 +258,7 @@ START - Mobile Menu
                     </div>
                 </div>
             </li>
-            <% } %>
+            
 
 
             <li class=" has-sub-menu">
@@ -261,21 +279,26 @@ START - Mobile Menu
                                 <a href="/pnaes/inscricao/listar.jsp">Lista de Inscritos</a>
                             </li>
                             
+                            
+                            <li>
+                                <a href="/pnaes/documento/listar.jsp">Resultado Análise Documental</a>
+                            </li>
+                            <li>
+                                <a href="/pnaes/entrevista/listar.jsp">Convocação Entrevista</a>
+                            </li>
+                            <li>
+                                <a href="/pnaes/entrevista/resultado.jsp">Lista de Entrevistados</a>
+                            </li>
+                            <li>
+                                <a href="/pnaes/resultado/listar.jsp">Resultado Final</a>
+                            </li>
                             <%
                                 if (session.getAttribute("nivel").equals(3)) {
                             %>
                             <li>
-                                <a href="/pnaes/documento/listar.jsp">Lista de classificação</a>
-                            </li>
-                            <li>
-                                <a href="/pnaes/entrevista/listar.jsp">Lista de Entrevista</a>
-                            </li>
-                            <li>
                                 <a href="/pnaes/visita/listar.jsp">Lista de Visitas</a>
                             </li>
-                            <li>
-                                <a href="/pnaes/resultado/resultado.jsp">Resultado final</a>
-                            </li>
+                            
                              <%
                                 }
                             %>
@@ -283,13 +306,14 @@ START - Mobile Menu
                     </div>
                 </div>
             </li>
+            <% } %>
 
 
 
             
 
             <%
-                                if (session.getAttribute("nivel").equals(3)) {
+            if (session.getAttribute("nivel").equals(3)) {
                             %>
             <li class="selected menu">
                 <a href="/pnaes/usuario/listar.jsp">
@@ -522,34 +546,47 @@ START - Main Menu
             </div>
         </li>
 
-                        <% if (session.getAttribute("nivel").equals(3)) { %>
+                        
             <li class=" has-sub-menu">
                 <a href="#">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-package"></div>
-
+                        <div class="os-icon os-icon-mic"></div>
                     </div>
                     <span>Entrevista</span></a>
                 <div class="sub-menu-w">
                     <div class="sub-menu-header">
                         Entrevista
                     </div>
-                    <div class="sub-menu-icon">
-                        <i class="os-icon os-icon-package"></i>
-                    </div>
+                    
                     <div class="sub-menu-i">
                         <ul class="sub-menu">
                             <li>
                                 <a href="/pnaes/entrevista/horario.jsp">Agendar Entrevista</a>
                             </li>
                             <li>
-                                <a href="/pnaes/entrevista/entrevista.jsp">Entrevista</a>
+                                <a href="/pnaes/entrevista/entrevista.jsp">Entrevistar</a>
                             </li>    
+                            
+                         
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <% if (session.getAttribute("nivel").equals(3)) { %>
+            <li class=" has-sub-menu">
+                <a href="#">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-life-buoy"></div>
+
+                    </div>
+                    <span>Visita</span></a>
+                <div class="sub-menu-w">
+                   
+                    <div class="sub-menu-i">
+                        <ul class="sub-menu">
+                           
                             <li>
                                 <a href="/pnaes/visita/cadastrar.jsp">Visita</a>
-                            </li>
-                            <li>
-                                <a href="/pnaes/entrevista/resultado.jsp">Resultado final</a>
                             </li>
                            
 
@@ -558,6 +595,28 @@ START - Main Menu
                 </div>
             </li>
             <% } %>
+            <li class=" has-sub-menu">
+                <a href="#">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-zap"></div>
+
+                    </div>
+                    <span>Resultado</span></a>
+                <div class="sub-menu-w">
+                   
+                    <div class="sub-menu-i">
+                        <ul class="sub-menu">
+                           
+                            <li>
+                                <a href="/pnaes/resultado/resultado.jsp">Resultado Final</a>
+                            </li>
+                           
+
+                        </ul>
+                    </div>
+                </div>
+            </li>
+           
 
         <li class=" has-sub-menu">
             <a href="#">
@@ -582,19 +641,24 @@ START - Main Menu
                             <a href="/pnaes/inscricao/listar.jsp">Lista de Inscritos</a>
                         </li>
                       
-                     <%if (session.getAttribute("nivel").equals(3)) { %>
-                        <li>
-                            <a href="/pnaes/documento/listar.jsp">Lista de classificação</a>
-                        </li>
-                        <li>
-                            <a href="/pnaes/entrevista/listar.jsp">Lista de Entrevista</a>
-                        </li>
-                        <li>
-                            <a href="/pnaes/visita/listar.jsp">Lista de Visitas</a>
-                        </li>
-                        <li>
-                            <a href="/pnaes/resultado/resultado.jsp">Resultado final</a>
-                        </li>
+                    
+                          <li>
+                                <a href="/pnaes/documento/listar.jsp">Resultado Análise Documental</a>
+                            </li>
+                            <li>
+                                <a href="/pnaes/entrevista/listar.jsp">Convocação Entrevista</a>
+                            </li>
+                            <li>
+                                <a href="/pnaes/entrevista/resultado.jsp">Lista de Entrevistados</a>
+                            </li>
+                            <li>
+                                <a href="/pnaes/resultado/listar.jsp">Resultado Final</a>
+                            </li>
+                             <%if (session.getAttribute("nivel").equals(3)) { %>
+                            <li>
+                                <a href="/pnaes/visita/listar.jsp">Lista de Visitas</a>
+                            </li>
+                            
                         <% } %>
                     </ul>
                 </div>

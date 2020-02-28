@@ -199,7 +199,7 @@
                                                             <td><%=a.getTelefone()%></td>
                                                             <td><%=a.getEmail()%></td>
                                                             <td><%=a.getMatricula()%></td>
-                                                            <td><%out.print(a.getNivel().equals(3)?"Administrador":"Aluno");%></td>
+                                                            <td><%out.print(a.getNivel().equals(3)?"Administrador":a.getNivel().equals(2)?"Comissão":"Aluno");%></td>
                                                             <td><a href="/pnaes/usuario/alterar.jsp?id=<%=a.getId()%>"><img src="/pnaes/img/editar.png"/></a></td>
                                                         </tr>
                                                         <%

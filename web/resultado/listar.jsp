@@ -1,18 +1,23 @@
 <%-- 
-    Document   : entrevista
-    Created on : 17/05/2018, 08:19:11
+    Document   : listarEntrevista
+    Created on : 15/02/2018, 08:15:22
     Author     : ronan
 --%>
-
-<%@page import="modelo.Entrevista"%>
+<%@page import="modelo.Bolsa"%>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="com.sun.org.apache.xerces.internal.impl.dv.xs.DecimalDV"%>
+<%@page import="modelo.Aluno"%>
+<%@page import="modelo.Inscricao"%>
 <%@page import="java.util.List"%>
+<%@page import="modelo.Entrevista"%>
 <%@page import="dao.DaoFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Lista de Inscritos Agendados para a Entrevista</title>
+        <title>Lista de Resultado</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
             function formatar(mascara, documento) {
@@ -23,6 +28,13 @@
                     documento.value += texto.substring(0, 1);
                 }
             }
+            function apagar(id) {
+                if (window.confirm("Deseja realmente excluir?")) {
+                    var url = "../ServletBolsa?opcao=excluir&id=" + id;
+                    window.location = url;
+                }
+            }
+
             $(document).ready(function() {
                 $('table.dataTable').DataTable( {
                     styles: {
@@ -70,7 +82,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
                 },
                 styles: {
     tableHeader: {
@@ -84,7 +96,7 @@
             
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
                 },
             customize: function ( doc ) {
                 // Splice the image in after the header, but before the table
@@ -102,7 +114,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
                 }
         }
         
@@ -121,7 +133,7 @@
                 } );
             } );
         </script>
-        
+
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -137,44 +149,84 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                               <h4 class="card-title" id="striped-row-layout-icons">Inscritos Agendados para a Entrevista do Edital <%=edital.getNumeroEAno()%> </h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Lista do Resultado Final</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
                                             </div>
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
-                                                    <div class="card-text">
-                                                     
-                                                    </div>
                                                     
-                                                    <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
-                                                        <thead>
-                                                            <th>Inscrição</th>
-                                                            <th>Aluno</th>
-                                                            <th>Telefone</th>
-                                                            <th>Data e Hora Agendada</th>
-                                                            <th>Entrevistar</th>
+                                                    
+                                                        <div class="form-body">
 
-                                                    </thead>
-                                                        <%  
-                                                            List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarPorEdital(edital.getId());
-                                                            
-                                                             SimpleDateFormat formatador2 = new SimpleDateFormat("dd/MM/yyy hh:mm");
-                                                                                                                   
-                                                            for (Entrevista en : entrevistas) {
-                                                                if (en.getInscricao().getStatus().equals("Agendado")) {
-                                                                    out.println("<tr>");
-                                                                    out.println("<td>" + en.getInscricao().getId() + "</td>");
-                                                                    out.println("<td>" + en.getInscricao().getAluno().getNome() + "</td>");
-                                                                    out.println("<td>" + en.getInscricao().getAluno().getTelefone() + "</td>");
-                                                                    out.println("<td>" + formatador2.format(en.getDataAgendadaEntrevista().getTime()) + "</td>");
-                                                                    out.println("<td><a href=\"cadastrar.jsp?e_id=" + en.getId() + "\"> <button  class='btn btn-primary os-icon os-icon-mic' type='button' > Entrevistar Estudante</button></a></td>");
+                                                            <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Inscrição</th>
+                                                                        <th>Aluno</th>
+                                                                        <th>Vulnerabilidade</th>
+                                                                        <th>Renda Per Capita</th>
+                                                                        <th>Considerações do Entrevistador</th>
+                                                                        <th>1ª Opção de Bolsa</th>
+                                                                        <th>Resultado 1ª Bolsa </th>
+                                                                        <th>2ª Opção Bolsa</th>
+                                                                        <th>Resultado 2ª Bolsa</th>
+                                                                       
+                                                                    </tr>
+                                                                </thead>
+                                                                <% 
+                                                                    List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarPorEdital(edital.getId());
 
-                                                                }
-                                                            }
-                                                        %>
-                                                    </table>    
+                                                                    
+                                                                    
+
+                                                                    for (Entrevista e : entrevistas) {
+                                                                        if (e.getResultadoBolsa1() != null) {
+                                                                      int i = 0;
+                                                                       Double total1 = new Double(0);
+                                                                    Double td = new Double(0);
+                                                                    Double perCapita = new Double(0);
+                                                                    dependentes =null;
+                                                                    empresa =null;
+                                                                        System.out.println("resultado = "+e.getResultadoBolsa1());
+                                                                        
+                                                                            dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(e.getInscricao().getAluno().getId());
+                                                                            empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(e.getInscricao().getAluno().getId());
+                                                                            for (Dependente d : dependentes) {
+                                                                                i++;
+                                                                                td = td + d.getRenda();
+                                                                            }
+                                                                        
+                                                                        total1 = empresa.getRenda() + td + empresa.getOrenda();
+                                                                        perCapita = total1 / (i + 1);
+                                                                        //DecimalFormat decimal = new DecimalFormat("0.00");
+%>                                            
+                                                                <tr>
+                                                                    <td><%=e.getInscricao().getId()%></td>
+                                                                    <td><%=e.getInscricao().getAluno().getNome()%></td>
+                                                              
+                                                                    <td><%=e.getVulnerabilidade()==null?" - ":e.getVulnerabilidade()%></td>
+                                                                    <!--<td><script>document.write(formatarMoeda());</script></td>-->
+                                                                    <td>R$ <%=decimal.format(perCapita)%></td>
+                                                                    <td><%=e.getObservacao()==null || e.getObservacao().equals("")?" - ":e.getObservacao()%></td>  
+                                                                
+                                                                    <td><%=e.getInscricao().getBolsa1().getNome()%></td>
+                                                                    <td><%=e.getResultadoBolsa1()%></td>
+                                                                    <td><%=e.getInscricao().getBolsa2().getNome()%></td>
+                                                                    <td><%=e.getResultadoBolsa2()%></td>
+                                                                    
+                                                                </tr>
+
+                                                                <%
+                                                                    }
+                                                                    }
+                                                                %>
+
+                                                            </table>
+
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

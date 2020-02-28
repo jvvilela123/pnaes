@@ -132,6 +132,20 @@ public class InscricaoDao extends DaoGenerico{
         }
     }
     
+    public List<Inscricao> listarAnalisadosPorEdital(Integer editalId) 
+    {
+        try{
+        String jpql = "select i from Inscricao i  where i.resultadoAnaliseDocumental <> null  and i.edital.id =" +editalId;
+        Query query = em.createQuery(jpql, Inscricao.class);
+        return query.getResultList();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
+    }
+    
     
             
             

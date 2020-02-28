@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Lista de Classificados</title>
+        <title>Resultado da Análise Documental</title>
         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
             
@@ -68,7 +68,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4 ]
+                    columns: [ 0, 1, 2, 3 ]
                 },
                 styles: {
     tableHeader: {
@@ -82,7 +82,7 @@
             
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4 ]
+                    columns: [ 0, 1, 2, 3 ]
                 },
             customize: function ( doc ) {
                 // Splice the image in after the header, but before the table
@@ -100,7 +100,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4 ]
+                    columns: [ 0, 1, 2, 3]
                 }
         }
         
@@ -135,7 +135,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Lista de Classificados</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Resultado da Análise Documental</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -143,47 +143,36 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Lista com todos os Classificados do Edital Corrente
+                                                        Inscritos Analisados do Edital <%=edital.getNumeroEAno()%>
                                                     </div>
                                                     <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
                                                         <thead>
                                                             <th>Nº da Inscricao</th>
                                                             <th>Aluno</th>
-                                                            <th>Telefone</th>
-                                                            <th>Documentos Faltantes</th>
-                                                            <th>Resultado</th>
-                                                            <th>Alterar</th>
-                                                        </thead>
+                                                             <th>Documentos Faltantes</th>
+                                                            <th>Resultado da Análise Documental</th>
+                                                    </thead>
                                                         <%                                                            
-                                                            List<Inscricao> Inscricoes = daoFactory.getInscricaoDao().listarClassificados();
+                                                            List<Inscricao> Inscricoes = daoFactory.getInscricaoDao().listarAnalisadosPorEdital(edital.getId());
                                                             for (Inscricao i : Inscricoes) {
                                                                 out.println("<tr>");
                                                                 out.println("<td>" + i.getId() + "</td>");
                                                                 out.println("<td>" + i.getAluno().getNome() + "</td>");
-                                                                out.println("<td>" + i.getAluno().getTelefone() + "</td>");
                                                                 out.println("<td>" + (i.getDocumentosFaltantes().equals("")?" - ":i.getDocumentosFaltantes())+ "</td>");
-                                                                out.println("<td>" + i.getResultado() + "</td>");
-                                                              
-                                                        %>
-                                                        <td><a href="alterar.jsp?id=<%=i.getId()%>" title="Editar" class="text-info"><div class="os-icon os-icon-edit"></div><span>Editar</span></a></td>
-                                                        
-                                                                <%
+                                                                out.println("<td>" + i.getResultadoAnaliseDocumental() + "</td>");
+                                                         
                                                                     }
                                                                 %>
                                                         
                                                         <tfoot>
                                                             <th>Nº da Inscricao</th>
                                                             <th>Aluno</th>
-                                                            <th>Telefone</th>
                                                             <th>Documentos Faltantes</th>
-                                                            <th>Resultado</th>
-                                                            <th>Alterar</th>
+                                                            <th>Resultado da Análise Documental</th>
                                                         </tfoot>
                                                     </table> 
                                                 </div>
-                                                <div class="element-box-content">
-                                                    <a href="/pnaes/home.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">Voltar ao Menu</button> </a>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>

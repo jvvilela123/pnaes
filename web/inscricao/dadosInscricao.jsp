@@ -588,7 +588,7 @@
                                                     </div>
                                                         <h3>Despesa do Estudante</h3>
                                                     <div>
-                                                        <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDespesa?opcao=alterar_dados_despesa&aluno_id=<%=inscricao.getAluno().getId()%>&i_id=<%=inscricao.getId()%>">
+                                                        <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletDespesa?opcao=alterar_dados_despesa&aluno_id=<%=inscricao.getAluno().getId()%>&i_id=<%=inscricao.getId()%>&voltar="<%=request.getParameter("editar")%>>
                                                         <table class="table table-striped table-responsive-md">
                                                             <tr>    
                                                                 <th>Moradia (Aluguel, Parcela de Financiamento, etc..):</th>
@@ -699,6 +699,48 @@
                                                         </table>
                                                         </form>
                                                     </div>
+                                                        <h3>Moradia do Estudante</h3>
+                                                        <div>
+                                                            <table class="table table-striped table-responsive-md">
+                                                                <tr>    
+                                                        <th>Onde Reside:</th>
+                                                        <td>
+                                                         <% if(inscricao.getAluno().getOndeReside().equals("rural"))
+                                                                out.print("Zona Rural (Indígena, Quilombola, Assentamento)");
+                                                        else if(inscricao.getAluno().getOndeReside().equals("rural2"))
+                                                                out.print("Zona Rural (Fazenda, Chácara, Sítio )");
+                                                        else if(inscricao.getAluno().getOndeReside().equals("urbana"))
+                                                                out.print("Zona Urbana");%></td>
+                                                              </tr>
+                                                              <tr>    
+                                                        <th>Tipo de Moradia:</th>
+                                                        <td>
+                                                         <% if(inscricao.getAluno().getTipoMoradia().equals("propriaQuitada"))
+                                                                out.print("Própria da Família (Quitada)");
+                                                        else if(inscricao.getAluno().getTipoMoradia().equals("propriaFinan"))
+                                                                out.print("Própria da Família (Financiada)");
+                                                        else if(inscricao.getAluno().getTipoMoradia().equals("propriaParc"))
+                                                                out.print("Própria da Família, adquirida por meio de projeto social de habitação com pagamento de parcelas");
+                                                        else if(inscricao.getAluno().getTipoMoradia().equals("propriaSocialQuitada"))
+                                                                out.print("Própria da Família, adquirida por meio de projeto social de habitação quitado");
+                                                        else if(inscricao.getAluno().getTipoMoradia().equals("heranca"))
+                                                                out.print("Herança");
+                                                        else if(inscricao.getAluno().getTipoMoradia().equals("cedida"))
+                                                                out.print("Cedida (Gratuita)");
+                                                        else if(inscricao.getAluno().getTipoMoradia().equals("alugada"))
+                                                                out.print("Alugada");
+                                                        else if(inscricao.getAluno().getTipoMoradia().equals("terceirosSem"))
+                                                                out.print("Casa de Terceiros (Sem Contribuição)");
+                                                        else if(inscricao.getAluno().getTipoMoradia().equals("terceirosCom"))
+                                                                out.print("Casa de Terceiros (Com Contribuição)");
+                                                        else if(inscricao.getAluno().getTipoMoradia().equals("casaEstudante"))
+                                                                out.print("Casa de Estudante");
+                                                        else if(inscricao.getAluno().getTipoMoradia().equals("ocupacao"))
+                                                                out.print("Ocupação");%></td>
+                                                              </tr>
+                                                            </table>
+                                                            
+                                                        </div>
                                                             <%if(!fichaMedica.getTemDoenca() &&
                                                                  !fichaMedica.getTemDoencaDep() &&
                                                                  !fichaMedica.getTemMedicamento() &&
@@ -745,10 +787,41 @@
                                                     
                                                 </table>
                                             </div>
-                                           </div>
-                                              
+                                                    <h3>Dependência Familiar</h3>
+                                                        <div>
+                                                            <table class="table table-striped table-responsive-md">
+                                                                <tr>    
+                                                        <th>Como o Estudante Mora:</th>
+                                                        <td>
+                                                         <% if(inscricao.getAluno().getMoradia().equals("sozinho"))
+                                                                out.print("Sozinho");
+                                                        else if(inscricao.getAluno().getMoradia().equals("comFamilia"))
+                                                                out.print("Com a Família");
+                                                        else if(inscricao.getAluno().getMoradia().equals("comTerceiros"))
+                                                                out.print("Com Terceiros (Amigos, Conhecidos, etc...)");%></td>
+                                                              </tr>
+                                                              <tr>    
+                                                        <th>Como se Configura a Relação de Dependência Financeira:</th>
+                                                        <td>
+                                                         <% if(inscricao.getAluno().getDependeciaFamiliar().equals("indepTodas"))
+                                                                out.print("É INDEPENDENTE financeiramente e responsável por todas as despesas domésticas");
+                                                        else if(inscricao.getAluno().getDependeciaFamiliar().equals("indepParte"))
+                                                                out.print("É INDEPENDENTE financeiramente e responsável por parte das despesas doméstica");
+                                                        else if(inscricao.getAluno().getDependeciaFamiliar().equals("depFamilia"))
+                                                                out.print("DEPENDENTE financeiramente da renda dos pais");
+                                                        else if(inscricao.getAluno().getDependeciaFamiliar().equals("depParentes"))
+                                                                out.print("DEPENDENTE financeiramente de outros parentes");
+                                                        else if(inscricao.getAluno().getDependeciaFamiliar().equals("depTerceiros"))
+                                                                out.print("DEPENDENTE financeiramente de terceiros (Amigos, Conhecidos, etc...)");%>
+                                                        </td>
+                                                              </tr>
+                                                            </table>
+                                                            
+                                                        </div>
                                                      
                                           </div>
+                                           </div>
+                                              
                                             <%if (dependentes.size() == 0) { %>    
                                            <h3>Estudante NÃO possui Membro Familiar cadastrado</h3>
                                            <%}else if(dependentes.size() == 1){%>

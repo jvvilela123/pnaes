@@ -29,13 +29,7 @@
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
                         <div class="content-header-right col-md-6 col-12" >
-                            <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
-                            </div>
+                           
                         </div>
                         <center>
                             <div style="width: 80%">
@@ -58,6 +52,8 @@
                                                         <div class="col-md-6">
                                                             <%
                                                             DataFormat dataFormat = new DataFormat();
+                                                           
+                                                             //SimpleDateFormat date2 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
                                                             
                                                             Entrevista entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
                                                             Inscricao inscricao = entrevista.getInscricao();
@@ -90,61 +86,47 @@
                                                                             <td><%=entrevista.getInscricao().getAluno().getCpf()%></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td><label class="col-md-6 label-control" for="concorrencia">Motivo que levou a concorrer à vaga de bolsista:</label></td>
-                                                                            <td><textarea  cols="40" rows="4" name="concorrencia" required=""></textarea></td>
+                                                                            <td><label class="col-md-6 label-control" for="concorrencia">Motivo que levou a concorrer o auxílio:</label></td>
+                                                                            <td><textarea  cols="40" rows="7" name="concorrencia"  maxlength="255"></textarea></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td><label class="col-md-6 label-control" for="dimensaoSocial">Dimensão Social</label></td>
-                                                                            <td><textarea  class="form-control" rows="4" name="dimensaoSocial" required=""></textarea></td>
+                                                                            <td><label class="col-md-6 label-control" for="caracterizacao">Caracterização Situacional:</label></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="caracterizacao"  maxlength="255"></textarea></td>
                                                                         </tr>
+                                                                        
                                                                         <tr>
-                                                                            <td><label class="col-md-6 label-control" for="dimensaoEconomica">Dimensão Econômica</label></td>
-                                                                            <td><textarea  class="form-control" rows="4" name="dimensaoEconomica" required=""></textarea></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><label class="col-md-6 label-control" for="dimensaoAmbiental">Dimensão Ambiental</label></td>
-                                                                            <td><textarea  class="form-control" rows="4" name="dimensaoAmbiental" required=""></textarea></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><label class="col-md-6 label-control" for="dimensaoCultural">Dimensão Cultural</label></td>
-                                                                            <td><textarea  class="form-control" rows="4" name="dimensaoCultural" required=""></textarea></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Você Estudou o Ensino Fundamental:</th>
-                                                                            <td><%=entrevista.getInscricao().getAluno().getEnsinoFundamental()%></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>Você Estudou o Ensino Médio:</th>
-                                                                            <td><%=entrevista.getInscricao().getAluno().getEnsinoMedio()%></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><label class="col-md-6 label-control" for="participaProjetos">Participa Projetos no IFTO:</label></td>
-                                                                            <td><select id="resultado" name="participaProjetos" class="form-control" required>
+                                                                            <td><label class="col-md-6 label-control" for="participaProjetos">Participa de Projetos no IFTO:</label></td>
+                                                                            <td><select id="resultado" name="participaProjetos" class="form-control">
+                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
                                                                                     <option value="Nenhum">Nenhum</option>
                                                                                     <option value="Pibid">PIBID</option>
                                                                                     <option value="Extensao">Extensão</option>
                                                                                     <option value="Residencia">Residência Pedagógica</option>
                                                                                     <option value="Monitoria">Monitoria</option>
+                                                                                    <option value="Outro">Outro</option>
                                                                                 </select></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td><label class="col-md-6 label-control" for="bolsaPermanente">Recebe Bolsa Permanência PBP/MEC </label></td>
-                                                                            <td><select id="resultado" name="bolsaPermanente" class="form-control" required>
+                                                                            <td><label class="col-md-6 label-control" for="bolsaPermanente">Recebe Bolsa Permanência PBP/MEC?: </label></td>
+                                                                            <td><select id="resultado" name="bolsaPermanente" class="form-control">
+                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
                                                                                     <option value="Sim">Sim</option>
                                                                                     <option value="Nao">Não</option>
                                                                                 </select></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td><label class="col-md-6 label-control" for="outraBolsa">Recebe outro tipo de auxílio PNAES </label></td>
+                                                                            <td><label class="col-md-6 label-control" for="outraBolsa">Recebe outro tipo de auxílio PNAES?: </label></td>
 
-                                                                            <td><select id="resultado" name="outraBolsa" class="form-control" required>
+                                                                            <td><select id="resultado" name="outraBolsa" class="form-control" >
+                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
                                                                                     <option value="Sim">Sim</option>
                                                                                     <option value="Nao">Não</option>
                                                                                 </select></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td><label class="col-md-6 label-control" for="almocoIfto">Almoça no IFTO:  </label></td>
-                                                                            <td><select id="resultado" name="almocoIfto" class="form-control" required>
+                                                                            <td><label class="col-md-6 label-control" for="almocoIfto">Almoça no IFTO?:  </label></td>
+                                                                            <td><select id="resultado" name="almocoIfto" class="form-control">
+                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
                                                                                     <option value="Todos dias"> Todos Dias</option>
                                                                                     <option value="Quatro vez por semana">Quatro Vezes por Semana</option>
                                                                                     <option value="Tres vez por semana">Três Vezes por Semana</option>
@@ -153,17 +135,19 @@
                                                                                     <option value="Prefere almocar em casa">Prefere Almoçar em Casa</option>
                                                                                 </select></td>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td><label class="col-md-6 label-control" for="observacao">Considerações do Entrevistador</label></td>
-                                                                            <td><textarea  class="form-control" rows="4" name="observacao"></textarea></td>
-                                                                        </tr>
+                                                                        
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="df">Documentos Faltantes</label></td>
-                                                                            <td><textarea  class="form-control" rows="8" name="df"><%=entrevista.getInscricao().getDocumentosFaltantes()%></textarea></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="df" maxlength="255"><%=entrevista.getInscricao().getDocumentosFaltantes()%></textarea></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="oa">Observações na Análise Documental</label></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="oa" maxlength="255" disabled><%=entrevista.getInscricao().getObservacaoAnaliseDocumental()%></textarea></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="vulnerabilidade">Vulnerabilidade Social</label></td>
-                                                                            <td><select id="resultado" name="vulnerabilidade" class="form-control" required>
+                                                                            <td><select id="resultado" name="vulnerabilidade" class="form-control" >
+                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
                                                                                     <option value="Alta">Alta</option>                                                                           
                                                                                     <option value="Media">Media</option>
                                                                                     <option value="Baixa">Baixa</option>
@@ -172,12 +156,17 @@
                                                                         </tr>
                                                                         
                                                                         <tr>
-                                                                            <td><button type="reset" value="Limpar" class="btn btn-warning mr-1">
-                                                                                    <i class="ft-x"></i> Limpar
-                                                                                </button>
-                                                                                <button type="submit" value="Cadastrar" class="btn btn-primary">
-                                                                                    <i class="fa fa-check-square-o"></i>Enviar
-                                                                                </button></td>
+                                                                            <td><label class="col-md-6 label-control" for="observacao">Considerações do Entrevistador</label></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="observacao"></textarea></td>
+                                                                        </tr>
+                                                                        <input type="hidden" name="dataEntrevista" value="<%=date.format(dataAtual.getTime())%>">
+                                                                        <input type="hidden" name="entrevistador" value="<%=session.getAttribute("nome")%> em: <%=date.format(dataAtual.getTime())%>">
+                                                                        <tr>
+                                                                            <td colspan="2">
+                                                                                <a href="/pnaes/entrevista/entrevista.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
+                                                                    <i class="fa fa-check-square-o"></i> Salvar
+                                                                </button></td>
                                                                         </tr>
                                                                     </table>
                                                                 </div>

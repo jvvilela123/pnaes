@@ -44,13 +44,7 @@
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
                         <div class="content-header-right col-md-6 col-12" >
-                            <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <a class="dropdown-item" href="card-bootstrap.html">Cards</a>
-                                    <a class="dropdown-item" href="component-buttons-extended.html">Buttons</a>
-                                </div>
-                            </div>
+                            
                         </div>
                         <center>
                             <div style="width: 80%">
@@ -59,7 +53,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Sistema PNAES</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Alterar Permissão do Usuário</h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -67,9 +61,9 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Alteração de Permissão
+                                                       
                                                     </div>
-                                                    <center><h1>Alterar Permissão do Usuário</h1></center>
+                                                   
                                                         <%                                                            
                                                             Integer id = Integer.parseInt(request.getParameter("id"));
                                                             aluno = (Aluno) daoFactory.getAlunoDao().pesquisarPorId(id);
@@ -108,7 +102,7 @@
                                                                                     out.println("<input type='radio' name='nivel' value='2' class='custom-control-input' id='nivelcord'>");
                                                                                 }
                                                                             %>
-                                                                            <label class="custom-control-label" for="nivelcord">Coordenador(a)&nbsp;&nbsp;&nbsp;</label>
+                                                                            <label class="custom-control-label" for="nivelcord">Comissão&nbsp;&nbsp;&nbsp;</label>
                                                                         </div>
                                                                            
                                                                         <div class="custom-control custom-radio">                                                                           
