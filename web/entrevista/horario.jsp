@@ -238,6 +238,7 @@
                                                                     <th>Curso</th>
                                                                     <th>Período/Ano/Módulo</th>
                                                                     <th>Resultado Análise Documental</th>
+                                                                    <th>Documentos Faltantes</th>
                                                                     <th>Observação Análise Documental</th>
                                                                     <th>Horário</th>
                                                                     <th>Agendar</th>
@@ -282,6 +283,7 @@
                                                                     <td><%=i.getAluno().getCurso().getNome()%></td>
                                                                     <td><%out.print(i.getAluno().getCurso().getqPeriodo()+"º "+i.getAluno().getCurso().getTipoPeriodo());%></td>
                                                                     <td><%=i.getResultadoAnaliseDocumental()%></td>
+                                                                    <td><%=i.getDocumentosFaltantes()%></td>
                                                                     <td><%=i.getObservacaoAnaliseDocumental()%></td>
                                                                     <td><input class="form-control" name="horario" type="text" maxlength="5" OnKeyPress="formatar('##:##', this)"></td>
                                                                     <td><input name="i_id" type="hidden" value="<%=i.getId()%>">
