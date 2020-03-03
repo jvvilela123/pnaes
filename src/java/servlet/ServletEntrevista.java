@@ -45,7 +45,8 @@ public class ServletEntrevista extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
+System.out.println("oi");
+out.println(request.getParameter("opcao"));
             DaoFactory daoFactory = new DaoFactory();
             Inscricao inscricao;
             Entrevista entrevista = new Entrevista();
@@ -87,12 +88,13 @@ public class ServletEntrevista extends HttpServlet {
                    // int i,
                    // k = Integer.parseInt(request.getParameter("k"));
                    // for (i = 0; i < k; i++) {
+                    System.out.println("oi");
                         Entrevista ent = new Entrevista();
                         inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
                         inscricao.setStatus("Agendado");
                         ent.setInscricao(inscricao);
                         if(request.getParameter("horario")==null || request.getParameter("horario").equals(""))
-                          response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local")+"&msg=Preencha o campo horario corretamente Ex: 08:00");
+                          response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local")+"&msg=Preencha o campo horario corretamente Ex: 08:00"+"&pBolsa="+request.getParameter("pBolsa")+"&pCat="+request.getParameter("pCat"));
                         else{
                         dataEntrevista.setTime(formatador.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
                         
@@ -111,8 +113,9 @@ public class ServletEntrevista extends HttpServlet {
                        
                         //entrevista.setResultado("");
                         daoFactory.getEntrevistaDao().inserirOuAlterar(ent);
-                        
-                        response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local"));
+                        System.out.println("oi");
+                        response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local")+"&pBolsa="+request.getParameter("pb")+"&pCat="+request.getParameter("pc"));
+                        System.out.println("oi");
                         }
                  //   }
                     

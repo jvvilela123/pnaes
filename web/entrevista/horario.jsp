@@ -173,13 +173,17 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <form class="form form-horizontal form-bordered" method="POST" action="horario.jsp">
+                                                            <form class="form form-horizontal form-bordered" method="POST" action="horario.jsp?pb=<%=request.getParameter("pBolsa")!=null?request.getParameter("pBolsa"):' '%>&pc=<%=request.getParameter("pCat")!=null?request.getParameter("pCat"):' '%>">
                                                                 <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="pBolsa">Pesquisa por Bolsa</label>
                                                                     <div class="col-md-4">
                                                                         <select name="pBolsa" class="form-control">
                                                                             <option value="">Selecione a Bolsa</option>
-                                                                            <%    
+                                                                            <%  
+                                                                                System.out.println(request.getParameter("pb"));
+                                                                                if(request.getParameter("pb") != null){
+                                                                                    out.print("<option selected value=" + request.getParameter("pb") + ">" + request.getParameter("pb") + "</option>");
+                                                                                }
                                                                                 DataFormat dataFormat = new DataFormat();
                                                                                 List<Bolsa> bolsas = daoFactory.getBolsaDao().buscarBolsaPorEdital(edital.getId());
                                                                                 for (Bolsa b : bolsas) {
@@ -195,7 +199,9 @@
                                                                         <select name="pCat" id="pCat" class="form-control">
                                                                             <option value="">Selecione a Categoria</option>
                                                                             <%
-                                                                                
+                                                                                if(request.getParameter("pc") != null){
+                                                                                    out.print("<option selected value=" + request.getParameter("pc") + ">" + request.getParameter("pc") + "</option>");
+                                                                                }
                                                                                 List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
                                                                                 for (Categoria c : categorias) {
                                                                                     out.print("<option value=" + c.getId() + ">" + c.getNome() + "</option>");
@@ -221,7 +227,7 @@
                                                             </form>
                                                         </div>
 
-                                                        <form method="POST" action="../ServletEntrevista?opcao=cadastrarTudo" class="form-horizontal">
+                                                        <form method="POST" action="../ServletEntrevista?opcao=cadastrarTudo&pb=<%=request.getParameter("pBolsa")!=null?request.getParameter("pBolsa"):' '%>&pc=<%=request.getParameter("pCat")!=null?request.getParameter("pCat"):' '%>" class="form-horizontal">
                                                             <table class="table table-striped table-responsive-md" style="text-align: center;"> 
                                                             <tr>
                                                                     <th>Data</th>
