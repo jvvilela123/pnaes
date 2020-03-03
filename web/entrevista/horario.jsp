@@ -253,20 +253,13 @@
                                                                         String categoriaId = request.getParameter("pCat").trim();
                                                                         
                                                                         if (!bolsaId.equals("") && !categoriaId.equals("")) {
-                                                                            System.out.println("bolsaId1 = "+bolsaId);
-                                                                        System.out.println("categoriaId1 = "+categoriaId);
-                                                                            inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsaECategoria(Integer.parseInt(categoriaId), Integer.parseInt(bolsaId), edital.getId());
+                                                                           
+                                                                            inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsaECategoria(Integer.parseInt(bolsaId), Integer.parseInt(categoriaId), edital.getId());
                                                                         } else if (!bolsaId.equals("") && categoriaId.equals("")) {
-                                                                            System.out.println("bolsaId2 = "+bolsaId);
-                                                                        System.out.println("categoriaId2 = "+categoriaId);
                                                                             inscricoes = daoFactory.getInscricaoDao().perquisarPorBolsa(Integer.parseInt(bolsaId), edital.getId());
                                                                         } else if (bolsaId.equals("") && !categoriaId.equals("")) {
-                                                                            System.out.println("bolsaId3 = "+bolsaId);
-                                                                        System.out.println("categoriaId3 = "+categoriaId);
                                                                             inscricoes = daoFactory.getInscricaoDao().perquisarPorCategoria(Integer.parseInt(categoriaId), edital.getId());
                                                                         }
-                                                                        System.out.println("bolsaId = "+bolsaId);
-                                                                        System.out.println("categoriaId = "+categoriaId);
                                                                     }
                                                                     int k =0;
                                                                     for (Inscricao i : inscricoes) {
@@ -281,7 +274,7 @@
                                                                     <td><%=i.getId()%></td>
                                                                     <td><%=i.getAluno().getNome()%></td>
                                                                     <td><%=i.getAluno().getCurso().getNome()%></td>
-                                                                    <td><%out.print(i.getAluno().getCurso().getqPeriodo()+"º "+i.getAluno().getCurso().getTipoPeriodo());%></td>
+                                                                    <td><%out.print(i.getAluno().getPeriodo()+"º "+i.getAluno().getCurso().getTipoPeriodo());%></td>
                                                                     <td><%=i.getResultadoAnaliseDocumental()%></td>
                                                                     <td><%=i.getDocumentosFaltantes()%></td>
                                                                     <td><%=i.getObservacaoAnaliseDocumental()%></td>

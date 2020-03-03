@@ -403,7 +403,7 @@
 
                                                             <tr>    
                                                                 <th>Período:</th>
-                                                                <td><%=inscricao.getAluno().getCurso().getqPeriodo()%>º <%=inscricao.getAluno().getCurso().getTipoPeriodo()%></td>
+                                                                <td><%=inscricao.getAluno().getPeriodo()%>º <%=inscricao.getAluno().getCurso().getTipoPeriodo()%></td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Cursou Ensino Fundamental em Ensino:</th>
