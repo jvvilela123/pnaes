@@ -239,7 +239,7 @@
                                                             <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
                                                                 <thead>
                                                                     <th>Foto</th>
-                                                                    <th>Nº Inscrição</th>
+                                                                    
                                                                     <th>Aluno</th>
                                                                     <th>Curso</th>
                                                                     <th>Período/Ano/Módulo</th>
@@ -276,8 +276,8 @@
                                                                 %>
                                                                     
                                                                 <tr>
-                                                                    <td><img src="/pnaes/alunos/<%=i.getAluno().getCpf()%>/<%=i.getAluno().getCpf()%>.jpg" width="30" height="40" alt="Clique para abrir" class="img_aluno"></td>
-                                                                    <td><%=i.getId()%></td>
+                                                                    <td><a href="/pnaes/documento/cadastrar.jsp?i_id=<%=i.getId()%>&editar=1&analisado=2&i_id=<%=i.getId()%>&pb=<%=request.getParameter("pBolsa")!=null?request.getParameter("pBolsa"):' '%>&pc=<%=request.getParameter("pCat")!=null?request.getParameter("pCat"):' '%>&dataEntrevista=<%=request.getParameter("data")%>&local=<%=request.getParameter("local")%>"><img src="/pnaes/alunos/<%=i.getAluno().getCpf()%>/<%=i.getAluno().getCpf()%>.jpg" width="30" height="40"/></a></td>                                                                    
+                                                                    
                                                                     <td><%=i.getAluno().getNome()%></td>
                                                                     <td><%=i.getAluno().getCurso().getNome()%></td>
                                                                     <td><%out.print(i.getAluno().getPeriodo()+"º "+i.getAluno().getCurso().getTipoPeriodo());%></td>
