@@ -200,8 +200,10 @@ out.println(request.getParameter("opcao"));
                     daoFactory.getInscricaoDao().inserirOuAlterar(inscricao);
                     ent = new Entrevista();
                     ent.setInscricao(inscricao);
-                     daoFactory.getEntrevistaDao().inserirOuAlterar(ent);
-                    response.sendRedirect("entrevista/horario.jsp");
+                    daoFactory.getEntrevistaDao().inserirOuAlterar(ent);
+                    System.out.println("dtata = "+request.getParameter("dataEntrevista"));
+                    System.out.println("local = "+request.getParameter("local"));
+                    response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local")+"&pBolsa="+request.getParameter("pb")+"&pCat="+request.getParameter("pc"));
                  break;
             }
         } catch (ParseException ex) {

@@ -293,7 +293,7 @@
                                                                     
                                                                          </td>
                                                                          <td>
-                                                                           <a href="../ServletEntrevista?opcao=dispensar&i_id=<%=i.getId()%>">  <button type="button" value="Dispensar Entrevista" class="btn btn-danger os-icon os-icon-close">
+                                                                           <a href="../ServletEntrevista?opcao=dispensar&i_id=<%=i.getId()%>&pb=<%=request.getParameter("pBolsa")!=null?request.getParameter("pBolsa"):' '%>&pc=<%=request.getParameter("pCat")!=null?request.getParameter("pCat"):' '%>&dataEntrevista=<%=request.getParameter("data")%>&local=<%=request.getParameter("local")%>">  <button type="button" value="Dispensar Entrevista" class="btn btn-danger os-icon os-icon-close">
                                                                     <i class="fa fa-check-square-o"></i> Dispensar Entrevista
                                                                                </button></a>
                                                                         </td>
