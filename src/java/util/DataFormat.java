@@ -20,7 +20,7 @@ public class DataFormat {
     
     }
     public String formatarHora(GregorianCalendar data){
-        String horaFormatada = new SimpleDateFormat("hh:mm").format(data.getTime());
+        String horaFormatada = new SimpleDateFormat("HH:mm").format(data.getTime());
         return horaFormatada;
     }
     

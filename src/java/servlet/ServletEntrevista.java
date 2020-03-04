@@ -52,7 +52,7 @@ out.println(request.getParameter("opcao"));
             Entrevista entrevista = new Entrevista();
             
             GregorianCalendar dataEntrevista = new GregorianCalendar();
-            SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             
             String opcao = request.getParameter("opcao");
@@ -94,7 +94,7 @@ out.println(request.getParameter("opcao"));
                         inscricao.setStatus("Agendado");
                         ent.setInscricao(inscricao);
                         if(request.getParameter("horario")==null || request.getParameter("horario").equals(""))
-                          response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local")+"&msg=Preencha o campo horario corretamente Ex: 08:00"+"&pBolsa="+request.getParameter("pBolsa")+"&pCat="+request.getParameter("pCat"));
+                          response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local")+"&msg=Preencha o campo horario corretamente Ex: 08:00"+"&pBolsa="+request.getParameter("pb")+"&pCat="+request.getParameter("pc"));
                         else{
                         dataEntrevista.setTime(formatador.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
                         
