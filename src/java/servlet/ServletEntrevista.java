@@ -117,9 +117,7 @@ out.println(request.getParameter("opcao"));
                         response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local")+"&pBolsa="+request.getParameter("pb")+"&pCat="+request.getParameter("pc"));
                         System.out.println("oi");
                         }
-                 //   }
-                    
-                    
+                 //   }                  
                     break;
                 case "alterar":
                     //Setando dados do Aluno

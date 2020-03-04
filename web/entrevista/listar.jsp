@@ -240,6 +240,8 @@
                                                             <th>Inscrição</th>
                                                             <th>Aluno</th>
                                                             <th>Curso</th>
+                                                            <th>Auxilio 1</th>
+                                                            <th>Auxilio 2</th>
                                                             <th>Data</th>
                                                             <th>Hora</th>
                                                             <th>Local</th>
@@ -252,6 +254,8 @@
                                                                 out.println("<td>" + e.getInscricao().getId() + "</td>");
                                                                 out.println("<td>" + e.getInscricao().getAluno().getNome() + "</td>");
                                                                 out.println("<td>" + e.getInscricao().getAluno().getCurso().getNome() + "</td>");
+                                                                out.println("<td>" + e.getInscricao().getBolsa1().getNome() + "</td>");
+                                                                out.println("<td>" + e.getInscricao().getBolsa2().getNome() + "</td>");
                                                                 if(e.getDataAgendadaEntrevista()!=null){
                                                                 out.println("<td>" + dataFormat.formatarData(e.getDataAgendadaEntrevista()) + "</td>");
                                                                 out.println("<td>" + dataFormat.formatarHora(e.getDataAgendadaEntrevista())+ "</td>");

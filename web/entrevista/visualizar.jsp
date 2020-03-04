@@ -1,178 +1,156 @@
 <%-- 
-    Document   : cadastrar
-    Created on : 22/03/2018, 08:11:55
+    Document   : entrevistar
+    Created on : 17/05/2018, 08:17:06
     Author     : ronan
 --%>
 
-<%@page import="modelo.Aluno"%>
-<%@page import="modelo.Entrevista"%>
-<%@page import="java.util.List"%>
 <%@page import="modelo.FichaMedica"%>
-<%@page import="modelo.OrcamentoMensal"%>
+<%@page import="modelo.Despesa"%>
+<%@page import="modelo.Dependente"%>
+<%@page import="modelo.Bolsa"%>
+<%@page import="util.DataFormat"%>
 <%@page import="modelo.Empresa"%>
-<%@page import="modelo.Inscricao"%>
-
+<%@page import="modelo.Entrevista"%>
 <%@page import="dao.DaoFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="../estilo.css">
-        <title>JSP Page</title>
+        <title>Cadastro de Entrevista</title>
+        <%@include file="../imports.jsp" %>
     </head>
-    <body class="site">
-          <%
-                Empresa empresa = new Empresa();
-                DaoFactory daoFactory = new DaoFactory();
-                Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
-                List<Empresa> empresas = new DaoFactory().getEmpresaDao().perquisarPorAluno(inscricao.getAluno().getId());
-                OrcamentoMensal orcamentoMensal = new DaoFactory().getOrcamentoMensalDao().perquisarPorAluno(inscricao.getAluno().getId()).get(0);
-                FichaMedica fichaMedica = new DaoFactory().getFichaMedicaDao().perquisarPorAluno(inscricao.getAluno().getId()).get(0);
-                if(empresas.size()!= 0){
-                    empresa = empresas.get(0);
-                }
-          
-          
-          %>
-            
-        <table>
-            <tr>
-                <th>Nome:</th>
-                <td><%=inscricao.getAluno().getNome()%></td>
-            </tr>
-            <tr>
-                <th>CPF:</th>
-                <td><%=inscricao.getAluno().getCpf()%></td>
-            </tr> 
-            <tr>
-                <th>RG</th>
-                 <td><%=inscricao.getAluno().getRg()%></td>
-            </tr>
-            <tr>    
-                <th>UF de Expedição</th>
-                 <td><%=inscricao.getAluno().getUfExpedicao().getNome()%></td>
-            </tr>
-            <tr>    
-                <th>Sexo</th>
-                 <td><%=inscricao.getAluno().getSexo()%></td>
-            </tr>
-            <tr>    
-                <th>Data Nascimento</th>
-                 <td><%=inscricao.getAluno().getDtn().getTime()%></td>
-            </tr>
-            <tr>    
-                <th>Telefone</th>
-                 <td><%=inscricao.getAluno().getTelefone()%></td>
-            </tr>
-            <tr>    
-                <th>Email</th>
-                 <td><%=inscricao.getAluno().getEmail()%></td>
-            </tr>
-            <tr>    
-                <th>Lougradouro</th>
-                 <td><%=inscricao.getAluno().getEndereco().getLogradouro()%></td>
-            </tr>
-            <tr>    
-                <th>Complemento</th>
-                 <td><%=inscricao.getAluno().getEndereco().getComplemento()%></td>
-            </tr>
-            <tr>    
-                <th>Numero</th>
-                 <td><%=inscricao.getAluno().getEndereco().getNumero()%></td>
-            </tr>
-            <tr>
-                <th>Bairro</th>
-                 <td><%=inscricao.getAluno().getEndereco().getBairro()%></td>
-            </tr>
-            <tr>    
-                <th>Cidade</th>
-                 <td><%=inscricao.getAluno().getEndereco().getCidade().getNome()%></td>
-            </tr>
-            <tr>    
-                <th>Estado</th>
-                 <td><%=inscricao.getAluno().getEndereco().getCidade().getUf().getNome()%></td>
-            </tr>
-            <tr>    
-                <th>Matricula</th>
-                 <td><%=inscricao.getAluno().getMatricula()%></td>
-            </tr>
-            <tr>    
-                <th>Curso</th>
-                 <td><%=inscricao.getAluno().getCurso()%></td>
-            </tr>
-            <tr>    
-                <th>Periodo </th>
-                 <td><%=inscricao.getAluno().getPeriodo()%></td>
-            </tr>
-            <tr>    
-                <th>Já reprovou, qual materia</th>
-                 <td><%=inscricao.getAluno().getDisciplina()%></td>
-            </tr>
-            <tr>    
-                <th>Já foi bolsista, qual a Bolsa</th>
-                 <td><%=inscricao.getBolsaAnterior().getNome()%></td>
-            </tr>
-            <tr>    
-                <th>Qual ano</th>
-                <td><%=inscricao.getAno()%></td>
-            </tr>
-            <tr>    
-                <th>Qual meio de Transporte</th>
-                <td><%=inscricao.getAluno().getMeioTransporte()%></td>
-            </tr>
-            <tr>    
-                <th>Numero de Dependente</th>
-                <td><%=inscricao.getAluno().getQuantidadeDependente()%></td>
-            </tr>
-            <tr>    
-                <th>Dos Dependentes quantos São Idoso</th>
-                <td><%=inscricao.getAluno().getQuantidadeIdoso()%></td>
-            </tr>
-            <tr>    
-                <th>Nome da empresa que trabalha</th>
-                <td><%=empresa.getNome()%></td>
-            </tr>
-            <tr>    
-                <th>Telefone da Empresa</th>
-                 <td><%=empresa.getTelefone()%></td>
-            </tr>
-            <tr>    
-                <th>Renda do aluno</th>
-                <td><%=orcamentoMensal.getRenda()%></td>
-            </tr>
-            <tr>    
-                <th>Renda dos familia</th>
-                <td><%=orcamentoMensal.getRendaDeps()%></td>
-            </tr>
-            <tr>    
-                <th>Despesas da familia</th>
-                <%
-                    Double total = orcamentoMensal.getAgua() + orcamentoMensal.getEnergia() +
-                    orcamentoMensal.getFarmacia() + orcamentoMensal.getMoradia() + orcamentoMensal.getOutrasDespesas() + orcamentoMensal.getTelefone();
-                %>
-                <td><%=total%></td>
-            </tr>
-            <tr>    
-                <th>Você tem alguma doença crônica,qual?</th>
-                <td><%=fichaMedica.getDoencaCronica()%></td>
-            </tr>
-            <tr>    
-                <th>Você faz uso de medicamento controlado?</th>
-                <td><%=fichaMedica.getMedicamento()%></td>
-            </tr>
-            <tr>    
-                <th>Você tem alguma deficiência,qual?</th>
-                <td><%=fichaMedica.getDeficiencia()%></td>
-            </tr>
-            <tr>    
-                <th>Há pessoa(s) na familia com deficiência,qual?</th>
-                <td><%=fichaMedica.getDeficienciaDep()%></td>
-                
-            </tr>
-            
-          </table>
-                      
-         <%@include file="../rodape.jsp"%>  
+    <body class="menu-position-side menu-side-left full-screen">
+        <div class="all-wrapper with-side-panel solid-bg-all">
+
+            <div class="all-wrapper solid-bg-all">
+                <div class="layout-w">
+                    <%@include file="../menu.jsp" %>
+                    <div class="content-w">
+                        <%@include file="../cabecalho.jsp" %>
+                        <div class="content-header-right col-md-6 col-12" >
+
+                        </div>
+                        <center>
+                            <div style="width: 80%">
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title" id="striped-row-layout-icons">Entrevistar</h4>
+                                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                                <div class="heading-elements">
+                                                </div>
+                                            </div>
+                                            <div class="card-content collpase show">
+                                                <div class="card-body">
+                                                    <div class="card-text">
+                                                        Dados do Candidato para a Entrevista
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <%                                                                DataFormat dataFormat = new DataFormat();
+
+                                                                //SimpleDateFormat date2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                                                                Entrevista entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
+                                                                Inscricao inscricao = entrevista.getInscricao();
+                                                                empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                                                fichaMedica = daoFactory.getFichaMedicaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                                                dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(inscricao.getAluno().getId());
+                                                                List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
+                                                                despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                                            %>
+                                                            <%@include file="../inscricao/dadosInscricao.jsp" %>
+                                                        </div>
+                                                        <div class="col-md-6">
+
+                                                            <div class="col-md-3">
+                                                                <img src="/pnaes/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
+
+                                                            </div>
+                                                            <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEntrevista?opcao=entrevistar&e_id=<%=entrevista.getId()%>">
+                                                                <div class="form-body">
+                                                                    <table class="table table-striped table-responsive-md">
+                                                                        <tr>
+                                                                            <th>Numero da Inscrição:</th>
+                                                                            <td><%=entrevista.getInscricao().getId()%></td>
+                                                                        </tr> 
+                                                                        <tr>
+                                                                            <th>Nome:</th>
+                                                                            <td><%=entrevista.getInscricao().getAluno().getNome()%></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>CPF:</th>
+                                                                            <td><%=entrevista.getInscricao().getAluno().getCpf()%></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="concorrencia">Motivo que levou a concorrer o auxílio:</label></td>
+                                                                            <td><textarea  cols="40" rows="7" name="concorrencia"  maxlength="255"><%=entrevista.getConcorrencia()%></textarea></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="caracterizacao">Caracterização Situacional:</label></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="caracterizacao"  maxlength="255"><%=entrevista.getCaracterizacao()%></textarea></td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="participaProjetos">Participa de Projetos no IFTO:</label></td>
+                                                                            <td><%=entrevista.getParticipaProjetos()%></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="bolsaPermanente">Recebe Bolsa Permanência PBP/MEC?: </label></td>
+                                                                            <td><%=entrevista.getBolsaPermanente()%></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="outraBolsa">Recebe outro tipo de auxílio PNAES?: </label></td>
+
+                                                                            <td><%=entrevista.getOutraBolsa()%></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="almocoIfto">Almoça no IFTO?:  </label></td>
+                                                                            <td><%=entrevista.getAlmocoIfto()%></td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="df">Documentos Faltantes</label></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="df" maxlength="255"><%=entrevista.getInscricao().getDocumentosFaltantes()%></textarea></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="oa">Observações na Análise Documental</label></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="oa" maxlength="255" disabled><%=entrevista.getInscricao().getObservacaoAnaliseDocumental()%></textarea></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="vulnerabilidade">Vulnerabilidade Social</label></td>
+                                                                            <td><%=entrevista.getVulnerabilidade()%></td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="observacao">Considerações do Entrevistador</label></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="observacao"><%=entrevista.getObservacao()%></textarea></td>
+                                                                        </tr>
+                                                                        <input type="hidden" name="dataEntrevista" value="<%=date.format(dataAtual.getTime())%>">
+                                                                        <input type="hidden" name="entrevistador" value="<%=session.getAttribute("nome")%> em: <%=date.format(dataAtual.getTime())%>">
+                                                                        <tr>
+                                                                            <td colspan="2">
+                                                                                <a href="/pnaes/resultado/resultado.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

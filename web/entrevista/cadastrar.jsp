@@ -29,7 +29,7 @@
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
                         <div class="content-header-right col-md-6 col-12" >
-                           
+
                         </div>
                         <center>
                             <div style="width: 80%">
@@ -50,25 +50,24 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <%
-                                                            DataFormat dataFormat = new DataFormat();
-                                                           
-                                                             //SimpleDateFormat date2 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-                                                            
-                                                            Entrevista entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
-                                                            Inscricao inscricao = entrevista.getInscricao();
-                                                            empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
-                                                            fichaMedica = daoFactory.getFichaMedicaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
-                                                            dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(inscricao.getAluno().getId());
-                                                            List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
-                                                            despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                                            <%                                                                DataFormat dataFormat = new DataFormat();
+
+                                                                //SimpleDateFormat date2 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+                                                                Entrevista entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
+                                                                Inscricao inscricao = entrevista.getInscricao();
+                                                                empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                                                fichaMedica = daoFactory.getFichaMedicaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                                                dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(inscricao.getAluno().getId());
+                                                                List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
+                                                                despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
                                                             %>
-                                                             <%@include file="../inscricao/dadosInscricao.jsp" %>
+                                                            <%@include file="../inscricao/dadosInscricao.jsp" %>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            
+
                                                             <div class="col-md-3">
-                                                                <img src="/pnaes/<%=edital.getNumero()%>/alunos/<%=entrevista.getInscricao().getAluno().getCpf()%>/<%=entrevista.getInscricao().getAluno().getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
+                                                                <img src="/pnaes/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
+
                                                             </div>
                                                             <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEntrevista?opcao=entrevistar&e_id=<%=entrevista.getId()%>">
                                                                 <div class="form-body">
@@ -93,7 +92,7 @@
                                                                             <td><label class="col-md-6 label-control" for="caracterizacao">Caracterização Situacional:</label></td>
                                                                             <td><textarea  class="form-control" rows="7" name="caracterizacao"  maxlength="255"></textarea></td>
                                                                         </tr>
-                                                                        
+
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="participaProjetos">Participa de Projetos no IFTO:</label></td>
                                                                             <td><select id="resultado" name="participaProjetos" class="form-control">
@@ -135,7 +134,7 @@
                                                                                     <option value="Prefere almocar em casa">Prefere Almoçar em Casa</option>
                                                                                 </select></td>
                                                                         </tr>
-                                                                        
+
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="df">Documentos Faltantes</label></td>
                                                                             <td><textarea  class="form-control" rows="7" name="df" maxlength="255"><%=entrevista.getInscricao().getDocumentosFaltantes()%></textarea></td>
@@ -154,7 +153,7 @@
                                                                                     <option value="Fora de Vulnerabilidade ">Fora de Vulnerabilidade </option>
                                                                                 </select></td>
                                                                         </tr>
-                                                                        
+
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="observacao">Considerações do Entrevistador</label></td>
                                                                             <td><textarea  class="form-control" rows="7" name="observacao"></textarea></td>
@@ -165,8 +164,8 @@
                                                                             <td colspan="2">
                                                                                 <a href="/pnaes/entrevista/entrevista.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                 <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
-                                                                    <i class="fa fa-check-square-o"></i> Salvar
-                                                                </button></td>
+                                                                                    <i class="fa fa-check-square-o"></i> Salvar
+                                                                                </button></td>
                                                                         </tr>
                                                                     </table>
                                                                 </div>

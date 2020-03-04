@@ -206,7 +206,7 @@
                                                                         //DecimalFormat decimal = new DecimalFormat("0.00");
 %>                                            
                                                                 <tr>
-                                                                    <td><%=e.getInscricao().getId()%></td>
+<td><a href="/pnaes/entrevista/visualizar.jsp?e_id=<%=e.getId()%>"><img src="/pnaes/alunos/<%=e.getInscricao().getAluno().getCpf()%>/<%=e.getInscricao().getAluno().getCpf()%>.jpg" width="30" height="40"/></a></td>
                                                                     <td><%=e.getInscricao().getAluno().getNome()%></td>
                                                               
                                                                     <td><%=e.getVulnerabilidade()==null?" - ":e.getVulnerabilidade()%></td>
