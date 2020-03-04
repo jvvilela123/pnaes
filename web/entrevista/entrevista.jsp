@@ -160,7 +160,7 @@
                                                         <%  
                                                             List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarPorEdital(edital.getId());
                                                             
-                                                             SimpleDateFormat formatador2 = new SimpleDateFormat("dd/MM/yyy hh:mm");
+                                                             SimpleDateFormat formatador2 = new SimpleDateFormat("dd/MM/yyy HH:mm");
                                                                                                                    
                                                             for (Entrevista en : entrevistas) {
                                                                 if (en.getInscricao().getStatus().equals("Agendado")) {

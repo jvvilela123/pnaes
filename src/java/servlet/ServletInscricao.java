@@ -105,6 +105,10 @@ public class ServletInscricao extends HttpServlet {
                     inscricao.setResultadoAnaliseDocumental(request.getParameter("resultadoAnalise"));
                     inscricao.setObservacaoAnaliseDocumental(request.getParameter("observacaoAnaliseDocumental"));
                     inscricao.setUsuarioAlterou(request.getParameter("usuario"));
+                    if(inscricao.getResultadoAnaliseDocumental().equals("Desclassificado por falta de Documento")){
+                        inscricao.setStatus("Elimidado");
+                    }
+                    
 
                     daoFactory.getInscricaoDao().inserirOuAlterar(inscricao);
                     response.sendRedirect("documento/documento.jsp");

@@ -186,7 +186,7 @@
                                                             <div class="form-group row">
                                                                 <div class="col-md-12">
                                                                     <div class="input-group">
-                                                                        <label class="col-md-12 label-control h4" for="resultado">Resultado da Análise Documental:</label>
+                                                                        <label class="col-md-12 label-control h4" for="resultadoAnalise">Resultado da Análise Documental:</label>
                                                                         <div class="col-md-12">
                                                                             <select id="resultadoAnalise" name="resultadoAnalise" class="form-control" required>
                                                                                 <option selected='' disabled='' value='' class="h6">Selecione o Resultado da Análise Documental</option>
@@ -207,15 +207,11 @@
                                                                                     else
                                                                                     out.print("<option value='Desclassificado por falta de Documento'>Desclassificado por falta de Documento</option>");
                                                                                     
-                                                                                    if(inscricao.getResultadoAnaliseDocumental().equals("Eliminado"))
-                                                                                    out.print("<option selected value='Eliminado'>Eliminado</option>");
-                                                                                    else
-                                                                                    out.print("<option value='Eliminado'>Eliminado</option>");
+                                                                                    
                                                                                     }else{%>
                                                                                 <option value="Classificado">Classificado</option>
                                                                                 <option value="Classificado com falta de documentos">Classificado com falta de Documentos</option>
                                                                                 <option value="Desclassificado por falta de Documento">Desclassificado por falta de Documento</option>
-                                                                                <option value="Eliminado">Eliminado</option>
                                                                                 <%}%>
                                                                             </select>
                                                                         </div>
