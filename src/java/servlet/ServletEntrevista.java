@@ -121,22 +121,15 @@ out.println(request.getParameter("opcao"));
                     break;
                 case "alterar":
                     //Setando dados do Aluno
-                    dataEntrevista.setTime(formatador.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
+                    entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
+                    
+                    //dataEntrevista.setTime(formatador.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
                     entrevista.setDataAgendadaEntrevista(dataEntrevista);
                     entrevista.setLocal(request.getParameter("local"));
-                    entrevista.setConcorrencia("");
-                    entrevista.setDimensaoSocial("");
-                    entrevista.setDimensaoAmbiental("");
-                    entrevista.setDimensaoEconomica("");
-                    entrevista.setDimensaoCultural("");
-                    entrevista.setParticipaProjetos(request.getParameter("participaProjetos"));
-                    entrevista.setBolsaPermanente(request.getParameter("bolsaPermanente"));
-                    entrevista.setOutraBolsa(request.getParameter("outraBolsa"));
-                    entrevista.setAlmocoIfto(request.getParameter("almocoIfto"));
-                    entrevista.setObservacao("");
+                    
                     //entrevista.setResultado("");
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
-                    response.sendRedirect("entrevista/horario.jsp");
+                    response.sendRedirect("entrevista/editarAgendamento.jsp");
 
                     //Chamando o metodo alterar do dao e redirecionando para listar entrevista                          
                     break;

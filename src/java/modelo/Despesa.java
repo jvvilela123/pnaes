@@ -25,11 +25,14 @@ public class Despesa implements Serializable{
     private Double farmacia;
     private Double outrasDespesas;
     private String qualOutrasDespesas;
-   
     @OneToOne
     @JoinColumn(name="aluno_id", unique=true)
     private Aluno aluno;
 
+    public Double getDespesaTotal(){
+        return moradia+alimentacao+transporte+agua+energia+telefone+farmacia+outrasDespesas;
+    }
+    
     public Integer getId() {
         return id;
     }

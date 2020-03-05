@@ -226,6 +226,9 @@ START - Mobile Menu
                                 <a href="/pnaes/entrevista/horario.jsp">Agendar Entrevista</a>
                             </li>
                             <li>
+                                <a href="/pnaes/entrevista/editarAgendamento.jsp">Editar Agendamento</a>
+                            </li>
+                            <li>
                                 <a href="/pnaes/entrevista/entrevista.jsp">Entrevistar</a>
                             </li>
                             <% if (session.getAttribute("nivel").equals(3)){%>
@@ -282,6 +285,9 @@ START - Mobile Menu
                             
                             <li>
                                 <a href="/pnaes/documento/listar.jsp">Resultado Análise Documental</a>
+                            </li>
+                            <li>
+                                <a href="/pnaes/documento/listarTudo.jsp">Lista completa da Análise Documental</a>
                             </li>
                             <li>
                                 <a href="/pnaes/entrevista/listar.jsp">Convocação Entrevista</a>
@@ -564,6 +570,9 @@ START - Main Menu
                                 <a href="/pnaes/entrevista/horario.jsp">Agendar Entrevista</a>
                             </li>
                             <li>
+                                <a href="/pnaes/entrevista/editarAgendamento.jsp">Editar Agendamento</a>
+                            </li>
+                            <li>
                                 <a href="/pnaes/entrevista/entrevista.jsp">Entrevistar</a>
                             </li>    
                             
@@ -644,6 +653,9 @@ START - Main Menu
                     
                           <li>
                                 <a href="/pnaes/documento/listar.jsp">Resultado Análise Documental</a>
+                            </li>
+                            <li>
+                                <a href="/pnaes/documento/listarTudo.jsp">Lista completa da Análise Documental</a>
                             </li>
                             <li>
                                 <a href="/pnaes/entrevista/listar.jsp">Convocação Entrevista</a>

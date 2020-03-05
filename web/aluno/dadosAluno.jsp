@@ -140,7 +140,7 @@
 
                                                             <tr>    
                                                                 <th>Período:</th>
-                                                                <td><%=aluno.getCurso().getqPeriodo()%>º <%=aluno.getCurso().getPeriodo()%></td>
+                                                                <td><%=aluno.getPeriodo()%>º <%=aluno.getCurso().getTipoPeriodo()%></td>
                                                             </tr>
                                                             <tr>    
                                                                 <th>Cursou Ensino Fundamental em Ensino:</th>

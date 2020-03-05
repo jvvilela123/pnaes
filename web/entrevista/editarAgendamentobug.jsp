@@ -1,22 +1,36 @@
-<%@page import="modelo.Inscricao"%>
-<%@page import="java.util.GregorianCalendar"%>
-<%@page import="util.DataFormat"%>
-<%@page import="modelo.Edital"%>
+<%-- 
+    Document   : listarEntrevista
+    Created on : 15/02/2018, 08:15:22
+    Author     : ronan
+--%>
+
+<%@page import="modelo.Categoria"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="util.DataFormat"%>
+<%@page import="modelo.Bolsa"%>
+<%@page import="modelo.Aluno"%>
 <%@page import="java.util.List"%>
+<%@page import="modelo.Entrevista"%>
 <%@page import="dao.DaoFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Resultado da Análise Documental</title>
-        <%@include file="../imports.jsp" %>
+        <title>Lista de Inscritos da Entrevista</title>
+         <%@include file="../imports.jsp" %>
         <script type="text/javascript" >
-            
-                  function apagar(id) {
+            function formatar(mascara, documento) {
+                var i = documento.value.length;
+                var saida = mascara.substring(0, 1);
+                var texto = mascara.substring(i)
+                if (texto.substring(0, 1) != saida) {
+                    documento.value += texto.substring(0, 1);
+                }
+            }
+            function apagar(id) {
                 if (window.confirm("Deseja realmente excluir?")) {
-                    var url = "../ServletEdital?opcao=excluir&id=" + id;
+                    var url = "../ServletBolsa?opcao=excluir&id=" + id;
                     window.location = url;
                 }
             }
@@ -68,7 +82,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3 ]
+                    columns: [ 0, 1, 2, 3, 4, 5 ]
                 },
                 styles: {
     tableHeader: {
@@ -82,7 +96,7 @@
             
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3 ]
+                    columns: [ 0, 1, 2, 3, 4, 5 ]
                 },
             customize: function ( doc ) {
                 // Splice the image in after the header, but before the table
@@ -100,7 +114,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3]
+                    columns: [ 0, 1, 2, 3, 4, 5]
                 }
         }
         
@@ -119,7 +133,7 @@
                 } );
             } );
         </script>
-        
+       
     </head>
     <body class="menu-position-side menu-side-left full-screen">
         <div class="all-wrapper with-side-panel solid-bg-all">
@@ -135,7 +149,7 @@
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Resultado da Análise Documental</h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Inscritos da Entrevista do Edital <%=edital.getNumeroEAno()%> </h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -143,39 +157,128 @@
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
-                                                        Inscritos Analisados do Edital <%=edital.getNumeroEAno()%>
-                                                    </div>
-                                                    <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
-                                                        <thead>
-                                                            <th>Nº da Inscricao</th>
-                                                            <th>Aluno</th>
-                                                            <th>Resultado da Análise Documental</th>
-                                                            <th>Documentos Faltantes</th>
-                                                            <th>Observação</th>
-                                                            
-                                                    </thead>
-                                                        <%                                                            
-                                                            List<Inscricao> Inscricoes = daoFactory.getInscricaoDao().listarAnalisadosPorEdital(edital.getId());
-                                                            for (Inscricao i : Inscricoes) {
-                                                                out.println("<tr>");
-                                                                out.println("<td>" + i.getId() + "</td>");
-                                                                out.println("<td>" + i.getAluno().getNome() + "</td>");
-                                                                out.println("<td>" + i.getResultadoAnaliseDocumental() + "</td>");
-                                                                out.println("<td>" + (i.getDocumentosFaltantes().equals("")?" - ":i.getDocumentosFaltantes())+ "</td>");
-                                                                out.println("<td>" + i.getObservacaoAnaliseDocumental()+ "</td>");
-                                                                
-                                                                    }
-                                                                %>
-                                                        
-                                                        <tfoot>
-                                                            <th>Nº da Inscricao</th>
-                                                            <th>Aluno</th>
-                                                            <th>Documentos Faltantes</th>
-                                                            <th>Resultado da Análise Documental</th>
-                                                        </tfoot>
-                                                    </table> 
                                                 </div>
-                                               
+                                                      
+                                                        
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <form class="form form-horizontal form-bordered" method="POST" action="listar.jsp">
+                                                                <div class="form-body">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="pesquisa">Pesquisa por Bolsa</label>
+                                                                        <div class="col-md-4">
+                                                                            <select name="pesquisa" class="form-control">
+                                                                                <option value="">Selecione a Bolsa</option>
+                                                                                <%
+                                                                                    DataFormat dataFormat = new DataFormat();
+                                                                                    List<Bolsa> bolsas = daoFactory.getBolsaDao().buscarBolsaPorEdital(edital.getId());
+                                                                                    for (Bolsa b : bolsas) {
+                                                                                        out.print("<option value=" + b.getId() + ">" + b.getNome() + "</option>");
+                                                                                    }
+                                                                                %>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 label-control" for="pCat">Pesquisa por Categoria</label>
+                                                                        <div class="col-md-4">
+                                                                            <select name="pCat" class="form-control">
+                                                                                <option value="">Selecione a Categoria</option>
+                                                                                <%
+                                                                                    List<Categoria> categorias = daoFactory.getCategoriaDao().listar();
+                                                                                    for (Categoria c : categorias) {
+                                                                                        out.print("<option value=" + c.getId() + ">" + c.getNome() + "</option>");
+                                                                                    }
+                                                                                %>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <button type="submit" value="Cadastrar" class="btn btn-primary">
+                                                                                <i class="fa fa-check-square-o"></i>Buscar
+                                                                            </button>
+                                                                        </div>
+                                                                             <div class="col-md-2">
+                                                                            <a href="/pnaes/entrevista/listar.jsp"> <button type="button" value="Limpar" class="btn btn-danger">
+                                                                                <i class="fa fa-check-square-o"></i>Limpar Busca/Filtro
+                                                                            </button></a>
+                                                                            
+                                                                        </div> 
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                           
+                                                        </div>
+                                                    </div>  
+                                                    <%
+                                                        List<Entrevista> entrevistas = new ArrayList<Entrevista>();
+                                                        Integer bolsaId;
+                                                        Integer categoriaId;
+                                                        if ((request.getParameter("pesquisa") != null) && (request.getParameter("pCat") != null)) {
+                                                            if ((request.getParameter("pesquisa") != "") && (request.getParameter("pCat") != "")) {
+                                                                try {
+                                                                    bolsaId = Integer.parseInt(request.getParameter("pesquisa"));
+                                                                } catch (NumberFormatException nb) {
+                                                                    bolsaId = 0;
+                                                                }
+                                                                try {
+                                                                    categoriaId = Integer.parseInt(request.getParameter("pCat"));
+                                                                } catch (NumberFormatException nc) {
+                                                                    categoriaId = 0;
+                                                                }
+                                                                entrevistas = daoFactory.getEntrevistaDao().perquisarPorBolsaCategoria(categoriaId, bolsaId, edital.getId());
+                                                            } else {
+                                                                entrevistas = daoFactory.getEntrevistaDao().perquisarPorEdital(edital.getId());
+                                                            }
+                                                        } else {
+                                                            entrevistas = daoFactory.getEntrevistaDao().perquisarPorEdital(edital.getId());
+                                                        }
+                                                            entrevistas = daoFactory.getEntrevistaDao().perquisarPorEdital(edital.getId());
+                                                        
+                                                    %>  
+                                                    <form action="/pnaes/ServletEntrevista?opcao=alterar" method="POST">  
+                                                     <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
+                                                        <thead>
+                                                            <th>Inscrição</th>
+                                                            <th>Aluno</th>
+                                                            <th>Curso</th>
+                                                            <th>Auxilio 1</th>
+                                                            <th>Auxilio 2</th>
+                                                            <th>Data</th>
+                                                            <th>Hora</th>
+                                                            <th>Local</th>
+                                                        </thead>
+                                                                                                         
+                                                        <%  
+                                                            for (Entrevista e : entrevistas) {
+                                                              //  if(e.getInscricao().getStatus().equals("Agendado")){
+                                                                out.println("<tr>");
+                                                                out.println("<td>" + e.getInscricao().getId() + "</td>");
+                                                                out.println("<td>" + e.getInscricao().getAluno().getNome() + "</td>");
+                                                                out.println("<td>" + e.getInscricao().getAluno().getCurso().getNome() + "</td>");
+                                                                out.println("<td>" + e.getInscricao().getBolsa1().getNome() + "</td>");
+                                                                out.println("<td>" + e.getInscricao().getBolsa2().getNome() + "</td>");
+                                                                if(e.getDataAgendadaEntrevista()!=null){
+                                                                    out.println("<td>" + dataFormat.formatarData(e.getDataAgendadaEntrevista()) + "</td>");
+                                                                //out.println("<td><input type='text' name='dataEntrevista' value='" + dataFormat.formatarData(e.getDataAgendadaEntrevista()) + "'></td>");
+                                                                out.println("<td><input type='text' name='horario' value='" + dataFormat.formatarHora(e.getDataAgendadaEntrevista())+ "'</td>");
+                                                                out.println("<td><input type='text' name='local' value='" + e.getLocal() + "'></td>");
+                                                                }else{
+                                                                    out.println("<td>Dispensado</td>");
+                                                                    out.println("<td> - </td>");
+                                                                    out.println("<td> - </td>");
+                                                                }
+                                                                
+                                                                out.println("<td><input name='e_id' type='hidden' value='"+e.getId()+"'><button type='submit' value='Editar' class='btn btn-primary os-icon os-icon-check'><i class='a fa-check-square-o'>Editar</i></button>");
+                                                                //out.println("<td><a href='/pnaes/ServletEntrevista?opcao=alterar&e_id="+e.getId()+"&local="+e.getLocal()+"&dataEntrevista="+e.getDataAgendadaEntrevista()+"' title='Editar' class='text-info'><div class='os-icon os-icon-edit'></div><span>Editar</span></a></td>");
+                                                                
+                                                                out.println("</tr>");
+                                                               // }
+                                                            }
+                                                        %>
+                                                    
+                                                    </table>  
+                                                        
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

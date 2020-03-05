@@ -68,7 +68,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                 },
                 styles: {
     tableHeader: {
@@ -82,7 +82,7 @@
             
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                 },
             customize: function ( doc ) {
                 // Splice the image in after the header, but before the table
@@ -100,7 +100,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                 }
         }
         
@@ -152,19 +152,53 @@
                                                             <th>Resultado da Análise Documental</th>
                                                             <th>Documentos Faltantes</th>
                                                             <th>Observação</th>
+                                                            <th>Auxilio 1</th>
+                                                            <th>Auxilio 2</th>
+                                                            <th>Justificativa</th>
+                                                            <th>Resultado</th>
+                                                            <th>Idade</th>
+                                                            <th>Meio de Transporte</th>
+                                                            <th>Modalidade</th>
+                                                            <th>Curso</th>
+                                                            <th>Renda do Estudante</th>
+                                                            <th>Renda Familiar</th>
+                                                            <th>Despesa Familiar</th>
+                                                            <th>Renda Percapita</th>
+                                                            
                                                             
                                                     </thead>
                                                         <%                                                            
                                                             List<Inscricao> Inscricoes = daoFactory.getInscricaoDao().listarAnalisadosPorEdital(edital.getId());
+                                                            int k;
+                                                            Double rd = new Double(0);
                                                             for (Inscricao i : Inscricoes) {
+                                                                empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(i.getAluno().getId());
+                                                                despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(i.getAluno().getId());
+                                                                dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(i.getAluno().getId());
+                                                                for(Dependente d: dependentes){
+                                                                    rd =  rd + d.getRenda();
+                                                                }
                                                                 out.println("<tr>");
+                                                                
                                                                 out.println("<td>" + i.getId() + "</td>");
                                                                 out.println("<td>" + i.getAluno().getNome() + "</td>");
                                                                 out.println("<td>" + i.getResultadoAnaliseDocumental() + "</td>");
                                                                 out.println("<td>" + (i.getDocumentosFaltantes().equals("")?" - ":i.getDocumentosFaltantes())+ "</td>");
                                                                 out.println("<td>" + i.getObservacaoAnaliseDocumental()+ "</td>");
-                                                                
-                                                                    }
+                                                                out.println("<td>" + i.getBolsa1().getNome()+ "</td>");
+                                                                out.println("<td>" + i.getBolsa2().getNome()+ "</td>");
+                                                                out.println("<td>" + i.getJustificativa()+ "</td>");
+                                                                out.println("<td>" + i.getResultado()+ "</td>");
+                                                                out.println("<td>" + i.getAluno().getIdade()+ "</td>");
+                                                                out.println("<td>" + i.getAluno().getMeioTransporte()+ "</td>");
+                                                                out.println("<td>" + i.getAluno().getCurso().getCategoria().getNome()+ "</td>");
+                                                                out.println("<td>" + i.getAluno().getCurso().getNome()+ "</td>");
+                                                                out.println("<td>" + (empresa.getRenda()+empresa.getOrenda()) + "</td>");
+                                                                out.println("<td>" + (empresa.getRenda()+empresa.getOrenda()+rd) + "</td>");
+                                                                out.println("<td>" + despesa.getDespesaTotal() + "</td>");
+                                                                out.println("<td>" + (empresa.getRenda()+empresa.getOrenda()+rd)/(dependentes.size()+1) + "</td>");
+                                                                rd = 0.0;
+                                                            }
                                                                 %>
                                                         
                                                         <tfoot>
