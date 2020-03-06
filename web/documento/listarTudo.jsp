@@ -160,6 +160,10 @@
                                                             <th>Meio de Transporte</th>
                                                             <th>Modalidade</th>
                                                             <th>Curso</th>
+                                                            <th>Periodo</th>
+                                                            <th>Ensino Fundamental</th>
+                                                            <th>Ensino Medio</th>
+                                                            <th>Almoça no IFTO</th>
                                                             <th>Renda do Estudante</th>
                                                             <th>Renda Familiar</th>
                                                             <th>Despesa Familiar</th>
@@ -193,6 +197,10 @@
                                                                 out.println("<td>" + i.getAluno().getMeioTransporte()+ "</td>");
                                                                 out.println("<td>" + i.getAluno().getCurso().getCategoria().getNome()+ "</td>");
                                                                 out.println("<td>" + i.getAluno().getCurso().getNome()+ "</td>");
+                                                                out.println("<td>" + i.getAluno().getPeriodo()+" º "+ i.getAluno().getCurso().getTipoPeriodo() +"</td>");
+                                                                out.println("<td>" + i.getAluno().getEnsinoFundamental()+ "</td>");
+                                                                out.println("<td>" + i.getAluno().getEnsinoMedio()+ "</td>");
+                                                                out.println("<td>" + i.getAlmocaIfto()+ "</td>");
                                                                 out.println("<td>" + (empresa.getRenda()+empresa.getOrenda()) + "</td>");
                                                                 out.println("<td>" + (empresa.getRenda()+empresa.getOrenda()+rd) + "</td>");
                                                                 out.println("<td>" + despesa.getDespesaTotal() + "</td>");
