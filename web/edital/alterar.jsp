@@ -59,7 +59,7 @@
                                                     </div>
                                                     <%            
                                                         DataFormat dataFormat = new DataFormat();
-                                                        edital = daoFactory.getEditalDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
+                                                        edital = (Edital) daoFactory.getEditalDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                                                     %>
                                                     <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEdital?opcao=alterar&id=<%=edital.getId()%>">
                                                         <div class="form-body">
