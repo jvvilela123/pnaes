@@ -68,7 +68,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                 },
                 styles: {
     tableHeader: {
@@ -82,7 +82,7 @@
             
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                 },
             customize: function ( doc ) {
                 // Splice the image in after the header, but before the table
@@ -100,7 +100,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                 }
         }
         
@@ -149,8 +149,13 @@
                                                         <thead>
                                                             <th>Nº da Inscricao</th>
                                                             <th>Aluno</th>
+                                                            <th>Resultado da Análise Documental</th>
+                                                            <th>Documentos Faltantes</th>
+                                                            <th>Observação</th>
                                                             <th>Auxilio 1</th>
                                                             <th>Auxilio 2</th>
+                                                            <th>Justificativa</th>
+                                                            <th>Resultado</th>
                                                             <th>Idade</th>
                                                             <th>Meio de Transporte</th>
                                                             <th>Modalidade</th>
@@ -163,10 +168,6 @@
                                                             <th>Renda Familiar</th>
                                                             <th>Despesa Familiar</th>
                                                             <th>Renda Percapita</th>
-                                                            <th>Resultado da Análise Documental</th>
-                                                            <th>Documentos Faltantes</th>
-                                                            <th>Observação</th>
-                                                            <th>Justificativa</th>
                                                             
                                                             
                                                     </thead>
@@ -181,12 +182,17 @@
                                                                 for(Dependente d: dependentes){
                                                                     rd =  rd + d.getRenda();
                                                                 }
-                                                                out.println("<tr>");                                                               
+                                                                out.println("<tr>");
+                                                                
                                                                 out.println("<td>" + i.getId() + "</td>");
                                                                 out.println("<td>" + i.getAluno().getNome() + "</td>");
-                                                                
+                                                                out.println("<td>" + i.getResultadoAnaliseDocumental() + "</td>");
+                                                                out.println("<td>" + (i.getDocumentosFaltantes().equals("")?" - ":i.getDocumentosFaltantes())+ "</td>");
+                                                                out.println("<td>" + i.getObservacaoAnaliseDocumental()+ "</td>");
                                                                 out.println("<td>" + i.getBolsa1().getNome()+ "</td>");
                                                                 out.println("<td>" + i.getBolsa2().getNome()+ "</td>");
+                                                                out.println("<td>" + i.getJustificativa()+ "</td>");
+                                                                out.println("<td>" + i.getResultado()+ "</td>");
                                                                 out.println("<td>" + i.getAluno().getIdade()+ "</td>");
                                                                 out.println("<td>" + i.getAluno().getMeioTransporte()+ "</td>");
                                                                 out.println("<td>" + i.getAluno().getCurso().getCategoria().getNome()+ "</td>");
@@ -199,11 +205,6 @@
                                                                 out.println("<td>" + (empresa.getRenda()+empresa.getOrenda()+rd) + "</td>");
                                                                 out.println("<td>" + despesa.getDespesaTotal() + "</td>");
                                                                 out.println("<td>" + (empresa.getRenda()+empresa.getOrenda()+rd)/(dependentes.size()+1) + "</td>");
-                                                                out.println("<td>" + i.getResultadoAnaliseDocumental() + "</td>");
-                                                                out.println("<td>" + (i.getDocumentosFaltantes().equals("")?" - ":i.getDocumentosFaltantes())+ "</td>");
-                                                                out.println("<td>" + i.getObservacaoAnaliseDocumental()+ "</td>");
-                                                                out.println("<td>" + i.getJustificativa()+ "</td>");
-                                                                
                                                                 rd = 0.0;
                                                             }
                                                                 %>

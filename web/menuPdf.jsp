@@ -19,17 +19,30 @@
 <%@page import="modelo.Edital"%>
 <%@page import="dao.DaoFactory"%>
 <%  
+                                            Empresa empresa = new Empresa();
+                                            DaoFactory daoFactory = new DaoFactory();
+                                            DataFormat dataFormat = new DataFormat();
+                                            SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                  GregorianCalendar cal = (GregorianCalendar) GregorianCalendar.getInstance(); 
+                  TimeZone tz = TimeZone.getTimeZone("America/Araguaina");
+		  TimeZone.setDefault(tz);
+                  
+                  cal.setTimeZone(tz);
+                    GregorianCalendar dataAtual = new GregorianCalendar();
+
                                             Inscricao inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
                                             List<Bolsa> bolsas = daoFactory.getBolsaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
 
                                             
-                                            dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(inscricao.getAluno().getId());
-                                            empresa = new daoFactory.getEmpresaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                            List<Dependente> dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(inscricao.getAluno().getId());
+                                            List<Empresa> empresas = new DaoFactory().getEmpresaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
                                             
                                             
 
                                             FichaMedica fichaMedica = new DaoFactory().getFichaMedicaDao().perquisarListaPorAluno(inscricao.getAluno().getId()).get(0);
-                                            
+                                            if (empresas.size() != 0) {
+                                                empresa = empresas.get(0);
+                                            }
                                             Integer alunoId = Integer.parseInt(session.getAttribute("aluno_id").toString());
 
                                            Edital edital = (Edital) daoFactory.getEditalDao().pesquisarPorId(inscricao.getEdital().getId());

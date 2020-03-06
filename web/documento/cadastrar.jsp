@@ -33,7 +33,6 @@
 
             <div class="all-wrapper solid-bg-all">
                 <div class="layout-w">
-                    <%@include file="../menu.jsp" %>
                     <%@include file="../menuPdf.jsp" %>
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
@@ -109,7 +108,7 @@
                                     <div class="col-md-6">
                                         <%
                                             List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarListaPorAluno(inscricao.getAluno().getId());
-                                            despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
+                                            Despesa despesa = daoFactory.getDespesaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
                                             empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(inscricao.getAluno().getId());
                                         %>
                                         <%@include file="../inscricao/dadosInscricao.jsp" %>
