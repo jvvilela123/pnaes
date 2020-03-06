@@ -1,4 +1,4 @@
-<%-- 
+ <%-- 
     Document   : listarEntrevista
     Created on : 15/02/2018, 08:15:22
     Author     : ronan
@@ -82,7 +82,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4, 5 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
                 },
                 styles: {
     tableHeader: {
@@ -96,7 +96,7 @@
             
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4, 5 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
                 },
             customize: function ( doc ) {
                 // Splice the image in after the header, but before the table
@@ -114,7 +114,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4, 5]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
                 }
         }
         
