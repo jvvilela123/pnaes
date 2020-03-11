@@ -75,12 +75,11 @@ public class ServletInscricao extends HttpServlet {
                     daoFactory.getAlunoDao().inserirOuAlterar(aluno);
                     //aluno.setId(Integer.parseInt(request.getParameter("aluno_id")));
                     edital.setId(Integer.parseInt(request.getParameter("edital_id")));
-                    inscricao.setAlmocaIfto(request.getParameter("almocoIfto"));
+                    inscricao.setAlmocaIfto(request.getParameter("almocaIfto"));
                     inscricao.setBolsa1(bolsa1);
                     inscricao.setBolsa2(bolsa2);
                     inscricao.setAluno(aluno);
                     inscricao.setDataInscricao(dataInscricao);
-                    inscricao.setMotivoBolsa(request.getParameter("motivoBolsa"));
                     inscricao.setJustificativa(request.getParameter("justificativa"));
                     
                     inscricao.setStatus("Pendente");

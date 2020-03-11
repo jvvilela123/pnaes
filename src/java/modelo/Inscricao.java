@@ -34,15 +34,13 @@ public class Inscricao implements Serializable{
     @ManyToOne
     @JoinColumn(name="bolsa2_id")
     private Bolsa bolsa2;
-    private String graduacao;
     private String justificativa;
-    private String resultado;
+
     private String resultadoAnaliseDocumental;
     private String observacaoAnaliseDocumental;
     private String status;
     private String quantas;
     private String documentosFaltantes;
-    private String motivoBolsa;
     private String almocaIfto;
     private String usuarioAlterou;
     @ManyToOne
@@ -57,14 +55,6 @@ public class Inscricao implements Serializable{
         this.id = id;
     }
 
-    public String getMotivoBolsa() {
-        return motivoBolsa;
-    }
-
-    public void setMotivoBolsa(String motivoBolsa) {
-        this.motivoBolsa = motivoBolsa;
-    }
-
     public GregorianCalendar getDataInscricao() {
         return dataInscricao;
     }
@@ -75,14 +65,6 @@ public class Inscricao implements Serializable{
 
     public void setJustificativa(String justificativa) {
         this.justificativa = justificativa;
-    }
-
-    public String getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(String resultado) {
-        this.resultado = resultado;
     }
 
     public String getDocumentosFaltantes() {
@@ -130,14 +112,6 @@ public class Inscricao implements Serializable{
         this.edital = edital;
     }
 
-    public String getGraduacao() {
-        return graduacao;
-    }
-
-    public void setGraduacao(String graduacao) {
-        this.graduacao = graduacao;
-    }
-  
     public String getQuantas() {
         return quantas;
     }

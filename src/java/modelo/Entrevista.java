@@ -27,14 +27,9 @@ public class Entrevista implements Serializable{
     private String resultadoBolsa1;
     private String resultadoBolsa2;
     private String concorrencia;
-    private String dimensaoSocial;
-    private String dimensaoEconomica;
-    private String dimensaoAmbiental;
-    private String dimensaoCultural;
     private String participaProjetos;
     private String bolsaPermanente;
     private String outraBolsa;
-    private String almocoIfto;
     private String visitaDomiciliar;
     private String vulnerabilidade;
     private String caracterizacao;
@@ -59,38 +54,6 @@ public class Entrevista implements Serializable{
         this.concorrencia = concorrencia;
     }
 
-    public String getDimensaoSocial() {
-        return dimensaoSocial;
-    }
-
-    public void setDimensaoSocial(String dimensaoSocial) {
-        this.dimensaoSocial = dimensaoSocial;
-    }
-
-    public String getDimensaoEconomica() {
-        return dimensaoEconomica;
-    }
-
-    public void setDimensaoEconomica(String dimensaoEconomica) {
-        this.dimensaoEconomica = dimensaoEconomica;
-    }
-
-    public String getDimensaoAmbiental() {
-        return dimensaoAmbiental;
-    }
-
-    public void setDimensaoAmbiental(String dimensaoAmbiental) {
-        this.dimensaoAmbiental = dimensaoAmbiental;
-    }
-
-    public String getDimensaoCultural() {
-        return dimensaoCultural;
-    }
-
-    public void setDimensaoCultural(String dimensaoCultural) {
-        this.dimensaoCultural = dimensaoCultural;
-    }
-
     public String getParticipaProjetos() {
         return participaProjetos;
     }
@@ -113,14 +76,6 @@ public class Entrevista implements Serializable{
 
     public void setOutraBolsa(String outraBolsa) {
         this.outraBolsa = outraBolsa;
-    }
-
-    public String getAlmocoIfto() {
-        return almocoIfto;
-    }
-
-    public void setAlmocoIfto(String almocoIfto) {
-        this.almocoIfto = almocoIfto;
     }
 
     public String getVisitaDomiciliar() {
@@ -222,13 +177,5 @@ public class Entrevista implements Serializable{
     public void setEntrevistador(String entrevistador) {
         this.entrevistador = entrevistador;
     }
-    
-
-    
-    
-
-   
-    
-    
     
 }

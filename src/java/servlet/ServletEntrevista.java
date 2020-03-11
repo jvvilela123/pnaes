@@ -69,14 +69,9 @@ out.println(request.getParameter("opcao"));
                     entrevista.setDataAgendadaEntrevista(dataEntrevista);
                     entrevista.setLocal(request.getParameter("local"));
                     entrevista.setConcorrencia("");
-                    entrevista.setDimensaoSocial("");
-                    entrevista.setDimensaoAmbiental("");
-                    entrevista.setDimensaoEconomica("");
-                    entrevista.setDimensaoCultural("");
                     entrevista.setParticipaProjetos(request.getParameter("participaProjetos"));
                     entrevista.setBolsaPermanente(request.getParameter("bolsaPermanente"));
                     entrevista.setOutraBolsa(request.getParameter("outraBolsa"));
-                    entrevista.setAlmocoIfto(request.getParameter("almocoIfto"));
                     entrevista.setObservacao("");
                    // entrevista.setResultado("");
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
@@ -101,21 +96,14 @@ out.println(request.getParameter("opcao"));
                         ent.setDataAgendadaEntrevista(dataEntrevista);
                         ent.setLocal(request.getParameter("local"));
                         ent.setConcorrencia("");
-                        ent.setDimensaoSocial("");
-                        ent.setDimensaoAmbiental("");
-                        ent.setDimensaoEconomica("");
-                        ent.setDimensaoCultural("");
                         ent.setParticipaProjetos(request.getParameter("participaProjetos"));
                         ent.setBolsaPermanente(request.getParameter("bolsaPermanente"));
                         ent.setOutraBolsa(request.getParameter("outraBolsa"));
-                        ent.setAlmocoIfto(request.getParameter("almocoIfto"));
                         ent.setObservacao("");
                        
                         //entrevista.setResultado("");
                         daoFactory.getEntrevistaDao().inserirOuAlterar(ent);
-                        System.out.println("oi");
                         response.sendRedirect("entrevista/horario.jsp?data="+request.getParameter("dataEntrevista")+"&local="+request.getParameter("local")+"&pBolsa="+request.getParameter("pb")+"&pCat="+request.getParameter("pc"));
-                        System.out.println("oi");
                         }
                  //   }                  
                     break;
@@ -149,7 +137,6 @@ out.println(request.getParameter("opcao"));
                     entrevista.setParticipaProjetos(request.getParameter("participaProjetos"));
                     entrevista.setBolsaPermanente(request.getParameter("bolsaPermanente"));
                     entrevista.setOutraBolsa(request.getParameter("outraBolsa"));
-                    entrevista.setAlmocoIfto(request.getParameter("almocoIfto"));
                     entrevista.setObservacao(request.getParameter("observacao"));
                     dataEntrevista.setTime(date.parse(request.getParameter("dataEntrevista")));
                     entrevista.setDataEntrevista(dataEntrevista);
@@ -157,6 +144,7 @@ out.println(request.getParameter("opcao"));
                     out.println("i_id = " + entrevista.getInscricao().getId() + " e_id = " + entrevista.getId());
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(entrevista.getInscricao().getId());
                     inscricao.setStatus("Finalizado");
+                    inscricao.setAlmocaIfto(request.getParameter("almocaIfto"));
                     
                     entrevista.setInscricao(inscricao);
                     

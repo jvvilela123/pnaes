@@ -123,8 +123,8 @@
                                                                                 </select></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td><label class="col-md-6 label-control" for="almocoIfto">Almoça no IFTO?:  </label></td>
-                                                                            <td><select id="resultado" name="almocoIfto" class="form-control">
+                                                                            <td><label class="col-md-6 label-control" for="almocaIfto">Almoça no IFTO?:  </label></td>
+                                                                            <td><select id="almocaIfto" name="almocaIfto" class="form-control">
                                                                                     <option selected="" disabled="" value="">Selecione uma opção</option>
                                                                                     <option value="Todos dias"> Todos Dias</option>
                                                                                     <option value="Quatro vez por semana">Quatro Vezes por Semana</option>

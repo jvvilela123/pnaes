@@ -89,9 +89,9 @@
                                                         <div class="form-body">
                                                             <%if(edital.getCampus().getId()==1){%>
                                                             <div class="form-group row">
-                                                                <label class="col-md-3 label-control" for="almoco">Almoça no IFTO?*:</label>
+                                                                <label class="col-md-3 label-control" for="almocaIfto">Almoça no IFTO?*:</label>
                                                                 <div class="col-md-9">
-                                                                    <select id="almocoIfto" name="almocoIfto" class="form-control" required>
+                                                                    <select id="almocaIfto" name="almocaIfto" class="form-control" required>
                                                                         <option selected="" disabled="" value="">Selecione uma das opções</option>
                                                                                     <option value="Todos dias"> Todos Dias</option>
                                                                                     <option value="Quatro vez por semana">Quatro Vezes por Semana</option>
