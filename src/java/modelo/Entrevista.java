@@ -39,6 +39,17 @@ public class Entrevista implements Serializable{
     private String vulnerabilidade;
     private String caracterizacao;
     private String entrevistador;
+    private String resultado;
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
+    
+    
 
     public String getConcorrencia() {
         return concorrencia;

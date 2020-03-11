@@ -190,11 +190,8 @@
                                                                     Double perCapita = new Double(0);
                                                                     dependentes =null;
                                                                     empresa =null;
-                                                                        if (e.getResultadoBolsa1() == null && e.getInscricao().getStatus().equals("Finalizado")) {
-                                                                      
-                                                                        System.out.println("resultado = "+e.getResultadoBolsa1());
-                                                                        
-                                                                            dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(e.getInscricao().getAluno().getId());
+                                                                        if (e.getResultadoBolsa1() == null && e.getInscricao().getStatus().equals("Finalizado") && e.getResultado().equals("Classificado")) {
+                                                                          dependentes = daoFactory.getDependenteDao().perquisarListaPorAluno(e.getInscricao().getAluno().getId());
                                                                             empresa = daoFactory.getEmpresaDao().perquisarClassePorAluno(e.getInscricao().getAluno().getId());
                                                                             for (Dependente d : dependentes) {
                                                                                 i++;
