@@ -145,12 +145,22 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="vulnerabilidade">Vulnerabilidade Social</label></td>
-                                                                            <td><select id="resultado" name="vulnerabilidade" class="form-control" >
+                                                                            <td><select id="vulnerabilidade" name="vulnerabilidade" class="form-control" >
                                                                                     <option selected="" disabled="" value="">Selecione uma opção</option>
                                                                                     <option value="Alta">Alta</option>                                                                           
                                                                                     <option value="Media">Media</option>
                                                                                     <option value="Baixa">Baixa</option>
                                                                                     <option value="Fora de Vulnerabilidade ">Fora de Vulnerabilidade </option>
+                                                                                </select></td>
+                                                                        </tr>
+<tr>
+                                                                            <td><label class="col-md-6 label-control" for="resultado">Resultado da Entrevista</label></td>
+                                                                            <td><select id="resultado" name="resultado" class="form-control" >
+                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
+                                                                                    <option value="Classificado">Classificado</option>                                                                           
+                                                                                    <option value="Desclassificado por falta de documento">Desclassificado por falta de documento</option>
+                                                                                    <option value="Desclassificado por não comparecer a Entrevista">Desclassificado por não comparecer a Entrevista</option>
+                                                                                    <option value="Desclassificado">Desclassificado</option>
                                                                                 </select></td>
                                                                         </tr>
 
