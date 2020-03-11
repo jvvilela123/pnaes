@@ -141,11 +141,8 @@ out.println(request.getParameter("opcao"));
                     dataEntrevista.setTime(date.parse(request.getParameter("dataEntrevista")));
                     entrevista.setDataEntrevista(dataEntrevista);
                     entrevista.setEntrevistador(request.getParameter("entrevistador"));
-                    out.println("i_id = " + entrevista.getInscricao().getId() + " e_id = " + entrevista.getId());
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(entrevista.getInscricao().getId());
                     inscricao.setStatus("Finalizado");
-                    inscricao.setAlmocaIfto(request.getParameter("almocaIfto"));
-                    
                     entrevista.setInscricao(inscricao);
                     
                     daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);

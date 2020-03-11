@@ -87,7 +87,6 @@
                                                     </div>
                                                     <form class="form form-horizontal striped-rows form-bordered" id="formInscricao" method="POST" action="../ServletInscricao?opcao=inscricao&aluno_id=<%=session.getAttribute("aluno_id")%>&edital_id=<%=edital.getId()%>">
                                                         <div class="form-body">
-                                                            <%if(edital.getCampus().getId()==1){%>
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="almocaIfto">Almoça no IFTO?*:</label>
                                                                 <div class="col-md-9">
@@ -102,8 +101,6 @@
                                                                  </select>
                                                                 </div>
                                                             </div>
-                                                             <%}%>
-                                                            
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="bolsa1">1ª opção de Auxílio*:</label>
                                                                 <div class="col-md-9">

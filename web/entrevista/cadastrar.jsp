@@ -122,19 +122,7 @@
                                                                                     <option value="Nao">Não</option>
                                                                                 </select></td>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td><label class="col-md-6 label-control" for="almocaIfto">Almoça no IFTO?:  </label></td>
-                                                                            <td><select id="almocaIfto" name="almocaIfto" class="form-control">
-                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
-                                                                                    <option value="Todos dias"> Todos Dias</option>
-                                                                                    <option value="Quatro vez por semana">Quatro Vezes por Semana</option>
-                                                                                    <option value="Tres vez por semana">Três Vezes por Semana</option>
-                                                                                    <option value="Duas vez por semana">Duas Vezes por Semana</option>
-                                                                                    <option value="Uma vez por semana">Uma Vezes por Semana</option>
-                                                                                    <option value="Prefere almocar em casa">Prefere Almoçar em Casa</option>
-                                                                                </select></td>
-                                                                        </tr>
-
+                                                                       
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="df">Documentos Faltantes</label></td>
                                                                             <td><textarea  class="form-control" rows="7" name="df" maxlength="255"><%=entrevista.getInscricao().getDocumentosFaltantes()%></textarea></td>
