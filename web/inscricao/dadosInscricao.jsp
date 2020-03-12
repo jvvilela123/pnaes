@@ -912,18 +912,14 @@
                                                         <th>Renda Mensal:</th>
                                                         <td><script>document.write(formatarMoeda(<%=d.getRenda()%>));</script></td>
                                                        </tr>
-                                                       <%if(request.getParameter("editar")!=null){%>
-                                                            <tr>
-                                                                <th colspan="2" style="text-align:center;" class="visualizacaoDependente">
-                                                                    <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="excluirDependente('<%=d.getId()%>','<%=d.getNome().toUpperCase()%>','<%=inscricao.getId()%>');"> Excluir Membro Familiar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                 <!--   <button type="button" class="btn btn-warning os-icon os-icon-edit" onclick="edicaoDependente();"> Clique para Editar</button>-->
-                                                                    </th>
-                                                               <!-- <th colspan="2" style="text-align:center; display: none;" class="edicaoDependente">
-                                                                    <button type="button" class="btn btn-danger os-icon os-icon-delete" onclick="cancelaEdicaoDependente();"> Cancelar Edição</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    <button type="submit" class="btn btn-success os-icon os-icon-save" onclick="salvarDependente();"> Salvar</button>
-                                                                </th>-->
-                                                            </tr>
-                                                            <%}%>
+<tr>
+<th>
+                                                       <div class="form-actions right">
+                                                                <a href="/pnaes/dependente/alterar.jsp?id=<%=d.getId()%>"><button type="button" class="btn btn-primary os-icon os-icon-save">
+                                                                    <i class="fa fa-check-square-o"></i> Alterar</a>
+                                                                </button>
+                                                            </div>
+</th></tr>
                                                     </table>
                                                   </div>
                                                   <%}%>
@@ -987,10 +983,9 @@
                                                 <tr class="table-danger">    
                                                         <th>Despesa Familiar Total:</th>
                                                             <%
-                                                                Double total = despesa.getMoradia() + despesa.getAlimentacao() + despesa.getAgua() + despesa.getEnergia()
-                                                                        + despesa.getTelefone() + despesa.getTransporte() + despesa.getFarmacia() + despesa.getOutrasDespesas();
+                                                                despesa.getDespesaTotal();
                                                             %>
-                                                        <td><script>document.write(formatarMoeda(<%=total%>));</script></td>
+                                                        <td><script>document.write(formatarMoeda(<%=despesa.getDespesaTotal()%>));</script></td>
                                                     </tr>
 
                                                 </table>
