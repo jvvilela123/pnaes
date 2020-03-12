@@ -86,11 +86,11 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="concorrencia">Motivo que levou a concorrer o auxílio:</label></td>
-                                                                            <td><textarea  cols="40" rows="7" name="concorrencia"  maxlength="255"></textarea></td>
+                                                                            <td><textarea  cols="40" rows="7" name="concorrencia"></textarea></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="caracterizacao">Caracterização Situacional:</label></td>
-                                                                            <td><textarea  class="form-control" rows="7" name="caracterizacao"  maxlength="255"></textarea></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="caracterizacao"></textarea></td>
                                                                         </tr>
 
                                                                         <tr>
@@ -129,7 +129,7 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="oa">Observações na Análise Documental</label></td>
-                                                                            <td><textarea  class="form-control" rows="7" name="oa" maxlength="255" disabled><%=entrevista.getInscricao().getObservacaoAnaliseDocumental()%></textarea></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="oa" disabled><%=entrevista.getInscricao().getObservacaoAnaliseDocumental()%></textarea></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="vulnerabilidade">Vulnerabilidade Social</label></td>

@@ -126,7 +126,7 @@
                                                                     <div class="form-group row">
                                                                     <label class="col-md-3 label-control" for="nome">Justifique por que você necessita dos auxílios*:</label>
                                                                     <div class="col-md-9">
-                                                                        <textarea  class="form-control" rows="4" name="justificativa" required id="justificativa" placeholder="Escreva aqui a sua Justificativa" maxlength="255"></textarea>
+                                                                        <textarea  class="form-control" rows="4" name="justificativa" required id="justificativa" placeholder="Escreva aqui a sua Justificativa"></textarea>
                                                                     </div>
                                                                 </div>
                                                             <div class="form-actions right">
