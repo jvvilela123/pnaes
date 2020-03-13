@@ -287,15 +287,13 @@
                                                                     <td><input class="form-control" name="horario" type="text" maxlength="5" OnKeyPress="formatar('##:##', this)"></td>
                                                                     <td><input name="i_id" type="hidden" value="<%=i.getId()%>">
                                                                         <input name="k" type="hidden" value="<%=k%>">
-                                                                        <button type="submit" value="Marcar Entrevista" class="btn btn-primary os-icon os-icon-check">
-                                                                    <i class="fa fa-check-square-o"></i> Marcar Entrevista
-                                                                </button>
+                                                                        <button type="submit" value="Marcar" class="btn btn-primary os-icon os-icon-check">
+                                                                    <i class="fa fa-check-square-o"></i>Marcar</button>
                                                                     
                                                                          </td>
                                                                          <td>
                                                                            <a href="../ServletEntrevista?opcao=dispensar&i_id=<%=i.getId()%>&pb=<%=request.getParameter("pBolsa")!=null?request.getParameter("pBolsa"):' '%>&pc=<%=request.getParameter("pCat")!=null?request.getParameter("pCat"):' '%>&dataEntrevista=<%=request.getParameter("data")%>&local=<%=request.getParameter("local")%>">  <button type="button" value="Dispensar Entrevista" class="btn btn-danger os-icon os-icon-close">
-                                                                    <i class="fa fa-check-square-o"></i> Dispensar Entrevista
-                                                                               </button></a>
+                                                                    <i class="fa fa-check-square-o"></i> Dispensar</button></a>
                                                                         </td>
 
                                                                 </tr>

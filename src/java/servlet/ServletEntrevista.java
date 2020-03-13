@@ -45,8 +45,6 @@ public class ServletEntrevista extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-System.out.println("oi");
-out.println(request.getParameter("opcao"));
             DaoFactory daoFactory = new DaoFactory();
             Inscricao inscricao;
             Entrevista entrevista = new Entrevista();
@@ -83,7 +81,6 @@ out.println(request.getParameter("opcao"));
                    // int i,
                    // k = Integer.parseInt(request.getParameter("k"));
                    // for (i = 0; i < k; i++) {
-                    System.out.println("oi");
                         Entrevista ent = new Entrevista();
                         inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(Integer.parseInt(request.getParameter("i_id")));
                         inscricao.setStatus("Agendado");
