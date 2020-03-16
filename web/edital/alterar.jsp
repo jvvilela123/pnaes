@@ -61,7 +61,7 @@
                                                         DataFormat dataFormat = new DataFormat();
                                                         edital = (Edital) daoFactory.getEditalDao().pesquisarPorId(Integer.parseInt(request.getParameter("id")));
                                                     %>
-                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEdital?opcao=alterar&id=<%=edital.getId()%>">
+                                                    <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEdital?opcao=alterar&id=<%=edital.getId()%>&campus_id=<%=aluno.getCurso().getCampus().getId()%>">
                                                         <div class="form-body">
                                                             <div class="form-group row">
                                                                 <label class="col-md-3 label-control" for="numero">Numero</label>

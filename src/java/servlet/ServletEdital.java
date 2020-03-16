@@ -67,6 +67,8 @@ public class ServletEdital extends HttpServlet {
                 case "alterar":
                     formato = new SimpleDateFormat("dd/MM/yyyy");
                     edital.setId(Integer.parseInt(request.getParameter("id")));
+                    campus.setId(Integer.parseInt(request.getParameter("campus_id")));
+                    edital.setCampus(campus);
                     edital.setNumero(request.getParameter("numero"));
                     dataInicial.setTime(formato.parse(request.getParameter("dataInicial")));
                     edital.setDataInicial(dataInicial);
