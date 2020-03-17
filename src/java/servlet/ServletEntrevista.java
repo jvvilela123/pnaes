@@ -138,6 +138,7 @@ public class ServletEntrevista extends HttpServlet {
                     dataEntrevista.setTime(date.parse(request.getParameter("dataEntrevista")));
                     entrevista.setDataEntrevista(dataEntrevista);
                     entrevista.setEntrevistador(request.getParameter("entrevistador"));
+                    entrevista.setResultado(request.getParameter("resultado"));
                     inscricao = (Inscricao) daoFactory.getInscricaoDao().pesquisarPorId(entrevista.getInscricao().getId());
                     inscricao.setStatus("Finalizado");
                     entrevista.setInscricao(inscricao);

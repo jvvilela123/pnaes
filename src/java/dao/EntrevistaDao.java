@@ -43,6 +43,19 @@ public class EntrevistaDao extends DaoGenerico{
             em.close();
         }
     }
+    public List<Entrevista> perquisarPorIncricaoEdital(Integer editalId, Integer inscricaoId) 
+    {
+        try{
+        String jpql = "select i from Entrevista i where i.inscricao.edital.id = "+editalId+" and inscricao_id = "+inscricaoId;
+        Query query = em.createQuery(jpql, Entrevista.class);
+        return query.getResultList();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw new ExceptionInInitializerError(e);
+        } finally {
+            em.close();
+        }
+    }
     public List<Entrevista> perquisarPorBolsaCategoria(Integer categoriaId, Integer bolsaId, Integer editalId) 
     {
         try{

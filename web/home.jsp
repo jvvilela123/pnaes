@@ -29,6 +29,7 @@
                             if(request.getParameter("msg") != null){
                             msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
                             if (msg.isEmpty() == false && is.isEmpty()) {
+                                
 
                         %>
 
@@ -52,8 +53,9 @@
                                      </script>
 
                                 <%}
+                            if (is.isEmpty() == false) {
                             
-                            if (is.isEmpty() == false && !is.get(0).getStatus().equals("Finalizado")) {
+                            //if (is.isEmpty() == false && !is.get(0).getStatus().equals("Finalizado")) {
                                 msg = "Sua Inscrição foi Confirmada!";
                                 
 
