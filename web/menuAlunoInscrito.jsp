@@ -146,39 +146,39 @@
         </div>
 
     </div>
-    
 
-        <%
-            DataFormat dataFormat = new DataFormat();
-            Inscricao i = is.get(0);
-            List<Entrevista> es = daoFactory.getEntrevistaDao().perquisarPorIncricaoEdital(edital.getId(), i.getId());
-            System.out.println("Entrevista: "+es.size());
-            
-        %>
-        <table class="table cell-border" style="width:100%">
-            
-                <tr>
-                    <th>Etapa 1 - Analise Documental</th>
-                    <td><%=i.getResultadoAnaliseDocumental()%></td>
-                </tr>
-                <tr>
-                    <th>Etapa 2 - Entrevista</th>
-                    <td>
-                        <%
-                            if(es.size() > 0){
-                                out.print(es.get(0).getResultado());
-                            }else{
-                                out.print("Pendente");
-                            }
-                            %>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Etapa 3 - Resultado Final</th>
-                    <td>Pendente</td>
-                </tr>
-        </table>
-        <div class="alert alert-info" role="alert">
+
+    <%
+        DataFormat dataFormat = new DataFormat();
+        Inscricao i = is.get(0);
+        List<Entrevista> es = daoFactory.getEntrevistaDao().perquisarPorIncricaoEdital(edital.getId(), i.getId());
+        System.out.println("Entrevista: " + es.size());
+
+    %>
+    <table class="table cell-border" style="width:100%">
+
+        <tr>
+            <th>Etapa 1 - Analise Documental</th>
+            <td><%=i.getResultadoAnaliseDocumental()%></td>
+        </tr>
+        <tr>
+            <th>Etapa 2 - Entrevista</th>
+            <td>
+                <%
+                    if (es.size() > 0) {
+                        out.print(es.get(0).getResultado());
+                    } else {
+                        out.print("Pendente");
+                    }
+                %>
+            </td>
+        </tr>
+        <tr>
+            <th>Etapa 3 - Resultado Final</th>
+            <td>Pendente</td>
+        </tr>
+    </table>
+    <div class="alert alert-info" role="alert">
         <table class="table dataTable cell-border" style="width:100%">
             <thead align="center">
                 <tr>
@@ -193,24 +193,29 @@
 
                 </tr>
             </thead>
-            <%                
-                    if (i.getStatus().equals("Analizado") || i.getStatus().equals("Agendado") || i.getStatus().equals("Finalizado")) {
+            <%
+                if (i.getStatus().equals("Analizado") || i.getStatus().equals("Agendado") || i.getStatus().equals("Finalizado")) {
             %>
-            <div class="card-header">
-                <h6 class="card-title" id="striped-row-layout-icons">Observações:</h6>
-                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="card-header">
+                        <h6 class="card-title" id="striped-row-layout-icons">Observação da Analise documental:</h6>
+                        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                        <div class="heading-elements">
+                        </div>
+                        <textarea class="form-control" cols="50" rows="5" name="observacaoAnaliseDocumental" id="observacaoAnaliseDocumental"><%=i.getObservacaoAnaliseDocumental()%></textarea>
+                    </div>
                 </div>
-                <textarea  cols="80" rows="8" name="observacaoAnaliseDocumental" id="observacaoAnaliseDocumental"><%=i.getObservacaoAnaliseDocumental()%></textarea>
-            </div>
-            <div class="card-header">
-                <h6 class="card-title" id="striped-row-layout-icons">Documentos Faltantes:</h6>
-                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
+                <div class="col-sm-6">
+                    <div class="card-header">
+                        <h6 class="card-title" id="striped-row-layout-icons">Documentos Faltantes:</h6>
+                        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                        <div class="heading-elements">
+                        </div>
+                        <textarea class="form-control" cols="50" rows="5" name="docf" id="docf"><%=i.getDocumentosFaltantes()%></textarea>
+                    </div>
                 </div>
-                <textarea  cols="80" rows="8" name="docf" id="docf"><%=i.getDocumentosFaltantes()%></textarea>
             </div>
-            
             <%
                 }
             %>
