@@ -142,7 +142,7 @@
                                                         </div>
                                                        <div class="col-md-12">
                                                         <%                                                            
-                                                            List<Edital> editals = daoFactory.getEditalDao().listar();
+                                                            List<Edital> editals = daoFactory.getEditalDao().buscarEditalPorCampus(aluno.getCurso().getCampus().getId());
                                                             DataFormat dataFormat = new DataFormat();
                                                            
                                                         %>        
