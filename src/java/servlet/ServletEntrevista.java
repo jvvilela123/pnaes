@@ -51,7 +51,7 @@ public class ServletEntrevista extends HttpServlet {
             
             GregorianCalendar dataEntrevista = new GregorianCalendar();
             SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-            SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             
             String opcao = request.getParameter("opcao");
 
@@ -107,8 +107,8 @@ public class ServletEntrevista extends HttpServlet {
                 case "alterar":
                     //Setando dados do Aluno
                     entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
-                    
-                    //dataEntrevista.setTime(formatador.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
+                    System.out.println("k = "+request.getParameter("k"));
+                    dataEntrevista.setTime(date.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
                     entrevista.setDataAgendadaEntrevista(dataEntrevista);
                     entrevista.setLocal(request.getParameter("local"));
                     

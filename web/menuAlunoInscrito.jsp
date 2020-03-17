@@ -228,8 +228,6 @@
                 <td><%=i.getBolsa1().getNome()%></td>
                 <td><%=i.getBolsa2().getNome()%></td>
                 <td><%=dataFormat.formatarData(i.getDataInscricao())%></td>
-
-
             </tr>
         </table> 
     </div>
