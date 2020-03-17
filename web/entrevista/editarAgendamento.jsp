@@ -144,7 +144,7 @@
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
                         <center>
-                            <div style="width: 80%">
+                            <div style="width: 95%">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -237,8 +237,9 @@
 
                                                         %>  
                                                         <form action="/pnaes/ServletEntrevista?opcao=alterar" method="POST">  
-                                                            <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
-                                                                <thead>
+                                                            <table class="table table-hover table-responsive-sm dataTable" style="text-align: center;">
+                                                                <thead class="thead-light">
+                                                                    
                                                                 <th>Inscrição</th>
                                                                 <th>Aluno</th>
                                                                 <th>Curso</th>
