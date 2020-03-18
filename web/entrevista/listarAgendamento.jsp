@@ -236,52 +236,50 @@
                                                             entrevistas = daoFactory.getEntrevistaDao().perquisarPorEdital(edital.getId());
 
                                                         %>  
-                                                        <form action="/pnaes/ServletEntrevista?opcao=alterar" method="POST">  
-                                                            <table class="table table-hover table-responsive-sm dataTable" style="text-align: center;">
-                                                                <thead class="thead-light">
-                                                                    
-                                                                <th>Inscrição</th>
-                                                                <th>Aluno</th>
-                                                                <th>Curso</th>
-                                                                <th>Auxilio 1</th>
-                                                                <th>Auxilio 2</th>
-                                                                <th>Data</th>
-                                                                <th>Hora</th>
-                                                                <th>Local</th>
-                                                                <th>Editar</th>
-                                                                </thead>
+                                                        <table class="table table-hover table-responsive-sm dataTable" style="text-align: center;">
+                                                            <thead class="thead-light">
 
-                                                                <%                                                                int k = 0;
-                                                                    for (Entrevista e : entrevistas) {
-                                                                        //  if(e.getInscricao().getStatus().equals("Agendado")){
-                                                                        out.println("<tr>");
-                                                                        out.println("<td>" + e.getInscricao().getId() + "</td>");
-                                                                        out.println("<td>" + e.getInscricao().getAluno().getNome() + "</td>");
-                                                                        out.println("<td>" + e.getInscricao().getAluno().getCurso().getNome() + "</td>");
-                                                                        out.println("<td>" + e.getInscricao().getBolsa1().getNome() + "</td>");
-                                                                        out.println("<td>" + e.getInscricao().getBolsa2().getNome() + "</td>");
-                                                                        if (e.getDataAgendadaEntrevista() != null) {
-                                                                            //out.println("<td>" + dataFormat.formatarData(e.getDataAgendadaEntrevista()) + "</td>");
-                                                                            out.println("<td><input type='text' name='dataEntrevista' value='" + dataFormat.formatarData(e.getDataAgendadaEntrevista()) + "'></td>");
-                                                                            out.println("<td><input type='text' name='horario' value='" + dataFormat.formatarHora(e.getDataAgendadaEntrevista()) + "'</td>");
-                                                                            out.println("<td><input type='text' name='local' value='" + e.getLocal() + "'></td>");
-                                                                        } else {
-                                                                            out.println("<td>Dispensado</td>");
-                                                                            out.println("<td> - </td>");
-                                                                            out.println("<td> - </td>");
-                                                                        }
+                                                            <th>Inscrição</th>
+                                                            <th>Aluno</th>
+                                                            <th>Curso</th>
+                                                            <th>Auxilio 1</th>
+                                                            <th>Auxilio 2</th>
+                                                            <th>Data</th>
+                                                            <th>Hora</th>
+                                                            <th>Local</th>
+                                                            <th>Editar</th>
+                                                            </thead>
 
-                                                                        out.println("<td><input name='e_id' type='hidden' value='" + e.getId() + "'><button type='submit' value='Editar' class='btn btn-primary os-icon os-icon-check'><i class='a fa-check-square-o'>Editar</i></button>");
-                                                                        //out.println("<td><a href='/pnaes/ServletEntrevista?opcao=alterar&e_id="+e.getId()+"&local="+e.getLocal()+"&dataEntrevista="+e.getDataAgendadaEntrevista()+"' title='Editar' class='text-info'><div class='os-icon os-icon-edit'></div><span>Editar</span></a></td>");
-
-                                                                        out.println("</tr>");
-                                                                        k++;
-                                                                        // }
-                                                                    }
+                                                            <%                                                                
+                                                                for (Entrevista e : entrevistas) {
+                                                                    if (e.getInscricao().getStatus().equals("Agendado")) {
+                                                            %>
+                                                            <tr>
+                                                                <td><%=e.getInscricao().getId()%></td>                                                                      
+                                                                <td><%=e.getInscricao().getAluno().getNome()%></td>
+                                                                <td><%=e.getInscricao().getAluno().getCurso().getNome()%></td>
+                                                                <td><%=e.getInscricao().getBolsa1().getNome()%></td>
+                                                                <td><%=e.getInscricao().getBolsa2().getNome()%></td>
+                                                                <%
+                                                                    if (e.getDataAgendadaEntrevista() != null) {
                                                                 %>
+                                                                <td><%=dataFormat.formatarData(e.getDataAgendadaEntrevista())%></td>
+                                                                <td><%=dataFormat.formatarHora(e.getDataAgendadaEntrevista())%></td>
+                                                                <td><%=e.getLocal()%></td>
+                                                                <% } else { %>
+                                                                <td>Dispensado</td>
+                                                                <td> - </td>
+                                                                <td> - </td>
+                                                                <% }%>
 
-                                                            </table>  
-                                                        </form>     
+                                                                <td><a href='/pnaes/entrevista/alterarAgendamento.jsp?e_id=<%=e.getId()%>' title='Editar' class='text-info'><div class='os-icon os-icon-edit'></div><span>Editar</span></a></td>
+
+                                                            </tr>
+                                                            <%    }
+                                                                }%>
+
+                                                        </table>  
+
                                                     </div>
                                                 </div>
                                             </div>

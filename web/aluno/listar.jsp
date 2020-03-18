@@ -137,7 +137,7 @@
             });
                                 </script>
                         <center>
-                            <div style="width: 80%">
+                            <div style="width: 99%">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -207,18 +207,6 @@
                                                     </div>
                                                     <%                                
                                                         List<Aluno> alunos = daoFactory.getAlunoDao().listarAlunosPorCampus(aluno.getCurso().getCampus().getId());
-                                                        /*String nomeAluno;
-                                                        if (request.getParameter("pesquisa") != null) {
-                                                            if (request.getParameter("pesquisa") != "") {
-                                                                nomeAluno = request.getParameter("pesquisa");
-                                                                alunos = daoFactory.getAlunoDao().pesquisarPor(nomeAluno, "nome");
-                                                            } else {
-                                                                alunos = daoFactory.getAlunoDao().listar();
-                                                            }
-                                                        } else {
-                                                            alunos = daoFactory.getAlunoDao().listar();
-                                                        }*/
-                                                      
                                                         if (request.getParameter("pCategoria")!= null && request.getParameter("pCurso")== null){
                                                           alunos = daoFactory.getAlunoDao().listarAlunosPorCategoria(Integer.parseInt(request.getParameter("pCategoria")));
                                                         }else
@@ -226,10 +214,9 @@
                                                          alunos = daoFactory.getAlunoDao().listarAlunosPorCurso(Integer.parseInt(request.getParameter("pCurso")));
                                                         }
                                                     %>                     
-                                                    <table class="table table-striped table-responsive-md" id="tabelaAlunos">
-                                                        <thead align="center">
+                                                    <table class="table table-hover table-responsive-sm" id="tabelaAlunos">
+                                                        <thead class="thead-light" align="center">
                                                         <tr>
-                                                           
                                                             <th>Nome</th>
                                                             <th>CPF</th>
                                                             <th>Idade</th>

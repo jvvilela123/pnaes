@@ -226,7 +226,7 @@ START - Mobile Menu
                                 <a href="/pnaes/entrevista/horario.jsp">Agendar Entrevista</a>
                             </li>
                             <li>
-                                <a href="/pnaes/entrevista/editarAgendamento.jsp">Editar Agendamento</a>
+                                <a href="/pnaes/entrevista/listarAgendamento.jsp">Editar Agendamento</a>
                             </li>
                             <li>
                                 <a href="/pnaes/entrevista/entrevista.jsp">Entrevistar</a>
@@ -570,7 +570,7 @@ START - Main Menu
                                 <a href="/pnaes/entrevista/horario.jsp">Agendar Entrevista</a>
                             </li>
                             <li>
-                                <a href="/pnaes/entrevista/editarAgendamento.jsp">Editar Agendamento</a>
+                                <a href="/pnaes/entrevista/listarAgendamento.jsp">Editar Agendamento</a>
                             </li>
                             <li>
                                 <a href="/pnaes/entrevista/entrevista.jsp">Entrevistar</a>

@@ -142,7 +142,7 @@
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
                         <center>
-                            <div style="width: 80%">
+                            <div style="width: 100%">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -161,8 +161,8 @@
                                                     
                                                         <div class="form-body">
 
-                                                            <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
-                                                                <thead>
+                                                            <table class="table table-responsive-sm dataTable" style="text-align: center;">
+                                                                <thead class="thead-light">
                                                                        <th>Inscrição</th>
                                                                         <th>Aluno</th>
                                                                         <th>Data da Entrevista</th>
@@ -192,7 +192,7 @@
                                                                     <td><%=e.getParticipaProjetos()==null || e.getParticipaProjetos().equals("")?" - ":e.getParticipaProjetos()%></td>
                                                                     <td><%=e.getBolsaPermanente()==null || e.getBolsaPermanente().equals("")?" - ":e.getBolsaPermanente()%></td>
                                                                     <td><%=e.getOutraBolsa()==null || e.getOutraBolsa().equals("")?" - ":e.getOutraBolsa()%></td>
-                                                                    <td><%=e.getAlmocoIfto()==null || e.getAlmocoIfto().equals("")?" - ":e.getAlmocoIfto()%></td>
+                                                                    <td><%=e.getInscricao().getAlmocaIfto()==null || e.getInscricao().getAlmocaIfto().equals("")?" - ":e.getInscricao().getAlmocaIfto()%></td>
                                                                     <td><%=e.getVulnerabilidade()==null || e.getVulnerabilidade().equals("")?" - ":e.getVulnerabilidade()%></td>
                                                                     <td><%=e.getObservacao()==null || e.getObservacao().equals("")?" - ":e.getObservacao()%></td>                                                                    
                                                                     <td><%=e.getEntrevistador()%></td>

@@ -143,13 +143,13 @@
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
                         <center>
-                            <div style="width: 80%">
+                            <div style="width: 99%">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h4 class="card-title" id="striped-row-layout-icons">Inscritos da Entrevista do Edital <%=edital.getNumeroEAno()%> </h4>
+                                                <h4 class="card-title" id="striped-row-layout-icons">Ato Convocatorio para Entrevista do Edital <%=edital.getNumeroEAno()%> </h4>
                                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                 <div class="heading-elements">
                                                 </div>
@@ -235,8 +235,8 @@
                                                             entrevistas = daoFactory.getEntrevistaDao().perquisarPorEdital(edital.getId());
                                                         
                                                     %>                        
-                                                     <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
-                                                        <thead>
+                                                     <table class="table table-hover table-responsive-sm dataTable" style="text-align: center;">
+                                                         <thead class="thead-light">
                                                             <th>Inscrição</th>
                                                             <th>Aluno</th>
                                                             <th>Curso</th>

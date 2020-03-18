@@ -107,7 +107,6 @@ public class ServletEntrevista extends HttpServlet {
                 case "alterar":
                     //Setando dados do Aluno
                     entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
-                    System.out.println("k = "+request.getParameter("k"));
                     dataEntrevista.setTime(date.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
                     entrevista.setDataAgendadaEntrevista(dataEntrevista);
                     entrevista.setLocal(request.getParameter("local"));
@@ -118,6 +117,19 @@ public class ServletEntrevista extends HttpServlet {
 
                     //Chamando o metodo alterar do dao e redirecionando para listar entrevista                          
                     break;
+                case "alterarAgendamento":
+                    //Setando dados do Aluno
+                    entrevista = (Entrevista) daoFactory.getEntrevistaDao().pesquisarPorId(Integer.parseInt(request.getParameter("e_id")));
+                    dataEntrevista.setTime(date.parse(request.getParameter("dataEntrevista") + " " + request.getParameter("horario")));
+                    entrevista.setDataAgendadaEntrevista(dataEntrevista);
+                    entrevista.setLocal(request.getParameter("local"));
+                    
+                    //entrevista.setResultado("");
+                    daoFactory.getEntrevistaDao().inserirOuAlterar(entrevista);
+                    response.sendRedirect("entrevista/listarAgendamento.jsp");
+
+                    //Chamando o metodo alterar do dao e redirecionando para listar entrevista                          
+                    break;    
                 case "excluir":
                     //Setando dados do Aluno                        
                     entrevista.setId(Integer.parseInt(request.getParameter("id")));

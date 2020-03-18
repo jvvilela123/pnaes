@@ -153,7 +153,7 @@
             });
                                 </script>
                         <center>
-                            <div style="width: 90%">
+                            <div style="width: 99%">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -255,8 +255,8 @@
 
 
 
-                                                    <table class="table table-striped table-responsive-md dataTable">
-                                                         <thead align="center">
+                                                    <table class="table table-hover table-responsive-sm dataTable">
+                                                        <thead class="thead-light" align="center">
                                                              <tr>
                                                                 <th>Nº da Inscrição</th>
                                                                 <th>Aluno</th>

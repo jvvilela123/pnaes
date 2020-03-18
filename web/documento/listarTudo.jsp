@@ -72,7 +72,7 @@
                 },
                 styles: {
     tableHeader: {
-        alignment: 'center'
+        alignment: 'left'
     }}
         },
             {
@@ -103,17 +103,6 @@
                     columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
                 }
         }
-        
-       /*, {
-            extend: 'pdf',
-            text: 'Gerar PDF da Página Atual',
-            className: 'btn btn-outline-primary btn-sm',
-            exportOptions: {
-                modifier: {
-                    page: 'current'
-                }
-            }
-        }*/
     ]
                    
                 } );
@@ -129,24 +118,22 @@
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
                         <center>
-                            <div style="width: 80%">
+                            <div style="width: 99%">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
                                                 <h4 class="card-title" id="striped-row-layout-icons">Resultado da Análise Documental</h4>
-                                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                                                <div class="heading-elements">
-                                                </div>
+                                                
                                             </div>
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
                                                     <div class="card-text">
                                                         Inscritos Analisados do Edital <%=edital.getNumeroEAno()%>
                                                     </div>
-                                                    <table class="table table-striped table-responsive-md dataTable" style="text-align: center;">
-                                                        <thead>
+                                                    <table class="table table-hover table-responsive-sm dataTable" style="text-align: center;">
+                                                        <thead class="thead-light">
                                                             <th>Nº da Inscricao</th>
                                                             <th>Aluno</th>
                                                             <th>Auxilio 1</th>
@@ -167,8 +154,6 @@
                                                             <th>Documentos Faltantes</th>
                                                             <th>Justificativa</th>
                                                             <th>Observação</th>
-                                                            
-                                                            
                                                             
                                                     </thead>
                                                         <%                                                            
