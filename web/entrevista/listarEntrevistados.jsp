@@ -142,7 +142,7 @@
                     <div class="content-w">
                         <%@include file="../cabecalho.jsp" %>
                         <center>
-                            <div style="width: 100%">
+                            <div style="width: 99%">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -171,10 +171,10 @@
                                                                         <th>Participa de Projetos no IFTO</th>
                                                                         <th>Recebe Bolsa Permanência PBP/MEC</th>
                                                                         <th>Recebe outro tipo de auxílio PNAES</th>
-                                                                        <th>Almoça no IFTO</th>
                                                                         <th>Vulnerabilidade Social</th>
                                                                         <th>Considerações do Entrevistador</th>
                                                                         <th>Entrevistado Por</th>
+                                                                        <th>Editar</th>
                                                                     
                                                                 </thead>
                                                                 <%   
@@ -192,11 +192,10 @@
                                                                     <td><%=e.getParticipaProjetos()==null || e.getParticipaProjetos().equals("")?" - ":e.getParticipaProjetos()%></td>
                                                                     <td><%=e.getBolsaPermanente()==null || e.getBolsaPermanente().equals("")?" - ":e.getBolsaPermanente()%></td>
                                                                     <td><%=e.getOutraBolsa()==null || e.getOutraBolsa().equals("")?" - ":e.getOutraBolsa()%></td>
-                                                                    <td><%=e.getInscricao().getAlmocaIfto()==null || e.getInscricao().getAlmocaIfto().equals("")?" - ":e.getInscricao().getAlmocaIfto()%></td>
                                                                     <td><%=e.getVulnerabilidade()==null || e.getVulnerabilidade().equals("")?" - ":e.getVulnerabilidade()%></td>
                                                                     <td><%=e.getObservacao()==null || e.getObservacao().equals("")?" - ":e.getObservacao()%></td>                                                                    
                                                                     <td><%=e.getEntrevistador()%></td>
-                                                                    
+                                                                    <td><a href='/pnaes/entrevista/alterarEntrevista.jsp?e_id=<%=e.getId()%>' title='Editar' class='text-info'><div class='os-icon os-icon-edit'></div><span>Editar</span></a></td>
                                                                 </tr>
 
                                                                 <%

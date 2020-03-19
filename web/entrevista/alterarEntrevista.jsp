@@ -32,7 +32,7 @@
 
                         </div>
                         <center>
-                            <div style="width: 80%">
+                            <div style="width: 99%">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -69,7 +69,7 @@
                                                                 <img src="/pnaes/alunos/<%=inscricao.getAluno().getCpf()%>/<%=inscricao.getAluno().getCpf()%>.jpg" width="150" height="200" alt="Clique para abrir" class="img_aluno">
 
                                                             </div>
-                                                            <form class="form form-horizontal striped-rows form-bordered" method="POST" action="../ServletEntrevista?opcao=entrevistar&e_id=<%=entrevista.getId()%>">
+                                                            <form class="form form-horizontal striped-rows form-bordered" method="POST" action="/pnaes/ServletEntrevista?opcao=alterarEntrevista&e_id=<%=entrevista.getId()%>">
                                                                 <div class="form-body">
                                                                     <input type="hidden" name="dataEntrevista" value="<%=date.format(dataAtual.getTime())%>">
                                                                     <input type="hidden" name="entrevistador" value="<%=session.getAttribute("nome")%> em: <%=date.format(dataAtual.getTime())%>">
@@ -83,22 +83,25 @@
                                                                             <td><%=entrevista.getInscricao().getAluno().getNome()%></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th>CPF:</th>
-                                                                            <td><%=entrevista.getInscricao().getAluno().getCpf()%></td>
-                                                                        </tr>
-                                                                        <tr>
                                                                             <td><label class="col-md-6 label-control" for="concorrencia">Motivo que levou a concorrer o auxílio:</label></td>
-                                                                            <td><textarea  cols="40" rows="7" name="concorrencia"></textarea></td>
+                                                                            <td><textarea  cols="40" rows="7" name="concorrencia"><%=entrevista.getConcorrencia()%></textarea></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="caracterizacao">Caracterização Situacional:</label></td>
-                                                                            <td><textarea  class="form-control" rows="7" name="caracterizacao"></textarea></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="caracterizacao"><%=entrevista.getCaracterizacao()%></textarea></td>
                                                                         </tr>
-
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="df">Documentos Faltantes</label></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="df" maxlength="255"><%=entrevista.getInscricao().getDocumentosFaltantes()%></textarea></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label class="col-md-6 label-control" for="oa">Observações na Análise Documental</label></td>
+                                                                            <td><textarea  class="form-control" rows="7" name="oa"><%=entrevista.getInscricao().getObservacaoAnaliseDocumental()%></textarea></td>
+                                                                        </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="participaProjetos">Participa de Projetos no IFTO:</label></td>
                                                                             <td><select id="resultado" name="participaProjetos" class="form-control">
-                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
+                                                                                    <option selected value="<%=entrevista.getParticipaProjetos()%>"><%=entrevista.getParticipaProjetos()%></option>
                                                                                     <option value="Nenhum">Nenhum</option>
                                                                                     <option value="Pibid">PIBID</option>
                                                                                     <option value="Extensao">Extensão</option>
@@ -110,7 +113,7 @@
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="bolsaPermanente">Recebe Bolsa Permanência PBP/MEC?: </label></td>
                                                                             <td><select id="resultado" name="bolsaPermanente" class="form-control">
-                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
+                                                                                    <option selected value="<%=entrevista.getBolsaPermanente()%>"><%=entrevista.getBolsaPermanente()%></option>
                                                                                     <option value="Sim">Sim</option>
                                                                                     <option value="Nao">Não</option>
                                                                                 </select></td>
@@ -119,24 +122,15 @@
                                                                             <td><label class="col-md-6 label-control" for="outraBolsa">Recebe outro tipo de auxílio PNAES?: </label></td>
 
                                                                             <td><select id="resultado" name="outraBolsa" class="form-control" >
-                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
+                                                                                    <option selected value="<%=entrevista.getOutraBolsa()%>"><%=entrevista.getOutraBolsa()%></option>
                                                                                     <option value="Sim">Sim</option>
                                                                                     <option value="Nao">Não</option>
                                                                                 </select></td>
                                                                         </tr>
-
-                                                                        <tr>
-                                                                            <td><label class="col-md-6 label-control" for="df">Documentos Faltantes</label></td>
-                                                                            <td><textarea  class="form-control" rows="7" name="df" maxlength="255"><%=entrevista.getInscricao().getDocumentosFaltantes()%></textarea></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><label class="col-md-6 label-control" for="oa">Observações na Análise Documental</label></td>
-                                                                            <td><textarea  class="form-control" rows="7" name="oa" disabled><%=entrevista.getInscricao().getObservacaoAnaliseDocumental()%></textarea></td>
-                                                                        </tr>
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="vulnerabilidade">Vulnerabilidade Social</label></td>
                                                                             <td><select id="vulnerabilidade" name="vulnerabilidade" class="form-control" >
-                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
+                                                                                    <option selected value="<%=entrevista.getVulnerabilidade()%>"><%=entrevista.getVulnerabilidade()%></option>
                                                                                     <option value="Alta">Alta</option>                                                                           
                                                                                     <option value="Media">Media</option>
                                                                                     <option value="Baixa">Baixa</option>
@@ -146,29 +140,22 @@
                                                                         <tr>
                                                                             <td><label class="col-md-6 label-control" for="resultado">Resultado da Entrevista</label></td>
                                                                             <td><select id="resultado" name="resultado" class="form-control" >
-                                                                                    <option selected="" disabled="" value="">Selecione uma opção</option>
+                                                                                    <option selected value="<%=entrevista.getResultado()%>"><%=entrevista.getResultado()%></option>
                                                                                     <option value="Classificado">Classificado</option>                                                                           
                                                                                     <option value="Desclassificado por falta de documento">Desclassificado por falta de documento</option>
                                                                                     <option value="Desclassificado por não comparecer a Entrevista">Desclassificado por não comparecer a Entrevista</option>
                                                                                     <option value="Desclassificado">Desclassificado</option>
                                                                                 </select></td>
                                                                         </tr>
-
-                                                                        <tr>
-                                                                            <td><label class="col-md-6 label-control" for="observacao">Considerações do Entrevistador</label></td>
-                                                                            <td><textarea  class="form-control" rows="7" name="observacao"></textarea></td>
-                                                                        </tr>
-
                                                                         <tr>
                                                                             <td colspan="2">
-                                                                                <a href="/pnaes/entrevista/entrevista.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                <button type="submit" value="Cadastrar" class="btn btn-primary os-icon os-icon-save">
+                                                                                <a href="/pnaes/entrevista/listarEntrevista.jsp"><button  class="btn btn-danger os-icon os-icon-delete" type="button" > Voltar</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                <button type="submit" value="Salvar" class="btn btn-primary os-icon os-icon-save">
                                                                                     <i class="fa fa-check-square-o"></i> Salvar
                                                                                 </button></td>
                                                                         </tr>
                                                                     </table>
                                                                 </div>
-
                                                             </form>
                                                         </div>
                                                     </div>

@@ -32,7 +32,7 @@
 
                         </div>
                         <center>
-                            <div style="width: 80%">
+                            <div style="width: 99%">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">

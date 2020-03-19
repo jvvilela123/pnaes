@@ -231,6 +231,9 @@ START - Mobile Menu
                             <li>
                                 <a href="/pnaes/entrevista/entrevista.jsp">Entrevistar</a>
                             </li>
+                            <li>
+                                <a href="/pnaes/entrevista/listarEntrevistados.jsp">Editar Entrevista</a>
+                            </li>
                             <% if (session.getAttribute("nivel").equals(3)){%>
                             <li>
                                 <a href="/pnaes/visita/cadastrar.jsp">Visita</a>
@@ -290,10 +293,10 @@ START - Mobile Menu
                                 <a href="/pnaes/documento/listarTudo.jsp">Lista completa da Análise Documental</a>
                             </li>
                             <li>
-                                <a href="/pnaes/entrevista/listar.jsp">Convocação Entrevista</a>
+                                <a href="/pnaes/entrevista/listarAgendamento.jsp">Convocação Entrevista</a>
                             </li>
                             <li>
-                                <a href="/pnaes/entrevista/resultado.jsp">Lista de Entrevistados</a>
+                                <a href="/pnaes/entrevista/listarEntrevistados.jsp">Lista de Entrevistados</a>
                             </li>
                             <li>
                                 <a href="/pnaes/resultado/listar.jsp">Resultado Final</a>
@@ -575,7 +578,9 @@ START - Main Menu
                             <li>
                                 <a href="/pnaes/entrevista/entrevista.jsp">Entrevistar</a>
                             </li>    
-                            
+                            <li>
+                                <a href="/pnaes/entrevista/listarEntrevistados.jsp">Editar Entrevista</a>
+                            </li>
                          
                         </ul>
                     </div>
@@ -658,10 +663,10 @@ START - Main Menu
                                 <a href="/pnaes/documento/listarTudo.jsp">Lista completa da Análise Documental</a>
                             </li>
                             <li>
-                                <a href="/pnaes/entrevista/listar.jsp">Convocação Entrevista</a>
+                                <a href="/pnaes/entrevista/listarAgendamento.jsp">Convocação Entrevista</a>
                             </li>
                             <li>
-                                <a href="/pnaes/entrevista/resultado.jsp">Lista de Entrevistados</a>
+                                <a href="/pnaes/entrevista/listarEntrevistados.jsp">Lista de Entrevistados</a>
                             </li>
                             <li>
                                 <a href="/pnaes/resultado/listar.jsp">Resultado Final</a>
