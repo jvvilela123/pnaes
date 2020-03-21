@@ -2,6 +2,7 @@
 <%@page import="dao.DaoFactory"%>
 <div style="margin-left: 20px">
     <%
+        List<Inscricao> ins = daoFactory.getInscricaoDao().perquisarAlunoPorEdital(alunoId,edital.getId());
         if (session.getAttribute("nivel").equals(1) || session.getAttribute("nivel").equals(3)) {
                    /*out.print(session.getAttribute("cpf"));
                                 String cpf = new String();
@@ -186,8 +187,28 @@
                     </div>
                 </div>
             </div>
-              <% }   %>
+              <%   }   %>
               <% if (despesas.size() > 0 && !editalEncerrado) { %>
+            <div class="col-md-6 col-xl-3">
+                <div class="element-box">
+                    <h5 class="form-header">
+                        ENVIAR DOCUMENTAÇÃO
+                    </h5>
+                    <div class="form-desc">
+                    </div>
+                    <div class="element-box-content">
+                    </div>
+                    <div class="element-box-content">
+                        <% if (aluno.getStatusCadastro() == 6 || aluno.getStatusCadastro() == 8 || aluno.getStatusCadastro() == 7) { %>
+                        <a href="/pnaes/documento/alterar_upload.jsp"> <button  class="mr-2 mb-2 btn btn-info btn-lg" type="button">Alterar o 7º Passo&#10004;</button> </a>
+                         <%  }else{ %>
+                         <a href="/pnaes/documento/upload.jsp"> <button  class="mr-2 mb-2 btn btn-primary btn-lg" type="button">7º Passo</button> </a>
+                          <% }   %> 
+                    </div>
+                </div>
+            </div>
+            <% 
+                }else if (despesas.size() > 0 && ins.size() > 0) { %>
             <div class="col-md-6 col-xl-3">
                 <div class="element-box">
                     <h5 class="form-header">
@@ -225,7 +246,7 @@
             
         </div>
     </div>
-           <% if (aluno.getStatusCadastro() == 6 && !editalEncerrado) { 
+           <% if ((aluno.getStatusCadastro() == 6 && !editalEncerrado)) { 
             %>
            <div class="element-box">
         <div class="element-info">

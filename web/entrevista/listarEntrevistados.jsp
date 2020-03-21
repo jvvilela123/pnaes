@@ -81,7 +81,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6]
                 },
                 styles: {
     tableHeader: {
@@ -95,7 +95,7 @@
             
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6]
                 },
             customize: function ( doc ) {
                 // Splice the image in after the header, but before the table
@@ -113,7 +113,7 @@
             className: 'btn btn-outline-primary btn-sm',
             exportOptions: {
                          
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6]
                 }
         }
         
@@ -155,27 +155,20 @@
                                             </div>
                                             <div class="card-content collpase show">
                                                 <div class="card-body">
-                                                    <div class="card-text">
-                                                      
-                                                    </div>
-                                                    
                                                         <div class="form-body">
-
                                                             <table class="table table-responsive-sm dataTable" style="text-align: center;">
                                                                 <thead class="thead-light">
+                                                                    <tr>
                                                                        <th>Inscrição</th>
                                                                         <th>Aluno</th>
                                                                         <th>Data da Entrevista</th>
                                                                         <th>Motivo que levou a concorrer o auxilio</th>
                                                                         <th>Caracterização Situacional</th>
-                                                                        <th>Participa de Projetos no IFTO</th>
-                                                                        <th>Recebe Bolsa Permanência PBP/MEC</th>
-                                                                        <th>Recebe outro tipo de auxílio PNAES</th>
                                                                         <th>Vulnerabilidade Social</th>
                                                                         <th>Considerações do Entrevistador</th>
                                                                         <th>Entrevistado Por</th>
                                                                         <th>Editar</th>
-                                                                    
+                                                                    </tr>
                                                                 </thead>
                                                                 <%   
                                                                     List<Entrevista> entrevistas = daoFactory.getEntrevistaDao().perquisarPorEdital(edital.getId());
@@ -189,9 +182,6 @@
                                                                     <td><%=date.format(e.getDataEntrevista().getTime())%></td>
                                                                     <td><%=e.getConcorrencia()==null || e.getConcorrencia().equals("")?" - ": e.getConcorrencia()%></td>
                                                                     <td><%=e.getCaracterizacao()==null || e.getCaracterizacao().equals("")?" - ":e.getCaracterizacao()%></td>
-                                                                    <td><%=e.getParticipaProjetos()==null || e.getParticipaProjetos().equals("")?" - ":e.getParticipaProjetos()%></td>
-                                                                    <td><%=e.getBolsaPermanente()==null || e.getBolsaPermanente().equals("")?" - ":e.getBolsaPermanente()%></td>
-                                                                    <td><%=e.getOutraBolsa()==null || e.getOutraBolsa().equals("")?" - ":e.getOutraBolsa()%></td>
                                                                     <td><%=e.getVulnerabilidade()==null || e.getVulnerabilidade().equals("")?" - ":e.getVulnerabilidade()%></td>
                                                                     <td><%=e.getObservacao()==null || e.getObservacao().equals("")?" - ":e.getObservacao()%></td>                                                                    
                                                                     <td><%=e.getEntrevistador()%></td>

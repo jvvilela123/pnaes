@@ -69,6 +69,11 @@
                         </div>
                           <%@include file="menuAlunoInscrito.jsp" %>       
                         <%
+                            if(is.get(0).getStatus().equals("Analizado") || is.get(0).getStatus().equals("Agendado")){
+                                %>
+                                <%@include file="menuAluno.jsp" %>
+                                <%
+                            }
                         } else {
                         %>
                         <%@include file="menuAluno.jsp" %>    

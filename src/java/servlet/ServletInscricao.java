@@ -81,7 +81,8 @@ public class ServletInscricao extends HttpServlet {
                     inscricao.setAluno(aluno);
                     inscricao.setDataInscricao(dataInscricao);
                     inscricao.setJustificativa(request.getParameter("justificativa"));
-                    
+                    inscricao.setResultadoAnaliseDocumental("Não Analizado");
+                    inscricao.setObservacaoAnaliseDocumental("");
                     inscricao.setStatus("Pendente");
                     inscricao.setEdital(edital);
                     li = daoFactory.getInscricaoDao().perquisarAlunoPorEdital(inscricao.getAluno().getId(), inscricao.getEdital().getId());
