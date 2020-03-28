@@ -35,9 +35,9 @@ public class Inscricao implements Serializable{
     @JoinColumn(name="bolsa2_id")
     private Bolsa bolsa2;
     private String justificativa;
-
-    private String resultadoAnaliseDocumental;
     private String observacaoAnaliseDocumental;
+    private String resultadoAnaliseDocumental;
+    private String observacaoAluno;
     private String status;
     private String quantas;
     private String documentosFaltantes;
@@ -49,6 +49,14 @@ public class Inscricao implements Serializable{
    
     public Integer getId() {
         return id;
+    }
+
+    public String getObservacaoAluno() {
+        return observacaoAluno;
+    }
+
+    public void setObservacaoAluno(String observacaoAluno) {
+        this.observacaoAluno = observacaoAluno;
     }
 
     public void setId(Integer id) {

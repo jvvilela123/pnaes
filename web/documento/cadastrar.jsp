@@ -171,21 +171,29 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-9">
-                                                                            <textarea  cols="40" rows="8" name="docf" id="docf"><%if (request.getParameter("analisado") != null && inscricao.getDocumentosFaltantes() != null) {
+                                                                            <textarea  cols="30" rows="5" name="docf" id="docf"><%if (request.getParameter("analisado") != null && inscricao.getDocumentosFaltantes() != null) {
                                                                                     out.print(inscricao.getDocumentosFaltantes());
                                                                                 }%></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-header">
-                                                                    <h6 class="card-title" id="striped-row-layout-icons">Observações:</h6>
+                                                                    <h6 class="card-title" id="striped-row-layout-icons">Observação da comissão:</h6>
                                                                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                                                     <div class="heading-elements">
                                                                     </div>
-                                                                    <textarea  cols="40" rows="8" name="observacaoAnaliseDocumental" id="observacaoAnaliseDocumental"><%if (request.getParameter("analisado") != null && inscricao.getObservacaoAnaliseDocumental() != null) {
+                                                                    <textarea  cols="40" rows="5" name="observacaoAnaliseDocumental" id="observacaoAnaliseDocumental"><%if (request.getParameter("analisado") != null && inscricao.getObservacaoAnaliseDocumental() != null) {
                                                                             out.print(inscricao.getObservacaoAnaliseDocumental());
                                                                         }%></textarea>
                                                                 </div>
-
+                                                                <div class="card-header">
+                                                                    <h6 class="card-title" id="striped-row-layout-icons">Observação para o Aluno:</h6>
+                                                                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                                                    <div class="heading-elements">
+                                                                    </div>
+                                                                    <textarea  cols="40" rows="5" name="observacaoAluno" id="observacaoAluno"><%if (request.getParameter("analisado") != null && inscricao.getObservacaoAluno() != null) {
+                                                                            out.print(inscricao.getObservacaoAluno());
+                                                                        }%></textarea>
+                                                                </div>
 
                                                                 <div class="form-group row">
                                                                     <div class="col-md-12">

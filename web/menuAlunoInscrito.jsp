@@ -203,7 +203,7 @@
                         <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                         <div class="heading-elements">
                         </div>
-                        <textarea class="form-control" cols="50" rows="5" name="observacaoAnaliseDocumental" id="observacaoAnaliseDocumental"><%=i.getObservacaoAnaliseDocumental()%></textarea>
+                        <textarea class="form-control" cols="50" rows="5" name="observacaoAluno" id="observacaoAluno"><%=i.getObservacaoAluno()%></textarea>
                     </div>
                 </div>
                 <div class="col-sm-6">
